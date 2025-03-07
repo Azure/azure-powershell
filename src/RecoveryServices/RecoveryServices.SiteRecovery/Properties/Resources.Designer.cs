@@ -125,6 +125,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster Recovery Point not available for {0}..
+        /// </summary>
+        internal static string ClusterRecoveryPointNotAvailable {
+            get {
+                return ResourceManager.GetString("ClusterRecoveryPointNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use cmdlet(s) &quot;{1}&quot; instead..
         /// </summary>
         internal static string CmdletWillBeDeprecatedSoon {
@@ -513,6 +522,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed..
+        /// </summary>
+        internal static string NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed {
+            get {
+                return ResourceManager.GetString("NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide both Source Nic and Recovery Target to update.
         /// </summary>
         internal static string NetworkArgumentsMissingForUpdateVmProperties {
@@ -893,7 +911,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Message: Invalid JobId parameter. The resume job operation cannot be performed on the TestFailover job with Job Id {0} as the operation has already reached a terminal state. To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.
         ///Possible Causes: The resume job operation is not allowed on this Job.
-        ///Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the t [rest of string was truncated]&quot;;.
+        ///Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the tes [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ResumeTFOJobNotSupported {
             get {
@@ -1350,6 +1368,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string WaitingForCompletion {
             get {
                 return ResourceManager.GetString("WaitingForCompletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User input Recovery Point for {0} or more node is already a part of cluster and is not an individual node..
+        /// </summary>
+        internal static string WrongIndividualNodeRecoveryPointPassed {
+            get {
+                return ResourceManager.GetString("WrongIndividualNodeRecoveryPointPassed", resourceCulture);
             }
         }
     }

@@ -1,0 +1,1884 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault?api-version=2024-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a5aafbdc-4276-40f3-9ced-ac3621d9263f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "821f173a-a515-4cd6-a6c7-d994e7eab0ee"
+        ],
+        "x-ms-client-request-id": [
+          "a5aafbdc-4276-40f3-9ced-ac3621d9263f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "821f173a-a515-4cd6-a6c7-d994e7eab0ee"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20250316T124151Z:821f173a-a515-4cd6-a6c7-d994e7eab0ee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3020E8263B5541C8A6C8C1CCA1087714 Ref B: MAA201060516049 Ref C: 2025-03-16T12:41:50Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:51 GMT"
+        ],
+        "Content-Length": [
+          "1102"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"powershell-cluster-vault\",\r\n  \"etag\": \"W/\\\"datetime'2025-03-11T09%3A25%3A27.6643095Z'\\\"\",\r\n  \"tags\": {\r\n    \"CreatedOnDate\": \"2025-03-11T07:29:16.2415181Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b60c13aa-837f-40d2-8ede-34d04c56bd41"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          ""
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1182c309-a724-4ccc-9793-9bd24a09dc31"
+        ],
+        "x-ms-client-request-id": [
+          "b60c13aa-837f-40d2-8ede-34d04c56bd41"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "1182c309-a724-4ccc-9793-9bd24a09dc31"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124152Z:1182c309-a724-4ccc-9793-9bd24a09dc31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3783265332E24BA1893F06830ED9BDEB Ref B: MAA201060514029 Ref C: 2025-03-16T12:41:51Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:51 GMT"
+        ],
+        "Content-Length": [
+          "425"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vaultExtendedInfo\",\r\n  \"etag\": \"94d1a5b2-1dff-4049-a653-d9e5f62cd294\",\r\n  \"properties\": {\r\n    \"integrityKey\": \"XeH0XQ0ZOEGYA9RHcD4tBw==\",\r\n    \"algorithm\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vaultextendedInformation/vaultExtendedInfo\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/extendedInformation\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b60c13aa-837f-40d2-8ede-34d04c56bd41"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "1ff6e8b9-ae63-4e2f-b7db-d5e4ec9a0b8f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "b60c13aa-837f-40d2-8ede-34d04c56bd41"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "1ff6e8b9-ae63-4e2f-b7db-d5e4ec9a0b8f"
+        ],
+        "x-ms-correlation-request-id": [
+          "1ff6e8b9-ae63-4e2f-b7db-d5e4ec9a0b8f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124153Z:1ff6e8b9-ae63-4e2f-b7db-d5e4ec9a0b8f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 78CFBFB3542344739E1EA6AA8EFF82A7 Ref B: MAA201060514029 Ref C: 2025-03-16T12:41:52Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:53 GMT"
+        ],
+        "Content-Length": [
+          "753"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"powershell-cluster-vault\",\r\n      \"etag\": \"W/\\\"datetime'2025-03-11T09%3A25%3A27.6643095Z'\\\"\",\r\n      \"tags\": {\r\n        \"CreatedOnDate\": \"2025-03-11T07:29:16.2415181Z\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\",\r\n        \"secureScore\": \"None\",\r\n        \"bcdrSecurityLevel\": \"Poor\",\r\n        \"publicNetworkAccess\": \"Enabled\",\r\n        \"restoreSettings\": {\r\n          \"crossSubscriptionRestoreSettings\": {\r\n            \"crossSubscriptionRestoreState\": \"Enabled\"\r\n          }\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6c42888e-b77a-47cc-9dd1-2a32f8e36075"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125314142)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730114142)\\/\",\"ClientRequestId\":\"9f44065f-9d2a-407a-ad73-d5ba90aece58-2025-03-16 12:41:54Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"XkiblDJXfMaKAEFGdHSK/FrGFZQVZqqaaLuq4McJamA=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6c42888e-b77a-47cc-9dd1-2a32f8e36075 3/16/2025 12:41:55 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "6c42888e-b77a-47cc-9dd1-2a32f8e36075"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "2b5c9aa1-0c49-4015-8004-2bfeb1936afa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124155Z:2b5c9aa1-0c49-4015-8004-2bfeb1936afa"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6D19DC9720BC4EF5AD5A6F4A21F07D1A Ref B: MAA201060515035 Ref C: 2025-03-16T12:41:54Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:55 GMT"
+        ],
+        "Content-Length": [
+          "977"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"asr-a2a-default-eastus2\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics\",\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"East US 2\",\r\n    \"encryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"rolloverEncryptionDetails\": {\r\n      \"kekState\": \"None\",\r\n      \"kekCertThumbprint\": null\r\n    },\r\n    \"internalIdentifier\": \"2ca62245-5353-5402-9e8b-ada407fb795c\",\r\n    \"bcdrState\": \"Valid\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"Azure\",\r\n      \"location\": \"eastus2\",\r\n      \"containerIds\": [\r\n        \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/6dad6744-ee36-55e2-a77e-92e5bdcd088e\"\r\n      ]\r\n    },\r\n    \"healthErrorDetails\": [],\r\n    \"health\": \"Normal\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125315493)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730115493)\\/\",\"ClientRequestId\":\"01de374b-bfdc-473e-9a95-15e2d3042349-2025-03-16 12:41:55Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"lrCMvp1TNv0yPNStEptK2C3X0J6MnhOxgCAawlR5Jm0=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b 3/16/2025 12:41:56 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e5d6134-2c79-49db-add5-9020aacc690e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124156Z:1e5d6134-2c79-49db-add5-9020aacc690e"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4A0085F1847C41D699752148C6DD4C26 Ref B: MAA201060514051 Ref C: 2025-03-16T12:41:55Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:55 GMT"
+        ],
+        "Content-Length": [
+          "636"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container\",\r\n  \"name\": \"asr-a2a-default-eastus2-container\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\r\n  \"properties\": {\r\n    \"fabricFriendlyName\": \"East US 2\",\r\n    \"friendlyName\": \"asr-a2a-default-eastus2-container\",\r\n    \"fabricType\": \"Azure\",\r\n    \"protectedItemCount\": 2,\r\n    \"pairingStatus\": \"Paired\",\r\n    \"role\": \"Primary\",\r\n    \"fabricSpecificDetails\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125316790)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730116790)\\/\",\"ClientRequestId\":\"2355c5fc-e42b-43b9-a504-76cea3fc3029-2025-03-16 12:41:56Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"OF5o3Ccwl2dixtyXptnaZvNnKzhu136sq8ViLmyslsE=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b 3/16/2025 12:41:57 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "e051cd3e-00fc-4611-a450-22ec7b085a68"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124157Z:e051cd3e-00fc-4611-a450-22ec7b085a68"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 42BE17EBB8AC42F085ACB6466207877B Ref B: MAA201060515035 Ref C: 2025-03-16T12:41:56Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:57 GMT"
+        ],
+        "Content-Length": [
+          "3903"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-westus/replicationProtectionContainers/asr-a2a-default-westus-container/replicationProtectionContainerMappings/westus-eastus2-24-hour-retention-policy\",\r\n      \"name\": \"westus-eastus2-24-hour-retention-policy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container\",\r\n        \"targetProtectionContainerFriendlyName\": \"asr-a2a-default-eastus2-container\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"agentAutoUpdateStatus\": \"Enabled\",\r\n          \"automationAccountAuthenticationType\": \"SystemAssignedIdentity\",\r\n          \"automationAccountArmId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.Automation/automationAccounts/powershel-yr7-asr-automationaccount\",\r\n          \"scheduleName\": \"westus-eastus2-24-hour-retention-policy_95781d6c-a268-509f-b1f1-b8efba506145\",\r\n          \"jobScheduleName\": \"12f60e4b-c737-4a61-8f5c-d440f2217828\"\r\n        },\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"asr-a2a-default-westus-container\",\r\n        \"sourceFabricFriendlyName\": \"West US\",\r\n        \"targetFabricFriendlyName\": \"East US 2\",\r\n        \"policyFriendlyName\": \"24-hour-retention-policy\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings/eastus2-westus-24-hour-retention-policy\",\r\n      \"name\": \"eastus2-westus-24-hour-retention-policy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings\",\r\n      \"properties\": {\r\n        \"targetProtectionContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-westus/replicationProtectionContainers/asr-a2a-default-westus-container\",\r\n        \"targetProtectionContainerFriendlyName\": \"asr-a2a-default-westus-container\",\r\n        \"providerSpecificDetails\": {\r\n          \"instanceType\": \"A2A\",\r\n          \"agentAutoUpdateStatus\": \"Enabled\",\r\n          \"automationAccountAuthenticationType\": \"SystemAssignedIdentity\",\r\n          \"automationAccountArmId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.Automation/automationAccounts/powershel-yr7-asr-automationaccount\",\r\n          \"scheduleName\": \"eastus2-westus-24-hour-retention-policy_6dad6744-ee36-55e2-a77e-92e5bdcd088e\",\r\n          \"jobScheduleName\": \"2f74a755-34f7-43e9-82f0-0572016af530\"\r\n        },\r\n        \"health\": \"Normal\",\r\n        \"healthErrorDetails\": [],\r\n        \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy\",\r\n        \"state\": \"Paired\",\r\n        \"sourceProtectionContainerFriendlyName\": \"asr-a2a-default-eastus2-container\",\r\n        \"sourceFabricFriendlyName\": \"East US 2\",\r\n        \"targetFabricFriendlyName\": \"West US\",\r\n        \"policyFriendlyName\": \"24-hour-retention-policy\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125317989)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730117989)\\/\",\"ClientRequestId\":\"3bbfdd15-504a-4efb-9536-e2a6d09a78bd-2025-03-16 12:41:57Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"yV8WjJIP6lQKKvAu+Wkz3VVfS7qcW4886WKE7t1k2yA=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b 3/16/2025 12:41:59 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e39f77d-0aa2-4b81-8189-73e2619920a3"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20250316T124159Z:0e39f77d-0aa2-4b81-8189-73e2619920a3"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9C4EFFC00CF64FCE8EC9A2C5D356F1F9 Ref B: MAA201060516051 Ref C: 2025-03-16T12:41:58Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:41:59 GMT"
+        ],
+        "Content-Length": [
+          "654"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy\",\r\n  \"name\": \"24-hour-retention-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"24-hour-retention-policy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"recoveryPointThresholdInMinutes\": 0,\r\n      \"recoveryPointHistory\": 1440,\r\n      \"appConsistentFrequencyInMinutes\": 0,\r\n      \"multiVmSyncStatus\": \"Enabled\",\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"status\": false,\r\n      \"associatedItemsCount\": 0,\r\n      \"dataSourceType\": \"VM\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Qb2xpY2llcy8yNC1ob3VyLXJldGVudGlvbi1wb2xpY3k/YXBpLXZlcnNpb249MjAyNC0xMC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125319470)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730119470)\\/\",\"ClientRequestId\":\"96d0d935-e7bb-4ed4-be8e-f7f1cff36389-2025-03-16 12:41:59Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"nTXSd6Kz/stJXwF3PR0LCmD5EhWjDHhuKgWq6GeYRJ8=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b 3/16/2025 12:42:00 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "3dc8245c-890e-44ad-9778-e08c5ee36d4b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "594dee55-202a-4a5c-80bb-ee3789602b69"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124200Z:594dee55-202a-4a5c-80bb-ee3789602b69"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 85FE6B4FA7594E209744A2FFDEED1644 Ref B: MAA201060513047 Ref C: 2025-03-16T12:41:59Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:00 GMT"
+        ],
+        "Content-Length": [
+          "654"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy\",\r\n  \"name\": \"24-hour-retention-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationPolicies\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"24-hour-retention-policy\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"recoveryPointThresholdInMinutes\": 0,\r\n      \"recoveryPointHistory\": 1440,\r\n      \"appConsistentFrequencyInMinutes\": 0,\r\n      \"multiVmSyncStatus\": \"Enabled\",\r\n      \"crashConsistentFrequencyInMinutes\": 5,\r\n      \"status\": false,\r\n      \"associatedItemsCount\": 0,\r\n      \"dataSourceType\": \"VM\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlcj9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec1f01eb-fb3c-44b3-9d43-70c7536a1445"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125320735)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730120735)\\/\",\"ClientRequestId\":\"06faba25-e30c-4931-93d0-fda2cd5c8296-2025-03-16 12:42:00Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"QzvuN5sAgq4+sxijZ4XjB2EAQddhtvczmRZ80hOGkzk=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ec1f01eb-fb3c-44b3-9d43-70c7536a1445 3/16/2025 12:42:01 PM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "ec1f01eb-fb3c-44b3-9d43-70c7536a1445"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9be8556-5ff7-4ff3-bd9a-5323df3c7a7a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124201Z:e9be8556-5ff7-4ff3-bd9a-5323df3c7a7a"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1C697BD6EC134670A35433C4221D37FB Ref B: MAA201060513025 Ref C: 2025-03-16T12:42:00Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:00 GMT"
+        ],
+        "Content-Length": [
+          "6640"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster\",\r\n  \"name\": \"powershell-cluster\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionClusters\",\r\n  \"properties\": {\r\n    \"protectionClusterType\": \"WindowsServerFailoverCluster\",\r\n    \"primaryFabricFriendlyName\": \"East US 2\",\r\n    \"primaryFabricProvider\": \"AzureFabric\",\r\n    \"recoveryFabricFriendlyName\": \"West US\",\r\n    \"recoveryFabricId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-westus\",\r\n    \"primaryProtectionContainerFriendlyName\": \"East US 2\",\r\n    \"recoveryProtectionContainerFriendlyName\": \"asr-a2a-default-eastus2-container\",\r\n    \"protectionState\": \"Protected\",\r\n    \"protectionStateDescription\": \"Protected\",\r\n    \"activeLocation\": \"Primary\",\r\n    \"testFailoverState\": \"WaitingForCleanup\",\r\n    \"testFailoverStateDescription\": \"Waiting for Test Failover Cleanup to start\",\r\n    \"allowedOperations\": [\r\n      \"ClusterTestFailoverCleanup\",\r\n      \"PurgeProtectionCluster\"\r\n    ],\r\n    \"replicationHealth\": \"Normal\",\r\n    \"healthErrors\": [],\r\n    \"lastSuccessfulFailoverTime\": null,\r\n    \"lastSuccessfulTestFailoverTime\": \"2025-03-16T12:35:57.4197642Z\",\r\n    \"policyFriendlyName\": \"24-hour-retention-policy\",\r\n    \"currentScenario\": {\r\n      \"scenarioName\": \"None\",\r\n      \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/None\",\r\n      \"startTime\": \"1753-01-01T01:01:01Z\"\r\n    },\r\n    \"recoveryContainerId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-westus/replicationProtectionContainers/asr-a2a-default-westus-container\",\r\n    \"agentClusterId\": \"8634545c-f52e-4ff2-82c9-93352b75f860\",\r\n    \"clusterFqdn\": \"sdgqlc\",\r\n    \"clusterNodeFqdns\": [\r\n      \"sdgql0\",\r\n      \"sdgql1\"\r\n    ],\r\n    \"clusterProtectedItemIds\": [\r\n      \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectedItems/TmEhxz15-EF6JwgbAh9SHS0C9SPpSw6mSYiA_lnsOko\",\r\n      \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectedItems/L1MqErJJvLX_0U05A1X2PfCN988iqFOo6ymNnyOoxhE\"\r\n    ],\r\n    \"provisioningState\": \"Created\",\r\n    \"areAllClusterNodesRegistered\": true,\r\n    \"clusterRegisteredNodes\": [\r\n      {\r\n        \"clusterNodeFqdn\": \"sdgql1\",\r\n        \"machineId\": \"17c97191-4fae-4327-86d3-e18a3e5c6a64\",\r\n        \"biosId\": \"DF0C4A75-DBB6-4D14-B4BB-91A1542AB41E\",\r\n        \"isSharedDiskVirtualNode\": false\r\n      },\r\n      {\r\n        \"clusterNodeFqdn\": \"8634545c-f52e-4ff2-82c9-93352b75f860\",\r\n        \"machineId\": \"8634545c-f52e-4ff2-82c9-93352b75f860\",\r\n        \"biosId\": \"8634545c-f52e-4ff2-82c9-93352b75f860\",\r\n        \"isSharedDiskVirtualNode\": true\r\n      },\r\n      {\r\n        \"clusterNodeFqdn\": \"sdgql0\",\r\n        \"machineId\": \"d855a460-0d8b-41a1-97e1-6111e6aca39f\",\r\n        \"biosId\": \"30B08C98-F8A1-49FA-89F9-C69E0A91506D\",\r\n        \"isSharedDiskVirtualNode\": false\r\n      }\r\n    ],\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"multiVmGroupId\": \"a7f67a04-1ceb-5ee1-b476-594446a22812\",\r\n      \"multiVmGroupName\": \"powershell-cluster\",\r\n      \"multiVmGroupCreateOption\": \"UserSpecified\",\r\n      \"primaryFabricLocation\": \"eastus2\",\r\n      \"recoveryFabricLocation\": \"westus\",\r\n      \"failoverRecoveryPointId\": null,\r\n      \"clusterManagementId\": \"1f8e8353-6ecf-435c-80f3-f1d1deec92b0\",\r\n      \"rpoInSeconds\": 305,\r\n      \"lastRpoCalculatedTime\": \"2025-03-16T12:27:21.9586885Z\",\r\n      \"initialPrimaryZone\": \"\",\r\n      \"initialPrimaryFabricLocation\": \"eastus2\",\r\n      \"initialRecoveryZone\": \"\",\r\n      \"initialRecoveryFabricLocation\": \"westus\",\r\n      \"initialPrimaryExtendedLocation\": null,\r\n      \"initialRecoveryExtendedLocation\": null,\r\n      \"primaryAvailabilityZone\": null,\r\n      \"recoveryAvailabilityZone\": null,\r\n      \"primaryExtendedLocation\": null,\r\n      \"recoveryExtendedLocation\": null,\r\n      \"lifecycleId\": \"19ccc61f-c2fd-4dce-a8a9-cfe32f02aebb\"\r\n    },\r\n    \"sharedDiskProperties\": {\r\n      \"protectionState\": \"Protected\",\r\n      \"testFailoverState\": \"WaitingForCompletion\",\r\n      \"activeLocation\": null,\r\n      \"allowedOperations\": [],\r\n      \"replicationHealth\": \"Normal\",\r\n      \"healthErrors\": [],\r\n      \"currentScenario\": null,\r\n      \"sharedDiskProviderSpecificDetails\": {\r\n        \"instanceType\": \"A2A\",\r\n        \"managementId\": \"1f8e8353-6ecf-435c-80f3-f1d1deec92b0\",\r\n        \"unprotectedDisks\": null,\r\n        \"protectedManagedDisks\": [\r\n          {\r\n            \"diskId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/clusterrg-vijami-1103115126/providers/microsoft.compute/disks/sdgql-datadisk0\",\r\n            \"recoveryResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr\",\r\n            \"recoveryTargetDiskId\": null,\r\n            \"recoveryReplicaDiskId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Compute/disks/sdgql-datadisk0-ASRReplica\",\r\n            \"recoveryOrignalTargetDiskId\": null,\r\n            \"recoveryReplicaDiskAccountType\": \"Premium_LRS\",\r\n            \"recoveryTargetDiskAccountType\": \"Premium_LRS\",\r\n            \"recoveryDiskEncryptionSetId\": null,\r\n            \"primaryDiskEncryptionSetId\": null,\r\n            \"diskName\": \"sdgql-datadisk0\",\r\n            \"diskCapacityInBytes\": 1099511627776,\r\n            \"primaryStagingAzureStorageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.Storage/storageAccounts/w02jqapowershellasrcache\",\r\n            \"diskType\": \"Data\",\r\n            \"resyncRequired\": false,\r\n            \"monitoringPercentageCompletion\": null,\r\n            \"monitoringJobType\": null,\r\n            \"dataPendingInStagingStorageAccountInMB\": 0.0,\r\n            \"dataPendingAtSourceAgentInMB\": 0.0,\r\n            \"diskState\": \"Protected\",\r\n            \"allowedDiskLevelOperation\": [],\r\n            \"isDiskEncrypted\": false,\r\n            \"secretIdentifier\": null,\r\n            \"dekKeyVaultArmId\": null,\r\n            \"isDiskKeyEncrypted\": false,\r\n            \"keyIdentifier\": null,\r\n            \"kekKeyVaultArmId\": null,\r\n            \"failoverDiskName\": \"sdgql-datadisk0\",\r\n            \"tfoDiskName\": \"sdgql-datadisk0-ASRtest\"\r\n          }\r\n        ],\r\n        \"primaryFabricLocation\": \"eastus2\",\r\n        \"recoveryFabricLocation\": \"westus\",\r\n        \"failoverRecoveryPointId\": null,\r\n        \"monitoringPercentageCompletion\": null,\r\n        \"monitoringJobType\": null,\r\n        \"rpoInSeconds\": 19,\r\n        \"lastRpoCalculatedTime\": \"2025-03-16T12:32:28.3919877Z\",\r\n        \"sharedDiskIRErrors\": null\r\n      }\r\n    },\r\n    \"policyId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationPolicies/24-hour-retention-policy\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster/testFailoverCleanup?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25GYWJyaWNzL2Fzci1hMmEtZGVmYXVsdC1lYXN0dXMyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czItY29udGFpbmVyL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNsdXN0ZXJzL3Bvd2Vyc2hlbGwtY2x1c3Rlci90ZXN0RmFpbG92ZXJDbGVhbnVwP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a329918-c750-46ef-a866-713eff8bddc7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125336590)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730136590)\\/\",\"ClientRequestId\":\"d205dc31-4a75-48f2-97ad-56cf3e9bfc31-2025-03-16 12:42:16Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"3yojNHRVwvUnbsOSS2h/SYhtTtk1uwOKh1ILKJYhX84=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "48"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"comments\": \"\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/powershell-cluster/operationresults/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01&t=638777257378233981&c=MIIHhzCCBm-gAwIBAgITfAaTsfGh4O3I6hzdiwAABpOx8TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjUwMTIxMjM1MTA0WhcNMjUwNzIwMjM1MTA0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALmmNHNWFSsNqv7hYXt5jnZhiWu70W-4oqnLQoNqpREh9ILwf_vWrKEFwHln2pZ0QL0Vzy6iBL7CjMAu06leKSRiY0PTaudFXcPZKg28HxLbC13I3XGnANo8baTVS1tjjh4tMTcEW4gJFU3FkYBnnd4vDuWu9cFNecMYtxyNXqXZQNKsExYG5-z1LKsCG-VZFtDXtdO7NCF-883QzW9AH9kyG24yulLRWXed6gk78SiLKeQwZHq3HawlcKJbtYEh01VpjYJTMLBh5ffUnp4p0ur5_1qquFhqISg5SNMXR0wUecBNg60HNXgUgDI9p7gEknaT2t54Cqw4bTMEnn_ojsECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBQZVN35DD5vQTENahTDrpGtH4dWnTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAISUbL4a-8x720Kq4kpvroZpGEG-7hA5QoY2g0mHaS7y5AbNsL93L6qnsXTjiW02I693A-UMSGrwRm7SMGJI9BSLl2mqV_L55Ks-NNghmV_58seSGsmgoDxbw1rvDjSjEslmSDXo1PLj6C9LKWc5gSplpYdTIjaahdzCArjQdPQOyacyglOlzcDDY2e83Q7Xcad3Py_xyh7Yld330DgYBpSZx6h1wPPSFsot18EGQ-0UoJBq9x2NrLQS3aUXzumEcft64ZQUCFzEOSRdVkf0DHsGGf2qH06ndu1dy7Olz9P0bmZ8LClRXa1vXj-Z2xWM71YT-rxrMSlzddBKBYy34uE&s=p1JxdczVGfhWoZvNThkk7TBN7IK_f6SU8SgKuioec6VUCb0ghRKgg0RuceBvvDLvMt1K-g5IVkc3xwDve0j24n7fzBt8Ai9fQj1LxEKqSZ12rMm5CRS0XmQSEgG-eZuzaD_k3OIu2LVEzaLcvE0NPdtD-CGquRI596KmcVbyObk0JIZOqxgIuMZ_XiQ6oZnRCmLFvLD1iDUpGr9zpbtW1r3xIu8dI6b-kubdvf03jBJLuyvTV98DdElIvTBhK2xs54nXiqiO_pM-602QBdL6PzWsaKA7VTi8qRuE3ZAy8EzP1wTMmNGY8_KKo-cu82FMP_jXicx1TVghDfTecW_EWg&h=5n3e_HPwh4CN3KDgq2O7UaU3P_sc6HfCQ_0cftAZevY"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23",
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationOperationStatus/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01&t=638777257378233981&c=MIIHhzCCBm-gAwIBAgITfAaTsfGh4O3I6hzdiwAABpOx8TANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjUwMTIxMjM1MTA0WhcNMjUwNzIwMjM1MTA0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALmmNHNWFSsNqv7hYXt5jnZhiWu70W-4oqnLQoNqpREh9ILwf_vWrKEFwHln2pZ0QL0Vzy6iBL7CjMAu06leKSRiY0PTaudFXcPZKg28HxLbC13I3XGnANo8baTVS1tjjh4tMTcEW4gJFU3FkYBnnd4vDuWu9cFNecMYtxyNXqXZQNKsExYG5-z1LKsCG-VZFtDXtdO7NCF-883QzW9AH9kyG24yulLRWXed6gk78SiLKeQwZHq3HawlcKJbtYEh01VpjYJTMLBh5ffUnp4p0ur5_1qquFhqISg5SNMXR0wUecBNg60HNXgUgDI9p7gEknaT2t54Cqw4bTMEnn_ojsECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBQZVN35DD5vQTENahTDrpGtH4dWnTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAISUbL4a-8x720Kq4kpvroZpGEG-7hA5QoY2g0mHaS7y5AbNsL93L6qnsXTjiW02I693A-UMSGrwRm7SMGJI9BSLl2mqV_L55Ks-NNghmV_58seSGsmgoDxbw1rvDjSjEslmSDXo1PLj6C9LKWc5gSplpYdTIjaahdzCArjQdPQOyacyglOlzcDDY2e83Q7Xcad3Py_xyh7Yld330DgYBpSZx6h1wPPSFsot18EGQ-0UoJBq9x2NrLQS3aUXzumEcft64ZQUCFzEOSRdVkf0DHsGGf2qH06ndu1dy7Olz9P0bmZ8LClRXa1vXj-Z2xWM71YT-rxrMSlzddBKBYy34uE&s=jt3RVRTXrYr98OK7nwHmZypdlRN-4Bm48yTvpAraM7fMUUKH4hbqqee5dmjmWU-JPa9mBYGoIYGTN9QYeW1FO3nngz62LJtnr2IJMNA1AH8XJaVj60kMqTf7J7BVfnSu5ib-Xj_n476Zd3MDd9veOiPwv2zz-vVEaLo_h0o7iPOnG3ZOc3dIDGZlwSilAWy9T8w7LBU1luFjrBsV3gKnWg7_SkS3DGnt1odAjxhYJ-6ZlEZqWqR5kTi7owbo-MybBwsgytruvK__HG1w7LvAW-Lfrfm6yTiPEyTJyJHzueP6M2Ldg0Eq5bGC5anpVnlpmJcbRBzKuFmGj8qsS7Bmrg&h=2e4OlZAj--tJQFD6156Z8WXB9ODAxZp7LDySkDbBJsM"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7a329918-c750-46ef-a866-713eff8bddc7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d623559-173d-4ff9-b7b0-8e6e787ee06c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124217Z:8d623559-173d-4ff9-b7b0-8e6e787ee06c"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B09CCF7CF6934890B044D2A7FA0ACB75 Ref B: MAA201060513053 Ref C: 2025-03-16T12:42:16Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:17 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a329918-c750-46ef-a866-713eff8bddc7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125341461)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730141461)\\/\",\"ClientRequestId\":\"1e9242b0-6b91-461b-8df8-07c50b2a08e7-2025-03-16 12:42:21Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"qJeh1XIJQzItCTaJAd/J7l6kZbBoWTqUmzgRS/xlL5M=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7a329918-c750-46ef-a866-713eff8bddc7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8d7e697-5476-4744-84f4-dae45d6db6eb"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124222Z:a8d7e697-5476-4744-84f4-dae45d6db6eb"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 06C861777C8D405B9BE3D6AC8A5BD4DF Ref B: MAA201060516021 Ref C: 2025-03-16T12:42:21Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:21 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d063635b-6c59-4bae-a824-052fdfad6a3e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125342183)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730142183)\\/\",\"ClientRequestId\":\"bc640e83-8e27-450a-ae56-5637c5a9a9c7-2025-03-16 12:42:22Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"gfiFbbWUkUZaog61TJB4tf6OtCuwrULUN88p8wLJRv0=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "d063635b-6c59-4bae-a824-052fdfad6a3e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb5fb1f2-7b1e-4ff0-b910-74e0b1700777"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124223Z:eb5fb1f2-7b1e-4ff0-b910-74e0b1700777"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A62716CFB05145E9BDB118DAB7AAB8E5 Ref B: MAA201060515035 Ref C: 2025-03-16T12:42:22Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:23 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7ddd81e8-ef19-4237-a4dc-36f8b264cb4c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125363419)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730163419)\\/\",\"ClientRequestId\":\"551d60a0-9e87-431b-8aed-396947bb86ec-2025-03-16 12:42:43Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"TIz9q8acSD2qoEomRk1ZKRoOaYVSlmLCSWE/3yG8gFc=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7ddd81e8-ef19-4237-a4dc-36f8b264cb4c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "8eea05a4-455e-471d-b9c8-73edd4cba8f7"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124244Z:8eea05a4-455e-471d-b9c8-73edd4cba8f7"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FF7E8437929940CBA7EDDCDD27E2DC3B Ref B: MAA201060514029 Ref C: 2025-03-16T12:42:43Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:42:43 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0e053374-f141-4729-94e2-49290bc90ccc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125384826)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730184826)\\/\",\"ClientRequestId\":\"d5a0b455-2f70-4080-8113-d36997c9c95b-2025-03-16 12:43:04Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"+/Fn6h90emwgma1Fc/jTiGQ/fBTvJXng31s1EcIMnfA=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "0e053374-f141-4729-94e2-49290bc90ccc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd80e023-9284-4018-b999-981eab85788c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124305Z:cd80e023-9284-4018-b999-981eab85788c"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B46D5763E0DB46B2BA1B39D623B4A592 Ref B: MAA201060516027 Ref C: 2025-03-16T12:43:04Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:43:05 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b21f6deb-099f-4c43-b8f0-67bc72c81db4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125405679)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730205679)\\/\",\"ClientRequestId\":\"5644c30f-5a6e-4ca0-8bc5-a012959527df-2025-03-16 12:43:25Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"NYUHcTwD2248V3gc3OG4rfREN/Qz1lyFN1XJBtsHXs4=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "b21f6deb-099f-4c43-b8f0-67bc72c81db4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d6ef1b6-80ec-4a29-a4ee-1093468ac4fd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124327Z:9d6ef1b6-80ec-4a29-a4ee-1093468ac4fd"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 358C82260B2D4F2F964D4C0CC3AFB277 Ref B: MAA201060514033 Ref C: 2025-03-16T12:43:25Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:43:27 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "90764685-92d6-4917-a7bf-67a57c6926ab"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125428061)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730228061)\\/\",\"ClientRequestId\":\"0be0dd84-fe9c-4db7-aa8c-e516888850f5-2025-03-16 12:43:48Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"37c2xUJay4OJeUAZkjCIEC6Eo1y3WlK3F7ZODJ8MUdo=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "90764685-92d6-4917-a7bf-67a57c6926ab"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "72fa3b8b-dfa4-42e7-9b5b-953d02baf32a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124349Z:72fa3b8b-dfa4-42e7-9b5b-953d02baf32a"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8E4DB5F28D37431FBAB261D0FC9CE8EF Ref B: MAA201060513031 Ref C: 2025-03-16T12:43:48Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:43:48 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4b9fddec-2536-409d-87ee-37f3e3201520"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125449373)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730249373)\\/\",\"ClientRequestId\":\"2ed67385-b0f8-4c86-8bad-6cbe365bcb8f-2025-03-16 12:44:09Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"gXFHmXbRo4+Yeoip7YqQcEVH506c3sywO2bcFf6O7Q4=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "4b9fddec-2536-409d-87ee-37f3e3201520"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "788a20e6-215a-441c-a5a4-d51071a8774d"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124410Z:788a20e6-215a-441c-a5a4-d51071a8774d"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B09B104F34B24B3BBE403E0E6E0BF082 Ref B: MAA201060516035 Ref C: 2025-03-16T12:44:09Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:44:09 GMT"
+        ],
+        "Content-Length": [
+          "4093"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "72054a67-9584-435b-8b40-373a84fe4753"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125470531)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730270531)\\/\",\"ClientRequestId\":\"7785fa64-0512-4f5d-a83e-67b1e9fc57d7-2025-03-16 12:44:30Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"H2Rd1bQz0ZGgvCG6lRVoYdRby2yJm0IxwLWl6oapU+Q=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "72054a67-9584-435b-8b40-373a84fe4753"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "4a4cf8ed-26d6-4020-90a6-ddaee3312014"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20250316T124431Z:4a4cf8ed-26d6-4020-90a6-ddaee3312014"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 97B232FA1F67497ABA493FC0EFA51E27 Ref B: MAA201060516039 Ref C: 2025-03-16T12:44:30Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:44:30 GMT"
+        ],
+        "Content-Length": [
+          "4092"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"0001-01-01T00:00:00\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"InProgress\",\r\n              \"stateDescription\": \"InProgress\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7f604ee1-1cfc-4708-9749-c60c3096bcbb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125491660)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730291660)\\/\",\"ClientRequestId\":\"f96cd494-ba5c-4d92-bf34-9858f6acc2a2-2025-03-16 12:44:51Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"6wuH1g8b9Q7gO+TvmFzMJscqSGY6pYRZYD5X3DdyluQ=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7f604ee1-1cfc-4708-9749-c60c3096bcbb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "4101679c-56a0-41f3-b7c8-ba99b2dac708"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124452Z:4101679c-56a0-41f3-b7c8-ba99b2dac708"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EBE68F8FE7254671B2F2FE6E097C5D2E Ref B: MAA201060514019 Ref C: 2025-03-16T12:44:51Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:44:51 GMT"
+        ],
+        "Content-Length": [
+          "4091"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "97908431-be53-4f7c-884c-ffe9c6874b70"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125512955)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730312955)\\/\",\"ClientRequestId\":\"f19011d6-d909-491c-b248-0ed4cd2be561-2025-03-16 12:45:12Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"fZMstxiw5Cn3DnbVBZuxD6WqGDas5bnLJ8hTJFQt9yE=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "97908431-be53-4f7c-884c-ffe9c6874b70"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "09299308-4d18-4445-a3ea-e007b9a55f9c"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20250316T124513Z:09299308-4d18-4445-a3ea-e007b9a55f9c"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 13E39F896B264A519A2B7616F943163B Ref B: MAA201060516053 Ref C: 2025-03-16T12:45:12Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:45:12 GMT"
+        ],
+        "Content-Length": [
+          "4091"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "556b201b-1a3c-4eb9-aaf3-b5aa926f2a75"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125533937)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730333937)\\/\",\"ClientRequestId\":\"83795b93-b916-4aac-9106-d4d17c05788c-2025-03-16 12:45:33Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"F0/NNFXlcgEnlTzjjTDyfZ7vlMAgg8T2JVHT2tcJys4=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "556b201b-1a3c-4eb9-aaf3-b5aa926f2a75"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e82cfff-8553-4685-9ad4-9b46fb563429"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124534Z:6e82cfff-8553-4685-9ad4-9b46fb563429"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 410E6EA649D54DAB8D652CEFE3E662F5 Ref B: MAA201060514045 Ref C: 2025-03-16T12:45:33Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:45:34 GMT"
+        ],
+        "Content-Length": [
+          "4091"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"0001-01-01T00:00:00\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"NotStarted\",\r\n        \"stateDescription\": \"NotStarted\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ed59ba0b-6ce8-45a8-a24f-a0aa8b2683c9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125555049)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730355049)\\/\",\"ClientRequestId\":\"767be489-a06a-4d57-8c46-8d26099c4a24-2025-03-16 12:45:55Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"pgmvDHYt/ksXji7K6/iMtMBJ3jiUsdtOJyKiNzNvN64=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "ed59ba0b-6ce8-45a8-a24f-a0aa8b2683c9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "a40c8082-2169-406e-a74a-17a6b884ff29"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20250316T124556Z:a40c8082-2169-406e-a74a-17a6b884ff29"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 98714B1BADCD47D9A7152916679FA4FF Ref B: MAA201060513039 Ref C: 2025-03-16T12:45:55Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:45:55 GMT"
+        ],
+        "Content-Length": [
+          "4107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"2025-03-16T12:45:46.9387059Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:45:46.9387059Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7b168485-ccd4-4501-9330-b8aac7e158b3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125576237)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730376237)\\/\",\"ClientRequestId\":\"90116055-4df1-4354-8adf-aa64db864ae5-2025-03-16 12:46:16Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"7oCRs3UOGMwmA/K4UofRoV5w8JYpm/7dWGWgH/kzU8s=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "7b168485-ccd4-4501-9330-b8aac7e158b3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "26c322b1-093a-4731-a444-1717ebfae135"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124617Z:26c322b1-093a-4731-a444-1717ebfae135"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D3CD34DF446B48D79A91CBAC8CF29855 Ref B: MAA201060515019 Ref C: 2025-03-16T12:46:16Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:46:16 GMT"
+        ],
+        "Content-Length": [
+          "4107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"InProgress\",\r\n    \"stateDescription\": \"InProgress\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"2025-03-16T12:45:46.9387059Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:45:46.9387059Z\",\r\n        \"endTime\": \"0001-01-01T00:00:00\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"InProgress\",\r\n        \"stateDescription\": \"InProgress\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"allowedActions\": [\r\n      \"Cancel\"\r\n    ],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktcmVjLTExMDMxMTUxMjYvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9wb3dlcnNoZWxsLWNsdXN0ZXItdmF1bHQvcmVwbGljYXRpb25Kb2JzLzNlYTA4MjFhLTE1NzAtNDI2YS04MzkzLTBiZjEzMjg3NWEyMz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "de7ea05b-496e-4044-9da6-230231e6777f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "Agent-Authentication": [
+          "{\"NotBeforeTimestamp\":\"\\/Date(1742125597482)\\/\",\"NotAfterTimestamp\":\"\\/Date(1742730397482)\\/\",\"ClientRequestId\":\"aeb16a08-32c4-40ba-bfa6-a9439a31e7f4-2025-03-16 12:46:37Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"WugPMi70Tox94PzVSqGlLEp77aMF3MqWAs7cr/kjjOY=\",\"Version\":\"1.2\",\"PropertyBag\":{}}"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/7.5.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-client-request-id": [
+          "de7ea05b-496e-4044-9da6-230231e6777f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "a76baf3f-9f91-4c59-856d-6073df1d32a0"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20250316T124638Z:a76baf3f-9f91-4c59-856d-6073df1d32a0"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B3C33BAE30FF49F2B7D980300D699FE7 Ref B: MAA201060516027 Ref C: 2025-03-16T12:46:37Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:46:38 GMT"
+        ],
+        "Content-Length": [
+          "4137"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"name\": \"3ea0821a-1570-426a-8393-0bf132875a23\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/replicationJobs\",\r\n  \"properties\": {\r\n    \"activityId\": \"7a329918-c750-46ef-a866-713eff8bddc7 ActivityId: 8d623559-173d-4ff9-b7b0-8e6e787ee06c\",\r\n    \"scenarioName\": \"TestFailoverCleanupProtectionCluster\",\r\n    \"friendlyName\": \"Cluster test failover cleanup\",\r\n    \"state\": \"Succeeded\",\r\n    \"stateDescription\": \"Completed\",\r\n    \"tasks\": [\r\n      {\r\n        \"taskId\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"name\": \"ClusterTestFailoverCleanupPreflightChecksTask\",\r\n        \"startTime\": \"2025-03-16T12:42:18.3906811Z\",\r\n        \"endTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Prerequisites check for cluster test failover cleanup\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVmNodesTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:42:19.4219047Z\",\r\n        \"endTime\": \"2025-03-16T12:46:18.3728761Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Cluster VM nodes (2)\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"GroupTaskDetails\",\r\n        \"customDetails\": null,\r\n        \"groupTaskCustomDetails\": {\r\n          \"instanceType\": \"GroupTaskDetails\",\r\n          \"childTasks\": [\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql0\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8438221Z\",\r\n              \"endTime\": \"2025-03-16T12:44:12Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql0\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/56814373-5e51-4038-bee5-1e9d50595e40\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"f4ca5a76-8169-5c55-900c-234acee90bf8\",\r\n                  \"targetObjectName\": \"sdgql0\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            },\r\n            {\r\n              \"taskId\": \"TestFailoverCleanup\",\r\n              \"name\": \"sdgql1\",\r\n              \"startTime\": \"2025-03-16T12:42:18.8907009Z\",\r\n              \"endTime\": \"2025-03-16T12:44:45Z\",\r\n              \"allowedActions\": [],\r\n              \"friendlyName\": \"sdgql1\",\r\n              \"state\": \"Succeeded\",\r\n              \"stateDescription\": \"Completed\",\r\n              \"taskType\": \"JobTaskDetails\",\r\n              \"customDetails\": {\r\n                \"jobTask\": {\r\n                  \"jobId\": \"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationJobs/2c551275-9d8f-4378-a349-9a504a2d8dad\",\r\n                  \"jobFriendlyName\": \"Test failover cleanup\",\r\n                  \"targetObjectId\": \"a8ea2412-adfd-5aa1-8f88-ea025b8866f4\",\r\n                  \"targetObjectName\": \"sdgql1\",\r\n                  \"targetInstanceType\": \"Vm\",\r\n                  \"jobScenarioName\": \"TestFailoverCleanup\"\r\n                },\r\n                \"instanceType\": \"JobTaskDetails\"\r\n              },\r\n              \"groupTaskCustomDetails\": null,\r\n              \"errors\": []\r\n            }\r\n          ]\r\n        },\r\n        \"errors\": []\r\n      },\r\n      {\r\n        \"taskId\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"name\": \"ClusterVirtualNodeTestFailoverCleanupTask\",\r\n        \"startTime\": \"2025-03-16T12:46:18.3728761Z\",\r\n        \"endTime\": \"2025-03-16T12:46:18.7947642Z\",\r\n        \"allowedActions\": [],\r\n        \"friendlyName\": \"Test Failover cleanup of Shared disk(s)\",\r\n        \"state\": \"Succeeded\",\r\n        \"stateDescription\": \"Completed\",\r\n        \"taskType\": \"TaskDetails\",\r\n        \"customDetails\": {\r\n          \"instanceType\": \"TaskDetails\"\r\n        },\r\n        \"groupTaskCustomDetails\": null,\r\n        \"errors\": []\r\n      }\r\n    ],\r\n    \"errors\": [],\r\n    \"startTime\": \"2025-03-16T12:42:17.5186768Z\",\r\n    \"endTime\": \"2025-03-16T12:46:18Z\",\r\n    \"allowedActions\": [],\r\n    \"targetObjectId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n    \"targetObjectName\": \"powershell-cluster\",\r\n    \"targetInstanceType\": \"ProtectionCluster\",\r\n    \"customDetails\": {\r\n      \"instanceType\": \"ClusterTestFailoverJobDetails\",\r\n      \"testFailoverStatus\": null,\r\n      \"comments\": \"\",\r\n      \"networkName\": null,\r\n      \"networkFriendlyName\": null,\r\n      \"networkType\": null,\r\n      \"protectedItemDetails\": [],\r\n      \"affectedObjectDetails\": {\r\n        \"protectionClusterId\": \"5880d54f-9520-5f38-b6d1-3c84dcb44198\",\r\n        \"protectionClusterName\": \"powershell-cluster\",\r\n        \"protectionProfileId\": \"67736da2-d177-59d4-94bd-153902dba007\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Compute/virtualMachines/sdgql1-test?api-version=2024-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0NsdXN0ZXJSRy1WaWphbWktMTEwMzExNTEyNi1hc3IvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9zZGdxbDEtdGVzdD9hcGktdmVyc2lvbj0yMDI0LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c9d081ab-7fc8-4040-adfd-776baacb9393"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/9.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "19e310b3-ad31-40fd-808b-dc2bf97ec2e3"
+        ],
+        "x-ms-correlation-request-id": [
+          "19e310b3-ad31-40fd-808b-dc2bf97ec2e3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20250316T124639Z:19e310b3-ad31-40fd-808b-dc2bf97ec2e3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FE44A930E92F46E0BF7396F9B19FA128 Ref B: MAA201060515045 Ref C: 2025-03-16T12:46:38Z"
+        ],
+        "Date": [
+          "Sun, 16 Mar 2025 12:46:38 GMT"
+        ],
+        "Content-Length": [
+          "248"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Vijami-1103115126-asr' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
+  }
+}

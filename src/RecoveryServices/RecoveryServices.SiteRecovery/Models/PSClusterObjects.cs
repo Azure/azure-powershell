@@ -655,6 +655,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Type = recoveryPoint.Type;
             this.RecoveryPointTime = recoveryPoint.Properties.RecoveryPointTime;
             this.RecoveryPointType = recoveryPoint.Properties.RecoveryPointType;
+            this.Nodes = GetNodes(recoveryPoint.Properties.ProviderSpecificDetails);
+        }
+
+        /// <summary>
+        ///    Gets the list of nodes present in the cluster recovery point.
+        /// </summary>
+        /// <param name="providerSpecificDetails"></param>
+        /// <returns>List of nodes present in the cluster recovery point.</returns>
+        private List<string> GetNodes(ClusterProviderSpecificRecoveryPointDetails providerSpecificDetails)
+        {
+            if (providerSpecificDetails is A2AClusterRecoveryPointDetails)
+            {
+                return new List<string>(((A2AClusterRecoveryPointDetails)providerSpecificDetails).Nodes);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -681,5 +699,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets type of the Recovery Point.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the list of nodes present in the cluster recovery point.
+        /// </summary>
+        public List<string> Nodes { get; set; }
     }
 }

@@ -623,6 +623,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return diskEncryptionInfo;
         }
+
+        /// <summary>
+        ///    Remove everything from armId after key.
+        /// </summary>
+        /// <param name="armId"></param>
+        /// <param name="key"></param>
+        /// <returns>ArmId after removing everyting right of key.</returns>
+        /// <exception cref="Exception"></exception>
+        internal static string RemoveValueFromArmIdAfterKey(string armId, string key)
+        {
+            string endMarker = "/" + key;
+            // Find the position of the end marker
+            int endIndex = armId.IndexOf(endMarker);
+            string extractedArmId = string.Empty;
+            if (endIndex > -1)
+            {
+                // Extract the part before key
+                extractedArmId = armId.Substring(0, endIndex);
+            }
+            else
+            {
+                throw new Exception("Key not found in the ARM Id");
+            }
+            return extractedArmId;
+        }
     }
 
     /// <summary>
