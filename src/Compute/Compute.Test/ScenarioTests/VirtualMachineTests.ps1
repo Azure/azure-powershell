@@ -6820,7 +6820,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 {
     # Setup
         $rgname = Get-ComputeTestResourceName;
-        $loc = Get-ComputeVMLocation;
+        $loc = "eastus2euap";
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -6865,11 +6865,14 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
         # Update SecurityType to Standard. Errors - Changing property 'securityProfile.securityType' is not allowed.
-        #Update-AzVm -ResourceGroupName $rgname -VM $res -SecurityType "Standard"
-        #$updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname2 -Force
+        Update-AzVm -ResourceGroupName $rgname -VM $res -SecurityType "Standard"
+        Start-AzVM -ResourceGroupName $rgname -Name $vmname2
+        $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
 
-        #Assert-AreEqual $updated_vm.SecurityProfile.SecurityType "Standard";
-        #Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings null;
+        Assert-Null $updated_vm.SecurityProfile.SecurityType;
+        Assert-Null $updated_vm.SecurityProfile.UefiSettings;
+        Assert-Null $updated_vm.SecurityProfile.SecurityType;
 
         # validate GA extension
         # We removed this logic as per request fro the feature team.
