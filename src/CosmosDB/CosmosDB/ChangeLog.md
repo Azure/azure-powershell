@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added Vector Indexing properties to Sql container APIs.
+* Added support for creating containers with Vector Embedding Policy.
 * GAd Per Partition Automatic Failover GA
 * GAd Per Region Per Partition Autoscale GA
 
@@ -29,7 +29,6 @@
 ## Version 1.16.0
 * Upgraded nuget package to signed package.
 * Upgraded Azure.Core to 1.44.1.
-* Introduced support for creating containers with Vector Embedding Policy.
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
