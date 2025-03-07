@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerequesturiconditionobject
 #>
 function New-AzFrontDoorCdnRuleRequestUriConditionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
