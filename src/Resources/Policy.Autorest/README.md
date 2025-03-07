@@ -127,7 +127,7 @@ directive:
       default:
         name: DefaultAssignmentId
         description: Need a placeholder to keep autorest happy
-        script: '{ "" }'
+        script: '{ "" }'df.at[index, "v_autorest"] = None
     hide: true
 
   # Need to change ExpiresOn to a nullable DateTime (not supported by autorest)
