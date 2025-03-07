@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quantum", "Quantum\Quantum.csproj", "{CB35E890-94BD-4E62-BB3D-B925D904D0D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Quantum", "..\..\generated\Quantum\Quantum.Autorest\Az.Quantum.csproj", "{E4F8F781-B325-4A15-AE2B-C38912126D1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Quantum", "..\..\generated\Quantum\Quantum.Autorest\Az.Quantum.csproj", "{D825FEFE-9930-4BA0-9B36-344FB18381A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB35E890-94BD-4E62-BB3D-B925D904D0D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4F8F781-B325-4A15-AE2B-C38912126D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4F8F781-B325-4A15-AE2B-C38912126D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4F8F781-B325-4A15-AE2B-C38912126D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4F8F781-B325-4A15-AE2B-C38912126D1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D825FEFE-9930-4BA0-9B36-344FB18381A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D825FEFE-9930-4BA0-9B36-344FB18381A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D825FEFE-9930-4BA0-9B36-344FB18381A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D825FEFE-9930-4BA0-9B36-344FB18381A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9248EAFA-DA1E-429A-89BE-69F2452F3ACC} = {951BFB89-FE36-4537-8B50-784025037832}
