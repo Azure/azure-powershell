@@ -1,13 +1,78 @@
 parameters:
-  testFramework: ''
-  configuration: ''
-  powerShellPlatform: ''
+  testFramework: net6.0
+  configuration: Debug
+  powerShellPlatform: PowerShell Core
+  ForceRegenerate: false
+  filesChangedOutputPath: ''
+  subTasksFilePath: ''
+  isSecurityCheck: false
 
 steps:
-- checkout: self
-- template: get-pr-changed-files.yml
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 6.0.x'
+  inputs:
+    packageType: sdk
+    version: 6.0.x
+- task: DotNetCoreCLI@2
+  displayName: Filter changed files
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:FilterBuild /p:FilesChangedOutputPath="${{ parameters.filesChangedOutputPath }}";SubTasksFilePath="${{ parameters.subTasksFilePath }}";IsSecurityCheck=${{ parameters.IsSecurityCheck }}'
+  env:
+      PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
+- task: PowerShell@2
+  displayName: 'Set subtasks if any'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      if (Test-Path "${{ parameters.subTasksFilePath }}") {
+        Get-Content "${{ parameters.subTasksFilePath }}" | ForEach-Object {
+          if ($_ && 'Predictor' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
+          } elseif ($_ && 'Installer' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
+          } elseif ($_ && 'all' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
+          }
+        }
+      }
+- task: PowerShell@2
+  displayName: 'Analyze Changed Files'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      Write-Host "##[group]#1. Check generate-info.json for autorest generated modules"
+      $noGenerateInfo = @()
+      $modules=Get-Content "${{ parameters.filesChangedOutputPath }}" -OutVariable paths | Foreach-Object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
+      foreach ($module in $modules) {
+        $hasGenerateInfo = $false
+        $pattern = "^$module/generate-info.json"
+        foreach ($path in $paths) {
+          if ($path -match $pattern) {
+            $hasGenerateInfo = $true
+          }
+        }
+        if (-not $hasGenerateInfo) {
+          $noGenerateInfo += $module
+        }
+      }
+      if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
+        $noGenerateInfo | Foreach-Object { Write-Host "##vso[task.logissue type=warning]No generate-info.json detected for $_."}
+      }
+      Write-Host "##[endgroup]"
+
+      # this might not be true, for example when release branch or preview branch merge back to main branch, it's possible changes present in both /src and /generated
+      Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
+      $srcFiles = Get-Content "${{ parameters.filesChangedOutputPath }}" | Where-Object { $_ -match "^src.*" }
+      $generatedFiles = Get-Content "${{ parameters.filesChangedOutputPath }}" | Where-Object { $_ -match "^generated.*" }
+      if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
+        Write-Host "##vso[task.logissue type=warning]PR should contain changes from either /src or /generated only."
+      }
+      Write-Host "##[endgroup]"
 - task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
   inputs:
     versionSpec: '14.17.1'
@@ -15,7 +80,6 @@ steps:
     verbose: false
     customCommand: install autorest@latest
 - task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Setup environment for Autorest
   inputs:
     targetType: inline
@@ -25,30 +89,62 @@ steps:
   displayName: 'Check Ignored File'
   inputs:
     filePath: tools/CheckIgnoredFile.ps1
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
+- task: PowerShell@2
+  displayName: 'Build'
   inputs:
-    packageType: sdk
-    version: 6.0.x
-    
+    targetType: inline
+    pwsh: true
+    script: |
+      $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+      if ('Manual' -eq "$(Build.Reason)" -and ('true' -eq '${{ parameters.ForceRegenerate }}')) {
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate -InvokedByPipeline
+      } else {
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -InvokedByPipeline
+      }
+- task: PowerShell@2
+  displayName: 'Write pipeline result'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $pipelineScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'ExecuteCIStep.ps1'
+      $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'
+      $reason = "$(Build.Reason)"
+      switch ($reason) {
+        {$reason -in @('IndividualCI', 'BatchedCI')} {
+          $trigger = "$(Build.SourceVersion)"
+          break
+        }
+        'PullRequest' {
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
+          break
+        }
+        'Manual' {
+        #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+          break
+        }
+        'Schedule' {
+        #TODO: change value of $trigger to datetime this run was scheduled
+          $trigger = 'Schedule'
+          break
+        }
+      }
+      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger $trigger -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: 'SubTask Predictor'
+  condition: or(eq(variables.SubTaskPredictor, true), eq(variables.SubTaskAll, true))
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
-  env:
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
-
-- task: PowerShell@2
-  displayName: Build-AzPredictor
-  condition: eq(variables.BuildAzPredictor, 'true')
+    arguments: 'build.proj /t:AzToolsPredictor'
+- task: DotNetCoreCLI@2
+  displayName: 'SubTask Installer'
+  condition: or(eq(variables.SubTaskInstaller, true), eq(variables.SubTaskAll, true))
   inputs:
-    targetType: inline
-    script: "dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
-    pwsh: true
-  continueOnError: true
-
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:AzToolsInstaller'
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
