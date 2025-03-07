@@ -12,15 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AzDev.Models;
-
 namespace AzDev.Services
 {
-    internal interface IContextProvider
+    public class NoopLogger : ILogger
     {
-        string ContextPath { get; }
-        DevContext LoadContext();
-        void SaveContext(DevContext context);
-        void SetLogger(ILogger logger);
+        public void Debug(string message)
+        {
+        }
+
+        public void Information(string message)
+        {
+        }
+
+        public void Verbose(string message)
+        {
+        }
+
+        public void Warning(string message)
+        {
+        }
     }
 }
