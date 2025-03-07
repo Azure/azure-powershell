@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmanagedhttpsparametersobject
 #>
 function New-AzCdnManagedHttpsParametersObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
