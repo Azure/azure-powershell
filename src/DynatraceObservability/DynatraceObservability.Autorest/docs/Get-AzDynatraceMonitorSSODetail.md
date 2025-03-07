@@ -13,8 +13,8 @@ Gets the SSO configuration details from the partner.
 ## SYNTAX
 
 ```
-Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-UserPrincipal <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> -UserPrincipal <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,8 +38,7 @@ This command gets the SSO configuration details from the partner.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -122,7 +121,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,9 +135,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ISsoDetailsResponse
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

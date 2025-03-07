@@ -13,11 +13,11 @@ Create a TagRule
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
+New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
  [-LogRuleSendActivityLog <SendActivityLogsStatus>] [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>]
- [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendingMetric <SendingMetricsStatus>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,8 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -80,7 +79,7 @@ If Include actions are specified, the rules will only include resources with the
 To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IFilteringTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +143,22 @@ If Include actions are specified, the rules will only include resources with the
 To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IFilteringTag[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MetricRuleSendingMetric
+Flag specifying if metrics from Azure resources should be sent for the Monitor resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendingMetricsStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -166,6 +180,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -254,9 +283,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ITagRule
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+  - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  - `[Name <String>]`: The name (also known as the key) of the tag.
+  - `[Value <String>]`: The value of the tag.
+
+METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+  - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  - `[Name <String>]`: The name (also known as the key) of the tag.
+  - `[Value <String>]`: The value of the tag.
 
 ## RELATED LINKS
 

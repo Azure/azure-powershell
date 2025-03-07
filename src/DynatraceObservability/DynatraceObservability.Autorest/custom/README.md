@@ -36,6 +36,6 @@ For processing the cmdlets, we've created some additional attributes:
 - `Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.DynatraceObservability`.
 - `Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.InternalExportAttribute`
-  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.DynatraceObservability`. For more information, see [README.md](..\internal/README.md) in the `..\internal` folder.
+  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.DynatraceObservability`. For more information, see [README.md](..\internal/readme.md) in the `..\internal` folder.
 - `Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.
