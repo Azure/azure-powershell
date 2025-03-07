@@ -256,8 +256,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             var result = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(result);
-            Assert.True(profile.Contexts != null);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.NotNull(profile.Contexts);
+            Assert.Single(profile.Contexts);
             Assert.True(profile.Contexts.ContainsKey("Default"));
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.Single(profile.Contexts);
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
-            Assert.Equal(1, profile.Contexts.Count);
+            Assert.Single(profile.Contexts);
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);

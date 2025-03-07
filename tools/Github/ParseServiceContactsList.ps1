@@ -44,7 +44,7 @@ function InitializeRequiredPackages {
         $packageVersion = $_["PackageVersion"]
         $packageDll = $_["DllName"]
         Install-Package -Name $packageName -RequiredVersion $packageVersion -Source "https://www.nuget.org/api/v2" -Destination $packagesDirectory -SkipDependencies -ExcludeVersion -Force
-        Add-Type -LiteralPath (Join-Path -Path $packagesDirectory -ChildPath $packageName | Join-Path -ChildPath "lib" | Join-Path -ChildPath "net6.0" | Join-Path -ChildPath $packageDll) -ErrorAction SilentlyContinue
+        Add-Type -LiteralPath (Join-Path -Path $packagesDirectory -ChildPath $packageName | Join-Path -ChildPath "lib" | Join-Path -ChildPath "net8.0" | Join-Path -ChildPath $packageDll) -ErrorAction SilentlyContinue
     }
 }
 
@@ -80,42 +80,42 @@ if ($null -ne $contactsList) {
                 }
 
                 $serviceContacts.Add($serviceTeamLabel, [PSCustomObject]@{
-                    if   = @(
-                        [PSCustomObject]@{
-                            or  = @(
-                                [PSCustomObject]@{
-                                    labelAdded = [PSCustomObject]@{
-                                        label = 'Service Attention'
+                        if   = @(
+                            [PSCustomObject]@{
+                                or = @(
+                                    [PSCustomObject]@{
+                                        labelAdded = [PSCustomObject]@{
+                                            label = 'Service Attention'
+                                        }
+                                    },
+                                    [PSCustomObject]@{
+                                        labelAdded = [PSCustomObject]@{
+                                            label = $serviceTeamLabel
+                                        }
                                     }
-                                },
-                                [PSCustomObject]@{
-                                    labelAdded = [PSCustomObject]@{
-                                        label = $serviceTeamLabel
-                                    }
+                                )
+                            },
+                            [PSCustomObject]@{
+                                hasLabel = [PSCustomObject]@{
+                                    label = 'Service Attention'
                                 }
-                            )
-                        },
-                        [PSCustomObject]@{
-                            hasLabel = [PSCustomObject]@{
-                                label = 'Service Attention'
+                            },
+                            [PSCustomObject]@{
+                                hasLabel = [PSCustomObject]@{
+                                    label = $serviceTeamLabel
+                                }
                             }
-                        },
-                        [PSCustomObject]@{
-                            hasLabel = [PSCustomObject]@{
-                                label = $serviceTeamLabel
+                        )
+                        then = @(
+                            [PSCustomObject]@{
+                                mentionUsers = [PSCustomObject]@{
+                                    mentionees       = $mentionees
+                                    replyTemplate    = 'Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.'
+                                    assignMentionees = 'False'
+                                }
                             }
-                        }
-                    )
-                    then = @(
-                        [PSCustomObject]@{
-                            mentionUsers = [PSCustomObject]@{
-                                mentionees       = $mentionees
-                                replyTemplate    = 'Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.'
-                                assignMentionees = 'False'
-                            }
-                        }
-                    )
-                })
+                        )
+                    })
             }
         }
     }

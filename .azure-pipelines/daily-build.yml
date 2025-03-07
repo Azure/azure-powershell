@@ -28,10 +28,10 @@ jobs:
         # Wipe any changes from a previous branch
         git clean -xdf
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x for build'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
   - task: PowerShell@2
     displayName: Prepare Powershell $(PSVersion)
     inputs:
@@ -85,11 +85,11 @@ jobs:
   - task: EsrpCodeSigning@5
     displayName: "Sign Dll [Authenticode + Strong Name]"
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
@@ -142,11 +142,11 @@ jobs:
   - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
     displayName: "Sign Scripts [Authenticode]"
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
@@ -183,11 +183,11 @@ jobs:
   - task: EsrpCodeSigning@5
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: artifacts
       Pattern: 'Release/**/FuzzySharp.dll'
