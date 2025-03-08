@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     uri: "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
                     method: "PUT",
                     clientRequestId: "1234",
-                    clientIpAddress: "123.123.123.123"),
+                    clientIPAddress: "123.123.123.123"),
                 properties: new Dictionary<string, string>(),
                 submissionTimestamp: newDates ? DateTime.Now : fixedDate);
         }

@@ -150,13 +150,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 actions.AddRange(newActionGroupIds.Select(actionGroupId => new MetricAlertAction(actionGroupId: actionGroupId)));
             }
 
-            if (this.Condition.Any(c => c.CriterionType == CriterionType.DynamicThresholdCriterion))
+            if (this.Condition.Any(c => c.CriterionType == OutputClasses.CriterionType.DynamicThresholdCriterion))
             {
                 this.TargetResourceScope = this.TargetResourceScope ?? new string[] { this.TargetResourceId };
             }
 
             IDictionary<string, string> tags = null;
-            if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+            if (this.Condition.Any(c => c.CriterionType == OutputClasses.CriterionType.WebtestLocationAvailabilityCriterion))
             {
                 var scopes = this.TargetResourceScope?.ToList<string>() ?? new List<string> { this.TargetResourceId };
                 MetricAlertCriteria criteria;
