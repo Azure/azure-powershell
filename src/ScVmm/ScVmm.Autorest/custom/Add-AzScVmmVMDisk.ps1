@@ -251,7 +251,41 @@ function Add-AzScVmmVMDisk {
 
           if ($null -ne $vmObj.StorageProfileDisk -and $vmObj.StorageProfileDisk.Count -ge 1) {
             foreach ($vmDisk in $vmObj.StorageProfileDisk) {
-              $diskObj = New-AzScVmmVirtualDiskUpdateObject -Name $vmDisk.Name -Bus $vmDisk.Bus -BusType $vmDisk.BusType -DiskId $vmDisk.DiskId -DiskSizeGb $vmDisk.MaxDiskSizeGb -Lun $vmDisk.Lun -StorageQoSPolicyId $vmDisk.StorageQoSPolicyId -StorageQoSPolicyName $vmDisk.StorageQoSPolicyName -VhdType $vmDisk.VhdType
+
+              $diskParams = @{}
+
+              if ($null -ne $vmDisk.Name -and $vmDisk.Name -ne "") { 
+                  $diskParams['Name'] = $vmDisk.Name 
+              }
+              if ($null -ne $vmDisk.Bus) { 
+                  $diskParams['Bus'] = $vmDisk.Bus 
+              }
+              if ($null -ne $vmDisk.BusType -and $vmDisk.BusType -ne "") { 
+                  $diskParams['BusType'] = $vmDisk.BusType 
+              }
+              if ($null -ne $vmDisk.DiskId -and $vmDisk.DiskId -ne "") { 
+                  $diskParams['DiskId'] = $vmDisk.DiskId 
+              }
+              if ($null -ne $vmDisk.MaxDiskSizeGb) { 
+                  $diskParams['DiskSizeGb'] = $vmDisk.MaxDiskSizeGb 
+              }
+              if ($null -ne $vmDisk.Lun) { 
+                  $diskParams['Lun'] = $vmDisk.Lun 
+              }
+              if ($null -ne $vmDisk.StorageQoSPolicyId -and $vmDisk.StorageQoSPolicyId -ne "") { 
+                  $diskParams['StorageQoSPolicyId'] = $vmDisk.StorageQoSPolicyId 
+              }
+              if ($null -ne $vmDisk.StorageQoSPolicyName -and $vmDisk.StorageQoSPolicyName -ne "") { 
+                  $diskParams['StorageQoSPolicyName'] = $vmDisk.StorageQoSPolicyName 
+              }
+              if ($null -ne $vmDisk.VhdType -and $vmDisk.VhdType -ne "") { 
+                  $diskParams['VhdType'] = $vmDisk.VhdType 
+              }
+
+              $diskObj = New-AzScVmmVirtualDiskUpdateObject @diskParams
+              if ($null -eq $diskObj) {
+                throw "Failed to create new VirtualDiskUpdateObject with specified parameters. Error $($_.Exception.Message)"
+              }
               $newDiskObject += $diskObj
             }
           }
@@ -269,7 +303,7 @@ function Add-AzScVmmVMDisk {
           }
 
           $PSBoundParameters['MachineId'] = $machineObj.Id
-          $PSBoundParameters['StorageProfileDisk'] = $newDiskObject
+          $PSBoundParameters['StorageProfileDisk'] = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]]$newDiskObject
                   
           # Custom Code End
   

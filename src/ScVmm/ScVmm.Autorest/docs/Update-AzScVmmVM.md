@@ -15,10 +15,10 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 ### UpdateExpanded (Default)
 ```
 Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-CpuCount <Int32>]
- [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>] [-LimitCpuForMigration]
- [-MemoryMb <Int32>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AvailabilitySetId <String[]>] [-AvailabilitySetName <String[]>] [-CheckpointType <String>]
+ [-CpuCount <Int32>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>]
+ [-LimitCpuForMigration] [-MemoryMb <Int32>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -40,7 +40,7 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 
 ### Example 1: Update Virtual Machine
 ```powershell
-Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4 -Tag @{"key-1"="value-1"} 
+Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4
 ```
 
 AvailabilitySet                            : {}
@@ -133,11 +133,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilitySet
+### -AvailabilitySetId
 Availability Sets in vm.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilitySetName
+Availability Sets in vm.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 

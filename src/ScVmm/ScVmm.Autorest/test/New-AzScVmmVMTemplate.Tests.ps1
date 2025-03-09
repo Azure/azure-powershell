@@ -26,8 +26,4 @@ Describe 'New-AzScVmmVMTemplate' {
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

@@ -108,9 +108,16 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
+    [System.String[]]
     # Availability Sets in vm.
-    ${AvailabilitySet},
+    ${AvailabilitySetName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String[]]
+    # Availability Sets in vm.
+    ${AvailabilitySetId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -259,9 +266,44 @@ begin {
 
             # AvailabilitySet
 
-            if ($PSBoundParameters.ContainsKey('AvailabilitySet')) {
-                $PSBoundParameters['InfrastructureProfileAvailabilitySet'] = $PSBoundParameters['AvailabilitySet']
-                [void]$PSBoundParameters.Remove('AvailabilitySet')
+            if ($PSBoundParameters.ContainsKey('AvailabilitySetName') -and $PSBoundParameters.ContainsKey('AvailabilitySetId')) {
+                throw "Only one of the parameters AvailabilitySetName (Name) or AvailabilitySetId (ARM ID) should be specified."
+            }
+
+            if ($PSBoundParameters.ContainsKey('AvailabilitySetName') -and $AvailabilitySetName.Count -gt 0) {
+                $AvailabilitySetListItemArray = @()
+                foreach ($availabilitySet in $AvailabilitySetName) {
+                    try {
+                        $availabilitySetObj = Get-AzScVmmAvailabilitySet -Name $availabilitySet -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                        if ($null -eq $availabilitySetObj) {
+                            throw "Availability Set $availabilitySet not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+                        }
+                        $availabilitySetListItem = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]@{
+                            Id = $availabilitySetObj.Id
+                            Name = $availabilitySetObj.Name
+                        }
+                        $AvailabilitySetListItemArray += $availabilitySetListItem
+                    }
+                    catch {
+                        throw $_.Exception.Message
+                    }
+                }
+                $AvailabilitySetList = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]$AvailabilitySetIdArray                
+            }
+
+            if ($PSBoundParameters.ContainsKey('AvailabilitySetId') -and $AvailabilitySetId.Count -gt 0) {
+                $AvailabilitySetListItemArray = @()
+                foreach ($AvsetId in $AvailabilitySetId) {
+                    $availabilitySetListItem = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]@{
+                        Id = $AvsetId
+                    }
+                    $AvailabilitySetListItemArray += $availabilitySetListItem
+                }
+                $AvailabilitySetList = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]$AvailabilitySetIdArray                
+            }
+
+            if ($null -ne $AvailabilitySetList -and $AvailabilitySetList.Count -gt 0) {
+                $PSBoundParameters['AvailabilitySet'] = $AvailabilitySetList
             }
 
             # HardwareProfile

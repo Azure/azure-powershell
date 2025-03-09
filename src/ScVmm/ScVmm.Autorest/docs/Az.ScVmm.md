@@ -35,20 +35,23 @@ Implements VirtualNetwork GET method.
 ### [Get-AzScVmmVM](Get-AzScVmmVM.md)
 Retrieves information about a virtual machine instance.
 
+### [Get-AzScVmmVMDisk](Get-AzScVmmVMDisk.md)
+The operation to Get a virtual machine virtual disk.
+
 ### [Get-AzScVmmVMExtension](Get-AzScVmmVMExtension.md)
 The operation to get the extension on a virtual machine.
 
 ### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
 Implements GuestAgent GET method.
 
+### [Get-AzScVmmVMNic](Get-AzScVmmVMNic.md)
+The operation to Get a virtual machine network interface.
+
 ### [Get-AzScVmmVMTemplate](Get-AzScVmmVMTemplate.md)
 Implements VirtualMachineTemplate GET method.
 
 ### [New-AzScVmmAvailabilitySet](New-AzScVmmAvailabilitySet.md)
 Onboards the ScVmm availability set as an Azure resource.
-
-### [New-AzScVmmAvailabilitySetListItemObject](New-AzScVmmAvailabilitySetListItemObject.md)
-Create an in-memory object for AvailabilitySetListItem.
 
 ### [New-AzScVmmCloud](New-AzScVmmCloud.md)
 Onboards the ScVmm fabric cloud as an Azure cloud resource.

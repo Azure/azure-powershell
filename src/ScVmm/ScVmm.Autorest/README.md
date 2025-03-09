@@ -447,7 +447,6 @@ directive:
       parameter-name: MachineId
 
   - model-cmdlet:
-    - model-name: AvailabilitySetListItem
     - model-name: NetworkInterfaceUpdate
     - model-name: NetworkInterface
     - model-name: VirtualDiskUpdate

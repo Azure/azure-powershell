@@ -239,26 +239,51 @@ function Update-AzScVmmVMNic {
   
             if ($null -ne $vmObj.NetworkProfileNetworkInterface -and $vmObj.NetworkProfileNetworkInterface.Count -ge 1) {
               foreach ($vmNic in $vmObj.NetworkProfileNetworkInterface) {
-                $nicObj = New-AzScVmmNetworkInterfaceUpdateObject -Name $vmNic.Name -VirtualNetworkId $vmNic.VirtualNetworkId -MacAddress $vmNic.MacAddress -Ipv4AddressType $vmNic.Ipv4AddressType -Ipv6AddressType $vmNic.Ipv6AddressType -MacAddressType $vmNic.MacAddressType -NicId $vmNic.NicId
-                if (($NicName -and $NicName -eq $vmNic.Name) -or ($NicId -and $NicId -eq $vmNic.NicId)) {
-                    if (($NicName -and $NicName -ne $vmNic.Name) -or ($NicId -and $NicId -ne $vmNic.NicId)) {
+                $nicParams = @{}
+
+                if ($null -ne $vmNic.Name -and $vmNic.Name -ne "") { 
+                    $nicParams['Name'] = $vmNic.Name 
+                }
+                if ($null -ne $vmNic.VirtualNetworkId -and $vmNic.VirtualNetworkId -ne "") { 
+                    $nicParams['VirtualNetworkId'] = $vmNic.VirtualNetworkId 
+                }
+                if ($null -ne $vmNic.MacAddress -and $vmNic.MacAddress -ne "") { 
+                    $nicParams['MacAddress'] = $vmNic.MacAddress 
+                }
+                if ($null -ne $vmNic.Ipv4AddressType -and $vmNic.Ipv4AddressType -ne "") { 
+                    $nicParams['Ipv4AddressType'] = $vmNic.Ipv4AddressType 
+                }
+                if ($null -ne $vmNic.Ipv6AddressType -and $vmNic.Ipv6AddressType -ne "") { 
+                    $nicParams['Ipv6AddressType'] = $vmNic.Ipv6AddressType 
+                }
+                if ($null -ne $vmNic.MacAddressType -and $vmNic.MacAddressType -ne "") { 
+                    $nicParams['MacAddressType'] = $vmNic.MacAddressType 
+                }
+                if ($null -ne $vmNic.NicId -and $vmNic.NicId -ne "") { 
+                    $nicParams['NicId'] = $vmNic.NicId 
+                }
+
+                $nicObj = New-AzScVmmNetworkInterfaceUpdateObject @nicParams
+
+                if (($PSBoundParameters.ContainsKey('NicName') -and ($null -ne $vmNic.Name -and $vmNic.Name -ne "") -and $NicName -eq $vmNic.Name) -or ($PSBoundParameters.ContainsKey('NicId') -and ($null -ne $vmNic.NicId -and $vmNic.NicId -ne "") -and $NicId -eq $vmNic.NicId)) {
+                    if (($PSBoundParameters.ContainsKey('NicName') -and ($null -ne $vmNic.Name -and $vmNic.Name -ne "") -and $NicName -ne $vmNic.Name) -or ($PSBoundParameters.ContainsKey('NicId') -and ($null -ne $vmNic.NicId -and $vmNic.NicId -ne "") -and $NicId -ne $vmNic.NicId)) {
                         throw "Incorrect NicName and NicId combination, Please specify both NicName and NicId to update the NIC properties."
                     }
                     $nicFound = $true
 
-                    if (-not $vmNic.Name -and $NicName) {
+                    if ($PSBoundParameters.ContainsKey('NicName') -and ($null -eq $vmNic.Name -or $vmNic.Name -eq "")) {
                         $nicObj.Name = $NicName
                     }
-                    if ($virtualNetworkName) {
+                    if ($PSBoundParameters.ContainsKey('virtualNetworkName')) {
                         $nicObj.VirtualNetworkId = $virtualNetworkObj.Id
                     }
-                    if ($ipv4AddressType) {
+                    if ($PSBoundParameters.ContainsKey('ipv4AddressType')) {
                         $nicObj.Ipv4AddressType = $ipv4AddressType
                     }
-                    if ($ipv6AddressType) {
+                    if ($PSBoundParameters.ContainsKey('ipv6AddressType')) {
                         $nicObj.Ipv6AddressType = $ipv6AddressType
                     }
-                    if ($macAddressType) {
+                    if ($PSBoundParameters.ContainsKey('macAddressType')) {
                         $nicObj.MacAddressType = $macAddressType
                     }
                 }
@@ -281,7 +306,7 @@ function Update-AzScVmmVMNic {
             }
   
             $PSBoundParameters['MachineId'] = $machineObj.Id
-            $PSBoundParameters['NetworkProfileNetworkInterface'] = $newNicObject
+            $PSBoundParameters['NetworkProfileNetworkInterface'] = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]]$newNicObject
                     
             # Custom Code End
     

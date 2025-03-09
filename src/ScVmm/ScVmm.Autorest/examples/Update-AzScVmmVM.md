@@ -1,6 +1,6 @@
 ### Example 1: Update Virtual Machine
 ```powershell
-Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4 -Tag @{"key-1"="value-1"} 
+Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4
 ```
 
 ```output

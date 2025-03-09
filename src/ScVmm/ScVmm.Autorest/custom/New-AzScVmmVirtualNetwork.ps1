@@ -240,7 +240,7 @@ begin {
 
             $CUSTOM_LOCATION_RESOURCE_TYPE = "customLocation"
 
-            if (-not $PSBoundParameters.ContainsKey('Uuid') -and -not $PSBoundParameters.ContainsKey('InventoryItemId')) {
+            if (-not $PSBoundParameters.ContainsKey('InventoryUuid') -and -not $PSBoundParameters.ContainsKey('InventoryItemId')) {
                 throw "Either Uuid or InventoryItemId should be specified."
             }
 

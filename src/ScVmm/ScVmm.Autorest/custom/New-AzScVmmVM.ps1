@@ -22,15 +22,18 @@ Please note some properties can be set only during virtual machine creation.
 The operation to create a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
-To enable existing SCVMM virtual machine in Azure execute the command with `CreateExpandedInventory` or `CreateExpandedInventoryARMId` Parameter Set.
-To create a new virtual machine execute the command with `CreateExpanded` or `CreateExpandedARMId` Parameter Set.
+To enable existing SCVMM virtual machine in Azure execute the command with `InventoryUuid` or `InventoryItemId`.
+To create a new virtual machine execute the command with `CloudName` and `TemplateName` or equivalent Id parameters.
 
-To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpanded` or `CreateExpandedInventory` Parameter Set.
-To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedARMId` or `CreateExpandedInventoryARMId` Parameter Set.
+To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateByName` or `CreateExpandedByName` Parameter Set.
+To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedById` Parameter Set.
 
 `InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName <> -ResourceGroupName <>` (check Name(UUID format) for required InventoryItemName and InventoryType).
 `InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName <> -ResourceGroupName <> -Name <uuid>` (check for Id property in the response).
 `VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CloudId` can be retrieved using `Get-AzScVmmCloud` (check for `Id` property in the response).
+`TemplateId` can be retrieved using `Get-AzScVmmVmTemplate` (check for `Id` property in the response).
+`AvailabilitySetId` can be retrieved using `Get-AzScVmmAvailabilitySet` (check for `Id` property in the response).
 `CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
 
 .Example
@@ -76,7 +79,7 @@ https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvm
 #>
 function New-AzScVmmVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateExpandedByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('VMName')]
@@ -100,163 +103,171 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # The geo-location where the resource lives.
     ${Location},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
+    [Parameter(ParameterSetName='CreateByName', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Name of the vmmServer resource in which this resource resides.
     ${VmmServerName},
 
-    [Parameter(ParameterSetName='CreateExpandedInventory', Mandatory)]
+    [Parameter(ParameterSetName='CreateByName')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # UUID of the inventory virtual machine resource to enable in Azure.
     ${InventoryUuid},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateByName')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # UUID of the cloud resource to use for deploying the vm.
     ${CloudName},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateByName')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Name of the template resource to use for deploying the vm.
     ${TemplateName},
 
-    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedInventoryARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [System.String]
-    # ARM Id of the custom location.
-    ${CustomLocationId},
+    [System.String[]]
+    # Availability Sets in vm.
+    ${AvailabilitySetName},
 
-    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedById', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # ARM Id of the vmmServer resource in which this resource resides.
     ${VmmServerId},
 
-    [Parameter(ParameterSetName='CreateExpandedInventoryARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # ARM Id of the custom location.
+    ${CustomLocationId},
+
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # ARM Id of the inventory virtual machine resource to enable in Azure.
-    ${InventoryId},
+    ${InventoryId},    
 
-    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # ARM Id of the cloud resource to use for deploying the vm.
     ${CloudId},
 
-    [Parameter(ParameterSetName='CreateExpandedARMId', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # ARM Id of the template resource to use for deploying the vm.
     ${TemplateId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String[]]
+    # Availability Sets in vm.
+    ${AvailabilitySetId},
+
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Sets computer name.
     ${ComputerName},
     
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Security.SecureString]
     # Admin password of the virtual machine.
     ${AdminPassword},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Generation for the vm.
     ${Generation},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the number of vCPUs for the vm.
     ${CpuCount},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable dynamic memory or not.
     ${DynamicMemoryEnabled},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the max dynamic memory for the vm.
     ${DynamicMemoryMaxMb},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the min dynamic memory for the vm.
     ${DynamicMemoryMinMb},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable processor compatibility mode for live migration of VMs.
     ${LimitCpuForMigration},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # MemoryMB is the size of a virtual machine's memory, in MB.
     ${MemoryMb},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.String]
     # Type of checkpoint supported for the vm.
     ${CheckpointType},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
-    # Availability Sets in vm.
-    ${AvailabilitySet},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
     ${NetworkInterface},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
     ${Disk},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateExpandedARMId')]
-    [Parameter(ParameterSetName='CreateExpandedInventoryARMId')]
+    [Parameter(ParameterSetName='CreateByName')]
+    [Parameter(ParameterSetName='CreateExpandedByName')]
+    [Parameter(ParameterSetName='CreateExpandedById')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
     [System.Collections.Hashtable]
@@ -362,10 +373,9 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
-            CreateExpandedInventory = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
-            CreateExpandedARMId = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
-            CreateExpandedInventoryARMId = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateByName = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateExpandedByName = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
+            CreateExpandedById = 'Az.ScVmm.private\New-AzScVmmVM_CreateExpanded';
             CreateViaJsonFilePath = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.ScVmm.private\New-AzScVmmVM_CreateViaJsonString';
         }
@@ -386,50 +396,100 @@ begin {
 
         #  Pre-Validation of the input parameters
 
-        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded') {
+        if ($parameterSet -eq 'CreateByName' -or $parameterSet -eq 'CreateExpandedByName') {
+
+            if (-not $PSBoundParameters.ContainsKey('InventoryUuid') -and -not ($PSBoundParameters.ContainsKey('CloudName') -and $PSBoundParameters.ContainsKey('TemplateName'))) {
+                throw "InventoryUuid parameter is required to enable existing virtual machine in Azure. To create a new virtual machine, specify both CloudName and TemplateName."
+            }
+
+            if ($PSBoundParameters.ContainsKey('InventoryUuid') -and (($PSBoundParameters.ContainsKey('CloudName') -or $PSBoundParameters.ContainsKey('TemplateName')))) {
+                throw "InventoryUuid parameter cannot be used with CloudName or TemplateName parameters. To Enable existing virtual machine in Azure, specify InventoryUuid and to create a new virtual machine specify CloudName and TemplateName."
+            }
 
             try {
-                $VmmServerObj = Get-AzScVmmServer -Name $VmmServerName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-                $VmmServerId = $VmmServerObj.Id
-                $customLocationId = $VmmServerObj.ExtendedLocationName
+                $vmmServerObj = Get-AzScVmmServer -Name $VmmServerName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                $vmmServerId = $vmmServerObj.Id
+                $customLocationId = $vmmServerObj.ExtendedLocationName
             }
             catch {
                 throw "Failed to determine VMM Server resource ARM ID for VmmServerName $VmmServerName in Resource Group $ResourceGroupName."
             }
 
-            if ($parameterSet -eq 'CreateExpandedInventory') {
+            if ($PSBoundParameters.ContainsKey('InventoryUuid')) {
                 try {
                     $inventoryItemObj = Get-AzScVmmInventoryItem -VmmServerName $VmmServerName -Name $InventoryUuid -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    if ($null -eq $inventoryItemObj) {
+                        throw "Inventory Item $InventoryUuid not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+                    }
                     $inventoryItemId = $inventoryItemObj.Id
                 }
                 catch {
-                    throw "Failed to determine inventory resource ARM ID for InventoryItem $InventoryUuid in Resource Group $ResourceGroupName."
+                    throw $_.Exception.Message
                 }
             }
-    
-            if ($parameterSet -eq 'CreateExpanded') {
+
+            if ($PSBoundParameters.ContainsKey('CloudName') -and $PSBoundParameters.ContainsKey('TemplateName')) {
                 try {
                     $cloudObj = Get-AzScVmmCloud -Name $CloudName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    if ($null -eq $cloudObj) {
+                        throw "Cloud $CloudName not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+                    }
                     $cloudId = $cloudObj.Id
                 }
                 catch {
-                    throw "Failed to determine cloud resource ARM ID for Cloud $CloudName in Resource Group $ResourceGroupName."
+                    throw $_.Exception.Message
                 }
-    
+
                 try {
                     $templateObj = Get-AzScVmmVmTemplate -Name $TemplateName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    if ($null -eq $templateObj) {
+                        throw "Template $TemplateName not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+                    }
                     $templateId = $templateObj.Id
                 }
                 catch {
-                    throw "Failed to determine template resource ARM ID for Template $TemplateName in Resource Group $ResourceGroupName."
+                    throw $_.Exception.Message
                 }
             }
-        } elseif ($parameterSet -eq 'CreateExpandedARMId' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
+
+            if ($PSBoundParameters.ContainsKey('AvailabilitySetName') -and $AvailabilitySetName.Count -gt 0) {
+                $AvailabilitySetListItemArray = @()
+                foreach ($availabilitySet in $AvailabilitySetName) {
+                    try {
+                        $availabilitySetObj = Get-AzScVmmAvailabilitySet -Name $availabilitySet -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                        if ($null -eq $availabilitySetObj) {
+                            throw "Availability Set $availabilitySet not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
+                        }
+                        $availabilitySetListItem = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]@{
+                            Id = $availabilitySetObj.Id
+                            Name = $availabilitySetObj.Name
+                        }
+                        $AvailabilitySetListItemArray += $availabilitySetListItem
+                    }
+                    catch {
+                        throw $_.Exception.Message
+                    }
+                }
+                $AvailabilitySetList = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]$AvailabilitySetIdArray                
+            }
+        } elseif ($parameterSet -eq 'CreateExpandedById') {
+            if ($PSBoundParameters.ContainsKey('VmmServerId') -and -not $PSBoundParameters.ContainsKey('CustomLocationId')) {
+                throw "CustomLocationId parameter is required when VmmServerId is specified."
+            }
+
+            if (-not $PSBoundParameters.ContainsKey('InventoryId') -and -not ($PSBoundParameters.ContainsKey('CloudId') -and $PSBoundParameters.ContainsKey('TemplateId'))) {
+                throw "InventoryId parameter is required to enable existing virtual machine in Azure. To create a new virtual machine, specify both CloudId and TemplateId."
+            }
+
+            if ($PSBoundParameters.ContainsKey('InventoryId') -and (($PSBoundParameters.ContainsKey('CloudId') -or $PSBoundParameters.ContainsKey('TemplateId')))) {
+                throw "InventoryId parameter cannot be used with CloudId or TemplateId parameters. To Enable existing virtual machine in Azure, specify InventoryId and to create a new virtual machine specify CloudId and TemplateId."
+            }
+
             if ($PSBoundParameters.ContainsKey('CustomLocationId')) {
                 $customLocationId = $CustomLocationId
             }
             if ($PSBoundParameters.ContainsKey('VmmServerId')) {
-                $VmmServerId = $VmmServerId
+                $vmmServerId = $VmmServerId
             }
             if ($PSBoundParameters.ContainsKey('InventoryId')) {
                 $inventoryItemId = $InventoryId
@@ -441,10 +501,15 @@ begin {
                 $templateId = $TemplateId
             }
 
-            foreach ($key in @('CustomLocationId', 'VmmServerId', 'InventoryId', 'CloudId', 'TemplateId')) {
-                if ($PSBoundParameters.ContainsKey($key)) {
-                    [void]$PSBoundParameters.Remove($key)
+            if ($PSBoundParameters.ContainsKey('AvailabilitySetId') -and $AvailabilitySetId.Count -gt 0) {
+                $AvailabilitySetListItemArray = @()
+                foreach ($AvsetId in $AvailabilitySetId) {
+                    $availabilitySetListItem = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]@{
+                        Id = $AvsetId
+                    }
+                    $AvailabilitySetListItemArray += $availabilitySetListItem
                 }
+                $AvailabilitySetList = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem]$AvailabilitySetIdArray                
             }
         }
 
@@ -495,20 +560,8 @@ begin {
             [void]$PSBoundParameters.Remove($key)
         }
 
-        if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpanded' -or $parameterSet -eq 'CreateExpandedARMId' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
-
-            # ExtendedLocation / CustomLocation
-
-            $PSBoundParameters['ExtendedLocationType'] = $CUSTOM_LOCATION_RESOURCE_TYPE
-            $PSBoundParameters['ExtendedLocationName'] = $customLocationId
-
-            # AvailabilitySet
-
-            if ($PSBoundParameters.ContainsKey('AvailabilitySet')) {
-                $PSBoundParameters['InfrastructureProfileAvailabilitySet'] = $PSBoundParameters['AvailabilitySet']
-                [void]$PSBoundParameters.Remove('AvailabilitySet')
-            }
-
+        if ($parameterSet -eq 'CreateExpandedByName' -or $parameterSet -eq 'CreateExpandedById') {
+            
             # OSProfile
 
             foreach ($key in @('ComputerName', 'AdminPassword')) {
@@ -547,19 +600,6 @@ begin {
 
             # InfrastructureProfile
 
-            if ($parameterSet -eq 'CreateExpandedInventory' -or $parameterSet -eq 'CreateExpandedInventoryARMId') {
-                $PSBoundParameters["InfrastructureProfileInventoryItemId"] = $inventoryItemId
-            } else {
-                $PSBoundParameters["InfrastructureProfileCloudId"] = $cloudId
-                $PSBoundParameters["InfrastructureProfileTemplateId"] = $templateId
-                $PSBoundParameters["InfrastructureProfileVmmServerId"] = $VmmServerId
-            }
-            
-            foreach ($key in @('VmmServerName', 'InventoryUuid', 'CloudName', 'TemplateName')) {
-                if ($PSBoundParameters.ContainsKey($key)) {
-                    [void]$PSBoundParameters.Remove($key)
-                }
-            }
             foreach ($key in @('CheckpointType', 'Generation')) {
                 if ($PSBoundParameters.ContainsKey($key)) {
                     $PSBoundParameters["InfrastructureProfile$($key)"] = $PSBoundParameters[$key]
@@ -567,7 +607,30 @@ begin {
                 }
             }
         }
-                
+
+        if ($parameterSet -eq 'CreateByName' -or $parameterSet -eq 'CreateExpandedByName' -or $parameterSet -eq 'CreateExpandedById') {
+            $PSBoundParameters['ExtendedLocationType'] = $CUSTOM_LOCATION_RESOURCE_TYPE
+            $PSBoundParameters['ExtendedLocationName'] = $customLocationId
+
+            if ($null -ne $AvailabilitySetList -and $AvailabilitySetList.Count -gt 0) {
+                $PSBoundParameters['AvailabilitySet'] = $AvailabilitySetList
+            }
+
+            if ($null -ne $inventoryItemId) {
+                $PSBoundParameters["InfrastructureProfileInventoryItemId"] = $inventoryItemId
+            } else {
+                $PSBoundParameters["InfrastructureProfileCloudId"] = $cloudId
+                $PSBoundParameters["InfrastructureProfileTemplateId"] = $templateId
+                $PSBoundParameters["InfrastructureProfileVmmServerId"] = $vmmServerId
+            }
+
+            # Extra Parameters cleanup from $PSBoundParameters
+            foreach ($key in @('VmmServerName', 'InventoryUuid', 'CloudName', 'TemplateName', 'AvailabilitySetName', 'VmmServerId', 'CustomLocationId', 'InventoryId', 'CloudId', 'TemplateId', 'AvailabilitySetId')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    [void]$PSBoundParameters.Remove($key)
+                }
+            }
+        }                
         # Custom Code End
 
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}

@@ -242,35 +242,69 @@ function Update-AzScVmmVMDisk {
   
             if ($null -ne $vmObj.StorageProfileDisk -and $vmObj.StorageProfileDisk.Count -ge 1) {
               foreach ($vmDisk in $vmObj.StorageProfileDisk) {
-                $diskObj = New-AzScVmmVirtualDiskUpdateObject -Name $vmDisk.Name -Bus $vmDisk.Bus -BusType $vmDisk.BusType -DiskId $vmDisk.DiskId -DiskSizeGb $vmDisk.MaxDiskSizeGb -Lun $vmDisk.Lun -StorageQoSPolicyId $vmDisk.StorageQoSPolicyId -StorageQoSPolicyName $vmDisk.StorageQoSPolicyName -VhdType $vmDisk.VhdType
-                if (($DiskName -and $DiskName -eq $vmDisk.Name) -or ($DiskId -and $DiskId -eq $vmDisk.DiskId)) {
-                    if (($DiskName -and $DiskName -ne $vmDisk.Name) -or ($DiskId -and $DiskId -ne $vmDisk.DiskId)) {
+                $diskParams = @{}
+
+                if ($null -ne $vmDisk.Name -and $vmDisk.Name -ne "") { 
+                    $diskParams['Name'] = $vmDisk.Name 
+                }
+                if ($null -ne $vmDisk.Bus) { 
+                    $diskParams['Bus'] = $vmDisk.Bus 
+                }
+                if ($null -ne $vmDisk.BusType -and $vmDisk.BusType -ne "") { 
+                    $diskParams['BusType'] = $vmDisk.BusType 
+                }
+                if ($null -ne $vmDisk.DiskId -and $vmDisk.DiskId -ne "") { 
+                    $diskParams['DiskId'] = $vmDisk.DiskId 
+                }
+                if ($null -ne $vmDisk.MaxDiskSizeGb) { 
+                    $diskParams['DiskSizeGb'] = $vmDisk.MaxDiskSizeGb 
+                }
+                if ($null -ne $vmDisk.Lun) { 
+                    $diskParams['Lun'] = $vmDisk.Lun 
+                }
+                if ($null -ne $vmDisk.StorageQoSPolicyId -and $vmDisk.StorageQoSPolicyId -ne "") { 
+                    $diskParams['StorageQoSPolicyId'] = $vmDisk.StorageQoSPolicyId 
+                }
+                if ($null -ne $vmDisk.StorageQoSPolicyName -and $vmDisk.StorageQoSPolicyName -ne "") { 
+                    $diskParams['StorageQoSPolicyName'] = $vmDisk.StorageQoSPolicyName 
+                }
+                if ($null -ne $vmDisk.VhdType -and $vmDisk.VhdType -ne "") { 
+                    $diskParams['VhdType'] = $vmDisk.VhdType 
+                }
+  
+                $diskObj = New-AzScVmmVirtualDiskUpdateObject @diskParams
+                if ($null -eq $diskObj) {
+                  throw "Failed to create new VirtualDiskUpdateObject with specified parameters. Error $($_.Exception.Message)"
+                }
+                
+                if (($PSBoundParameters.ContainsKey('DiskName') -and ($null -ne $vmDisk.Name -and $vmDisk.Name -ne "") -and $DiskName -eq $vmDisk.Name) -or ($PSBoundParameters.ContainsKey('DiskId') -and ($null -ne $vmDisk.DiskId -and $vmDisk.DiskId -ne "") -and $DiskId -eq $vmDisk.DiskId)) {
+                    if (($PSBoundParameters.ContainsKey('DiskName') -and ($null -ne $vmDisk.Name -and $vmDisk.Name -ne "") -and $DiskName -ne $vmDisk.Name) -or ($PSBoundParameters.ContainsKey('DiskId') -and ($null -ne $vmDisk.DiskId -and $vmDisk.DiskId -ne "") -and $DiskId -ne $vmDisk.DiskId)) {
                         throw "Incorrect DiskName and DiskId combination, Please specify both DiskName and DiskId to update the Disk properties."
                     }
                     $diskFound = $true
 
-                    if (-not $vmDisk.Name -and $DiskName) {
+                    if ($PSBoundParameters.ContainsKey('DiskName') -and ($null -eq $vmDisk.Name -or $vmDisk.Name -eq "")) {
                         $diskObj.Name = $DiskName
                     }
-                    if ($diskSizeGB) {
-                        $diskObj.DiskSizeGb = $DiskSizeGb
+                    if ($PSBoundParameters.ContainsKey('diskSizeGB')) {
+                        $diskObj.DiskSizeGb = $diskSizeGB
                     }
-                    if ($bus) {
-                        $diskObj.Bus = $Bus
+                    if ($PSBoundParameters.ContainsKey('bus')) {
+                        $diskObj.Bus = $bus
                     }
-                    if ($lun) {
-                        $diskObj.Lun = $Lun
+                    if ($PSBoundParameters.ContainsKey('lun')) {
+                        $diskObj.Lun = $lun
                     }
-                    if ($busType) {
-                        $diskObj.BusType = $BusType
+                    if ($PSBoundParameters.ContainsKey('busType')) {
+                        $diskObj.BusType = $busType
                     }
-                    if ($vhdType) {
-                        $diskObj.VhdType = $VhdType
+                    if ($PSBoundParameters.ContainsKey('vhdType')) {
+                        $diskObj.VhdType = $vhdType
                     }
-                    if ($QosName) {
+                    if ($PSBoundParameters.ContainsKey('QosName')) {
                         $diskObj.StorageQoSPolicyName = $QosName
                     }
-                    if ($QosId) {
+                    if ($PSBoundParameters.ContainsKey('QosId')) {
                         $diskObj.StorageQoSPolicyId = $QosId
                     }
                 }
@@ -293,7 +327,7 @@ function Update-AzScVmmVMDisk {
             }
   
             $PSBoundParameters['MachineId'] = $machineObj.Id
-            $PSBoundParameters['StorageProfileDisk'] = $newDiskObject
+            $PSBoundParameters['StorageProfileDisk'] = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]]$newDiskObject
                     
             # Custom Code End
     

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzScVmmServer'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzScVmmVMNic'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzScVmmServer.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzScVmmVMNic.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzScVmmServer'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzScVmmServer' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
+Describe 'Get-AzScVmmVMNic' {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

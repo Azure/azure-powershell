@@ -19,6 +19,9 @@
 The operation to power off (stop) a virtual machine.
 .Description
 The operation to power off (stop) a virtual machine.
+
+`-SkipShutdown` flag is used to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false.
+
 .Example
 Stop-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01"
 .Example

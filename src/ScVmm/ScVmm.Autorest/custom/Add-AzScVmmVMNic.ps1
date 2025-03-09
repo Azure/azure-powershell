@@ -250,7 +250,32 @@ function Add-AzScVmmVMNic {
   
             if ($null -ne $vmObj.NetworkProfileNetworkInterface -and $vmObj.NetworkProfileNetworkInterface.Count -ge 1) {
               foreach ($vmNic in $vmObj.NetworkProfileNetworkInterface) {
-                $nicObj = New-AzScVmmNetworkInterfaceUpdateObject -Name $vmNic.Name -VirtualNetworkId $vmNic.VirtualNetworkId -MacAddress $vmNic.MacAddress -Ipv4AddressType $vmNic.Ipv4AddressType -Ipv6AddressType $vmNic.Ipv6AddressType -MacAddressType $vmNic.MacAddressType -NicId $vmNic.NicId
+                $nicParams = @{}
+
+                if ($null -ne $vmNic.Name) { 
+                    $nicParams['Name'] = $vmNic.Name 
+                }
+                if ($null -ne $vmNic.VirtualNetworkId) { 
+                    $nicParams['VirtualNetworkId'] = $vmNic.VirtualNetworkId 
+                }
+                if ($null -ne $vmNic.MacAddress) { 
+                    $nicParams['MacAddress'] = $vmNic.MacAddress 
+                }
+                if ($null -ne $vmNic.Ipv4AddressType) { 
+                    $nicParams['Ipv4AddressType'] = $vmNic.Ipv4AddressType 
+                }
+                if ($null -ne $vmNic.Ipv6AddressType) { 
+                    $nicParams['Ipv6AddressType'] = $vmNic.Ipv6AddressType 
+                }
+                if ($null -ne $vmNic.MacAddressType) { 
+                    $nicParams['MacAddressType'] = $vmNic.MacAddressType 
+                }
+                if ($null -ne $vmNic.NicId) { 
+                    $nicParams['NicId'] = $vmNic.NicId 
+                }
+
+                $nicObj = New-AzScVmmNetworkInterfaceUpdateObject @nicParams
+
                 $newNicObject += $nicObj
               }
             }
@@ -268,7 +293,7 @@ function Add-AzScVmmVMNic {
             }
   
             $PSBoundParameters['MachineId'] = $machineObj.Id
-            $PSBoundParameters['NetworkProfileNetworkInterface'] = $newNicObject
+            $PSBoundParameters['NetworkProfileNetworkInterface'] = [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]]$newNicObject
                     
             # Custom Code End
     

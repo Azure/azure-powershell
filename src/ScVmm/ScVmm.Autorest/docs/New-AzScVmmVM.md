@@ -13,53 +13,47 @@ Please note some properties can be set only during virtual machine creation.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateExpandedByName (Default)
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudName <String> -TemplateName <String>
- -VmmServerName <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
- [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-ComputerName <String>]
- [-CpuCount <Int32>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
- [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration] [-Location <String>]
- [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -Location <String> -VmmServerName <String>
+ [-SubscriptionId <String>] [-AdminPassword <SecureString>] [-AvailabilitySetName <String[]>]
+ [-CheckpointType <String>] [-CloudName <String>] [-ComputerName <String>] [-CpuCount <Int32>]
+ [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>]
+ [-Generation <Int32>] [-InventoryUuid <String>] [-LimitCpuForMigration] [-MemoryMb <Int32>]
+ [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>] [-TemplateName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpandedARMId
+### CreateByName
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CloudId <String> -CustomLocationId <String>
- -TemplateId <String> -VmmServerId <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
- [-AvailabilitySet <IAvailabilitySetListItem[]>] [-CheckpointType <String>] [-ComputerName <String>]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -Location <String> -VmmServerName <String>
+ [-SubscriptionId <String>] [-CloudName <String>] [-InventoryUuid <String>] [-Tags <Hashtable>]
+ [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpandedById
+```
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
+ -VmmServerId <String> [-SubscriptionId <String>] [-AdminPassword <SecureString>]
+ [-AvailabilitySetId <String[]>] [-CheckpointType <String>] [-CloudId <String>] [-ComputerName <String>]
  [-CpuCount <Int32>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
- [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-LimitCpuForMigration] [-Location <String>]
- [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>]
+ [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-InventoryId <String>] [-LimitCpuForMigration]
+ [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>] [-TemplateId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpandedInventory
-```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -InventoryUuid <String> -VmmServerName <String>
- [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpandedInventoryARMId
-```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -InventoryId <String>
- [-SubscriptionId <String>] [-Location <String>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonFilePath <String> -Location <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> -Location <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -67,15 +61,18 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -JsonString <String> [-
 The operation to create a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
-To enable existing SCVMM virtual machine in Azure execute the command with `CreateExpandedInventory` or `CreateExpandedInventoryARMId` Parameter Set.
-To create a new virtual machine execute the command with `CreateExpanded` or `CreateExpandedARMId` Parameter Set.
+To enable existing SCVMM virtual machine in Azure execute the command with `InventoryUuid` or `InventoryItemId`.
+To create a new virtual machine execute the command with `CloudName` and `TemplateName` or equivalent Id parameters.
 
-To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpanded` or `CreateExpandedInventory` Parameter Set.
-To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedARMId` or `CreateExpandedInventoryARMId` Parameter Set.
+To enable resource in the same Resource Group as VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateByName` or `CreateExpandedByName` Parameter Set.
+To enable resource in a different Resource Group than the one where VMM Sever/Cloud/Virtual Network/VM Template resource resides execute the command with `CreateExpandedById` Parameter Set.
 
 `InventoryUuid` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\>` (check Name(UUID format) for required InventoryItemName and InventoryType).
 `InventoryItemId` can be obtained using `Get-AzScVmmInventoryItem -VmmServerName \<\> -ResourceGroupName \<\> -Name \<uuid\>` (check for Id property in the response).
 `VmmServerId` can be retrieved using `Get-AzScVmmServer` (check for `Id` property in the response).
+`CloudId` can be retrieved using `Get-AzScVmmCloud` (check for `Id` property in the response).
+`TemplateId` can be retrieved using `Get-AzScVmmVmTemplate` (check for `Id` property in the response).
+`AvailabilitySetId` can be retrieved using `Get-AzScVmmAvailabilitySet` (check for `Id` property in the response).
 `CustomLocationId` can be retrieved using `Get-AzScVmmServer` (check for `ExtendedLocationName` property in the response).
 
 ## EXAMPLES
@@ -206,7 +203,7 @@ Admin password of the virtual machine.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -231,12 +228,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilitySet
+### -AvailabilitySetId
 Availability Sets in vm.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Type: System.String[]
+Parameter Sets: CreateExpandedById
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilitySetName
+Availability Sets in vm.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpandedByName
 Aliases:
 
 Required: False
@@ -251,7 +263,7 @@ Type of checkpoint supported for the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -266,10 +278,10 @@ ARM Id of the cloud resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedARMId
+Parameter Sets: CreateExpandedById
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -281,10 +293,10 @@ UUID of the cloud resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateByName, CreateExpandedByName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -296,7 +308,7 @@ Sets computer name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -311,7 +323,7 @@ Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -326,7 +338,7 @@ ARM Id of the custom location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedARMId, CreateExpandedInventoryARMId
+Parameter Sets: CreateExpandedById
 Aliases:
 
 Required: True
@@ -357,7 +369,7 @@ Gets or sets the list of virtual disks associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDisk[]
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -372,7 +384,7 @@ Whether to enable dynamic memory or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -387,7 +399,7 @@ Gets or sets the max dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -402,7 +414,7 @@ Gets or sets the min dynamic memory for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -417,7 +429,7 @@ Generation for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -432,10 +444,10 @@ ARM Id of the inventory virtual machine resource to enable in Azure.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedInventoryARMId
+Parameter Sets: CreateExpandedById
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -447,10 +459,10 @@ UUID of the inventory virtual machine resource to enable in Azure.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedInventory
+Parameter Sets: CreateByName, CreateExpandedByName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -492,7 +504,7 @@ Whether to enable processor compatibility mode for live migration of VMs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -510,7 +522,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -522,7 +534,7 @@ MemoryMB is the size of a virtual machine's memory, in MB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -552,7 +564,7 @@ Gets or sets the list of network interfaces associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface[]
-Parameter Sets: CreateExpanded, CreateExpandedARMId
+Parameter Sets: CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -614,7 +626,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpandedARMId, CreateExpandedInventoryARMId
+Parameter Sets: CreateByName, CreateExpandedById, CreateExpandedByName
 Aliases:
 
 Required: False
@@ -629,10 +641,10 @@ ARM Id of the template resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedARMId
+Parameter Sets: CreateExpandedById
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -644,10 +656,10 @@ Name of the template resource to use for deploying the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateByName, CreateExpandedByName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -659,7 +671,7 @@ ARM Id of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedARMId
+Parameter Sets: CreateExpandedById
 Aliases:
 
 Required: True
@@ -674,7 +686,7 @@ Name of the vmmServer resource in which this resource resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedInventory
+Parameter Sets: CreateByName, CreateExpandedByName
 Aliases:
 
 Required: True

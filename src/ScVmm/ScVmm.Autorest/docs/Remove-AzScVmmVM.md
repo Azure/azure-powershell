@@ -21,6 +21,14 @@ Remove-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 ## DESCRIPTION
 The operation to delete a virtual machine instance.
 
+`-DeleteMachine` : Deletes the Virtual Machine resource from Azure (It retains the virtual machine on SCVMM on-premises).
+`-DeleteFromHost`: Deletes the virtual machine from the SCVMM host.
+
+To remove the virtual machine resource from Azure (and not SCVMM host), use `-DeleteMachine`.
+
+To retain the virtual machine resource in Azure and delete it from SCVMM host, use `-DeleteFromHost`.
+To remove the virtual machine resource from Azure and SCVMM host, use both `-DeleteMachine` and `-DeleteFromHost`.
+
 ## EXAMPLES
 
 ### Example 2: Disable VM in Azure

@@ -15,19 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzScVmmVM'))
 }
 
 Describe 'New-AzScVmmVM' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpandedByName' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateExpandedInventory' -skip {
+    It 'CreateByName' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateExpandedARMId' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateExpandedInventoryARMId' -skip {
+    It 'CreateExpandedById' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
