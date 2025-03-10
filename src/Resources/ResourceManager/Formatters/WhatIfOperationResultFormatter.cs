@@ -18,9 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System.Collections.Generic;
     using System.Linq;
     using NewComparers;
-    using NewExtensions;
     using Extensions;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
     using Properties;
