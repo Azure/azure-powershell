@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileLogScrubbingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnprofilelogscrubbingobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ProfileLogScrubbing.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>]
- [-State <ProfileScrubbingState>] [<CommonParameters>]
+New-AzFrontDoorCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>] [-State <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,10 +41,9 @@ Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRul
 
 ### -ScrubbingRule
 List of log scrubbing rules applied to the Azure Front Door profile logs.
-To construct, see NOTES section for SCRUBBINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +59,7 @@ State of the log scrubbing config.
 Default value is Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbing
 
 ## NOTES
 

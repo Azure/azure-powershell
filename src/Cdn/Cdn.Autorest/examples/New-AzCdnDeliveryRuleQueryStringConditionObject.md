@@ -10,5 +10,3 @@ QueryString
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition
-
-

@@ -10,4 +10,3 @@ ModifyRequestHeader
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleRequestHeaderAction
-
