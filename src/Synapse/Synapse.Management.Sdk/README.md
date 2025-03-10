@@ -27,7 +27,7 @@ batch:
  - tag: package-composite-v2
  - tag: package-sqlGen3-2020-04-01-preview
 reflect-api-versions: true
-commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
+commit: 9bf72e0435ee4d450d3b9ea5e55d457588cfed19
 ```
 
 ### Tag: package-composite-v2

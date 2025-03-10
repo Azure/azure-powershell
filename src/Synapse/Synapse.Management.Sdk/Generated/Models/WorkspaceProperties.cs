@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="trustedServiceBypassEnabled">Is trustedServiceBypassEnabled for the workspace
         /// </param>
-        public WorkspaceProperties(DataLakeStorageAccountDetails defaultDataLakeStorage = default(DataLakeStorageAccountDetails), string sqlAdministratorLoginPassword = default(string), string managedResourceGroupName = default(string), string provisioningState = default(string), string sqlAdministratorLogin = default(string), VirtualNetworkProfile virtualNetworkProfile = default(VirtualNetworkProfile), System.Collections.Generic.IDictionary<string, string> connectivityEndpoints = default(System.Collections.Generic.IDictionary<string, string>), string managedVirtualNetwork = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), EncryptionDetails encryption = default(EncryptionDetails), System.Guid? workspaceUid = default(System.Guid?), System.Collections.Generic.IDictionary<string, object> extraProperties = default(System.Collections.Generic.IDictionary<string, object>), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), PurviewConfiguration purviewConfiguration = default(PurviewConfiguration), string adlaResourceId = default(string), string publicNetworkAccess = default(string), CspWorkspaceAdminProperties cspWorkspaceAdminProperties = default(CspWorkspaceAdminProperties), System.Collections.Generic.IDictionary<string, object> settings = default(System.Collections.Generic.IDictionary<string, object>), bool? azureAdOnlyAuthentication = default(bool?), bool? trustedServiceBypassEnabled = default(bool?))
+        public WorkspaceProperties(DataLakeStorageAccountDetails defaultDataLakeStorage = default(DataLakeStorageAccountDetails), string sqlAdministratorLoginPassword = default(string), string managedResourceGroupName = default(string), string provisioningState = default(string), string sqlAdministratorLogin = default(string), VirtualNetworkProfile virtualNetworkProfile = default(VirtualNetworkProfile), System.Collections.Generic.IDictionary<string, string> connectivityEndpoints = default(System.Collections.Generic.IDictionary<string, string>), string managedVirtualNetwork = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), EncryptionDetails encryption = default(EncryptionDetails), System.Guid? workspaceUid = default(System.Guid?), object extraProperties = default(object), ManagedVirtualNetworkSettings managedVirtualNetworkSettings = default(ManagedVirtualNetworkSettings), WorkspaceRepositoryConfiguration workspaceRepositoryConfiguration = default(WorkspaceRepositoryConfiguration), PurviewConfiguration purviewConfiguration = default(PurviewConfiguration), string adlaResourceId = default(string), string publicNetworkAccess = default(string), CspWorkspaceAdminProperties cspWorkspaceAdminProperties = default(CspWorkspaceAdminProperties), System.Collections.Generic.IDictionary<string, object> settings = default(System.Collections.Generic.IDictionary<string, object>), bool? azureAdOnlyAuthentication = default(bool?), bool? trustedServiceBypassEnabled = default(bool?))
 
         {
             this.DefaultDataLakeStorage = defaultDataLakeStorage;
@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public VirtualNetworkProfile VirtualNetworkProfile {get; set; }
 
         /// <summary>
-        /// Gets or sets connectivity endpoints
+        /// Gets connectivity endpoints
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectivityEndpoints")]
-        public System.Collections.Generic.IDictionary<string, string> ConnectivityEndpoints {get; set; }
+        public System.Collections.Generic.IDictionary<string, string> ConnectivityEndpoints {get; private set; }
 
         /// <summary>
         /// Gets or sets setting this to &#39;default&#39; will ensure that all compute for
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Gets workspace level configs and feature flags
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extraProperties")]
-        public System.Collections.Generic.IDictionary<string, object> ExtraProperties {get; private set; }
+        public object ExtraProperties {get; private set; }
 
         /// <summary>
         /// Gets or sets managed Virtual Network Settings

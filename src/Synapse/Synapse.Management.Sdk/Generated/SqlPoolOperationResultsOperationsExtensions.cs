@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='operationId'>
         /// Operation ID
         /// </param>
-        public static object GetLocationHeaderResult(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId)
+        public static SqlPool GetLocationHeaderResult(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId)
         {
                 return ((ISqlPoolOperationResultsOperations)operations).GetLocationHeaderResultAsync(resourceGroupName, workspaceName, sqlPoolName, operationId).GetAwaiter().GetResult();
         }
@@ -56,9 +56,60 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> GetLocationHeaderResultAsync(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> GetLocationHeaderResultAsync(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetLocationHeaderResultWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, operationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get the status of a SQL pool operation
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace.
+        /// </param>
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='operationId'>
+        /// Operation ID
+        /// </param>
+        public static SqlPool BeginGetLocationHeaderResult(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId)
+        {
+                return ((ISqlPoolOperationResultsOperations)operations).BeginGetLocationHeaderResultAsync(resourceGroupName, workspaceName, sqlPoolName, operationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get the status of a SQL pool operation
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace.
+        /// </param>
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='operationId'>
+        /// Operation ID
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlPool> BeginGetLocationHeaderResultAsync(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetLocationHeaderResultWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

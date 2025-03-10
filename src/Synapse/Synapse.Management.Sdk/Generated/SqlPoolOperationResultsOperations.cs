@@ -59,6 +59,34 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlPool>> GetLocationHeaderResultWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<SqlPool> _response = await BeginGetLocationHeaderResultWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, operationId, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.OperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get the status of a SQL pool operation
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace.
+        /// </param>
+        /// <param name='sqlPoolName'>
+        /// SQL pool name
+        /// </param>
+        /// <param name='operationId'>
+        /// Operation ID
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
@@ -74,7 +102,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetLocationHeaderResultWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlPool>> BeginGetLocationHeaderResultWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -137,7 +165,7 @@ namespace Microsoft.Azure.Management.Synapse
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetLocationHeaderResult", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginGetLocationHeaderResult", tracingParameters);
             }
             // Construct URL
 
@@ -212,7 +240,7 @@ namespace Microsoft.Azure.Management.Synapse
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -242,7 +270,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<object>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<SqlPool>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -256,7 +284,25 @@ namespace Microsoft.Azure.Management.Synapse
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<object>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlPool>(_responseContent, this.Client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlPool>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -274,7 +320,7 @@ namespace Microsoft.Azure.Management.Synapse
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<object>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<SqlPool>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
