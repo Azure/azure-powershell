@@ -378,6 +378,11 @@ namespace Microsoft.Azure.Management.Synapse
         IIntegrationRuntimeStatusOperations IntegrationRuntimeStatus { get; }
 
         /// <summary>
+        /// Gets the IGetOperations
+        /// </summary>
+        IGetOperations Get { get; }
+
+        /// <summary>
         /// Gets the ISparkConfigurationOperations
         /// </summary>
         ISparkConfigurationOperations SparkConfiguration { get; }
