@@ -642,7 +642,7 @@
           "734"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/serverFarms/ps2936\",\r\n    \"siteConfig\": {\r\n      \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n      \"appSettings\": [\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n          \"value\": \"https://psunittesting.azurecr.io\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n          \"value\": \"psunittesting\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n          \"value\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"East US 2\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/serverFarms/ps2936\",\r\n    \"siteConfig\": {\r\n      \"windowsFxVersion\": \"DOCKER|psunittesting.azurecr.io/webapplication3:latest\",\r\n      \"appSettings\": [\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_URL\",\r\n          \"value\": \"https://psunittesting.azurecr.io\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_USERNAME\",\r\n          \"value\": \"psunittesting\"\r\n        },\r\n        {\r\n          \"name\": \"DOCKER_REGISTRY_SERVER_PASSWORD\",\r\n          \"value\": \"REDACTED\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"East US 2\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -900,7 +900,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/sites/ps4693/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/sites/ps4693/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -969,7 +969,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/sites/ps4693/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ps5639/providers/Microsoft.Web/sites/ps4693/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"DOCKER_REGISTRY_SERVER_URL\": \"https://psunittesting.azurecr.io\",\r\n    \"DOCKER_REGISTRY_SERVER_USERNAME\": \"psunittesting\",\r\n    \"DOCKER_REGISTRY_SERVER_PASSWORD\": \"REDACTED\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
