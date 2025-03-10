@@ -4,7 +4,6 @@ Remove-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName
 ```
 
 ```output
-```output
 AvailabilitySet                            : {}
 ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
 ExtendedLocationType                       : customLocations
@@ -73,7 +72,6 @@ SystemDataLastModifiedAt                   : 08-01-2024 15:14:34
 SystemDataLastModifiedBy                   : 11111111-aaaa-2222-bbbb-333333333333
 SystemDataLastModifiedByType               : Application
 Type                                       : microsoft.scvmm/virtualmachineinstances
-```
 ```
 
 Update Virtual Disk of the SCVMM Virtual Machine.

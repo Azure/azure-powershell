@@ -34,7 +34,7 @@ input-file:
   - $(repo)/specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/scvmm.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json
 
-module-version: 1.0.0
+module-version: 0.1.0
 title: ScVmm
 subject-prefix: $(service-name)
 

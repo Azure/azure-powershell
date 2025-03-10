@@ -1,7 +1,7 @@
 @{
   GUID = '9b1ae3b2-2cbe-48e1-9467-63d13ad61b4a'
   RootModule = './Az.ScVmm.psm1'
-  ModuleVersion = '1.0.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
