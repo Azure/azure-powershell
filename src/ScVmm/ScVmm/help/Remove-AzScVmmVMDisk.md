@@ -1,32 +1,31 @@
 ---
-external help file:
+external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvmdisk
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVMDisk
+# Remove-AzScVmmVMDisk
 
 ## SYNOPSIS
-The operation to Update a virtual machine virtual disk.
+The operation to Remove a virtual machine virtual disk.
 
 ## SYNTAX
 
 ```
-Update-AzScVmmVMDisk -ResourceGroupName <String> -vmName <String> [-bus <Int32>] [-busType <String>]
- [-DiskId <String>] [-DiskName <String>] [-diskSizeGB <Int32>] [-lun <Int32>] [-QosId <String>]
- [-QosName <String>] [-SubscriptionId <String>] [-vhdType <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVMDisk -vmName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DiskName <String>] [-DiskId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Update a virtual machine virtual disk.
+The operation to Remove a virtual machine virtual disk.
 
 ## EXAMPLES
 
-### Example 1: Update Virtual Disk of the virtual machine
+### Example 1: Remove Virtual Disk from the virtual machine
 ```powershell
-Update-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01' -diskSizeGB 40
+Remove-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01'
 ```
 
 ```output
@@ -90,20 +89,6 @@ StorageProfileDisk                         : {{
                                                "volumeType": "BootAndSystem",
                                                "vhdFormatType": "VHD",
                                                "createDiffDisk": "false"
-                                             },
-                                             {
-                                               "name": "test-disk-01",
-                                               "displayName": "test-vm_disk_1",
-                                               "diskId": "00000000-1111-0000-0002-000000000000",
-                                               "diskSizeGB": 0,
-                                               "maxDiskSizeGB": 40,
-                                               "bus": 0,
-                                               "lun": 0,
-                                               "busType": "SCSI",
-                                               "vhdType": "Dynamic",
-                                               "volumeType": "None",
-                                               "vhdFormatType": "VHDX",
-                                               "createDiffDisk": "false"
                                              }}
 SystemDataCreatedAt                        : 08-01-2024 15:05:41
 SystemDataCreatedBy                        : user@contoso.com
@@ -123,36 +108,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -bus
-Bus Number for the disk.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -busType
-
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -209,71 +164,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -diskSizeGB
-Size of the disk in GB
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -lun
-Lun Number for the disk.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosId
-UUID of the Storage QoS Policy to be applied on the disk.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosName
-Name of the Storage QoS Policy to be applied on the disk.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -312,21 +207,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -vhdType
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -389,4 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -43,6 +43,7 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4
 ```
 
+```output
 AvailabilitySet                            : {}
 ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
 ExtendedLocationType                       : customLocations

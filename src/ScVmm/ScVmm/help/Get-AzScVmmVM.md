@@ -1,37 +1,36 @@
 ---
-external help file:
+external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvmdisk
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvm
 schema: 2.0.0
 ---
 
-# Remove-AzScVmmVMDisk
+# Get-AzScVmmVM
 
 ## SYNOPSIS
-The operation to Remove a virtual machine virtual disk.
+Retrieves information about a virtual machine instance.
 
 ## SYNTAX
 
 ```
-Remove-AzScVmmVMDisk -ResourceGroupName <String> -vmName <String> [-DiskId <String>] [-DiskName <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Remove a virtual machine virtual disk.
+Retrieves information about a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Remove Virtual Disk from the virtual machine
+### Example 1: Get Virtual Machine
 ```powershell
-Remove-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01'
+Get-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01"
 ```
 
 ```output
 AvailabilitySet                            : {}
-ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
-ExtendedLocationType                       : customLocations
+xtendedLocationName                        : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
+ExtendedLocationType                       : CustomLocation
 HardwareProfileCpuCount                    : 2
 HardwareProfileDynamicMemoryEnabled        : false
 HardwareProfileDynamicMemoryMaxMb          :
@@ -39,21 +38,17 @@ HardwareProfileDynamicMemoryMinMb          :
 HardwareProfileIsHighlyAvailable           : false
 HardwareProfileLimitCpuForMigration        : false
 HardwareProfileMemoryMb                    : 2048
-Id                                         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm/providers/Microsoft.ScVmm     
-                                             /virtualMachineInstances/default
-InfrastructureProfileBiosGuid              : 00000000-1111-0000-0001-000000000000
+Id                                         : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.HybridCompute/machines/test-vm/providers/Microsoft.SCVMM/VirtualMachineInstances/default
+InfrastructureProfileBiosGuid              : 00000000-1111-0000-1122-000000000000
 InfrastructureProfileCheckpoint            : {}
 InfrastructureProfileCheckpointType        : Production
-InfrastructureProfileCloudId               : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Clouds/
-                                             test-cloud
-InfrastructureProfileGeneration            : 2
-InfrastructureProfileInventoryItemId       :
-InfrastructureProfileTemplateId            : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/Virtual
-                                             MachineTemplates/test-template
-InfrastructureProfileUuid                  : 00000000-1111-0000-0001-000000000000
+InfrastructureProfileCloudId               :
+InfrastructureProfileGeneration            : 1
+InfrastructureProfileInventoryItemId       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmmserver-01/InventoryItems/00000000-1111-0000-0001-000000000000
+InfrastructureProfileTemplateId            :
+InfrastructureProfileUuid                  : 00000000-1111-0000-2222-000000000000
 InfrastructureProfileVMName                : test-vm
-InfrastructureProfileVmmServerId           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServ
-                                             ers/test-vmm
+InfrastructureProfileVmmServerId           : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ScVmm/vmmServers/test-vmmserver-01
 LastRestoredVMCheckpointDescription        :
 LastRestoredVMCheckpointId                 :
 LastRestoredVMCheckpointName               :
@@ -61,26 +56,28 @@ LastRestoredVMCheckpointParentCheckpointId :
 Name                                       : default
 NetworkProfileNetworkInterface             : {{
                                                "displayName": "Network Adapter 1",
-                                               "macAddress": "00:00:00:00:00:00",
+                                               "ipv4Addresses": [ "xx.xx.xx.xx" ],
+                                               "ipv6Addresses": [ ],
+                                               "macAddress": "xx:xx:xx:xx:xx:xx",
                                                "virtualNetworkId": "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.SCVMM/VirtualNetworks/test-vnet",
                                                "networkName": "00000000-1111-0000-0001-000000000000",
                                                "ipv4AddressType": "Dynamic",
                                                "ipv6AddressType": "Dynamic",
                                                "macAddressType": "Dynamic",
-                                               "nicId": "00000000-1122-0000-0001-000000000000"
+                                               "nicId": "00000000-3333-0000-0001-000000000000"
                                              }}
 OSProfileAdminPassword                     :
 OSProfileComputerName                      : ComputerName
 OSProfileOssku                             : Windows Server
 OSProfileOstype                            : Windows
 OSProfileOsversion                         : 10.0.0
-PowerState                                 : Running
+PowerState                                 : Stopped
 ProvisioningState                          : Succeeded
 ResourceGroupName                          : test-rg-01
 StorageProfileDisk                         : {{
-                                               "displayName": "WindowsServer.vhd",
-                                               "diskId": "00000000-1111-0000-0001-000000000000",
-                                               "diskSizeGB": 8,
+                                               "displayName": "disk.vhd",
+                                               "diskId": "00000000-1111-2222-0001-000000000000",
+                                               "diskSizeGB": 10,
                                                "maxDiskSizeGB": 40,
                                                "bus": 0,
                                                "lun": 0,
@@ -99,24 +96,9 @@ SystemDataLastModifiedByType               : Application
 Type                                       : microsoft.scvmm/virtualmachineinstances
 ```
 
-Update Virtual Disk of the SCVMM Virtual Machine.
+Get details of a Virtual Machine.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -134,45 +116,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskId
-The UUID of Virtual Disk
+### -Name
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VMName
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiskName
-The name of Virtual Disk
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,52 +163,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -vmName
-The name of the virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -269,4 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

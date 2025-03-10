@@ -1,32 +1,32 @@
 ---
-external help file:
+external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/add-azscvmmvmdisk
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVMDisk
+# Add-AzScVmmVMDisk
 
 ## SYNOPSIS
-The operation to Update a virtual machine virtual disk.
+The operation to Create a virtual machine virtual disk.
 
 ## SYNTAX
 
 ```
-Update-AzScVmmVMDisk -ResourceGroupName <String> -vmName <String> [-bus <Int32>] [-busType <String>]
- [-DiskId <String>] [-DiskName <String>] [-diskSizeGB <Int32>] [-lun <Int32>] [-QosId <String>]
- [-QosName <String>] [-SubscriptionId <String>] [-vhdType <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzScVmmVMDisk -vmName <String> -ResourceGroupName <String> -DiskName <String> -diskSizeGB <Int32>
+ [-SubscriptionId <String>] [-bus <Int32>] [-lun <Int32>] [-busType <String>] [-vhdType <String>]
+ [-QosName <String>] [-QosId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Update a virtual machine virtual disk.
+The operation to Create a virtual machine virtual disk.
 
 ## EXAMPLES
 
-### Example 1: Update Virtual Disk of the virtual machine
+### Example 1: Attach a new Virtual Disk to the virtual machine
 ```powershell
-Update-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01' -diskSizeGB 40
+Add-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01' -diskSizeGB 20 -bus 0 -lun 0
 ```
 
 ```output
@@ -96,7 +96,7 @@ StorageProfileDisk                         : {{
                                                "displayName": "test-vm_disk_1",
                                                "diskId": "00000000-1111-0000-0002-000000000000",
                                                "diskSizeGB": 0,
-                                               "maxDiskSizeGB": 40,
+                                               "maxDiskSizeGB": 20,
                                                "bus": 0,
                                                "lun": 0,
                                                "busType": "SCSI",
@@ -114,7 +114,7 @@ SystemDataLastModifiedByType               : Application
 Type                                       : microsoft.scvmm/virtualmachineinstances
 ```
 
-Update Virtual Disk of the SCVMM Virtual Machine.
+Attach a new Disk to the SCVMM Virtual Machine.
 
 ## PARAMETERS
 
@@ -149,7 +149,9 @@ Accept wildcard characters: False
 ```
 
 ### -busType
-
+Bus Type of the Disk.
+Accepted values: IDE, SCSI 
+Default value: SCSI
 
 ```yaml
 Type: System.String
@@ -179,21 +181,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskId
-The UUID of Virtual Disk
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DiskName
 The name of Virtual Disk
 
@@ -202,7 +189,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +204,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -317,7 +304,9 @@ Accept wildcard characters: False
 ```
 
 ### -vhdType
-
+VHD Type of the Disk.
+Accepted values: Dynamic, Fixed
+Default value: Dynamic
 
 ```yaml
 Type: System.String
@@ -389,4 +378,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

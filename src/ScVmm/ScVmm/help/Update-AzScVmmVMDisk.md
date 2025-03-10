@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
 online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
 schema: 2.0.0
@@ -13,10 +13,10 @@ The operation to Update a virtual machine virtual disk.
 ## SYNTAX
 
 ```
-Update-AzScVmmVMDisk -ResourceGroupName <String> -vmName <String> [-bus <Int32>] [-busType <String>]
- [-DiskId <String>] [-DiskName <String>] [-diskSizeGB <Int32>] [-lun <Int32>] [-QosId <String>]
- [-QosName <String>] [-SubscriptionId <String>] [-vhdType <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVMDisk -vmName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DiskName <String>] [-DiskId <String>] [-diskSizeGB <Int32>] [-bus <Int32>] [-lun <Int32>]
+ [-busType <String>] [-vhdType <String>] [-QosName <String>] [-QosId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,6 @@ Accept wildcard characters: False
 ```
 
 ### -busType
-
 
 ```yaml
 Type: System.String
@@ -318,7 +317,6 @@ Accept wildcard characters: False
 
 ### -vhdType
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -389,4 +387,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

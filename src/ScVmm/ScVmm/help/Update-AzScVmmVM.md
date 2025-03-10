@@ -1,39 +1,53 @@
 ---
-external help file:
+external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvm
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVMDisk
+# Update-AzScVmmVM
 
 ## SYNOPSIS
-The operation to Update a virtual machine virtual disk.
+The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzScVmmVMDisk -ResourceGroupName <String> -vmName <String> [-bus <Int32>] [-busType <String>]
- [-DiskId <String>] [-DiskName <String>] [-diskSizeGB <Int32>] [-lun <Int32>] [-QosId <String>]
- [-QosName <String>] [-SubscriptionId <String>] [-vhdType <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-CpuCount <Int32>]
+ [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>] [-LimitCpuForMigration]
+ [-MemoryMb <Int32>] [-CheckpointType <String>] [-AvailabilitySetName <String[]>]
+ [-AvailabilitySetId <String[]>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Update a virtual machine virtual disk.
+The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
 
 ## EXAMPLES
 
-### Example 1: Update Virtual Disk of the virtual machine
+### Example 1: Update Virtual Machine
 ```powershell
-Update-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01' -diskSizeGB 40
+Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4
 ```
 
 ```output
 AvailabilitySet                            : {}
 ExtendedLocationName                       : /subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl
 ExtendedLocationType                       : customLocations
-HardwareProfileCpuCount                    : 2
+HardwareProfileCpuCount                    : 4
 HardwareProfileDynamicMemoryEnabled        : false
 HardwareProfileDynamicMemoryMaxMb          :
 HardwareProfileDynamicMemoryMinMb          :
@@ -90,20 +104,6 @@ StorageProfileDisk                         : {{
                                                "volumeType": "BootAndSystem",
                                                "vhdFormatType": "VHD",
                                                "createDiffDisk": "false"
-                                             },
-                                             {
-                                               "name": "test-disk-01",
-                                               "displayName": "test-vm_disk_1",
-                                               "diskId": "00000000-1111-0000-0002-000000000000",
-                                               "diskSizeGB": 0,
-                                               "maxDiskSizeGB": 40,
-                                               "bus": 0,
-                                               "lun": 0,
-                                               "busType": "SCSI",
-                                               "vhdType": "Dynamic",
-                                               "volumeType": "None",
-                                               "vhdFormatType": "VHDX",
-                                               "createDiffDisk": "false"
                                              }}
 SystemDataCreatedAt                        : 08-01-2024 15:05:41
 SystemDataCreatedBy                        : user@contoso.com
@@ -114,7 +114,8 @@ SystemDataLastModifiedByType               : Application
 Type                                       : microsoft.scvmm/virtualmachineinstances
 ```
 
-Update Virtual Disk of the SCVMM Virtual Machine.
+Updates HardwareProfile properties for Virtual Machine.
+For Disk and NIC related updates on the given Virtual Machine use `Update-AzScVmmVMVirtualDisk` and `Update-AzScVmmVMNetworkInterface` respectively.
 
 ## PARAMETERS
 
@@ -133,12 +134,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -bus
-Bus Number for the disk.
+### -AvailabilitySetId
+Availability Sets in vm.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -148,12 +149,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -busType
+### -AvailabilitySetName
+Availability Sets in vm.
 
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckpointType
+Type of checkpoint supported for the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CpuCount
+Gets or sets the number of vCPUs for the vm.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -179,60 +210,120 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskId
-The UUID of Virtual Disk
+### -DynamicMemoryEnabled
+Whether to enable dynamic memory or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DynamicMemoryMaxMb
+Gets or sets the max dynamic memory for the vm.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DynamicMemoryMinMb
+Gets or sets the min dynamic memory for the vm.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LimitCpuForMigration
+Whether to enable processor compatibility mode for live migration of VMs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemoryMb
+MemoryMB is the size of a virtual machine's memory, in MB.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VMName
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiskName
-The name of Virtual Disk
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -diskSizeGB
-Size of the disk in GB
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -lun
-Lun Number for the disk.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,36 +335,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosId
-UUID of the Storage QoS Policy to be applied on the disk.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QosName
-Name of the Storage QoS Policy to be applied on the disk.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -316,30 +377,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -vhdType
-
+### -Tags
+Resource tags
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -vmName
-The name of the virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -389,4 +435,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
