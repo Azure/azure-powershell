@@ -44,9 +44,9 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.pipelineGroupName = "testgroup"
-    $env.resourceGroup = "jinghuankube"
+    $env.resourceGroup = "kubetest"
     $env.location = "centraluseuap"
-    $env.extLocName = "/subscriptions/b09d4a2d-699b-4c76-8c7a-d97165a77a3b/resourceGroups/jinghuankube/providers/Microsoft.ExtendedLocation/customLocations/jinghuanloc"
+    $env.extLocName = "/subscriptions/b09d4a2d-699b-4c76-8c7a-d97165a77a3b/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/customloctest"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
