@@ -15,12 +15,13 @@ The operation to Create a virtual machine network interface.
 ```
 Add-AzScVmmVMNic -NicName <String> -ResourceGroupName <String> -vmName <String> [-ipv4AddressType <String>]
  [-ipv6AddressType <String>] [-macAddress <String>] [-macAddressType <String>] [-SubscriptionId <String>]
- [-virtualNetworkName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-virtualNetworkId <String>] [-virtualNetworkName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The operation to Create a virtual machine network interface.
+Use `-virtualNetworkId` to specify the virtual network ARM ID in place of `-virtualNetworkName` in case Virtual Network is enabled in different Resource Group than Virtual Machine.
 
 ## EXAMPLES
 
@@ -285,6 +286,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -virtualNetworkId
+ARM ID of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

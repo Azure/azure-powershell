@@ -221,7 +221,34 @@ function Add-AzScVmmVMDisk {
           }
 
           try {
-            $diskToAdd = New-AzScVmmVirtualDiskUpdateObject -Bus $bus -BusType $busType -DiskSizeGb $diskSizeGB -Lun $lun -Name $DiskName -StorageQoSPolicyName $QosName -StorageQoSPolicyId $QosId -VhdType $vhdType
+            $diskParams = @{}
+
+            if ($PSBoundParameters.ContainsKey('DiskName') -and $DiskName -ne "") {
+              $diskParams['Name'] = $DiskName
+            }
+            if ($PSBoundParameters.ContainsKey('diskSizeGB')) {
+              $diskParams['DiskSizeGb'] = $diskSizeGB
+            }
+            if ($PSBoundParameters.ContainsKey('bus')) {
+              $diskParams['Bus'] = $bus
+            }
+            if ($null -ne $busType -and $busType -ne "") {
+              $diskParams['BusType'] = $busType
+            }
+            if ($PSBoundParameters.ContainsKey('lun')) {
+              $diskParams['Lun'] = $lun
+            }            
+            if ($null -ne $vhdType -and $vhdType -ne "") {
+              $diskParams['VhdType'] = $vhdType
+            }
+            if ($PSBoundParameters.ContainsKey('QosName')) {
+              $diskParams['StorageQoSPolicyName'] = $QosName
+            }
+            if ($PSBoundParameters.ContainsKey('QosId')) {
+              $diskParams['StorageQoSPolicyId'] = $QosId
+            }
+
+            $diskToAdd = New-AzScVmmVirtualDiskUpdateObject @diskParams
           }
           catch {
             throw "Failed to create new VirtualDiskUpdateObject with specified parameters. Error $($_.Exception.Message)"

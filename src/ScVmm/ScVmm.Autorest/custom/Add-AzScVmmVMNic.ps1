@@ -19,6 +19,7 @@
 The operation to Create a virtual machine network interface.
 .Description
 The operation to Create a virtual machine network interface.
+Use `-virtualNetworkId` to specify the virtual network ARM ID in place of `-virtualNetworkName` in case Virtual Network is enabled in different Resource Group than Virtual Machine.
 .Example
 {{ Add code here }}
 .Example
@@ -66,6 +67,12 @@ function Add-AzScVmmVMNic {
         [System.String]
         # Name of the virtual network.
         ${virtualNetworkName},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
+        [System.String]
+        # ARM ID of the virtual network.
+        ${virtualNetworkId},
   
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Path')]
@@ -209,18 +216,48 @@ function Add-AzScVmmVMNic {
               $ipv6AddressType = "Dynamic"
             }
 
-            try {
-              $virtualNetworkObj = Get-AzScVmmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-              if ($null -eq $virtualNetworkObj) {
+            if ($PSBoundParameters.ContainsKey('virtualNetworkId') -and $PSBoundParameters.ContainsKey('virtualNetworkName')) {
+              throw "Please provide either virtualNetworkId or virtualNetworkName, not both. Use virtualNetworkId if the virtual network is in a different resource group than the virtual machine."
+            }
+
+            if ($PSBoundParameters.ContainsKey('virtualNetworkName')){
+              try {
+                $virtualNetworkObj = Get-AzScVmmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                if ($null -eq $virtualNetworkObj) {
+                  throw "Failed to fetch Virtual Network Object $virtualNetworkName in ResourceGroup $ResourceGroupName"
+                }
+                $vNetId = $virtualNetworkObj.Id
+              }
+              catch {
                 throw "Failed to fetch Virtual Network Object $virtualNetworkName in ResourceGroup $ResourceGroupName"
               }
-            }
-            catch {
-              throw "Failed to fetch Virtual Network Object $virtualNetworkName in ResourceGroup $ResourceGroupName"
-            }
+            } elseif ($PSBoundParameters.ContainsKey('virtualNetworkId')) {
+              $vNetId = $virtualNetworkId
+            } 
             
             try {
-              $nicToAdd = New-AzScVmmNetworkInterfaceUpdateObject -Name $NicName -VirtualNetworkId $virtualNetworkObj.Id -MacAddress $macAddress -Ipv4AddressType $ipv4AddressType -Ipv6AddressType $ipv6AddressType -MacAddressType $macAddressType
+              $nicParams = @{}
+
+              if ($PSBoundParameters.ContainsKey('NicName') -and $NicName -ne "") { 
+                  $nicParams['Name'] = $NicName
+              }
+              if ($PSBoundParameters.ContainsKey('macAddress') -and $macAddress -ne "") { 
+                $nicParams['MacAddress'] = $macAddress 
+              }
+              if ($null -ne $vNetId -and $vNetId -ne "") { 
+                  $nicParams['VirtualNetworkId'] = $vNetId
+              }
+              if ($null -ne $macAddressType -and $macAddressType -ne "") { 
+                  $nicParams['MacAddressType'] = $macAddressType 
+              }
+              if ($null -ne $ipv4AddressType -and $ipv4AddressType -ne "") { 
+                  $nicParams['Ipv4AddressType'] = $ipv4AddressType 
+              }
+              if ($null -ne $ipv6AddressType -and $ipv6AddressType -ne "") { 
+                  $nicParams['Ipv6AddressType'] = $ipv6AddressType 
+              }
+
+              $nicToAdd = New-AzScVmmNetworkInterfaceUpdateObject @nicParams
             }
             catch {
               throw "Failed to create new NetworkInterfaceUpdateObject with specified parameters. Error $($_.Exception.Message)"
@@ -252,25 +289,25 @@ function Add-AzScVmmVMNic {
               foreach ($vmNic in $vmObj.NetworkProfileNetworkInterface) {
                 $nicParams = @{}
 
-                if ($null -ne $vmNic.Name) { 
-                    $nicParams['Name'] = $vmNic.Name 
+                if ($null -ne $vmNic.Name -and $vmNic.Name -ne "") { 
+                  $nicParams['Name'] = $vmNic.Name 
                 }
-                if ($null -ne $vmNic.VirtualNetworkId) { 
+                if ($null -ne $vmNic.VirtualNetworkId -and $vmNic.VirtualNetworkId -ne "") { 
                     $nicParams['VirtualNetworkId'] = $vmNic.VirtualNetworkId 
                 }
-                if ($null -ne $vmNic.MacAddress) { 
+                if ($null -ne $vmNic.MacAddress -and $vmNic.MacAddress -ne "") { 
                     $nicParams['MacAddress'] = $vmNic.MacAddress 
                 }
-                if ($null -ne $vmNic.Ipv4AddressType) { 
+                if ($null -ne $vmNic.Ipv4AddressType -and $vmNic.Ipv4AddressType -ne "") { 
                     $nicParams['Ipv4AddressType'] = $vmNic.Ipv4AddressType 
                 }
-                if ($null -ne $vmNic.Ipv6AddressType) { 
+                if ($null -ne $vmNic.Ipv6AddressType -and $vmNic.Ipv6AddressType -ne "") { 
                     $nicParams['Ipv6AddressType'] = $vmNic.Ipv6AddressType 
                 }
-                if ($null -ne $vmNic.MacAddressType) { 
+                if ($null -ne $vmNic.MacAddressType -and $vmNic.MacAddressType -ne "") { 
                     $nicParams['MacAddressType'] = $vmNic.MacAddressType 
                 }
-                if ($null -ne $vmNic.NicId) { 
+                if ($null -ne $vmNic.NicId -and $vmNic.NicId -ne "") { 
                     $nicParams['NicId'] = $vmNic.NicId 
                 }
 
@@ -283,7 +320,7 @@ function Add-AzScVmmVMNic {
             $newNicObject += $nicToAdd
   
             # List of parameters to remove
-            $keysToRemove = @('vmName', 'ResourceGroupName', 'SubscriptionId', 'NicName', 'virtualNetworkName', 'macAddress', 'macAddressType', 'ipv4AddressType', 'ipv6AddressType')
+            $keysToRemove = @('vmName', 'ResourceGroupName', 'SubscriptionId', 'NicName', 'virtualNetworkName', 'virtualNetworkId', 'macAddress', 'macAddressType', 'ipv4AddressType', 'ipv6AddressType')
             
             # Remove parameters if they exist in PSBoundParameters
             foreach ($key in $keysToRemove) {

@@ -49,39 +49,22 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
 
     # Install Az.Resources, Az.KeyVault and Az.CustomLocation modules in case they are not installed.
-    # Install-Module -Name Az.Resources -Force
-    # Install-Module -Name Az.KeyVault -Force
-    # Install-Module -Name Az.CustomLocation -Force
 
     # Fetch Secrets from KeyVault
     Write-Host "Fetch Secrets from KeyVault"
 
-    # $applianceId = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "ApplianceId0809" -AsPlainText)
-    $applianceId = "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/hsurana-rg/providers/microsoft.resourceconnector/appliances/hsurana-appl-0809"
-    # $clusterExtensionId = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "clusterExtensionId-0809" -AsPlainText)
-    $clusterExtensionId = "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/hsurana-RG/providers/Microsoft.ResourceConnector/appliances/hsurana-Appl-0809/providers/Microsoft.KubernetesConfiguration/extensions/azure-vmmoperator"
-    # $vmmServerFqdn = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerFqdn0809" -AsPlainText)
-    $vmmServerFqdn = "vmmnebdev0809.cdm.lab"
-    # $vmmServerUsername = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerUsername" -AsPlainText)
-    $vmmServerUsername = "cdmlab\cdmlabuser"
-    # $vmmServerPassword = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerPassword" -AsPlainText)
-    $vmmServerPassword = "!!123abc"
-    # $guestUsername = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "guestUsername" -AsPlainText)
-    $guestUsername = "Administrator"
-    # $guestPassword = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "guestPassword" -AsPlainText)
-    $guestPassword = $vmmServerPassword
-    # $cloudUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "cloudUuid" -AsPlainText)
-    $cloudUuid = "9065ad46-ef59-4a45-8a7f-87acd060c9b1"
-    # $vmTemplateUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmTemplateUuid" -AsPlainText)
-    $vmTemplateUuid = "46d3f760-182f-4022-b9fb-3538711ab68b"
-    # $vmNetworkUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmNetworkUuid" -AsPlainText)
-    $vmNetworkUuid = "b1bffb6d-10a2-44ee-ae00-3b127262aaf7"
-    # $vmNetwork2Uuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmNetworkLn562Uuid" -AsPlainText)
-    $vmNetwork2Uuid = "deabb973-5764-4b7b-86ed-41558bc2967c"
-
-    # $vmmSecurePassword = ConvertTo-SecureString $vmmServerPassword -AsPlainText -Force
-    # $guestSecurePassword = ConvertTo-SecureString $guestPassword -AsPlainText -Force
-
+    $applianceId = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "ApplianceId0809" -AsPlainText)
+    $clusterExtensionId = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "clusterExtensionId-0809" -AsPlainText)
+    $vmmServerFqdn = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerFqdn0809" -AsPlainText)
+    $vmmServerUsername = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerUsername" -AsPlainText)
+    $vmmServerPassword = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmmServerPassword" -AsPlainText)
+    $guestUsername = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "guestUsername" -AsPlainText)
+    $guestPassword = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "guestPassword" -AsPlainText)
+    $cloudUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "cloudUuid" -AsPlainText)
+    $vmTemplateUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmTemplateUuid" -AsPlainText)
+    $vmNetworkUuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmNetworkUuid" -AsPlainText)
+    $vmNetwork2Uuid = (Get-AzKeyVaultSecret -VaultName "AzPwshCliTestVault" -Name "vmNetworkLn562Uuid" -AsPlainText)
+    
     write-Host "applianceId: $applianceId"
     write-Host "clusterExtensionId: $clusterExtensionId"
     write-Host "vmmServerFqdn: $vmmServerFqdn"
@@ -113,6 +96,7 @@ function setupEnv() {
     $env.Add("VirtualNetwork2Uuid", $vmNetwork2Uuid)
     $env.Add("AvailabilitySetName", "az-pwsh-test-avset")
     $env.Add("VmName", "az-pwsh-test-vm")
+    $env.Add("VmNameVmTest", "az-pwsh-test-vm-1")
     $env.Add("DiskName", "disk_1")
     $env.Add("NicName", "nic_1")
     $env.Add("CheckpointName", "az-pwsh-test-checkpoint")
@@ -132,9 +116,9 @@ function setupEnv() {
     $env.Add("ResourceGroupEnableInvTest", "az-pwsh-test-rg-02")
     $env.Add("ResourceGroupVmmTest", "az-pwsh-test-rg-03")
 
-    # New-AzResourceGroup -Name $env.ResourceGroupVmTest -Location $env.location
-    # New-AzResourceGroup -Name $env.ResourceGroupEnableInvTest -Location $env.location
-    # New-AzResourceGroup -Name $env.ResourceGroupVmmTest -Location $env.location
+    New-AzResourceGroup -Name $env.ResourceGroupVmTest -Location $env.location
+    New-AzResourceGroup -Name $env.ResourceGroupEnableInvTest -Location $env.location
+    New-AzResourceGroup -Name $env.ResourceGroupVmmTest -Location $env.location
 
     # Deploy CustomLocation in ResourceGroupVmTest, ResourceGroupEnableInvTest and ResourceGroupVmmTest ResourceGroups
     Write-Host "Deploy CustomLocation in ResourceGroups"
@@ -147,14 +131,11 @@ function setupEnv() {
     $env.Add("customLocation2", $customLocation2)
     $env.Add("customLocation3", $customLocation3)
 
-    # $CustomLocationVmTest = (New-AzCustomLocation -Name $customLocation1 -ResourceGroupName $env.ResourceGroupVmTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation1).Id  
-    $CustomLocationVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourcegroups/az-pwsh-test-rg-01/providers/microsoft.extendedlocation/customlocations/az-pwsh-test-cl-01"
+    $CustomLocationVmTest = (New-AzCustomLocation -Name $customLocation1 -ResourceGroupName $env.ResourceGroupVmTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation1).Id  
     Write-Host "CustomLocationVmTest: $CustomLocationVmTest"
-    # $CustomLocationEnableInvTest = (New-AzCustomLocation -Name $customLocation2 -ResourceGroupName $env.ResourceGroupEnableInvTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation2).Id
-    $CustomLocationEnableInvTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourcegroups/az-pwsh-test-rg-02/providers/microsoft.extendedlocation/customlocations/az-pwsh-test-cl-02"
+    $CustomLocationEnableInvTest = (New-AzCustomLocation -Name $customLocation2 -ResourceGroupName $env.ResourceGroupEnableInvTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation2).Id
     Write-Host "CustomLocationEnableInvTest: $CustomLocationEnableInvTest"
-    # $CustomLocationVmmTest = (New-AzCustomLocation -Name $customLocation3 -ResourceGroupName $env.ResourceGroupVmmTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation3).Id
-    $CustomLocationVmmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourcegroups/az-pwsh-test-rg-03/providers/microsoft.extendedlocation/customlocations/az-pwsh-test-cl-03"
+    $CustomLocationVmmTest = (New-AzCustomLocation -Name $customLocation3 -ResourceGroupName $env.ResourceGroupVmmTest -ClusterExtensionId $clusterExtensionId -HostResourceId $applianceId -Location $env.location -Namespace $customLocation3).Id
     Write-Host "CustomLocationVmmTest: $CustomLocationVmmTest"
 
     $env.Add("ExtendedLocationType", "customLocation")
@@ -165,12 +146,10 @@ function setupEnv() {
     # Onboard VMMServer for VM Test and EnableInventory Test
     Write-Host "Onboard VMMServer for VMTest and EnableInvTest"
 
-    # $vmmServerVmTest = (New-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupVmTest -Location $env.location -CustomLocationId $env.CustomLocationVmTest -FQDN $env.FQDN -Port $env.Port -CredentialsUsername $env.ServerUsername -CredentialsPassword $env.ServerPassword).Id
-    $vmmServerVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/vmmServers/az-pwsh-test-vmm"
-    # $vmmServerEnableInvTest = (New-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupEnableInvTest -Location $env.location -CustomLocationId $env.CustomLocationEnableInvTest -FQDN $env.FQDN -Port $env.Port -CredentialsUsername $env.ServerUsername -CredentialsPassword $env.ServerPassword).Id
-    $vmmServerEnableInvTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-02/providers/Microsoft.ScVmm/vmmServers/az-pwsh-test-vmm"
-
+    $securePassword = ConvertTo-SecureString -String $env.ServerPassword -AsPlainText -Force            
+    $vmmServerVmTest = (New-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupVmTest -Location $env.location -CustomLocationId $env.CustomLocationVmTest -FQDN $env.FQDN -Port $env.Port -Username $env.ServerUsername -Password $securePassword).Id
     Write-Host "VmmServerVmTest: $vmmServerVmTest"
+    $vmmServerEnableInvTest = (New-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupEnableInvTest -Location $env.location -CustomLocationId $env.CustomLocationEnableInvTest -FQDN $env.FQDN -Port $env.Port -Username $env.ServerUsername -Password $securePassword).Id
     Write-Host "VmmServerEnableInvTest: $vmmServerEnableInvTest"
 
     $env.Add("VmmServerVmTestId", $vmmServerVmTest)
@@ -179,25 +158,18 @@ function setupEnv() {
     # AvailabilitySet for VM Test
     Write-Host "AvailabilitySet for VM Test"
 
-    # $avsetIdVmTest = (New-AzScVmmAvailabilitySet -Name $env.AvailabilitySetName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -Location $env.location).Id
-    $avsetIdVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/availabilitySets/az-pwsh-test-avset"
-    
+    $avsetIdVmTest = (New-AzScVmmAvailabilitySet -Name $env.AvailabilitySetName -AvailabilitySetName $env.AvailabilitySetName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -Location $env.location).Id
     Write-Host "AvailabilitySetIdVmTest: $avsetIdVmTest"
     $env.Add("AvailabilitySetIdVmTest", $avsetIdVmTest)
     
     # VMNetwork for VM Test
     Write-Host "VMNetwork for VM Test"
 
-    # $vmNetworkIdVmTest = (New-AzScVmmVirtualNetwork -Name $env.VirtualNetworkName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VirtualNetworkUuid -Location $env.location).Id
-    # $vmTemplateIdVmTest = (New-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VmTemplateUuid -Location $env.location).Id
-    # $cloudIdVmTest = (New-AzScVmmCloud -Name $env.CloudName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.CloudUuid -Location $env.location).Id
-
-    $vmNetworkIdVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/virtualNetworks/az-pwsh-test-vnet"
-    $vmTemplateIdVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/vmTemplates/az-pwsh-test-vm-template"
-    $cloudIdVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/clouds/az-pwsh-test-cloud"
-
+    $vmNetworkIdVmTest = (New-AzScVmmVirtualNetwork -Name $env.VirtualNetworkName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VirtualNetworkUuid -Location $env.location).Id
     Write-Host "vmNetworkIdVmTest: $vmNetworkIdVmTest"
+    $vmTemplateIdVmTest = (New-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VmTemplateUuid -Location $env.location).Id
     Write-Host "vmTemplateIdVmTest: $vmTemplateIdVmTest"
+    $cloudIdVmTest = (New-AzScVmmCloud -Name $env.CloudName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.CloudUuid -Location $env.location).Id
     Write-Host "cloudIdVmTest: $cloudIdVmTest"
 
     $env.Add("vmNetworkIdVmTest", $vmNetworkIdVmTest)
@@ -207,10 +179,33 @@ function setupEnv() {
     # Additional VMNetwork for VM Test
     Write-Host "Additional VMNetwork for VM Test"
 
-    # $vmNetwork2IdVmTest = (New-AzScVmmVirtualNetwork -Name $env.VirtualNetwork2Name -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VirtualNetwork2Uuid -Location $env.location).Id
-    $vmNetwork2IdVmTest = "/subscriptions/9e7d5c01-90ea-4969-bdbf-a4517cd82ccd/resourceGroups/az-pwsh-test-rg-01/providers/Microsoft.ScVmm/virtualNetworks/Ln562"
+    $vmNetwork2IdVmTest = (New-AzScVmmVirtualNetwork -Name $env.VirtualNetwork2Name -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VirtualNetwork2Uuid -Location $env.location).Id
     Write-Host "vmNetwork2IdVmTest: $vmNetwork2IdVmTest"
     $env.Add("vmNetwork2IdVmTest", $vmNetwork2IdVmTest)
+
+    $guestSecurePassword = ConvertTo-SecureString -String $env.GuestPassword -AsPlainText -Force
+    $vmNameObj = New-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest -VmmServerName $env.VmmServerName -CloudName $env.CloudName -TemplateName $env.VmTemplateName -CpuCount 4 -MemoryMb 4096 -AdminPassword $guestSecurePassword -Generation 2 -Location $env.location       
+    $vmNameObj = Get-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest
+    $vmNameInvId = $vmNameObj.InfrastructureProfileInventoryItemId
+    $vmNameUuid = $vmNameObj.InfrastructureProfileUuid
+    if ($vmNameUuid -eq "") {
+        Start-TestSleep -Seconds 30
+        $vmObj = Get-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest
+        $vmNameUuid = $vmObj.InfrastructureProfileUuid
+    }
+    if ($vmNameInvId -eq "") {
+        Start-TestSleep -Seconds 30
+        $vmObj = Get-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest
+        $vmNameInvId = $vmObj.InfrastructureProfileInventoryItemId
+    }
+    
+    if ([string]::IsNullOrEmpty($vmNameInvId)) { throw "vmNameInvId is empty" }
+    if ([string]::IsNullOrEmpty($vmNameUuid)) { throw "vmNameUuid is empty" }
+
+    Write-Host "vmNameInvId: $vmNameInvId"
+    $env.Add("vmNameInvId", $vmNameInvId)
+    Write-Host "vmNameUuid: $vmNameUuid"
+    $env.Add("vmNameUuid", $vmNameUuid)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -223,19 +218,20 @@ function setupEnv() {
 function cleanupEnv() {
     Write-Host "Utils.ps1: cleanupEnv()"
     # Clean up all resources created for test
-    # Remove-AzScVmmVirtualNetwork -Name $env.VirtualNetworkName -ResourceGroupName $env.ResourceGroupVmTest 
-    # Remove-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupVmTest 
-    # Remove-AzScVmmCloud -Name $env.CloudName -ResourceGroupName $env.ResourceGroupVmTest 
-    # Remove-AzScVmmVirtualNetwork -Name $env.VirtualNetwork2Name -ResourceGroupName $env.ResourceGroupVmTest
-    # Remove-AzScVmmAvailabilitySet -Name $env.AvailabilitySetName -ResourceGroupName $env.ResourceGroupVmTest
-    # Remove-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupVmTest
-    # Remove-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupEnableInvTest
-    # Remove-AzCustomLocation -Name $env.customLocation1 -ResourceGroupName $env.ResourceGroupVmTest
-    # Remove-AzCustomLocation -Name $env.customLocation2 -ResourceGroupName $env.ResourceGroupEnableInvTest
-    # Remove-AzCustomLocation -Name $env.customLocation3 -ResourceGroupName $env.ResourceGroupVmmTest
-    # Remove-AzResourceGroup -Name $env.ResourceGroupVmTest
-    # Remove-AzResourceGroup -Name $env.ResourceGroupEnableInvTest
-    # Remove-AzResourceGroup -Name $env.ResourceGroupVmmTest
+    Remove-AzScVmmVirtualNetwork -Name $env.VirtualNetworkName -ResourceGroupName $env.ResourceGroupVmTest 
+    Remove-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupVmTest 
+    Remove-AzScVmmCloud -Name $env.CloudName -ResourceGroupName $env.ResourceGroupVmTest 
+    Remove-AzScVmmVirtualNetwork -Name $env.VirtualNetwork2Name -ResourceGroupName $env.ResourceGroupVmTest
+    Remove-AzScVmmAvailabilitySet -Name $env.AvailabilitySetName -ResourceGroupName $env.ResourceGroupVmTest
+    Remove-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest -DeleteFromHost -DeleteMachine
+    Remove-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupVmTest
+    Remove-AzScVmmServer -Name $env.VmmServerName -ResourceGroupName $env.ResourceGroupEnableInvTest
+    Remove-AzCustomLocation -Name $env.customLocation1 -ResourceGroupName $env.ResourceGroupVmTest
+    Remove-AzCustomLocation -Name $env.customLocation2 -ResourceGroupName $env.ResourceGroupEnableInvTest
+    Remove-AzCustomLocation -Name $env.customLocation3 -ResourceGroupName $env.ResourceGroupVmmTest
+    Remove-AzResourceGroup -Name $env.ResourceGroupVmTest
+    Remove-AzResourceGroup -Name $env.ResourceGroupEnableInvTest
+    Remove-AzResourceGroup -Name $env.ResourceGroupVmmTest
 
     Write-Host "Utils.ps1: cleanupEnv() completed"
 }
