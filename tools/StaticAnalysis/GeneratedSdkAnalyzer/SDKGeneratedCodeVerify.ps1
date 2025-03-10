@@ -122,7 +122,7 @@ try {
                     npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
                     npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
                     npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
                 }
