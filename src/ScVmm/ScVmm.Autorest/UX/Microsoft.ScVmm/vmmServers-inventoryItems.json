@@ -1,0 +1,52 @@
+{
+  "resourceType": "vmmServers/inventoryItems",
+  "apiVersion": "2023-10-07",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.scvmm"
+  },
+  "commands": [
+    {
+      "name": "Get-AzScVmmInventoryItem",
+      "description": "Shows an inventory item.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmminventoryitem"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VmmServerName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Shows an inventory item.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.inventoryItemResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VmmServerName",
+              "value": "[Path.vmmServerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
