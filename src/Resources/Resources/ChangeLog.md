@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Resources SDK to 2024-11-01.
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
@@ -26,7 +27,6 @@
 
 ## Version 7.8.1
 * Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
-* Updated Resources SDK to 2024-11-01.
 
 ## Version 7.8.0
 * Upgraded nuget package to signed package.
