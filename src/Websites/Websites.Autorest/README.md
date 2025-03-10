@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Websites service.
 
 ---
-## Status
-[![Az.Websites](https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites "Az.Websites")](https://www.powershellgallery.com/packages/Az.Websites/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,15 +27,26 @@ For information on how to develop for `Az.Websites`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: ec2b6d1985ce89c8646276e0806a738338e98bd2
+commit: b5d78da207e9c5d8f82e95224039867271f47cdf
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/AppServiceEnvironments.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/AppServicePlans.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/Certificates.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/CommonDefinitions.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/DeletedWebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/Diagnostics.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/Global.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/Provider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/Recommendations.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/ResourceHealthMetadata.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/ResourceProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/WebApps.json
 
 title: Websites
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -71,7 +79,32 @@ directive:
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}"].get.operationId
-    transform: return "StaticSites_ListUserProvidedFunctionAppByFunctionName" 
+    transform: return "StaticSites_ListUserProvidedFunctionAppByFunctionName"
+
+  # Remove default response
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml"].post.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml"].post.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
 
   # Add 204 status code of response.
   - from: swagger-document
@@ -90,7 +123,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/b5d78da207e9c5d8f82e95224039867271f47cdf/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -111,7 +144,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/b5d78da207e9c5d8f82e95224039867271f47cdf/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -129,10 +162,15 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/b5d78da207e9c5d8f82e95224039867271f47cdf/specification/web/resource-manager/Microsoft.Web/stable/2024-04-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
+
+  - from: swagger-document
+    where: $.paths
+    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/regenerateAccessKey"]
+
 # Use "StaticWebApp" as subject prefix
   - where:
       subject-prefix: Websites
@@ -148,7 +186,7 @@ directive:
 
   - where:
       subject: (.*)PrivateLink(.*)
-    remove: true
+    remove: true 
 
   - where:
       subject: (.*)PrivateEndpoint(.*)
@@ -158,7 +196,7 @@ directive:
   - where:
       subject: PreviewWorkflow
     remove: true
-
+  
   # Server not implement.
   - where:
       subject: ZipDeployment
@@ -344,1044 +382,24 @@ directive:
   # Customise for webapp swagger. Only keep continuouswebjobs path and delete others path.
 
   - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/providers/Microsoft.Web/sites"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/analyzeCustomHostname"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/applySlotConfig"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/ftp"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/appsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/authsettingsV2/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/azurestorageaccounts/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/backup/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings/{appSettingKey}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/connectionstrings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/connectionstrings/{connectionStringKey}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/connectionstrings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/logs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/metadata/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/publishingcredentials/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/pushsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/slotConfigNames"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web/snapshots/{snapshotId}/recover"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/containerlogs/zip/download"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/admin/token"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/keys/{keyName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listkeys"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}/listsecrets"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listkeys"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/listsyncstatus"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/sync"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/host/default/{keyType}/{keyName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostNameBindings/{hostName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridConnectionRelays"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/dump"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/processes/{processId}/threads"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/iscloneable"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listbackups"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/listsyncfunctiontriggerstatus"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql/status"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkFeatures/{view}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/operationresults/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/start"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/stop"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/current/operationresults/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTraces/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/newpassword"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/perfcounters"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/phplogging"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateAccess/virtualNetworks"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateLinkResources"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/dump"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/modules/{baseAddress}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/processes/{processId}/threads"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publicCertificates/{publicCertificateName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/publishxml"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/resetSlotConfig"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restart"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/analyzeCustomHostname"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/applySlotConfig"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/ftp"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/basicPublishingCredentialsPolicies/scm"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/appsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/authsettingsV2/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/azurestorageaccounts/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/backup/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/appsettings/{appSettingKey}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/configreferences/connectionstrings/{connectionStringKey}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/connectionstrings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/logs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/metadata/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/publishingcredentials/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/pushsettings/list"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/web/snapshots/{snapshotId}/recover"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/containerlogs/zip/download"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deployments/{id}/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/discoverbackup"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/domainOwnershipIdentifiers/{domainOwnershipIdentifierName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/admin/token"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/keys/{keyName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listkeys"]
+    where: $.definitions.OperationResultProperties
+    transform: delete $.properties.error
 
   - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}/listsecrets"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listkeys"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/listsyncstatus"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/sync"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/host/default/{keyType}/{keyName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hostNameBindings/{hostName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridconnection/{entityName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionNamespaces/{namespaceName}/relays/{relayName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/hybridConnectionRelays"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy/log"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/dump"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/modules/{baseAddress}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/processes/{processId}/threads"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/iscloneable"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listbackups"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/listsyncfunctiontriggerstatus"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/migratemysql/status"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkConfig/virtualNetwork"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkFeatures/{view}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/operationresults/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/start"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/stop"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/current/operationresults/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTraces/{operationId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/newpassword"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/perfcounters"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/phplogging"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/premieraddons/{premierAddOnName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateAccess/virtualNetworks"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateLinkResources"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/dump"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/modules/{baseAddress}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/processes/{processId}/threads"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publicCertificates/{publicCertificateName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/publishxml"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/resetSlotConfig"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restart"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromBackupBlob"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromDeletedApp"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsdiffs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshots"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/snapshotsdr"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/start"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stop"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/stopNetworkTrace"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sync"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/syncfunctiontriggers"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/usages"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsdiffs"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshots"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/snapshotsdr"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/start"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stop"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/stopNetworkTrace"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sync"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/syncfunctiontriggers"]
-
-  - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/usages"]
+    where: $.definitions.Expression
+    transform: delete $.properties.value
 
   - from: swagger-document
-    where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections"]
+    where: $.definitions.ExpressionTraces
+    transform: delete $.properties.value
 
   - from: swagger-document
     where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}"]
+    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deploymentStatus/{deploymentStatusId}"]
 
   - from: swagger-document
     where: $.paths
-    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/virtualNetworkConnections/{vnetName}/gateways/{gatewayName}"]
+    transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deploymentStatus/{deploymentStatusId}"]
 
   # - from: swagger-document
   #   where: $.paths
@@ -1391,9 +409,9 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs"].get.description
-    transform: return "List webjobs for an app."
+  # - from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/webjobs"].get.description
+  # transform: return "List webjobs for an app."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1403,9 +421,9 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs"].get.description
-    transform: return "List webjobs for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/webjobs"].get.description
+  #  transform: return "List webjobs for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1415,13 +433,13 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"].get.description
-    transform: return "Get or list triggered web for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"].get.description
+  #  transform: return "Get or list triggered web for an app."
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"].delete.description
-    transform: return "Delete a triggered web job for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}"].delete.description
+  #  transform: return "Delete a triggered web job for an app."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1431,17 +449,17 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"].get.description
-    transform: return "Get or list triggered web job's history for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}"].get.description
+  #  transform: return "Get or list triggered web job's history for an app."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"].post.description
-    transform: return "Run a triggered web job for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/run"].post.description
+  #  transform: return "Run a triggered web job for an app."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1451,13 +469,13 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"].get.description
-    transform: return "Get or list triggered web for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"].get.description
+  #  transform: return "Get or list triggered web for a deployment slot."
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"].delete.description
-    transform: return "Delete a triggered web job for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}"].delete.description
+  #  transform: return "Delete a triggered web job for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1467,17 +485,17 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}"].get.description
-    transform: return "Get or list triggered web job's history for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/history/{id}"].get.description
+  #  transform: return "Get or list triggered web job's history for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run"].post.description
-    transform: return "Run a triggered web job for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/triggeredwebjobs/{webJobName}/run"].post.description
+  #  transform: return "Run a triggered web job for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1487,29 +505,29 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"].get.description
-    transform: return "Get or list continuous web for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"].get.description
+  #  transform: return "Get or list continuous web for an app."
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"].delete.description
-    transform: return "Delete a continuous web job for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}"].delete.description
+  #  transform: return "Delete a continuous web job for an app."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start"]
   
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start"].post.description
-    transform: return "Start a continuous web job for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start"].post.description
+  #  transform: return "Start a continuous web job for an app."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop"].post.description
-    transform: return "Stop a continuous web job for an app."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop"].post.description
+  #  transform: return "Stop a continuous web job for an app."
 
   # - from: swagger-document
   #   where: $.paths
@@ -1519,29 +537,29 @@ directive:
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"].get.description
-    transform: return "Get or list continuous web for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"].get.description
+  #  transform: return "Get or list continuous web for a deployment slot."
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"].delete.description
-    transform: return "Delete a continuous web job for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}"].delete.description
+  #  transform: return "Delete a continuous web job for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start"].post.description
-    transform: return "Start a continuous web job for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start"].post.description
+  #  transform: return "Start a continuous web job for a deployment slot."
 
   # - from: swagger-document
   #   where: $.paths
   #   transform: delete $["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop"]
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop"].post.description
-    transform: return "Stop a continuous web job for a deployment slot."
+  #- from: swagger-document
+  #  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop"].post.description
+  #  transform: return "Stop a continuous web job for a deployment slot."
 
 # Use "WebApp" as subject prefix
   - where:
@@ -1577,11 +595,11 @@ directive:
       subject: SlotWebJob
 
   # The service response result is "No route registered for '/api/webjobs/webjobname?api-version=2021-02-01'"
-  - where:
-      verb: Get
-      subject: ^WebJob$|^SlotWebJob$
-      variant: Get|GetViaIdentity
-    remove: true
+  #- where:
+  #    verb: Get
+  #    subject: ^WebJob$|^SlotWebJob$
+  #    variant: Get|GetViaIdentity
+  #  remove: true
 
   - where:
       subject: WebJob|ContinuousWebJob|TriggeredWebJob|TriggeredWebJobHistory|SlotContinuousWebJob|SlotWebJob|SlotTriggeredWebJob|SlotTriggeredWebJobHistory
