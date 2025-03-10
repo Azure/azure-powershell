@@ -56,7 +56,10 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="created">The timestamp of resource creation.
         /// </param>
-        public SparkConfigurationResource(System.Collections.Generic.IDictionary<string, string> configs, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), System.Collections.Generic.IList<string> annotations = default(System.Collections.Generic.IList<string>), string notes = default(string), string createdBy = default(string), System.DateTime? created = default(System.DateTime?))
+
+        /// <param name="configMergeRule">SparkConfiguration merge configs.
+        /// </param>
+        public SparkConfigurationResource(System.Collections.Generic.IDictionary<string, string> configs, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), System.Collections.Generic.IList<string> annotations = default(System.Collections.Generic.IList<string>), string notes = default(string), string createdBy = default(string), System.DateTime? created = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> configMergeRule = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(id, name, type, etag)
         {
@@ -66,6 +69,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             this.Notes = notes;
             this.CreatedBy = createdBy;
             this.Created = created;
+            this.ConfigMergeRule = configMergeRule;
             CustomInit();
         }
 
@@ -110,6 +114,12 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.created")]
         public System.DateTime? Created {get; set; }
+
+        /// <summary>
+        /// Gets or sets sparkConfiguration merge configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.configMergeRule")]
+        public System.Collections.Generic.IDictionary<string, string> ConfigMergeRule {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -122,6 +132,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Configs");
             }
+
 
 
 

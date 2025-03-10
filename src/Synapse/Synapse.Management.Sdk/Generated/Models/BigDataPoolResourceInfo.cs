@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="isComputeIsolationEnabled">Whether compute isolation is required or not.
         /// </param>
 
+        /// <param name="isAutotuneEnabled">Whether autotune is required or not.
+        /// </param>
+
         /// <param name="sessionLevelPackagesEnabled">Whether session level packages enabled.
         /// </param>
 
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="lastSucceededTimestamp">The time when the Big Data pool was updated successfully.
         /// </param>
-        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), LibraryRequirements libraryRequirements = default(LibraryRequirements), string nodeSize = default(string), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), int? cacheSize = default(int?), DynamicExecutorAllocation dynamicExecutorAllocation = default(DynamicExecutorAllocation), string sparkEventsFolder = default(string), int? nodeCount = default(int?), System.Collections.Generic.IList<LibraryInfo> customLibraries = default(System.Collections.Generic.IList<LibraryInfo>), SparkConfigProperties sparkConfigProperties = default(SparkConfigProperties), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSizeFamily = default(string), System.DateTime? lastSucceededTimestamp = default(System.DateTime?))
+        public BigDataPoolResourceInfo(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), LibraryRequirements libraryRequirements = default(LibraryRequirements), string nodeSize = default(string), string provisioningState = default(string), AutoScaleProperties autoScale = default(AutoScaleProperties), System.DateTime? creationDate = default(System.DateTime?), AutoPauseProperties autoPause = default(AutoPauseProperties), bool? isComputeIsolationEnabled = default(bool?), bool? isAutotuneEnabled = default(bool?), bool? sessionLevelPackagesEnabled = default(bool?), int? cacheSize = default(int?), DynamicExecutorAllocation dynamicExecutorAllocation = default(DynamicExecutorAllocation), string sparkEventsFolder = default(string), int? nodeCount = default(int?), System.Collections.Generic.IList<LibraryInfo> customLibraries = default(System.Collections.Generic.IList<LibraryInfo>), SparkConfigProperties sparkConfigProperties = default(SparkConfigProperties), string sparkVersion = default(string), string defaultSparkLogFolder = default(string), string nodeSizeFamily = default(string), System.DateTime? lastSucceededTimestamp = default(System.DateTime?))
 
         : base(location, id, name, type, tags)
         {
@@ -111,6 +114,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             this.CreationDate = creationDate;
             this.AutoPause = autoPause;
             this.IsComputeIsolationEnabled = isComputeIsolationEnabled;
+            this.IsAutotuneEnabled = isAutotuneEnabled;
             this.SessionLevelPackagesEnabled = sessionLevelPackagesEnabled;
             this.CacheSize = cacheSize;
             this.DynamicExecutorAllocation = dynamicExecutorAllocation;
@@ -173,6 +177,12 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isComputeIsolationEnabled")]
         public bool? IsComputeIsolationEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether autotune is required or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isAutotuneEnabled")]
+        public bool? IsAutotuneEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets whether session level packages enabled.
