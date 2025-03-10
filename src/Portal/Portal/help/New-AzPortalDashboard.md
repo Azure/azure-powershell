@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPortalDashboard
 
 ## SYNOPSIS
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## SYNTAX
 
@@ -16,25 +16,39 @@ Creates or updates a Dashboard.
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-Lens <IDashboardLens[]>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Resource <IDashboard> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -Resource <IDashboard> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateByFile
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DashboardPath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## EXAMPLES
 
@@ -85,12 +99,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lens
-The dashboard lenses.
-To construct, see NOTES section for LENS properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Lens
+The dashboard lenses.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardLens[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -146,12 +189,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-The shared dashboard resource definition.
-To construct, see NOTES section for RESOURCE properties and create a hash table.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Resource
+The shared dashboard resource definition.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 Parameter Sets: Create
 Aliases:
 
@@ -245,11 +302,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## NOTES
 
