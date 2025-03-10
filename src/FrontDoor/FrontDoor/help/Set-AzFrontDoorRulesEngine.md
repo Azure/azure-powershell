@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorrulesengine
 schema: 2.0.0
@@ -8,36 +8,22 @@ schema: 2.0.0
 # Set-AzFrontDoorRulesEngine
 
 ## SYNOPSIS
-Update a Rules Engine.
+update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Set-AzFrontDoorRulesEngine -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
- [-Rule <PSRulesEngineRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Set-AzFrontDoorRulesEngine -InputObject <PSRulesEngine> [-Rule <PSRulesEngineRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceIdParameterSet
-```
-Set-AzFrontDoorRulesEngine -ResourceId <String> [-Rule <PSRulesEngineRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFrontDoorRulesEngine -FrontDoorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rule <IRulesEngineRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a Rules Engine.
+update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ## EXAMPLES
 
 ### Example 1
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name myRulesEngine
 
@@ -57,13 +43,29 @@ Get an existing rules engine configuration and add another rules engine rule to 
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -73,11 +75,11 @@ Accept wildcard characters: False
 ```
 
 ### -FrontDoorName
-Front Door name.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -87,30 +89,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The Rules Engine object to update.
+### -Name
+Name of the Rules Engine which is unique within the Front Door.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine
-Parameter Sets: ByObjectParameterSet
-Aliases:
+Type: System.String
+Parameter Sets: (All)
+Aliases: RulesEngineName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Rules engine name.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,11 +135,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name that the Front Door will be created in.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -132,32 +149,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the RulesEngine to update
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Rule
 A list of rules that define a particular Rules Engine Configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngineRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineRule[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,7 +196,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -197,13 +216,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSRulesEngine
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngine
 
 ## NOTES
 

@@ -1,25 +1,25 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorloadbalancingsettingobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorloadbalancingsettingobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorLoadBalancingSettingObject
 
 ## SYNOPSIS
-Create a PSLoadBalancingSetting object for Front Door creation
+Create an in-memory object for LoadBalancingSettingsModel.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorLoadBalancingSettingObject -Name <String> [-SampleSize <Int32>]
- [-SuccessfulSamplesRequired <Int32>] [-AdditionalLatencyInMilliseconds <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorLoadBalancingSettingObject [-AdditionalLatencyInMilliseconds <Int32>] [-Name <String>]
+ [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [-Id <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a PSLoadBalancingSetting object for Front Door creation
+Create an in-memory object for LoadBalancingSettingsModel.
 
 ## EXAMPLES
 
@@ -38,13 +38,12 @@ Name                          : loadbalancingsetting1
 Type                          :
 ```
 
-Create a PSLoadBalancingSetting object for Front Door creation
+Create a LoadBalancingSetting object for Front Door creation
 
 ## PARAMETERS
 
 ### -AdditionalLatencyInMilliseconds
-The additional latency in milliseconds for probes to fall into the lowest latency bucket. 
-Default value is 0
+The additional latency in milliseconds for probes to fall into the lowest latency bucket.
 
 ```yaml
 Type: System.Int32
@@ -58,13 +57,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Id
+Resource ID.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -74,14 +73,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-health probe setting name.
+Resource name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +104,6 @@ Accept wildcard characters: False
 
 ### -SampleSize
 The number of samples to consider for load balancing decisions.
-Default value is 4
 
 ```yaml
 Type: System.Int32
@@ -105,8 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -SuccessfulSamplesRequired
-The number of samples within the sample period that must succeed
-Default value is 2
+The number of samples within the sample period that must succeed.
 
 ```yaml
 Type: System.Int32
@@ -125,15 +137,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoor](./New-AzFrontDoor.md)
-[Set-AzFrontDoor](./Set-AzFrontDoor.md)
