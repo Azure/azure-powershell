@@ -27,7 +27,7 @@ title: CosmosDBManagementClient
 ### 
 ``` yaml 
 commit: 2afa5b356adf6cf51209d2cf28d38644c69d9832
-apiversion: "2024-08-15"
+apiversion: "2024-11-15"
 previewapiversion: "2024-12-01-preview"
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/cosmos-db.json
