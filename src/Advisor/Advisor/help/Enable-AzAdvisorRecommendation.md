@@ -1,5 +1,5 @@
 ---
-external help file: Az.Advisor-help.xml
+external help file:
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 schema: 2.0.0
@@ -15,19 +15,19 @@ Enables Azure Advisor recommendation(s).
 ### IdParameterSet (Default)
 ```
 Enable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterSet
-```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -RecommendationName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -InputObject <IAdvisorIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### NameParameterSet
+```
+Enable-AzAdvisorRecommendation -RecommendationName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,31 +35,27 @@ Enables Azure Advisor recommendation(s).
 
 ## EXAMPLES
 
-### Example 1: Enable recommendation by resource Id
+### Example 1: {{ Add title here }}
 ```powershell
-Enable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41
+{{ Add code here }}
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Enable recommendation by resource Id
+{{ Add description here }}
 
-### Example 2: Enable recommendation byrecommendation name
+### Example 2: {{ Add title here }}
 ```powershell
-Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41
+{{ Add code here }}
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Enable recommendation byrecommendation name
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -80,7 +76,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
@@ -179,8 +174,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 
 ## RELATED LINKS
+

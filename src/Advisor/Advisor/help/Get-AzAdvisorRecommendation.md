@@ -1,5 +1,5 @@
 ---
-external help file: Az.Advisor-help.xml
+external help file:
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 schema: 2.0.0
@@ -18,18 +18,6 @@ Get-AzAdvisorRecommendation [-SubscriptionId <String[]>] [-Filter <String>] [-De
  [<CommonParameters>]
 ```
 
-### ListById
-```
-Get-AzAdvisorRecommendation [-SubscriptionId <String[]>] [-Category <String>] -ResourceId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListByName
-```
-Get-AzAdvisorRecommendation [-SubscriptionId <String[]>] -ResourceGroupName <String> [-Category <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetById
 ```
 Get-AzAdvisorRecommendation -Id <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
@@ -38,8 +26,19 @@ Get-AzAdvisorRecommendation -Id <String> -ResourceUri <String> [-DefaultProfile 
 
 ### GetViaIdentity1
 ```
-Get-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListById
+```
+Get-AzAdvisorRecommendation -ResourceId <String> [-Category <String>] [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByName
+```
+Get-AzAdvisorRecommendation -ResourceGroupName <String> [-Category <String>] [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,48 +46,27 @@ Obtains details of a cached recommendation.
 
 ## EXAMPLES
 
-### Example 1: List Recommendation by subscriptionId and resource group name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+{{ Add code here }}
 ```
 
 ```output
-Name                                 Category         Resource Group Impact ImpactedValue ImpactedField
-----                                 --------         -------------- ------ ------------- -------------
-71411b72-e7de-9dc2-308b-5c60252e1456 HighAvailability lnxtest        Medium lnxtest-vnet  MICROSOFT.NETWORK/VIRTUALNETWORKS
-bf8ebdfd-6caa-9f55-53ae-ffafefbf3a7c HighAvailability lnxtest        Medium advisortest   MICROSOFT.NETWORK/VIRTUALNETWORKS
-339071fa-d66a-be4f-9cf8-22b67552b287 HighAvailability lnxtest        Medium advisor-test  MICROSOFT.NETWORK/VIRTUALNETWORKS
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List Recommendation by subscriptionId
+{{ Add description here }}
 
-### Example 2: List Recommendation by subscriptionId and filter
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzAdvisorRecommendation -filter "Category eq 'HighAvailability' and ResourceGroup eq 'lnxtest'"
+{{ Add code here }}
 ```
 
 ```output
-Name                                 Category         Resource Group Impact ImpactedValue ImpactedField
-----                                 --------         -------------- ------ ------------- -------------
-71411b72-e7de-9dc2-308b-5c60252e1456 HighAvailability lnxtest        Medium lnxtest-vnet  MICROSOFT.NETWORK/VIRTUALNETWORKS
-bf8ebdfd-6caa-9f55-53ae-ffafefbf3a7c HighAvailability lnxtest        Medium advisortest   MICROSOFT.NETWORK/VIRTUALNETWORKS
-339071fa-d66a-be4f-9cf8-22b67552b287 HighAvailability lnxtest        Medium advisor-test  MICROSOFT.NETWORK/VIRTUALNETWORKS
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List Recommendation by subscriptionId and filter
-
-### Example 3: Get Recommendation by Id and resource Id
-```powershell
-Get-AzAdvisorRecommendation -Id 42963553-61de-5334-2d2e-47f3a0099d41 -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f
-```
-
-```output
-Name                                 Category Resource Group   Impact ImpactedValue    ImpactedField
-----                                 -------- --------------   ------ -------------    -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   arcbox-capi-mgmt Microsoft.Compute/virtualMachines
-```
-
-Get Recommendation by Id and resource Id
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -124,7 +102,7 @@ Accept wildcard characters: False
 
 ### -Filter
 The filter to apply to the recommendations.
-Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#-category)'] with operators ['eq', 'and', 'or'].
+Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#category)'] with operators ['eq', 'and', 'or'].
 Example:
 - $filter=Category eq 'Cost' and ResourceGroup eq 'MyResourceGroup'
 
@@ -240,8 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 
 ## RELATED LINKS
+

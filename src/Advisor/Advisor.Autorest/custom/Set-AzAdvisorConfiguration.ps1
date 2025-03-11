@@ -22,7 +22,7 @@ Updates or creates the Azure Advisor Configuration.
 https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 #>
 function Set-AzAdvisorConfiguration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData])]
     [CmdletBinding(DefaultParameterSetName='CreateByLCT', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='CreateByRG', Mandatory)]

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Advisor-help.xml
+external help file:
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
 schema: 2.0.0
@@ -14,13 +14,12 @@ Retrieve Azure Advisor configurations and also retrieve configurations of contai
 
 ### List (Default)
 ```
-Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] -ResourceGroupName <String>
+Get-AzAdvisorConfiguration -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -110,8 +109,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 
 ## NOTES
 
 ## RELATED LINKS
+

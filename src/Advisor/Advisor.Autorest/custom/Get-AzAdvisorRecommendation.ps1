@@ -22,7 +22,7 @@ Obtains details of a cached recommendation.
 https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 #>
 function Get-AzAdvisorRecommendation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
     [CmdletBinding(DefaultParameterSetName='ListByFilter', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ListByName', Mandatory)]
