@@ -13,10 +13,10 @@ Create a DynatraceSingleSignOnResource
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] [-AadDomain <String[]>] [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>]
+ [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -110,21 +111,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Single Sign On Configuration Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -246,8 +232,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IDynatraceSingleSignOnResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

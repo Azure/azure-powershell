@@ -27,15 +27,13 @@ List the resources currently being monitored by the Dynatrace monitor resource.
 Get-AzDynatraceMonitoredResource -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
-```output
-```
-
 This command lists the resources currently being monitored by the Dynatrace monitor resource.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,8 +103,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitoredResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
