@@ -1,59 +1,43 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitormetricstatus
 schema: 2.0.0
 ---
 
-# Get-AzDynatraceMonitorSSOConfig
+# Get-AzDynatraceMonitorMetricStatus
 
 ## SYNOPSIS
-Get a DynatraceSingleSignOnResource
+Get metric status
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDynatraceMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDynatraceMonitorSSOConfig -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDynatraceMonitorMetricStatus -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a DynatraceSingleSignOnResource
+Get metric status
 
 ## EXAMPLES
 
-### Example 1: Get a dynatrace SingleSignOn resource
+### Example 1: get metric status
 ```powershell
-Get-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
+Get-AzDynatraceMonitorMetricStatus -MonitorName dyob4hzw1d -ResourceGroupName dyobrg1lpgdr
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
-----    ----------------- ----------------- ----------------- ---------------
-default dyobrg            Succeeded         Initial
 ```
 
-This command gets a dynatrace SingleSignOn resource.
-
-### Example 2: Get a dynatrace SingleSignOn resource by pipeline
-```powershell
-New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" | Get-AzDynatraceMonitorSSOConfig
-```
-
-```output
-Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
-----    ----------------- ----------------- ----------------- ---------------
-default dyobrg            Succeeded         Initial
-```
-
-This command gets a dynatrace SingleSignOn resource by pipeline.
+This command gets the Azure resource ids for which Dynatrace is polling metrics from given Azure monitor resource
 
 ## PARAMETERS
 
@@ -89,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+Name of the Monitor resource
 
 ```yaml
 Type: System.String
@@ -99,21 +83,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Single Sign On Configuration Name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -149,6 +118,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -158,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IDynatraceSingleSignOnResource
+### System.String
 
 ## NOTES
 
