@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     shouldProcessName = Item.Name;
                     isMUAOperation = true;
                 }
-                
+
                 string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
