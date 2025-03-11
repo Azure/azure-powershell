@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets Azure Site Recovery Replication Protection Cluster.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectionCluster", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectionCluster", DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRReplicationProtectionCluster")]
     [OutputType(typeof(ASRReplicationProtectionCluster))]
     public class GetAzureRmRecoveryServicesAsrReplicationProtectionCluster : SiteRecoveryCmdletBase
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 case ASRParameterSets.ByObjectWithName:
                     this.GetByName();
                     break;
-                default:
+                case ASRParameterSets.Default:
                     this.GetAll();
                     break;
             }

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if(cluster.Properties.ProviderSpecificDetails is A2AReplicationProtectionClusterDetails)
             {
+                this.ReplicationProvider = Constants.A2A;
                 var details = (A2AReplicationProtectionClusterDetails)cluster.Properties.ProviderSpecificDetails;
                 this.ProviderSpecificDetails = new ASRA2AReplicationProtectionClusterDetails
                 {
@@ -255,6 +256,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// ProtectionHealth enumeration.
         /// </summary>
         public string ReplicationHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public string ReplicationProvider { get; set; }
 
         /// <summary>
         /// Gets or sets list of health errors.
