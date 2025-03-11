@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
 
 ## Version 7.5.1
 * Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.
