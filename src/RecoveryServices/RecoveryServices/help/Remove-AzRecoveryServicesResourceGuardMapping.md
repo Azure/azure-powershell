@@ -25,11 +25,11 @@ This cmdlet deletes the mapping between the RS vault and resource guard
 ### Example 1 Delete the resource guard mapping in a cross tenant scenario
 
 ```powershell
-$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
-Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID  -Token $token
+$secureToken = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AsSecureString).Token
+Remove-AzRecoveryServicesResourceGuardMapping -VaultId $vault.ID  -SecureToken $secureToken
 ```
 
-The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command deletes the mapping between the RSVault $vault and the resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected opeartions.
+The first command fetches the access token for the resource guard tenant where the resource guard is present. The second command deletes the mapping between the RSVault $vault and the resource guard. Please note that token parameter is optional and only needed to authenticate cross tenant protected operations.
 
 ## PARAMETERS
 
