@@ -1179,6 +1179,7 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.UseLocalAzureIpAddress)
                     );
                 cfg.CreateMap<CNM.PSIpsecPolicy, MNM.IpsecPolicy>();
+                cfg.CreateMap<CNM.PSTunnelConfig, MNM.VirtualNetworkGatewayConnectionTunnelProperties>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
                 cfg.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
@@ -1275,6 +1276,7 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.UseLocalAzureIPAddress)
                     );
                 cfg.CreateMap<MNM.IpsecPolicy, CNM.PSIpsecPolicy>();
+                cfg.CreateMap<MNM.VirtualNetworkGatewayConnectionTunnelProperties, CNM.PSTunnelConfig>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
                 cfg.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
