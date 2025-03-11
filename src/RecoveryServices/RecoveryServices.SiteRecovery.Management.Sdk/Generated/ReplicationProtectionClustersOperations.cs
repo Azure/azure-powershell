@@ -577,10 +577,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicationProtectionClusterName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicationProtectionClusterName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1385,7 +1385,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1547,7 +1547,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 200 && (int)_statusCode != 201)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201 && (int)_statusCode != 202)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1620,6 +1620,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                     }
                     throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ReplicationProtectionClustersCreateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {

@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to purge the replication protection cluster. This operation
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationProtectionCluster,ReplicationProtectionClustersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicationProtectionClusterName, ReplicationProtectionClusterProperties properties = default(ReplicationProtectionClusterProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to purge the replication protection cluster. This operation
