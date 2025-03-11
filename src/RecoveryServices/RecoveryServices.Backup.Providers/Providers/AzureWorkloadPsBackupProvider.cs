@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item] : null;
 
                 properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
-            }
+            }            
 
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     properties.PolicyId = policy.Id;
                 }
                 else if (item != null)
-                {
+                {                    
                     Dictionary<UriEnums, string> keyValueDict =
                         HelperUtils.ParseUri(item.Id);
                     containerUri = HelperUtils.GetContainerUri(
@@ -929,6 +929,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         keyValueDict, item.Id);
 
                     properties.PolicyId = policy.Id;
+
+                    Logger.Instance.WriteDebug("Successfully parsed Item URI");
                 }
             }
 
@@ -937,6 +939,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            Logger.Instance.WriteDebug("checking for MUA for modify policy");
             // check for MUA
             bool isMUAProtected = false;
             if (isMUAOperation && oldPolicy != null && newPolicy != null)
@@ -947,7 +950,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isMUAProtected = true;
             }
-
+            
+            Logger.Instance.WriteDebug("Entering CreateOrUpdateProtectedItem");
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
