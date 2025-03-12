@@ -236,7 +236,7 @@ function cleanupEnv() {
 	    	}
 
 	    	try{
-	    		Write-Host "Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg"
+	    		Write-Host "Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg -ForceDeletion true"
 				Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg
 				Write-Host -ForegroundColor Green "Success remove nsp"
 	    	}
