@@ -68,6 +68,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${ProfileName},
 
         [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
@@ -89,6 +90,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
@@ -96,6 +98,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${IdentityType},
     
         [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]

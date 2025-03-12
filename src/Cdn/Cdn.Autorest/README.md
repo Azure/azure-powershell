@@ -242,6 +242,9 @@ directive:
     - model-name: OriginGroupHealthProbeSetting
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
+  # 
+
+
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document
     where: $.paths..operationId
@@ -338,6 +341,20 @@ directive:
   - where:
       subject: KeyGroupUpdate
     hide: true
+
+  # Hide duplicate Test-AzCdnNameAvailability
+  - where:
+      subject: NameAvailability
+      verb: Test
+      variant: CheckViaJsonFilePath1ViaJsonFilePath
+    hide: true
+  # Hide duplicate Test-AzCdnNameAvailability
+  - where:
+      subject: NameAvailability
+      verb: Test
+      variant: CheckViaJsonString1ViaJsonString
+    hide: true
+
 
   # Rename
   - where:
@@ -481,7 +498,7 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
 
-  # announce upcoming MI-related breaking changes
+  # Breaking changes
   - where:
       parameter-name: IdentityType
     set:
@@ -489,7 +506,7 @@ directive:
         change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 14.0.0
-        change-effective-date: 2024/11/19
+        change-effective-date: 2025/4/1
   - where:
       parameter-name: IdentityUserAssignedIdentity
     set:
@@ -499,5 +516,455 @@ directive:
         change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 14.0.0
-        change-effective-date: 2024/11/19
+        change-effective-date: 2025/4/1
+
+  # parameter set
+  - where:
+      verb: Enable
+      subject: CustomDomainCustomHttps
+      variant: Enable
+    set:
+      breaking-change:
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      verb: New
+      subject: DeliveryRuleCacheExpirationActionObject
+    set:
+      breaking-change:
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+
+  - where:
+    subjectPrefix: Cdn
+    subject: EndpointContent
+  set:
+    breaking-change:
+      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
+      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters
+      change-description: Breaking change by upgrading autorest version
+      deprecated-by-version: 2.0.0
+      deprecated-by-azversion: 14.0.0
+      change-effective-date: 2025/4/1
+  - where:
+    subjectPrefix: FrontDoorCdn
+    subject: EndpointContent
+  set:
+    breaking-change:
+      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
+      change-description: Breaking change by upgrading autorest version
+      deprecated-by-version: 2.0.0
+      deprecated-by-azversion: 14.0.0
+      change-effective-date: 2025/4/1
+  - where:
+    subjectPrefix: Cdn
+    subject: EndpointContent
+  set:
+    breaking-change:
+      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
+      change-description: Breaking change by upgrading autorest version
+      deprecated-by-version: 2.0.0
+      deprecated-by-azversion: 14.0.0
+      change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: CustomDomainCustomHttps
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: CustomDomainCustomHttps
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: CustomDomainCustomHttp
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: CustomDomain
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: EdgeNode
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeNode
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Endpoint
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Endpoint
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRule
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Endpoint
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IGeoFilter
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Endpoint
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOrigin
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeepCreatedOrigin
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: EndpointResourceUsage
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Origin
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: OriginGroup
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: OriginGroup
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: OriginGroup
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResponseBasedOriginErrorDetectionParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: ProfileResourceUsage
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: SubscriptionResourceUsage
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsage
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: CustomDomain
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: CustomDomain
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Endpoint 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Origin 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: OriginGroup 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: OriginGroup 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHealthProbeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Route 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Route 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: RouteSet 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Secret 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Secret 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: SecurityPolicy 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: Cdn
+      subject: EndpointContent 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileMigration 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
+
+  - where:
+      subjectPrefix: Cdn
+      subject: DeliveryRuleCacheExpirationActionObject 
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
 ```
