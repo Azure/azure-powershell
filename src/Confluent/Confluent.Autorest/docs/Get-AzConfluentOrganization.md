@@ -105,8 +105,7 @@ This command gets a confluent organization by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -190,9 +189,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20240701.IOrganizationResource
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  - `[ApiKeyId <String>]`: Confluent API Key id
+  - `[ClusterId <String>]`: Confluent kafka or schema registry cluster id
+  - `[ConnectorName <String>]`: Confluent connector name
+  - `[EnvironmentId <String>]`: Confluent environment id
+  - `[Id <String>]`: Resource identity path
+  - `[OrganizationName <String>]`: Organization resource name
+  - `[ResourceGroupName <String>]`: Resource group name
+  - `[RoleBindingId <String>]`: Confluent Role binding id
+  - `[SubscriptionId <String>]`: Microsoft Azure subscription id
+  - `[TopicName <String>]`: Confluent kafka or schema registry topic name
 
 ## RELATED LINKS
 
