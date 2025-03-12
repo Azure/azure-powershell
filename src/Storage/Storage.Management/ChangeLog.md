@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 8.2.1
 * Supported Enable Metrics when set object replication policy 
     - `New-AzStorageObjectReplicationPolicyRule`
 
