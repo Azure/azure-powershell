@@ -14,7 +14,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject [-SubjectAlternativeName <String[]>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Type <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,21 @@ Accept wildcard characters: False
 
 ### -SubjectAlternativeName
 The list of SANs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Type.
 
 ```yaml
 Type: System.String[]

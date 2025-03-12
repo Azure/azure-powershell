@@ -13,8 +13,8 @@ Create an in-memory object for ManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject [-Type <String[]>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ Create an in-memory object for ManagedCertificateParameters.
 Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Type.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

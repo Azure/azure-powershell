@@ -164,13 +164,13 @@ directive:
     
     # - model-name: CustomerCertificateParameters
     #   cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
-    - model-name: AzureFirstPartyManagedCertificateParameters
-      cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
-    - model-name: ManagedCertificateParameters
-      cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
 
-    - model-name: UrlSigningKeyParameters
-      cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+    # - model-name: AzureFirstPartyManagedCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
+    # - model-name: ManagedCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
+    # - model-name: UrlSigningKeyParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 
     - model-name: SecurityPolicyWebApplicationFirewallAssociation
       cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject

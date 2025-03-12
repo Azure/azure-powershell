@@ -14,7 +14,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 
 ```
 New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId <String> [-SecretSourceId <String>]
- [-SecretVersion <String>] [<CommonParameters>]
+ [-SecretVersion <String>] [-Type <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +73,21 @@ Version of the secret to be used.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Type.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
