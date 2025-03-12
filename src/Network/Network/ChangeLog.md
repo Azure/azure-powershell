@@ -26,6 +26,10 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - New-AzVirtualNetworkGateway
+    - Get-AzVirtualNetworkGateway
+    - Get-AzVirtualNetworkGatewayConnection
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.

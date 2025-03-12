@@ -37,7 +37,7 @@
    Assert-NotNull $erGateway
 
  # Get Circuit
- $circuit = Get-AzExpressRouteCircuit -Name "eridc"
+ $circuit = Get-AzExpressRouteCircuit -Name "er-ckt-1271"
  Assert-AreEqual 1 @($circuit).Count
 	
  # Create & Get VirtualNetworkGatewayConnection
@@ -54,8 +54,11 @@ $gwIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vpngwConfigName2 -Subn
 
  # Create high bandwidth VPN Gateway
  $vpnGateway = New-AzVirtualNetworkGateway -Name $vpnGatewayName -ResourceGroupName $rgName -Location $location -IpConfigurations $gwIpConfig1, $gwIpConfig2 -GatewayType Vpn -VpnType RouteBased -EnableActiveActiveFeature -EnableAdvancedConnectivity -GatewaySku $sku
- Assert-NotNull $vpnGateway
- Assert-AreEqual $vpnGateway.EnableAdvancedConnectivity true
+
+$gateway = Get-AzVirtualNetworkGateway -Name $vpnGatewayName -ResourceGroupName $rgName
+Assert-NotNull $vpnGateway
+Assert-NotNull $vpnGateway.EnableAdvancedConnectivity
+Assert-AreEqual $vpnGateway.EnableAdvancedConnectivity true
 
  }
   finally
