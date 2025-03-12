@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 }
 
 Describe 'Get-AzNetworkSecurityPerimeterOperationStatus' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $remove_response = Remove-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociationDelete1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1 -NoWait
+            $url = $remove_response.Target -split '\?' | Select-Object -First 1
+            $operationId = $url -split '/' | Select-Object -Last 1
+
+            Get-AzNetworkSecurityPerimeterOperationStatus -OperationId $operationId -Location $env.location
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentityLocation' -skip {

@@ -176,7 +176,7 @@ function cleanupEnv() {
 
 		$nsps = Get-AzNetworkSecurityPerimeter -ResourceGroupName $rg
 		Write-Host "Get-AzNetworkSecurityPerimeter -ResourceGroupName $rg"
-		Write-Host -ForegroundColor Green "Success list nsp"
+		Write-Host -ForegroundColor Green "[CLEANUP] Success list nsp"
 
 		foreach($nspObj in $nsps){
 
@@ -187,7 +187,7 @@ function cleanupEnv() {
 	    		Write-Host "Get-AzNetworkSecurityPerimeterLink -ResourceGroupName $rg -SecurityPerimeterName $nsp"
 
 				$links = Get-AzNetworkSecurityPerimeterLink -ResourceGroupName $rg -SecurityPerimeterName $nsp
-				Write-Host -ForegroundColor Green "Success list links"
+				Write-Host -ForegroundColor Green "[CLEANUP] Success list links"
 
 				foreach($linkObj in $links){
 
@@ -197,7 +197,7 @@ function cleanupEnv() {
 					{
 						Write-Host "Remove-AzNetworkSecurityPerimeterLink -Name $linkName -ResourceGroupName $rg -SecurityPerimeterName $nsp"
 						Remove-AzNetworkSecurityPerimeterLink -Name $linkName -ResourceGroupName $rg -SecurityPerimeterName $nsp
-						Write-Host -ForegroundColor Green "Success remove link"
+						Write-Host -ForegroundColor Green "[CLEANUP] Success remove link"
 					}
 					catch{
 						Write-Host -ForegroundColor Red "Error occcured with removing link"
@@ -215,14 +215,14 @@ function cleanupEnv() {
 
 	    		Write-Host "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $rg -SecurityPerimeterName $nsp"
 	    		$linkRefs = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $rg -SecurityPerimeterName $nsp
-	    		Write-Host -ForegroundColor Green "Success list references"
+	    		Write-Host -ForegroundColor Green "[CLEANUP] Success list references"
 
 	    		foreach($ref in $linkRefs){
 	    			try{
 
 	    				Write-Host "Remove-AzNetworkSecurityPerimeterLinkReference -Name $ref.Name -ResourceGroupName $rg -SecurityPerimeterName $nsp"
 	    				Remove-AzNetworkSecurityPerimeterLinkReference -Name $ref.Name -ResourceGroupName $rg -SecurityPerimeterName $nsp
-	    			Write-Host -ForegroundColor Green "Success remove reference"
+	    			Write-Host -ForegroundColor Green "[CLEANUP] Success remove reference"
 	    			}catch{
 	    			Write-Host -ForegroundColor Red "Error occcured with removing link reference"
 	    				$_.Exception.ToString()
@@ -236,9 +236,9 @@ function cleanupEnv() {
 	    	}
 
 	    	try{
-	    		Write-Host "Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg -ForceDeletion true"
+	    		Write-Host "Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg -ForceDeletion"
 				Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg
-				Write-Host -ForegroundColor Green "Success remove nsp"
+				Write-Host -ForegroundColor Green "[CLEANUP] Success remove nsp"
 	    	}
 	    	catch{
 		    	Write-Host -ForegroundColor Red "Error occcured with removing nsp"
@@ -249,7 +249,7 @@ function cleanupEnv() {
     	try{
 	    	Write-Host "Remove-AzResourceGroup -Name $rg" 
 			Remove-AzResourceGroup -Name $rg
-			Write-Host -ForegroundColor Green "Success remove resource group"
+			Write-Host -ForegroundColor Green "[CLEANUP] Success remove resource group"
     	}
     	catch{
 	    	Write-Host -ForegroundColor Red "Error occcured with removing rg"
