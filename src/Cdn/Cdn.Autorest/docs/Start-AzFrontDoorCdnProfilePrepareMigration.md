@@ -15,20 +15,21 @@ The change need to be committed after this.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### MigrateExpanded (Default)
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
  -ProfileName <String> [-SubscriptionId <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MigrateExpanded
-```
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- -ProfileName <String> [-SubscriptionId <String>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,7 +182,7 @@ Type of managed service identity (where both SystemAssigned and UserAssigned typ
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,7 +199,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +274,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

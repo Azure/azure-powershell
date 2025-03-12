@@ -15,21 +15,12 @@ The change need to be committed after this.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
- -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>] [-IdentityType <String>]
+ -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MigrateExpanded
-```
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
- -ClassicResourceReferenceId <String> -ProfileName <String>
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,7 +173,7 @@ Type of managed service identity (where both SystemAssigned and UserAssigned typ
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -199,7 +190,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -214,7 +205,7 @@ Waf mapping for the migrated profile
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]
-Parameter Sets: MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -289,7 +280,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

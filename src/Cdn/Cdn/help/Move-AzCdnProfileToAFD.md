@@ -16,29 +16,30 @@ This step prepares the profile for migration and will be followed by Commit to f
 ### MigrateExpanded (Default)
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Migrate
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaJsonFilePath
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaJsonString
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
@@ -160,6 +161,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Azure Subscription ID.
+
+```yaml
+Type: System.String
+Parameter Sets: MigrateExpanded, Migrate, MigrateViaJsonFilePath, MigrateViaJsonString
+Aliases:
 
 Required: False
 Position: Named

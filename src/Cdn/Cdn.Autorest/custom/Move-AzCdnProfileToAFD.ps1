@@ -97,6 +97,15 @@ function Move-AzCdnProfileToAFD {
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
+
+        [Parameter(ParameterSetName='Migrate')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath')]
+        [Parameter(ParameterSetName='MigrateViaJsonString')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+        [System.String]
+        # Azure Subscription ID.
+        ${IdentityType},
     
         [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]

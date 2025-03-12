@@ -244,7 +244,6 @@ directive:
 
   # 
 
-
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document
     where: $.paths..operationId
@@ -355,6 +354,10 @@ directive:
       variant: CheckViaJsonString1ViaJsonString
     hide: true
 
+  - where:
+      parameter-name: ParameterTypeName
+    set:
+      alias: Name
 
   # Rename
   - where:
@@ -538,38 +541,38 @@ directive:
         change-effective-date: 2025/4/1
 
   - where:
-    subjectPrefix: Cdn
-    subject: EndpointContent
-  set:
-    breaking-change:
-      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
-      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters
-      change-description: Breaking change by upgrading autorest version
-      deprecated-by-version: 2.0.0
-      deprecated-by-azversion: 14.0.0
-      change-effective-date: 2025/4/1
+      subjectPrefix: Cdn
+      subject: EndpointContent
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
   - where:
-    subjectPrefix: FrontDoorCdn
-    subject: EndpointContent
-  set:
-    breaking-change:
-      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
-      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
-      change-description: Breaking change by upgrading autorest version
-      deprecated-by-version: 2.0.0
-      deprecated-by-azversion: 14.0.0
-      change-effective-date: 2025/4/1
+      subjectPrefix: FrontDoorCdn
+      subject: EndpointContent
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
   - where:
-    subjectPrefix: Cdn
-    subject: EndpointContent
-  set:
-    breaking-change:
-      deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
-      replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
-      change-description: Breaking change by upgrading autorest version
-      deprecated-by-version: 2.0.0
-      deprecated-by-azversion: 14.0.0
-      change-effective-date: 2025/4/1
+      subjectPrefix: Cdn
+      subject: EndpointContent
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
+        change-description: Breaking change by upgrading autorest version
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/4/1
   - where:
       subjectPrefix: Cdn
       subject: CustomDomainCustomHttps
@@ -955,7 +958,6 @@ directive:
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 14.0.0
         change-effective-date: 2025/4/1
-
   - where:
       subjectPrefix: Cdn
       subject: DeliveryRuleCacheExpirationActionObject 
