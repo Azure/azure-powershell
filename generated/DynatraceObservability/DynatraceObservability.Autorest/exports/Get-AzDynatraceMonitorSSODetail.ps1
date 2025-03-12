@@ -23,12 +23,12 @@ Gets the SSO configuration details from the partner.
 Get-AzDynatraceMonitorSSODetail -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -UserPrincipal "user@microsoft.com"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ISsoDetailsResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssodetail
 #>
 function Get-AzDynatraceMonitorSSODetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ISsoDetailsResponse])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -51,7 +51,7 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
     [System.String]
     # user principal id of the user
