@@ -31,6 +31,12 @@ Get-AzNetworkSecurityPerimeterLoggingConfiguration
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the NSP logging configuration.
 
@@ -118,7 +124,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -133,7 +139,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases: NetworkSecurityPerimeterName, NSPName
 
 Required: True
@@ -149,7 +155,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False

@@ -15,7 +15,8 @@ Creates a RoutingConfiguration object.
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
  [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-InboundRouteMap <String>]
- [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +148,21 @@ The outbound route maps of this routing configuration.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

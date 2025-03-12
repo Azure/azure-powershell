@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/networkSecurityPerimeterOperationStatuses",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.network"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkSecurityPerimeterOperationStatus",
+      "description": "Gets the operation status for the given operation id.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/networkSecurityPerimeterOperationStatuses/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeteroperationstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-OperationId <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the operation status for the given operation id.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
