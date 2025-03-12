@@ -17,7 +17,7 @@ Sets a modified Azure Firewall Policy Rule Collection Group draft.
 Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
  -ResourceGroupName <String> -AzureFirewallPolicyName <String> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
@@ -25,7 +25,7 @@ Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionG
 Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
  -FirewallPolicyObject <PSAzureFirewallPolicy> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -33,14 +33,14 @@ Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionG
 Set-AzFirewallPolicyRuleCollectionGroupDraft
  -InputObject <PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper> [-Priority <UInt32>]
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzFirewallPolicyRuleCollectionGroupDraft -ResourceId <String> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,6 +174,21 @@ Accept wildcard characters: False
 Type: System.UInt32
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

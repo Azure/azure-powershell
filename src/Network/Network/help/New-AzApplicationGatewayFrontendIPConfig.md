@@ -17,7 +17,7 @@ Creates a front-end IP configuration for an application gateway.
 ```
 New-AzApplicationGatewayFrontendIPConfig -Name <String> [-PrivateIPAddress <String>] [-SubnetId <String>]
  [-PublicIPAddressId <String>] [-PrivateLinkConfigurationId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +25,7 @@ New-AzApplicationGatewayFrontendIPConfig -Name <String> [-PrivateIPAddress <Stri
 New-AzApplicationGatewayFrontendIPConfig -Name <String> [-PrivateIPAddress <String>] [-Subnet <PSSubnet>]
  [-PublicIPAddress <PSPublicIpAddress>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +140,21 @@ PrivateLinkConfigurationId
 Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

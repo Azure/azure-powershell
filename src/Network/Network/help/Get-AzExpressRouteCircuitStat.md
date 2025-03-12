@@ -15,7 +15,8 @@ Gets usage statistics of an ExpressRoute circuit.
 
 ```
 Get-AzExpressRouteCircuitStat -ResourceGroupName <String> -ExpressRouteCircuitName <String>
- [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PeeringType <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

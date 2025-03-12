@@ -16,7 +16,8 @@ Creates a routing rule.
 New-AzNetworkManagerRoutingRule -Name <String> -RuleCollectionName <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> -Destination <PSNetworkManagerRoutingRuleDestination>
  -NextHop <PSNetworkManagerRoutingRuleNextHop> [-Description <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +174,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

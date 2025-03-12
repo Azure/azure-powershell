@@ -18,7 +18,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPub
  -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>] [-EnableKerberos <Boolean>]
  [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>] [-EnableIpConnect <Boolean>]
  [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName
@@ -27,7 +28,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPub
  -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnit <Int32>]
  [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>]
  [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkId
@@ -36,7 +38,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPub
  -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnit <Int32>] [-EnableKerberos <Boolean>]
  [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>] [-EnableIpConnect <Boolean>]
  [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetwork
@@ -45,7 +48,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <Str
  -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>] [-EnableKerberos <Boolean>]
  [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>] [-EnableIpConnect <Boolean>]
  [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName
@@ -54,7 +58,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <Str
  -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnit <Int32>]
  [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>]
  [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkId
@@ -63,7 +68,7 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <Str
  [-Sku <String>] [-ScaleUnit <Int32>] [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>]
  [-EnableTunneling <Boolean>] [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>]
  [-EnableSessionRecording <Boolean>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork
@@ -72,7 +77,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName 
  -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>]
  [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>]
  [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName
@@ -81,7 +87,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName 
  -PublicIpAddressName <String> -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>]
  [-ScaleUnit <Int32>] [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>]
  [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
@@ -90,7 +97,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName 
  -PublicIpAddressName <String> -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnit <Int32>]
  [-EnableKerberos <Boolean>] [-DisableCopyPaste <Boolean>] [-EnableTunneling <Boolean>]
  [-EnableIpConnect <Boolean>] [-EnableShareableLink <Boolean>] [-EnableSessionRecording <Boolean>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -362,6 +370,21 @@ Parameter Sets: (All)
 Aliases: ResourceName, BastionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

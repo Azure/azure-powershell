@@ -15,20 +15,22 @@ Creates a routing intent resource associated with a VirtualHub.
 ### ByVirtualHubName (Default)
 ```
 New-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 New-AzRoutingIntent -ParentObject <PSVirtualHub> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 New-AzRoutingIntent -ParentResourceId <String> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +175,21 @@ Parameter Sets: ByVirtualHubName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -12,21 +12,22 @@ To get network manager verifier workspace
 
 ## SYNTAX
 
-### ByName (Default)
+### ByList (Default)
 ```
-Get-AzNetworkManagerVerifierWorkspace [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkManagerVerifierWorkspace -NetworkManagerName <String> -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### ByList
+### ByName
 ```
 Get-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
+
 ### ByResourceId
 ```
 Get-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,6 +240,7 @@ SystemDataText     : {
 Id                 : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
                      t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9
 ```
+
 Gets the network manager verifier workspace of name'testVerifierWorkspace9'.
 
 ## PARAMETERS
@@ -264,12 +266,12 @@ The resource name.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
@@ -288,6 +290,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -302,8 +319,11 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
+
 ### -ResourceId
 The Verifier Workspace resource id.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
@@ -330,6 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerVerifierWorkspace](./New-AzNetworkManagerVerifierWorkspace.md)
 
 [Set-AzNetworkManagerVerifierWorkspace](./Set-AzNetworkManagerVerifierWorkspace.md)

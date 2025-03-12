@@ -12,33 +12,34 @@ To get network manager verifier workspace reachability analysis run.
 
 ## SYNTAX
 
-### ByName (Default)
+### ByList (Default)
+```
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName <String>
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ByName
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByList
-```
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun** cmdlet gets that specific network manager verifier workspace reachability analysis run. When not given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun** cmdlet gets a list of the network manager verifier workspace reachability analysis runs in the specified workspace.
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
- Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
 ```
 
 ```output
@@ -150,6 +151,7 @@ SystemDataText        : {
 Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierW
                         orkspaces/testVNV/reachabilityAnalysisRuns/testrunfan1
 ```
+
 Gets list of network manager verifier workspace reachability analysis runs for 'testVNV' verifier workspace.
 
 ### Example 2
@@ -284,6 +286,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -297,6 +314,22 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+The Verifier Workspace Analysis Run resource id.
+
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ReachabilityAnalysisRunId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### -VerifierWorkspaceName
@@ -313,19 +346,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
-### -ResourceId
-The Verifier Workspace Analysis Run resource id.
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ReachabilityAnalysisRunId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -341,6 +361,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
 
 [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)

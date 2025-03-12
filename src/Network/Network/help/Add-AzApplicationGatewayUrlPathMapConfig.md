@@ -20,7 +20,7 @@ Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
  -DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>
  -DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
  [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### BackendSetByResourceId
@@ -28,7 +28,7 @@ Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> -DefaultBackendAddressPoolId <String>
  -DefaultBackendHttpSettingsId <String> [-DefaultRewriteRuleSetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResource
@@ -36,14 +36,15 @@ Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  -DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResourceId
 ```
 Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSetId <String>]
- -DefaultRedirectConfigurationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DefaultRedirectConfigurationId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -245,6 +246,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

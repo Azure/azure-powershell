@@ -9,27 +9,28 @@ schema: 2.0.0
 
 ## SYNOPSIS
 To get network manager verifier workspace reachability analysis intent.
+
 ## SYNTAX
 
-### ByName (Default)
+### ByList (Default)
+```
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName <String>
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ByName
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent [-Name <String>] -NetworkManagerName <String>
  -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### ByList
-```
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
 ### ByResourceId
 ```
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
-
 
 ## DESCRIPTION
 When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets that specific Verifier Workspace Reachability Analysis Intent. When not given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets a list of the Verifier Workspace Reachability Analysis Intents in the specified network manager.
@@ -107,6 +108,7 @@ Gets all Verifier Workspace Reachability Analysis Intents in workspace 'testVeri
 ```powershell
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVerifierWorkspace9" -Name "testReachabilityAnalysisIntenant7"
 ```
+
 ```output
 Name                  : testReachabilityAnalysisIntenant7
 VerifierWorkspaceName : testVerifierWorkspace9
@@ -153,7 +155,7 @@ The resource name.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName
+Aliases:
 
 Required: False
 Position: Named
@@ -161,7 +163,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
-
 
 ### -NetworkManagerName
 The network manager name.
@@ -176,6 +177,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -193,6 +209,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -ResourceId
+The Verifier Workspace Analysis Intent resource id.
+
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: ReachabilityAnalysisIntentId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VerifierWorkspaceName
 The verifier workspace name.
 
@@ -206,19 +238,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-### -ResourceId
-The Verifier Workspace Analysis Intent resource id.
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ReachabilityAnalysisIntentId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
 ```
 
 ### CommonParameters
@@ -235,6 +254,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
 
 [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)

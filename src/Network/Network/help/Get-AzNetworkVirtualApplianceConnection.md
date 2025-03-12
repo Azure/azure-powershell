@@ -15,19 +15,20 @@ Get or List Network Virtual Appliances connections connected to a Network Virtua
 ### ResourceNameParameterSet (Default)
 ```
 Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 Get-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +133,21 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

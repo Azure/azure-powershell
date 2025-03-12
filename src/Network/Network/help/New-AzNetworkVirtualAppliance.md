@@ -20,8 +20,8 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -32,8 +32,8 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
- [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NetworkProfile <PSVirtualApplianceNetworkProfile>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -276,6 +276,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
