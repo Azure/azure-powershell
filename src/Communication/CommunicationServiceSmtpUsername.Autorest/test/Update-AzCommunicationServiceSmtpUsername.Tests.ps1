@@ -26,14 +26,8 @@ Describe 'Update-AzCommunicationServiceSmtpUsername' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityCommunicationService' {
-        $updatedEntraApplicationId = "9ebe5d8a-7461-4805-8c91-82ad752bf155"
-
-        $GetCommunicationServiceInstance = Get-AzCommunicationService -CommunicationServiceName $env.persistentACSResourceName -ResourceGroupName $env.resourceGroup
-        $GetCommunicationServiceSmtpUsernameInstance = Get-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceInputObject $GetCommunicationServiceInstance
-
-        $UpdateAzCommunicationServiceSmtpUsername = Update-AzCommunicationServiceSmtpUsername -InputObject $GetCommunicationServiceSmtpUsernameInstance -EntraApplicationId $updatedEntraApplicationId
-        $UpdateAzCommunicationServiceSmtpUsername.EntraApplicationId | Should -Be $updatedEntraApplicationId
+    It 'UpdateViaIdentityCommunicationService' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {

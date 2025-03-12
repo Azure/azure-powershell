@@ -1,15 +1,15 @@
 {
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "smtpUsernameResource": "testSmtpUsernameResourceisoz0n",
-  "username": "testusernameisoz0n",
-  "persistentACSResourceName": "persistentACSResourceNameisoz0n",
-  "SubscriptionId": "50ad1522-5c2c-4d9a-a6c8-67c11ecb75b8",
+  "rstr1": "9veqhj",
   "dataLocation": "UnitedStates",
-  "location": "Global",
-  "resourceGroup": "testgroupisoz0n",
   "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "rstr2": "xm6ule",
+  "rstr2": "5qfxpy",
+  "location": "Global",
+  "persistentACSResourceName": "persistentACSResourceName9veqhj",
+  "persistentSmtpUsernameResourceName": "persistentSmtpUsernameResourceName9veqhj",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
   "entraApplicationId": "735ffca9-2020-4c43-a16d-128dd4221e90",
-  "persistentSmtpUsernameResourceName": "persistentSmtpUsernameResourceNameisoz0n",
-  "rstr1": "isoz0n"
+  "resourceGroup": "testgroup9veqhj",
+  "SubscriptionId": "50ad1522-5c2c-4d9a-a6c8-67c11ecb75b8",
+  "username": "testusername9veqhj",
+  "smtpUsernameResource": "testSmtpUsernameResource9veqhj"
 }

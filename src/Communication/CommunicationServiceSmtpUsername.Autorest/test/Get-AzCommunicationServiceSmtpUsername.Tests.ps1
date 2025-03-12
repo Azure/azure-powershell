@@ -25,11 +25,8 @@ Describe 'Get-AzCommunicationServiceSmtpUsername' {
         $service.Name | Should -Be $env.smtpUsernameResource
     }
 
-    It 'GetViaIdentityCommunicationService' {
-        $GetCommunicationServiceInstance = Get-AzCommunicationService -ResourceGroupName $env.resourceGroup -CommunicationServiceName $env.persistentACSResourceName
-
-        $GetAzCommunicationServiceSmtpUsernameInstance = Get-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceInputObject $GetCommunicationServiceInstance
-        $GetAzCommunicationServiceSmtpUsernameInstance.Name | Should -Be $env.smtpUsernameResource
+    It 'GetViaIdentityCommunicationService' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {

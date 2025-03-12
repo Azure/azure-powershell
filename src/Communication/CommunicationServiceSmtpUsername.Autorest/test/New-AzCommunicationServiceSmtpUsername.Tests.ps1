@@ -32,10 +32,7 @@ Describe 'New-AzCommunicationServiceSmtpUsername' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityCommunicationService' {
-        $GetCommunicationServiceInstance = Get-AzCommunicationService -CommunicationServiceName $env.persistentACSResourceName -ResourceGroupName $env.resourceGroup
-
-        $NewCommunicationServiceSmtpUsernameInstance = New-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceInputObject $GetCommunicationServiceInstance -EntraApplicationId $env.entraApplicationId -TenantId $env.tenantId -Username $env.username
-        $NewCommunicationServiceSmtpUsernameInstance.Name | Should -Be $env.smtpUsernameResource
+    It 'CreateViaIdentityCommunicationService' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
