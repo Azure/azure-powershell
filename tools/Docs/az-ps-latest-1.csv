@@ -41,7 +41,7 @@ pac39,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac40,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedVMware.0.1.3.zip;sourceType=sa]Az.ConnectedVMware,0.1.3
 pac41,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.4.1.1.zip;sourceType=sa]Az.ContainerInstance,4.1.1
 pac42,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerRegistry.4.3.0.zip;sourceType=sa]Az.ContainerRegistry,4.3.0
-pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CosmosDB.1.17.0.zip;sourceType=sa]Az.CosmosDB,1.17.0
+pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CosmosDB.1.18.0.zip;sourceType=sa]Az.CosmosDB,1.18.0
 pac44,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CostManagement.0.3.4.zip;sourceType=sa]Az.CostManagement,0.3.4
 pac45,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CustomLocation.0.2.1.zip;sourceType=sa]Az.CustomLocation,0.2.1
 pac46,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CustomProviders.0.1.2.zip;sourceType=sa]Az.CustomProviders,0.1.2
