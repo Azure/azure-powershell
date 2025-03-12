@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3|PremiumV4]. For ASE: [Isolated|IsolatedV2].")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|Premium0V3|PremiumV3|PremiumMV3|PremiumV4|PremiumMV4]. For ASE: [Isolated|IsolatedV2].")]
         [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "PremiumV4", "PremiumMV4", "Isolated", "IsolatedV2", "PremiumContainer")]
         public string Tier { get; set; }
 
