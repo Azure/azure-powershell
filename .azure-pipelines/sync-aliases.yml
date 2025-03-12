@@ -23,7 +23,7 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: Install .NET 8 SDK
+    displayName: Install .NET SDK
     inputs:
       packageType: sdk
       version: 8.0.x
