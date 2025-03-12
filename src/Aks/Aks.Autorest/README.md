@@ -39,10 +39,6 @@ module-version: 0.1.0
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       subject: ^AgentPool$|^AgentPoolAvailableAgentPoolVersion$|^ManagedClusterAccessProfile$|^ManagedClusterAdminCredentials$|^ManagedClusterMonitoringUserCredentials$|^ManagedClusterUserCredentials$|^PrivateEndpointConnection$|^PrivateLinkResource$|^ResolvePrivateLinkServiceId$|^RotateManagedClusterCertificate$|^ManagedClusterAadProfile$|^ManagedClusterServicePrincipalProfile$|^AgentPoolNodeImageVersion$|^ManagedClusterTag$
@@ -59,14 +55,20 @@ directive:
       subject: ^MaintenanceConfiguration$|^Snapshot$
       verb: Set
     remove: true
+  - where:  
+      subject: ^MaintenanceConfiguration$
+      verb: Update
+    remove: true
 # this API (Update SnapshotTag) is defined in swagger but not supported by RP
   - where:  
       subject: ^SnapshotTag$
       verb: Update
     remove: true
   - model-cmdlet:
-    - TimeSpan
-    - TimeInWeek
+      - model-name: TimeSpan
+        cmdlet-name: New-AzAksTimeSpanObject
+      - model-name: TimeInWeek
+        cmdlet-name: New-AzAksTimeInWeekObject
   - where:
       subject: ^ManagedCluster$
       parameter-name: ResourceName

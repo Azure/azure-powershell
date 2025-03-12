@@ -15,20 +15,20 @@ List node pools in specified cluster.
 ### NameParameterSet (Default)
 ```
 Get-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Get-AzAksNodePool -Id <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzAksNodePool -Id <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Get-AzAksNodePool -ClusterObject <PSKubernetesCluster> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -111,6 +111,21 @@ The name of the node pool.
 Type: System.String
 Parameter Sets: NameParameterSet, ParentObjectParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
