@@ -6705,7 +6705,7 @@ function Test-VirtualMachineSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -7023,7 +7023,7 @@ function Test-VMDefaultsToTrustedLaunch
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2"
 
     try
     {
@@ -7280,7 +7280,7 @@ function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2"
 
     try
     {

@@ -1365,15 +1365,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
+                    if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                    {
+                        this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+                else
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
                 }
             }
             // Only used for SecurityType == TrustedLaunch

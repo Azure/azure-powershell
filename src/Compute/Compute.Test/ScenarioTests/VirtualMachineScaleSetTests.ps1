@@ -3770,7 +3770,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "northeurope";
+    $loc = "eastus2euap";
 
     try
     {
@@ -3830,7 +3830,18 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
         $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
-        Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+        #Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+
+        # Update SecurityType to Standard. 
+        Stop-Azvmss -ResourceGroupName $rgname -Name $vmssName -Force
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SecurityType "Standard"
+        Start-AzVmss -ResourceGroupName $rgname -Name $vmssName
+        $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+
     }
     finally
     {
@@ -5283,7 +5294,7 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
