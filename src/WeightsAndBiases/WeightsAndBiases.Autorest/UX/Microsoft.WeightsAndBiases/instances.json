@@ -1,0 +1,85 @@
+{
+  "resourceType": "instances",
+  "apiVersion": "2024-09-18-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.weightsandbiases"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWeightsAndBiasesInstance",
+      "description": "Get a InstanceResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.weightsandbiases/get-azweightsandbiasesinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a InstanceResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.instancename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzWeightsAndBiasesInstance",
+      "description": "Delete a InstanceResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.weightsandbiases/remove-azweightsandbiasesinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a InstanceResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.instancename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
