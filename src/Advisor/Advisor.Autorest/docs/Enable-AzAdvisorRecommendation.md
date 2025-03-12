@@ -1,5 +1,5 @@
 ---
-external help file: Az.Advisor-help.xml
+external help file:
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 schema: 2.0.0
@@ -15,19 +15,19 @@ Enables Azure Advisor recommendation(s).
 ### IdParameterSet (Default)
 ```
 Enable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterSet
-```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -RecommendationName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -InputObject <IAdvisorIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### NameParameterSet
+```
+Enable-AzAdvisorRecommendation -RecommendationName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,21 +90,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,65 +1,65 @@
 ---
 external help file: Az.Advisor-help.xml
 Module Name: Az.Advisor
-online version: https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
+online version: https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 schema: 2.0.0
 ---
 
-# Enable-AzAdvisorRecommendation
+# Set-AzAdvisorConfiguration
 
 ## SYNOPSIS
-Enables Azure Advisor recommendation(s).
+Updates or creates the Azure Advisor Configuration.
 
 ## SYNTAX
 
-### IdParameterSet (Default)
+### CreateByLCT (Default)
 ```
-Enable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterSet
-```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -RecommendationName <String>
+Set-AzAdvisorConfiguration [-SubscriptionId <String>] [-Exclude] [-LowCpuThreshold <String>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### CreateByRG
 ```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -InputObject <IAdvisorIdentity>
+Set-AzAdvisorConfiguration [-SubscriptionId <String>] -ResourceGroupName <String> [-Exclude]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByInputObject
+```
+Set-AzAdvisorConfiguration -InputObject <IAdvisorIdentity> [-Exclude] [-LowCpuThreshold <String>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Enables Azure Advisor recommendation(s).
+Updates or creates the Azure Advisor Configuration.
 
 ## EXAMPLES
 
-### Example 1: Enable recommendation by resource Id
+### Example 1: Set advisor configuration by subscription id
 ```powershell
-Enable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41
+Set-AzAdvisorConfiguration -Exclude -LowCpuThreshold 20
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+Name    Exclude LowCpuThreshold
+----    ------- ---------------
+default True    20
 ```
 
-Enable recommendation by resource Id
+Set advisor configuration by subscription id
 
-### Example 2: Enable recommendation byrecommendation name
+### Example 2:  Set advisor configuration by resource group name
 ```powershell
-Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41
+Set-AzAdvisorConfiguration -Exclude
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+Name    Exclude LowCpuThreshold
+----    ------- ---------------
+default True
 ```
 
-Enable recommendation byrecommendation name
+Set advisor configuration by resource group name
 
 ## PARAMETERS
 
@@ -78,18 +78,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Exclude
+Exclude the resource from Advisor evaluations.
+Valid values: False (default) or True.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
-Parameter Sets: InputObjectParameterSet
+Parameter Sets: CreateByInputObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LowCpuThreshold
+Minimum percentage threshold for Advisor low CPU utilization evaluation.
+Valid only for subscriptions.
+Valid values: 5 (default), 10, 15 or 20.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByLCT, CreateByInputObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -108,27 +142,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecommendationName
-ResourceName of the recommendation.
+### -ResourceGroupName
+The name of the Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Id of the recommendation to be suppressed.
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
+Parameter Sets: CreateByRG
 Aliases:
 
 Required: True
@@ -142,8 +161,8 @@ Accept wildcard characters: False
 The Azure subscription ID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateByLCT, CreateByRG
 Aliases:
 
 Required: False
@@ -193,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 
 ## NOTES
 

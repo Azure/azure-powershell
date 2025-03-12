@@ -1,67 +1,82 @@
 ---
-external help file: Az.Advisor-help.xml
+external help file:
 Module Name: Az.Advisor
-online version: https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
+online version: https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 schema: 2.0.0
 ---
 
-# Enable-AzAdvisorRecommendation
+# Disable-AzAdvisorRecommendation
 
 ## SYNOPSIS
-Enables Azure Advisor recommendation(s).
+Disable an Azure Advisor recommendation.
 
 ## SYNTAX
 
 ### IdParameterSet (Default)
 ```
-Enable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterSet
-```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -RecommendationName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-Day <Object>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Enable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -InputObject <IAdvisorIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-SubscriptionId <String[]>] [-Day <Object>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### NameParameterSet
+```
+Disable-AzAdvisorRecommendation -RecommendationName <String> [-SubscriptionId <String[]>] [-Day <Object>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Enables Azure Advisor recommendation(s).
+Disable an Azure Advisor recommendation.
 
 ## EXAMPLES
 
-### Example 1: Enable recommendation by resource Id
+### Example 1: Disable recommendation by recommendation name
 ```powershell
-Enable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41
+Disable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41 -Day 1
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+SuppressionId                        Name                     Resource Group   Ttl
+-------------                        ----                     --------------   ---
+5b931ff3-42a3-5f80-797f-8e018a6dfaf5 HardcodedSuppressionName automanagehcrprg 1.00:00:00
 ```
 
-Enable recommendation by resource Id
+Disable recommendation by recommendation name
 
-### Example 2: Enable recommendation byrecommendation name
+### Example 2: Disable recommendation by recommendation resource id
 ```powershell
-Enable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41
+Disable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41 -Day 1
 ```
 
 ```output
-Name                                 Category Resource Group   Impact ImpactedField
-----                                 -------- --------------   ------ -------------
-42963553-61de-5334-2d2e-47f3a0099d41 Security automanagehcrprg High   Microsoft.Compute/virtualMachines
+SuppressionId                        Name                     Resource Group   Ttl
+-------------                        ----                     --------------   ---
+5b931ff3-42a3-5f80-797f-8e018a6dfaf5 HardcodedSuppressionName automanagehcrprg 1.00:00:00
 ```
 
-Enable recommendation byrecommendation name
+Disable recommendation by recommendation resource id
 
 ## PARAMETERS
+
+### -Day
+Days to disable.
+
+```yaml
+Type: System.Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -90,21 +105,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,3 +198,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

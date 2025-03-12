@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Advisor-help.xml
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 schema: 2.0.0
@@ -15,19 +15,19 @@ Disable an Azure Advisor recommendation.
 ### IdParameterSet (Default)
 ```
 Disable-AzAdvisorRecommendation -ResourceId <String> [-SubscriptionId <String[]>] [-Day <Object>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Disable-AzAdvisorRecommendation -InputObject <IAdvisorIdentity> [-SubscriptionId <String[]>] [-Day <Object>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Disable-AzAdvisorRecommendation -RecommendationName <String> [-SubscriptionId <String[]>] [-Day <Object>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -RecommendationName <String> [-Day <Object>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Disable-AzAdvisorRecommendation [-SubscriptionId <String[]>] -InputObject <IAdvisorIdentity> [-Day <Object>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,27 +35,31 @@ Disable an Azure Advisor recommendation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable recommendation by recommendation name
 ```powershell
-{{ Add code here }}
+Disable-AzAdvisorRecommendation -RecommendationName 42963553-61de-5334-2d2e-47f3a0099d41 -Day 1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SuppressionId                        Name                     Resource Group   Ttl
+-------------                        ----                     --------------   ---
+5b931ff3-42a3-5f80-797f-8e018a6dfaf5 HardcodedSuppressionName automanagehcrprg 1.00:00:00
 ```
 
-{{ Add description here }}
+Disable recommendation by recommendation name
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable recommendation by recommendation resource id
 ```powershell
-{{ Add code here }}
+Disable-AzAdvisorRecommendation -ResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41 -Day 1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SuppressionId                        Name                     Resource Group   Ttl
+-------------                        ----                     --------------   ---
+5b931ff3-42a3-5f80-797f-8e018a6dfaf5 HardcodedSuppressionName automanagehcrprg 1.00:00:00
 ```
 
-{{ Add description here }}
+Disable recommendation by recommendation resource id
 
 ## PARAMETERS
 
@@ -101,6 +105,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -194,4 +213,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
