@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item] : null;
 
                 properties = new AzureVmWorkloadSQLDatabaseProtectedItem();
-            }            
+            }
 
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     properties.PolicyId = policy.Id;
                 }
                 else if (item != null)
-                {                    
+                {
                     Dictionary<UriEnums, string> keyValueDict =
                         HelperUtils.ParseUri(item.Id);
                     containerUri = HelperUtils.GetContainerUri(
