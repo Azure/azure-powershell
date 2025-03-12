@@ -17,7 +17,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
-		<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using System.Text;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
