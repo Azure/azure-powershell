@@ -27,7 +27,7 @@ Get-AzTrustedSigningCertificateRoot [-MetadataFilePath] <String> [-Destination] 
 ```
 
 ## DESCRIPTION
-The **Get-AzTrustedSigningCertificateroot** cmdlet retrieves Azure TrustedSigning Root Cert.
+The **Get-AzTrustedSigningCertificateRoot** cmdlet retrieves Azure TrustedSigning Root Cert.
 Use this cmdlet to retrieve Azure TrustedSigning Root Cert.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
@@ -37,7 +37,7 @@ Destination is the downloaded root cert file path, which incldues the file name 
 
 ### Example 1: Retrieve a root cert by account and profile name
 ```powershell
-Get-AzTrustedSigningCertificateroot -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.trustedsigning.azure.net' -Destination 'c:\acs\certificateroot.cer'
+Get-AzTrustedSigningCertificateRoot -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.trustedsigning.azure.net' -Destination 'c:\acs\certificateroot.cer'
 ```
 
 ```output
@@ -51,7 +51,7 @@ This command retrieves a root certificate that is currently in use for signing b
 ### Example 2: Retrieve a root cert using the metadata file path configuration
 
 ```powershell
-Get-AzTrustedSigningCertificateroot -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\certificateroot.cer'
+Get-AzTrustedSigningCertificateRoot -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\certificateroot.cer'
 ```
 
 ```output

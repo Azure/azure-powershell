@@ -207,6 +207,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzTrustedSigningCustomerEku](./Get-AzTrustedSigningCustomerEku.md)
 
-[Get-AzTrustedSigningCertificateroot](./Get-AzTrustedSigningCertificateroot.md)
+[Get-AzTrustedSigningCertificateRoot](./Get-AzTrustedSigningCertificateRoot.md)
 
 [Invoke-AzTrustedSigningCIPolicySigning](./Invoke-AzTrustedSigningCIPolicySigning.md)
