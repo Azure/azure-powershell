@@ -1,14 +1,14 @@
 ---
 Module Name: Az.IoTOperationsService
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: c42b5ed7-0bb4-4124-a90b-4e7754da4b45
+Download Help Link: https://learn.microsoft.com/powershell/module/az.iotoperationsservice
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.IoTOperationsService Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: IoTOperationsService cmdlets
 
 ## Az.IoTOperationsService Cmdlets
 ### [Get-AzIoTOperationsServiceBroker](Get-AzIoTOperationsServiceBroker.md)
