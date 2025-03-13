@@ -16,34 +16,28 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRulePostArgsCondition.
+Create an in-memory object for DeliveryRuleIsDeviceCondition.
 .Description
-Create an in-memory object for DeliveryRulePostArgsCondition.
+Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulepostargsconditionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleisdeviceconditionobject
 #>
-function New-AzCdnDeliveryRulePostArgsConditionObject {
+function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Mobile", "Desktop")]
         [string[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
-        [Parameter(Mandatory, HelpMessage="Describes operator to be matched.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
-        [string]
-        $ParameterOperator,
-        [Parameter(HelpMessage="Name of PostArg to be matched.")]
-        [string]
-        $ParameterSelector,
         [Parameter(HelpMessage="List of transforms.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
         [string[]]
@@ -51,23 +45,18 @@ function New-AzCdnDeliveryRulePostArgsConditionObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRulePostArgsCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
         }
         if ($PSBoundParameters.ContainsKey('ParameterNegateCondition')) {
             $Object.ParameterNegateCondition = $ParameterNegateCondition
-        }
-        if ($PSBoundParameters.ContainsKey('ParameterOperator')) {
-            $Object.ParameterOperator = $ParameterOperator
-        }
-        if ($PSBoundParameters.ContainsKey('ParameterSelector')) {
-            $Object.ParameterSelector = $ParameterSelector
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform

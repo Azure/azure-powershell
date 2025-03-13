@@ -41,7 +41,7 @@ function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
         [string]
         $SecretVersion,
         [Parameter(HelpMessage="Type.")]
-        [string[]]
+        [string]
         $Type
 
     )

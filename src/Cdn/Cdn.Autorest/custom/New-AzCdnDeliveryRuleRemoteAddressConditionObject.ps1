@@ -16,34 +16,31 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRuleRequestHeaderCondition.
+Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 .Description
-Create an in-memory object for DeliveryRuleRequestHeaderCondition.
+Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulerequestheaderconditionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleremoteaddressconditionobject
 #>
-function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
+function New-AzCdnDeliveryRuleRemoteAddressConditionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
+        [Parameter(HelpMessage="Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.")]
         [string[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
         [Parameter(Mandatory, HelpMessage="Describes operator to be matched.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch")]
         [string]
         $ParameterOperator,
-        [Parameter(HelpMessage="Name of Header to be matched.")]
-        [string]
-        $ParameterSelector,
         [Parameter(HelpMessage="List of transforms.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
         [string[]]
@@ -51,11 +48,12 @@ function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -65,9 +63,6 @@ function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterOperator')) {
             $Object.ParameterOperator = $ParameterOperator
-        }
-        if ($PSBoundParameters.ContainsKey('ParameterSelector')) {
-            $Object.ParameterSelector = $ParameterSelector
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform

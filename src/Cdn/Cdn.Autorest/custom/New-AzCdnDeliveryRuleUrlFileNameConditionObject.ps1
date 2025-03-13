@@ -16,28 +16,31 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 .Description
-Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulerequestschemeconditionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleurlfilenameconditionobject
 #>
-function New-AzCdnDeliveryRuleRequestSchemeConditionObject {
+function New-AzCdnDeliveryRuleUrlFileNameConditionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HTTP", "HTTPS")]
         [string[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
+        [Parameter(Mandatory, HelpMessage="Describes operator to be matched.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
+        [string]
+        $ParameterOperator,
         [Parameter(HelpMessage="List of transforms.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
         [string[]]
@@ -45,17 +48,21 @@ function New-AzCdnDeliveryRuleRequestSchemeConditionObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestSchemeCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
         }
         if ($PSBoundParameters.ContainsKey('ParameterNegateCondition')) {
             $Object.ParameterNegateCondition = $ParameterNegateCondition
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterOperator')) {
+            $Object.ParameterOperator = $ParameterOperator
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform

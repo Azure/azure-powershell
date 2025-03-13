@@ -13,7 +13,7 @@ Create an in-memory object for ManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject [-Type <String[]>] [<CommonParameters>]
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Create an in-memory object for ManagedCertificateParameters.
 Type.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

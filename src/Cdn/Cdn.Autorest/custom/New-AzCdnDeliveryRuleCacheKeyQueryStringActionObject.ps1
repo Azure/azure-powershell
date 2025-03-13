@@ -16,35 +16,43 @@
 
 <#
 .Synopsis
-Create an in-memory object for OriginGroupOverrideAction.
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 .Description
-Create an in-memory object for OriginGroupOverrideAction.
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnorigingroupoverrideactionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecachekeyquerystringactionobject
 #>
-function New-AzCdnOriginGroupOverrideActionObject {
+function New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Resource ID.")]
+        [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
         [string]
-        $OriginGroupId,
+        $ParameterQueryParameter,
+        [Parameter(Mandatory, HelpMessage="Caching behavior for the requests.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Include", "IncludeAll", "Exclude", "ExcludeAll")]
+        [string]
+        $ParameterQueryStringBehavior,
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction]::New()
 
-        if ($PSBoundParameters.ContainsKey('OriginGroupId')) {
-            $Object.OriginGroupId = $OriginGroupId
+        if ($PSBoundParameters.ContainsKey('ParameterQueryParameter')) {
+            $Object.ParameterQueryParameter = $ParameterQueryParameter
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterQueryStringBehavior')) {
+            $Object.ParameterQueryStringBehavior = $ParameterQueryStringBehavior
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName

@@ -88,73 +88,73 @@ directive:
     - model-name: DeliveryRule
       cmdlet-name: New-AzCdnDeliveryRuleObject
     # CDN condition
-    - model-name: DeliveryRuleRemoteAddressCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRemoteAddressConditionObject
-    - model-name: DeliveryRuleRequestMethodCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRequestMethodConditionObject
-    - model-name: DeliveryRuleQueryStringCondition
-      cmdlet-name: New-AzCdnDeliveryRuleQueryStringConditionObject
-    - model-name: DeliveryRulePostArgsCondition
-      cmdlet-name: New-AzCdnDeliveryRulePostArgsConditionObject
-    - model-name: DeliveryRuleRequestUriCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRequestUriConditionObject
-    - model-name: DeliveryRuleRequestHeaderCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderConditionObject
-    - model-name: DeliveryRuleRequestBodyCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRequestBodyConditionObject
-    - model-name: DeliveryRuleRequestSchemeCondition
-      cmdlet-name: New-AzCdnDeliveryRuleRequestSchemeConditionObject
-    - model-name: DeliveryRuleUrlPathCondition 
-      cmdlet-name: New-AzCdnDeliveryRuleUrlPathConditionObject
-    - model-name: DeliveryRuleUrlFileExtensionCondition 
-      cmdlet-name: New-AzCdnDeliveryRuleUrlFileExtensionConditionObject
-    - model-name:  DeliveryRuleUrlFileNameCondition
-      cmdlet-name: New-AzCdnDeliveryRuleUrlFileNameConditionObject
-    - model-name:  DeliveryRuleHttpVersionCondition
-      cmdlet-name: New-AzCdnDeliveryRuleHttpVersionConditionObject
-    - model-name:  DeliveryRuleCookiesCondition
-      cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
-    - model-name:  DeliveryRuleIsDeviceCondition
-      cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
-
-    - model-name: DeliveryRuleRequestBodyCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestBodyConditionObject
-    - model-name:  DeliveryRuleCookiesCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleCookiesConditionObject
-    - model-name:  DeliveryRuleHttpVersionCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleHttpVersionConditionObject
-    - model-name:  DeliveryRuleIsDeviceCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleIsDeviceConditionObject
-    - model-name: DeliveryRulePostArgsCondition
-      cmdlet-name: New-AzFrontDoorCdnRulePostArgsConditionObject
-    - model-name: DeliveryRuleQueryStringCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleQueryStringConditionObject
-    - model-name: DeliveryRuleRemoteAddressCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRemoteAddressConditionObject
-    - model-name: DeliveryRuleRequestHeaderCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderConditionObject
-    - model-name: DeliveryRuleRequestMethodCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestMethodConditionObject
-    - model-name: DeliveryRuleRequestSchemeCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestSchemeConditionObject
-    - model-name: DeliveryRuleRequestUriCondition
-    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleRemoteAddressCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRemoteAddressConditionObject
+    # - model-name: DeliveryRuleRequestMethodCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestMethodConditionObject
+    # - model-name: DeliveryRuleQueryStringCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleQueryStringConditionObject
+    # - model-name: DeliveryRulePostArgsCondition
+    #   cmdlet-name: New-AzCdnDeliveryRulePostArgsConditionObject
+    # - model-name: DeliveryRuleRequestUriCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleRequestHeaderCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderConditionObject
+    # - model-name: DeliveryRuleRequestBodyCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestBodyConditionObject
+    # - model-name: DeliveryRuleRequestSchemeCondition
+    # #   cmdlet-name: New-AzCdnDeliveryRuleRequestSchemeConditionObject
+    # - model-name: DeliveryRuleUrlPathCondition 
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlPathConditionObject
     # - model-name: DeliveryRuleUrlFileExtensionCondition 
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
-    - model-name:  DeliveryRuleUrlFileNameCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlFileNameConditionObject
-    - model-name: DeliveryRuleUrlPathCondition 
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlPathConditionObject
-    - model-name:  DeliveryRuleServerPortCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
-    - model-name:  DeliveryRuleClientPortCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
-    - model-name: DeliveryRuleHostNameCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
-    - model-name: DeliveryRuleSocketAddrCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleSocketAddrConditionObject
-    - model-name: DeliveryRuleSslProtocolCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleSslProtocolConditionObject
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlFileExtensionConditionObject
+    # - model-name:  DeliveryRuleUrlFileNameCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleUrlFileNameConditionObject
+    # - model-name:  DeliveryRuleHttpVersionCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleHttpVersionConditionObject
+    # - model-name:  DeliveryRuleCookiesCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
+    # - model-name:  DeliveryRuleIsDeviceCondition
+    #   cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
+
+    # - model-name: DeliveryRuleRequestBodyCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestBodyConditionObject
+    # - model-name:  DeliveryRuleCookiesCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleCookiesConditionObject
+    # - model-name:  DeliveryRuleHttpVersionCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleHttpVersionConditionObject
+    # - model-name:  DeliveryRuleIsDeviceCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleIsDeviceConditionObject
+    # - model-name: DeliveryRulePostArgsCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRulePostArgsConditionObject
+    # - model-name: DeliveryRuleQueryStringCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleQueryStringConditionObject
+    # - model-name: DeliveryRuleRemoteAddressCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRemoteAddressConditionObject
+    # - model-name: DeliveryRuleRequestHeaderCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderConditionObject
+    # - model-name: DeliveryRuleRequestMethodCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestMethodConditionObject
+    # - model-name: DeliveryRuleRequestSchemeCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestSchemeConditionObject
+    # - model-name: DeliveryRuleRequestUriCondition
+    #    cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleUrlFileExtensionCondition 
+    #    cmdlet-name: New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
+    # - model-name:  DeliveryRuleUrlFileNameCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlFileNameConditionObject
+    # - model-name: DeliveryRuleUrlPathCondition 
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlPathConditionObject
+    # - model-name:  DeliveryRuleServerPortCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
+    # - model-name:  DeliveryRuleClientPortCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
+    # - model-name: DeliveryRuleHostNameCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
+    # - model-name: DeliveryRuleSocketAddrCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleSocketAddrConditionObject
+    # - model-name: DeliveryRuleSslProtocolCondition
+    #   cmdlet-name: New-AzFrontDoorCdnRuleSslProtocolConditionObject
 
     - model-name: AfdDomainHttpsParameters
       cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
@@ -184,35 +184,36 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 
     # CDN action
-    - model-name:  DeliveryRuleCacheExpirationAction
-      cmdlet-name: New-AzCdnDeliveryRuleCacheExpirationActionObject
-    - model-name:  DeliveryRuleCacheKeyQueryStringAction
-      cmdlet-name: New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
-    - model-name:  OriginGroupOverrideAction
-      cmdlet-name: New-AzCdnOriginGroupOverrideActionObject
-    - model-name:  UrlRedirectAction
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
-    - model-name:  UrlRewriteAction
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
+
+    # - model-name:  DeliveryRuleCacheExpirationAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleCacheExpirationActionObject
+    # - model-name:  DeliveryRuleCacheKeyQueryStringAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+    # - model-name:  OriginGroupOverrideAction
+    #   cmdlet-name: New-AzCdnOriginGroupOverrideActionObject
+    # - model-name:  UrlRedirectAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
+    # - model-name:  UrlRewriteAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
     # - model-name:  UrlAction
     #   cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
-    - model-name: UrlSigningAction
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
-    - model-name:  DeliveryRuleRequestHeaderAction
-      cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderActionObject
-    - model-name:  DeliveryRuleResponseHeaderAction
-      cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject  
+    # - model-name: UrlSigningAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
+    # - model-name:  DeliveryRuleRequestHeaderAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderActionObject
+    # - model-name:  DeliveryRuleResponseHeaderAction
+    #   cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject  
 
-    - model-name:  UrlRedirectAction
-      cmdlet-name: New-AzCdnUrlRedirectActionObject
-    - model-name:  UrlRewriteAction
-      cmdlet-name: New-AzCdnUrlRewriteActionObject
-    - model-name: UrlSigningAction
-      cmdlet-name: New-AzCdnUrlSigningActionObject
-    - model-name:  DeliveryRuleRequestHeaderAction
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
-    - model-name:  DeliveryRuleResponseHeaderAction
-      cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject
+    # - model-name:  UrlRedirectAction
+    #   cmdlet-name: New-AzCdnUrlRedirectActionObject
+    # - model-name:  UrlRewriteAction
+    #   cmdlet-name: New-AzCdnUrlRewriteActionObject
+    # - model-name: UrlSigningAction
+    #   cmdlet-name: New-AzCdnUrlSigningActionObject
+    # - model-name:  DeliveryRuleRequestHeaderAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
+    # - model-name:  DeliveryRuleResponseHeaderAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject
     # - model-name: DeliveryRuleRouteConfigurationOverrideAction
     #   cmdlet-name: New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 
@@ -294,6 +295,14 @@ directive:
       variant: ^UpgradeExpanded$
       subject: AFDProfileSku
     remove: true
+  - where:
+      subject: NameAvailability
+      variant: CheckViaJsonFilePath1ViaJsonFilePath
+    remove: true
+  - where:
+      subject: NameAvailability
+      variant: CheckViaJsonString1ViaJsonString
+    remove: true
 
   # Hide Cdn profile
   - where:
@@ -340,24 +349,6 @@ directive:
   - where:
       subject: KeyGroupUpdate
     hide: true
-
-  # Hide duplicate Test-AzCdnNameAvailability
-  - where:
-      subject: NameAvailability
-      verb: Test
-      variant: CheckViaJsonFilePath1ViaJsonFilePath
-    hide: true
-  # Hide duplicate Test-AzCdnNameAvailability
-  - where:
-      subject: NameAvailability
-      verb: Test
-      variant: CheckViaJsonString1ViaJsonString
-    hide: true
-
-  - where:
-      parameter-name: ParameterTypeName
-    set:
-      alias: Name
 
   # Rename
   - where:

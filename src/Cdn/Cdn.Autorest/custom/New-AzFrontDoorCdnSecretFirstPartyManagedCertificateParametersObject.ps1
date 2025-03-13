@@ -35,7 +35,7 @@ function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
         [string[]]
         $SubjectAlternativeName,
         [Parameter(HelpMessage="Type.")]
-        [string[]]
+        [string]
         $Type
     )
 

@@ -16,45 +16,52 @@
 
 <#
 .Synopsis
-Create an in-memory object for UrlSigningAction.
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
-Create an in-memory object for UrlSigningAction.
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlsigningactionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulerequestheaderactionobject
 #>
-function New-AzCdnUrlSigningActionObject {
+function New-AzCdnDeliveryRuleRequestHeaderActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Algorithm to use for URL signing.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SHA256")]
+        [Parameter(Mandatory, HelpMessage="Action to perform.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Append", "Overwrite", "Delete")]
         [string]
-        $ParameterAlgorithm,
-        [Parameter(HelpMessage="Defines which query string parameters in the url to be considered for expires, key id etc. .")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier[]]
-        $ParameterNameOverride,
+        $ParameterHeaderAction,
+        [Parameter(Mandatory, HelpMessage="Name of the header to modify.")]
+        [string]
+        $ParameterHeaderName,
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
         [string]
-        $ParameterTypeName
+        [alias('Name')]
+        $ParameterTypeName,
+        [Parameter(HelpMessage="Value for the specified action.")]
+        [string]
+        $ParameterValue
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlSigningAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction]::New()
 
-        if ($PSBoundParameters.ContainsKey('ParameterAlgorithm')) {
-            $Object.ParameterAlgorithm = $ParameterAlgorithm
+        if ($PSBoundParameters.ContainsKey('ParameterHeaderAction')) {
+            $Object.ParameterHeaderAction = $ParameterHeaderAction
         }
-        if ($PSBoundParameters.ContainsKey('ParameterNameOverride')) {
-            $Object.ParameterNameOverride = $ParameterNameOverride
+        if ($PSBoundParameters.ContainsKey('ParameterHeaderName')) {
+            $Object.ParameterHeaderName = $ParameterHeaderName
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterValue')) {
+            $Object.ParameterValue = $ParameterValue
         }
         return $Object
     }

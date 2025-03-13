@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRuleRequestBodyCondition.
+Create an in-memory object for DeliveryRuleCookiesCondition.
 .Description
-Create an in-memory object for DeliveryRuleRequestBodyCondition.
+Create an in-memory object for DeliveryRuleCookiesCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulerequestbodyconditionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecookiesconditionobject
 #>
-function New-AzCdnDeliveryRuleRequestBodyConditionObject {
+function New-AzCdnDeliveryRuleCookiesConditionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,6 +41,9 @@ function New-AzCdnDeliveryRuleRequestBodyConditionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
         [string]
         $ParameterOperator,
+        [Parameter(HelpMessage="Name of Cookies to be matched.")]
+        [string]
+        $ParameterSelector,
         [Parameter(HelpMessage="List of transforms.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
         [string[]]
@@ -48,11 +51,12 @@ function New-AzCdnDeliveryRuleRequestBodyConditionObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -62,6 +66,9 @@ function New-AzCdnDeliveryRuleRequestBodyConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterOperator')) {
             $Object.ParameterOperator = $ParameterOperator
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterSelector')) {
+            $Object.ParameterSelector = $ParameterSelector
         }
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform

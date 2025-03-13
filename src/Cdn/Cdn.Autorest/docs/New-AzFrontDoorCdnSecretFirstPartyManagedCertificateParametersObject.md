@@ -14,7 +14,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject [-SubjectAlternativeName <String[]>]
- [-Type <String[]>] [<CommonParameters>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 Type.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

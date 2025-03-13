@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRuleResponseHeaderAction.
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
 .Description
-Create an in-memory object for DeliveryRuleResponseHeaderAction.
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleresponseheaderactionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerequestheaderactionobject
 #>
-function New-AzCdnDeliveryRuleResponseHeaderActionObject {
+function New-AzFrontDoorCdnRuleRequestHeaderActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,6 +41,7 @@ function New-AzCdnDeliveryRuleResponseHeaderActionObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName,
         [Parameter(HelpMessage="Value for the specified action.")]
         [string]
@@ -48,7 +49,7 @@ function New-AzCdnDeliveryRuleResponseHeaderActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterHeaderAction')) {
             $Object.ParameterHeaderAction = $ParameterHeaderAction

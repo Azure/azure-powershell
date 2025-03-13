@@ -16,50 +16,52 @@
 
 <#
 .Synopsis
-Create an in-memory object for UrlRewriteAction.
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
 .Description
-Create an in-memory object for UrlRewriteAction.
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlrewriteactionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleresponseheaderactionobject
 #>
-function New-AzCdnUrlRewriteActionObject {
+function New-AzCdnDeliveryRuleResponseHeaderActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Define the relative URL to which the above requests will be rewritten by.")]
+        [Parameter(Mandatory, HelpMessage="Action to perform.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Append", "Overwrite", "Delete")]
         [string]
-        $ParameterDestination,
-        [Parameter(HelpMessage="Whether to preserve unmatched path. Default value is true.")]
-        [bool]
-        $ParameterPreserveUnmatchedPath,
-        [Parameter(Mandatory, HelpMessage="define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.")]
+        $ParameterHeaderAction,
+        [Parameter(Mandatory, HelpMessage="Name of the header to modify.")]
         [string]
-        $ParameterSourcePattern,
+        $ParameterHeaderName,
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
         [string]
-        $ParameterTypeName
+        [alias('Name')]
+        $ParameterTypeName,
+        [Parameter(HelpMessage="Value for the specified action.")]
+        [string]
+        $ParameterValue
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction]::New()
 
-        if ($PSBoundParameters.ContainsKey('ParameterDestination')) {
-            $Object.ParameterDestination = $ParameterDestination
+        if ($PSBoundParameters.ContainsKey('ParameterHeaderAction')) {
+            $Object.ParameterHeaderAction = $ParameterHeaderAction
         }
-        if ($PSBoundParameters.ContainsKey('ParameterPreserveUnmatchedPath')) {
-            $Object.ParameterPreserveUnmatchedPath = $ParameterPreserveUnmatchedPath
-        }
-        if ($PSBoundParameters.ContainsKey('ParameterSourcePattern')) {
-            $Object.ParameterSourcePattern = $ParameterSourcePattern
+        if ($PSBoundParameters.ContainsKey('ParameterHeaderName')) {
+            $Object.ParameterHeaderName = $ParameterHeaderName
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterValue')) {
+            $Object.ParameterValue = $ParameterValue
         }
         return $Object
     }

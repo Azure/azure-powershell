@@ -16,42 +16,48 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryRuleCacheExpirationAction.
+Create an in-memory object for UrlRewriteAction.
 .Description
-Create an in-memory object for DeliveryRuleCacheExpirationAction.
+Create an in-memory object for UrlRewriteAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecacheexpirationactionobject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlrewriteactionobject
 #>
-function New-AzCdnDeliveryRuleCacheExpirationActionObject {
+function New-AzCdnUrlRewriteActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Caching behavior for the requests.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("BypassCache", "Override", "SetIfMissing")]
+        [Parameter(Mandatory, HelpMessage="Define the relative URL to which the above requests will be rewritten by.")]
         [string]
-        $ParameterCacheBehavior,
-        [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss.")]
+        $ParameterDestination,
+        [Parameter(HelpMessage="Whether to preserve unmatched path. Default value is true.")]
+        [bool]
+        $ParameterPreserveUnmatchedPath,
+        [Parameter(Mandatory, HelpMessage="define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.")]
         [string]
-        $ParameterCacheDuration,
+        $ParameterSourcePattern,
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
         [string]
+        [alias('Name')]
         $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction]::New()
 
-        if ($PSBoundParameters.ContainsKey('ParameterCacheBehavior')) {
-            $Object.ParameterCacheBehavior = $ParameterCacheBehavior
+        if ($PSBoundParameters.ContainsKey('ParameterDestination')) {
+            $Object.ParameterDestination = $ParameterDestination
         }
-        if ($PSBoundParameters.ContainsKey('ParameterCacheDuration')) {
-            $Object.ParameterCacheDuration = $ParameterCacheDuration
+        if ($PSBoundParameters.ContainsKey('ParameterPreserveUnmatchedPath')) {
+            $Object.ParameterPreserveUnmatchedPath = $ParameterPreserveUnmatchedPath
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterSourcePattern')) {
+            $Object.ParameterSourcePattern = $ParameterSourcePattern
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName

@@ -31,7 +31,7 @@ function New-AzFrontDoorCdnSecretManagedCertificateParametersObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="Type.")]
-        [string[]]
+        [string]
         $Type
     )
 
