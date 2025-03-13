@@ -27,6 +27,9 @@
     - `New-AzElasticSanVolumeGroup`
     - `Update-AzElasticSanVolumeGroup`
 
+## Version 1.1.1
+* Supported ElasticSan auto scale policy
+
 ## Version 1.1.0
 * Supported `EnforceDataIntegrityCheckForIscsi` for creating and updating volume groups
 

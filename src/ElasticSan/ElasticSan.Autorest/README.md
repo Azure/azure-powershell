@@ -28,11 +28,11 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 72c69a0cf561d41ae99fe6810c426a874d3a8372
+commit: 3ca7edabc2edf1117b7d912ba34f2694721e3ff3
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2024-05-01/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2024-06-01-preview/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
@@ -125,6 +125,38 @@ directive:
       parameter-name: KeyVaultPropertyKeyVersion
     set:
       parameter-name: KeyVersion
+  - where: 
+      parameter-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set:
+      parameter-name: AutoScalePolicyEnforcement
+  - where: 
+      parameter-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      parameter-name: CapacityUnitScaleUpLimitTiB
+  - where: 
+      parameter-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      parameter-name: IncreaseCapacityUnitByTiB
+  - where: 
+      parameter-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      parameter-name: UnusedSizeTiB
+  - where: 
+      property-name: ScaleUpPropertyAutoScalePolicyEnforcement
+    set: 
+      property-name: AutoScalePolicyEnforcement
+  - where:
+      property-name: ScaleUpPropertyCapacityUnitScaleUpLimitTiB
+    set:
+      property-name: CapacityUnitScaleUpLimitTiB
+  - where:
+      property-name: ScaleUpPropertyIncreaseCapacityUnitByTiB
+    set:
+      property-name: IncreaseCapacityUnitByTiB
+  - where:
+      property-name: ScaleUpPropertyUnusedSizeTiB
+    set:
+      property-name: UnusedSizeTiB
   # Change the description of cmdlets that correspond to multiple APIs
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}"].get

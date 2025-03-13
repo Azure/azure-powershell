@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticSanSkuList+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2024-05-01+1": {
+  "Get-AzElasticSanSkuList+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2024-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2024-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/skus?api-version=2024-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "170f7895-2af5-401d-bd8c-652f2316f5b6" ],
+        "x-ms-client-request-id": [ "404d7b7e-5baa-411e-9ab3-79fbcaddf2c2" ],
         "CommandName": [ "Get-AzElasticSanSkuList" ],
         "FullCommandName": [ "Get-AzElasticSanSkuList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.5", "Az.ElasticSan/0.3.0" ],
+        "User-Agent": [ "AzurePowershell/v12.4.0", "PSVersion/v7.4.5", "Az.ElasticSan/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "79c687b5-4bd9-4ef3-9fd6-7d21bdd823ee" ],
-        "x-ms-correlation-request-id": [ "79c687b5-4bd9-4ef3-9fd6-7d21bdd823ee" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240918T061538Z:79c687b5-4bd9-4ef3-9fd6-7d21bdd823ee" ],
+        "x-ms-request-id": [ "0c181bd2-c639-4e88-9487-73e4c784eaad" ],
+        "x-ms-correlation-request-id": [ "0c181bd2-c639-4e88-9487-73e4c784eaad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240929T023810Z:0c181bd2-c639-4e88-9487-73e4c784eaad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 458B214B18734E19A064F9FACE8825E6 Ref B: MAA201060514039 Ref C: 2024-09-18T06:15:38Z" ],
-        "Date": [ "Wed, 18 Sep 2024 06:15:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D2CC0663EA51417C87450D083ADE4EA6 Ref B: MAA201060513023 Ref C: 2024-09-29T02:38:09Z" ],
+        "Date": [ "Sun, 29 Sep 2024 02:38:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "38663" ],

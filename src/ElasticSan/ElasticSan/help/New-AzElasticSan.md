@@ -15,17 +15,20 @@ create ElasticSan.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -BaseSizeTiB <Int64>
- -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <String> [-AvailabilityZone <String[]>]
- [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <String> [-AutoScalePolicyEnforcement <String>]
+ [-AvailabilityZone <String[]>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>]
+ [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -ExtendedCapacitySizeTiB <Int64>
- -Location <String> -SkuName <String> [-AvailabilityZone <String[]>] [-PublicNetworkAccess <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> -SkuName <String> [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>]
+ [-CapacityUnitScaleUpLimitTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,31 +42,81 @@ New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSize
 ```
 
 ```output
-AvailabilityZone             : 
+AutoScalePolicyEnforcement   :
+AvailabilityZone             :
 BaseSizeTiB                  : 1
+CapacityUnitScaleUpLimitTiB  :
 ExtendedCapacitySizeTiB      : 6
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+IncreaseCapacityUnitByTiB    :
 Location                     : eastus
 Name                         : myelasticsan
+PrivateEndpointConnection    :
 ProvisioningState            : Succeeded
+PublicNetworkAccess          :
+ResourceGroupName            : myresourcegroup
 SkuName                      : Premium_LRS
-SkuTier                      : 
-SystemDataCreatedAt          : 9/19/2022 9:47:26 AM
-SystemDataCreatedBy          : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 9/19/2022 9:47:26 AM
-SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+SkuTier                      :
+SystemDataCreatedAt          : 9/30/2024 3:43:44 AM
+SystemDataCreatedBy          : example@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/30/2024 3:43:44 AM
+SystemDataLastModifiedBy     : example@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "tag1": "value1",
+                                 "tag2": "value2"
+                               }
 TotalIops                    : 5000
-TotalMBps                    : 80
+TotalMBps                    : 200
 TotalSizeTiB                 : 7
 TotalVolumeSizeGiB           : 0
 Type                         : Microsoft.ElasticSan/ElasticSans
+UnusedSizeTiB                :
 VolumeGroupCount             : 0
 ```
 
 This command creates an Elastic SAN.
+
+### Example 2: Create an Elastic SAN with auto scale policy
+```powershell
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTiB 1 -ExtendedCapacitySizeTiB 6 -Location eastus2 -SkuName Premium_LRS -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 24 -IncreaseCapacityUnitByTiB 1 -UnusedSizeTiB 5
+```
+
+```output
+AutoScalePolicyEnforcement   : Enabled
+AvailabilityZone             :
+BaseSizeTiB                  : 1
+CapacityUnitScaleUpLimitTiB  : 24
+ExtendedCapacitySizeTiB      : 6
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan
+IncreaseCapacityUnitByTiB    : 1
+Location                     : eastus2
+Name                         : myelasticsan
+PrivateEndpointConnection    :
+ProvisioningState            : Succeeded
+PublicNetworkAccess          :
+ResourceGroupName            : myresourcegroup
+SkuName                      : Premium_LRS
+SkuTier                      :
+SystemDataCreatedAt          : 9/30/2024 3:41:50 AM
+SystemDataCreatedBy          : example@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 9/30/2024 3:41:50 AM
+SystemDataLastModifiedBy     : example@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+TotalIops                    : 5000
+TotalMBps                    : 200
+TotalSizeTiB                 : 7
+TotalVolumeSizeGiB           : 0
+Type                         : Microsoft.ElasticSan/ElasticSans
+UnusedSizeTiB                : 5
+VolumeGroupCount             : 0
+```
+
+This command creates an Elastic SAN with auto scale policy.
 
 ## PARAMETERS
 
@@ -72,6 +125,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalePolicyEnforcement
+Enable or Disable scale up setting on Elastic San Appliance.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,6 +180,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CapacityUnitScaleUpLimitTiB
+Maximum scale up size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -137,6 +220,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncreaseCapacityUnitByTiB
+Unit to increase Capacity Unit on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,6 +293,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -285,6 +398,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnusedSizeTiB
+Unused size on Elastic San appliance in TiB.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
