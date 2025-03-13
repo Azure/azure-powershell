@@ -3770,7 +3770,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "northeurope";
 
     try
     {
@@ -4467,7 +4467,7 @@ function Test-VirtualMachineScaleSetSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = eastus2euap;
+    $loc = "eastus2euap";
 
     try
     {
@@ -4542,9 +4542,9 @@ function Test-VirtualMachineScaleSetSecurityType
         Start-AzVmss -ResourceGroupName $rgname -Name $vmssName2
         $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
         
-        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
-        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
-        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
 
         # Guest Attestation extension defaulting test
         # Removed this portion as this logic was removed as per feature team request. 
