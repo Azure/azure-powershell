@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBSqlVectorEmbedding
 
 ## SYNOPSIS
-Creates a new CosmosDB Sql PSVectorEmbedding object.
+Creates a new CosmosDB Sql VectorEmbedding object.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzCosmosDBSqlVectorEmbedding [-Path <String>] [-DataType <String>] [-Distanc
 ```
 
 ## DESCRIPTION
-Object corresponding to Sql API's VectorEmbedding.
+The **New-AzCosmosDBSqlVectorEmbedding** cmdlet creates a new object of type PSSqlVectorEmbedding.
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbedding
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding
 
 ## NOTES
 

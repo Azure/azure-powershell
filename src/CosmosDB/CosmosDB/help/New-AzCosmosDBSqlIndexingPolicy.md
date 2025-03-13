@@ -19,7 +19,7 @@ New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec
 ```
 
 ## DESCRIPTION
-The **New-AzCosmosDBSqlIndexingPolicy** cmdlet creates a new object of type PSSqlIndexingPolicy.
+The **New-AzCosmosDBSqlIndexingPolicy** cmdlet creates a new object of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlIndexingPolicy.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ ExcludedPaths    : {Microsoft.Azure.Commands.CosmosDB.Models.PSExcludedPath}
 CompositeIndexes : {Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath,
                    Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath}
 SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
-VectorIndexs    : {Microsoft.Azure.Commands.CosmosDB.Models.PSVectorIndex}
+VectorIndexs    : {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex}
 ```
 
 ## PARAMETERS
@@ -155,10 +155,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -VectorIndex
-Array of strings containing The path to the vector field in the document.
+Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVectorIndex[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex[]
 Parameter Sets: (All)
 Aliases:
 

@@ -49,10 +49,10 @@ Accept wildcard characters: False
 ```
 
 ### -VectorEmbedding
-Array of strings containing VectorEmbedding (Represents a vector embedding. A vector embedding is used to define a vector field in the documents) elements.
+Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding (Represents a vector embedding. A vector embedding is used to define a vector field in the documents) elements.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbedding[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbeddingPolicy
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 
 ## NOTES
 
