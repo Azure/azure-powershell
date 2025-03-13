@@ -19,4 +19,4 @@
 -->
 ## Upcoming Release
 * Renamed from Az.CodeSigning
-
+* Adding Az.TrustedSigning.Autorest commands for control-plane
