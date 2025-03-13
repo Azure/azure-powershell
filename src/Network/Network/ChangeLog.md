@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.15.0
 * Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
 
 ## Version 7.14.0
