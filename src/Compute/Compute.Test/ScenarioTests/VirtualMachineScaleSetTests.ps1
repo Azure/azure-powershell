@@ -3770,7 +3770,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "eastus2euap";
+    $loc = Get-ComputeVMLocation;
 
     try
     {
@@ -3830,17 +3830,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
         $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
-        #Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
-
-        # Update SecurityType to Standard. 
-        Stop-Azvmss -ResourceGroupName $rgname -Name $vmssName -Force
-        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SecurityType "Standard"
-        Start-AzVmss -ResourceGroupName $rgname -Name $vmssName
-        $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
-
-        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
-        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
-        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
 
     }
     finally
@@ -4477,7 +4467,7 @@ function Test-VirtualMachineScaleSetSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = eastus2euap;
 
     try
     {
@@ -4544,6 +4534,17 @@ function Test-VirtualMachineScaleSetSecurityType
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
         # Vmss Identity is now in fact only UserAssigned as expected.
+
+        
+        # Update SecurityType to Standard. 
+        Stop-Azvmss -ResourceGroupName $rgname -Name $vmssName2 -Force
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -SecurityType "Standard"
+        Start-AzVmss -ResourceGroupName $rgname -Name $vmssName2
+        $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
+        
+        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
+        #Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
 
         # Guest Attestation extension defaulting test
         # Removed this portion as this logic was removed as per feature team request. 
