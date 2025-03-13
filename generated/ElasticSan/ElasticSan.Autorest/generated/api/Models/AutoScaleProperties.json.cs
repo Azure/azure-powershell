@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Extensions;
 
-    /// <summary>Elastic San update properties.</summary>
-    public partial class ElasticSanUpdateProperties
+    /// <summary>The auto scale settings on Elastic San Appliance.</summary>
+    public partial class AutoScaleProperties
     {
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject into a new instance of <see cref="ElasticSanUpdateProperties" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject into a new instance of <see cref="AutoScaleProperties" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ElasticSanUpdateProperties(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
+        internal AutoScaleProperties(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -65,31 +65,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_autoScaleProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("autoScaleProperties"), out var __jsonAutoScaleProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScaleProperties.FromJson(__jsonAutoScaleProperties) : _autoScaleProperty;}
-            {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
+            {_scaleUpProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("scaleUpProperties"), out var __jsonScaleUpProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpProperties.FromJson(__jsonScaleUpProperties) : _scaleUpProperty;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateProperties.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateProperties.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScaleProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json ? new ElasticSanUpdateProperties(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json ? new AutoScaleProperties(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ElasticSanUpdateProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="AutoScaleProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ElasticSanUpdateProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="AutoScaleProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode serializationMode)
         {
@@ -101,16 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return container;
             }
-            AddIf( null != this._autoScaleProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._autoScaleProperty.ToJson(null,serializationMode) : null, "autoScaleProperties" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
-            {
-                AddIf( null != this._baseSizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._baseSizeTiB) : null, "baseSizeTiB" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
-            {
-                AddIf( null != this._extendedCapacitySizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._extendedCapacitySizeTiB) : null, "extendedCapacitySizeTiB" ,container.Add );
-            }
-            AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            AddIf( null != this._scaleUpProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._scaleUpProperty.ToJson(null,serializationMode) : null, "scaleUpProperties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
