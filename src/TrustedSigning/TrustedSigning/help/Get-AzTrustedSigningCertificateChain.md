@@ -13,10 +13,17 @@ Retrieve Azure.TrustedSigning Certificate Chain
 
 ## SYNTAX
 
-### InteractiveSubmit (Default)
+### ByAccountProfileNameParameterSet (Default)
 ```
-Get-AzTrustedSigningCertificateChain [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
--MetadataFilePath <String> 
+Get-AzTrustedSigningCertificateChain [-AccountName] <String> [-ProfileName] <String> [-EndpointUrl] <String>
+ [-Destination] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### ByMetadataFileParameterSet
+```
+Get-AzTrustedSigningCertificateChain [-MetadataFilePath] <String> [-Destination] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,6 +32,7 @@ Use this cmdlet to retrieve Azure TrustedSigning Cert Chain.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
 Destination is the downloaded cert chain file path, which incldues the file name and extension .der.
+
 ## EXAMPLES
 
 ### Example 1: Retrieve a cert chain by account and profile name
@@ -68,25 +76,42 @@ Specifies Azure TrustedSigning AccountName used to sign CI policy.
 ```yaml
 Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-Specifies Azure TrustedSigning ProfileName used to sign CI policy.
+### -Destination
+Specifies the downloaed cert chain file path. 
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAccountProfileNameParameterSet
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -95,12 +120,13 @@ Specifies Azure TrustedSigning Endpoint used to sign CI policy. It's an Url, for
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
+Parameter Sets: ByAccountProfileNameParameterSet
+Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -115,23 +141,40 @@ Specifies Azure TrustedSigning Metadata file path used to sign CI policy. It's a
 ```yaml
 Type: System.String
 Parameter Sets: ByMetadataFileParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Specifies Azure TrustedSigning ProfileName used to sign CI policy.
+
+```yaml
+Type: System.String
+Parameter Sets: ByAccountProfileNameParameterSet
+Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Destination
-Specifies the downloaed cert chain file path. 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
-Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
-Required: True
-Position: 5
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

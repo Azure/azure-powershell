@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TrustedSigning-help.xml
 Module Name: Az.TrustedSigning
 online version: https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningcertificateprofile
 schema: 2.0.0
@@ -15,25 +15,28 @@ Get details of a certificate profile.
 ### List (Default)
 ```
 Get-AzTrustedSigningCertificateProfile -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzTrustedSigningCertificateProfile -AccountName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzTrustedSigningCertificateProfile -InputObject <ITrustedSigningIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityCodeSigningAccount
 ```
-Get-AzTrustedSigningCertificateProfile -CodeSigningAccountInputObject <ITrustedSigningIdentity>
- -ProfileName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTrustedSigningCertificateProfile -ProfileName <String>
+ -CodeSigningAccountInputObject <ITrustedSigningIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzTrustedSigningCertificateProfile -InputObject <ITrustedSigningIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +60,6 @@ This command gets a trusted signing certificate profile
 ### Example 2: List Trusted Signing Certificate Profiles
 ```powershell
 Get-AzTrustedSigningCertificateProfile -AccountName test -ResourceGroupName rg-test
-
 ```
 
 ```output
@@ -75,7 +77,7 @@ Trusted Signing account name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,13 +148,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -168,7 +185,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -192,4 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

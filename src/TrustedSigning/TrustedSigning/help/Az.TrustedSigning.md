@@ -10,23 +10,21 @@ Locale: en-US
 ## Description
 Microsoft Azure PowerShell: TrustedSigning cmdlets
 
-### [Get-AzTrustedSigningCustomerEku](Get-AzTrustedSigningCustomerEku.md)
-Retrieve Azure.TrustedSigning customer Eku.
-
-### [Get-AzTrustedSigningCertificateChain](Get-AzTrustedSigningCertificateChain.md)
-Retrieve Azure.TrustedSigning Certificate Chain.
-
-### [Get-AzTrustedSigningCertificateRoot](Get-AzTrustedSigningCertificateroot.md)
-Retrieve Azure.TrustedSigning Root Cert.
-
-### [Invoke-AzTrustedSigningCIPolicySigning](Invoke-AzTrustedSigningCIPolicySigning.md)
-Invoke CI Policy signing to Azure.TrustedSigning.
-
+## Az.TrustedSigning Cmdlets
 ### [Get-AzTrustedSigningAccount](Get-AzTrustedSigningAccount.md)
 Get a trusted Signing Account.
 
+### [Get-AzTrustedSigningCertificateChain](Get-AzTrustedSigningCertificateChain.md)
+Retrieve Azure.TrustedSigning Certificate Chain
+
 ### [Get-AzTrustedSigningCertificateProfile](Get-AzTrustedSigningCertificateProfile.md)
 Get details of a certificate profile.
+
+### [Get-AzTrustedSigningCertificateRoot](Get-AzTrustedSigningCertificateRoot.md)
+Retrieve Azure.TrustedSigning Root Cert
+
+### [Invoke-AzTrustedSigningCIPolicySigning](Invoke-AzTrustedSigningCIPolicySigning.md)
+Invoke CI Policy signing to Azure.TrustedSigning
 
 ### [New-AzTrustedSigningAccount](New-AzTrustedSigningAccount.md)
 create a trusted Signing Account.
@@ -45,3 +43,4 @@ Checks that the trusted signing account name is valid and is not already in use.
 
 ### [Update-AzTrustedSigningAccount](Update-AzTrustedSigningAccount.md)
 update a trusted signing account.
+

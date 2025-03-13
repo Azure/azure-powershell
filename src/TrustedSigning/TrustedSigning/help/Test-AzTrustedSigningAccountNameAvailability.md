@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TrustedSigning-help.xml
 Module Name: Az.TrustedSigning
 online version: https://learn.microsoft.com/powershell/module/az.trustedsigning/test-aztrustedsigningaccountnameavailability
 schema: 2.0.0
@@ -14,26 +14,26 @@ Checks that the trusted signing account name is valid and is not already in use.
 
 ### CheckExpanded (Default)
 ```
-Test-AzTrustedSigningAccountNameAvailability -Name <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzTrustedSigningAccountNameAvailability [-SubscriptionId <String>] -Name <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzTrustedSigningAccountNameAvailability -Body <ICheckNameAvailability> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzTrustedSigningAccountNameAvailability [-SubscriptionId <String>] -Body <ICheckNameAvailability>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzTrustedSigningAccountNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzTrustedSigningAccountNameAvailability [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzTrustedSigningAccountNameAvailability -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzTrustedSigningAccountNameAvailability [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +147,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -208,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
