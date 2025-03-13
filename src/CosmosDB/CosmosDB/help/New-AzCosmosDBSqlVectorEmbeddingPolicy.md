@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -VectorEmbedding
-Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding (Represents a vector embedding. A vector embedding is used to define a vector field in the documents) elements.
+Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding (Represents a vector embedding. A vector embedding is used to define a vector field in the documents).
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbedding[]
