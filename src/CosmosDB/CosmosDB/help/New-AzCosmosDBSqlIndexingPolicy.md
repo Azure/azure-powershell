@@ -19,7 +19,7 @@ New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec
 ```
 
 ## DESCRIPTION
-The **New-AzCosmosDBSqlIndexingPolicy** cmdlet creates a new object of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlIndexingPolicy.
+The **New-AzCosmosDBSqlIndexingPolicy** cmdlet creates a new object of type PSSqlIndexingPolicy.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ ExcludedPaths    : {Microsoft.Azure.Commands.CosmosDB.Models.PSExcludedPath}
 CompositeIndexes : {Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath,
                    Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath}
 SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
-VectorIndexs    : {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex}
+VectorIndexes    : {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex}
 ```
 
 ## PARAMETERS
