@@ -12,7 +12,7 @@ steps:
   displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
-    version: 8.0.x
+    version: 8.x
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
