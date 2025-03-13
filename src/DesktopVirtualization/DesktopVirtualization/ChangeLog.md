@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade API version to 2024-11-01-preview
+    - Added activeSessions, pendingSessions and disconnectedSessions properties to SessionHost
+    - Added acalingMethod and createDelete properties to ScalingPlan
 
 ## Version 5.4.1
 * Upgraded nuget package to signed package.
