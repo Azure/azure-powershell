@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBSqlVectorEmbedding
 
 ## SYNOPSIS
-Creates a new object of type PSVectorEmbedding. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
+Creates a new CosmosDB Sql PSVectorEmbedding object.
 
 ## SYNTAX
 
@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSIncludedPath
+### Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbedding
 
 ## NOTES
 

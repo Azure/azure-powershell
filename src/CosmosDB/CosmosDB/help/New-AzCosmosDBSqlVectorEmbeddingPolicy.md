@@ -72,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlIndexingPolicy
+### Microsoft.Azure.Commands.CosmosDB.Models.PSVectorEmbeddingPolicy
 
 ## NOTES
 
