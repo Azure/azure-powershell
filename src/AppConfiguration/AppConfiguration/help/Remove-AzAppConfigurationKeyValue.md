@@ -15,7 +15,7 @@ Deletes a key-value.
 ### Delete (Default)
 ```
 Remove-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Remove-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <Stri
 ```
 Remove-AzAppConfigurationKeyValue -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
  [-Label <String>] [-IfMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
