@@ -70,21 +70,11 @@ directive:
     select: command
     hide: true
 
-  # Hide New & Update for customization
-  # - where:
-  #     verb: Update|New
-  #     subject: ConfigurationStore
-  #   hide: true
-
   # Rename parameters to follow design guideline
   - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
-  # - where:
-  #     parameter-name: IdentityUserAssignedIdentity
-  #   set:
-  #     parameter-name: UserAssignedIdentity
   - where:
       parameter-name: KeyVaultPropertyIdentityClientId
     set:
@@ -114,15 +104,6 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-
-  # rename enum
-  # - where:
-  #     parameter-name: IdentityType
-  #   set:
-  #     completer:
-  #       name: Managed Identity Type Completer
-  #       description: Gets the list of type of managed identities available for creating/updating app configuration store.
-  #       script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
 
   # Remove `[-SkipToken <String>]` because we hide pageable implementation.
   - from: swagger-document
