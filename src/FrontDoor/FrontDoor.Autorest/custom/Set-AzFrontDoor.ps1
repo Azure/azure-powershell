@@ -99,6 +99,7 @@ ROUTINGRULE <IRoutingRule[]>: Routing rules associated with this Front Door.
 https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoor
 #>
 function Set-AzFrontDoor {
+[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

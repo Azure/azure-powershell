@@ -96,6 +96,7 @@ POLICYSETTING <IPolicySettings>: Describes settings for the policy.
 https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy
 #>
 function Update-AzFrontDoorWafPolicy {
+[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

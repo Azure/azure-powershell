@@ -77,6 +77,7 @@ MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
 https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy
 #>
 function New-AzFrontDoorWafPolicy {
+[Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

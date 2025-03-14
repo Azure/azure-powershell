@@ -64,6 +64,7 @@ INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 #>
 function Enable-AzFrontDoorCustomDomainHttps {
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.ModelCmdletAttribute()]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='EnableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
