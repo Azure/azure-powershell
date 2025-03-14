@@ -91,11 +91,9 @@ Updates a connectivity configuration's group members.
 ### Example 2
 ```powershell
 $ConnectivityConfiguration = Get-AzNetworkManagerConnectivityConfiguration -Name "psConnectivityConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
-$ConnectivityConfiguration.ConnectivityCapabilities = [PSCustomObject]@{
-    ConnectedGroupPrivateEndpointScale = "HighScale"
-    ConnectedGroupAddressOverlap = "Disallowed"
-    PeeringEnforcement = "Enforced"
-}
+
+$connectivityCapabilities = New-AzNetworkManagerConnectivityCapabilities -ConnectedGroupPrivateEndpointScale "HighScale" -ConnectedGroupAddressOverlap "Disallowed" -PeeringEnforcement "Enforced"
+$ConnectivityConfiguration.ConnectivityCapabilities = $connectivityCapabilities
 Set-AzNetworkManagerConnectivityConfiguration -InputObject $ConnectivityConfiguration
 ```
 

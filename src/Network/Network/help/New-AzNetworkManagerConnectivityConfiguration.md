@@ -132,13 +132,11 @@ Creates a mesh network manager connectivity configuration.
 ```powershell
 $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
 [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
-$connectivityGroup.Add($connectivityGroupItem)   
-$capabilities = [PSCustomObject]@{
-    ConnectedGroupPrivateEndpointScale = "HighScale"
-    ConnectedGroupAddressOverlap = "Disallowed"
-    PeeringEnforcement = "Enforced"
-}
-New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfigMesh" -NetworkManagerName psNetworkManager -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapabilities $capabilities
+$connectivityGroup.Add($connectivityGroupItem)
+
+$connectivityCapabilities = New-AzNetworkManagerConnectivityCapabilities -ConnectedGroupPrivateEndpointScale "HighScale" -ConnectedGroupAddressOverlap "Disallowed" -PeeringEnforcement "Enforced"
+
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfigMesh" -NetworkManagerName psNetworkManager -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapabilities $connectivityCapabilities
 ```
 
 ```output
