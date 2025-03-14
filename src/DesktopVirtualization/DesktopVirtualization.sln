@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopVirtualization", "DesktopVirtualization\DesktopVirtualization.csproj", "{3550B5B7-AE9D-4406-9593-F4E349E6398B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DesktopVirtualization", "..\..\generated\DesktopVirtualization\DesktopVirtualization.Autorest\Az.DesktopVirtualization.csproj", "{091D3310-C862-4543-ADFD-E1A4F6AABED8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DesktopVirtualization", "..\..\generated\DesktopVirtualization\DesktopVirtualization.Autorest\Az.DesktopVirtualization.csproj", "{47F7A9C4-128E-4646-9749-3AC6BA1FFDC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{3550B5B7-AE9D-4406-9593-F4E349E6398B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3550B5B7-AE9D-4406-9593-F4E349E6398B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3550B5B7-AE9D-4406-9593-F4E349E6398B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{091D3310-C862-4543-ADFD-E1A4F6AABED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{091D3310-C862-4543-ADFD-E1A4F6AABED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{091D3310-C862-4543-ADFD-E1A4F6AABED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{091D3310-C862-4543-ADFD-E1A4F6AABED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F7A9C4-128E-4646-9749-3AC6BA1FFDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F7A9C4-128E-4646-9749-3AC6BA1FFDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F7A9C4-128E-4646-9749-3AC6BA1FFDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F7A9C4-128E-4646-9749-3AC6BA1FFDC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{515DBE36-0351-45B6-8F0F-34678C443E9F} = {CBBE8521-C069-43E6-8153-D7B5BF75F0AF}
