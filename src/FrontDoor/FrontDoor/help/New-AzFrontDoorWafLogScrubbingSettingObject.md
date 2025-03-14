@@ -1,24 +1,24 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwaflogscrubbingsettingobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwaflogscrubbingsettingobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafLogScrubbingSettingObject
 
 ## SYNOPSIS
-Create LogScrubbingSetting object for Waf policy object
+Create an in-memory object for PolicySettingsLogScrubbing.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafLogScrubbingSettingObject -ScrubbingRule <PSFrontDoorWafLogScrubbingRule[]> -State <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorWafLogScrubbingSettingObject [-ScrubbingRule <IWebApplicationFirewallScrubbingRules[]>]
+ [-State <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create LogScrubbingSetting object for Waf policy object
+Create an in-memory object for PolicySettingsLogScrubbing.
 
 ## EXAMPLES
 
@@ -32,13 +32,13 @@ Need to create a LogScrubbingRule object before using.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: proga
 
 Required: False
 Position: Named
@@ -51,11 +51,11 @@ Accept wildcard characters: False
 List of log scrubbing rules applied to the Web Application Firewall logs.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,7 +71,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,11 +83,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettingsLogScrubbing
 
 ## NOTES
 
