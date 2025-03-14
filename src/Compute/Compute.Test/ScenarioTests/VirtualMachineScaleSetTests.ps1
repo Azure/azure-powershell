@@ -4582,7 +4582,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4660,7 +4660,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4702,7 +4702,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4843,7 +4843,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4898,7 +4898,7 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4979,7 +4979,7 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaulting
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5058,7 +5058,7 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5221,7 +5221,7 @@ function Test-VirtualMachineScaleSetSecurityTypeNoVMProfile
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5253,7 +5253,7 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
