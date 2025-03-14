@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointNa
 
 Describe 'Test-AzFrontDoorCdnEndpointNameAvailability'  {
     It 'CheckExpanded' {
-        $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesAfdEndpoints
+        $resourceType = "Microsoft.Cdn/Profiles/AfdEndpoints"
         
         $endpointName = 'e-clipstest140'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"

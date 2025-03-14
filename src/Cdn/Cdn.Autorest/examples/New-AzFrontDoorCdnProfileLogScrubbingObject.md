@@ -12,4 +12,3 @@ Enabled
 ```
 
 Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRules
-
