@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string DeleteExistingPeering { get; set; }
 
         public string IsGlobal { get; set; }
+    
+        public PSNetworkManagerConnectivityCapabilities ConnectivityCapabilities { get; set; }
 
         [JsonProperty(Order = 1)]
         public IList<PSNetworkManagerConnectivityGroupItem> AppliesToGroups { get; set; }

@@ -72,10 +72,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified in the frontend of the load balancing rule.
         /// </param>
 
+        /// <param name="enableConnectionTracking">Defines whether connections between 2 communicating endpoints can be
+        /// tracked and associated to the same backend VM over its lifetime when using
+        /// UDP protocol.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the load balancing rule resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public LoadBalancingRulePropertiesFormat(string protocol, int frontendPort, SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string loadDistribution = default(string), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), string provisioningState = default(string))
+        public LoadBalancingRulePropertiesFormat(string protocol, int frontendPort, SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string loadDistribution = default(string), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?), string provisioningState = default(string))
 
         {
             this.FrontendIPConfiguration = frontendIPConfiguration;
@@ -90,6 +95,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableFloatingIP = enableFloatingIP;
             this.EnableTcpReset = enableTcpReset;
             this.DisableOutboundSnat = disableOutboundSnat;
+            this.EnableConnectionTracking = enableConnectionTracking;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -186,6 +192,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "disableOutboundSnat")]
         public bool? DisableOutboundSnat {get; set; }
+
+        /// <summary>
+        /// Gets or sets defines whether connections between 2 communicating endpoints
+        /// can be tracked and associated to the same backend VM over its lifetime when
+        /// using UDP protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableConnectionTracking")]
+        public bool? EnableConnectionTracking {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

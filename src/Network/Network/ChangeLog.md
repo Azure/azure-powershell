@@ -28,6 +28,10 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+* Updated cmdlets to support topology-specific connectivity capabilities:
+    - `New-AzNetworkManagerConnectivityConfiguration`
+    - `Set-AzNetworkManagerConnectivityConfiguration`
+    - `Get-AzNetworkManagerConnectivityConfiguration`
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
