@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Gets the private endpoint connections associated with the Cognitive Services account.
+        /// Gets the private endpoint connections associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the private endpoint connections associated with the Cognitive Services account.
+        /// Gets the private endpoint connections associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the Cognitive Services account.
+        /// Gets the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -64,7 +67,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
         {
@@ -72,7 +76,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the Cognitive Services account.
+        /// Gets the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,7 +89,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -97,7 +103,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -109,7 +116,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         public static PrivateEndpointConnection CreateOrUpdate(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), string location = default(string))
         {
@@ -117,7 +125,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,7 +138,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -142,7 +152,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -154,7 +165,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         public static void Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
         {
@@ -162,7 +174,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -174,7 +187,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -184,7 +198,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -196,7 +211,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         public static PrivateEndpointConnection BeginCreateOrUpdate(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), string location = default(string))
         {
@@ -204,7 +220,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Cognitive Services account.
+        /// Update the state of specified private endpoint connection associated with
+        /// the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -216,7 +233,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -229,7 +247,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -241,7 +260,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         public static void BeginDelete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName)
         {
@@ -249,7 +269,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the Cognitive Services account.
+        /// Deletes the specified private endpoint connection associated with the
+        /// Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -261,7 +282,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Cognitive Services Account
+        /// The name of the private endpoint connection associated with the Cognitive
+        /// Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
