@@ -6,11 +6,11 @@ New-AzIoTOperationsServiceBrokerAuthentication `
   -InstanceName "aio-117832708" `
   -ResourceGroupName "aio-validation-117832708" `
   -ExtendedLocationName "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.ExtendedLocation/customLocations/location-117832708" `
-  -AuthenticationMethod = @(
+  -AuthenticationMethod @(
       @{
           method = "X509"
           x509Settings = @{
-              trustedClientCaCert: "client-ca"
+              trustedClientCaCert = "client-ca"
           }
       }
   )

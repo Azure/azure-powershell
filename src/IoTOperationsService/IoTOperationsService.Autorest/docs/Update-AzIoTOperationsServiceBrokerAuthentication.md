@@ -53,11 +53,11 @@ Update-AzIoTOperationsServiceBrokerAuthentication `
   -BrokerName "default" `
   -InstanceName "aio-117832708" `
   -ResourceGroupName "aio-validation-117832708" `
-  -AuthenticationMethod = @(
+  -AuthenticationMethod @(
       @{
           method = "X509"
           x509Settings = @{
-              trustedClientCaCert: "client-ca"
+              trustedClientCaCert = "client-ca"
           }
       }
   )
