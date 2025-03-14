@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
+                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null)
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,
