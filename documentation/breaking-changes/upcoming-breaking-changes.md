@@ -88,6 +88,14 @@
   - Blueprints and associated cmdlets will be deprecated as early as July 2026. Customers are encouraged to transition to Template Specs and Deployments Stacks to support their scenarios beyond that date. Migration documentation is available at https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/migrate-blueprint.
   - This change is expected to take effect from Az.Blueprint version: - and Az version: 16.0.0
 
+## Az.Compute
+
+### `Get-AzVMSize`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The "ListVirtualMachineSize" parameter set will be deprecated as its API: "Virtual Machine Sizes - List" is deprecated. For listing available VM sizes by subscription or location, please use instead "Get-AzComputeResourceSku". Other parameter sets: "List Available Sizes for Availability Set" and "List Available Sizes for Virtual Machine" will continue to be supported.
+  - This change is expected to take effect from Az.Compute version: 10.0.0 and Az version: 14.0.0
+
 ## Az.ContainerInstance
 
 ### `New-AzContainerGroup`

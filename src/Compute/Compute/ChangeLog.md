@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 9.1.1
 * Added breaking change message for `Get-AzVMSize`.
 
 ## Version 9.1.0

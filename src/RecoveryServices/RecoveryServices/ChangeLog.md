@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.5.2
 * Added logs to enable better debugging for Modify protection with MSSQL workload.
 
 ## Version 7.5.1

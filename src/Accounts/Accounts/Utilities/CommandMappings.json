@@ -1021,6 +1021,12 @@
       "Switch-AzCloudService": {},
       "Update-AzCloudService": {}
     },
+    "Az.CodeSigning": {
+      "Get-AzCodeSigningCustomerEku": {},
+      "Get-AzCodeSigningRootCert": {},
+      "Get-AzCodeSigningCertChain": {},
+      "Invoke-AzCodeSigningCIPolicySigning": {}
+    },
     "Az.CognitiveServices": {
       "Add-AzCognitiveServicesAccountNetworkRule": {},
       "Get-AzCognitiveServicesAccount": {},
@@ -1686,6 +1692,9 @@
       "New-AzCosmosDBTable": {},
       "New-AzCosmosDBTableRoleAssignment": {},
       "New-AzCosmosDBTableRoleDefinition": {},
+      "New-AzCosmosDBSqlVectorEmbedding": {},
+      "New-AzCosmosDBSqlVectorEmbeddingPolicy": {},
+      "New-AzCosmosDBSqlVectorIndex": {},
       "New-AzCosmosDBTableToRestore": {},
       "New-AzCosmosDBVirtualNetworkRule": {},
       "New-AzManagedCassandraCluster": {},
@@ -2674,6 +2683,8 @@
       "Get-AzDynatraceMonitoredResource": {},
       "Get-AzDynatraceMonitorHost": {},
       "Get-AzDynatraceMonitorLinkableEnv": {},
+      "Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail": {},
+      "Get-AzDynatraceMonitorMetricStatus": {},
       "Get-AzDynatraceMonitorSSOConfig": {},
       "Get-AzDynatraceMonitorSSODetail": {},
       "Get-AzDynatraceMonitorTagRule": {},
@@ -2684,8 +2695,7 @@
       "New-AzDynatraceMonitorTagRule": {},
       "Remove-AzDynatraceMonitor": {},
       "Remove-AzDynatraceMonitorTagRule": {},
-      "Update-AzDynatraceMonitor": {},
-      "Update-AzDynatraceMonitorTagRule": {}
+      "Update-AzDynatraceMonitor": {}
     },
     "Az.EdgeOrder": {
       "Get-AzEdgeOrder": {},

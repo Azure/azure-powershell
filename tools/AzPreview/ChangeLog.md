@@ -1,3 +1,27 @@
+## 13.4.0 - April 2025
+#### Az.CodeSigning 0.2.2
+* Added support for CI policy signing for OS versions older than Nickel.
+
+#### Az.Compute 9.1.1
+* Added breaking change message for 'Get-AzVMSize'.
+
+#### Az.CosmosDB 1.19.0
+* Added support for creating containers with Vector Embedding Policy.
+* GAd Per Partition Automatic Failover GA
+* GAd Per Region Per Partition Autoscale GA
+
+#### Az.DynatraceObservability 0.2.0
+* Updated the api version to '2023-04-27' (Stable Version)
+
+#### Az.Network 7.15.0
+* Updated cmdlet 'AddAzureVirtualNetworkPeering' to add support for subnet peering
+
+#### Az.RecoveryServices 7.5.2
+* Added logs to enable better debugging for Modify protection with MSSQL workload.
+
+#### Az.Ssh 0.2.3
+* Implemented code refactoring, no behavior changes expected.
+
 ## 13.3.0 - March 2025
 #### Az.CosmosDB 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.

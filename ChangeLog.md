@@ -1,3 +1,18 @@
+## 13.4.0 - April 2025
+#### Az.Compute 9.1.1
+* Added breaking change message for 'Get-AzVMSize'.
+
+#### Az.CosmosDB 1.19.0
+* Added support for creating containers with Vector Embedding Policy.
+* GAd Per Partition Automatic Failover GA
+* GAd Per Region Per Partition Autoscale GA
+
+#### Az.Network 7.15.0
+* Updated cmdlet 'AddAzureVirtualNetworkPeering' to add support for subnet peering
+
+#### Az.RecoveryServices 7.5.2
+* Added logs to enable better debugging for Modify protection with MSSQL workload.
+
 ## 13.3.0 - March 2025
 #### Az.CosmosDB 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.

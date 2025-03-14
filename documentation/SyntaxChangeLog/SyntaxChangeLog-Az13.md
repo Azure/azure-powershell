@@ -1,3 +1,24 @@
+## 13.4.0 - April 2025
+#### Az.Accounts 4.0.2 
+* Modified cmdlet `Remove-AzContext`
+   - Removed parameter `-Name`
+* Modified cmdlet `Rename-AzContext`
+   - Removed parameters `-SourceName`, `-TargetName`
+* Modified cmdlet `Select-AzContext`
+   - Removed parameter `-Name`
+#### Az.CosmosDB 1.19.0 
+* Modified cmdlet `New-AzCosmosDBAccount`
+   - Added parameter `-EnablePerRegionPerPartitionAutoscale`
+* Modified cmdlet `New-AzCosmosDBSqlContainer`
+   - Added parameter `-vectorEmbeddingPolicy`
+* Modified cmdlet `New-AzCosmosDBSqlIndexingPolicy`
+   - Added parameter `-VectorIndex`
+* Modified cmdlet `Update-AzCosmosDBAccount`
+   - Added parameter `-EnablePerRegionPerPartitionAutoscale`
+* Modified cmdlet `Update-AzCosmosDBSqlContainer`
+   - Added parameter `-vectorEmbeddingPolicy`
+* Added cmdlet `New-AzCosmosDBSqlVectorEmbedding`, `New-AzCosmosDBSqlVectorEmbeddingPolicy`, `New-AzCosmosDBSqlVectorIndex`
+
 ## 13.3.0 - March 2025
 #### Az.CosmosDB 1.17.0 
 * Added cmdlet `Get-AzCosmosDBTableRoleAssignment`, `Get-AzCosmosDBTableRoleDefinition`, `New-AzCosmosDBTableRoleAssignment`, `New-AzCosmosDBTableRoleDefinition`, `Remove-AzCosmosDBTableRoleAssignment`, `Remove-AzCosmosDBTableRoleDefinition`, `Update-AzCosmosDBTableRoleAssignment`, `Update-AzCosmosDBTableRoleDefinition`
@@ -425,6 +446,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
 
 
 
