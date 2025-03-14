@@ -50,10 +50,45 @@ $policyGroupMember1.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
 
 # Create a PolicyGroup1
 New-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group3 -Priority 3 -PolicyMember $policyGroupMember1
-Provisioning State Name   IsDefault Priority P2SConnectionConfiguration ids
------------------- ----   --------- -------- ------------------------------
-Succeeded          Group3 False     3        {}
+```
 
+```output
+ProvisioningState               : Succeeded
+IsDefault                       : True
+Priority                        : 0
+PolicyMembers                   : {AADPolicy, CertPolicy1, RadiusPolicy1}
+P2SConnectionConfigurations     : {/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/TestingRG/providers/Microsoft.Network/p2sVpnGateways/4e72273faa1346ad9b910c37a5667c99-westcentralus-gw/p2sConnectio
+                                  nConfigurations/P2SConfig1, /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/TestingRG/providers/Microsoft.Network/p2sVpnGateways/f6d6b5d6711641028c480bf342478392-we
+                                  stcentralus-p2s-gw/p2sConnectionConfigurations/Config1}
+PolicyMembersText               : [
+                                    {
+                                      "Name": "AADPolicy",
+                                      "AttributeType": "AADGroupId",
+                                      "AttributeValue": "41b23e61-6c1e-4545-b367-cd054e0ed4b4"
+                                    },
+                                    {
+                                      "Name": "CertPolicy1",
+                                      "AttributeType": "CertificateGroupId",
+                                      "AttributeValue": "ab"
+                                    },
+                                    {
+                                      "Name": "RadiusPolicy1",
+                                      "AttributeType": "RadiusAzureGroupId",
+                                      "AttributeValue": "6ad1bd09"
+                                    }
+                                  ]
+P2SConnectionConfigurationsText : [
+                                    {
+                                      "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/TestingRG/providers/Microsoft.Network/p2sVpnGateways/4e72273faa1346ad9b910c37a5667c99-westcentralus-gw/p2
+                                  sConnectionConfigurations/P2SConfig1"
+                                    },
+                                    {
+                                      "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/TestingRG/providers/Microsoft.Network/p2sVpnGateways/f6d6b5d6711641028c480bf342478392-westcentralus-p2s-g
+                                  w/p2sConnectionConfigurations/Config1"
+                                    }
+                                  ]
+Name                            : Group1
+Id                              : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/TestingRG/providers/Microsoft.Network/vpnServerConfigurations/MPConfig/configurationPolicyGroups/Group1
 ```
 
 Creates a new VpnServerConfiguration PolicyGroup.

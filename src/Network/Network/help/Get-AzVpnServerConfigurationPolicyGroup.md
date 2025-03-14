@@ -37,15 +37,15 @@ The **Get-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to get an exi
 
 ### Example 1
 ```powershell
+Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group2 | Format-List
+```
 
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group2 | fl
-
+```output
 ProvisioningState               : Succeeded
 IsDefault                       : False
 Priority                        : 1
 PolicyMembers                   : {policy2}
-P2SConnectionConfigurations     : {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SCon
-                                  Config2}
+P2SConnectionConfigurations     : {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2}
 PolicyMembersText               : [
                                     {
                                       "Name": "policy2",
@@ -55,8 +55,7 @@ PolicyMembersText               : [
                                   ]
 P2SConnectionConfigurationsText : [
                                     {
-                                      "Id": "/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurati
-                                  ons/P2SConConfig2"
+                                      "Id": "/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2"
                                     }
                                   ]
 Name                            : Group2

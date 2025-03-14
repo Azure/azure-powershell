@@ -42,34 +42,16 @@ The **Update-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to update 
 
 ### Example 1
 ```powershell
-
-# Gets an existing VpnServerConfigurationPolicyGroup
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group2
-
-Provisioning State Name   IsDefault Priority P2SConnectionConfiguration ids
------------------- ----   --------- -------- ------------------------------
-Succeeded          Group2 False     1        {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2
-
-# Create new PolicyGroupMember2
-$policyGroupMember2 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
-$policyGroupMember2.AttributeType = "AADGroupId"
-$policyGroupMember2.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
-
 # Update existing VpnServerConfigurationPolicyGroup with new PolicyGroupMember2 & Priority to 2.
 Update-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group2 -PolicyMember $policyGroupMember2 -Priority 2
-Provisioning State Name   IsDefault Priority P2SConnectionConfiguration ids
------------------- ----   --------- -------- ------------------------------
-Succeeded          Group2 False     2        {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2
+```
 
-# Get VpnServerConfigurationPolicyGroup and check if updated values are correctly set.
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group2 | fl
-
+```output
 ProvisioningState               : Succeeded
 IsDefault                       : False
 Priority                        : 2
 PolicyMembers                   : {policyGroupMember2}
-P2SConnectionConfigurations     : {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SCon
-                                  Config2}
+P2SConnectionConfigurations     : {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2}
 PolicyMembersText               : [
                                     {
                                       "Name": "policyGroupMember2",
@@ -79,8 +61,7 @@ PolicyMembersText               : [
                                   ]
 P2SConnectionConfigurationsText : [
                                     {
-                                      "Id": "/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurati
-                                  ons/P2SConConfig2"
+                                      "Id": "/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2"
                                     }
                                   ]
 Name                            : Group2

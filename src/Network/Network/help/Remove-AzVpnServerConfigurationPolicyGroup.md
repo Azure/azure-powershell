@@ -38,26 +38,11 @@ The **Remove-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to remove 
 
 ### Example 1
 ```powershell
-
-# Get an existing VpnServerConfigurationPolicyGroup resource.
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group3
-
-Provisioning State Name   IsDefault Priority P2SConnectionConfiguration ids
------------------- ----   --------- -------- ------------------------------
-Succeeded          Group3 False     1        {/subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/p2sVpnGateways/d8c79d4be6fd47a497f8ac8f8eb545ad-eastus-gw/p2sConnectionConfigurations/P2SConConfig2
-
-# Remove existing VpnServerConfigurationPolicyGroup resource.
 Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group3 -Force -PassThru
+```
+
+```output
 True
-
-# Try to get deleted resource to make sure its removed.
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName TestRG -ServerConfigurationName VpnServerConfig2 -Name Group3
-Get-AzVpnServerConfigurationPolicyGroup: Resource /subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/vpnServerConfigurations/VpnServerConfig2/configurationPolicyGroups/Group3 not found.
-StatusCode: 404
-ReasonPhrase: Not Found
-ErrorCode: NotFound
-ErrorMessage: Resource /subscriptions/64c5a05b-0859-4e60-9634-d52db66832bd/resourceGroups/TestRG/providers/Microsoft.Network/vpnServerConfigurations/VpnServerConfig2/configurationPolicyGroups/Group3 not found.
-
 ```
 
 The **Remove-AzVpnServerConfigurationPolicyGroup** cmdlet enables you to remove an existing VpnServerConfigurationPolicyGroup under VpnServerConfiguration.
