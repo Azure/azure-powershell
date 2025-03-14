@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
+        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPropertiesInternal)Property).Schedule; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPropertiesInternal)Property).Schedule = value ?? null /* arrayOf */; }
 
@@ -359,14 +359,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
-        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
+        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of ScalingPlanPooledSchedule definitions.",
+        Description = @"List of Pooled ScalingSchedule definitions.",
         SerializedName = @"schedules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ObjectId { get; set; }
         /// <summary>Detailed properties for scaling plan.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanProperties Property { get; set; }
-        /// <summary>List of ScalingPlanPooledSchedule definitions.</summary>
+        /// <summary>List of Pooled ScalingSchedule definitions.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingSchedule> Schedule { get; set; }
         /// <summary>Timezone of the scaling plan.</summary>
         string TimeZone { get; set; }

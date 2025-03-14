@@ -19,6 +19,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Resource();
 
+        /// <summary>Number of active sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? ActiveSession { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).ActiveSession; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).ActiveSession = value ?? default(int); }
+
         /// <summary>Version of agent on SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string AgentVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).AgentVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).AgentVersion = value ?? null; }
@@ -36,6 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Configuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).SessionHostConfiguration; }
+
+        /// <summary>Number of disconnected sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? DisconnectedSession { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).DisconnectedSession; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).DisconnectedSession = value ?? default(int); }
 
         /// <summary>Friendly name of SessionHost</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -113,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>ObjectId of SessionHost. (internal use)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string ObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).ObjectId; }
+
+        /// <summary>Number of pending sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? PendingSession { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).PendingSession; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPropertiesInternal)Property).PendingSession = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProperties _property;
@@ -216,6 +228,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource
     {
+        /// <summary>Number of active sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Number of active sessions on SessionHost.",
+        SerializedName = @"activeSessions",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ActiveSession { get; set; }
         /// <summary>Version of agent on SessionHost.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -262,6 +285,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"sessionHostConfiguration",
         PossibleTypes = new [] { typeof(string) })]
         string Configuration { get;  }
+        /// <summary>Number of disconnected sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Number of disconnected sessions on SessionHost.",
+        SerializedName = @"disconnectedSessions",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DisconnectedSession { get; set; }
         /// <summary>Friendly name of SessionHost</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -339,6 +373,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
+        /// <summary>Number of pending sessions on SessionHost.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Number of pending sessions on SessionHost.",
+        SerializedName = @"pendingSessions",
+        PossibleTypes = new [] { typeof(int) })]
+        int? PendingSession { get; set; }
         /// <summary>Resource Id of SessionHost's underlying virtual machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -435,6 +480,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface ISessionHostInternal :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal
     {
+        /// <summary>Number of active sessions on SessionHost.</summary>
+        int? ActiveSession { get; set; }
         /// <summary>Version of agent on SessionHost.</summary>
         string AgentVersion { get; set; }
         /// <summary>Allow a new session.</summary>
@@ -445,6 +492,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z
         /// </summary>
         string Configuration { get; set; }
+        /// <summary>Number of disconnected sessions on SessionHost.</summary>
+        int? DisconnectedSession { get; set; }
         /// <summary>Friendly name of SessionHost</summary>
         string FriendlyName { get; set; }
         /// <summary>List of SessionHostHealthCheckReports</summary>
@@ -459,6 +508,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string OSVersion { get; set; }
         /// <summary>ObjectId of SessionHost. (internal use)</summary>
         string ObjectId { get; set; }
+        /// <summary>Number of pending sessions on SessionHost.</summary>
+        int? PendingSession { get; set; }
         /// <summary>Detailed properties for SessionHost</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostProperties Property { get; set; }
         /// <summary>Resource Id of SessionHost's underlying virtual machine.</summary>

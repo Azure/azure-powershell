@@ -141,7 +141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Backing field for <see cref="RegistrationInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch _registrationInfo;
 
-        /// <summary>The registration info of HostPool.</summary>
+        /// <summary>
+        /// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken
+        /// or listRegistrationTokens POST calls.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch RegistrationInfo { get => (this._registrationInfo = this._registrationInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfoPatch()); set => this._registrationInfo = value; }
 
@@ -613,7 +616,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
         string PublicUdp { get; set; }
-        /// <summary>The registration info of HostPool.</summary>
+        /// <summary>
+        /// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken
+        /// or listRegistrationTokens POST calls.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch RegistrationInfo { get; set; }
         /// <summary>Expiration time of registration token.</summary>
         global::System.DateTime? RegistrationInfoExpirationTime { get; set; }

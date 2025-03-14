@@ -1378,6 +1378,46 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeleteProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeleteProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RampDownMaximumHostPoolSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownMinimumHostPoolSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMaximumHostPoolSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMinimumHostPoolSize</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RampDownMaximumHostPoolSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownMinimumHostPoolSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMaximumHostPoolSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMinimumHostPoolSize</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoPatchProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoPatchProperties#Multiple</TypeName>
@@ -4496,6 +4536,148 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OffPeakActionOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakActionOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakMinutesToWaitOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakMinutesToWaitOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakStartVMOnConnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakActionOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakActionOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakMinutesToWaitOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakMinutesToWaitOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakStartVMOnConnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownActionOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownActionOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownMinutesToWaitOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownMinutesToWaitOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownStartVMOnConnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpActionOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpActionOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpAutoStartHost</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMinutesToWaitOnDisconnect</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMinutesToWaitOnLogoff</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpStartVMOnConnect</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OffPeakActionOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakActionOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakMinutesToWaitOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakMinutesToWaitOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakStartVMOnConnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakActionOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakActionOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakMinutesToWaitOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakMinutesToWaitOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakStartVMOnConnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownActionOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownActionOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownMinutesToWaitOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownMinutesToWaitOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownStartVMOnConnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpActionOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpActionOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpAutoStartHost</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMinutesToWaitOnDisconnect</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMinutesToWaitOnLogoff</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpStartVMOnConnect</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalScheduleProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalScheduleProperties#Multiple</TypeName>
@@ -4782,12 +4964,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledSchedulePatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledSchedulePatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>OffPeakLoadBalancingAlgorithm</Label>
           </TableColumnHeader>
@@ -4824,10 +5009,16 @@
           <TableColumnHeader>
             <Label>RampUpMinimumHostsPct</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScalingMethod</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OffPeakLoadBalancingAlgorithm</PropertyName>
               </TableColumnItem>
@@ -4863,6 +5054,109 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RampUpMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScalingMethod</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OffPeakLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PeakLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownCapacityThresholdPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownForceLogoffUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownMinimumHostsPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownNotificationMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownStopHostsWhen</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampDownWaitTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpCapacityThresholdPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpLoadBalancingAlgorithm</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RampUpMinimumHostsPct</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScalingMethod</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OffPeakLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PeakLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownCapacityThresholdPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownForceLogoffUser</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownNotificationMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownStopHostsWhen</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampDownWaitTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpCapacityThresholdPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpLoadBalancingAlgorithm</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RampUpMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScalingMethod</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -4967,6 +5261,9 @@
           <TableColumnHeader>
             <Label>RampUpMinimumHostsPct</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScalingMethod</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -5009,6 +5306,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RampUpMinimumHostsPct</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScalingMethod</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5237,74 +5537,6 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationList</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationList#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatus</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatus#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>EndTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PercentComplete</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>EndTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PercentComplete</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatusList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatusList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5923,6 +6155,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ActiveSession</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>AgentVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -5930,6 +6165,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AssignedUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisconnectedSession</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FriendlyName</Label>
@@ -5948,6 +6186,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PendingSession</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceId</Label>
@@ -5981,6 +6222,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>ActiveSession</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>AgentVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -5988,6 +6232,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AssignedUser</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisconnectedSession</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FriendlyName</PropertyName>
@@ -6006,6 +6253,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PendingSession</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceId</PropertyName>

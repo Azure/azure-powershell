@@ -19,9 +19,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Resource();
 
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampDownMaximumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampDownMaximumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampDownMaximumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampDownMinimumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampDownMinimumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampDownMinimumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampUpMaximumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampUpMaximumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampUpMaximumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampUpMinimumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampUpMinimumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDeleteRampUpMinimumHostPoolSize = value ?? default(int); }
+
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).DaysOfWeek = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).DaysOfWeek = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -41,20 +69,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__resource).Type = value; }
 
+        /// <summary>Internal Acessors for CreateDelete</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.CreateDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).CreateDelete = value; }
+
         /// <summary>Internal Acessors for OffPeakStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.OffPeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.OffPeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTime = value; }
 
         /// <summary>Internal Acessors for PeakStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.PeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.PeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTime = value; }
+
+        /// <summary>Internal Acessors for PropertiesName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).Name = value; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledSchedulePatchProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RampDownStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.RampDownStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.RampDownStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTime = value; }
 
         /// <summary>Internal Acessors for RampUpStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.RampUpStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchInternal.RampUpStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTime = value; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]
@@ -62,90 +96,100 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Load balancing algorithm for off-peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string OffPeakLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakLoadBalancingAlgorithm = value ?? null; }
+        public string OffPeakLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakLoadBalancingAlgorithm = value ?? null; }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTimeHour = value ?? default(int); }
+        public int? OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).OffPeakStartTimeMinute = value ?? default(int); }
+        public int? OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).OffPeakStartTimeMinute = value ?? default(int); }
 
         /// <summary>Load balancing algorithm for peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string PeakLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakLoadBalancingAlgorithm = value ?? null; }
+        public string PeakLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakLoadBalancingAlgorithm = value ?? null; }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTimeHour = value ?? default(int); }
+        public int? PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
+        public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
+
+        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string PropertiesName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties _property;
 
         /// <summary>Detailed properties for ScalingPlanPooledSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledScheduleProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPooledSchedulePatchProperties()); set => this._property = value; }
 
         /// <summary>Capacity threshold for ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownCapacityThresholdPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownCapacityThresholdPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownCapacityThresholdPct = value ?? default(int); }
+        public int? RampDownCapacityThresholdPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownCapacityThresholdPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownCapacityThresholdPct = value ?? default(int); }
 
         /// <summary>Should users be logged off forcefully from hosts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public bool? RampDownForceLogoffUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownForceLogoffUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownForceLogoffUser = value ?? default(bool); }
+        public bool? RampDownForceLogoffUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownForceLogoffUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownForceLogoffUser = value ?? default(bool); }
 
         /// <summary>Load balancing algorithm for ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownLoadBalancingAlgorithm = value ?? null; }
+        public string RampDownLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownLoadBalancingAlgorithm = value ?? null; }
 
         /// <summary>Minimum host percentage for ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownMinimumHostsPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownMinimumHostsPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownMinimumHostsPct = value ?? default(int); }
+        public int? RampDownMinimumHostsPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownMinimumHostsPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownMinimumHostsPct = value ?? default(int); }
 
         /// <summary>Notification message for users during ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownNotificationMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownNotificationMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownNotificationMessage = value ?? null; }
+        public string RampDownNotificationMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownNotificationMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownNotificationMessage = value ?? null; }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTimeHour = value ?? default(int); }
+        public int? RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStartTimeMinute = value ?? default(int); }
+        public int? RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStartTimeMinute = value ?? default(int); }
 
         /// <summary>Specifies when to stop hosts during ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownStopHostsWhen { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStopHostsWhen; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownStopHostsWhen = value ?? null; }
+        public string RampDownStopHostsWhen { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStopHostsWhen; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownStopHostsWhen = value ?? null; }
 
         /// <summary>Number of minutes to wait to stop hosts during ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownWaitTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownWaitTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampDownWaitTimeMinute = value ?? default(int); }
+        public int? RampDownWaitTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownWaitTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampDownWaitTimeMinute = value ?? default(int); }
 
         /// <summary>Capacity threshold for ramp up period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpCapacityThresholdPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpCapacityThresholdPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpCapacityThresholdPct = value ?? default(int); }
+        public int? RampUpCapacityThresholdPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpCapacityThresholdPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpCapacityThresholdPct = value ?? default(int); }
 
         /// <summary>Load balancing algorithm for ramp up period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampUpLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpLoadBalancingAlgorithm = value ?? null; }
+        public string RampUpLoadBalancingAlgorithm { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpLoadBalancingAlgorithm; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpLoadBalancingAlgorithm = value ?? null; }
 
         /// <summary>Minimum host percentage for ramp up period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpMinimumHostsPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpMinimumHostsPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpMinimumHostsPct = value ?? default(int); }
+        public int? RampUpMinimumHostsPct { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpMinimumHostsPct; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpMinimumHostsPct = value ?? default(int); }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTimeHour = value ?? default(int); }
+        public int? RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePropertiesInternal)Property).RampUpStartTimeMinute = value ?? default(int); }
+        public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).RampUpStartTimeMinute = value ?? default(int); }
+
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string ScalingMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).ScalingMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchPropertiesInternal)Property).ScalingMethod = value ?? null; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -206,6 +250,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResource
     {
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampDownMaximumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampDownMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampDownMinimumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampDownMinimumHostPoolSize { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampUpMaximumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampUpMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampUpMinimumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampUpMinimumHostPoolSize { get; set; }
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -286,6 +386,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
         int? PeakStartTimeMinute { get; set; }
+        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Name of the ScalingPlanPooledSchedule.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string PropertiesName { get;  }
         /// <summary>Capacity threshold for ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -443,12 +554,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
         int? RampUpStartTimeMinute { get; set; }
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The desired scaling method to be used to scale the hosts in the assigned host pool.",
+        SerializedName = @"scalingMethod",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("PowerManage", "CreateDeletePowerManage")]
+        string ScalingMethod { get; set; }
 
     }
     /// ScalingPlanPooledSchedule properties that can be patched.
     internal partial interface IScalingPlanPooledSchedulePatchInternal :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal
     {
+        /// <summary>
+        /// The properties that control how Scaling will manage the size of the hostpool by creating and deleting hosts.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties CreateDelete { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        int? CreateDeleteRampDownMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        int? CreateDeleteRampDownMinimumHostPoolSize { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        int? CreateDeleteRampUpMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        int? CreateDeleteRampUpMinimumHostPoolSize { get; set; }
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
@@ -470,8 +619,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? PeakStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         int? PeakStartTimeMinute { get; set; }
+        /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
+        string PropertiesName { get; set; }
         /// <summary>Detailed properties for ScalingPlanPooledSchedule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledScheduleProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatchProperties Property { get; set; }
         /// <summary>Capacity threshold for ramp down period.</summary>
         int? RampDownCapacityThresholdPct { get; set; }
         /// <summary>Should users be logged off forcefully from hosts.</summary>
@@ -507,6 +658,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? RampUpStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         int? RampUpStartTimeMinute { get; set; }
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("PowerManage", "CreateDeletePowerManage")]
+        string ScalingMethod { get; set; }
 
     }
 }

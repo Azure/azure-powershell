@@ -13,12 +13,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingScheduleInternal
     {
 
+        /// <summary>Backing field for <see cref="CreateDelete" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties _createDelete;
+
+        /// <summary>
+        /// The properties that control how Scaling will manage the size of the hostpool by creating and deleting hosts.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties CreateDelete { get => (this._createDelete = this._createDelete ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeleteProperties()); set => this._createDelete = value; }
+
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampDownMaximumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampDownMaximumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampDownMaximumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampDownMinimumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampDownMinimumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampDownMinimumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampUpMaximumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampUpMaximumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampUpMaximumHostPoolSize = value ?? default(int); }
+
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public int? CreateDeleteRampUpMinimumHostPoolSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampUpMinimumHostPoolSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeletePropertiesInternal)CreateDelete).RampUpMinimumHostPoolSize = value ?? default(int); }
+
         /// <summary>Backing field for <see cref="DaysOfWeek" /> property.</summary>
         private System.Collections.Generic.List<string> _daysOfWeek;
 
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> DaysOfWeek { get => this._daysOfWeek; set => this._daysOfWeek = value; }
+
+        /// <summary>Internal Acessors for CreateDelete</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingScheduleInternal.CreateDelete { get => (this._createDelete = this._createDelete ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeleteProperties()); set { {_createDelete = value;} } }
 
         /// <summary>Internal Acessors for OffPeakStartTime</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingScheduleInternal.OffPeakStartTime { get => (this._offPeakStartTime = this._offPeakStartTime ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Time()); set { {_offPeakStartTime = value;} } }
@@ -183,6 +223,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITimeInternal)RampUpStartTime).Minute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITimeInternal)RampUpStartTime).Minute = value ?? default(int); }
 
+        /// <summary>Backing field for <see cref="ScalingMethod" /> property.</summary>
+        private string _scalingMethod;
+
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string ScalingMethod { get => this._scalingMethod; set => this._scalingMethod = value; }
+
         /// <summary>Creates an new <see cref="ScalingSchedule" /> instance.</summary>
         public ScalingSchedule()
         {
@@ -193,6 +242,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IScalingSchedule :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampDownMaximumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampDownMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampDownMinimumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampDownMinimumHostPoolSize { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampUpMaximumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampUpMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when this limit is met. This requires the assigned hostpool to have a session host config property.",
+        SerializedName = @"rampUpMinimumHostPoolSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CreateDeleteRampUpMinimumHostPoolSize { get; set; }
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -203,6 +308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"Set of days of the week on which this schedule is active.",
         SerializedName = @"daysOfWeek",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
         /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
@@ -440,13 +546,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"minute",
         PossibleTypes = new [] { typeof(int) })]
         int? RampUpStartTimeMinute { get; set; }
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The desired scaling method to be used to scale the hosts in the assigned host pool.",
+        SerializedName = @"scalingMethod",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("PowerManage", "CreateDeletePowerManage")]
+        string ScalingMethod { get; set; }
 
     }
     /// A ScalingPlanPooledSchedule.
     internal partial interface IScalingScheduleInternal
 
     {
+        /// <summary>
+        /// The properties that control how Scaling will manage the size of the hostpool by creating and deleting hosts.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties CreateDelete { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        int? CreateDeleteRampDownMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        int? CreateDeleteRampDownMinimumHostPoolSize { get; set; }
+        /// <summary>
+        /// Maximum number of session hosts that may be created by the Scaling Service. This requires the assigned hostpool to have
+        /// a session host config property.
+        /// </summary>
+        int? CreateDeleteRampUpMaximumHostPoolSize { get; set; }
+        /// <summary>
+        /// Minimum number of session hosts that will be be created by the Scaling Service. Scaling will not delete any hosts when
+        /// this limit is met. This requires the assigned hostpool to have a session host config property.
+        /// </summary>
+        int? CreateDeleteRampUpMinimumHostPoolSize { get; set; }
         /// <summary>Set of days of the week on which this schedule is active.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
         /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
         string Name { get; set; }
@@ -503,6 +648,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? RampUpStartTimeHour { get; set; }
         /// <summary>The minute.</summary>
         int? RampUpStartTimeMinute { get; set; }
+        /// <summary>
+        /// The desired scaling method to be used to scale the hosts in the assigned host pool.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("PowerManage", "CreateDeletePowerManage")]
+        string ScalingMethod { get; set; }
 
     }
 }
