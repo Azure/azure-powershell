@@ -56,13 +56,8 @@ subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
-identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Remove the unexpanded parameter set
@@ -76,20 +71,20 @@ directive:
     hide: true
 
   # Hide New & Update for customization
-  - where:
-      verb: Update|New
-      subject: ConfigurationStore
-    hide: true
+  # - where:
+  #     verb: Update|New
+  #     subject: ConfigurationStore
+  #   hide: true
 
   # Rename parameters to follow design guideline
   - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
+  # - where:
+  #     parameter-name: IdentityUserAssignedIdentity
+  #   set:
+  #     parameter-name: UserAssignedIdentity
   - where:
       parameter-name: KeyVaultPropertyIdentityClientId
     set:
@@ -121,13 +116,13 @@ directive:
     remove: true
 
   # rename enum
-  - where:
-      parameter-name: IdentityType
-    set:
-      completer:
-        name: Managed Identity Type Completer
-        description: Gets the list of type of managed identities available for creating/updating app configuration store.
-        script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
+  # - where:
+  #     parameter-name: IdentityType
+  #   set:
+  #     completer:
+  #       name: Managed Identity Type Completer
+  #       description: Gets the list of type of managed identities available for creating/updating app configuration store.
+  #       script: "'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'"
 
   # Remove `[-SkipToken <String>]` because we hide pageable implementation.
   - from: swagger-document
