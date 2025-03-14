@@ -1,5 +1,5 @@
 parameters:
-  testFramework: net6.0
+  testFramework: net8.0
   configuration: Debug
   powerShellPlatform: PowerShell Core
   ForceRegenerate: false
@@ -9,10 +9,10 @@ parameters:
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
+  displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
-    version: 6.0.x
+    version: 8.0.x
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
