@@ -2359,14 +2359,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"pE9xOgejk8ozZZFW/u+92y3SERnwgTtmqe+rVnLue8578ccFCL0RbZ13Xb3zVWNnAgveD6spQQVq+AStDqxx1w==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"UexdTUx6S1c6Q+zGydclONXPPu1ztQm7zeez31TH0OyyOZCFFKonioddmNdmaUcdj18mmGq58P3Y+AStoqReZA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/audit-cmdlet-test-rgps3795/providers/Microsoft.Sql/servers/audit-cmdlet-serverps3795/auditingSettings/default?api-version=2021-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL2F1ZGl0LWNtZGxldC10ZXN0LXJncHMzNzk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvYXVkaXQtY21kbGV0LXNlcnZlcnBzMzc5NS9hdWRpdGluZ1NldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"BATCH_COMPLETED_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps3795.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"pE9xOgejk8ozZZFW/u+92y3SERnwgTtmqe+rVnLue8578ccFCL0RbZ13Xb3zVWNnAgveD6spQQVq+AStDqxx1w==\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"BATCH_COMPLETED_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps3795.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "6fd58678-d564-422a-83d2-99d29cf8601e"
