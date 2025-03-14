@@ -77,12 +77,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return;
             }
+            {_createDelete = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("createDelete"), out var __jsonCreateDelete) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CreateDeleteProperties.FromJson(__jsonCreateDelete) : _createDelete;}
             {_rampUpStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("rampUpStartTime"), out var __jsonRampUpStartTime) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Time.FromJson(__jsonRampUpStartTime) : _rampUpStartTime;}
             {_peakStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("peakStartTime"), out var __jsonPeakStartTime) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Time.FromJson(__jsonPeakStartTime) : _peakStartTime;}
             {_rampDownStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("rampDownStartTime"), out var __jsonRampDownStartTime) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Time.FromJson(__jsonRampDownStartTime) : _rampDownStartTime;}
             {_offPeakStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("offPeakStartTime"), out var __jsonOffPeakStartTime) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Time.FromJson(__jsonOffPeakStartTime) : _offPeakStartTime;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_daysOfWeek = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray>("daysOfWeek"), out var __jsonDaysOfWeek) ? If( __jsonDaysOfWeek as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _daysOfWeek;}
+            {_scalingMethod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("scalingMethod"), out var __jsonScalingMethod) ? (string)__jsonScalingMethod : (string)_scalingMethod;}
             {_rampUpLoadBalancingAlgorithm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("rampUpLoadBalancingAlgorithm"), out var __jsonRampUpLoadBalancingAlgorithm) ? (string)__jsonRampUpLoadBalancingAlgorithm : (string)_rampUpLoadBalancingAlgorithm;}
             {_rampUpMinimumHostsPct = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampUpMinimumHostsPct"), out var __jsonRampUpMinimumHostsPct) ? (int?)__jsonRampUpMinimumHostsPct : _rampUpMinimumHostsPct;}
             {_rampUpCapacityThresholdPct = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampUpCapacityThresholdPct"), out var __jsonRampUpCapacityThresholdPct) ? (int?)__jsonRampUpCapacityThresholdPct : _rampUpCapacityThresholdPct;}
@@ -117,6 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return container;
             }
+            AddIf( null != this._createDelete ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._createDelete.ToJson(null,serializationMode) : null, "createDelete" ,container.Add );
             AddIf( null != this._rampUpStartTime ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._rampUpStartTime.ToJson(null,serializationMode) : null, "rampUpStartTime" ,container.Add );
             AddIf( null != this._peakStartTime ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._peakStartTime.ToJson(null,serializationMode) : null, "peakStartTime" ,container.Add );
             AddIf( null != this._rampDownStartTime ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._rampDownStartTime.ToJson(null,serializationMode) : null, "rampDownStartTime" ,container.Add );
@@ -131,6 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 }
                 container.Add("daysOfWeek",__w);
             }
+            AddIf( null != (((object)this._scalingMethod)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._scalingMethod.ToString()) : null, "scalingMethod" ,container.Add );
             AddIf( null != (((object)this._rampUpLoadBalancingAlgorithm)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._rampUpLoadBalancingAlgorithm.ToString()) : null, "rampUpLoadBalancingAlgorithm" ,container.Add );
             AddIf( null != this._rampUpMinimumHostsPct ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampUpMinimumHostsPct) : null, "rampUpMinimumHostsPct" ,container.Add );
             AddIf( null != this._rampUpCapacityThresholdPct ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampUpCapacityThresholdPct) : null, "rampUpCapacityThresholdPct" ,container.Add );

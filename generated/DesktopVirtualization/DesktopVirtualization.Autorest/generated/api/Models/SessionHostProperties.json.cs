@@ -77,6 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return;
             }
+            {_activeSession = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("activeSessions"), out var __jsonActiveSessions) ? (int?)__jsonActiveSessions : _activeSession;}
+            {_disconnectedSession = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("disconnectedSessions"), out var __jsonDisconnectedSessions) ? (int?)__jsonDisconnectedSessions : _disconnectedSession;}
+            {_pendingSession = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("pendingSessions"), out var __jsonPendingSessions) ? (int?)__jsonPendingSessions : _pendingSession;}
             {_objectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("objectId"), out var __jsonObjectId) ? (string)__jsonObjectId : (string)_objectId;}
             {_lastHeartBeat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("lastHeartBeat"), out var __jsonLastHeartBeat) ? global::System.DateTime.TryParse((string)__jsonLastHeartBeat, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastHeartBeatValue) ? __jsonLastHeartBeatValue : _lastHeartBeat : _lastHeartBeat;}
             {_session = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("sessions"), out var __jsonSessions) ? (int?)__jsonSessions : _session;}
@@ -118,6 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return container;
             }
+            AddIf( null != this._activeSession ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._activeSession) : null, "activeSessions" ,container.Add );
+            AddIf( null != this._disconnectedSession ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._disconnectedSession) : null, "disconnectedSessions" ,container.Add );
+            AddIf( null != this._pendingSession ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._pendingSession) : null, "pendingSessions" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._objectId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._objectId.ToString()) : null, "objectId" ,container.Add );

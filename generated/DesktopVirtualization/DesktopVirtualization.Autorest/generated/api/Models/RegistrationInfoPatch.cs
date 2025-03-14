@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Represents a RegistrationInfo definition.</summary>
+    /// <summary>
+    /// Represents a RegistrationInfo definition. This is not returned on HostPool GET. In order to get the registration token
+    /// use the retrieveRegistrationToken or listRegistrationTokens POST calls.
+    /// </summary>
     public partial class RegistrationInfoPatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatchInternal
@@ -33,7 +36,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         }
     }
-    /// Represents a RegistrationInfo definition.
+    /// Represents a RegistrationInfo definition. This is not returned on HostPool GET. In order to get the registration token
+    /// use the retrieveRegistrationToken or listRegistrationTokens POST calls.
     public partial interface IRegistrationInfoPatch :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
@@ -62,7 +66,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string RegistrationTokenOperation { get; set; }
 
     }
-    /// Represents a RegistrationInfo definition.
+    /// Represents a RegistrationInfo definition. This is not returned on HostPool GET. In order to get the registration token
+    /// use the retrieveRegistrationToken or listRegistrationTokens POST calls.
     internal partial interface IRegistrationInfoPatchInternal
 
     {

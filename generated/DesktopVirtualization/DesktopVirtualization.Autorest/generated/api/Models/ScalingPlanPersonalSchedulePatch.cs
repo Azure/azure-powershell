@@ -15,180 +15,180 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Set of days of the week on which this schedule is active.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).DaysOfWeek = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> DaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).DaysOfWeek = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OffPeakStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.OffPeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.OffPeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTime = value; }
 
         /// <summary>Internal Acessors for PeakStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.PeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.PeakStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTime = value; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalScheduleProperties()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RampDownStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.RampDownStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.RampDownStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTime = value; }
 
         /// <summary>Internal Acessors for RampUpStartTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.RampUpStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITime Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchInternal.RampUpStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTime = value; }
 
         /// <summary>Action to be taken after a user disconnect during the off-peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string OffPeakActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakActionOnDisconnect = value ?? null; }
+        public string OffPeakActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakActionOnDisconnect = value ?? null; }
 
         /// <summary>Action to be taken after a logoff during the off-peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string OffPeakActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakActionOnLogoff = value ?? null; }
+        public string OffPeakActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakActionOnLogoff = value ?? null; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak
         /// period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakMinutesToWaitOnDisconnect = value ?? default(int); }
+        public int? OffPeakMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakMinutesToWaitOnDisconnect = value ?? default(int); }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak
         /// period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakMinutesToWaitOnLogoff = value ?? default(int); }
+        public int? OffPeakMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakMinutesToWaitOnLogoff = value ?? default(int); }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeHour = value ?? default(int); }
+        public int? OffPeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartTimeMinute = value ?? default(int); }
+        public int? OffPeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string OffPeakStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).OffPeakStartVMOnConnect = value ?? null; }
+        public string OffPeakStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).OffPeakStartVMOnConnect = value ?? null; }
 
         /// <summary>Action to be taken after a user disconnect during the peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string PeakActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakActionOnDisconnect = value ?? null; }
+        public string PeakActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakActionOnDisconnect = value ?? null; }
 
         /// <summary>Action to be taken after a logoff during the peak period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string PeakActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakActionOnLogoff = value ?? null; }
+        public string PeakActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakActionOnLogoff = value ?? null; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak
         /// period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakMinutesToWaitOnDisconnect = value ?? default(int); }
+        public int? PeakMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakMinutesToWaitOnDisconnect = value ?? default(int); }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak
         /// period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakMinutesToWaitOnLogoff = value ?? default(int); }
+        public int? PeakMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakMinutesToWaitOnLogoff = value ?? default(int); }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeHour = value ?? default(int); }
+        public int? PeakStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
+        public int? PeakStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string PeakStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).PeakStartVMOnConnect = value ?? null; }
+        public string PeakStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).PeakStartVMOnConnect = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties _property;
 
         /// <summary>Detailed properties for ScalingPlanPersonalSchedule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalScheduleProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ScalingPlanPersonalSchedulePatchProperties()); set => this._property = value; }
 
         /// <summary>Action to be taken after a user disconnect during the ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownActionOnDisconnect = value ?? null; }
+        public string RampDownActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownActionOnDisconnect = value ?? null; }
 
         /// <summary>Action to be taken after a logoff during the ramp down period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownActionOnLogoff = value ?? null; }
+        public string RampDownActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownActionOnLogoff = value ?? null; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp
         /// down period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownMinutesToWaitOnDisconnect = value ?? default(int); }
+        public int? RampDownMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownMinutesToWaitOnDisconnect = value ?? default(int); }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp
         /// down period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownMinutesToWaitOnLogoff = value ?? default(int); }
+        public int? RampDownMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownMinutesToWaitOnLogoff = value ?? default(int); }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeHour = value ?? default(int); }
+        public int? RampDownStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartTimeMinute = value ?? default(int); }
+        public int? RampDownStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampDownStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampDownStartVMOnConnect = value ?? null; }
+        public string RampDownStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampDownStartVMOnConnect = value ?? null; }
 
         /// <summary>Action to be taken after a user disconnect during the ramp up period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampUpActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpActionOnDisconnect = value ?? null; }
+        public string RampUpActionOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpActionOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpActionOnDisconnect = value ?? null; }
 
         /// <summary>Action to be taken after a logoff during the ramp up period.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampUpActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpActionOnLogoff = value ?? null; }
+        public string RampUpActionOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpActionOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpActionOnLogoff = value ?? null; }
 
         /// <summary>
         /// The desired startup behavior during the ramp up period for personal vms in the hostpool.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampUpAutoStartHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpAutoStartHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpAutoStartHost = value ?? null; }
+        public string RampUpAutoStartHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpAutoStartHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpAutoStartHost = value ?? null; }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp
         /// up period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpMinutesToWaitOnDisconnect = value ?? default(int); }
+        public int? RampUpMinutesToWaitOnDisconnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpMinutesToWaitOnDisconnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpMinutesToWaitOnDisconnect = value ?? default(int); }
 
         /// <summary>
         /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp
         /// up period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpMinutesToWaitOnLogoff = value ?? default(int); }
+        public int? RampUpMinutesToWaitOnLogoff { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpMinutesToWaitOnLogoff; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpMinutesToWaitOnLogoff = value ?? default(int); }
 
         /// <summary>The hour.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeHour = value ?? default(int); }
+        public int? RampUpStartTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTimeHour = value ?? default(int); }
 
         /// <summary>The minute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartTimeMinute = value ?? default(int); }
+        public int? RampUpStartTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartTimeMinute = value ?? default(int); }
 
         /// <summary>
         /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session
         /// hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
-        public string RampUpStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePropertiesInternal)Property).RampUpStartVMOnConnect = value ?? null; }
+        public string RampUpStartVMOnConnect { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartVMOnConnect; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchPropertiesInternal)Property).RampUpStartVMOnConnect = value ?? null; }
 
         /// <summary>Creates an new <see cref="ScalingPlanPersonalSchedulePatch" /> instance.</summary>
         public ScalingPlanPersonalSchedulePatch()
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Enable", "Disable")]
         string PeakStartVMOnConnect { get; set; }
         /// <summary>Detailed properties for ScalingPlanPersonalSchedule</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalScheduleProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedulePatchProperties Property { get; set; }
         /// <summary>Action to be taken after a user disconnect during the ramp down period.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None", "Deallocate", "Hibernate")]
         string RampDownActionOnDisconnect { get; set; }

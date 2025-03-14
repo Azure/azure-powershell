@@ -7,8 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>List of OperationStatus definitions.</summary>
-    public partial class SessionHostConfigurationOperationStatusList
+    /// <summary>
+    /// The properties that control how Scaling will manage the size of the hostpool by creating and deleting hosts.
+    /// </summary>
+    public partial class CreateDeleteProperties
     {
 
         /// <summary>
@@ -54,22 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationOperationStatusList.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationOperationStatusList.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationOperationStatusList FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json ? new SessionHostConfigurationOperationStatusList(json) : null;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="SessionHostConfigurationOperationStatusList" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="CreateDeleteProperties" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal SessionHostConfigurationOperationStatusList(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json)
+        internal CreateDeleteProperties(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,21 +67,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationOperationStatus>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationOperationStatus) (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationOperationStatus.FromJson(__u) )) ))() : null : _value;}
-            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
+            {_rampUpMaximumHostPoolSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampUpMaximumHostPoolSize"), out var __jsonRampUpMaximumHostPoolSize) ? (int?)__jsonRampUpMaximumHostPoolSize : _rampUpMaximumHostPoolSize;}
+            {_rampUpMinimumHostPoolSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampUpMinimumHostPoolSize"), out var __jsonRampUpMinimumHostPoolSize) ? (int?)__jsonRampUpMinimumHostPoolSize : _rampUpMinimumHostPoolSize;}
+            {_rampDownMaximumHostPoolSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampDownMaximumHostPoolSize"), out var __jsonRampDownMaximumHostPoolSize) ? (int?)__jsonRampDownMaximumHostPoolSize : _rampDownMaximumHostPoolSize;}
+            {_rampDownMinimumHostPoolSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber>("rampDownMinimumHostPoolSize"), out var __jsonRampDownMinimumHostPoolSize) ? (int?)__jsonRampDownMinimumHostPoolSize : _rampDownMinimumHostPoolSize;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="SessionHostConfigurationOperationStatusList" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"
-        /// />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICreateDeleteProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json ? new CreateDeleteProperties(json) : null;
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="CreateDeleteProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="SessionHostConfigurationOperationStatusList" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"
-        /// />.
+        /// a serialized instance of <see cref="CreateDeleteProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode serializationMode)
         {
@@ -103,19 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 return container;
             }
-            if (null != this._value)
-            {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.XNodeArray();
-                foreach( var __x in this._value )
-                {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                }
-                container.Add("value",__w);
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
-            }
+            AddIf( null != this._rampUpMaximumHostPoolSize ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampUpMaximumHostPoolSize) : null, "rampUpMaximumHostPoolSize" ,container.Add );
+            AddIf( null != this._rampUpMinimumHostPoolSize ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampUpMinimumHostPoolSize) : null, "rampUpMinimumHostPoolSize" ,container.Add );
+            AddIf( null != this._rampDownMaximumHostPoolSize ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampDownMaximumHostPoolSize) : null, "rampDownMaximumHostPoolSize" ,container.Add );
+            AddIf( null != this._rampDownMinimumHostPoolSize ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNumber((int)this._rampDownMinimumHostPoolSize) : null, "rampDownMinimumHostPoolSize" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

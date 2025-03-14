@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Initiates a hostpool post or schedule an post for the future.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2024-04-08-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2024-11-01-preview")]
     public partial class InvokeAzWvdInitiateSessionHostUpdate_PostViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IContext
@@ -220,14 +220,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
-        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
-        /// on that response. Implement this method in a partial class to enable this behavior
+        /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
+        /// what happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
-        /// immediately (set to true to skip further processing )</param>
+        /// <param name="returnNow">/// Determines if the rest of the onNoContent method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnNoContent(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.InitiateSessionHostUpdatePostViaIdentity(InputObject.Id, _updateSessionHostsRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.InitiateSessionHostUpdatePostViaIdentity(InputObject.Id, _updateSessionHostsRequestBody, onNoContent, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.HostPoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.InitiateSessionHostUpdatePost(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.HostPoolName ?? null, _updateSessionHostsRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.InitiateSessionHostUpdatePost(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.HostPoolName ?? null, _updateSessionHostsRequestBody, onNoContent, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -523,23 +523,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
             }
         }
 
-        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <summary>a delegate that is called when the remote service returns 204 (NoContent).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onNoContent(global::System.Net.Http.HttpResponseMessage responseMessage)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnOk(responseMessage, ref _returnNow);
-                // if overrideOnOk has returned true, then return right away.
+                overrideOnNoContent(responseMessage, ref _returnNow);
+                // if overrideOnNoContent has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
-                // onOk - response for 200 /
+                // onNoContent - response for 204 /
                 if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);

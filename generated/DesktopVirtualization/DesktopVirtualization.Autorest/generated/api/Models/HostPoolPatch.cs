@@ -644,7 +644,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Default", "Enabled", "Disabled")]
         string PublicUdp { get; set; }
-        /// <summary>The registration info of HostPool.</summary>
+        /// <summary>
+        /// The registration info of HostPool. This is not returned on GET. In order to get the registration token use the retrieveRegistrationToken
+        /// or listRegistrationTokens POST calls.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfoPatch RegistrationInfo { get; set; }
         /// <summary>Expiration time of registration token.</summary>
         global::System.DateTime? RegistrationInfoExpirationTime { get; set; }
