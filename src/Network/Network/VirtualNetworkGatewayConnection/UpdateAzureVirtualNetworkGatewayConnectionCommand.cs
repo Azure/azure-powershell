@@ -249,10 +249,8 @@ namespace Microsoft.Azure.Commands.Network
                         ParameterSetName.Equals(VirtualNetworkGatewayParameterSets.UpdateResourceWithTags) ?
                         TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
                         TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
-
-                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
-                        this.VirtualNetworkGatewayConnection.ResourceGroupName,
-                        this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel, auxAuthHeader);
+                    
+                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
                     var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
                     WriteObject(getvnetGatewayConnection);
                 });
