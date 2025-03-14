@@ -24,7 +24,7 @@
     Path to the common repo. Relative or absolute.
 
     .Example
-    Connect-CommonRepo -CommonRepoPath ../azure-powershell-common
+    Connect-DevCommonRepo -CommonRepoPath ../azure-powershell-common
 #>
 function Connect-DevCommonRepo {
     [CmdletBinding()]
@@ -104,7 +104,7 @@ function Connect-DevCommonRepo {
 }
 
 function Disconnect-DevCommonRepo {
-    Write-Host  "Please run the following commands to undo Connect-CommonRepo. Double check those files do not have wanted changes.
+    Write-Host  "Please run the following commands to undo Connect-DevCommonRepo. Double check those files do not have wanted changes.
     git checkout -- ./src/Accounts/Accounts.sln
     git checkout -- ./src/Accounts/AssemblyLoading/AssemblyLoading.csproj
     git checkout -- ./src/Accounts/Authentication/Authentication.csproj
