@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DataBoxEdge",
-  "ModuleVersion": "1.2.0",
+  "ModuleVersion": "1.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RateInMbpsDisplay": "System.String",
               "Days": "System.String",
@@ -130,7 +130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -346,7 +346,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -433,7 +433,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -484,7 +484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeNetworkAdapter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeNetworkAdapter, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeNetworkAdapter, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -536,7 +536,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDeviceExtendedInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDeviceExtendedInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDeviceExtendedInfo, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -587,7 +587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUpdateSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUpdateSummary, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUpdateSummary, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -638,7 +638,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -1517,7 +1517,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeJob, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeJob, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -1624,7 +1624,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -1779,7 +1779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -1866,7 +1866,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -1920,7 +1920,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -1985,7 +1985,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -2179,7 +2179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             },
@@ -2289,7 +2289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -2505,7 +2505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -2592,7 +2592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -2699,7 +2699,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -2915,7 +2915,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -3002,7 +3002,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -3112,7 +3112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -3334,7 +3334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -3421,7 +3421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -3528,7 +3528,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -3744,7 +3744,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -3831,7 +3831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -3950,7 +3950,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -4199,7 +4199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4283,7 +4283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "PSDataBoxEdgeTriggerObject",
@@ -4404,7 +4404,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -4620,7 +4620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -4707,7 +4707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -4814,7 +4814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -5030,7 +5030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -5157,7 +5157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -5831,7 +5831,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -5925,7 +5925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -6019,7 +6019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -6265,7 +6265,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6592,7 +6592,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6690,7 +6690,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -6830,7 +6830,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7163,7 +7163,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7261,7 +7261,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RateInMbpsDisplay": "System.String",
               "Days": "System.String",
@@ -7875,7 +7875,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -8113,7 +8113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -8569,7 +8569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             },
@@ -9343,7 +9343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -10236,7 +10236,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -10601,7 +10601,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -10884,7 +10884,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -11143,7 +11143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "PSDataBoxEdgeTriggerObject",
@@ -11879,7 +11879,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -12187,7 +12187,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RateInMbpsDisplay": "System.String",
               "Days": "System.String",
@@ -12350,7 +12350,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RateInMbpsDisplay": "System.String",
                     "Days": "System.String",
@@ -12629,7 +12629,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -12779,7 +12779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -13017,7 +13017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             },
@@ -13083,7 +13083,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceGroupName": "System.String"
             }
@@ -13236,7 +13236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceGroupName": "System.String"
                   }
@@ -13474,7 +13474,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             },
@@ -13537,7 +13537,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             }
@@ -13696,7 +13696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeviceName": "System.String"
                   }
@@ -13971,7 +13971,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -14127,7 +14127,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -14399,7 +14399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -14555,7 +14555,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -14827,7 +14827,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -14983,7 +14983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -15255,7 +15255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -15420,7 +15420,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageContainer, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -15707,7 +15707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -15863,7 +15863,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -16113,7 +16113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -16173,7 +16173,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -16329,7 +16329,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -16579,7 +16579,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RateInMbpsDisplay": "System.String",
               "Days": "System.String",
@@ -16646,7 +16646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RateInMbpsDisplay": "System.String",
               "Days": "System.String",
@@ -17121,7 +17121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RateInMbpsDisplay": "System.String",
                     "Days": "System.String",
@@ -17235,7 +17235,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RateInMbpsDisplay": "System.String",
                     "Days": "System.String",
@@ -17364,7 +17364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "RateInMbpsDisplay": "System.String",
                     "Days": "System.String",
@@ -18033,7 +18033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             },
@@ -18156,7 +18156,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String"
             }
@@ -18408,7 +18408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeviceName": "System.String"
                   }
@@ -18495,7 +18495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -18555,7 +18555,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -18800,7 +18800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -18877,7 +18877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -19221,7 +19221,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -19361,7 +19361,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -19670,7 +19670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -19768,7 +19768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Methods": [
               {
                 "Name": "GetType",
@@ -19828,7 +19828,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": true
         },
@@ -20008,7 +20008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": true
               },
@@ -20479,7 +20479,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger, Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "PSDataBoxEdgeTriggerObject",

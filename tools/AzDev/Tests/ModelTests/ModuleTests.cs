@@ -1,5 +1,6 @@
 using System.IO.Abstractions.TestingHelpers;
 using AzDev.Models.Inventory;
+using AzDev.Services;
 
 namespace AzDev.Tests;
 
@@ -20,7 +21,7 @@ public class ModuleTests
             )}
         });
 
-        var module = Module.FromFileSystem(fs, path);
+        var module = Module.FromFileSystem(fs, new NoopLogger(), path);
         Assert.Equal(path, module.Path);
         Assert.Equal(moduleName, module.Name);
         Assert.Single(module.Projects);
@@ -45,7 +46,7 @@ public class ModuleTests
             )},
         });
 
-        var module = Module.FromFileSystem(fs, path);
+        var module = Module.FromFileSystem(fs, new NoopLogger(), path);
         Assert.Equal(2, module.Projects.Count());
         Assert.Equal(ProjectType.AutoRestBased, module.Projects.ElementAt(0).Type);
         Assert.Equal(ProjectType.Other, module.Projects.ElementAt(1).Type);

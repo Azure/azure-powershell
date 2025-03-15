@@ -28,10 +28,10 @@ jobs:
         # Wipe any changes from a previous branch
         git clean -xdf
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x for build'
+    displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: Prepare Powershell $(PSVersion)
     inputs:
@@ -46,12 +46,14 @@ jobs:
                     Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
                     Exit"
         dotnet tool run pwsh -c $command
-  - task: DotNetCoreCLI@2
+  - task: PowerShell@2
     displayName: 'Build for Bumping Version'
     inputs:
-      command: custom
-      custom: msbuild
-      arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true"'
+      targetType: inline
+      pwsh: true
+      script: |
+        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        & $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration Release -EnableTestCoverage -InvokedByPipeline
 
   - task: PowerShell@2
     displayName: 'Bump Version'
@@ -71,21 +73,23 @@ jobs:
       script: |
         Remove-Item -Force -Recurse -Path artifacts
 
-  - task: DotNetCoreCLI@2
+  - task: PowerShell@2
     displayName: 'Build after Version Bump up'
     inputs:
-      command: custom
-      custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
+      targetType: inline
+      pwsh: true
+      script: |
+        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        & $buildScript -ModifiedModule -RepoRoot "$(Build.SourcesDirectory)" -Configuration Release -EnableTestCoverage -InvokedByPipeline
 
   - task: EsrpCodeSigning@5
     displayName: "Sign Dll [Authenticode + Strong Name]"
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
@@ -138,11 +142,11 @@ jobs:
   - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
     displayName: "Sign Scripts [Authenticode]"
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
@@ -179,11 +183,11 @@ jobs:
   - task: EsrpCodeSigning@5
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
-      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
-      AppRegistrationClientId: '$(ESRPAppClientId)' 
-      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
-      AuthAKVName: '$(ESRPKVName)' 
-      AuthCertName: '$(ESRPAuthCertName)' 
+      ConnectedServiceName: '$(ESRPServiceConnectionName)'
+      AppRegistrationClientId: '$(ESRPAppClientId)'
+      AppRegistrationTenantId: '$(ESRPAppTenantId)'
+      AuthAKVName: '$(ESRPKVName)'
+      AuthCertName: '$(ESRPAuthCertName)'
       AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: artifacts
       Pattern: 'Release/**/FuzzySharp.dll'
