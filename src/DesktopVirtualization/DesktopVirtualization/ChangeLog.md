@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.5.0
 * Upgrade API version to 2024-11-01-preview
     - Added activeSessions, pendingSessions and disconnectedSessions properties to SessionHost
     - Added Scaling Create Delete feature support to ScalingPlan and ScalingPlanPooledSchedule
