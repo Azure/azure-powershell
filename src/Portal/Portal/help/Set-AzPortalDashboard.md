@@ -14,7 +14,7 @@ Creates or updates a Dashboard.
 
 ```
 Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DashboardPath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -76,6 +76,21 @@ Parameter Sets: (All)
 Aliases: DashboardName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## NOTES
 
