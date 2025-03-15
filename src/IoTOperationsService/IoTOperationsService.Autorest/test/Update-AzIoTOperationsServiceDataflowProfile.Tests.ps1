@@ -15,8 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzIoTOperationsService
 }
 
 Describe 'Update-AzIoTOperationsServiceDataflowProfile' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $dataflowProfile = Update-AzIoTOperationsServiceDataflowProfile `
+            -InstanceName  $env.InstanceName `
+            -Name "dataflowprofile-name-test-1" `
+            -ResourceGroupName $env.ResourceGroup
+        
+        $dataflowProfile | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaIdentityInstanceExpanded' -skip {

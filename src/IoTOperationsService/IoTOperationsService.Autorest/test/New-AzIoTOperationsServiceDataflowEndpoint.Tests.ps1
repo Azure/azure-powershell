@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzIoTOperationsServiceDat
 }
 
 Describe 'New-AzIoTOperationsServiceDataflowEndpoint' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $dataflowEndpoint = New-AzIoTOperationsServiceDataflowEndpoint `
+           -InstanceName $env.InstanceName `
+           -Name "local-storage-endpoint-test-1" `
+           -ResourceGroupName $env.ResourceGroup `
+           -ExtendedLocationName $env.ExtendedLocation `
+           -EndpointType "LocalStorage" `
+           -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
+
+        $dataflowEndpoint | Should -Not -BeNullOrEmpty
     }
 
     It 'CreateViaJsonFilePath' -skip {

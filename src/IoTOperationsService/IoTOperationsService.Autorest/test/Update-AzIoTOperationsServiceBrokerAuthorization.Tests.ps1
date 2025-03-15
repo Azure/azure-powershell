@@ -15,8 +15,41 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzIoTOperationsService
 }
 
 Describe 'Update-AzIoTOperationsServiceBrokerAuthorization' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $BrokerAuthz = Update-AzIoTOperationsServiceBrokerAuthorization `
+            -AuthorizationName "my-authz-test-1" `
+            -BrokerName $env.BrokerName `
+            -InstanceName $env.InstanceName `
+            -ResourceGroupName $env.ResourceGroup `
+            -AuthorizationPolicyCache "Enabled" `
+            -AuthorizationPolicyRule @(
+                @{
+                principals = @{
+                    clientIds  = @("my-client-id")
+                    attributes = @(
+                    @{
+                        floor = "floor1"
+                        site  = "site1"
+                    }
+                    )
+                }
+                brokerResources = @(
+                    @{ method = "Connect" },
+                    @{
+                    method = "Subscribe"
+                    topics = @("topic", "topic/with/wildcard/#")
+                    }
+                )
+                stateStoreResources = @(
+                    @{
+                    method  = "ReadWrite"
+                    keyType = "Pattern"
+                    keys    = @("*")
+                    }
+                )
+                }
+            )
+        $BrokerAuthz | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaIdentityInstanceExpanded' -skip {

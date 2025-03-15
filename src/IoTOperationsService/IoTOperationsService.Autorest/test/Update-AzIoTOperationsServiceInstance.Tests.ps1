@@ -16,7 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzIoTOperationsService
 
 Describe 'Update-AzIoTOperationsServiceInstance' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $instance = Update-AzIoTOperationsServiceInstance `
+            -Name $env.InstanceName `
+            -SchemaRegistryRefResourceId "/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.DeviceRegistry/schemaRegistries/aio-sr-d71574b00a" `
+            -ResourceGroupName $env.ResourceGroup `
+        $instance | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

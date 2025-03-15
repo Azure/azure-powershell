@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzIoTOperationsServiceBro
 }
 
 Describe 'Set-AzIoTOperationsServiceBrokerListener' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $listener = Set-AzIoTOperationsServiceBrokerListener -ServiceType "LoadBalancer" -BrokerName $env.BrokerName -InstanceName  $env.InstanceName -ListenerName "my-listener-test-1" -ResourceGroupName $env.ResourceGroup -ExtendedLocationName  $env.ExtendedLocation  -Port @(@{ port = 1883 })
+        $listener | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaJsonFilePath' -skip {

@@ -41,12 +41,13 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
+    $subId = (Get-AzContext).Subscription.Id
+    $env.SubscriptionId = $subId
     $env.Tenant = (Get-AzContext).Tenant.Id
-
-    $env.add("ResourceGroup", "aio-validation-116116143")
+    $id = "117832708"
+    $env.add("ResourceGroup", "aio-validation-${id}")
     $env.add("Location", "eastus2")
-    $env.add("InstanceName", "aio-116116143")
+    $env.add("InstanceName", "aio-${id}")
     $env.add("BrokerName", "default")
     $env.add("BrokerListenerName", "default")
     $env.add("BrokerAuthorizationName", "default")
@@ -54,6 +55,7 @@ function setupEnv() {
     $env.add("DataflowProfileName", "default")
     $env.add("DataflowName", "default")
     $env.add("DataflowEndpointName", "default")
+    $env.add("ExtendedLocation", "subscriptions/${subId}/resourceGroups/aio-validation-${id}/providers/Microsoft.ExtendedLocation/customLocations/location-${id}")
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

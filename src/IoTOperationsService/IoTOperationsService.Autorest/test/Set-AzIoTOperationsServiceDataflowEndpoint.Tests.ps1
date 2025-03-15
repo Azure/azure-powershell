@@ -15,8 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzIoTOperationsServiceDat
 }
 
 Describe 'Set-AzIoTOperationsServiceDataflowEndpoint' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $dataflowEndpoint = Set-AzIoTOperationsServiceDataflowEndpoint `
+           -InstanceName $env.InstanceName `
+           -Name "local-storage-endpoint-test-1" `
+           -ResourceGroupName $env.ResourceGroup `
+           -ExtendedLocationName $env.ExtendedLocation `
+           -EndpointType "LocalStorage" `
+           -LocalStorageSettingPersistentVolumeClaimRef "myPersistentVolumeClaim" 
+
+        $dataflowEndpoint | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaJsonFilePath' -skip {

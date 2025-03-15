@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzIoTOperationsService
 }
 
 Describe 'Remove-AzIoTOperationsServiceBrokerAuthorization' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $BrokerAuthz = Remove-AzIoTOperationsServiceBrokerAuthorization `
+            -AuthorizationName "my-authz-test-1" `
+            -BrokerName $env.BrokerName `
+            -InstanceName $env.InstanceName `
+            -ResourceGroupName $env.ResourceGroup
+        
+        $BrokerAuthz | Should -BeNullOrEmpty
     }
 
     It 'DeleteViaIdentityInstance' -skip {

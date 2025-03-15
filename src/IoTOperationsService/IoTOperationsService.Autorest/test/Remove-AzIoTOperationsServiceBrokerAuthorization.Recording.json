@@ -1,0 +1,44 @@
+{
+  "Remove-AzIoTOperationsServiceBrokerAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default/authorizations/my-authz-test-1?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default/authorizations/my-authz-test-1?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5565499d-9841-4531-99ff-6d46dd7cad41" ],
+        "CommandName": [ "Remove-AzIoTOperationsServiceBrokerAuthorization" ],
+        "FullCommandName": [ "Remove-AzIoTOperationsServiceBrokerAuthorization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "d7ae755e-e32c-46c8-a4a7-351e4f33715e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250315T221727Z:d7ae755e-e32c-46c8-a4a7-351e4f33715e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D59C7C2F2F2646C1A609F917A25BAAE7 Ref B: CO6AA3150219049 Ref C: 2025-03-15T22:17:27Z" ],
+        "Date": [ "Sat, 15 Mar 2025 22:17:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

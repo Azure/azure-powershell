@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzIoTOperationsService
 }
 
 Describe 'Remove-AzIoTOperationsServiceInstance' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $instance = Remove-AzIoTOperationsServiceInstance `
+            -Name $env.InstanceName `
+            -ResourceGroupName $env.ResourceGroup
+        $instance | Should -BeNullOrEmpty
     }
 
     It 'DeleteViaIdentity' -skip {

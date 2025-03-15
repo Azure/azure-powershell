@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzIoTOperationsServiceDat
 }
 
 Describe 'New-AzIoTOperationsServiceDataflowProfile' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $dataflowProfile = New-AzIoTOperationsServiceDataflowProfile `
+            -InstanceName  $env.InstanceName `
+            -Name "dataflowprofile-name-test-1" `
+            -ResourceGroupName $env.ResourceGroup `
+            -ExtendedLocationName $env.ExtendedLocation
+        $dataflowProfile | Should -Not -BeNullOrEmpty
+        
     }
 
     It 'CreateViaJsonFilePath' -skip {

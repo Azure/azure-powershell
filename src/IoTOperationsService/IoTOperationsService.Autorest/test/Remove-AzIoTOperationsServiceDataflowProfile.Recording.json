@@ -1,0 +1,44 @@
+{
+  "Remove-AzIoTOperationsServiceDataflowProfile+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/dataflowProfiles/dataflowprofile-name-test-1?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/dataflowProfiles/dataflowprofile-name-test-1?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "afac618b-942a-40b0-b4f4-8af5e6f671db" ],
+        "CommandName": [ "Remove-AzIoTOperationsServiceDataflowProfile" ],
+        "FullCommandName": [ "Remove-AzIoTOperationsServiceDataflowProfile_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.IoTOperationsService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f7a14ad6-83f1-430e-8a2d-f82aae3cf31c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250315T230725Z:f7a14ad6-83f1-430e-8a2d-f82aae3cf31c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 203FCA3A246D4DEDA951072E97CAE286 Ref B: CO6AA3150219011 Ref C: 2025-03-15T23:07:24Z" ],
+        "Date": [ "Sat, 15 Mar 2025 23:07:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

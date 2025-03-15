@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzIoTOperationsServiceBro
 }
 
 Describe 'Get-AzIoTOperationsServiceBrokerAuthorization' {
-    It 'List' -skip {
+    It 'List' {
         $BrokerAuthzs = Get-AzIoTOperationsServiceBrokerAuthorization -BrokerName $env.BrokerName -InstanceName $env.InstanceName -ResourceGroupName $env.ResourceGroup
         $BrokerAuthzs | Should -Not -BeNullOrEmpty
     }
