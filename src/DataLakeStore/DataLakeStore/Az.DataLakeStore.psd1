@@ -57,8 +57,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.DataLake.Store.dll', 
-               'E:\src\azure-powershell\artifacts\Debug\Az.DataLakeStore\Microsoft.Azure.Management.DataLake.Store.dll', 'E:\src\azure-powershell\artifacts\Debug\Az.DataLakeStore\NLog.dll',
-        'E:\src\azure-powershell\artifacts\Debug\Az.DataLakeStore\System.Buffers.dll'
+               'Microsoft.Azure.Management.DataLake.Store.dll', 'NLog.dll',
+        'System.Buffers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -70,7 +70,7 @@ RequiredAssemblies = 'Microsoft.Azure.DataLake.Store.dll',
 FormatsToProcess = 'DataLakeStore.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('E:\src\azure-powershell\artifacts\Debug\Az.DataLakeStore\Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
