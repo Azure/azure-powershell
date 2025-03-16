@@ -44,18 +44,18 @@ function setupEnv() {
     $subId = (Get-AzContext).Subscription.Id
     $env.SubscriptionId = $subId
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $id = "117832708"
-    $env.add("ResourceGroup", "aio-validation-${id}")
+    $id = "th2k3"
+    $env.add("ResourceGroup", "aio-validation-118028326")
     $env.add("Location", "eastus2")
     $env.add("InstanceName", "aio-${id}")
     $env.add("BrokerName", "default")
     $env.add("BrokerListenerName", "default")
     $env.add("BrokerAuthorizationName", "default")
     $env.add("BrokerAuthenticationName", "default")
-    $env.add("DataflowProfileName", "default")
+    $env.add("DataflowProfileName", "quickstart-profile")
     $env.add("DataflowName", "default")
     $env.add("DataflowEndpointName", "default")
-    $env.add("ExtendedLocation", "subscriptions/${subId}/resourceGroups/aio-validation-${id}/providers/Microsoft.ExtendedLocation/customLocations/location-${id}")
+    $env.add("ExtendedLocation", "subscriptions/${subId}/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-${id}")
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

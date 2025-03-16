@@ -1,13 +1,13 @@
 {
-  "Get-AzIoTOperationsServiceBroker+[NoContext]+List+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers?api-version=2024-11-01+1": {
+  "Get-AzIoTOperationsServiceBroker+[NoContext]+List+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers?api-version=2024-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers?api-version=2024-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers?api-version=2024-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "e4898608-7f74-4847-8aff-a6fcb864861e" ],
+        "x-ms-client-request-id": [ "5c362b07-0179-4d3d-98cf-36c3658484f8" ],
         "CommandName": [ "Get-AzIoTOperationsServiceBroker" ],
         "FullCommandName": [ "Get-AzIoTOperationsServiceBroker_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,34 +24,34 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "dfe1853b-398e-4f78-87a0-b71b8942d13e" ],
-        "x-ms-correlation-request-id": [ "f3f03719-2ffd-459e-a810-45bbf45fe913" ],
+        "x-ms-request-id": [ "9e124225-df11-4a8c-9ecd-2a4b0086e3b2" ],
+        "x-ms-correlation-request-id": [ "78a9a07c-9146-4e8d-b1eb-79ca4eb18ef1" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250315T215533Z:f3f03719-2ffd-459e-a810-45bbf45fe913" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250316T195131Z:78a9a07c-9146-4e8d-b1eb-79ca4eb18ef1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FB2FCAAFDBB840C2B78028FA9EEB637A Ref B: CO6AA3150220019 Ref C: 2025-03-15T21:55:33Z" ],
-        "Date": [ "Sat, 15 Mar 2025 21:55:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 725060F21A77459C8F007934A0B1B747 Ref B: CO6AA3150219053 Ref C: 2025-03-16T19:51:31Z" ],
+        "Date": [ "Sun, 16 Mar 2025 19:51:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1312" ],
+        "Content-Length": [ "1304" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.ExtendedLocation/customLocations/location-117832708\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-13T06:50:56.2662643Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-13T07:20:04.9872468Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"memoryProfile\":\"Medium\",\"generateResourceLimits\":{\"cpu\":\"Disabled\"},\"cardinality\":{\"backendChain\":{\"partitions\":2,\"workers\":2,\"redundancyFactor\":2},\"frontend\":{\"replicas\":2,\"workers\":2}},\"advanced\":{\"encryptInternalTraffic\":\"Enabled\"},\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600},\"selfCheck\":{\"intervalSeconds\":30,\"mode\":\"Enabled\",\"timeoutSeconds\":15},\"traces\":{\"cacheSizeMegabytes\":16,\"mode\":\"Enabled\",\"selfTracing\":{\"intervalSeconds\":30,\"mode\":\"Enabled\"},\"spanChannelCapacity\":1000}}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T21:55:31.4019742Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:44.9395063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"memoryProfile\":\"Medium\",\"generateResourceLimits\":{\"cpu\":\"Disabled\"},\"cardinality\":{\"backendChain\":{\"partitions\":2,\"workers\":2,\"redundancyFactor\":2},\"frontend\":{\"replicas\":2,\"workers\":2}},\"advanced\":{\"encryptInternalTraffic\":\"Enabled\"},\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600},\"selfCheck\":{\"intervalSeconds\":30,\"mode\":\"Enabled\",\"timeoutSeconds\":15},\"traces\":{\"cacheSizeMegabytes\":16,\"mode\":\"Enabled\",\"selfTracing\":{\"intervalSeconds\":30,\"mode\":\"Enabled\"},\"spanChannelCapacity\":1000}}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzIoTOperationsServiceBroker+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default?api-version=2024-11-01+1": {
+  "Get-AzIoTOperationsServiceBroker+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default?api-version=2024-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default?api-version=2024-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default?api-version=2024-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "bfb57592-c9d0-45aa-b68f-f661e4507104" ],
+        "x-ms-client-request-id": [ "d75491fb-87c2-44f5-ae15-64a0df272a36" ],
         "CommandName": [ "Get-AzIoTOperationsServiceBroker" ],
         "FullCommandName": [ "Get-AzIoTOperationsServiceBroker_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,25 +66,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"03008aef-0000-0200-0000-67d287250000\"" ],
+        "ETag": [ "\"4f00ea45-0000-0200-0000-67d4ae140000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "0693f926-e011-44c7-81b3-e5a58af31674" ],
-        "x-ms-correlation-request-id": [ "36cbc005-6ca1-40b3-8f0e-1b9b4d1cdbe6" ],
+        "x-ms-request-id": [ "10d8371a-0a1c-4409-8f0c-9f8c21506dbf" ],
+        "x-ms-correlation-request-id": [ "293b76b7-1ade-45e8-9a26-8718e0732681" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20250315T215533Z:36cbc005-6ca1-40b3-8f0e-1b9b4d1cdbe6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250316T195131Z:293b76b7-1ade-45e8-9a26-8718e0732681" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5E0FF4DBF1024C1B9F7624E5EAB08B44 Ref B: CO6AA3150220019 Ref C: 2025-03-15T21:55:33Z" ],
-        "Date": [ "Sat, 15 Mar 2025 21:55:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A3511BA3707F4A618542F3EE035AACA2 Ref B: CO6AA3150219053 Ref C: 2025-03-16T19:51:31Z" ],
+        "Date": [ "Sun, 16 Mar 2025 19:51:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1300" ],
+        "Content-Length": [ "1292" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.IoTOperations/instances/aio-117832708/brokers/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-117832708/providers/Microsoft.ExtendedLocation/customLocations/location-117832708\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-13T06:50:56.2662643Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-13T07:20:04.9872468Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"memoryProfile\":\"Medium\",\"generateResourceLimits\":{\"cpu\":\"Disabled\"},\"cardinality\":{\"backendChain\":{\"partitions\":2,\"workers\":2,\"redundancyFactor\":2},\"frontend\":{\"replicas\":2,\"workers\":2}},\"advanced\":{\"encryptInternalTraffic\":\"Enabled\"},\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600},\"selfCheck\":{\"intervalSeconds\":30,\"mode\":\"Enabled\",\"timeoutSeconds\":15},\"traces\":{\"cacheSizeMegabytes\":16,\"mode\":\"Enabled\",\"selfTracing\":{\"intervalSeconds\":30,\"mode\":\"Enabled\"},\"spanChannelCapacity\":1000}}}}",
+      "Content": "{\"id\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.IoTOperations/instances/aio-th2k3/brokers/default\",\"name\":\"default\",\"type\":\"microsoft.iotoperations/instances/brokers\",\"extendedLocation\":{\"name\":\"/subscriptions/d4ccd08b-0809-446d-a8b7-7af8a90109cd/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-th2k3\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"739f5293-922a-4616-b106-3662530ef99f\",\"createdByType\":\"Application\",\"createdAt\":\"2025-03-14T21:55:31.4019742Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-03-14T22:30:44.9395063Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"memoryProfile\":\"Medium\",\"generateResourceLimits\":{\"cpu\":\"Disabled\"},\"cardinality\":{\"backendChain\":{\"partitions\":2,\"workers\":2,\"redundancyFactor\":2},\"frontend\":{\"replicas\":2,\"workers\":2}},\"advanced\":{\"encryptInternalTraffic\":\"Enabled\"},\"diagnostics\":{\"logs\":{\"level\":\"info\"},\"metrics\":{\"prometheusPort\":9600},\"selfCheck\":{\"intervalSeconds\":30,\"mode\":\"Enabled\",\"timeoutSeconds\":15},\"traces\":{\"cacheSizeMegabytes\":16,\"mode\":\"Enabled\",\"selfTracing\":{\"intervalSeconds\":30,\"mode\":\"Enabled\"},\"spanChannelCapacity\":1000}}}}",
       "isContentBase64": false
     }
   }
