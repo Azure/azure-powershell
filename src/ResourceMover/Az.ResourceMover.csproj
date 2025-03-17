@@ -1,7 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <PsModuleName>ResourceMover</PsModuleName>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
-</Project>
