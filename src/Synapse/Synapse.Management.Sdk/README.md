@@ -47,7 +47,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/bigDataPool.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/library.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/integrationRuntime.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/sparkConfiguration.json
   # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 ```
@@ -116,4 +116,10 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}"].get
     transform: delete $["x-ms-long-running-operation"]
+  - from: swagger-document
+    where: $.definitions.IntegrationRuntimeResource.properties.properties
+    transform: delete $["x-ms-client-flatten"]
+  - from: swagger-document
+    where: $.definitions.IntegrationRuntimeStatusResponse.properties.properties
+    transform: delete $["x-ms-client-flatten"]
 ```

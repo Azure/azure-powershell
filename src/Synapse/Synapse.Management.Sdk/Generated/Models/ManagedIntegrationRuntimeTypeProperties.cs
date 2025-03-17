@@ -29,16 +29,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="ssisProperties">SSIS properties for managed integration runtime.
         /// </param>
-
-        /// <param name="customerVirtualNetwork">The name of virtual network to which Azure-SSIS integration runtime will
-        /// join
-        /// </param>
-        public ManagedIntegrationRuntimeTypeProperties(IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties), IntegrationRuntimeCustomerVirtualNetwork customerVirtualNetwork = default(IntegrationRuntimeCustomerVirtualNetwork))
+        public ManagedIntegrationRuntimeTypeProperties(IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties))
 
         {
             this.ComputeProperties = computeProperties;
             this.SsisProperties = ssisProperties;
-            this.CustomerVirtualNetwork = customerVirtualNetwork;
             CustomInit();
         }
 
@@ -59,13 +54,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ssisProperties")]
         public IntegrationRuntimeSsisProperties SsisProperties {get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of virtual network to which Azure-SSIS integration
-        /// runtime will join
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "customerVirtualNetwork")]
-        public IntegrationRuntimeCustomerVirtualNetwork CustomerVirtualNetwork {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -82,7 +70,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
             {
                 this.SsisProperties.Validate();
             }
-
         }
     }
 }

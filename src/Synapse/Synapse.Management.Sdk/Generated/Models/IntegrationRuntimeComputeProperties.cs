@@ -46,7 +46,13 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="vNetProperties">VNet properties for managed integration runtime.
         /// </param>
-        public IntegrationRuntimeComputeProperties(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string location = default(string), string nodeSize = default(string), int? numberOfNodes = default(int?), int? maxParallelExecutionsPerNode = default(int?), IntegrationRuntimeDataFlowProperties dataFlowProperties = default(IntegrationRuntimeDataFlowProperties), IntegrationRuntimeVNetProperties vNetProperties = default(IntegrationRuntimeVNetProperties))
+
+        /// <param name="copyComputeScaleProperties">CopyComputeScale properties for managed integration runtime.
+        /// </param>
+
+        /// <param name="pipelineExternalComputeScaleProperties">PipelineExternalComputeScale properties for managed integration runtime.
+        /// </param>
+        public IntegrationRuntimeComputeProperties(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string location = default(string), string nodeSize = default(string), int? numberOfNodes = default(int?), int? maxParallelExecutionsPerNode = default(int?), IntegrationRuntimeDataFlowProperties dataFlowProperties = default(IntegrationRuntimeDataFlowProperties), IntegrationRuntimeVNetProperties vNetProperties = default(IntegrationRuntimeVNetProperties), CopyComputeScaleProperties copyComputeScaleProperties = default(CopyComputeScaleProperties), PipelineExternalComputeScaleProperties pipelineExternalComputeScaleProperties = default(PipelineExternalComputeScaleProperties))
 
         {
             this.AdditionalProperties = additionalProperties;
@@ -56,6 +62,8 @@ namespace Microsoft.Azure.Management.Synapse.Models
             this.MaxParallelExecutionsPerNode = maxParallelExecutionsPerNode;
             this.DataFlowProperties = dataFlowProperties;
             this.VNetProperties = vNetProperties;
+            this.CopyComputeScaleProperties = copyComputeScaleProperties;
+            this.PipelineExternalComputeScaleProperties = pipelineExternalComputeScaleProperties;
             CustomInit();
         }
 
@@ -110,6 +118,19 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vNetProperties")]
         public IntegrationRuntimeVNetProperties VNetProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets copyComputeScale properties for managed integration runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "copyComputeScaleProperties")]
+        public CopyComputeScaleProperties CopyComputeScaleProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets pipelineExternalComputeScale properties for managed
+        /// integration runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "pipelineExternalComputeScaleProperties")]
+        public PipelineExternalComputeScaleProperties PipelineExternalComputeScaleProperties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -140,6 +161,14 @@ namespace Microsoft.Azure.Management.Synapse.Models
                 this.DataFlowProperties.Validate();
             }
 
+            if (this.CopyComputeScaleProperties != null)
+            {
+                this.CopyComputeScaleProperties.Validate();
+            }
+            if (this.PipelineExternalComputeScaleProperties != null)
+            {
+                this.PipelineExternalComputeScaleProperties.Validate();
+            }
         }
     }
 }
