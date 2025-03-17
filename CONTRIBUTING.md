@@ -2,7 +2,7 @@
 
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy,
 administer, and manage Microsoft Azure resources.
-
+x.y.z-preview
 ## Basics
 
 If you would like to become a contributor to this project (or any other open source Microsoft
