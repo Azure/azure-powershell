@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="description">Integration runtime description.
         /// </param>
 
-        /// <param name="state">Integration runtime state, only valid for managed dedicated integration
+        /// <param name="provisioningState">Integration runtime state, only valid for managed dedicated integration
         /// runtime.
         /// Possible values include: &#39;Initial&#39;, &#39;Stopped&#39;, &#39;Started&#39;, &#39;Starting&#39;,
         /// &#39;Stopping&#39;, &#39;NeedRegistration&#39;, &#39;Online&#39;, &#39;Limited&#39;, &#39;Offline&#39;,
@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="ssisProperties">SSIS properties for managed integration runtime.
         /// </param>
 
-        /// <param name="referenceName">The reference name of the managed virtual network.
+        /// <param name="customerVirtualNetwork">The name of virtual network to which Azure-SSIS integration runtime will
+        /// join
+        /// </param>
+
+        /// <param name="referenceName">The reference name of the managed virtual network
         /// </param>
 
         /// <param name="managedVirtualNetworkType">The type of the managed virtual network.
@@ -54,13 +58,14 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="id">The id of the managed virtual network.
         /// </param>
-        public ManagedIntegrationRuntime(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties), string referenceName = default(string), string managedVirtualNetworkType = default(string), string id = default(string))
+        public ManagedIntegrationRuntime(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string provisioningState = default(string), IntegrationRuntimeComputeProperties computeProperties = default(IntegrationRuntimeComputeProperties), IntegrationRuntimeSsisProperties ssisProperties = default(IntegrationRuntimeSsisProperties), IntegrationRuntimeCustomerVirtualNetwork customerVirtualNetwork = default(IntegrationRuntimeCustomerVirtualNetwork), string referenceName = default(string), string managedVirtualNetworkType = default(string), string id = default(string))
 
         : base(additionalProperties, description)
         {
-            this.State = state;
+            this.ProvisioningState = provisioningState;
             this.ComputeProperties = computeProperties;
             this.SsisProperties = ssisProperties;
+            this.CustomerVirtualNetwork = customerVirtualNetwork;
             this.ReferenceName = referenceName;
             this.ManagedVirtualNetworkType = managedVirtualNetworkType;
             this.Id = id;
@@ -77,8 +82,8 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Gets integration runtime state, only valid for managed dedicated
         /// integration runtime. Possible values include: &#39;Initial&#39;, &#39;Stopped&#39;, &#39;Started&#39;, &#39;Starting&#39;, &#39;Stopping&#39;, &#39;NeedRegistration&#39;, &#39;Online&#39;, &#39;Limited&#39;, &#39;Offline&#39;, &#39;AccessDenied&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
-        public string State {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
+        public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets the compute resource for managed integration runtime.
@@ -93,7 +98,14 @@ namespace Microsoft.Azure.Management.Synapse.Models
         public IntegrationRuntimeSsisProperties SsisProperties {get; set; }
 
         /// <summary>
-        /// Gets or sets the reference name of the managed virtual network.
+        /// Gets or sets the name of virtual network to which Azure-SSIS integration
+        /// runtime will join
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.customerVirtualNetwork")]
+        public IntegrationRuntimeCustomerVirtualNetwork CustomerVirtualNetwork {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference name of the managed virtual network
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedVirtualNetwork.referenceName")]
         public string ReferenceName {get; set; }
@@ -126,6 +138,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
             {
                 this.SsisProperties.Validate();
             }
+
 
 
 

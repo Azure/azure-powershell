@@ -27,7 +27,7 @@ batch:
  - tag: package-composite-v2
  - tag: package-sqlGen3-2020-04-01-preview
 reflect-api-versions: true
-commit: 74ca59fc8cb6563d5a9d66fb533b8622522143eb
+commit: cecb65f56ec5291e7fe88d62048bdb717e33e834
 ```
 
 ### Tag: package-composite-v2
@@ -47,7 +47,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/workspace.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/bigDataPool.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/library.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/integrationRuntime.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/integrationRuntime.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/sparkConfiguration.json
   # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 ```
@@ -112,4 +112,8 @@ directive:
       property-name: AvailableMemoryInMb
     set:
       property-name: AvailableMemoryInMB
+      
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}"].get
+    transform: delete $["x-ms-long-running-operation"]
 ```

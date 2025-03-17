@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// Initializes a new instance of the ManagedIntegrationRuntimeManagedVirtualNetworkReference class.
         /// </summary>
 
-        /// <param name="referenceName">The reference name of the managed virtual network.
+        /// <param name="referenceName">The reference name of the managed virtual network
         /// </param>
 
         /// <param name="type">The type of the managed virtual network.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
 
         /// <summary>
-        /// Gets or sets the reference name of the managed virtual network.
+        /// Gets or sets the reference name of the managed virtual network
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "referenceName")]
         public string ReferenceName {get; set; }

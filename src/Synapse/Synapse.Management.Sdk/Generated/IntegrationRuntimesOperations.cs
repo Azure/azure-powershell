@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.Synapse
             }
 
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "workspaceName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -953,13 +953,14 @@ namespace Microsoft.Azure.Management.Synapse
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -969,6 +970,10 @@ namespace Microsoft.Azure.Management.Synapse
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -1144,7 +1149,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1442,7 +1447,7 @@ namespace Microsoft.Azure.Management.Synapse
             }
 
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1686,7 +1691,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1899,7 +1904,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2127,7 +2132,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2337,7 +2342,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2547,7 +2552,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2797,13 +2802,14 @@ namespace Microsoft.Azure.Management.Synapse
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2813,6 +2819,10 @@ namespace Microsoft.Azure.Management.Synapse
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);

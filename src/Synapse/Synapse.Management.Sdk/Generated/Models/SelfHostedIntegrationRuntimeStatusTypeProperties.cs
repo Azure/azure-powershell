@@ -79,13 +79,7 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="autoUpdateEta">The estimated time when the self-hosted integration runtime will be
         /// updated.
         /// </param>
-
-        /// <param name="serviceRegion">The service region of the integration runtime
-        /// </param>
-
-        /// <param name="newerVersions">The newer versions on download center.
-        /// </param>
-        public SelfHostedIntegrationRuntimeStatusTypeProperties(System.DateTime? createTime = default(System.DateTime?), string taskQueueId = default(string), string nodeCommunicationChannelEncryptionMode = default(string), string internalChannelEncryption = default(string), string version = default(string), System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode> nodes = default(System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode>), System.DateTime? scheduledUpdateDate = default(System.DateTime?), string updateDelayOffset = default(string), string localTimeZoneOffset = default(string), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> serviceUrls = default(System.Collections.Generic.IList<string>), string autoUpdate = default(string), string versionStatus = default(string), System.Collections.Generic.IList<LinkedIntegrationRuntime> links = default(System.Collections.Generic.IList<LinkedIntegrationRuntime>), string pushedVersion = default(string), string latestVersion = default(string), System.DateTime? autoUpdateEta = default(System.DateTime?), string serviceRegion = default(string), System.Collections.Generic.IList<string> newerVersions = default(System.Collections.Generic.IList<string>))
+        public SelfHostedIntegrationRuntimeStatusTypeProperties(System.DateTime? createTime = default(System.DateTime?), string taskQueueId = default(string), string nodeCommunicationChannelEncryptionMode = default(string), string internalChannelEncryption = default(string), string version = default(string), System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode> nodes = default(System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode>), System.DateTime? scheduledUpdateDate = default(System.DateTime?), string updateDelayOffset = default(string), string localTimeZoneOffset = default(string), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> serviceUrls = default(System.Collections.Generic.IList<string>), string autoUpdate = default(string), string versionStatus = default(string), System.Collections.Generic.IList<LinkedIntegrationRuntime> links = default(System.Collections.Generic.IList<LinkedIntegrationRuntime>), string pushedVersion = default(string), string latestVersion = default(string), System.DateTime? autoUpdateEta = default(System.DateTime?))
 
         {
             this.CreateTime = createTime;
@@ -105,8 +99,6 @@ namespace Microsoft.Azure.Management.Synapse.Models
             this.PushedVersion = pushedVersion;
             this.LatestVersion = latestVersion;
             this.AutoUpdateEta = autoUpdateEta;
-            this.ServiceRegion = serviceRegion;
-            this.NewerVersions = newerVersions;
             CustomInit();
         }
 
@@ -225,17 +217,5 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoUpdateETA")]
         public System.DateTime? AutoUpdateEta {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the service region of the integration runtime
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceRegion")]
-        public string ServiceRegion {get; set; }
-
-        /// <summary>
-        /// Gets or sets the newer versions on download center.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "newerVersions")]
-        public System.Collections.Generic.IList<string> NewerVersions {get; set; }
     }
 }

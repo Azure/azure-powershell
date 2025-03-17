@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

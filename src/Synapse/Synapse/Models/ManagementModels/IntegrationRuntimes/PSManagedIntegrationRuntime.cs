@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
 
-        public string State => ManagedIntegrationRuntime.State;
+        public string State => ManagedIntegrationRuntime.ProvisioningState;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;
 

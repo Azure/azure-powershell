@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Synapse
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "integrationRuntimeName");
             }
 
-            string apiVersion = "2021-06-01-preview";
+            string apiVersion = "2021-06-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
