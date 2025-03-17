@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
     <PackageReference Include="NLog" Version="5.4.0" />
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+	<PackageReference Include="Azure.Identity" Version="1.13.2" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

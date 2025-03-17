@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         static DataLakeStoreFileSystemClient()
         {
             // Registering the custom target class
-            Target.Register<AdlsLoggerTarget>("AdlsLogger"); //generic
+            LogManager.Setup().SetupExtensions(ext => ext.RegisterTarget<AdlsLoggerTarget>("AdlsLogger"));
             LogManager.ReconfigExistingLoggers();
         }
 

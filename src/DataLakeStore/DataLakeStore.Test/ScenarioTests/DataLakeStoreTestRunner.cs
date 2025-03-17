@@ -16,6 +16,12 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Azure.Core;
+using Microsoft.Rest;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -56,19 +62,43 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithManagementClients(mockContext =>
-                    {
-                        var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                        AdlsClientFactory.IsTest = true;
-                        AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(currentEnvironment, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
-                        var dummyObj = new object();
-                        return dummyObj;
-                    }
+                {
+                    var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                    AdlsClientFactory.IsTest = true;
+                    AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(currentEnvironment, new AdlMockDelegatingHandler());
+                    AdlsClientFactory.MockCredentials = new TokenCredentialAdapter(currentEnvironment.TokenInfo[TokenAudience.Management]);
+                    var dummyObj = new object();
+                    return dummyObj;
+                }
                 )
                 .WithCleanupAction(
                     () => AdlsClientFactory.IsTest = false
                 )
                 .Build();
+        }
+    }
+
+    public class TokenCredentialAdapter : TokenCredential
+    {
+        private readonly TokenCredentials _tokenCredentials;
+
+        public TokenCredentialAdapter(TokenCredentials tokenCredentials)
+        {
+            _tokenCredentials = tokenCredentials;
+        }
+
+        public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        {
+            var token = GetTokenAsync(requestContext, cancellationToken).Result;
+            return token;
+        }
+
+        public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        {
+            var tokenRequest = new HttpRequestMessage();
+            await _tokenCredentials.ProcessHttpRequestAsync(tokenRequest, cancellationToken).ConfigureAwait(false);
+            var token = tokenRequest.Headers.Authorization.Parameter;
+            return new AccessToken(token, DateTimeOffset.MaxValue);
         }
     }
 }
