@@ -1871,6 +1871,6 @@ function Test-HighBandwidthVpnGatewayCreation
      finally
      {
         # Cleanup
-        # Remove-AzResourceGroup $rgname
+        Remove-AzResourceGroup $rgname
      }
 }
