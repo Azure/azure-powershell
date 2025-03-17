@@ -8,21 +8,36 @@ schema: 2.0.0
 # New-AzWorkloadsMonitor
 
 ## SYNOPSIS
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AppLocation <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-SubscriptionId <String>] [-AppLocation <String>] [-EnableSystemAssignedIdentity]
  [-LogAnalyticsWorkspaceArmId <String>] [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>]
- [-RoutingPreference <RoutingPreference>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-RoutingPreference <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-ZoneRedundancyPreference <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 
@@ -47,7 +62,7 @@ The subnet region should be same as the SAP monitoring region.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -88,15 +103,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of manage identity
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +153,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -123,7 +168,7 @@ The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -138,7 +183,7 @@ Managed resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -153,7 +198,7 @@ The subnet which the SAP monitor will be deployed in
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,8 +259,8 @@ Sets the routing preference of the SAP monitor.
 By default only RFC1918 traffic is routed to the customer VNET.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +290,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -256,11 +301,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User assigned identities dictionary
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -276,7 +322,7 @@ By default resources will be created which do not support zone redundancy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -324,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
 
 ## NOTES
 
