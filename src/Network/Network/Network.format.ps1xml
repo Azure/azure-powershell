@@ -1012,6 +1012,10 @@
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>ResiliencyModel</Label>
+                <PropertyName>ResiliencyModel</PropertyName>
+              </ListItem>		 
               <ListItem>
                 <Label>AllowRemoteVnetTraffic</Label>
                 <PropertyName>AllowRemoteVnetTraffic</PropertyName>
@@ -1513,6 +1517,22 @@
               <ListItem>
                 <Label>RemoteVirtualNetworkAddressSpace</Label>
                 <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeerCompleteVnet</Label>
+                <PropertyName>PeerCompleteVnet</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LocalSubnetName</Label>
+                <PropertyName>LocalSubnetNameText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteSubnetName</Label>
+                <PropertyName>RemoteSubnetNameText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableOnlyIPv6Peering</Label>
+                <PropertyName>EnableOnlyIPv6Peering</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RemoteBgpCommunities</Label>

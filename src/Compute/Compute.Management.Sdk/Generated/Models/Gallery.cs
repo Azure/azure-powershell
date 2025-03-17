@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        public Gallery(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), string provisioningState = default(string), SharingProfile sharingProfile = default(SharingProfile), SoftDeletePolicy softDeletePolicy = default(SoftDeletePolicy), SharingStatus sharingStatus = default(SharingStatus))
+        /// <param name="identity">The identity of the gallery, if
+        /// configured.</param>
+        public Gallery(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), string provisioningState = default(string), SharingProfile sharingProfile = default(SharingProfile), SoftDeletePolicy softDeletePolicy = default(SoftDeletePolicy), SharingStatus sharingStatus = default(SharingStatus), GalleryIdentity identity = default(GalleryIdentity))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -54,6 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             SharingProfile = sharingProfile;
             SoftDeletePolicy = softDeletePolicy;
             SharingStatus = sharingStatus;
+            Identity = identity;
             CustomInit();
         }
 
@@ -95,6 +98,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.sharingStatus")]
         public SharingStatus SharingStatus { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the gallery, if configured.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public GalleryIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -106,6 +106,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             } */
         }
 
+        public void UndeleteContainer(string containerName,
+            ProtectionContainerResource protectionContainerResource,
+            string vaultName, string vaultResourceGroupName)
+        {
+            var registerResponse = ServiceClientAdapter.RegisterContainer(
+                            containerName,
+                            protectionContainerResource,
+                            vaultName,
+                            vaultResourceGroupName);
+            
+            if (registerResponse.Body == null || registerResponse.Body.Properties == null)
+            {
+                string errorMessage = string.Format(Resources.UndeleteContainerFailureErrorCode,
+                    registerResponse.Response.StatusCode);
+                Logger.Instance.WriteDebug(errorMessage);
+            }
+        }
+
         public List<ProtectedItemResource> ListProtectedItemsByContainer(
             string vaultName,
             string resourceGroupName,

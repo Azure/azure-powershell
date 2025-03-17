@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Account Id for managed service. Can be a managed service resource Id, or the associated client id. To use the SystemAssigned identity, leave this field blank.")]
+                    Mandatory = false, HelpMessage = "Client id of UserAssigned identity. To use the SystemAssigned identity, leave this field blank.")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
@@ -369,15 +369,6 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         subscriptionName = subscriptionFromConfig;
                     }
-                }
-            }
-
-            if (ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
-            {
-                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
-                if (!suppressWarningOrError)
-                {
-                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
                 }
             }
 

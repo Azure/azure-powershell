@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Added support for passing continuation token to enable pagination in GetAzureDataLakeStoreDeletedItem
 
+## Version 1.4.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.3.2
 * Updated signed 3rd party assembly NLog.dll to PSGallery
 

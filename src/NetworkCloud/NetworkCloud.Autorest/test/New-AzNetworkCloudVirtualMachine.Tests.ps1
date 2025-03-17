@@ -19,13 +19,10 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
             $networkAttachment = New-AzNetworkCloudNetworkAttachmentObject `
                 -AttachedNetworkId $global:config.AzNetworkCloudVirtualMachine.networkAttachmentId `
                 -IpAllocationMethod $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod `
-                -DefaultGateway $global:config.AzNetworkCloudVirtualMachine.attachmentDefaultGateway `
-                -Ipv4Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv4Address `
-                -Ipv6Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv6Address `
                 -Name $global:config.AzNetworkCloudVirtualMachine.attachmentName
 
             $hint = New-AzNetworkCloudVirtualMachinePlacementHintObject `
-                -HintType global:config.AzNetworkCloudVirtualMachine.placementHint `
+                -HintType $global:config.AzNetworkCloudVirtualMachine.placementHint `
                 -SchedulingExecution $global:config.AzNetworkCloudVirtualMachine.placementExecution `
                 -ResourceId $global:config.AzNetworkCloudVirtualMachine.placementResourceId `
                 -Scope $global:config.AzNetworkCloudVirtualMachine.placementScope
@@ -34,7 +31,7 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
                 KeyData = $global:config.AzNetworkCloudVirtualMachine.sshPublicKey
             }
 
-            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -asplaintext -force
+            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -AsPlainText -Force
             New-AzNetworkCloudVirtualMachine -Name $global:config.AzNetworkCloudVirtualMachine.vmName `
                 -ResourceGroupName $global:config.AzNetworkCloudVirtualMachine.vmResourceGroup `
                 -AdminUsername $global:config.AzNetworkCloudVirtualMachine.adminUsername `

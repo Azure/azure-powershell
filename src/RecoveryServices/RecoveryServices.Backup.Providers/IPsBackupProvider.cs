@@ -69,6 +69,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         void RegisterContainer();
 
+        void UndeleteContainer();
+
         List<PointInTimeBase> GetLogChains();
     }
 }

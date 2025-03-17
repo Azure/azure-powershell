@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the api version to "2023-04-27" (Stable Version)
+
+## Version 0.1.2
+* Upgraded nuget package to signed package.
 
 ## Version 0.1.1
 * Introduced secrets detection feature to safeguard sensitive data.

@@ -1,3 +1,291 @@
+## 13.3.0 - March 2025
+#### Az.CosmosDB 1.17.0
+* Added support for Cosmos DB Table role definition and role assignment related cmdlets.
+
+#### Az.DataBoxEdge 1.2.1
+* Removed 'Microsoft.Azure.Management.DataBoxEdge' Version '1.0.0' PackageReference
+
+#### Az.DataFactory 1.19.1
+* Added more support for Oracle connection properties.
+* Added more support for Teradata connection properties.
+* Added more support for AzurePostgreSql connection properties.
+
+#### Az.DataShare 1.1.1
+* Removed 'Microsoft.Azure.Management.DataShare' Version '1.0.1' PackageReference
+
+#### Az.Maintenance 1.5.1
+* Migrated SDK generation from autorest csharp to autorest powershell.
+
+#### Az.Migrate 2.7.0
+  * Updated Data.Replication to newer API version
+    - Updated Data.Replication to point to stable API version 2024-09-01
+  * Rebranded Data.Replication cmdlets
+    - Rebranded Data.Replication cmdlets from Azure Stack HCI to Azure Local
+
+#### Az.PolicyInsights 1.7.1
+* Removed 'Microsoft.Azure.Management.PolicyInsights' Version '1.0.0' PackageReference
+
+#### Az.RecoveryServices 7.5.1
+* Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.
+* Updated Restore-AzRecoveryServicesBackupItem to block cross zonal restore from snapshot RP.
+
+#### Az.ResourceGraph 1.2.0
+* Upgraded API version to 2024-04-01.
+
+#### Az.Resources 7.9.0
+* Added '-ApplicationId' as an alias of '-ServicePrincipalName'.
+* Supported getting role assignments at the exact scope via '-AtScope' for 'Get-AzRoleAssignment'. 
+
+#### Az.ServiceBus 4.1.1
+* Fixed a bug when invoke 'Set-AzServiceBusNamespace' with parameter 'NoWait' [#26998]
+
+#### Az.Sql 6.0.2
+* Fixed GitHub issue #12417 'Get-AzSqlElasticPoolDatabase doesn't enumerate output.'
+    - fixed the output to enumerate the results.
+
+#### Az.Storage 8.2.0
+* Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  'StandardV2_LRS', 'StandardV2_GRS', 'StandardV2_ZRS', 'StandardV2_GZRS', 'PremiumV2_LRS', 'PremiumV2_ZRS'
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Get File Service Usage on Files Provisioned v2 account type.
+    - 'Get-AzStorageFileServiceUsage'
+* Supported create/update file share on new parameters on Files Provisioned v2 account type with new parameter: '-ProvisionedBandwidthMibps', '-ProvisionedIops''
+    - 'New-AzRmStorageShare'
+    - 'Update-AzRmStorageShare'
+* Supported create/update/Get file share on new parameters on Files Provisioned v1 account type with new parameter: '-PaidBurstingEnabled', '-PaidBurstingMaxBandwidthMibps', '-PaidBurstingMaxIops'
+    - 'New-AzRmStorageShare'
+    - 'Update-AzRmStorageShare'
+    - 'Get-AzStorageFileServiceUsage'
+* Supported get file share new properties for Files Provisioned v1/v2 account type
+    - 'Get-AzStorageFileServiceUsage'
+
+#### Az.Synapse 3.1.2
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
+
+#### Az.Websites 3.3.1
+* Migrated Websites.Helper generation from autorest csharp to autorest powershell.
+
+#### Az.Workloads 1.0.0
+* General availability for module Az.Workloads
+* Upgraded API version to 2024-09-01
+
+### Thanks to our community contributors
+* Sebastian Claesson (@SebastianClaesson)
+  * [Az.Resources] Adding examples of how to use ServicePrincipalName parameter (#26891)
+  * [Az.Resources] Adding ApplicationId parameter to get- and remove-azRoleAssignment cmdlets (#26890)
+* @soffensive, Update Connect-AzAccount.md (#27098)
+
+## 13.2.0 - February 2025
+#### Az.Accounts 4.0.2
+* Fixed unsigned dll:
+    - 'System.Buffers.dll'
+    - 'System.Memory.dll'
+
+#### Az.Automation 1.11.1
+* Fixed Bug: Start-AzAutomationRunbook throws object reference error when the automation account is not available in the subscription 
+
+#### Az.Compute 9.1.0
+* Added new parameter 'EncryptionIdentity' to cmdlet 'Set-AzVmssDiskEncryptionExtension'
+* Added new parameter 'EncryptionIdentity' to cmdlet 'New-VmssConfig'
+* Added new parameter 'EncryptionIdentity' to cmdlet 'Set-AzVMDiskEncryptionExtension'
+* Added new parameter 'EncryptionIdentity' to cmdlet 'New-AzVMConfig'
+
+#### Az.DataProtection 2.6.1
+* Updated Help Doc of Get-AzAccessToken Usage in DataProtection
+
+#### Az.EventHub 5.2.0
+*  Added parameter 'MinCompactionLagInMin', 'TimestampType' and 'UserMetadata' to cmdlets 'New-AzEventHub' and 'Set-AzEventHub'
+*  Supported 'DelectorCompact' policy in parameter 'Cleanup-policy' of cmdlet 'new-AzEventhub'
+
+#### Az.Network 7.14.0
+* Updated 'New-AzRouteServer', 'Get-AzRouteServer', and 'Update-AzRouteServer' to include VirtualRouterAutoScaleConfiguration.
+
+#### Az.RecoveryServices 7.5.0
+* Added support for updating SoftDeleteRetentionPeriodInDays in Set-AzRecoveryServicesVaultProperty cmdlet.
+* Added new cmdlet Undo-AzRecoveryServicesBackupContainerDeletion for undeleting soft deleted backup container.
+* Resolved bug in Restore-AzRecoveryServicesBackupItem cmdlet.
+* Updated cmdlet Set-AzRecoveryServicesBackupProperty to use vault PATCH API while setting CRR, Redundancy settings.
+* Updated cmdlets Get-AzRecoveryServicesBackupItem and Get-AzRecoveryServicesVaultProperty to expose more properties in the output.
+* Updated the configure backup per policy protection limit for VMs from 100 to 1000.
+
+#### Az.RedisEnterpriseCache 1.4.1
+* Upgraded nuget package to signed package.
+
+#### Az.Resources 7.8.1
+* Updated to use bicep parameter --documentation-uri instead of the deprecated --documentationUri
+
+#### Az.StorageSync 2.4.1
+* Removed 'Microsoft.Azure.Management.Authorization' Version '2.13.0-preview' package reference
+
+#### Az.Synapse 3.1.1
+* Removed 'Microsoft.Azure.Management.Synapse' Version '2.6.0-preview' package reference 
+
+## 13.1.0 - January 2025
+#### General
+* Signed all Az packages published to PowerShell Gallery
+
+#### Az.Accounts 4.0.1
+* Fixed the Managed Identity parameter set description of 'AccountId' in 'Connect-AzAccount'.
+* Made the breaking change warnings about 'Get-AzAccessToken' not appear when '-AsSecureString' is used.
+* Fixed an issue that cmdlets may report warnings of 'KeyNotFoundException'. #26624
+* Fixed an issue that the '-AppliesTo' parameter of 'Update-AzConfig' does not work as expected.
+* Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0.
+* Updated Azure PowerShell intercept survey prompt.
+
+#### Az.Aks 6.1.0
+* Fixed the issue that HTTP request body contains empty userAssignedIdentities object when identity type is 'SystemAssigned'.
+
+#### Az.ApiManagement 4.1.0
+* Fixed model creation parameters of ApiCreateOrUpdateParameter, ProductContract, SubscriptionCreateParameters, GroupCreateParameters, OpenidConnectProviderContract, IdentityProviderCreateContract, BackendContract, CacheContract and DiagnosticContract with [#26672].
+
+#### Az.Batch 3.7.0
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job 'CommonEnvironmentSettings' property. 
+
+#### Az.Compute 9.0.1
+* Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
+
+#### Az.ContainerInstance 4.1.1
+* Added breaking change warning for removing default value for OsType 'New-AzContainerGroup'
+
+#### Az.ContainerRegistry 4.3.0
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.CosmosDB 1.16.0
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Databricks 1.10.0
+* Updated Az.Databricks to use more intuitive parameter names for the ESC feature.
+
+#### Az.DataFactory 1.19.0
+* Added support for additional MySQL connection properties.
+* Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.
+
+#### Az.DataProtection 2.6.0
+* Added support for UAMI in Backup Instance
+
+#### Az.DevTestLabs 1.1.0
+* Removed 'Microsoft.Azure.Management.DevTestLabs' Version '1.0.0' PackageReference
+
+#### Az.HealthDataAIServices 1.0.0
+* General availability for module Az.HealthDataAIServices
+* Upgraded API version to 2024-09-20
+
+#### Az.IotHub 2.8.0
+* Removed 'Microsoft.Azure.Management.IotHub' Version '4.2.0' PackageReference
+
+#### Az.KeyVault 6.3.1
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Kusto 2.4.0
+* Added new cmdlets
+    - 'Add-AzKustoClusterCalloutPolicy'
+    - 'Get-AzKustoClusterCalloutPolicy'
+    - 'Remove-AzKustoClusterCalloutPolicy'
+    - 'Get-AzKustoClusterFollowerDatabaseGet'
+
+#### Az.LogicApp 1.6.0
+* Removed 'Microsoft.Azure.Management.Logic' Version '4.1.0' PackageReference
+
+#### Az.Maintenance 1.5.0
+* Added list of allowed classifications in description for Maintenance Configuration
+* Fixed incorrect parameter mapping in Get-AzApplyUpdate
+
+#### Az.Migrate 2.6.0
+* Added support for PremiumV2 disk type.
+* Added SBM support.
+
+#### Az.Network 7.12.0
+* Onboarded 'Microsoft.HeathDataAIServices/deidServices' to private link cmdlets
+* Updated 'Remove-AzNetworkWatcherFlowLog' command to return boolean value
+* Updated vnv and ipam cmdlets
+* Allowed TA interval to be set as 0 incase TA is disabled
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - 'Get-AzNetworkManagerAssociatedResourcesList'
+    - 'Get-AzNetworkManagerIpamPool'
+    - 'Get-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Get-AzNetworkManagerIpamPoolUsage'
+    - 'New-AzNetworkManagerIpamPool'
+    - 'New-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Remove-AzNetworkManagerIpamPool'
+    - 'Remove-AzNetworkManagerIpamPoolStaticCidr'
+    - 'Set-AzNetworkManagerIpamPool'
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - 'New-AzNetworkManagerSecurityGroupItem'
+    - 'New-AzNetworkManagerVerifierWorkspace'
+    - 'Get-AzNetworkManagerVerifierWorkspace'
+    - 'Set-AzNetworkManagerVerifierWorkspace'
+    - 'Remove-AzNetworkManagerVerifierWorkspace'
+    - 'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    - 'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    - 'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    - 'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+* Updated cmdlet to add the property of 'NetworkGroupAddressSpaceAggregationOption', and updated corresponding cmdlets.
+    - 'New-AzNetworkManagerSecurityAdminConfiguration'
+    - 'New-AzNetworkManagerAddressPrefixItemCommand'
+* Added 'DefaultOutboundConnectivityEnabled' property in PSNetworkInterface
+* Added support for 'AutoscaleConfiguration' property in 'AzureFirewall' model for 'New-AzFirewall' and 'Set-AzFirewall' commands
+* Added support for 'ResiliencyModel' property in 'New-AzVirtualNetworkGateway' and 'Set-AzVirtualNetworkGateway' command for ExpressRoute
+
+#### Az.NetworkCloud 1.1.0
+* Upgraded API version to 2024-07-01
+
+#### Az.PolicyInsights 1.7.0
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.PowerBIEmbedded 2.1.0
+* Removed 'Microsoft.Azure.Management.PowerBIEmbedded' Version '1.1.1-preview' PackageReference
+* Removed 'Microsoft.Azure.Management.PowerBIDedicated' Version '0.11.0-preview' PackageReference
+
+#### Az.RecoveryServices 7.4.0
+* Updated the policy, protection commands to support AFS Vault Tier.
+
+#### Az.RedisCache 1.11.0
+* Added support for choosing Zonal Allocation Policy
+
+#### Az.Resources 7.8.0
+* Added DefaultApiVersion to the returned properties of the 'Get-AzResourceProvider' cmdlet's Resource Type array
+* Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Fixed bug unexpected type issue: [#26752]
+* Added parameter 'RequestedAccessTokenVersion' for 'New-AzADApplication' and 'Update-AzADApplication'
+
+#### Az.SignalR 2.1.0
+* Removed 'Microsoft.Azure.Management.SignalR' Version '1.1.2-preview' PackageReference
+
+#### Az.Sql 6.0.1
+* Updated 'New-AzSqlDatabaseExport' with support for Managed Identity
+ 	- Added 'ManagedIdentity' to 'StorageKeyType' auth list
+   	- Added 'ManagedIdentity' to 'AuthenticationType' auth list
+* Updated 'New-AzSqlDatabaseImport' with support for Managed Identity
+  	- Added 'ManagedIdentity' to 'StorageKeyType' auth list
+	- Added 'ManagedIdentity' to 'AuthenticationType' auth list
+
+#### Az.Storage 8.1.0
+* Added warning message for account migration cmdlet.
+    - 'Start-AzStorageAccountMigration'
+* Fixed error message when creating OAuth based Storage context without first login with Connect-AzAccount.
+    - 'New-AzStorageContext'
+* Upgraded Azure.Storage.Blobs to 12.23.0
+* Upgraded Azure.Storage.Files.Shares to 12.21.0
+* Upgraded Azure.Storage.Files.DataLake to 12.21.0
+* Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - 'Get-AzStorageFileHandle'
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Synapse 3.1.0
+* Upgraded Azure.Core to 1.44.1.
+
+#### Az.Websites 3.3.0
+* Fixed the source app retrieval from Microsoft.Web RP instead of ARM cache for 'RestoreAzureWebAppSnapshot'
+
+### Thanks to our community contributors
+* @debalinaroy, Adding managed identity support to sql import export (#26884)
+* @riddhinilawar, Added return type boolean log for Remove Flow Log Command (#26958)
+* sravani saluru (@sravanisaluru), Update Set-AzSqlDatabaseAudit.md (#26858)
+
 ## 13.0.0 - November 2024
 #### Az.Accounts 4.0.0
 * [Breaking Change] Removed alias 'Resolve-Error' for the cmdlet 'Resolve-AzError'.

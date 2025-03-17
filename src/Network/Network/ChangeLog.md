@@ -20,6 +20,47 @@
 
 ## Upcoming Release
 
+## Version 7.15.0
+* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
+
+## Version 7.14.0
+* Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
+
+## Version 7.12.0
+* Onboarded `Microsoft.HeathDataAIServices/deidServices` to private link cmdlets
+* Upgraded nuget package to signed package.
+* Updated `Remove-AzNetworkWatcherFlowLog` command to return boolean value
+* Updated vnv and ipam cmdlets
+* Allowed TA interval to be set as 0 incase TA is disabled
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - `Get-AzNetworkManagerAssociatedResourcesList`
+    - `Get-AzNetworkManagerIpamPool`
+    - `Get-AzNetworkManagerIpamPoolStaticCidr`
+    - `Get-AzNetworkManagerIpamPoolUsage`
+    - `New-AzNetworkManagerIpamPool`
+    - `New-AzNetworkManagerIpamPoolStaticCidr`
+    - `Remove-AzNetworkManagerIpamPool`
+    - `Remove-AzNetworkManagerIpamPoolStaticCidr`
+    - `Set-AzNetworkManagerIpamPool`
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerVerifierWorkspace`
+    - `Get-AzNetworkManagerVerifierWorkspace`
+    - `Set-AzNetworkManagerVerifierWorkspace`
+    - `Remove-AzNetworkManagerVerifierWorkspace`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+* Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
+    - `New-AzNetworkManagerSecurityAdminConfiguration`
+    - `New-AzNetworkManagerAddressPrefixItemCommand`
+* Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
+* Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
+* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
+
 ## Version 7.11.0
 * Updated Device Update Private Link provider configuration
     - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
@@ -37,7 +78,7 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
-
+  
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links

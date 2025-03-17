@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
                 }
 
-                if(RehydratePriority != null)
+                if (RehydratePriority != null)
                 {
                     Logger.Instance.WriteDebug("Rehydrate priority is " + RehydratePriority);
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string.Equals(this.ParameterSetName, AzureManagedVMReplaceExistingParameterSet, StringComparison.Ordinal))
                 {
                     AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
-                    if ((bool)rp.IsPrivateAccessEnabledOnAnyDisk)
+                    if (rp.IsPrivateAccessEnabledOnAnyDisk.GetValueOrDefault())
                     {
                         throw new ArgumentException("DiskAccessOption parameter must be provided since private access is enabled in given recovery point");
                     }
@@ -489,22 +489,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
 
+                    string targetZone = TargetZoneNumber.ToString();
+
+                    if (TargetZoneNumber == 0)
+                    {
+                        targetZone = "NoZone";
+                    }
+
+                    WriteDebug("Target Zone = " + targetZone);
+
                     // eliminate LRS/GRS
                     if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||                     
                         (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
-                        // eliminate Archive tier RPs. Snapshot RPs are supported for RPCv2/Enhanced policy
+                        // eliminate Archive tier and Snapshot RPs.
                         // service would throw the appropriate error for Standard policy
-                        if (rp.RecoveryPointTier != 0 && rp.RecoveryPointTier != RecoveryPointTier.VaultArchive) 
+                        if (rp.RecoveryPointTier != 0 
+                            && rp.RecoveryPointTier != RecoveryPointTier.VaultArchive
+                            && rp.RecoveryPointTier != RecoveryPointTier.SnapshotAndVaultArchive
+                            && rp.RecoveryPointTier != RecoveryPointTier.Snapshot) 
                         {
-                            WriteDebug("Recovery point time = " + rp.RecoveryPointTime.ToString());
-                            WriteDebug("UTC NOW - 4 Hrs = " + DateTime.UtcNow.AddHours(-4).ToString());
-                                                        
-                            if ((rp.RecoveryPointTier == RecoveryPointTier.Snapshot || rp.RecoveryPointTier == RecoveryPointTier.SnapshotAndVaultStandard || rp.RecoveryPointTier == RecoveryPointTier.SnapshotAndVaultArchive) && rp.RecoveryPointTime > DateTime.UtcNow.AddHours(-4))
-                            {
-                                throw new ArgumentException(String.Format(Resources.UnbakedSnapshotRecoveryPoint));
-                            }
-
                             // check CZR eligibility for RA-GRS
                             if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled)
                             {                                
@@ -518,7 +522,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 }
                             }
 
-                            providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
+                            providerParameters.Add(RecoveryPointParams.TargetZone, targetZone);
                         }
                         else
                         {
@@ -551,7 +555,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(RestoreFSBackupItemParams.SourceFileType, SourceFileType.ToString());
                 }
 
-                if(MultipleSourceFilePath != null)
+                if (MultipleSourceFilePath != null)
                 {
                     providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
                 }

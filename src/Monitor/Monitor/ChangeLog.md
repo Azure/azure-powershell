@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+
 ## Version 6.0.0
 * The parameters of the `New-AzDataCollectionEndpoint`, `New-AzDataCollectionRule`, `Update-AzDataCollectionEndpoint`, `Update-AzDataCollectionRule` commands have changed.
   * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.

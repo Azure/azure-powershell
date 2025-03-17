@@ -45,6 +45,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        public void TestVirtualNetworkCRUDWithIpamPool()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkCRUDWithIpamPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-subnetCRUD");
@@ -122,6 +130,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.vnetpeeringdev)]
+        public void TestSubnetPeeringCRUD()
+        {
+            TestRunner.RunTestScript("Test-SubnetPeeringCRUD");
+        }
+
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
@@ -184,6 +200,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkPeeringSyncCRUD()
         {
             TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.vnetpeeringdev)]
+        public void TestSubnetPeeringSyncCRUD()
+        {
+            TestRunner.RunTestScript("Test-SyncSubnetPeeringCRUD");
         }
 
         [Fact]

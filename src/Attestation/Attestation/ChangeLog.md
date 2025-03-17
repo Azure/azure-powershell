@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
 ## Version 2.0.3
 * Migrated Attestation SDK to generated SDK
     - Removed "Microsoft.Azure.Management.Attestation" Version "0.12.0-preview" PackageReference

@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="vnetEncryptionSupported">Whether the virtual machine this nic is attached to supports encryption.
         /// </param>
 
+        /// <param name="defaultOutboundConnectivityEnabled">Whether default outbound connectivity for nic was configured or not.
+        /// </param>
+
         /// <param name="enableAcceleratedNetworking">If the network interface is configured for accelerated networking. Not
         /// applicable to VM sizes which require accelerated networking.
         /// </param>
@@ -73,7 +76,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the network interface resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="workloadType">WorkloadType of the NetworkInterface for BareMetal resources
         /// </param>
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="auxiliarySku">Auxiliary sku of Network Interface resource.
         /// Possible values include: &#39;None&#39;, &#39;A1&#39;, &#39;A2&#39;, &#39;A4&#39;, &#39;A8&#39;</param>
-        public NetworkInterfacePropertiesFormat(SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? vnetEncryptionSupported = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableIPForwarding = default(bool?), System.Collections.Generic.IList<string> hostedWorkloads = default(System.Collections.Generic.IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string workloadType = default(string), string nicType = default(string), PrivateLinkService privateLinkService = default(PrivateLinkService), string migrationPhase = default(string), string auxiliaryMode = default(string), string auxiliarySku = default(string))
+        public NetworkInterfacePropertiesFormat(SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceIPConfiguration>), System.Collections.Generic.IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(System.Collections.Generic.IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? vnetEncryptionSupported = default(bool?), bool? defaultOutboundConnectivityEnabled = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableIPForwarding = default(bool?), System.Collections.Generic.IList<string> hostedWorkloads = default(System.Collections.Generic.IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string workloadType = default(string), string nicType = default(string), PrivateLinkService privateLinkService = default(PrivateLinkService), string migrationPhase = default(string), string auxiliaryMode = default(string), string auxiliarySku = default(string))
 
         {
             this.VirtualMachine = virtualMachine;
@@ -105,6 +109,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.MacAddress = macAddress;
             this.Primary = primary;
             this.VnetEncryptionSupported = vnetEncryptionSupported;
+            this.DefaultOutboundConnectivityEnabled = defaultOutboundConnectivityEnabled;
             this.EnableAcceleratedNetworking = enableAcceleratedNetworking;
             this.DisableTcpStateTracking = disableTcpStateTracking;
             this.EnableIPForwarding = enableIPForwarding;
@@ -184,6 +189,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? VnetEncryptionSupported {get; private set; }
 
         /// <summary>
+        /// Gets whether default outbound connectivity for nic was configured or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultOutboundConnectivityEnabled")]
+        public bool? DefaultOutboundConnectivityEnabled {get; private set; }
+
+        /// <summary>
         /// Gets or sets if the network interface is configured for accelerated
         /// networking. Not applicable to VM sizes which require accelerated
         /// networking.
@@ -224,7 +235,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ResourceGuid {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the network interface resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the network interface resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

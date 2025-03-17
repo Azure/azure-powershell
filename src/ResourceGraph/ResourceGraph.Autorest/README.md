@@ -27,11 +27,11 @@ For information on how to develop for `Az.ResourceGraph`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: e521d49bb1d1f262bd2131b57eea5c1436047650
+commit: cb843b318ece878394d127733abe5da858466daf
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview/graphquery.json
+  - $(repo)/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2024-04-01/graphquery.json
 
 title: ResourceGraph
 module-version: 0.1.0

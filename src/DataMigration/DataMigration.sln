@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{50E89024-F7A8-43B9-90E7-7EF9BA0E0153}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.DataMigration", "DataMigration.Autorest\Az.DataMigration.csproj", "{89BB5BDC-A129-4378-A5B6-6A4E56A6E9DD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{06363AEF-5C97-42F6-9AFD-4296138F8494}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataMigration.Test", "DataMigration.Test\DataMigration.Test.csproj", "{ED4B7E88-440B-42EA-B412-54EE0ABACC6E}"
@@ -28,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{6900ED56-82F6-41C5-A00A-1F5B5228BE67}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataMigration.Management.Sdk", "DataMigration.Management.Sdk\DataMigration.Management.Sdk.csproj", "{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataMigration", "..\..\generated\DataMigration\DataMigration.Autorest\Az.DataMigration.csproj", "{38C16CD2-B62F-41FB-9911-0941304C40F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,6 @@ Global
 		{50E89024-F7A8-43B9-90E7-7EF9BA0E0153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50E89024-F7A8-43B9-90E7-7EF9BA0E0153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50E89024-F7A8-43B9-90E7-7EF9BA0E0153}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89BB5BDC-A129-4378-A5B6-6A4E56A6E9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89BB5BDC-A129-4378-A5B6-6A4E56A6E9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89BB5BDC-A129-4378-A5B6-6A4E56A6E9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89BB5BDC-A129-4378-A5B6-6A4E56A6E9DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED4B7E88-440B-42EA-B412-54EE0ABACC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED4B7E88-440B-42EA-B412-54EE0ABACC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED4B7E88-440B-42EA-B412-54EE0ABACC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +75,10 @@ Global
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2182D2E-3C99-4294-ACCA-D081A4ABA49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C16CD2-B62F-41FB-9911-0941304C40F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

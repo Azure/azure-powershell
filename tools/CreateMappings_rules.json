@@ -725,10 +725,6 @@
     "regex": "Elastic"
   },
   {
-    "regex": "Logz",
-    "alias": "Logz"
-  },
-  {
     "alias": "DiskPool",
     "regex": "DiskPool"
   },
@@ -943,5 +939,13 @@
   {
     "module": "ComputeFleet",
     "alias": "ComputeFleet"
+  },
+  {
+    "module": "ComputeSchedule",
+    "alias": "ComputeSchedule"
+  },
+  {
+    "module": "DeviceRegistry",
+    "alias": "DeviceRegistry"
   }
 ]
