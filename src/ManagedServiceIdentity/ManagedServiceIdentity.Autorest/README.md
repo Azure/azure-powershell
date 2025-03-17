@@ -40,10 +40,6 @@ nested-object-to-string: true
 identity-correction-for-post: true
 module-version: 0.3.0
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - where:
       verb: Set
@@ -152,18 +148,18 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Get1$|^List1$|^GetViaIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+      variant: ^Get1$|^List1$|^GetViaIdentity1$|^GetViaIdentityUserAssignedIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityUserAssignedIdentity1$|^CreateViaIdentityUserAssignedIdentityExpanded1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^DeleteViaIdentityUserAssignedIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1ViaJsonFilePath$|^UpdateViaJsonString1ViaJsonString$|^UpdateViaIdentityUserAssignedIdentity1$
     remove: true
 
   - where:
       verb: Get
       subject: SystemAssignedIdentity
-      variant: ^Get1$|^GetViaIdentity1$
+      variant: ^Get1$ #|^GetViaIdentity1$
     remove: true
 
   - where:
       subject: UserAssignedIdentity
-      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaJsonFilePath1ViaJsonFilePath$|^CreateViaJsonString1ViaJsonString$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1ViaJsonFilePath$|^UpdateViaJsonString1ViaJsonString$
     remove: true
 
   # END 
