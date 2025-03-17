@@ -37,7 +37,6 @@ input-file:
 subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
-identity-correction-for-post: true
 module-version: 0.3.0
 
 directive:
@@ -148,7 +147,7 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Get1$|^List1$|^GetViaIdentity1$|^GetViaIdentityUserAssignedIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityUserAssignedIdentity1$|^CreateViaIdentityUserAssignedIdentityExpanded1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^DeleteViaIdentityUserAssignedIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1ViaJsonFilePath$|^UpdateViaJsonString1ViaJsonString$|^UpdateViaIdentityUserAssignedIdentity1$
+      variant: ^Get1$|^List1$|^GetViaIdentity1$|^GetViaIdentityUserAssignedIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaIdentityUserAssignedIdentity1$|^CreateViaIdentityUserAssignedIdentityExpanded1$|^CreateViaJsonFilePath1$|^CreateViaJsonString1$|^Delete1$|^DeleteViaIdentity1$|^DeleteViaIdentityUserAssignedIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaIdentityUserAssignedIdentityExpanded1$|^UpdateViaIdentityUserAssignedIdentity1$|^UpdateViaJsonFilePath1$|^UpdateViaJsonString1$
     remove: true
 
   - where:
@@ -159,7 +158,7 @@ directive:
 
   - where:
       subject: UserAssignedIdentity
-      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaJsonFilePath1ViaJsonFilePath$|^CreateViaJsonString1ViaJsonString$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1ViaJsonFilePath$|^UpdateViaJsonString1ViaJsonString$
+      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^CreateViaJsonFilePath1$|^CreateViaJsonString1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$|^UpdateViaJsonFilePath1$|^UpdateViaJsonString1$
     remove: true
 
   # END 

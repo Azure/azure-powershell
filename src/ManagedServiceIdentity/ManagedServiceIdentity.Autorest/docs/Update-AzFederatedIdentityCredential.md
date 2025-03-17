@@ -39,13 +39,6 @@ Update-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputOb
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityUserAssignedIdentityExpanded1
-```
-Update-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- [-Audience <String[]>] [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaJsonFilePath
 ```
 Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
@@ -53,21 +46,7 @@ Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -Reso
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath1
-```
-Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaJsonString
-```
-Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString1
 ```
 Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -114,7 +93,7 @@ The list of audiences that can appear in the issued token.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
 Aliases:
 
 Required: False
@@ -145,7 +124,7 @@ The name of the identity resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -175,7 +154,7 @@ The URL of the issuer to be trusted.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,7 +169,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath, UpdateViaJsonFilePath1
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -205,7 +184,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonString1
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -220,7 +199,7 @@ The name of the federated identity credential resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityUserAssignedIdentity, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded1, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityUserAssignedIdentity, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -251,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -266,7 +245,7 @@ The identifier of the external identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
 Aliases:
 
 Required: False
@@ -281,7 +260,7 @@ The Id of the Subscription to which the identity belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonFilePath1, UpdateViaJsonString, UpdateViaJsonString1
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -296,7 +275,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: UpdateViaIdentityUserAssignedIdentity, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded1
+Parameter Sets: UpdateViaIdentityUserAssignedIdentity, UpdateViaIdentityUserAssignedIdentityExpanded
 Aliases:
 
 Required: True
@@ -349,8 +328,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredential
-
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredentialAutoGenerated
 
 ## NOTES
 
