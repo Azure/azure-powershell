@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Updated Resources SDK to 2024-11-01.
+* Added ValidationLevel Parameter to WhatIf and Validate cmdlets for deployments.
+* Added potential changes to WhatIf output.
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
