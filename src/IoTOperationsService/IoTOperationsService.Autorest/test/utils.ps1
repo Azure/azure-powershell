@@ -57,6 +57,11 @@ function setupEnv() {
     $env.add("DataflowEndpointName", "default")
     $env.add("ExtendedLocation", "subscriptions/${subId}/resourceGroups/aio-validation-118028326/providers/Microsoft.ExtendedLocation/customLocations/location-${id}")
 
+    $env.add("newBrokerAuthName", "my-authz-test-1")
+    $env.add("newBrokerListenerName", "my-listener-test-1")
+    $env.add("newDataflowEndpointName", "local-storage-endpoint-test-1")
+    $env.add("newDataflowProfileName", "dataflowprofile-name-test-1")
+    
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

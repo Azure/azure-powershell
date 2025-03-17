@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzIoTOperationsServiceBro
 Describe 'Set-AzIoTOperationsServiceBrokerAuthorization' {
     It 'UpdateExpanded' {
         $BrokerAuthz = Set-AzIoTOperationsServiceBrokerAuthorization `
-            -AuthorizationName "my-authz-test-1" `
+            -AuthorizationName $env.newBrokerAuthName `
             -BrokerName $env.BrokerName `
             -InstanceName $env.InstanceName `
             -ResourceGroupName $env.ResourceGroup `

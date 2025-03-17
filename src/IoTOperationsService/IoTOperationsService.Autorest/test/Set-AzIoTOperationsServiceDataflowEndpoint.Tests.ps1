@@ -18,7 +18,7 @@ Describe 'Set-AzIoTOperationsServiceDataflowEndpoint' {
     It 'UpdateExpanded' {
         $dataflowEndpoint = Set-AzIoTOperationsServiceDataflowEndpoint `
            -InstanceName $env.InstanceName `
-           -Name "local-storage-endpoint-test-1" `
+           -Name $env.newDataflowEndpointName `
            -ResourceGroupName $env.ResourceGroup `
            -ExtendedLocationName $env.ExtendedLocation `
            -EndpointType "LocalStorage" `

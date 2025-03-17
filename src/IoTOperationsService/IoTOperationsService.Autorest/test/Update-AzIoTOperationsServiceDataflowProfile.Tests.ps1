@@ -18,7 +18,7 @@ Describe 'Update-AzIoTOperationsServiceDataflowProfile' {
     It 'UpdateExpanded' {
         $dataflowProfile = Update-AzIoTOperationsServiceDataflowProfile `
             -InstanceName  $env.InstanceName `
-            -Name "dataflowprofile-name-test-1" `
+            -Name $env.newDataflowProfileName `
             -ResourceGroupName $env.ResourceGroup
         
         $dataflowProfile | Should -Not -BeNullOrEmpty

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzIoTOperationsService
 Describe 'Remove-AzIoTOperationsServiceDataflowEndpoint' {
     It 'Delete' {
         $dataflowEndpoint = Remove-AzIoTOperationsServiceDataflowEndpoint `
-            -Name "my-endpoint-test-1" `
+            -Name $env.newDataflowEndpointName `
             -InstanceName $env.InstanceName `
             -ResourceGroupName $env.ResourceGroup
 

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzIoTOperationsService
 
 Describe 'Update-AzIoTOperationsServiceBrokerListener' {
     It 'UpdateExpanded' {
-        $listener = Update-AzIoTOperationsServiceBrokerListener -ServiceType "LoadBalancer" -BrokerName $env.BrokerName -InstanceName  $env.InstanceName -ListenerName "my-listener-test-1" -ResourceGroupName $env.ResourceGroup  -Port @(@{ port = 1883 })
+        $listener = Update-AzIoTOperationsServiceBrokerListener -ServiceType "LoadBalancer" -BrokerName $env.BrokerName -InstanceName  $env.InstanceName -ListenerName $env.newBrokerListenerName -ResourceGroupName $env.ResourceGroup  -Port @(@{ port = 1883 })
         $listener | Should -Not -BeNullOrEmpty
     }
 

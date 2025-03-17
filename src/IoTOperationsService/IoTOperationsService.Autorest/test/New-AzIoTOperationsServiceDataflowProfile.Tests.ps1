@@ -18,7 +18,7 @@ Describe 'New-AzIoTOperationsServiceDataflowProfile' {
     It 'CreateExpanded' {
         $dataflowProfile = New-AzIoTOperationsServiceDataflowProfile `
             -InstanceName  $env.InstanceName `
-            -Name "dataflowprofile-name-test-1" `
+            -Name $env.newDataflowProfileName `
             -ResourceGroupName $env.ResourceGroup `
             -ExtendedLocationName $env.ExtendedLocation
         $dataflowProfile | Should -Not -BeNullOrEmpty
