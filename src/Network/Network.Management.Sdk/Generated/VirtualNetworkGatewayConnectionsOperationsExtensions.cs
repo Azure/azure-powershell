@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        public static VirtualNetworkGatewayConnection CreateOrUpdate(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null)
+        public static VirtualNetworkGatewayConnection CreateOrUpdate(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters)
         {
-                return ((IVirtualNetworkGatewayConnectionsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders: customHeaders).GetAwaiter().GetResult();
+                return ((IVirtualNetworkGatewayConnectionsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnection> CreateOrUpdateAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnection> CreateOrUpdateAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, VirtualNetworkGatewayConnection parameters, System.Collections.Generic.Dictionary<string, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
