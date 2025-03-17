@@ -17,7 +17,7 @@ Creates a Virtual Network Gateway
 New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>]
  [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
- [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
+ [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature] [-EnableAdvancedConnectivityFeature]
  [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
  [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
@@ -340,6 +340,21 @@ Accept wildcard characters: False
 
 ### -EnableActiveActiveFeature
 Flag to enable Active Active feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdvancedConnectivityFeature
+Flag to enable Advanced Connectivity feature on virtual network gateway
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
