@@ -8,18 +8,18 @@ schema: 2.0.0
 # Update-AzApplicationInsightsMyWorkbook
 
 ## SYNOPSIS
-Updates a private workbook that has already been added.
+update a new private workbook.
 
 ## SYNTAX
 
 ```
 Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-LinkedSourceId <String>] -WorkbookProperty <IMyWorkbook> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a private workbook that has already been added.
+update a new private workbook.
 
 ## EXAMPLES
 
@@ -86,6 +86,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -119,10 +134,9 @@ Accept wildcard characters: False
 
 ### -WorkbookProperty
 An Application Insights private workbook definition.
-To construct, see NOTES section for WORKBOOKPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 Parameter Sets: (All)
 Aliases:
 
@@ -169,11 +183,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 
 ## NOTES
 

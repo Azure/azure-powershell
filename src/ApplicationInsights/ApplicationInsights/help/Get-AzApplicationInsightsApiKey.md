@@ -15,20 +15,26 @@ Get the API Key for this key id.
 ### List (Default)
 ```
 Get-AzApplicationInsightsApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityComponent
+```
+Get-AzApplicationInsightsApiKey -ApiKeyId <String> -ComponentInputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzApplicationInsightsApiKey -ApiKeyId <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzApplicationInsightsApiKey -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +51,7 @@ Get Api Keys for an application insights resource
 
 ### Example 2: Get specific API key for an application insights resource
 ```powershell
-Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 00001111-aaaa-2222-bbbb-3333cccc4444
+Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -ApiKeyId 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
 ```
 
 Get specific API key for an application insights resource
@@ -58,13 +64,28 @@ This is unique within a Application Insights component.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityComponent, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComponentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetViaIdentityComponent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -86,7 +107,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -109,6 +129,21 @@ Parameter Sets: List, Get
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey
 
 ## NOTES
 

@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System;
-using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501;
+using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
 {
