@@ -51,10 +51,6 @@ nested-object-to-string: true
 #add-api-version-in-model-namespace: true
 inlining-threshold: 100
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
- "@autorest/powershell": "3.x"
-
 directive:
 # Monitor
 - where:
@@ -145,8 +141,10 @@ directive:
   - SAPConfiguration
   - ErrorInnerError
 - model-cmdlet:
-  - SapLandscapeMonitorSidMapping
-  - SapLandscapeMonitorMetricThresholds
+  - model-name: SapLandscapeMonitorSidMapping
+    cmdlet-name: New-AzWorkloadsSapLandscapeMonitorSidMappingObject
+  - model-name: SapLandscapeMonitorMetricThresholds
+    cmdlet-name: New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: Monitor.cs
