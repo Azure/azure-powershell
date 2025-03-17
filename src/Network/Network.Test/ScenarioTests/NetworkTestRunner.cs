@@ -68,16 +68,15 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                         {"Microsoft.PrivateDns", null},
                     }
                 ).WithManagementClients(
-                    // GetKeyVaultClient
+                    GetKeyVaultClient
                 )
                 .Build();
         }
 
-        private static void GetKeyVaultClient(MockContext context)
+        private static KeyVaultClient GetKeyVaultClient(MockContext context)
         {
-            // var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId);
-            // return new KeyVaultClient(creds, HttpMockServer.CreateInstance());
-           
+            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId);
+            return new KeyVaultClient(creds, HttpMockServer.CreateInstance());
         }
     }
 }
