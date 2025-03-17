@@ -81,8 +81,8 @@ directive:
     - model-name: ResponseBasedOriginErrorDetectionParameters
       cmdlet-name: New-AzCdnResponseBasedOriginErrorDetectionParametersObject
     # https
-    - model-name: UserManagedHttpsParameters
-      cmdlet-name: New-AzCdnUserManagedHttpsParametersObject
+    # - model-name: UserManagedHttpsParameters
+    #   cmdlet-name: New-AzCdnUserManagedHttpsParametersObject
     # - model-name: CdnManagedHttpsParameters
     #   cmdlet-name: New-AzCdnManagedHttpsParametersObject
     - model-name: DeliveryRule

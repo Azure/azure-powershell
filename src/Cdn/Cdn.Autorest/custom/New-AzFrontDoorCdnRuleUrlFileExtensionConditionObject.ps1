@@ -27,7 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleurlfi
 #>
 function New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
