@@ -1,18 +1,5 @@
 # Contributing to Azure PowerShell
-
-This repository contains PowerShell cmdlets for developers and administrators to develop, deploy,
-administer, and manage Microsoft Azure resources.
-
-## Basics
-
-If you would like to become a contributor to this project (or any other open source Microsoft
-project), see how to [Get Involved](https://opensource.microsoft.com/collaborate/).
-
-## Before Starting
-
-### Onboarding
-
-All users must sign the
+### On:All users must sign the
 [Microsoft Contributor License Agreement (CLA)](https://cla.opensource.microsoft.com/) before making
 any code contributions. For Microsoft employees, make sure that your GitHub account is part of the
 Azure organization. [Use this page](http://aka.ms/azuregithub) to link your account.
