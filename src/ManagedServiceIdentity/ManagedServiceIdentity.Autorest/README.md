@@ -108,7 +108,7 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentityUserAssignedIdentity$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityUserAssignedIdentity$
     remove: true
 
   - where:

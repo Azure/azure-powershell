@@ -40,13 +40,6 @@ New-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObjec
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityUserAssignedIdentity
-```
-New-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- -Parameter <IFederatedIdentityCredential> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 create a federated identity credential under the specified user assigned identity.
 
@@ -189,21 +182,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Describes a federated identity credential.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredential
-Parameter Sets: CreateViaIdentityUserAssignedIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
 
@@ -270,7 +248,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: CreateViaIdentityUserAssignedIdentityExpanded, CreateViaIdentityUserAssignedIdentity
+Parameter Sets: CreateViaIdentityUserAssignedIdentityExpanded
 Aliases:
 
 Required: True
@@ -315,8 +293,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IFederatedIdentityCredential
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 
