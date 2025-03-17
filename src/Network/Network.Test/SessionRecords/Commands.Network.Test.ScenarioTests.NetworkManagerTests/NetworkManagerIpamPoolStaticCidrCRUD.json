@@ -76,7 +76,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -142,7 +142,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -211,7 +211,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -286,7 +286,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2P2FwaS12ZXJzaW9uPTIwMjQtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -352,7 +352,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2P2FwaS12ZXJzaW9uPTIwMjQtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -424,7 +424,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2P2FwaS12ZXJzaW9uPTIwMjQtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -456,7 +456,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-07-01"
+          "https://management.azure.com/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116?api-version=2024-05-01"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
@@ -505,7 +505,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2L3N0YXRpY0NpZHJzL3BzODk3OT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -577,7 +577,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2L3N0YXRpY0NpZHJzL3BzODk3OT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -649,7 +649,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2L3N0YXRpY0NpZHJzL3BzODk3OT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -721,7 +721,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2L3N0YXRpY0NpZHJzL3BzODk3OT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -799,7 +799,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-07-01",
+      "RequestUri": "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ps9697/providers/Microsoft.Network/networkManagers/ps6209/ipamPools/ps6116/staticCidrs/ps8979?api-version=2024-05-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkyOTViOTItMzU3NC00MDIxLTk1YTEtMjZjOGY3NGY4MzU5L3Jlc291cmNlR3JvdXBzL3BzOTY5Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbmV0d29ya01hbmFnZXJzL3BzNjIwOS9pcGFtUG9vbHMvcHM2MTE2L3N0YXRpY0NpZHJzL3BzODk3OT9hcGktdmVyc2lvbj0yMDI0LTA1LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
