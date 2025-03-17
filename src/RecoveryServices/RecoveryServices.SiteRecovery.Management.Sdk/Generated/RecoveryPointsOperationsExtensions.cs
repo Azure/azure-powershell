@@ -18,6 +18,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// The fabric name.
         /// </param>
@@ -27,9 +34,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='replicatedProtectedItemName'>
         /// The replication protected item name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecoveryPoint> ListByReplicationProtectedItems(this IRecoveryPointsOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName)
+        public static Microsoft.Rest.Azure.IPage<RecoveryPoint> ListByReplicationProtectedItems(this IRecoveryPointsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName)
         {
-                return ((IRecoveryPointsOperations)operations).ListByReplicationProtectedItemsAsync(fabricName, protectionContainerName, replicatedProtectedItemName).GetAwaiter().GetResult();
+                return ((IRecoveryPointsOperations)operations).ListByReplicationProtectedItemsAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -37,6 +44,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The fabric name.
@@ -50,9 +64,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPoint>> ListByReplicationProtectedItemsAsync(this IRecoveryPointsOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPoint>> ListByReplicationProtectedItemsAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationProtectedItemsWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationProtectedItemsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -63,6 +77,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// The fabric name.
         /// </param>
@@ -75,9 +96,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='recoveryPointName'>
         /// The recovery point name.
         /// </param>
-        public static RecoveryPoint Get(this IRecoveryPointsOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName)
+        public static RecoveryPoint Get(this IRecoveryPointsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName)
         {
-                return ((IRecoveryPointsOperations)operations).GetAsync(fabricName, protectionContainerName, replicatedProtectedItemName, recoveryPointName).GetAwaiter().GetResult();
+                return ((IRecoveryPointsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, recoveryPointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -85,6 +106,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The fabric name.
@@ -101,9 +129,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPoint> GetAsync(this IRecoveryPointsOperations operations, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPoint> GetAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string replicatedProtectedItemName, string recoveryPointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, recoveryPointName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, replicatedProtectedItemName, recoveryPointName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

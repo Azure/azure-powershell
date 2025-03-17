@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="disableProtectionReason">Disable protection reason. It can have values
         /// NotSpecified/MigrationComplete.
-        /// Possible values include: 'NotSpecified', 'MigrationComplete'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;MigrationComplete&#39;</param>
 
         /// <param name="replicationProviderInput">Replication provider specific input.
         /// </param>

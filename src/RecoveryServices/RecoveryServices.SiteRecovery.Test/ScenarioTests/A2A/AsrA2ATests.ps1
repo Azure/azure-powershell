@@ -19,6 +19,125 @@
 
 <#
 .SYNOPSIS
+    Test Cluster Test Failover Job.
+#>
+function Test-ClusterTestFailoverJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+    
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr"  -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $tfoJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Unplanned Failover Job.
+#>
+function Test-ClusterUnplannedFailoverJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $ufoJob = Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob -ReplicationProtectionCluster $protectionCluster  -Direction PrimaryToRecovery -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $ufoJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $$recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Test Failover Cleanup Job.
+#>
+function Test-ClusterTestFailoverCleanupJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+    
+    $tfoCleanupJob = Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob -ReplicationProtectionCluster $protectionCluster 
+
+    WaitForJobCompletion -JobId $tfoCleanupJob.Name
+    #Get recovery vm will give exception
+    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Vijami-1103115126-asr' was not found." 
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Apply Cluster Recovery Point.
+#>
+function Test-ApplyClusterRecoveryPoint {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $changePitJob = Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster -LatestProcessedRecoveryPoint
+
+    WaitForJobCompletion -JobId $changePitJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
+    Test Cluster Commit Failover Job.
+#>
+function Test-ClusterCommitFailoverJob {
+    $primaryContainerName = getClusterPrimaryContainerName
+    $primaryFabricName = getClusterPrimaryFabricName
+    $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
+    $vaultName = getClusterVaultName
+    $clusterName = getClusterName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    $primaryFabric = get-asrFabric -Name $primaryFabricName
+    $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
+    $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
+
+    $CommitFailoverJob = Start-AzRecoveryServicesAsrClusterCommitFailoverJob -ReplicationProtectionCluster $protectionCluster  
+
+    WaitForJobCompletion -JobId $CommitFailoverJob.Name
+    #Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1"
+    Assert-NotNull($recvm.Id);
+}
+
+<#
+.SYNOPSIS
     NewA2ADiskReplicationConfiguration creation test.
 #>
 

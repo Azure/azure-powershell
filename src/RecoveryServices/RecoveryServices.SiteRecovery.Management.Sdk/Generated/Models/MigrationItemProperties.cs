@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="migrationState">The migration status.
-        /// Possible values include: 'None', 'EnableMigrationInProgress',
-        /// 'EnableMigrationFailed', 'DisableMigrationInProgress',
-        /// 'DisableMigrationFailed', 'InitialSeedingInProgress',
-        /// 'InitialSeedingFailed', 'Replicating', 'MigrationInProgress',
-        /// 'MigrationSucceeded', 'MigrationFailed', 'ResumeInProgress',
-        /// 'ResumeInitiated', 'SuspendingProtection', 'ProtectionSuspended',
-        /// 'MigrationCompletedWithInformation', 'MigrationPartiallySucceeded'</param>
+        /// Possible values include: &#39;None&#39;, &#39;EnableMigrationInProgress&#39;,
+        /// &#39;EnableMigrationFailed&#39;, &#39;DisableMigrationInProgress&#39;,
+        /// &#39;DisableMigrationFailed&#39;, &#39;InitialSeedingInProgress&#39;,
+        /// &#39;InitialSeedingFailed&#39;, &#39;Replicating&#39;, &#39;MigrationInProgress&#39;,
+        /// &#39;MigrationSucceeded&#39;, &#39;MigrationFailed&#39;, &#39;ResumeInProgress&#39;,
+        /// &#39;ResumeInitiated&#39;, &#39;SuspendingProtection&#39;, &#39;ProtectionSuspended&#39;,
+        /// &#39;MigrationCompletedWithInformation&#39;, &#39;MigrationPartiallySucceeded&#39;</param>
 
         /// <param name="migrationStateDescription">The migration state description.
         /// </param>
@@ -64,16 +64,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="testMigrateState">The test migrate state.
-        /// Possible values include: 'None', 'TestMigrationInProgress',
-        /// 'TestMigrationSucceeded', 'TestMigrationFailed',
-        /// 'TestMigrationCleanupInProgress', 'TestMigrationCompletedWithInformation',
-        /// 'TestMigrationPartiallySucceeded'</param>
+        /// Possible values include: &#39;None&#39;, &#39;TestMigrationInProgress&#39;,
+        /// &#39;TestMigrationSucceeded&#39;, &#39;TestMigrationFailed&#39;,
+        /// &#39;TestMigrationCleanupInProgress&#39;, &#39;TestMigrationCompletedWithInformation&#39;,
+        /// &#39;TestMigrationPartiallySucceeded&#39;</param>
 
         /// <param name="testMigrateStateDescription">The test migrate state description.
         /// </param>
 
         /// <param name="health">The consolidated health.
-        /// Possible values include: 'None', 'Normal', 'Warning', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Normal&#39;, &#39;Warning&#39;, &#39;Critical&#39;</param>
 
         /// <param name="healthErrors">The list of health errors.
         /// </param>

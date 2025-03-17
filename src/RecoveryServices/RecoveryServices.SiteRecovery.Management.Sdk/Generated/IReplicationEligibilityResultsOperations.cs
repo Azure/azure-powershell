@@ -14,11 +14,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     public partial interface IReplicationEligibilityResultsOperations
     {
         /// <summary>
-        /// Validates whether a given VM can be protected or not in which case returns list of errors.
+        /// Validates whether a given VM can be protected or not in which case returns
+        /// list of errors.
         /// </summary>
         /// <remarks>
-        /// Validates whether a given VM can be protected or not in which case returns list of errors.
+        /// Validates whether a given VM can be protected or not in which case returns
+        /// list of errors.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
         /// <param name='virtualMachineName'>
         /// Virtual Machine name.
         /// </param>
@@ -34,14 +40,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationEligibilityResultsCollection>> ListWithHttpMessagesAsync(string virtualMachineName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationEligibilityResultsCollection>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualMachineName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Validates whether a given VM can be protected or not in which case returns list of errors.
+        /// Validates whether a given VM can be protected or not in which case returns
+        /// list of errors.
         /// </summary>
         /// <remarks>
-        /// Validates whether a given VM can be protected or not in which case returns list of errors.
+        /// Validates whether a given VM can be protected or not in which case returns
+        /// list of errors.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
         /// <param name='virtualMachineName'>
         /// Virtual Machine name.
         /// </param>
@@ -57,7 +69,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationEligibilityResults>> GetWithHttpMessagesAsync(string virtualMachineName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReplicationEligibilityResults>> GetWithHttpMessagesAsync(string resourceGroupName, string virtualMachineName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

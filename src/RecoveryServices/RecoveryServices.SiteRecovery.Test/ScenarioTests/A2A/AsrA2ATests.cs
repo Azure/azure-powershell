@@ -187,5 +187,55 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-CRGReplication");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClutserTestFailoverJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterTestFailoverJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClutserTestFailoverCleanupJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterTestFailoverCleanupJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClutserUnplannedFailoverJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterUnplannedFailoverJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AApplyClusterRecoveryPoint()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ApplyClusterRecoveryPoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AClusterCommitFailoverJob()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-ClusterCommitFailoverJob");
+        }
     }
 }

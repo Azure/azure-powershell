@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="sourceIPAddressType">The source IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
 
         /// <param name="sourceNetworkId">Source network Id.
         /// </param>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="targetIPAddressType">The target IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
 
         /// <param name="targetSubnetName">Target subnet name.
         /// </param>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="testIPAddressType">The test IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
 
         /// <param name="targetNicName">Target NIC name.
         /// </param>

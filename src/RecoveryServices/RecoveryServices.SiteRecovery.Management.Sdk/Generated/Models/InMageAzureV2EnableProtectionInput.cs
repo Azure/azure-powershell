@@ -70,8 +70,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// which the failover VM is to be created.
         /// </param>
 
-        /// <param name="diskType">The DiskType.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// <param name="diskType">The disk type.
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="targetAvailabilitySetId">The target availability set ARM Id for resource manager deployment.
         /// </param>
@@ -83,10 +84,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">License type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
 
         /// <param name="targetVMSize">The target VM size.
         /// </param>
@@ -231,7 +232,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string TargetAzureV2ResourceGroupId {get; set; }
 
         /// <summary>
-        /// Gets or sets the DiskType. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }

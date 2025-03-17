@@ -18,9 +18,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Policy> List(this IReplicationPoliciesOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Policy> List(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationPoliciesOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -29,12 +36,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Policy>> ListAsync(this IReplicationPoliciesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Policy>> ListAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -45,12 +59,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
-        public static Policy Get(this IReplicationPoliciesOperations operations, string policyName)
+        public static Policy Get(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
         {
-                return ((IReplicationPoliciesOperations)operations).GetAsync(policyName).GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).GetAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -59,15 +80,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Policy> GetAsync(this IReplicationPoliciesOperations operations, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Policy> GetAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(policyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +106,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
-        public static Policy Create(this IReplicationPoliciesOperations operations, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties))
+        public static Policy Create(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties))
         {
-                return ((IReplicationPoliciesOperations)operations).CreateAsync(policyName, properties).GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).CreateAsync(resourceGroupName, resourceName, policyName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -92,15 +127,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Policy> CreateAsync(this IReplicationPoliciesOperations operations, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Policy> CreateAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(policyName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -111,12 +153,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
-        public static void Delete(this IReplicationPoliciesOperations operations, string policyName)
+        public static void Delete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
         {
-                ((IReplicationPoliciesOperations)operations).DeleteAsync(policyName).GetAwaiter().GetResult();
+                ((IReplicationPoliciesOperations)operations).DeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -125,15 +174,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationPoliciesOperations operations, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a replication policy.
@@ -141,12 +197,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Policy Id.
         /// </param>
-        public static Policy Update(this IReplicationPoliciesOperations operations, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
+        public static Policy Update(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
         {
-                return ((IReplicationPoliciesOperations)operations).UpdateAsync(policyName, properties).GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).UpdateAsync(resourceGroupName, resourceName, policyName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -155,15 +218,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Policy Id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Policy> UpdateAsync(this IReplicationPoliciesOperations operations, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Policy> UpdateAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(policyName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -174,12 +244,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
-        public static Policy BeginCreate(this IReplicationPoliciesOperations operations, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties))
+        public static Policy BeginCreate(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties))
         {
-                return ((IReplicationPoliciesOperations)operations).BeginCreateAsync(policyName, properties).GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, policyName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -188,15 +265,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Policy> BeginCreateAsync(this IReplicationPoliciesOperations operations, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Policy> BeginCreateAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, CreatePolicyInputProperties properties = default(CreatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(policyName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -207,12 +291,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
-        public static void BeginDelete(this IReplicationPoliciesOperations operations, string policyName)
+        public static void BeginDelete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
         {
-                ((IReplicationPoliciesOperations)operations).BeginDeleteAsync(policyName).GetAwaiter().GetResult();
+                ((IReplicationPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,15 +312,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationPoliciesOperations operations, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a replication policy.
@@ -237,12 +335,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Policy Id.
         /// </param>
-        public static Policy BeginUpdate(this IReplicationPoliciesOperations operations, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
+        public static Policy BeginUpdate(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
         {
-                return ((IReplicationPoliciesOperations)operations).BeginUpdateAsync(policyName, properties).GetAwaiter().GetResult();
+                return ((IReplicationPoliciesOperations)operations).BeginUpdateAsync(resourceGroupName, resourceName, policyName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -251,15 +356,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='policyName'>
         /// Policy Id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Policy> BeginUpdateAsync(this IReplicationPoliciesOperations operations, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Policy> BeginUpdateAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(policyName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
