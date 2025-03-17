@@ -297,11 +297,11 @@ directive:
     remove: true
   - where:
       subject: NameAvailability
-      variant: CheckViaJsonFilePath1ViaJsonFilePath
+      variant: ^CheckViaJsonFilePath1ViaJsonFilePath$
     remove: true
   - where:
       subject: NameAvailability
-      variant: CheckViaJsonString1ViaJsonString
+      variant: ^CheckViaJsonString1ViaJsonString$
     remove: true
 
   # Hide Cdn profile
