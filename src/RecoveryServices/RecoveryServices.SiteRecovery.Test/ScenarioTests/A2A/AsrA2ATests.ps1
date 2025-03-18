@@ -19,6 +19,188 @@
 
 <#
 .SYNOPSIS
+    NewA2ADiskReplicationConfigurationUltraDisk creation test.
+#>
+function Test-NewA2AManagedDiskReplicationConfigurationForUltraDisk {
+     param([string] $seed = '108')
+
+    $primaryPolicyName = getPrimaryPolicy
+    $recoveryPolicyName = getRecoveryPolicy
+
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+
+    $primaryContainerName = getPrimaryContainer
+    $recoveryContainerName = getRecoveryContainer
+    $vaultRgLocation = getVaultRgLocation
+    $vaultName = getVaultName
+    $vaultLocation = getVaultLocation
+    $vaultRg = getVaultRg
+    $primaryLocation = getPrimaryLocation
+    $recoveryLocation = getRecoveryLocation
+    $primaryFabricName = getPrimaryFabric
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "UltraSSD_LRS"
+    $policyName = getPrimaryPolicy
+    $mappingName = getPrimaryContainerMapping
+    $primaryNetMapping = getPrimaryNetworkMapping
+
+    #create recovery side resources
+    $recRgName = getRecoveryResourceGroupName
+    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $RecoveryAzureNetworkId = createRecoveryNetworkId
+
+    #create primary
+    $vmName = getAzureVmName
+    $v2VmId = createAzureVmInAvailabilityZone
+    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+
+    # Stop the VM
+    Stop-AzVM -Name $vmName -ResourceGroupName $vmName -force
+    # Enable Ultra Disk compatibility
+    $vm = Get-AzVM -name $vmName -ResourceGroupName $vmName
+    Update-AzVM -ResourceGroupName $vmName -VM $vm -UltraSSDEnabled $True
+    # Start the VM
+    Start-AzVM -Name $vmName -ResourceGroupName $vmName
+
+    #create disk and attach
+    $diskName = getAzureDataDiskName
+    $primaryZone = getPrimaryZone
+    $newDiskConfig = New-AzDiskConfig -SkuName 'UltraSSD_LRS' -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20 -Zone $primaryZone
+    $newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
+    $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 1
+    Update-azVm -ResourceGroupName $vmName -VM $vm
+
+
+    $logStg = createCacheStorageAccountForZone($vm.Location, $vm.ReservationGroupName, "Premium_LRS")
+    $dataDiskId = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
+    $index = $v2VmId.IndexOf("/providers/")
+    $Rg = $v2VmId.Substring(0, $index)
+    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+
+    # vault Creation
+    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+
+    # fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    $RecoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/" + $recRgName
+
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $dataDiskId -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    Assert-True { $v.DiskId -eq $dataDiskId }
+}
+
+<#
+.SYNOPSIS
+    NewA2ADiskReplicationConfigurationPv2 creation test.
+#>
+function Test-NewA2AManagedDiskReplicationConfigurationForPv2 {
+     param([string] $seed = '107')
+
+    $primaryPolicyName = getPrimaryPolicy
+    $recoveryPolicyName = getRecoveryPolicy
+
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+
+    $primaryContainerName = getPrimaryContainer
+    $recoveryContainerName = getRecoveryContainer
+    $vaultRgLocation = getVaultRgLocation
+    $vaultName = getVaultName
+    $vaultLocation = getVaultLocation
+    $vaultRg = getVaultRg
+    $primaryLocation = getPrimaryLocation
+    $recoveryLocation = getRecoveryLocation
+    $primaryFabricName = getPrimaryFabric
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "PremiumV2_LRS"
+    $policyName = getPrimaryPolicy
+    $mappingName = getPrimaryContainerMapping
+    $primaryNetMapping = getPrimaryNetworkMapping
+
+    #create recovery side resources
+    $recRgName = getRecoveryResourceGroupName
+    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $RecoveryAzureNetworkId = createRecoveryNetworkId
+
+    #create primary
+    $vmName = getAzureVmName
+    $v2VmId = createAzureVmInAvailabilityZone
+    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+
+    #create disk and attach
+    $diskName = getAzureDataDiskName
+    $primaryZone = getPrimaryZone
+    $newDiskConfig = New-AzDiskConfig -SkuName 'PremiumV2_LRS' -Location $vm.Location  -CreateOption Empty -DiskSizeGB 20 -Zone $primaryZone
+    $newDisk = New-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $diskName -Disk $newDiskConfig
+    $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $newDisk.Id -Lun 1
+    Update-azVm -ResourceGroupName $vmName -VM $vm
+
+
+    $logStg = createCacheStorageAccountForZone($vm.Location, $vm.ReservationGroupName, "Premium_LRS")
+    $dataDiskId = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
+    $index = $v2VmId.IndexOf("/providers/")
+    $Rg = $v2VmId.Substring(0, $index)
+    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+
+    # vault Creation
+    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+
+    # fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    $RecoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/" + $recRgName
+
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $dataDiskId -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    Assert-True { $v.DiskId -eq $dataDiskId }
+}
+
+<#
+.SYNOPSIS
     NewA2ADiskReplicationConfiguration creation test.
 #>
 

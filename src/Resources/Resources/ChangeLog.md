@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Resources SDK to 2024-11-01.
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
