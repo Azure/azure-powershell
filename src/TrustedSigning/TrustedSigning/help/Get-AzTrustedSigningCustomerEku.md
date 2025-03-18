@@ -34,7 +34,7 @@ Another set uses MetadataFilePath.
 
 ### Example 1: Retrieve customer Eku by account and profile name
 ```powershell
-Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
+Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net'
 ```
 
 ```output
@@ -61,7 +61,7 @@ This command retrieves the customer eku by the metadata file configuration.
 The account name of Azure CodeSigning.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The endpoint url used to submit request to Azure CodeSigning.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 Aliases:
 
@@ -107,7 +107,7 @@ Metadata File path.
 Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByMetadataFileParameterSet
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The certificate profile name of Azure CodeSigning account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 

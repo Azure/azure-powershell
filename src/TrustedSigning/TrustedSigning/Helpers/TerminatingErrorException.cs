@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.TrustedSigning.Helpers
 {
     internal class TerminatingErrorException : Exception
     {

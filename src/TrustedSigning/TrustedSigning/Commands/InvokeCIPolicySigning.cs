@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Helpers;
-using Microsoft.Azure.Commands.CodeSigning.Models;
+using Microsoft.Azure.Commands.TrustedSigning.Helpers;
+using Microsoft.Azure.Commands.TrustedSigning.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Xml.Linq;
 
-namespace Microsoft.Azure.Commands.CodeSigning
+namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning")]
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The account name of Azure CodeSigning.")]
+            HelpMessage = "The account name of Azure TrustedSigning.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             Position = 1,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
+            HelpMessage = "The certificate profile name of Azure TrustedSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
+            HelpMessage = "The endpoint url used to submit request to Azure TrustedSigning.")]
         public string EndpointUrl { get; set; }
 
 

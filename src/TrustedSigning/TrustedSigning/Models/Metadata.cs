@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     public class Metadata
     {

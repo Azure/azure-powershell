@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("0.1.0")]
 [assembly: AssemblyFileVersion("0.1.0")]
 #if !SIGN
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Test")]
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.Test")]
 #endif

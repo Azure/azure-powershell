@@ -23,6 +23,9 @@ Get details of a certificate profile.
 ### [Get-AzTrustedSigningCertificateRoot](Get-AzTrustedSigningCertificateRoot.md)
 Retrieve Azure.TrustedSigning Root Cert
 
+### [Get-AzTrustedSigningCustomerEku](Get-AzTrustedSigningCustomerEku.md)
+Retrieve Azure.CodeSigning customer Eku
+
 ### [Invoke-AzTrustedSigningCIPolicySigning](Invoke-AzTrustedSigningCIPolicySigning.md)
 Invoke CI Policy signing to Azure.TrustedSigning
 

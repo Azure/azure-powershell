@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{7A062235-C440-491C-AB28-1BEF6066B5C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{4136FA4D-A180-448C-926E-5D1788A574EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{F8952097-FA2C-449C-82A4-84BD5A16C5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,10 +54,10 @@ Global
 		{7A062235-C440-491C-AB28-1BEF6066B5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A062235-C440-491C-AB28-1BEF6066B5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A062235-C440-491C-AB28-1BEF6066B5C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4136FA4D-A180-448C-926E-5D1788A574EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4136FA4D-A180-448C-926E-5D1788A574EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4136FA4D-A180-448C-926E-5D1788A574EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4136FA4D-A180-448C-926E-5D1788A574EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8952097-FA2C-449C-82A4-84BD5A16C5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8952097-FA2C-449C-82A4-84BD5A16C5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8952097-FA2C-449C-82A4-84BD5A16C5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8952097-FA2C-449C-82A4-84BD5A16C5EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

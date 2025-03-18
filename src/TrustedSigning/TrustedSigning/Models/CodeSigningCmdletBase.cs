@@ -21,7 +21,7 @@ using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     public class CodeSigningCmdletBase : AzureRMCmdlet
     {

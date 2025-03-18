@@ -17,7 +17,7 @@ using System;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Microsoft.Azure.Commands.CodeSigning.Models
+namespace Microsoft.Azure.Commands.TrustedSigning.Models
 {
     internal class UserSuppliedCredential : TokenCredential
     {
