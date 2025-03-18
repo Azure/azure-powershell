@@ -14,9 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System;
     using System.Management.Automation;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
 
@@ -32,6 +35,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(HelpMessage = "The protocols to enable for the share.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Smb", "Nfs")]
+        public string Protocol
+        {
+            get
+            {
+                return protocol?.ToString();
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    if (Enum.TryParse<ShareProtocols>(value, out var pro))
+                    {
+                        protocol = pro;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Can't parse Protocol \"{0}\", only \"Smb\" and \"Nfs\" are supported.", value));
+                    }
+                }
+                else
+                {
+                    protocol = null;
+                }
+            }
+        }
+        private ShareProtocols? protocol = null;
+
         // Overwrite the useless parameter
         public override SwitchParameter DisAllowTrailingDot { get; set; }
 
@@ -43,7 +77,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 (AzureStorageContext)this.Context,
                 null,
                 ClientOptions);
-            share.Create(cancellationToken: this.CmdletCancellationToken);
+            ShareCreateOptions options = new ShareCreateOptions();
+            options.Protocols = this.protocol;
+            share.Create(options, cancellationToken: this.CmdletCancellationToken);
             ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
             WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
         }

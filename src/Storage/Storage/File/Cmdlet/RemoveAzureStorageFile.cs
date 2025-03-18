@@ -116,7 +116,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.ShouldProcess(Util.GetSnapshotQualifiedUri(fileToBeRemoved.Uri), "Remove file"))
                 {
-                    await fileToBeRemoved.DeleteAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                    var responds =  await fileToBeRemoved.DeleteAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                    responds.Headers.TryGetValue("x-ms-link-count", out var linkCount);
+                    OutputStream.WriteVerbose(taskId, string.Format(CultureInfo.CurrentCulture, "Deleted file {0} with link count {1}", Util.GetSnapshotQualifiedUri(fileToBeRemoved.Uri), linkCount));
                 }
 
                 if (this.PassThru)

@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported NFS File Share and NFS file and directory properties
+    - `New-AzStorageShare`
+    - `Get-AzStorageShare`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+* Supported create hard link in NFS File Share 
+    - `New-AzStorageFileHardLink`
 * Added warning message for upcoming breaking change on upload Azure file
     - `Set-AzStorageFileContent`
 * Added warning messages for an upcoming breaking change when converting the account's redundancy configuration

@@ -16,15 +16,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using System;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileDirectory))]
-    public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHardLink", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
+    public class NewAzureStorageFileHardLink : AzureStorageFileCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -59,22 +58,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path of the directory to be created.")]
+            HelpMessage = "Path of the hard link to be created.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The mode permissions to be set on the directory. Symbolic (rwxrw-rw-) is supported.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            HelpMessage = "Path of the file to create the hard link to, not including the share. For example:\"targetDirectory/targetSubDirectory/.../targetFile\". The target file must be in the same share and hence the same storage account.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("([r-][w-][xsS-]){2}([r-][w-][xtT-])")]
-        public string FileMode { get; set; }
+        public string TargetFile { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner user identifier (UID) to be set on the directory. The default value is 0 (root).")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If the target file has an active lease, specify the lease ID of the target file with this parameter.")]
         [ValidateNotNullOrEmpty]
-        public string Owner { get; set; }
+        public string TargetFileLeaseId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner group identifier (GID) to be set on the directory. The default value is 0 (root group).")]
-        [ValidateNotNullOrEmpty]
-        public string Group { get; set; }
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -102,23 +104,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            ShareDirectoryClient directoryToBeCreated = baseDirClient.GetSubdirectoryClient(this.Path);
-
-            ShareDirectoryCreateOptions createOptions = new ShareDirectoryCreateOptions();
-
-            // set nfs properties
-            if (this.FileMode != null || this.Owner != null || this.Group != null)
-            {
-                createOptions.PosixProperties = new FilePosixProperties()
+            ShareFileClient sharefile = baseDirClient.GetFileClient(this.Path);
+            ShareFileInfo info = sharefile.CreateHardLink(this.TargetFile, 
+                this.TargetFileLeaseId is null ? null : new ShareFileRequestConditions()
                 {
-                    FileMode = this.FileMode is null ? null : NfsFileMode.ParseSymbolicFileMode(this.FileMode),
-                    Group = this.Group,
-                    Owner = this.Owner
-                };
-            }
-
-            directoryToBeCreated.Create(createOptions, cancellationToken: this.CmdletCancellationToken);
-            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));
+                    LeaseId = null,
+                },
+                this.CmdletCancellationToken).Value;
+            WriteObject(new AzureStorageFile(sharefile, (AzureStorageContext)this.Context, info, this.ClientOptions));
         }
     }
 }

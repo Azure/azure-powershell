@@ -1539,7 +1539,7 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
         Assert-AreEqual $false $sto.AllowBlobPublicAccess
         
-        $tlsVersion = "TLS1_1"
+        $tlsVersion = "TLS1_2"
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $true ;
         
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
