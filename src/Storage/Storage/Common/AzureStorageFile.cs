@@ -52,6 +52,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private ShareFileClient privateFileClient = null;
 
         /// <summary>
+        /// File Path
+        /// </summary>
+        public string Path {
+            get
+            {
+                return ShareFileClient.Path;
+            }
+        }
+
+        /// <summary>
         /// XSCL Track2 File properties, will retrieve the properties on server and return to user
         /// </summary>
         public global::Azure.Storage.Files.Shares.Models.ShareFileProperties FileProperties
@@ -72,8 +82,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         public global::Azure.Storage.Files.Shares.Models.ShareFileItem ListFileProperties { get; private set; }
 
+        /// <summary>
+        /// XSCL Track2 File Hardlink create returned properties
+        /// </summary>
+        public global::Azure.Storage.Files.Shares.Models.ShareFileInfo ShareFileInfo { get; private set; }
+
 
         private ShareClientOptions shareClientOptions { get; set; }
+
+        /// <summary>
+        /// Azure storage file constructor from Track2 list file item
+        /// </summary>
+        /// <param name="shareFileClient"></param>
+        /// <param name="storageContext"></param>
+        /// <param name="info"></param>
+        /// <param name="clientOptions"></param>
+        public AzureStorageFile(ShareFileClient shareFileClient, AzureStorageContext storageContext, ShareFileInfo info, ShareClientOptions clientOptions = null)
+        {
+            Name = shareFileClient.Name;
+            this.privateFileClient = shareFileClient;
+            if (info != null)
+            {
+                ShareFileInfo = info;
+                LastModified = info.LastModified;
+            }
+            Context = storageContext;
+            shareClientOptions = clientOptions;
+        }
 
         /// <summary>
         /// Azure storage file constructor from Track2 list file item

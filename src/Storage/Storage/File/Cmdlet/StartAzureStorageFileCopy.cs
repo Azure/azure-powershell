@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure;
 using Azure.Storage.Files.Shares.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Globalization;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -147,6 +149,49 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ContainerNameParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
         public virtual SwitchParameter DisAllowDestTrailingDot { get; set; }
+
+        private const string fileModeParameterDescription = "The mode permissions to be set on the destination file. Only applicable to NFS Files. Only work together with parameter `-FileModeCopyMode Override`. Symbolic (rwxrw-rw-) is supported.";
+        [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = fileModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = fileModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = fileModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = fileModeParameterDescription)]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern("([r-][w-][xsS-]){2}([r-][w-][xtT-])")]
+        public string FileMode { get; set; }
+
+        private const string ownerParameterDescription = "The owner user identifier (UID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.";
+        [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = ownerParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = ownerParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = ownerParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = ownerParameterDescription)]
+        [ValidateNotNullOrEmpty]
+        public string Owner { get; set; }
+
+        private const string groupParameterDescription = "The owner group identifier (GID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.";
+        [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = groupParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = groupParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = groupParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = groupParameterDescription)]
+        [ValidateNotNullOrEmpty]
+        public string Group { get; set; }
+
+        private const string ownerCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the desination file will have the default Owner and Group.";
+        [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Source", "Override")]
+        public string OwnerCopyMode { get; set; }
+
+        private const string fileModeCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-FileMode`. If not specified, the desination file will have the default File Mode.";
+        [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Source", "Override")]
+        public string FileModeCopyMode { get; set; }
 
         // Overwrite the useless parameter
         public override SwitchParameter AsJob { get; set; }
@@ -377,11 +422,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 WriteWarning("The source File cannot generate SAS Uri and might cause cross account file copy failures. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
             }
 
+            ShareFileCopyOptions copyOptions = new ShareFileCopyOptions();
+            if (this.FileMode != null || this.Owner != null || this.Group != null)
+            {
+                copyOptions.PosixProperties = new FilePosixProperties()
+                {
+                    FileMode = this.FileMode is null ? null : NfsFileMode.ParseSymbolicFileMode(this.FileMode),
+                    Group = this.Group,
+                    Owner = this.Owner
+                };
+            }
+            if (this.FileModeCopyMode != null)
+            {
+                // Parse FileModeCopyMode
+                if (Enum.TryParse<ModeCopyMode>(this.FileModeCopyMode, out var modeCopyMode))
+                {
+                    copyOptions.ModeCopyMode = modeCopyMode;
+                }
+                else 
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Can't parse FileModeCopyMode \"{0}\", only \"Source\" and \"Override\" are supported.", this.FileModeCopyMode));
+                }
+            }
+            if (this.OwnerCopyMode != null)
+            {
+                // Parse OwnerCopyMode
+                if (Enum.TryParse<OwnerCopyMode>(this.OwnerCopyMode, out var ownerCopyMode))
+                {
+                    copyOptions.OwnerCopyMode = ownerCopyMode;
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Can't parse OwnerCopyMode \"{0}\", only \"Source\" and \"Override\" are supported.", this.OwnerCopyMode));
+                }
+            }
+
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(Util.GetSnapshotQualifiedUri(sourceFile.Uri), Util.GetSnapshotQualifiedUri(destFile.Uri)),
-                () => destFile.StartCopyAsync(sourceFile.GenerateUriWithCredentials(), cancellationToken: this.CmdletCancellationToken));
+                () => destFile.StartCopyAsync(sourceFile.GenerateUriWithCredentials(), copyOptions, cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
