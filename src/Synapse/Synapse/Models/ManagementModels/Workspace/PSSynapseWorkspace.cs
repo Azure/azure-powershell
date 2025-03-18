@@ -36,14 +36,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 ? workspace.PrivateEndpointConnections.Select(e => new PSPrivateEndpointConnection(e)).ToList()
                 : null;
             this.WorkspaceUID = workspace?.WorkspaceUID != null ? workspace.WorkspaceUID.Value.ToString() : null;
-            if (workspace.ExtraProperties is IDictionary<string, object>)
-            {
-                this.ExtraProperties = (IDictionary<string, object>)workspace.ExtraProperties;
-            }
+            this.ExtraProperties = workspace.ExtraProperties;
             this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
             this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
             this.WorkspaceRepositoryConfiguration = workspace.WorkspaceRepositoryConfiguration != null ? new PSWorkspaceRepositoryConfiguration(workspace?.WorkspaceRepositoryConfiguration) : null;
-            this.CspWorkspaceAdminProperties = workspace?.CspWorkspaceAdminProperties != null? new PSCspWorkspaceAdminProperties(workspace?.CspWorkspaceAdminProperties) : null;
+            this.CspWorkspaceAdminProperties = workspace?.CspWorkspaceAdminProperties != null ? new PSCspWorkspaceAdminProperties(workspace?.CspWorkspaceAdminProperties) : null;
             this.PublicNetworkAccess = workspace?.PublicNetworkAccess;
             this.PurviewConfiguration = workspace?.PurviewConfiguration != null ? new PSPurviewConfiguration(workspace?.PurviewConfiguration) : null;
         }
@@ -101,7 +98,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// <summary>
         /// Gets workspace level configs and feature flags
         /// </summary>
-        public IDictionary<string, object> ExtraProperties { get; set; }
+        public object ExtraProperties { get; set; }
 
         /// <summary>
         /// Gets or sets managed Virtual Network Settings
