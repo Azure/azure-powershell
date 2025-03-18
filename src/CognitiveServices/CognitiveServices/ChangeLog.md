@@ -19,20 +19,9 @@
 -->
 ## Upcoming Release
 * Updated SDK via autorest.powershell.
-* Added `Get-AzCognitiveServicesAccountRaiPolicy` cmdlet.
-* Added `New-AzCognitiveServicesAccountRaiPolicy` cmdlet.
-* Added `Remove-AzCognitiveServicesAccountRaiPolicy` cmdlet.
-* Added `Get-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
-* Added `New-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
-* Added `Remove-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
-* Added `Get-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
-* Added `New-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
-* Added `Remove-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
-* Added `Get-AzCognitiveServicesRaiContentFilters` cmdlet.
-* Added `Get-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
-* Added `New-AzCognitiveServicesAccountDefenderForAISetting` cmdlet.
-* Added `Get-AzCognitiveServicesAccountDeploymentSku` cmdlet.
-* Added `Get-AzCognitiveServicesModelCapacity` cmdlet.
+* Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
+* Added Get cmdlets for AzCognitiveServicesRaiContentFilters, AzCognitiveServicesAccountDeploymentSku, AzCognitiveServicesModelCapacity.
+* Added Get, New cmdlets for AzCognitiveServicesAccountDefenderForAISetting.
 
 ## Version 1.15.0
 * Upgraded nuget package to signed package.
