@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for PremiumV2_LRS and UltraSSD_LRS target disk types for Azure to Azure replication.
 * Added logs to enable better debugging for Modify protection with MSSQL workload.
 
 ## Version 7.5.1
