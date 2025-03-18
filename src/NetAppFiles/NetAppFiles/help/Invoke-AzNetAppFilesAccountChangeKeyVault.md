@@ -45,7 +45,7 @@ Affects existing volumes that are encrypted with Key Vault/Managed HSM, and new 
 $keyVaultPrivateEndpoint = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/akvPrivateEndpoint"
 $keyVaultUri = "https://myakv.vault.azure.net/"
 $keyVaultResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/vaults/myakv"
-Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName ""MyAccount" -KeyVaultUri $keyVaultUri -KeyVaultKeyName  "MyKeyName" -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint
+Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName "MyAccount" -KeyVaultUri $keyVaultUri -KeyVaultKeyName  "MyKeyName" -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint
 ```
 
 Changes what Key Vault/Managed HSM is used for Volumes in NetAppAccount "MyAccount"

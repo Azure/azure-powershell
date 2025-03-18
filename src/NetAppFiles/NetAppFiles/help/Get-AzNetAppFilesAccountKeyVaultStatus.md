@@ -40,7 +40,7 @@ Contains data from encryption.keyVaultProperties as well as information about wh
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName "MyAccount"
+Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName $resourceGroup -AccountName "MyAccount"
 ```
 
 Get information about how volumes under NetApp account MyAccount are encrypted
