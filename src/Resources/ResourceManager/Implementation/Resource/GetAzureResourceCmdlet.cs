@@ -624,8 +624,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private bool IsResourceGroupLevelQuery()
         {
             return this.SubscriptionId.HasValue &&
-                this.ResourceGroupName != null &&
-                this.Name == null ||
+                this.ResourceGroupName != null ||
                 this.ResourceType != null;
         }
     }
