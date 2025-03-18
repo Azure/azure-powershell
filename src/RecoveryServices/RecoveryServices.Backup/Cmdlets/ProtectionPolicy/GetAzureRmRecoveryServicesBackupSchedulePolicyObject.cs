@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns a schedule policy PS object which can be modified in the PS shell 
     /// and fed to other cmdlets which accept it.
     /// </summary>
+    [GenericBreakingChangeWithVersion("This command will return a Enhanced policy object by default for AzureVM workload", "14.0.0", "8.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupSchedulePolicyObject"),OutputType(typeof(SchedulePolicyBase))]
     public class GetAzureRmRecoveryServicesBackupSchedulePolicyObject : RecoveryServicesBackupCmdletBase
     {

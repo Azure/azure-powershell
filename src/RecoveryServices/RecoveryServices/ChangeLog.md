@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Removed warning about ensuring Enhanced Policy for Trusted Launch VMs when configuring protection for Azure VMs.
+* Added warning "Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI" in Enable-AzRecoveryServicesBackupProtection.
+* Added breaking change announcement for Get-AzRecoveryServicesBackupSchedulePolicyObject that this command will return a Enhanced policy object by default for IaaSVM workload.
 
 ## Version 7.5.1
 * Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.

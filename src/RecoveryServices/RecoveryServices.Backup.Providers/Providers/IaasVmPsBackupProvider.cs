@@ -88,6 +88,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
+            Logger.Instance.WriteWarning(String.Format(Resources.TrustedLaunchDefaultWarning));
+
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
             if (parameterSetName.Contains("Modify") && item.PolicyId != null && item.PolicyId != "")
