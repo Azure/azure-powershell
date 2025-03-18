@@ -36,7 +36,6 @@ input-file:
 title: MarketplaceOrdering
 subject-prefix: Marketplace
 
-identity-correction-for-post: true
 nested-object-to-string: true
 inlining-threshold: 50
 
