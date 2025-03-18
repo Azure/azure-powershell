@@ -182,6 +182,8 @@ try{
             [string]$SubModuleNameTrimmed
         )
 
+        Write-Host "========================Printing job params -  $job ..."
+
         $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
         $artifacts = Join-Path $RepoRoot 'artifacts'
         $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"

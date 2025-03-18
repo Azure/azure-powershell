@@ -44,26 +44,6 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'clitest'
-    $env.ResourceName = 'test-cli-instance-4'
-    $env.NewResourceName = 'test-cli-instance-test-3'
-    $env.Location = "centraluseuap"
-    $env.SubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
-    $env.MarketplaceSubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
-    $env.OfferDetailOfferId = "pineconeliftr"
-    $env.OfferDetailPlanId = "pinecone_liftr_preview_paygo"
-    $env.OfferDetailPlanName = "Pinecone - Pay As You Go (Preview)"
-    $env.OfferDetailPublisherId = "pineconesystemsinc1688761585469"
-    $env.OfferDetailTermId = "gmz7xq9ge3py"
-    $env.OfferDetailTermUnit = "P1M"
-    $env.PartnerPropertyDisplayName = "Test-CLI-Instance-3"
-    $env.SingleSignOnPropertyEnterpriseAppId = "0b9873df-1629-4036-9360-5f2f65c0a0d3"
-    $env.SingleSignOnPropertyType = "Saml"
-    $env.UserEmailAddress = "aggarwalsw@microsoft.com"
-    $env.UserFirstName = "Swati" 
-    $env.UserLastName = "Aggarwal"
-    $env.UserUpn = "aggarwalsw@microsoft.com"
-    $env.DeleteResourceName = "test-cli-instance-test-10"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
