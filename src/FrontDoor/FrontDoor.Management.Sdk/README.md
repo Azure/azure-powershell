@@ -14,8 +14,8 @@ input-file:
   # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)//specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/webapplicationfirewall.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)//specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)//specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
-  - https://github.com/neelesh06/azure-rest-api-specs-pr/blob/neeleshk-AFDWAFCaptchaFeatureStable/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-03-01/network.json
-  - https://github.com/neelesh06/azure-rest-api-specs-pr/blob/neeleshk-AFDWAFCaptchaFeatureStable/specification/frontdoor/resource-manager/Microsoft.Network/stable/2025-03-01/webapplicationfirewall.json
+  - ./network.json
+  - ./webapplicationfirewall.json
 
 # csharp: true
 isSdkGenerator: true
