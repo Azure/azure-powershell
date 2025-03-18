@@ -15,15 +15,13 @@ Creates or updates a link connection in workspace.
 ### SetByName (Default)
 ```
 Set-AzSynapseLinkConnection -WorkspaceName <String> -Name <String> -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseLinkConnection -WorkspaceObject <PSSynapseWorkspace> -Name <String> -DefinitionFile <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
