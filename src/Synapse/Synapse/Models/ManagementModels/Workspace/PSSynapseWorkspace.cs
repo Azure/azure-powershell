@@ -36,7 +36,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 ? workspace.PrivateEndpointConnections.Select(e => new PSPrivateEndpointConnection(e)).ToList()
                 : null;
             this.WorkspaceUID = workspace?.WorkspaceUID != null ? workspace.WorkspaceUID.Value.ToString() : null;
-            this.ExtraProperties = (IDictionary<string, object>)workspace.ExtraProperties;
+            if (workspace.ExtraProperties is IDictionary<string, object>)
+            {
+                this.ExtraProperties = (IDictionary<string, object>)workspace.ExtraProperties;
+            }
             this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
             this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
             this.WorkspaceRepositoryConfiguration = workspace.WorkspaceRepositoryConfiguration != null ? new PSWorkspaceRepositoryConfiguration(workspace?.WorkspaceRepositoryConfiguration) : null;
