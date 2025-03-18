@@ -473,22 +473,38 @@ function Save-PackageLocally {
     $ModuleName = $module['ModuleName']
     $RequiredVersion = $module['RequiredVersion']
 
+    $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+    $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+
+
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
         Write-Output "Checking for required module $ModuleName, $RequiredVersion"
         if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
             Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
         } else {
+            if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+                $PSRepositoryUrl = $Env:DEFAULT_PS_REPOSITORY_URL
+                $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+                $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+            }
+            else {
+                $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
+            }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
-            Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
-            # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
-            # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
-            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            Write-Output "Downloading the package from $PSRepositoryUrl to the path $TempRepoPath"
+            # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
+            # If the module not found in PSRepositoryUrl, the following command would fail and hence publish to local repo process would fail as well
+            if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
+                Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source $PSRepositoryUrl -Credential $credentialsObject | Out-Null
+            } else {
+                Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source $PSRepositoryUrl | Out-Null
+            }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
             $DestinationModulePath = [System.IO.Path]::Combine($ModulePaths[0], $ModuleName, $RequiredVersion)
             Expand-Archive -Path $NupkgFilePath -DestinationPath $DestinationModulePath -Force
-            Write-Output "Downloaded the package sucessfully"
+            Write-Output "Downloaded the package successfully"
         }
     }
 }
@@ -549,6 +565,64 @@ function Save-PackagesFromPsGallery {
 }
 
 <#
+.SYNOPSIS
+Install modules specified in a RequiredResourceFile (PSD1) from a custom repository
+ 
+.PARAMETER RequiredResourceFilePath
+Path to the PSD1 file containing required modules
+ 
+.PARAMETER Scope
+Installation scope (e.g., CurrentUser)
+ 
+.PARAMETER Repository
+Repository name to install modules from
+ 
+.PARAMETER Credential
+Credentials for accessing the repository
+#>
+function Install-RequiredModulesFromFile {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$RequiredResourceFilePath,
+        
+        [Parameter(Mandatory=$true)]
+        [string]$Scope,
+        
+        [Parameter(Mandatory=$true)]
+        [string]$Repository,
+        
+        [Parameter(Mandatory=$true)]
+        [PSCredential]$Credential
+    )
+    
+    if (-not (Test-Path $RequiredResourceFilePath)) {
+        throw "Required resource file not found: $RequiredResourceFilePath"
+    }
+    
+    Write-Host "Reading required modules from $RequiredResourceFilePath"
+    $moduleData = Import-PowerShellDataFile -Path $RequiredResourceFilePath
+    
+    if ($moduleData.ContainsKey('RequiredModules')) {
+        $requiredModules = $moduleData.RequiredModules
+        
+        foreach ($module in $requiredModules) {
+            $moduleName = $module.ModuleName
+            $requiredVersion = $module.RequiredVersion
+            
+            Write-Host "Installing required module: $moduleName $requiredVersion"
+            if ($requiredVersion) {
+                Install-PSResource -Name $moduleName -Version $requiredVersion -Repository $Repository -Credential $Credential -Scope $Scope
+            } else {
+                Install-PSResource -Name $moduleName -Repository $Repository -Credential $Credential -Scope $Scope
+            }
+        }
+    } else {
+        Write-Host "No RequiredModules found in $RequiredResourceFilePath"
+    }
+}
+
+<#
 .SYNOPSIS Add all modules to local repo.
 
 .PARAMETER ModulePaths
@@ -580,6 +654,23 @@ function Add-AllModules {
     )
     $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
     Write-Output "adding modules to local repo"
+    # if (Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME) {
+    #     Write-Output "Repository $Env:DEFAULT_PS_REPOSITORY_NAME already registered"
+    # } else {
+    #     Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
+    # }
+    # Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
+    Get-PSResourceRepository
+    $ModuleName = "Az"
+
+    $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+    $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
+
+    Write-Host "Installing required modules from Az.psd1"
+    Install-RequiredModulesFromFile -RequiredResourceFilePath "./tools/Az/Az.psd1" -Scope CurrentUser -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
+
+    Write-Host "Installing main module: $ModuleName"
+    Install-PSResource -Name $ModuleName -Scope CurrentUser -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
         Write-Output "Adding $module modules to local repo"
