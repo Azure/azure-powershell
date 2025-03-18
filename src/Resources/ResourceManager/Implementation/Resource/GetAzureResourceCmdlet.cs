@@ -245,6 +245,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            //Fake change to trigger test for resources
             if (string.IsNullOrEmpty(this.ResourceId))
             {
                 this.SubscriptionId = DefaultContext.Subscription.GetId();
