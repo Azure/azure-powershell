@@ -19,9 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added more support for Oracle connection properties.
-* Added more support for Teradata connection properties.
-* Added more support for AzurePostgreSql connection properties.
+* Supported copyComputeScale and pipelineExternalComputeScale in `Set-AzSynapseIntegrationRuntime` Command
 
 ## Version 3.1.2
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
