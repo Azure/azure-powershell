@@ -40,6 +40,16 @@ nested-object-to-string: true
 module-version: 0.3.0
 
 directive:
+  # Update Location parameter available
+  - from: swagger-document
+    where: $.definitions.IdentityUpdate.properties.location.x-ms-mutability
+    transform: >-
+      return [
+        "read",
+        "update",
+        "create"
+      ]
+
   - where:
       verb: Set
       subject: SystemAssignedIdentity|UserAssignedIdentity
