@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return this.SubscriptionId.HasValue &&
                 this.ResourceGroupName != null &&
-                this.Name != null ||
+                this.Name == null ||
                 this.ResourceType != null;
         }
     }
