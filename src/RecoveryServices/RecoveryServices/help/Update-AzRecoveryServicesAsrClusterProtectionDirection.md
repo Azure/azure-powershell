@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesasrclusterprotectiondirection
 schema: 2.0.0
 ---
 

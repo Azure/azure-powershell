@@ -55,7 +55,7 @@ function Test-ClusterTestFailoverAndFailoverCleanupJob {
     $nodeRecoveryPoints = @("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/6dad6744-ee36-55e2-a77e-92e5bdcd088e/replicationProtectedItems/L1MqErJJvLX_0U05A1X2PfCN988iqFOo6ymNnyOoxhE/recoveryPoints/85c908c4-9a0a-40aa-a3b1-1975c9ca27bf")
     
     #TFO
-    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -ClusterRecoveryPoint $clusterRecoveryPoints[-1] -NodeRecoveryPoints $nodeRecoveryPoints
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -ClusterRecoveryPoint $clusterRecoveryPoints[-1] -ListNodeRecoveryPoint $nodeRecoveryPoints
 
     WaitForJobCompletion -JobId $tfoJob.Name
     #Get recovery vm and verify
