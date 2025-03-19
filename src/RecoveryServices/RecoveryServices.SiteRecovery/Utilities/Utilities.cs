@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="recoveryServicesClient">Recovery Service Client.</param>
         /// <param name="nodesPresentInNodeRecoveryPoints">Nodes present in node recovery point.</param>
         /// <param name="nodesPresentInClusterRecoveryPoint">Nodes present in cluster Recovery point.</param>
-        /// <param name="nodeRecoveryPoints">List of node recovery point.s</param>
+        /// <param name="listNodeRecoveryPoint">List of node recovery point.</param>
         /// <param name="fabricName">Fabric Name.</param>
         /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <exception cref="InvalidOperationException"></exception>
@@ -680,13 +680,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             PSRecoveryServicesClient recoveryServicesClient,
             out HashSet<string> nodesPresentInNodeRecoveryPoints,
             HashSet<string> nodesPresentInClusterRecoveryPoint,
-            List<string> nodeRecoveryPoints,
+            List<string> listNodeRecoveryPoint,
             string fabricName,
             string protectionContainerName)
         {
             // Get the armId of nodes present in NodeRecoveryPoint.
             nodesPresentInNodeRecoveryPoints = new HashSet<string>(
-                nodeRecoveryPoints.Select(node => Utilities.GetValueFromArmId(
+                listNodeRecoveryPoint.Select(node => Utilities.GetValueFromArmId(
                     node,
                     ARMResourceTypeConstants.ReplicationProtectedItems)),
                 StringComparer.OrdinalIgnoreCase);

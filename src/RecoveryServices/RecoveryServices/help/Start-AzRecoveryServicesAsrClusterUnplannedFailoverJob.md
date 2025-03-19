@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrclusterunplannedfailoverjob
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Starts an unplanned failover operation for a cluster.
 ```
 Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob
  -ReplicationProtectionCluster <ASRReplicationProtectionCluster> -Direction <String> [-PerformSourceSideAction]
- [-LatestProcessedRecoveryPoints] [-ClusterRecoveryPoint <ASRClusterRecoveryPoint>]
- [-NodeRecoveryPoints <System.Collections.Generic.List`1[System.String]>]
+ [-LatestProcessedRecoveryPoint] [-ClusterRecoveryPoint <ASRClusterRecoveryPoint>]
+ [-ListNodeRecoveryPoint <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -93,7 +93,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LatestProcessedRecoveryPoints
+### -LatestProcessedRecoveryPoint
 Fetch the latest processed recovery points if not passed for cluster or any individual node.
 
 ```yaml
@@ -108,7 +108,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeRecoveryPoints
+### -ListNodeRecoveryPoint
 Specifies the recovery points for the nodes which are not part of cluster recovery point.
 
 ```yaml

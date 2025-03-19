@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrapplyclusterrecoverypoint
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Changes a recovery point for a failed over replication protection cluster before
 ```
 Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint [-ClusterRecoveryPoint <ASRClusterRecoveryPoint>]
  -ReplicationProtectionCluster <ASRReplicationProtectionCluster>
- [-NodeRecoveryPoints <System.Collections.Generic.List`1[System.String]>] [-LatestProcessedRecoveryPoints]
+ [-ListNodeRecoveryPoint <System.Collections.Generic.List`1[System.String]>] [-LatestProcessedRecoveryPoint]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -72,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LatestProcessedRecoveryPoints
+### -LatestProcessedRecoveryPoint
 Fetch the latest processed recovery points if not passed for cluster or any individual node.
 
 ```yaml
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodeRecoveryPoints
+### -ListNodeRecoveryPoint
 Specifies the recovery points for the nodes which are not part of cluster recovery point.
 
 ```yaml

@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public List<string> NodeRecoveryPoints { get; set; }
+        public List<string> ListNodeRecoveryPoint { get; set; }
 
         /// <summary>
         ///    Switch parameter to use the latest processed recovery point for failover.
         /// </summary>
         [Parameter]
-        [Alias("LatestProcessedRecoveryPoint")]
-        public SwitchParameter LatestProcessedRecoveryPoints { get; set; }
+        [Alias("LatestProcessedRecoveryPoints")]
+        public SwitchParameter LatestProcessedRecoveryPoint { get; set; }
 
         /// <summary>
         ///     Gets or sets the Azure virtual network ID to connect the test fail over virtual machine(s) to.
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var input =
                 new ClusterTestFailoverInput { Properties = clusterTestFailoverInputProperties };
 
-            if (this.LatestProcessedRecoveryPoints && this.ClusterRecoveryPoint == null)
+            if (this.LatestProcessedRecoveryPoint && this.ClusterRecoveryPoint == null)
             {
                 // If LatestProcessedRecoveryPoints flag is passed with no ClusterRecoveryPoint, get latest processed ClusterRecoveryPoint.
                 this.ClusterRecoveryPoint = Utilities.GetClusterRecoveryPoint(
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     Resources.NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed);
             }
 
-            if (NodeRecoveryPoints == null)
+            if (ListNodeRecoveryPoint == null)
             {
-                this.NodeRecoveryPoints = new List<string>();
+                this.ListNodeRecoveryPoint = new List<string>();
             }
 
             // Get the list of nodes present in cluster recovery point.
@@ -173,14 +173,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.RecoveryServicesClient,
                 out this.nodesPresentInNodeRecoveryPoints,
                 this.nodesPresentInClusterRecoveryPoint,
-                this.NodeRecoveryPoints,
+                this.ListNodeRecoveryPoint,
                 this.fabricName,
                 this.protectionContainerName);
 
-            if (LatestProcessedRecoveryPoints)
+            if (LatestProcessedRecoveryPoint)
             {
                 // If LatestProcessedRecoveryPoints flag is passed, get the latest processed NodeRecoveryPoints which are also not being part of passed NodeRecoveryPoints.
-                this.NodeRecoveryPoints.AddRange(Utilities.UpdateNodeRecoveryPoints(
+                this.ListNodeRecoveryPoint.AddRange(Utilities.UpdateNodeRecoveryPoints(
                     this.RecoveryServicesClient,
                     this.ReplicationProtectionCluster,
                     this.nodesPresentInClusterRecoveryPoint,
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var failoverInput = new A2AClusterTestFailoverInput
             {
                 ClusterRecoveryPointId = this.ClusterRecoveryPoint.ID,
-                IndividualNodeRecoveryPoints = this.NodeRecoveryPoints
+                IndividualNodeRecoveryPoints = this.ListNodeRecoveryPoint
             };
 
             input.Properties.ProviderSpecificDetails = failoverInput;
