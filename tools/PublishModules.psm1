@@ -565,64 +565,6 @@ function Save-PackagesFromPsGallery {
 }
 
 <#
-.SYNOPSIS
-Install modules specified in a RequiredResourceFile (PSD1) from a custom repository
- 
-.PARAMETER RequiredResourceFilePath
-Path to the PSD1 file containing required modules
- 
-.PARAMETER Scope
-Installation scope (e.g., CurrentUser)
- 
-.PARAMETER Repository
-Repository name to install modules from
- 
-.PARAMETER Credential
-Credentials for accessing the repository
-#>
-function Install-RequiredModulesFromFile {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$RequiredResourceFilePath,
-        
-        [Parameter(Mandatory=$true)]
-        [string]$Scope,
-        
-        [Parameter(Mandatory=$true)]
-        [string]$Repository,
-        
-        [Parameter(Mandatory=$true)]
-        [PSCredential]$Credential
-    )
-    
-    if (-not (Test-Path $RequiredResourceFilePath)) {
-        throw "Required resource file not found: $RequiredResourceFilePath"
-    }
-    
-    Write-Host "Reading required modules from $RequiredResourceFilePath"
-    $moduleData = Import-PowerShellDataFile -Path $RequiredResourceFilePath
-    
-    if ($moduleData.ContainsKey('RequiredModules')) {
-        $requiredModules = $moduleData.RequiredModules
-        
-        foreach ($module in $requiredModules) {
-            $moduleName = $module.ModuleName
-            $requiredVersion = $module.RequiredVersion
-            
-            Write-Host "Installing required module: $moduleName $requiredVersion"
-            if ($requiredVersion) {
-                Install-PSResource -Name $moduleName -Version $requiredVersion -Repository $Repository -Credential $Credential -Scope $Scope -Reinstall
-            } else {
-                Install-PSResource -Name $moduleName -Repository $Repository -Credential $Credential -Scope $Scope -Reinstall
-            }
-        }
-    } else {
-        Write-Host "No RequiredModules found in $RequiredResourceFilePath"
-    }
-}
-
-<#
 .SYNOPSIS Add all modules to local repo.
 
 .PARAMETER ModulePaths
@@ -654,23 +596,6 @@ function Add-AllModules {
     )
     $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
     Write-Output "adding modules to local repo"
-    # if (Get-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME) {
-    #     Write-Output "Repository $Env:DEFAULT_PS_REPOSITORY_NAME already registered"
-    # } else {
-    #     Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
-    # }
-    # Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
-    Get-PSResourceRepository
-    $ModuleName = "Az"
-
-    $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-    $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-
-    Write-Host "Installing required modules from Az.psd1"
-    Install-RequiredModulesFromFile -RequiredResourceFilePath "./tools/Az/Az.psd1" -Scope CurrentUser -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
-
-    Write-Host "Installing main module: $ModuleName"
-    Install-PSResource -Name $ModuleName -Scope CurrentUser -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
         Write-Output "Adding $module modules to local repo"
