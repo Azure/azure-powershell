@@ -493,7 +493,7 @@ function Save-PackageLocally {
                 $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
             }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
-            $repositoryName = Env:\DEFAULT_PS_REPOSITORY_NAME
+            $repositoryName = $(Env:\DEFAULT_PS_REPOSITORY_NAME)
             Get-PSResourceRepository
             Write-Output "Downloading the package from $repositoryName : $PSRepositoryUrl to the path $TempRepoPath"
             # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
