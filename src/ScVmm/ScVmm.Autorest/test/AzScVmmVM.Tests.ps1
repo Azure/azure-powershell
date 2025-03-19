@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVM'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVM' {
+Describe 'AzScVmmVM' -Tag 'LiveOnly' {
 
     # Enable Existing Inventory VM
 

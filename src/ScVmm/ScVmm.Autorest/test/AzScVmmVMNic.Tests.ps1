@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVMNic'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVMNic' {
+Describe 'AzScVmmVMNic' -Tag 'LiveOnly' {
     It 'AddVMNic - Add-AzScVmmVMNic' {
         {
             Stop-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest

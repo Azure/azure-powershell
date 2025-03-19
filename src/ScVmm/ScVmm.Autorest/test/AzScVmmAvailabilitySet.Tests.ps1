@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmAvailabilitySet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmAvailabilitySet' {
+Describe 'AzScVmmAvailabilitySet' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         {
             $result = New-AzScVmmAvailabilitySet -Name $env.AvailabilitySetName -AvailabilitySetName $env.AvailabilitySetName -ResourceGroupName $env.ResourceGroupEnableInvTest -VmmServerName $env.VmmServerName -Location $env.location

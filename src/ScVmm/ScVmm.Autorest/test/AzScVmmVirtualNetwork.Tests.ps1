@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVirtualNetwork'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVirtualNetwork' {
+Describe 'AzScVmmVirtualNetwork' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         {
             $result = New-AzScVmmVirtualNetwork -Name $env.VirtualNetworkName -ResourceGroupName $env.ResourceGroupEnableInvTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VirtualNetworkUuid -Location $env.location
