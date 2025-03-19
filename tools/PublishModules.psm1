@@ -612,9 +612,9 @@ function Install-RequiredModulesFromFile {
             
             Write-Host "Installing required module: $moduleName $requiredVersion"
             if ($requiredVersion) {
-                Install-PSResource -Name $moduleName -Version $requiredVersion -Repository $Repository -Credential $Credential -Scope $Scope
+                Install-PSResource -Name $moduleName -Version $requiredVersion -Repository $Repository -Credential $Credential -Scope $Scope -Reinstall
             } else {
-                Install-PSResource -Name $moduleName -Repository $Repository -Credential $Credential -Scope $Scope
+                Install-PSResource -Name $moduleName -Repository $Repository -Credential $Credential -Scope $Scope -Reinstall
             }
         }
     } else {
