@@ -35,7 +35,7 @@ input-file:
 
 root-module-name: $(prefix).Monitor
 title: PipelineGroup
-module-version: 0.1.1
+module-version: 0.1.0
 subject-prefix: $(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup
 
