@@ -441,6 +441,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect mapping selected as Input. Replication protection cluster target fabric {0} not matching protection container mapping target Fabric {1}..
+        /// </summary>
+        internal static string InvalidSwitchParamRPCAndProtectionContainerMapping {
+            get {
+                return ResourceManager.GetString("InvalidSwitchParamRPCAndProtectionContainerMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}..
         /// </summary>
         internal static string InvalidSwitchParamRPIAndProtectionContainerMapping {

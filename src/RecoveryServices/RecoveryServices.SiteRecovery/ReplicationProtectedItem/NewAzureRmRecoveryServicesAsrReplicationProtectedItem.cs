@@ -1009,7 +1009,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (this.ReplicationProtectionCluster != null)
             {
-                providerSettings.ProtectionClusterId = ReplicationProtectionCluster.ID;
+                providerSettings.ProtectionClusterId = this.ReplicationProtectionCluster.ID;
+                if (string.IsNullOrEmpty(this.ReplicationGroupName))
+                {
+                    providerSettings.MultiVMGroupName = this.ReplicationProtectionCluster.Name;
+                }
             }
 
             if (this.AzureToAzureDiskReplicationConfiguration == null)

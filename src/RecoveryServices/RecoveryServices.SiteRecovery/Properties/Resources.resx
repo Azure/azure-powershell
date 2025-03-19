@@ -459,6 +459,9 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="InvalidSwitchParamRPIAndProtectionContainerMapping" xml:space="preserve">
     <value>Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}.</value>
   </data>
+  <data name="InvalidSwitchParamRPCAndProtectionContainerMapping" xml:space="preserve">
+    <value>Incorrect mapping selected as Input. Replication protection cluster target fabric {0} not matching protection container mapping target Fabric {1}.</value>
+  </data>
   <data name="NullorEmptyPrimaryStagingAzureStorageAccountId" xml:space="preserve">
     <value>PrimaryStagingAzureStorageAccountId passed is null or empty.</value>
   </data>

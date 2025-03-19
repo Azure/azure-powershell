@@ -27,6 +27,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class NewAzureRmRecoveryServicesAsrReplicationProtectionCluster : SiteRecoveryCmdletBase
     {
         /// <summary>
+        ///    Switch parameter specifying that the protection cluster being created will be used 
+        ///    to replicated Azure virtual machines between two Azure regions.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        public SwitchParameter AzureToAzure { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the Replication Protection Cluster.
         /// </summary>
         [Parameter(

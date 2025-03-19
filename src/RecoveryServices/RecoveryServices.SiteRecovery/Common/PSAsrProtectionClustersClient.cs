@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<ReplicationProtectionCluster> GetAzureSiteRecoveryReplicationProtectionCluster()
         {
             var protectedClustersQueryParameter =
-                new ProtectedClustersQueryParameter {};
+                new ProtectedClustersQueryParameter { };
             var odataQuery =
                 new ODataQuery<ProtectedClustersQueryParameter>(
                     protectedClustersQueryParameter.ToQueryString());
@@ -168,6 +168,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Resyncs / Repairs Cluster Replication.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryClusterResynchronizeReplication(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectionClusterName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionClusters.BeginRepairReplicationWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectionClusterName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Switch the Azure Site Recovery protection entity replication direction.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="input">Input for Switch</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartSwitchClusterProtection(
+            string fabricName,
+            string protectionContainerName,
+            SwitchClusterProtectionInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionContainers.BeginSwitchClusterProtectionWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
+                    fabricName,
+                    protectionContainerName,
+                    input.Properties,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }

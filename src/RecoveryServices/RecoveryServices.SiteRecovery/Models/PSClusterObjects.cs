@@ -12,6 +12,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -655,6 +656,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Type = recoveryPoint.Type;
             this.RecoveryPointTime = recoveryPoint.Properties.RecoveryPointTime;
             this.RecoveryPointType = recoveryPoint.Properties.RecoveryPointType;
+
+            var providerSpecificDetails = recoveryPoint.Properties.ProviderSpecificDetails;
+            if (providerSpecificDetails is A2AClusterRecoveryPointDetails)
+            {
+                var details = providerSpecificDetails as A2AClusterRecoveryPointDetails;
+                this.RecoveryPointSyncType = details.RecoveryPointSyncType;
+                this.Nodes = details.Nodes;
+            }
         }
 
         /// <summary>
@@ -681,5 +690,94 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets type of the Recovery Point.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the recovery point is multi VM
+        /// consistent. Possible values include: &#39;MultiVmSyncRecoveryPoint&#39;, &#39;PerVmRecoveryPoint&#39;
+        /// </summary>
+        public string RecoveryPointSyncType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of nodes representing the cluster.
+        /// </summary>
+        public IList<string> Nodes { get; set; }
+    }
+
+    /// <summary>
+    /// Azure VM protected item details required for AzureToAzure protection.
+    /// </summary>
+    public class ASRAzureToAzureReplicationProtectedItemConfig
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureReplicationProtectedItemConfig" /> class.
+        /// </summary>
+        public ASRAzureToAzureReplicationProtectedItemConfig()
+        {
+        }
+
+        /// <summary>
+        /// Gets or sets the list of vm managed disk details.
+        /// </summary>
+        public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery resource group Id.
+        /// </summary>
+        public string RecoveryResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery availability set.
+        /// </summary>
+        public string RecoveryAvailabilitySetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the boot diagnostic storage account.
+        /// </summary>
+        public string RecoveryBootDiagStorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery availability zone.
+        /// </summary>
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery proximity placement group Id.
+        /// </summary>
+        public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the virtual machine scale set id.
+        /// </summary>
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery capacity reservation group Id.
+        /// </summary>
+        public string RecoveryCapacityReservationGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Replication Protected item name.
+        /// </summary>
+        public string ReplicationProtectedItemName { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        public string KeyEncryptionVaultId { get; set; }
     }
 }

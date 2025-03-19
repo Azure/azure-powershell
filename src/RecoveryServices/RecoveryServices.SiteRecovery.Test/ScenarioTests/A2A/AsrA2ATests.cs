@@ -178,6 +178,36 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-VMSSReplication");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AReplicationProtectionClusterTest()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AReplicationProtectionCluster");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AResyncReplicationProtectionClusterTest()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AResyncReplicationProtectionCluster");
+        }
+
+        [Fact(Skip = "To be re-recorded")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AReprotectClusterWithoutProtectedItemDetailsTest()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AReprotectClusterWithoutProtectedItemDetails");
+        }
+
         [Fact(Skip = "Needs investigation, no suitable capacity reservation SKU found in eastus2euap or centraluseuap.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ACRGReplication()

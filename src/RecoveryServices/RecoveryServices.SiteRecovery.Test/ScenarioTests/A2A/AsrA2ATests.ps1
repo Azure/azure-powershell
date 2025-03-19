@@ -1420,6 +1420,124 @@ function Test-RecoveryPlanReplication {
 
 <#
 .SYNOPSIS
+    Test A2AReplicationProtectionCluster new parametersets
+#>
+function Test-A2AReplicationProtectionCluster{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijamipowershelltest" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "PowershellTestLatest"
+    $clusterjob = New-AzRecoveryServicesAsrReplicationProtectionCluster -AzureToAzure -Name $clusterName -ProtectionContainerMapping $forwardpcm
+
+    WaitForJobCompletion -JobId $clusterjob.Name
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $vmId1 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/virtualMachines/sdgql0"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Compute/availabilitySets/SDGQL-AS-asr"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg-asr"
+    $networkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr"
+    $storageId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/er9stavijamipoweasrcache"
+    $rpiName1 = "sdgql0"
+    $EnableJob1 = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -Name $rpiName1 -ReplicationProtectionCluster $cluster `
+    -AzureVmId $vmId1 -ProtectionContainerMapping $forwardpcm -RecoveryResourceGroupId $rgId -RecoveryAvailabilitySetId $avset `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAzureNetworkId $networkId -LogStorageAccountId $storageId
+
+    $vmId2 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/virtualMachines/sdgql1"
+    $rpiName2 = "sdgql1"
+    
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $vhdId1 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/disks/sdgql1-osdisk"
+    $vhdId2 = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103092752/providers/Microsoft.Compute/disks/sdgql-datadisk0"
+    $disk1 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storageId `
+        -DiskId $vhdId1 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $disk2 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $storageId `
+        -DiskId $vhdId2 -RecoveryResourceGroupId  $rgId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $disks = @()
+    $disks += $disk1
+    $disks += $disk2
+    $EnableJob2 = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -Name $rpiName2 `
+    -AzureToAzureDiskReplicationConfiguration $disks -ReplicationProtectionCluster $cluster -AzureVmId $vmId2 `
+    -ProtectionContainerMapping $forwardpcm -RecoveryResourceGroupId $rgId -RecoveryAvailabilitySetId $avset `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAzureNetworkId $networkId
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $EnableJob1.Name
+    WaitForJobCompletion -JobId $EnableJob2.Name
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForIRCompletion -affectedObjectId $EnableJob1.TargetObjectId
+    WaitForIRCompletion -affectedObjectId $EnableJob2.TargetObjectId
+
+    $clusterToDisableName = "PowershellTestLatest"
+    $clusterToDisable = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterToDisableName -ProtectionContainer $pc
+    $DisableJob = Remove-AzRecoveryServicesAsrReplicationProtectionCluster -ReplicationProtectionCluster $clusterToDisable
+    WaitForJobCompletion -JobId $DisableJob.Name
+}
+
+<#
+.SYNOPSIS
+    Test A2AResyncReplicationProtectionCluster parametersets
+#>
+function Test-A2AResyncReplicationProtectionCluster{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijamitest" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "pscluster"
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $ResyncJob = Start-AzRecoveryServicesAsrClusterResynchronizeReplicationJob -ReplicationProtectionCluster $cluster
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $ResyncJob.Name
+}
+
+<#
+.SYNOPSIS
+    Test A2AReprotectClusterWithoutProtectedItemDetails parametersets
+#>
+function Test-A2AReprotectClusterWithoutProtectedItemDetails{
+    $Vault = Get-AzRecoveryServicesVault -Name "vijamishareddisktest" -ResourceGroupName "vijami-alertrg"
+    Set-ASRVaultContext -Vault $Vault
+    $fabricName = "asr-a2a-default-eastus2"
+    $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
+    $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
+    $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
+    $clusterName = "shareddiskcluster"
+    $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
+
+    $storage = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/yerp1nvijamitestasrcache"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147/providers/Microsoft.Compute/availabilitySets/SDGQL-AS"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147"
+
+    # Without protected item details
+    $recoveryFabricName = "asr-a2a-default-westus"
+    $recoveryFabric = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    $recoverypc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $recoveryFabric
+    $recoverypcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $recoverypc -Name "westus-eastus2-24-hour-retention-policy"
+    $ReprotectJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ReplicationProtectionCluster $cluster `
+    -RecoveryProximityPlacementGroupId $ppg -RecoveryAvailabilitySetId $avset `
+    -RecoveryResourceGroupId $rgId -LogStorageAccountId $storage -ProtectionContainerMapping $recoverypcm
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForJobCompletion -JobId $ReprotectJob.Name
+
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    WaitForIRCompletion -affectedObjectId $ReprotectJob.TargetObjectId
+}
+
+<#
+.SYNOPSIS
     Test VMSS replication new parametersets
 #>
 
