@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint
 
 ## SYNOPSIS
-Changes a recovery point for a failed over repliction protection cluster before committing the failover operation
+Changes a recovery point for a failed over replication protection cluster before committing the failover operation
 
 ## SYNTAX
 

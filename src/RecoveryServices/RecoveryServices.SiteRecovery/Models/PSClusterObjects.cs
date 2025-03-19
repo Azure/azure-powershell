@@ -667,23 +667,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///    Gets the list of nodes present in the cluster recovery point.
-        /// </summary>
-        /// <param name="providerSpecificDetails"></param>
-        /// <returns>List of nodes present in the cluster recovery point.</returns>
-        private List<string> GetNodes(ClusterProviderSpecificRecoveryPointDetails providerSpecificDetails)
-        {
-            if (providerSpecificDetails is A2AClusterRecoveryPointDetails)
-            {
-                return new List<string>(((A2AClusterRecoveryPointDetails)providerSpecificDetails).Nodes);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
         ///     Gets or sets Recovery Point ID.
         /// </summary>
         public string ID { get; set; }
