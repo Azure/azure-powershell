@@ -26,17 +26,17 @@ function Test-AccountActiveDirectory
     $resourceLocation = 'westus2'
 
     $activeDirectory1 = @{
-        Username = "sdkuser"
+        Username = "xxxxxxxx"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
-        Password = "sdkpass"
+        Password = "xxxxxxxx"
         Domain = "sdkdomain"
         Dns = "192.0.2.2"
         SmbServerName = "PSMBSName1"
     }
     $activeDirectory2 = @{
-        Username = "sdkuser1"
+        Username = "xxxxxxxx"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
-        Password = "sdkpass2"
+        Password = "xxxxxxxx"
         Domain = "sdkdomain"
         Dns = "192.0.2.2"
         SmbServerName = "PSMBSName2"
