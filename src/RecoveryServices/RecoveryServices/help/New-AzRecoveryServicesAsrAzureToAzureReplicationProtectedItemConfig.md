@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrazuretoazurereplicationprotecteditemconfig
+online version:
 schema: 2.0.0
 ---
 
@@ -41,22 +41,25 @@ Creates a protected item mapping object to get target properties (recovery regio
 
 ### Example 1
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure 
--ReplicationProtectedItemName $ReplicationProtectedItem -RecoveryResourceGroupId $RGId 
--AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $AvSetId 
--RecoveryProximityPlacementGroupId $PPGId 
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure
+ -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId
+ -AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId
+-RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
 ```
 
-Create a replication protected item mapping object for Azure virtual machine to be replicated.Used during Azure to Azure re-protect operation for Replication protection cluster.
+Create a replication protected item mapping object for Azure virtual machine to be replicated.
+Used during Azure to Azure re-protect operation for Replication protection cluster.
 
 ### Example 2
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure 
--ReplicationProtectedItemName $ReplicationProtectedItem -RecoveryResourceGroupId $RGId 
--RecoveryAvailabilitySetId $AvSetId -RecoveryProximityPlacementGroupId $PPGId 
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure
+ -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId
+ -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
 ```
 
-Create a replication protected item mapping object for Azure virtual machine to be replicated.Used during Azure to Azure re-protect operation for Replication protection cluster.
+Create a replication protected item mapping object for Azure virtual machine to be replicated.
+Used during Azure to Azure re-protect operation for Replication protection cluster.
+
 
 ## PARAMETERS
 
@@ -76,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureDiskReplicationConfiguration
-Specific disk config for the replication protected item.
+Specifies disk config for the replication protected item.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
