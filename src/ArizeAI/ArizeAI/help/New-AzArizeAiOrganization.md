@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.arizeai/new-aza
 schema: 2.0.0
 ---
 
-# New-AzArizeAiOrganization
+# New-AzArizeAIOrganization
 
 ## SYNOPSIS
 create a OrganizationResource
@@ -14,7 +14,7 @@ create a OrganizationResource
 
 ### CreateExpanded (Default)
 ```
-New-AzArizeAiOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+New-AzArizeAIOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-EnableSystemAssignedIdentity] [-MarketplaceSubscriptionId <String>]
  [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
  [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
@@ -23,21 +23,20 @@ New-AzArizeAiOrganization -Name <String> -ResourceGroupName <String> [-Subscript
  [-SingleSignOnPropertyType <String>] [-SingleSignOnPropertyUrl <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-UserEmailAddress <String>] [-UserFirstName <String>]
  [-UserLastName <String>] [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzArizeAiOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzArizeAIOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzArizeAiOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzArizeAIOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,53 +46,25 @@ create a OrganizationResource
 
 ### Example 1: {{ Add title here }}
 ```powershell
-New-AzArizeAiOrganization -Name "test-cli-instance-4" -Location "East US" -ResourceGroupName "QM_clitest_qumulo2_eastus" -SubscriptionId "fc35d936-3b89-41f8-8110-a24b56826c37" -MarketplaceSubscriptionId  "fc35d936-3b89-41f8-8110-a24b56826c37" -OfferDetailOfferId "arize-liftr-0" -OfferDetailPlanId "liftr-test-0" -OfferDetailPlanName "Liftr Test 0" -OfferDetailTermUnit "P1M" -OfferDetailPublisherId "arizeai1657829589668" -OfferDetailTermId "gmz7xq9ge3py" -Tag @{"TestName" = "TestValue"} -UserEmailAddress "aggarwalsw@microsoft.com" -UserFirstName "" -UserLastName "" -UserUpn "aggarwalsw@microsoft.com"
+{{ Add code here }}
 ```
 
 ```output
-Id                                  : /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/QM_clitest_qum
-                                      ulo2_eastus/providers/ArizeAi.ObservabilityEval/organizations/test-cli-instance-4
-IdentityPrincipalId                 :
-IdentityTenantId                    :
-IdentityType                        :
-IdentityUserAssignedIdentity        : {
-                                      }
-Location                            : eastus
-MarketplaceSubscriptionId           : fc35d936-3b89-41f8-8110-a24b56826c37
-MarketplaceSubscriptionStatus       : PendingFulfillmentStart
-Name                                : test-cli-instance-4
-OfferDetailOfferId                  : arize-liftr-0
-OfferDetailPlanId                   : liftr-test-0
-OfferDetailPlanName                 : Liftr Test 0
-OfferDetailPublisherId              : arizeai1657829589668
-OfferDetailTermId                   : gmz7xq9ge3py
-OfferDetailTermUnit                 :
-PartnerPropertyDescription          :
-ProvisioningState                   : Succeeded
-ResourceGroupName                   : QM_clitest_qumulo2_eastus
-SingleSignOnPropertyAadDomain       :
-SingleSignOnPropertyEnterpriseAppId :
-SingleSignOnPropertyState           :
-SingleSignOnPropertyType            :
-SingleSignOnPropertyUrl             :
-SystemDataCreatedAt                 : 3/2/2025 1:54:01 PM
-SystemDataCreatedBy                 : aggarwalsw@microsoft.com
-SystemDataCreatedByType             : User
-SystemDataLastModifiedAt            : 3/2/2025 3:05:11 PM
-SystemDataLastModifiedBy            : aggarwalsw@microsoft.com
-SystemDataLastModifiedByType        : User
-Tag                                 : {
-                                        "TestName": "TestValue"
-                                      }
-Type                                : arizeai.observabilityeval/organizations
-UserEmailAddress                    : aggarwalsw@microsoft.com
-UserFirstName                       :
-UserLastName                        :
-UserPhoneNumber                     :
-UserUpn                             : aggarwalsw@microsoft.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command will create a new Pinecone Resource
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -330,21 +301,6 @@ Description of the Organization's purpose
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

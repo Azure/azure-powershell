@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ArizeAi
-Module Guid: 9a81fadb-6f74-4161-8fdc-561809a06985
+Module Guid: 45e82f9a-80ec-4163-bc39-f7bc3bcb262f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.arizeai
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,15 +11,15 @@ Locale: en-US
 Microsoft Azure PowerShell: ArizeAi cmdlets
 
 ## Az.ArizeAi Cmdlets
-### [Get-AzArizeAiOrganization](Get-AzArizeAiOrganization.md)
+### [Get-AzArizeAIOrganization](Get-AzArizeAIOrganization.md)
 Get a OrganizationResource
 
-### [New-AzArizeAiOrganization](New-AzArizeAiOrganization.md)
+### [New-AzArizeAIOrganization](New-AzArizeAIOrganization.md)
 create a OrganizationResource
 
-### [Remove-AzArizeAiOrganization](Remove-AzArizeAiOrganization.md)
+### [Remove-AzArizeAIOrganization](Remove-AzArizeAIOrganization.md)
 Delete a OrganizationResource
 
-### [Update-AzArizeAiOrganization](Update-AzArizeAiOrganization.md)
+### [Update-AzArizeAIOrganization](Update-AzArizeAIOrganization.md)
 update a OrganizationResource
 

@@ -6,7 +6,7 @@
   },
   "commands": [
     {
-      "name": "Get-AzArizeAiOrganization",
+      "name": "Get-AzArizeAIOrganization",
       "description": "Get a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzArizeAiOrganization",
+      "name": "Remove-AzArizeAIOrganization",
       "description": "Delete a OrganizationResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}",
       "help": {

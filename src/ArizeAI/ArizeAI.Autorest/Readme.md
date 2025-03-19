@@ -70,4 +70,8 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      subject-prefix: ArizeAi(.*)
+    set:
+      subject-prefix: ArizeAI$1
 ```

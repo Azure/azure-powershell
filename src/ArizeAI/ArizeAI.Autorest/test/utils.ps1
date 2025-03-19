@@ -46,7 +46,7 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'QM_clitest_qumulo2_eastus'
     $env.ResourceName = 'test-cli-instance-4'
-    $env.NewResourceName = 'test-cli-instance-test-1'
+    $env.NewResourceName = 'test-arize-instance-test-1'
     $env.Location = "East US"
     $env.SubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
     $env.MarketplaceSubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
@@ -61,7 +61,7 @@ function setupEnv() {
     $env.UserLastName = ""
     $env.UserUpn = "aggarwalsw@microsoft.com"
     $env.DeleteResourceName = "test-cli-instance-test-1"
-
+    
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

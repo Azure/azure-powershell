@@ -1,6 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-Get-AzArizeAiOrganization -ResourceGroupName QM_clitest_qumulo2_eastus
+Get-AzArizeAIOrganization -ResourceGroupName QM_clitest_qumulo2_eastus
 ```
 
 ```output
@@ -50,7 +50,7 @@ This command will get all organization details in a given Resoure group.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-Get-AzArizeAiOrganization -ResourceGroupName QM_clitest_qumulo2_eastus -Name test-instance-cli-1 
+Get-AzArizeAIOrganization -ResourceGroupName QM_clitest_qumulo2_eastus -Name test-instance-cli-1 
 ```
 
 ```output

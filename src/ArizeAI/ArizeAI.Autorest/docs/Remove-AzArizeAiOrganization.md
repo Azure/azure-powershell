@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.arizeai/remove-
 schema: 2.0.0
 ---
 
-# Remove-AzArizeAiOrganization
+# Remove-AzArizeAIOrganization
 
 ## SYNOPSIS
 Delete a OrganizationResource
@@ -14,13 +14,13 @@ Delete a OrganizationResource
 
 ### Delete (Default)
 ```
-Remove-AzArizeAiOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzArizeAIOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzArizeAiOrganization -InputObject <IArizeAiIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzArizeAIOrganization -InputObject <IArizeAiIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,10 +31,25 @@ Delete a OrganizationResource
 
 ### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzArizeAiOrganization -ResourceGroupName QM_clitest_qumulo2_eastus -Name test-instance-cli-1
+{{ Add code here }}
 ```
 
-This command deletes the ArizeAI resource.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

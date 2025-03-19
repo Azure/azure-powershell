@@ -11,15 +11,15 @@ Locale: {{ Update Locale }}
 {{ Fill in the Description }}
 
 ## Az.ArizeAi Cmdlets
-### [Get-AzArizeAiOrganization](Get-AzArizeAiOrganization.md)
+### [Get-AzArizeAIOrganization](Get-AzArizeAIOrganization.md)
 Get a OrganizationResource
 
-### [New-AzArizeAiOrganization](New-AzArizeAiOrganization.md)
+### [New-AzArizeAIOrganization](New-AzArizeAIOrganization.md)
 create a OrganizationResource
 
-### [Remove-AzArizeAiOrganization](Remove-AzArizeAiOrganization.md)
+### [Remove-AzArizeAIOrganization](Remove-AzArizeAIOrganization.md)
 Delete a OrganizationResource
 
-### [Update-AzArizeAiOrganization](Update-AzArizeAiOrganization.md)
+### [Update-AzArizeAIOrganization](Update-AzArizeAIOrganization.md)
 update a OrganizationResource
 
