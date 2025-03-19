@@ -21,7 +21,7 @@
 
 ## Version 8.2.1
 * Supported Enable Metrics when set object replication policy 
-    - `New-AzStorageObjectReplicationPolicyRule`
+    - `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 8.2.0
 * Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
