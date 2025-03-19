@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
                         {"Providers.Test", null},
-                        {"Microsoft.Web", null }
+                        {"Microsoft.Web", null },
+                        {"Microsoft.Websites", null }
                     }
                 )
                 .WithManagementClients(context =>
