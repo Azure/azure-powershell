@@ -138,6 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
+            Console.WriteLine("Check ApiVersion:"+apiVersions.ToString()+" for provider"+ providerNamespace);
             if (apiVersions == null)
             {
                 string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
