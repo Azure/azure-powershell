@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
         {
             if (_ignoreGenericResource &&
                 !requestUri.Contains("providers/") &&
+                !requestUri.Contains("providers?") &&
                 !requestUri.StartsWith("/certificates?", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
