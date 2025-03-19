@@ -35,7 +35,7 @@ Starts applying the recovery point on specified cluster. If LatestProcessedRecov
 
 ### Example 2
 ```powershell
-$currentJob = Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoints $nodeRecoveryPoints
+$currentJob = Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoint $nodeRecoveryPoints
 ```
 
 Starts applying the recovery point on specified cluster and by passing ClusterRecoveryPoint and NodeRecoveryPoints, it will pick the specified recovery points and returns the ASR job used to track the operation.

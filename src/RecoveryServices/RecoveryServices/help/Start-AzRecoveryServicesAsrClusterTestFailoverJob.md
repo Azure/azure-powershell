@@ -36,7 +36,7 @@ Starts a test failover operation for the specified cluster. If LatestProcessedRe
 
 ### Example 2
 ```powershell
-$currentJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId $TestRecoveryNetwork -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoints $nodeRecoveryPoints
+$currentJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId $TestRecoveryNetwork -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoint $nodeRecoveryPoints
 ```
 
 Starts a test failover operation for the specified cluster and by passing ClusterRecoveryPoint and NodeRecoveryPoints, it will pick the specified recovery points and returns the ASR job used to track the operation.

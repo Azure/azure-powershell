@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
              
             if (this.LatestProcessedRecoveryPoint && this.ClusterRecoveryPoint == null)
             {
-                // If LatestProcessedRecoveryPoints flag is passed with no ClusterRecoveryPoint, get latest processed ClusterRecoveryPoint.
+                // If LatestProcessedRecoveryPoint flag is passed with no ClusterRecoveryPoint, get latest processed ClusterRecoveryPoint.
                 this.ClusterRecoveryPoint = Utilities.GetClusterRecoveryPoint(
                     this.RecoveryServicesClient,
                     this.fabricName,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             
             if (this.ClusterRecoveryPoint == null)
             {
-                // If neither ClusterRecoveryPoint is not passed nor LatestProcessedRecoveryPoints flag is passed.
+                // If neither ClusterRecoveryPoint is not passed nor LatestProcessedRecoveryPoint flag is passed.
                 throw new InvalidOperationException(
                     Resources.NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed);
             }
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (LatestProcessedRecoveryPoint)
             {
-                // If LatestProcessedRecoveryPoints flag is passed, get the latest processed NodeRecoveryPoints which are also not being part of passed NodeRecoveryPoints.
+                // If LatestProcessedRecoveryPoint flag is passed, get the latest processed NodeRecoveryPoints which are also not being part of passed NodeRecoveryPoints.
                 this.ListNodeRecoveryPoint.AddRange(Utilities.UpdateNodeRecoveryPoints(
                     this.RecoveryServicesClient,
                     this.ReplicationProtectionCluster,

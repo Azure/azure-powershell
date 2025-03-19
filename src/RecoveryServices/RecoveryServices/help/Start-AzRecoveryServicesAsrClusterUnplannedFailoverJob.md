@@ -36,7 +36,7 @@ Starts a unplanned failover operation for the specified cluster. If LatestProces
 
 ### Example 2
 ```powershell
-$currentJob = Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoints $nodeRecoveryPoints
+$currentJob = Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -ClusterRecoveryPoint $clusterRecoveryPoint -NodeRecoveryPoint $nodeRecoveryPoints
 ```
 
 Starts a unplanned failover operation for the specified cluster and by passing ClusterRecoveryPoint and NodeRecoveryPoints, it will pick the specified recovery points and returns the ASR job used to track the operation.
