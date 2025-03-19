@@ -198,7 +198,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AResyncReplicationProtectionCluster");
         }
 
-        [Fact(Skip = "To be re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReprotectClusterWithoutProtectedItemDetailsTest()
         {

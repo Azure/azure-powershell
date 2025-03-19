@@ -1506,19 +1506,19 @@ function Test-A2AResyncReplicationProtectionCluster{
     Test A2AReprotectClusterWithoutProtectedItemDetails parametersets
 #>
 function Test-A2AReprotectClusterWithoutProtectedItemDetails{
-    $Vault = Get-AzRecoveryServicesVault -Name "vijamishareddisktest" -ResourceGroupName "vijami-alertrg"
+    $Vault = Get-AzRecoveryServicesVault -Name "vijami1903" -ResourceGroupName "vijami-alertrg"
     Set-ASRVaultContext -Vault $Vault
     $fabricName = "asr-a2a-default-eastus2"
     $fabric = Get-AzRecoveryServicesAsrFabric -Name $fabricName
     $pc = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric
     $forwardpcm = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $pc -Name "eastus2-westus-24-hour-retention-policy"
-    $clusterName = "shareddiskcluster"
+    $clusterName = "cluster924"
     $cluster = Get-AzRecoveryServicesAsrReplicationProtectionCluster -Name $clusterName -ProtectionContainer $pc
 
     $storage = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.Storage/storageAccounts/yerp1nvijamitestasrcache"
-    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg"
-    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147/providers/Microsoft.Compute/availabilitySets/SDGQL-AS"
-    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1902225147"
+    $ppg = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924/providers/Microsoft.Compute/proximityPlacementGroups/sdgql-ppg"
+    $avset = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924/providers/Microsoft.Compute/availabilitySets/SDGQL-AS"
+    $rgId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1003165924"
 
     # Without protected item details
     $recoveryFabricName = "asr-a2a-default-westus"
