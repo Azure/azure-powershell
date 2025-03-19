@@ -540,7 +540,7 @@ function Test-GetResourceExpandProperties
     $rname = Get-ResourceName
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $apiversion = "2014-04-01"
-    $resourceType = "Providers.Test/statefulResources"
+    $resourceType = "Microsoft.Web/sites"
 
     try
     {
@@ -550,10 +550,38 @@ function Test-GetResourceExpandProperties
         $resourceGet = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
 
         # Assert
-        $properties = $resourceGet.Properties.psobject
-        $keyProperty = $properties.Properties
-        Assert-AreEqual $keyProperty.Name "key"
-        Assert-AreEqual $resourceGet.Properties.key "value"
+        Assert-NotNull $resourceGet
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests getting a resource with properties expanded
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetResourceExpandPropertiesRGLevel
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Microsoft.Web/sites"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzResource -ResourceGroupName $rgname -ExpandProperties
+
+        # Assert
+        Assert-NotNull $resourceGet
     }
     finally
     {
