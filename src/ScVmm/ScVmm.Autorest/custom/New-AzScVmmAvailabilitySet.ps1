@@ -253,7 +253,7 @@ begin {
                     $PSBoundParameters['ExtendedLocationType'] = $CUSTOM_LOCATION_RESOURCE_TYPE            
                 }
                 catch {
-                    throw "Failed to determine VmmServer resource ARM ID for VmmServer $VmmServer in Resource Group $ResourceGroupName."
+                    throw "Failed to determine VmmServer resource ARM ID for VmmServer $VmmServerName in Resource Group $ResourceGroupName."
                 }
             } else {
                 if ($PSBoundParameters.ContainsKey('CustomLocationId')){

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVMCheckpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVMCheckpoint' {
+Describe 'AzScVmmVMCheckpoint' -Tag 'LiveOnly' {
     It 'NewVMCheckpoint - New-AzScVmmVMCheckpoint' {
         {
             # Update VM calls requires VM to be in powered off state

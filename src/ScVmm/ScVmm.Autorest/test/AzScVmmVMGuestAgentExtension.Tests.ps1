@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVMGuestAgentExtension'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVMGuestAgentExtension' {
+Describe 'AzScVmmVMGuestAgentExtension' -Tag 'LiveOnly' {
     # VM Guest Agent
 
     It 'NewGuestAgent - New-AzScVmmVMGuestAgent' {

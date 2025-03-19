@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVMTemplate'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVMTemplate' {
+Describe 'AzScVmmVMTemplate' -Tag 'LiveOnly'{
     It 'CreateExpanded' {
         {
             $result = New-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupEnableInvTest -VmmServerName $env.VmmServerName -InventoryUuid $env.VmTemplateUuid -Location $env.location
@@ -55,7 +55,7 @@ Describe 'AzScVmmVMTemplate' {
         } | Should -Not -Throw
     }
 
-    It 'CreateExpandedId' {
+    It 'CreateExpandedId' -Tag 'LiveOnly' {
         {
             $InvId = $env.VmmServerEnableInvTestId + '/inventoryItems/' + $env.VmTemplateUuid
             $result = New-AzScVmmVMTemplate -Name $env.VmTemplateName -ResourceGroupName $env.ResourceGroupEnableInvTest -InventoryItemId $InvId -VmmServerId $env.VmmServerEnableInvTestId -CustomLocationId $env.CustomLocationEnableInvTest -Location $env.location

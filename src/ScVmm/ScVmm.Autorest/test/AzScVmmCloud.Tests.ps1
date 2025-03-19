@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmCloud'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmCloud' {
+Describe 'AzScVmmCloud' -Tag 'LiveOnly' {
     It 'CreateExpanded' {
         {
             $result = New-AzScVmmCloud -Name $env.CloudName -ResourceGroupName $env.ResourceGroupEnableInvTest -VmmServerName $env.VmmServerName -InventoryUuid $env.CloudUuid -Location $env.location

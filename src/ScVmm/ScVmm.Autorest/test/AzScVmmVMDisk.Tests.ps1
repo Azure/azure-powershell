@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzScVmmVMDisk'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzScVmmVMDisk' {
+Describe 'AzScVmmVMDisk' -Tag 'LiveOnly' {
     It 'AddVMDisk - Add-AzScVmmVMDisk' {
         {
             Stop-AzScVmmVM -Name $env.VmName -ResourceGroupName $env.ResourceGroupVmTest
