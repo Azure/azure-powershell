@@ -493,14 +493,14 @@ function Save-PackageLocally {
                 $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
             }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
-            $repositoryName = $(Env:\DEFAULT_PS_REPOSITORY_NAME)
+            $repositoryName = ($Env:DEFAULT_PS_REPOSITORY_NAME)
             Get-PSResourceRepository
             Write-Output "Downloading the package from $repositoryName : $PSRepositoryUrl to the path $TempRepoPath"
             # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
             # If the module not found in PSRepositoryUrl, the following command would fail and hence publish to local repo process would fail as well
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 Get-PSResourceRepository
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository Env:\DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg
             } else {
                 Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg 
             }
