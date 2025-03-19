@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01" }
                     },
                     resourceProviders: new Dictionary<string, string>()
+                    {
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null},
+                        {"Providers.Test", null},
+                        {"Microsoft.Web", null }
+                    }
                 )
                 .WithManagementClients(context =>
                     {
