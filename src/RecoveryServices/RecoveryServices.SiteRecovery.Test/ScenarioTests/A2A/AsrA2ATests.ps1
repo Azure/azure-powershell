@@ -1531,9 +1531,6 @@ function Test-A2AReprotectClusterWithoutProtectedItemDetails{
 
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     WaitForJobCompletion -JobId $ReprotectJob.Name
-
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    WaitForIRCompletion -affectedObjectId $ReprotectJob.TargetObjectId
 }
 
 <#
