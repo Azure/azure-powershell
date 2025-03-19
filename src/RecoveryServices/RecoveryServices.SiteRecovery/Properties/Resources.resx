@@ -555,4 +555,19 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="IncorrectParameters" xml:space="preserve">
     <value>Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication </value>
   </data>
+  <data name="NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed" xml:space="preserve">
+    <value>Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed.</value>
+  </data>
+  <data name="WrongIndividualNodeRecoveryPointPassed" xml:space="preserve">
+	<value>User input Recovery Point for {0} or more node is already a part of cluster and is not an individual node.</value>	
+  </data>
+  <data name="ClusterRecoveryPointNotAvailable" xml:space="preserve">
+    <value>Cluster Recovery Point not available for {0}.</value>
+  </data>
+  <data name="InvalidNodeRecoveryPointPassed" xml:space="preserve">
+    <value>Node recovery points passed are not correct.</value>
+  </data>
+  <data name="NoRecoveryPointsFound" xml:space="preserve">
+	<value>No recovery points found for {0} which is part of cluster {1}.</value>	
+  </data>
 </root>
