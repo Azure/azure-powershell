@@ -41,9 +41,9 @@ Creates a protected item mapping object to get target properties (recovery regio
 
 ### Example 1
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure `
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure 
 -ReplicationProtectedItemName $ReplicationProtectedItem -RecoveryResourceGroupId $RGId 
--AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $AvSetId
+-AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $AvSetId 
 -RecoveryProximityPlacementGroupId $PPGId 
 ```
 
@@ -51,7 +51,7 @@ Create a replication protected item mapping object for Azure virtual machine to 
 
 ### Example 2
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure `
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure 
 -ReplicationProtectedItemName $ReplicationProtectedItem -RecoveryResourceGroupId $RGId 
 -RecoveryAvailabilitySetId $AvSetId -RecoveryProximityPlacementGroupId $PPGId 
 ```

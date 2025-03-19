@@ -41,9 +41,9 @@ The **Update-AzRecoveryServicesAsrClusterProtectionDirection** cmdlet updates th
 
 ### Example 1
 ```powershell
-$currentJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $Pcm `
--AzureToAzureReplicationProtectedItemConfig $RpiList -ReplicationProtectionCluster $ReplicationProtectionCluster `
--LogStorageAccountId $StorageAccount -RecoveryResourceGroupId $RgId -RecoveryAvailabilitySetId $AvSetId `
+$currentJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $Pcm 
+-AzureToAzureReplicationProtectedItemConfig $RpiList -ReplicationProtectionCluster $ReplicationProtectionCluster 
+-LogStorageAccountId $StorageAccount -RecoveryResourceGroupId $RgId -RecoveryAvailabilitySetId $AvSetId 
 -RecoveryProximityPlacementGroupId $PpgId
 ```
 
@@ -51,8 +51,8 @@ Start the update direction operation for the specified replication protection cl
 
 ### Example 2
 ```powershell
-$currentJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $Pcm `
--ReplicationProtectionCluster $ReplicationProtectionCluster -LogStorageAccountId $StorageAccount `
+$currentJob = Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $Pcm
+-ReplicationProtectionCluster $ReplicationProtectionCluster -LogStorageAccountId $StorageAccount 
 -RecoveryResourceGroupId $RgId -RecoveryAvailabilitySetId $AvSetId -RecoveryProximityPlacementGroupId $PpgId
 ```
 
