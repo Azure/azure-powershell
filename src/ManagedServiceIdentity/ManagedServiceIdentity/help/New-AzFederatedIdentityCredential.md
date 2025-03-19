@@ -14,29 +14,22 @@ create a federated identity credential under the specified user assigned identit
 
 ### CreateExpanded (Default)
 ```
-New-AzFederatedIdentityCredential -Name <String> -IdentityName <String> -ResourceGroupName <String>
+New-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Audience <String[]>] [-Issuer <String>] [-Subject <String>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
-```
-New-AzFederatedIdentityCredential -Name <String> -IdentityName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
-New-AzFederatedIdentityCredential -Name <String> -IdentityName <String> -ResourceGroupName <String>
+New-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityUserAssignedIdentityExpanded
+### CreateViaJsonString
 ```
-New-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- [-Audience <String[]>] [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>]
+New-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -81,7 +74,7 @@ The list of audiences that can appear in the issued token.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -112,7 +105,7 @@ The name of the identity resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,7 +120,7 @@ The URL of the issuer to be trusted.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -203,7 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,7 +211,7 @@ The identifier of the external identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -233,28 +226,13 @@ The Id of the Subscription to which the identity belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentityInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: CreateViaIdentityUserAssignedIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -293,8 +271,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 
 ## OUTPUTS
 

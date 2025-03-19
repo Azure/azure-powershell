@@ -35,8 +35,6 @@ input-file:
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
 
 subject-prefix: ""
-resourcegroup-append: true
-nested-object-to-string: true
 module-version: 0.3.0
 
 directive:
@@ -63,7 +61,11 @@ directive:
     
   - where:
       subject: UserAssignedIdentity
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: UserAssignedIdentity
+      variant: ^CreateViaIdentity.*$
     remove: true
 
   - where:
@@ -118,7 +120,12 @@ directive:
 
   - where:
       subject: FederatedIdentityCredential
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentityUserAssignedIdentity$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityUserAssignedIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+    
+  - where:
+      subject: FederatedIdentityCredential
+      variant: ^CreateViaIdentity.*$
     remove: true
 
   - where:
