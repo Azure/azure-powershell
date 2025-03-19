@@ -273,6 +273,7 @@ function Get-AllModules {
 
         [switch]$IsNetCore
     )
+    Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
     Write-Host "Getting Azure client modules"
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
     Write-Host  "$clientModules"
@@ -596,7 +597,6 @@ function Add-AllModules {
     )
     $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
     Write-Output "adding modules to local repo"
-    Register-PSResourceRepository -Name $Env:DEFAULT_PS_REPOSITORY_NAME -Uri $Env:DEFAULT_PS_REPOSITORY_URL -Trusted:$True
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
         Write-Output "Adding $module modules to local repo"
