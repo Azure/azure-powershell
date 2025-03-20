@@ -41,10 +41,7 @@ Creates a protected item mapping object to get target properties (recovery regio
 
 ### Example 1
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure
- -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId
- -AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId
--RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId -AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
 ```
 
 Create a replication protected item mapping object for Azure virtual machine to be replicated.
@@ -52,9 +49,7 @@ Used during Azure to Azure re-protect operation for Replication protection clust
 
 ### Example 2
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure
- -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId
- -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
 ```
 
 Create a replication protected item mapping object for Azure virtual machine to be replicated.

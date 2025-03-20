@@ -42,21 +42,14 @@ The **Update-AzRecoveryServicesAsrClusterProtectionDirection** cmdlet updates th
 
 ### Example 1
 ```powershell
-Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure
- -ProtectionContainerMapping $ProtectionContainerMapping
- -AzureToAzureReplicationProtectedItemConfig $RPIList
- -ReplicationProtectionCluster $ReplicationProtectionCluster -LogStorageAccountId $LogStorageAccountId
+Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $ProtectionContainerMapping -AzureToAzureReplicationProtectedItemConfig $RPIList -ReplicationProtectionCluster $ReplicationProtectionCluster -LogStorageAccountId $LogStorageAccountId
 ```
 
 Start the update direction operation for the specified replication protection cluster in target azure region defined by protection container mapping and provided protected item replication configuration.
 
 ### Example 2
 ```powershell
-Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure
- -ProtectionContainerMapping $ProtectionContainerMapping
- -ReplicationProtectionCluster $ReplicationProtectionCluster -RecoveryResourceGroupId $RecoveryResourceGroupId
- -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
- -LogStorageAccountId $LogStorageAccountId
+Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $ProtectionContainerMapping -ReplicationProtectionCluster $ReplicationProtectionCluster -RecoveryResourceGroupId $RecoveryResourceGroupId -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId -LogStorageAccountId $LogStorageAccountId
 ```
 
 Start the update direction operation for the specified replication protection cluster and returns the ASR job object used to track the operation.
