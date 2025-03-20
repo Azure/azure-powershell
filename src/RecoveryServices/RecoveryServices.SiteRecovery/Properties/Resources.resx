@@ -559,7 +559,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
     <value>Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed.</value>
   </data>
   <data name="WrongIndividualNodeRecoveryPointPassed" xml:space="preserve">
-	<value>User input Recovery Point for {0} or more node is already a part of cluster and is not an individual node.</value>	
+	<value>User input Recovery Point for nodes: {0} is/are already a part of cluster and is not an individual node.</value>	
   </data>
   <data name="ClusterRecoveryPointNotAvailable" xml:space="preserve">
     <value>Cluster Recovery Point not available for {0}.</value>

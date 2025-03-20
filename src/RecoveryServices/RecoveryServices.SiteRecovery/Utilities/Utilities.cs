@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Management.Automation;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -624,7 +625,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return diskEncryptionInfo;
         }
-        
+
         /// <summary>
         ///    Get the cluster recovery point.
         /// </summary>
@@ -634,9 +635,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="replicationProtectionClusterName">Replication Protection Cluster Name.</param>
         /// <returns>ASRClusterRecoveryPoint</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        internal static ASRClusterRecoveryPoint GetClusterRecoveryPoint(
+        private static ASRClusterRecoveryPoint GetClusterRecoveryPoint(
             PSRecoveryServicesClient recoveryServicesClient,
-            string fabricName, 
+            string fabricName,
             string protectionContainerName,
             string replicationProtectionClusterName)
         {
@@ -676,7 +677,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="fabricName">Fabric Name.</param>
         /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <exception cref="InvalidOperationException"></exception>
-        internal static void ValidateNodeRecoveryPoints(
+        private static void ValidateNodeRecoveryPoints(
             PSRecoveryServicesClient recoveryServicesClient,
             out HashSet<string> nodesPresentInNodeRecoveryPoints,
             HashSet<string> nodesPresentInClusterRecoveryPoint,
@@ -692,31 +693,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 StringComparer.OrdinalIgnoreCase);
 
             // Get the armId of first node which is present in both NodeRecoveryPoint as well as ClusterRecoveryPoint.
-            var invalidNodeId = nodesPresentInNodeRecoveryPoints
-                .FirstOrDefault(nodeId =>
-                    nodesPresentInClusterRecoveryPoint.Contains(nodeId));
+            var invalidNodeIds = nodesPresentInNodeRecoveryPoints
+                .Where(nodeId =>
+                    nodesPresentInClusterRecoveryPoint.Contains(nodeId))
+                .ToList();
 
-            if (invalidNodeId != null)
+            if (invalidNodeIds.Count > 0)
             {
-                // Get the friendly name of node which is present in both NodeRecoveryPoint as well as ClusterRecoveryPoint.
-                var friendlyName = recoveryServicesClient
-                    .GetAzureSiteRecoveryReplicationProtectedItem(
-                        fabricName,
-                        protectionContainerName,
-                        invalidNodeId)
-                    .Properties
-                    .FriendlyName;
+                // Get the friendly name for all nodes which is present in both NodeRecoveryPoint as well as ClusterRecoveryPoint.
 
-                Logger.Instance.WriteDebug(
-                    string.Format(
-                        "Node {0} with NodeId {1} is present in both Cluster Recovery Point and Node Recovery Point.",
-                        friendlyName,
-                        invalidNodeId));
+                ConcurrentBag<string> nodesfriendlyName = new ConcurrentBag<string>();
+
+                Parallel.ForEach(
+                    invalidNodeIds,
+                    new ParallelOptions { MaxDegreeOfParallelism = 10 },
+                    nodeId =>
+                    {
+                        var friendlyName = recoveryServicesClient
+                            .GetAzureSiteRecoveryReplicationProtectedItem(
+                                fabricName,
+                                protectionContainerName,
+                                nodeId)
+                            .Properties
+                            .FriendlyName;
+                        nodesfriendlyName.Add(friendlyName);
+
+                        Logger.Instance.WriteDebug(
+                            string.Format(
+                                "Node {0} with NodeId {1} is present in both Cluster Recovery Point and Node Recovery Point.",
+                                friendlyName,
+                                nodeId));
+                    });
 
                 throw new InvalidOperationException(
                     string.Format(
                         Resources.WrongIndividualNodeRecoveryPointPassed,
-                        friendlyName));
+                        string.Join(", ", nodesfriendlyName.ToList())));
             }
         }
 
@@ -730,7 +742,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="fabricName">Fabric Name.</param>
         /// <param name="protectionContainerName">Protection Container Name.</param>
         /// <returns>List of recovery points which are not part of cluster recovery point and need to added in node recovery point.</returns>
-        internal static List<string> UpdateNodeRecoveryPoints(
+        private static List<string> UpdateNodeRecoveryPoints(
             PSRecoveryServicesClient recoveryServicesClient,
             ASRReplicationProtectionCluster replicationProtectionCluster,
             HashSet<string> nodesPresentInClusterRecoveryPoint,
@@ -741,7 +753,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             List<string> clusterProtectedItemIds = replicationProtectionCluster.ClusterProtectedItemIds?.Select(
                 node => Utilities.GetValueFromArmId(
                     node,
-                    ARMResourceTypeConstants.ReplicationProtectedItems)).ToList() ?? 
+                    ARMResourceTypeConstants.ReplicationProtectedItems)).ToList() ??
                 new List<string>();
 
             // Gets nodes which are neither present in ClusterRecoveryPoint nor in NodeRecoveryPoint.
@@ -796,6 +808,87 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 });
 
             return newNodeRecoveryPoints.ToList();
+        }
+
+        /// <summary>
+        ///    Validate and get ClusterRecoveryPoint and ListNodeRecoveryPoint.
+        /// </summary>
+        /// <param name="recoveryServicesClient">Recovery Service Client.</param>
+        /// <param name="fabricName">Fabric name.</param>
+        /// <param name="protectionContainerName">Protection container name.</param>
+        /// <param name="replicationProtectionCluster">Replication protection cluster</param>
+        /// <param name="replicationProtectionClusterName">Replication protection cluster name.</param>
+        /// <param name="clusterRecoveryPoint">Cluster Recovery Point.</param>
+        /// <param name="listNodeRecoveryPoint">List of Node Recovery Point.</param>
+        /// <param name="latestProcessedRecoveryPoint">LatestProcessedRecoveryPoint flag.</param>
+        /// <returns>ClusterRecoveryPoint and ListNodeRecoveryPoint.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        internal static (ASRClusterRecoveryPoint ClusterRecoveryPoint, List<string> ListNodeRecoveryPoint) ValidateAndGetClusterAndNodeRecoveryPoint
+            (PSRecoveryServicesClient recoveryServicesClient,
+            string fabricName,
+            string protectionContainerName,
+            ASRReplicationProtectionCluster replicationProtectionCluster,
+            string replicationProtectionClusterName,
+            ASRClusterRecoveryPoint clusterRecoveryPoint,
+            List<string> listNodeRecoveryPoint,
+            SwitchParameter latestProcessedRecoveryPoint)
+        {
+            ASRClusterRecoveryPoint finalClusterRecoveryPoint = clusterRecoveryPoint;
+            List<string> finalNodeRecoveryPoints = listNodeRecoveryPoint;
+            if (clusterRecoveryPoint == null)
+            {
+                if (latestProcessedRecoveryPoint)
+                {
+                    // If LatestProcessedRecoveryPoint flag is passed with no ClusterRecoveryPoint, get latest processed ClusterRecoveryPoint.
+                    finalClusterRecoveryPoint = GetClusterRecoveryPoint(
+                        recoveryServicesClient,
+                        fabricName,
+                        protectionContainerName,
+                        replicationProtectionClusterName);
+                }
+                else
+                {
+                    // If neither ClusterRecoveryPoint is not passed nor LatestProcessedRecoveryPoint flag is passed.
+                    throw new InvalidOperationException(
+                        Resources.NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed);
+                }
+            }
+
+            if (listNodeRecoveryPoint == null)
+            {
+                finalNodeRecoveryPoints = new List<string>();
+            }
+
+            // Get the list of nodes present in cluster recovery point.
+            HashSet<string> nodesPresentInClusterRecoveryPoint = new HashSet<string>(
+                finalClusterRecoveryPoint.Nodes.Select(node => GetValueFromArmId(
+                    node,
+                    ARMResourceTypeConstants.ReplicationProtectedItems)),
+                StringComparer.OrdinalIgnoreCase);
+
+            HashSet<string> nodesPresentInNodeRecoveryPoints;
+            // Validate whether the node recovery points passed are not part of ClusterRecoveryPoint.
+            Utilities.ValidateNodeRecoveryPoints(
+                recoveryServicesClient,
+                out nodesPresentInNodeRecoveryPoints,
+                nodesPresentInClusterRecoveryPoint,
+                finalNodeRecoveryPoints,
+                fabricName,
+                protectionContainerName);
+
+            if (latestProcessedRecoveryPoint)
+            {
+                // If LatestProcessedRecoveryPoint flag is passed, get the latest processed NodeRecoveryPoints which are also not being part of passed NodeRecoveryPoints.
+                finalNodeRecoveryPoints.AddRange(UpdateNodeRecoveryPoints(
+                    recoveryServicesClient,
+                    replicationProtectionCluster,
+                    nodesPresentInClusterRecoveryPoint,
+                    nodesPresentInNodeRecoveryPoints,
+                    fabricName,
+                    protectionContainerName));
+            }
+
+            return (ClusterRecoveryPoint: finalClusterRecoveryPoint, ListNodeRecoveryPoint: finalNodeRecoveryPoints);
         }
     }
 
