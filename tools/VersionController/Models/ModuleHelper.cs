@@ -40,12 +40,11 @@ namespace VersionController.Netcore.Models
             HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
             using (PowerShell powershell = PowerShell.Create())
             {
-                string repository = psRepository;
                 string findModuleScript;
                 
                 if (!string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_URL")))
                 {
-                    repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
+                    string repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
                     findModuleScript = @"
 $secpasswd = ConvertTo-SecureString $Env:DEFAULT_PS_REPOSITORY_PASSWORD -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($Env:DEFAULT_PS_REPOSITORY_USER, $secpasswd)
@@ -60,7 +59,7 @@ Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credent
                 var cmdletResult = powershell.Invoke();
                 foreach (var versionInformation in cmdletResult)
                 {
-                    Console.WriteLine(versionInformation);
+                    System.Console.WriteLine(versionInformation);
                     if (versionInformation.Properties["Version"]?.Value != null)
                     {
                         galleryVersion.Add(new AzurePSVersion(versionInformation.Properties["Version"]?.Value?.ToString()));
