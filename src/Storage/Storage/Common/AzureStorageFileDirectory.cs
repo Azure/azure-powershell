@@ -46,6 +46,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private ShareDirectoryClient privateFileDirClient = null;
 
         /// <summary>
+        /// Share Directory Path
+        /// </summary>
+        public string Path
+        {
+            get
+            {
+                return ShareDirectoryClient.Path;
+            }
+        }
+
+        /// <summary>
         /// XSCL Track2 File properties, will retrieve the properties on server and return to user
         /// </summary>
         public global::Azure.Storage.Files.Shares.Models.ShareDirectoryProperties ShareDirectoryProperties

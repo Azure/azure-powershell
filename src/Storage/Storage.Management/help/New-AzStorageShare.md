@@ -14,9 +14,9 @@ Creates a file share.
 ## SYNTAX
 
 ```
-New-AzStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+New-AzStorageShare [-Name] <String> [-Protocol <String>] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,13 @@ New-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command creates a file share named ContosoShare06.
+
+### Example 2: Create a file share with NFS protocol
+```powershell
+New-AzStorageShare -Name "contososhare07" -Protocol Nfs
+```
+
+This command creates a file share named contososhare07 with NFS protocal.
 
 ## PARAMETERS
 
@@ -113,6 +120,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Protocol
+The protocols to enable for the share.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
