@@ -20,7 +20,7 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
  [-AvailabilitySetName <String[]>] [-ComputerName <String>] [-AdminPassword <SecureString>]
  [-Generation <Int32>] [-CpuCount <Int32>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
  [-DynamicMemoryMinMb <Int32>] [-LimitCpuForMigration] [-MemoryMb <Int32>] [-CheckpointType <String>]
- [-NetworkInterface <INetworkInterface[]>] [-Disk <IVirtualDisk[]>] [-Tags <Hashtable>]
+ [-NetworkInterface <INetworkInterface[]>] [-Disk <IVirtualDisk[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 ```
 New-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -VmmServerName <String> [-InventoryUuid <String>] [-CloudName <String>] [-TemplateName <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedById
@@ -37,7 +37,7 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
  [-ComputerName <String>] [-AdminPassword <SecureString>] [-Generation <Int32>] [-CpuCount <Int32>]
  [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>] [-LimitCpuForMigration]
  [-MemoryMb <Int32>] [-CheckpointType <String>] [-NetworkInterface <INetworkInterface[]>]
- [-Disk <IVirtualDisk[]>] [-Tags <Hashtable>] -VmmServerId <String> -CustomLocationId <String>
+ [-Disk <IVirtualDisk[]>] [-Tag <Hashtable>] -VmmServerId <String> -CustomLocationId <String>
  [-InventoryId <String>] [-CloudId <String>] [-TemplateId <String>] [-AvailabilitySetId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -163,7 +163,8 @@ Create new virtual machine on on-prem SCVMM
 
 ### Example 3: Create new virtual machine using VM Template and customizing few properties
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+$securePassword = ConvertTo-SecureString "******" -AsPlainText -Force
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tag @{"key-1"="value-1234"}
 ```
 
 ```output
@@ -619,7 +620,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

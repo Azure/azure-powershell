@@ -20,9 +20,7 @@ The operation to Update a virtual machine network interface.
 .Description
 The operation to Update a virtual machine network interface.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName 'test-nic-01' -virtualNetworkName "test-vnet1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance

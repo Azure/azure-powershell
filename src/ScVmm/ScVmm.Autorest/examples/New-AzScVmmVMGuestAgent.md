@@ -39,7 +39,6 @@ $JsonStringInput='{
     "provisioningAction": "install"
 }'
 New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $JsonStringInput
-{{ Add code here }}
 ```
 
 ```output

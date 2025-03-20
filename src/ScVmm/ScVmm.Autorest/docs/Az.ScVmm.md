@@ -85,7 +85,7 @@ create a checkpoint in virtual machine.
 The operation to create the extension on a virtual machine where Guest Management is enabled.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
-create GuestAgent.
+Enables Guest Management on the Virtual Machine.
 
 ### [New-AzScVmmVMTemplate](New-AzScVmmVMTemplate.md)
 Onboards the ScVmm VM Template as an Azure VM Template resource.

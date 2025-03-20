@@ -20,9 +20,7 @@ Implements GuestAgent GET method.
 .Description
 Implements GuestAgent GET method.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent

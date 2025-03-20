@@ -20,9 +20,7 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 .Description
 The operation to update a virtual machine (Use separate commands for NIC and Disk update on virtual Machine).
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -CpuCount 4
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance
@@ -124,7 +122,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags},
+    ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -248,17 +246,17 @@ begin {
         if ($null -eq $machineObj) {
             throw "Virtual Machine $Name not found in Resource Group $ResourceGroupName (SubscriptionId $SubscriptionId)"
         }
-        if ($Tags) {
-            $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tags
+        if ($Tag) {
+            $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tag
             if ($null -eq $machineObj) {
-                throw "Failed to update tags for the existing machine resource."
+                throw "Failed to update tag for the existing machine resource."
             }
         }
 
         # Update PSBoundParameters
 
         $PSBoundParameters['MachineId'] = $machineObj.Id
-        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tags')) {
+        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tag')) {
             [void]$PSBoundParameters.Remove($key)
         }
 

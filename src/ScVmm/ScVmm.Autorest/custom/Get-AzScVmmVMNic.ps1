@@ -20,9 +20,9 @@ The operation to Get a virtual machine network interface.
 .Description
 The operation to Get a virtual machine network interface.
 .Example
-{{ Add code here }}
+Get-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01"
 .Example
-{{ Add code here }}
+Get-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName "nic_1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterface

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-create GuestAgent.
+Enables Guest Management on the Virtual Machine.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-create GuestAgent.
+Enables Guest Management on the Virtual Machine by installing GuestAgent.
 
 ## EXAMPLES
 
@@ -78,7 +78,6 @@ $JsonStringInput='{
     "provisioningAction": "install"
 }'
 New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -JsonString $JsonStringInput
-{{ Add code here }}
 ```
 
 ```output

@@ -20,9 +20,9 @@ The operation to Get a virtual machine virtual disk.
 .Description
 The operation to Get a virtual machine virtual disk.
 .Example
-{{ Add code here }}
+Get-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01"
 .Example
-{{ Add code here }}
+Get-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName "disk_1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.VirtualDisk

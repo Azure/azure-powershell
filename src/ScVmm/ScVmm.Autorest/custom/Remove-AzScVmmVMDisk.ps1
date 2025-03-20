@@ -20,9 +20,7 @@ The operation to Remove a virtual machine virtual disk.
 .Description
 The operation to Remove a virtual machine virtual disk.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance

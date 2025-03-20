@@ -1,7 +1,7 @@
 ### Example 1: Create a VMM Server resource.
 ```powershell
 $securePassword = ConvertTo-SecureString "******" -AsPlainText -Force
-New-AzScVmmServer -Name "test-vmmserver-01" -Fqdn "vmmServerFqdn" -Location "eastus" -CredentialsUsername "scvmm-username" -CredentialsPassword $securePassword -Port 8100 -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -CustomLocationId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl"
+New-AzScVmmServer -Name "test-vmmserver-01" -Fqdn "vmmServerFqdn" -Location "eastus" -Username "scvmm-username" -Password $securePassword -Port 8100 -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -CustomLocationId "/subscriptions/00000000-abcd-0000-abcd-000000000000/resourceGroups/test-rg-01/providers/Microsoft.ExtendedLocation/customLocations/test-cl"
 ```
 
 ```output

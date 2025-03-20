@@ -16,13 +16,12 @@
 
 <#
 .Synopsis
-create GuestAgent.
+Enables Guest Management on the Virtual Machine.
 .Description
-create GuestAgent.
+Enables Guest Management on the Virtual Machine by installing GuestAgent.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$securePassword = ConvertTo-SecureString "*****" -AsPlainText -Force
+New-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01" -CredentialsPassword $securePassword -CredentialsUsername 'testUser'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent

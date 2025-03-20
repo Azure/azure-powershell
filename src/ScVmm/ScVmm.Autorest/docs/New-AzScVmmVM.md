@@ -20,14 +20,14 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -Location <String> -Vmm
  [-CheckpointType <String>] [-CloudName <String>] [-ComputerName <String>] [-CpuCount <Int32>]
  [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>]
  [-Generation <Int32>] [-InventoryUuid <String>] [-LimitCpuForMigration] [-MemoryMb <Int32>]
- [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>] [-TemplateName <String>]
+ [-NetworkInterface <INetworkInterface[]>] [-Tag <Hashtable>] [-TemplateName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateByName
 ```
 New-AzScVmmVM -Name <String> -ResourceGroupName <String> -Location <String> -VmmServerName <String>
- [-SubscriptionId <String>] [-CloudName <String>] [-InventoryUuid <String>] [-Tags <Hashtable>]
+ [-SubscriptionId <String>] [-CloudName <String>] [-InventoryUuid <String>] [-Tag <Hashtable>]
  [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ New-AzScVmmVM -Name <String> -ResourceGroupName <String> -CustomLocationId <Stri
  [-AvailabilitySetId <String[]>] [-CheckpointType <String>] [-CloudId <String>] [-ComputerName <String>]
  [-CpuCount <Int32>] [-Disk <IVirtualDisk[]>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>]
  [-DynamicMemoryMinMb <Int32>] [-Generation <Int32>] [-InventoryId <String>] [-LimitCpuForMigration]
- [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tags <Hashtable>] [-TemplateId <String>]
+ [-MemoryMb <Int32>] [-NetworkInterface <INetworkInterface[]>] [-Tag <Hashtable>] [-TemplateId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -165,7 +165,8 @@ Create new virtual machine on on-prem SCVMM
 
 ### Example 3: Create new virtual machine using VM Template and customizing few properties
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+$securePassword = ConvertTo-SecureString "******" -AsPlainText -Force
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tag @{"key-1"="value-1234"}
 ```
 
 ```output
@@ -621,7 +622,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

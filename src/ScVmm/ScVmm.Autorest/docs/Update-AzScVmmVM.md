@@ -17,7 +17,7 @@ The operation to update a virtual machine (Use separate commands for NIC and Dis
 Update-AzScVmmVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AvailabilitySetId <String[]>] [-AvailabilitySetName <String[]>] [-CheckpointType <String>]
  [-CpuCount <Int32>] [-DynamicMemoryEnabled] [-DynamicMemoryMaxMb <Int32>] [-DynamicMemoryMinMb <Int32>]
- [-LimitCpuForMigration] [-MemoryMb <Int32>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-LimitCpuForMigration] [-MemoryMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -377,7 +377,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

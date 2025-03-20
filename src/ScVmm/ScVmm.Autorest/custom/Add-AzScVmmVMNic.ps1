@@ -21,9 +21,7 @@ The operation to Create a virtual machine network interface.
 The operation to Create a virtual machine network interface.
 Use `-virtualNetworkId` to specify the virtual network ARM ID in place of `-virtualNetworkName` in case Virtual Network is enabled in different Resource Group than Virtual Machine.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Add-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName 'test-nic-01' -virtualNetworkName "test-vnet" -macAddressType "Dynamic" -ipv4AddressType "Dynamic"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance

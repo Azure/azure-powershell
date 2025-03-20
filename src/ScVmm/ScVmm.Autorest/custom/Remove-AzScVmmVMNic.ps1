@@ -20,9 +20,7 @@ The operation to Remove a virtual machine network interface.
 .Description
 The operation to Remove a virtual machine network interface.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzScVmmVMNic -vmName "test-vm" -ResourceGroupName "test-rg-01" -NicName 'test-nic-01'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance

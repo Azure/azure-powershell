@@ -50,7 +50,7 @@ To enable resource in a different Resource Group than the one where VMM Server r
 
 ### Example 1: Create a SCVMM Virtual Network resource
 ```powershell
-New-AzScVmmVirtualNetwork -Name "test-vnet" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -VmmServerName "test-vmmserver-01" -Uuid "00000000-1111-0000-0001-000000000000"
+New-AzScVmmVirtualNetwork -Name "test-vnet" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Location "eastus" -VmmServerName "test-vmmserver-01" -InventoryUuid "00000000-1111-0000-0001-000000000000"
 ```
 
 ```output

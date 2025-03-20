@@ -20,9 +20,7 @@ The operation to Update a virtual machine virtual disk.
 .Description
 The operation to Update a virtual machine virtual disk.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzScVmmVMDisk -vmName "test-vm" -ResourceGroupName "test-rg-01" -DiskName 'test-disk-01' -diskSizeGB 40
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance

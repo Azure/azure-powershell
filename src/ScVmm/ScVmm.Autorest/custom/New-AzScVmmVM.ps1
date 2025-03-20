@@ -272,7 +272,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags},
+    ${Tag},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -526,10 +526,10 @@ begin {
             if ($Location -and ($null -ne $machineObj.location -and $machineObj.location -ne $Location)) {
                 throw "The location of the existing Machine cannot be updated. Existing location: $($machineObj.location), Provided location: $Location."
             }
-            if ($Tags) {
-                $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tags
+            if ($Tag) {
+                $machineObj = Az.ScVmm.internal\Update-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Tag $Tag
                 if ($null -eq $machineObj) {
-                    throw "Failed to update tags for the existing machine resource."
+                    throw "Failed to update tag for the existing machine resource."
                 }
             }
         }
@@ -538,8 +538,8 @@ begin {
                 if ($null -eq $Location) {
                     throw "The parent Machine resource does not exist. Location is required while creating a new machine."
                 }
-                if ($Tags) {
-                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Tag $Tags -Kind $MACHINE_KIND_SCVMM
+                if ($Tag) {
+                    $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Tag $Tag -Kind $MACHINE_KIND_SCVMM
                 } else {
                     $machineObj = Az.ScVmm.internal\New-AzScVmmMachine -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Location $Location -Kind $MACHINE_KIND_SCVMM
                 }
@@ -556,7 +556,7 @@ begin {
         # Update PSBoundParameters
 
         $PSBoundParameters['MachineId'] = $machineObj.Id
-        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tags', 'Location')) {
+        foreach ($key in @('Name', 'ResourceGroupName', 'SubscriptionId', 'Tag', 'Location')) {
             [void]$PSBoundParameters.Remove($key)
         }
 

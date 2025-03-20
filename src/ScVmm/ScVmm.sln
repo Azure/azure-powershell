@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScVmm", "ScVmm\ScVmm.csproj", "{8F1EBE02-A595-4A87-9672-C332B3DBB508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScVmm", "ScVmm.Autorest\Az.ScVmm.csproj", "{89654EAE-F56C-44C0-9908-75A9B173C4DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScVmm", "ScVmm.Autorest\Az.ScVmm.csproj", "{C62F8C6D-ED04-4C80-A149-3C54AD3C45CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{8F1EBE02-A595-4A87-9672-C332B3DBB508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F1EBE02-A595-4A87-9672-C332B3DBB508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1EBE02-A595-4A87-9672-C332B3DBB508}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89654EAE-F56C-44C0-9908-75A9B173C4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89654EAE-F56C-44C0-9908-75A9B173C4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89654EAE-F56C-44C0-9908-75A9B173C4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89654EAE-F56C-44C0-9908-75A9B173C4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62F8C6D-ED04-4C80-A149-3C54AD3C45CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62F8C6D-ED04-4C80-A149-3C54AD3C45CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62F8C6D-ED04-4C80-A149-3C54AD3C45CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62F8C6D-ED04-4C80-A149-3C54AD3C45CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D6AED500-9C33-4433-B3CA-7ED0378E2D5F} = {BA575CE4-A31F-490C-894B-58430EA1CF10}

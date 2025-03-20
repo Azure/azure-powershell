@@ -87,7 +87,8 @@ Create new virtual machine on on-prem SCVMM
 
 ### Example 3: Create new virtual machine using VM Template and customizing few properties
 ```powershell
-New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tags @{"key-1"="value-1234"}
+$securePassword = ConvertTo-SecureString "******" -AsPlainText -Force
+New-AzScVmmVM -Name "test-vm" -ResourceGroupName "test-rg-01" -VmmServerName "test-vmm" -Location 'eastus' -CloudName 'test-cloud' -TemplateName 'test-template' -CpuCount 4 -AdminPassword $securePassword -Generation 2 -Tag @{"key-1"="value-1234"}
 ```
 
 ```output
@@ -117,4 +118,3 @@ Virtual Machine resource is returned similar to Example 1. This is useful when w
 ```
 
 Enable existing SCVMM Virtual Machine in Azure
-
