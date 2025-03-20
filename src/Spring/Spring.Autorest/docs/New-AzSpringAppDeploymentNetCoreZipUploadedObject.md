@@ -1,0 +1,114 @@
+---
+external help file:
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringappdeploymentnetcorezipuploadedobject
+schema: 2.0.0
+---
+
+# New-AzSpringAppDeploymentNetCoreZipUploadedObject
+
+## SYNOPSIS
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+
+## SYNTAX
+
+```
+New-AzSpringAppDeploymentNetCoreZipUploadedObject [-NetCoreMainEntryPath <String>] [-RelativePath <String>]
+ [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+
+## EXAMPLES
+
+### Example 1: Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+```powershell
+New-AzSpringAppDeploymentNetCoreZipUploadedObject -NetCoreMainEntryPath aaa -RuntimeVersion 1.0 -RelativePath abc/anc -Version 1.2
+```
+
+```output
+NetCoreMainEntryPath : aaa
+RelativePath         : abc/anc
+RuntimeVersion       : 1.0
+Type                 : NetCoreZip
+Version              : 1.2
+```
+
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+
+## PARAMETERS
+
+### -NetCoreMainEntryPath
+The path to the .NET executable relative to zip root.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelativePath
+Relative path of the storage which stores the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeVersion
+Runtime version of the .Net file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.NetCoreZipUploadedUserSourceInfo
+
+## NOTES
+
+## RELATED LINKS
+
