@@ -591,9 +591,6 @@ Gets the specified NSP linkReference resource.
 ### [Get-AzNetworkSecurityPerimeterLoggingConfiguration](Get-AzNetworkSecurityPerimeterLoggingConfiguration.md)
 Gets the NSP logging configuration.
 
-### [Get-AzNetworkSecurityPerimeterOperationStatus](Get-AzNetworkSecurityPerimeterOperationStatus.md)
-Gets the operation status for the given operation id.
-
 ### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
 Gets the specified NSP profile.
 

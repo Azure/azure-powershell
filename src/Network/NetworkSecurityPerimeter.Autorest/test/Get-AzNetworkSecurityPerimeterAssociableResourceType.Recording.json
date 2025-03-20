@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "b99581a9-d356-4483-8a56-c36e2b70f413" ],
+        "x-ms-client-request-id": [ "d954722b-d33e-4498-a8d2-fcf8b9cdc143" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,13 +25,13 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "54e6ed69-e374-4146-936a-fc9bcd18eba5" ],
-        "x-ms-correlation-request-id": [ "54e6ed69-e374-4146-936a-fc9bcd18eba5" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250320T065642Z:54e6ed69-e374-4146-936a-fc9bcd18eba5" ],
+        "x-ms-request-id": [ "5a5c2d37-6fa0-4872-b605-d5cd4657e349" ],
+        "x-ms-correlation-request-id": [ "5a5c2d37-6fa0-4872-b605-d5cd4657e349" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250320T101719Z:5a5c2d37-6fa0-4872-b605-d5cd4657e349" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5E3DB316D90E4A05AB115728BD140E15 Ref B: MNZ221060608037 Ref C: 2025-03-20T06:56:41Z" ],
-        "Date": [ "Thu, 20 Mar 2025 06:56:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 59159F78F55949D8A8FDF1EC4982F9A3 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:18Z" ],
+        "Date": [ "Thu, 20 Mar 2025 10:17:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5359" ],
@@ -51,7 +51,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "b99581a9-d356-4483-8a56-c36e2b70f413" ],
+        "x-ms-client-request-id": [ "d954722b-d33e-4498-a8d2-fcf8b9cdc143" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,15 +66,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "2678422e-c3b1-4890-845e-e85014c6269b" ],
-        "x-ms-correlation-request-id": [ "2678422e-c3b1-4890-845e-e85014c6269b" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250320T065643Z:2678422e-c3b1-4890-845e-e85014c6269b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "a76b0086-fd8e-4bb4-8c4d-f8dde1bc794a" ],
+        "x-ms-correlation-request-id": [ "a76b0086-fd8e-4bb4-8c4d-f8dde1bc794a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250320T101719Z:a76b0086-fd8e-4bb4-8c4d-f8dde1bc794a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F1132793A69C457899EB9B884C1AC18E Ref B: MNZ221060608037 Ref C: 2025-03-20T06:56:42Z" ],
-        "Date": [ "Thu, 20 Mar 2025 06:56:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 022A36E230AD4BD49E4369AFCC3F865C Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:19Z" ],
+        "Date": [ "Thu, 20 Mar 2025 10:17:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5524" ],
@@ -94,7 +94,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "b99581a9-d356-4483-8a56-c36e2b70f413" ],
+        "x-ms-client-request-id": [ "d954722b-d33e-4498-a8d2-fcf8b9cdc143" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -109,15 +109,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "7c11b6b9-c6a7-4dd0-947a-290841921daa" ],
-        "x-ms-correlation-request-id": [ "7c11b6b9-c6a7-4dd0-947a-290841921daa" ],
-        "x-ms-routing-request-id": [ "EASTUS:20250320T065643Z:7c11b6b9-c6a7-4dd0-947a-290841921daa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "fb97b9e8-eb09-478f-8412-633d8ef61006" ],
+        "x-ms-correlation-request-id": [ "fb97b9e8-eb09-478f-8412-633d8ef61006" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250320T101719Z:fb97b9e8-eb09-478f-8412-633d8ef61006" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 839DEC59DDDC4A2AA10B6974F3586447 Ref B: MNZ221060608037 Ref C: 2025-03-20T06:56:43Z" ],
-        "Date": [ "Thu, 20 Mar 2025 06:56:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3E5F8C476D9D4A1BA9AA82AC8FAA19AB Ref B: MNZ221060609031 Ref C: 2025-03-20T10:17:19Z" ],
+        "Date": [ "Thu, 20 Mar 2025 10:17:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4241" ],
