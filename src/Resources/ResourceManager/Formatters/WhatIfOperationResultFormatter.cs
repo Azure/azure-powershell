@@ -45,11 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             formatter.FormatNoiseNotice();
             formatter.FormatLegend(result.Changes);
-            formatter.FormatResourceChanges(result.Changes, true);
-            formatter.FormatStats(result.Changes, true);
-            formatter.FormatResourceChanges(result.PotentialChanges, false);
-            formatter.FormatStats(result.PotentialChanges, false);
-            formatter.FormatDiagnostics(result.Diagnostics, result.Changes, result.PotentialChanges);
+            formatter.FormatResourceChanges(result.Changes);
+            formatter.FormatStats(result.Changes);
+            formatter.FormatDiagnostics(result.Diagnostics, result.Changes);
 
             return builder.ToString();
         }
@@ -92,19 +90,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
         }
 
-        private void FormatStats(IList<PSWhatIfChange> resourceChanges, bool definiteChanges)
+        private void FormatStats(IList<PSWhatIfChange> resourceChanges)
         {
-            if (definiteChanges)
-            {
-                this.Builder.AppendLine().Append("Resource changes: ");
-            }
-            else if (resourceChanges != null && resourceChanges.Count != 0)
-            {
-                this.Builder.AppendLine().Append("Potential changes: ");
-            } else
-            {
-                return;
-            }
+            this.Builder.AppendLine().Append("Resource changes: ");
 
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
@@ -125,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder.Append(".");
         }
 
-        public void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes, IList<PSWhatIfChange> potentialChanges)
+        public void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes)
         {
             if (changes != null)
             {
@@ -142,24 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
                 }
             }
-
-            if (potentialChanges != null)
-            {
-                var unsupportedChanges = potentialChanges
-                    .Where(c => c.ChangeType == ChangeType.Unsupported)
-                    .ToList();
-
-                if (diagnostics == null)
-                {
-                    diagnostics = new List<DeploymentDiagnosticsDefinition>();
-                }
-                foreach (var change in unsupportedChanges)
-                {
-                    diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
-                }
-            }
-
-
+            
             if (diagnostics == null || diagnostics.Count == 0)
             {
                 return;
@@ -241,7 +212,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     .AppendLine());
         }
 
-        private void FormatResourceChanges(IList<PSWhatIfChange> resourceChanges, bool definiteChanges)
+        private void FormatResourceChanges(IList<PSWhatIfChange> resourceChanges)
         {
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
@@ -250,23 +221,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             int scopeCount = resourceChanges.Select(rc => rc.Scope.ToUpperInvariant()).Distinct().Count();
 
-            if (definiteChanges)
-            {
-                this.Builder
-                    .AppendLine()
-                    .Append("The deployment will update the following ")
-                    .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
-            } else
-            {
-                this.Builder
-                    .AppendLine()
-                    .AppendLine()
-                    .AppendLine()
-                    .Append("The following change MAY OR MAY NOT be deployed to the following ")
-                    .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
-            }
-
-            
+            this.Builder
+                .AppendLine()
+                .Append("The deployment will update the following ")
+                .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
 
             resourceChanges
                 .OrderBy(rc => rc.Scope.ToUpperInvariant())
