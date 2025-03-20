@@ -27,6 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsPa
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("Add new mandatory parameter CertificateSourceParameterTypeName.", "14.0.0", "4.0.0", "2025-05-19")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
