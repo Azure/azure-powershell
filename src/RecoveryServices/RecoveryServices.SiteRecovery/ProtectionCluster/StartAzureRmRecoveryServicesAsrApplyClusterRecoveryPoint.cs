@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -34,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Specifies the recovery point for the cluster.")]
         [ValidateNotNullOrEmpty]
         public ASRClusterRecoveryPoint ClusterRecoveryPoint { get; set; }
 
@@ -53,14 +53,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Specifies the recovery points for the nodes which are not part of cluster recovery point.")]
         [ValidateNotNullOrEmpty]
         public List<string> ListNodeRecoveryPoint { get; set; }
 
         /// <summary>
         ///    Switch parameter to use the latest processed recovery point for failover.
         /// </summary>
-        [Parameter]
+        [Parameter(
+            HelpMessage = "Fetch the latest processed recovery points if not passed for cluster or any individual node.")]
         [Alias("LatestProcessedRecoveryPoints")]
         public SwitchParameter LatestProcessedRecoveryPoint { get; set; }
 
@@ -106,7 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 throw new InvalidOperationException(
                     string.Format(
-                        Resources.UnsupportedReplicationProviderForTestFailover,
+                        Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
                         this.ReplicationProtectionCluster.ReplicationProvider));
             }
 
@@ -115,58 +117,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 ProviderSpecificDetails = new ApplyClusterRecoveryPointProviderSpecificInput()
             };
 
-            if (this.LatestProcessedRecoveryPoint && this.ClusterRecoveryPoint == null)
-            {
-                // If LatestProcessedRecoveryPoint flag is passed with no ClusterRecoveryPoint, get latest processed ClusterRecoveryPoint.
-                this.ClusterRecoveryPoint = Utilities.GetClusterRecoveryPoint(
-                    this.RecoveryServicesClient,
-                    this.fabricName,
-                    this.protectionContainerName,
-                    this.ReplicationProtectionCluster.Name);
-            }
-
-            if (this.ClusterRecoveryPoint == null)
-            {
-                // If neither ClusterRecoveryPoint is not passed nor LatestProcessedRecoveryPoint flag is passed.
-                throw new InvalidOperationException(
-                    Resources.NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed);
-            }
-
-            if (this.ListNodeRecoveryPoint == null)
-            {
-                this.ListNodeRecoveryPoint = new List<string>();
-            }
-
-            // Get the list of nodes present in cluster recovery point.
-            this.nodesPresentInClusterRecoveryPoint = new HashSet<string>(
-                this.ClusterRecoveryPoint.Nodes.Select(node => Utilities.GetValueFromArmId(
-                    node,
-                    ARMResourceTypeConstants.ReplicationProtectedItems)),
-                StringComparer.OrdinalIgnoreCase);
-
-            // Validate whether the node recovery points passed are not part of ClusterRecoveryPoint.
-            Utilities.ValidateNodeRecoveryPoints(
+            var clusterAndNodeRecoveryPoint = Utilities.ValidateAndGetClusterAndNodeRecoveryPoint(
                 this.RecoveryServicesClient,
-                out this.nodesPresentInNodeRecoveryPoints,
-                this.nodesPresentInClusterRecoveryPoint,
-                this.ListNodeRecoveryPoint,
                 this.fabricName,
-                this.protectionContainerName);
+                this.protectionContainerName,
+                this.ReplicationProtectionCluster,
+                this.ReplicationProtectionCluster.Name,
+                this.ClusterRecoveryPoint,
+                this.ListNodeRecoveryPoint,
+                this.LatestProcessedRecoveryPoint);
 
-            if (this.LatestProcessedRecoveryPoint)
-            {
-                // If LatestProcessedRecoveryPoint flag is passed, get the latest processed NodeRecoveryPoints which are also not being part of passed NodeRecoveryPoints.
-                this.ListNodeRecoveryPoint.AddRange(Utilities.UpdateNodeRecoveryPoints(
-                    this.RecoveryServicesClient,
-                    this.ReplicationProtectionCluster,
-                    this.nodesPresentInClusterRecoveryPoint,
-                    this.nodesPresentInNodeRecoveryPoints,
-                    this.fabricName,
-                    this.protectionContainerName));
-            }
-
-            applyClusterRecoveryPointInputProperties.ClusterRecoveryPointId = this.ClusterRecoveryPoint.ID;
-            applyClusterRecoveryPointInputProperties.IndividualNodeRecoveryPoints = this.ListNodeRecoveryPoint; 
+            applyClusterRecoveryPointInputProperties.ClusterRecoveryPointId = clusterAndNodeRecoveryPoint.ClusterRecoveryPoint.ID;
+            applyClusterRecoveryPointInputProperties.IndividualNodeRecoveryPoints = clusterAndNodeRecoveryPoint.ListNodeRecoveryPoint; 
 
             var input = new ApplyClusterRecoveryPointInput { Properties = applyClusterRecoveryPointInputProperties };
 
@@ -195,16 +157,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Name of the Fabric.
         /// </summary>
         private string fabricName;
-
-        /// <summary>
-        ///    Gets or sets the list of individual node recovery points.
-        /// </summary>
-        private HashSet<string> nodesPresentInClusterRecoveryPoint;
-
-        /// <summary>
-        ///     Gets or sets the list of nodes present in nodes recovery points.
-        /// </summary>
-        private HashSet<string> nodesPresentInNodeRecoveryPoints;
 
         #endregion local parameters
     }

@@ -172,11 +172,7 @@ function getClusterPrimaryFabricName{
 }
 
 function getClusterRecoveryResourceGroupName{
-    return "ClusterRG-Vijami-1103115126-asr";
-}
-
-function getClusterVaultResourceGroupName{
-    return "ClusterRG-Vijami-rec-1103115126";
+    return "ClusterRG-Shashank-1903224559-asr";
 }
 
 function getClusterVaultName{

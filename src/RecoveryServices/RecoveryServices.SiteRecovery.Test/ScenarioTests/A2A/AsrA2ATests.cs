@@ -218,7 +218,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-CRGReplication");
         }
 
-        [Fact(Skip = "To be re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AClutserTestFailoverAndFailoverCleanupJob()
         {
@@ -228,7 +228,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ClusterTestFailoverAndFailoverCleanupJob");
         }
 
-        [Fact(Skip = "To be re-recorded")]
+        [Fact(Skip = "to be re-recorded in next revsion.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AClutserUnplannedFailoverJob()
         {
@@ -238,7 +238,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ClusterUnplannedFailoverJob");
         }
 
-        [Fact(Skip = "To be re-recorded")]
+        [Fact(Skip = "to be re-recorded in next revsion.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AApplyClusterRecoveryPoint()
         {
@@ -248,7 +248,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ApplyClusterRecoveryPoint");
         }
 
-        [Fact(Skip = "To be re-recorded")]
+        [Fact(Skip = "to be re-recorded in next revsion.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AClusterCommitFailoverJob()
         {

@@ -24,18 +24,17 @@
 function Test-ClusterTestFailoverAndFailoverCleanupJob {
     $primaryContainerName = getClusterPrimaryContainerName
     $primaryFabricName = getClusterPrimaryFabricName
-    $vaultResourceGroupName = getClusterVaultResourceGroupName
     $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
     $vaultName = getClusterVaultName
     $clusterName = getClusterName
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultResourceGroupName -Name $vaultName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
     Set-ASRVaultContext -Vault $Vault
     $primaryFabric = get-asrFabric -Name $primaryFabricName
     $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
     $protectionCluster = get-ASRReplicationProtectionCluster -ProtectionContainer $protectionContainer -Name $clusterName
 
     #TFO
-    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -LatestProcessedRecoveryPoint
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -LatestProcessedRecoveryPoint
 
     WaitForJobCompletion -JobId $tfoJob.Name
     #Get recovery vm and verify
@@ -47,15 +46,15 @@ function Test-ClusterTestFailoverAndFailoverCleanupJob {
 
     WaitForJobCompletion -JobId $tfoCleanupJob.Name
     #Get recovery vm will give exception
-    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Vijami-1103115126-asr' was not found."
+    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Shashank-1903224559-asr' was not found."
 
     #Get ClusterRecoveryPoint
     $clusterRecoveryPoints = Get-AzRecoveryServicesAsrClusterRecoveryPoint -ReplicationProtectionCluster $protectionCluster
     #Node Recovery Point
-    $nodeRecoveryPoints = @("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-rec-1103115126/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/6dad6744-ee36-55e2-a77e-92e5bdcd088e/replicationProtectedItems/L1MqErJJvLX_0U05A1X2PfCN988iqFOo6ymNnyOoxhE/recoveryPoints/85c908c4-9a0a-40aa-a3b1-1975c9ca27bf")
+    $nodeRecoveryPoints = @("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.RecoveryServices/vaults/powershell-cluster-vault/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/8fbcf43b-798e-57f3-9c82-a2c5d9af7541/replicationProtectedItems/20yNCJytW0HBUYGHL4YEigFgyjgmh2u_Bm7QQ-_YqY0/recoveryPoints/c7a79558-a464-4ba9-90e9-13b91860570c")
     
     #TFO
-    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Vijami-1103115126-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -ClusterRecoveryPoint $clusterRecoveryPoints[-1] -ListNodeRecoveryPoint $nodeRecoveryPoints
+    $tfoJob = Start-AzRecoveryServicesAsrClusterTestFailoverJob -ReplicationProtectionCluster $protectionCluster -Direction PrimaryToRecovery -AzureVMNetworkId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ClusterRG-Shashank-1903224559-asr/providers/Microsoft.Network/virtualNetworks/adVNET-asr" -ClusterRecoveryPoint $clusterRecoveryPoints[-1] -ListNodeRecoveryPoint $nodeRecoveryPoints
 
     WaitForJobCompletion -JobId $tfoJob.Name
     #Get recovery vm and verify
@@ -66,7 +65,7 @@ function Test-ClusterTestFailoverAndFailoverCleanupJob {
 
     WaitForJobCompletion -JobId $tfoCleanupJob.Name
     #Get recovery vm will give exception
-    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Vijami-1103115126-asr' was not found."
+    Assert-ThrowsContains { get-azVm -ResourceGroupName $recoveryResourceGroupName -Name "sdgql1-test"} "The Resource 'Microsoft.Compute/virtualMachines/sdgql1-test' under resource group 'ClusterRG-Shashank-1903224559-asr' was not found."
 }
 
 <#
@@ -77,10 +76,9 @@ function Test-ClusterUnplannedFailoverJob {
     $primaryContainerName = getClusterPrimaryContainerName
     $primaryFabricName = getClusterPrimaryFabricName
     $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
-    $vaultResourceGroupName = getClusterVaultResourceGroupName
     $vaultName = getClusterVaultName
     $clusterName = getClusterName
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultResourceGroupName -Name $vaultName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
     Set-ASRVaultContext -Vault $Vault
     $primaryFabric = get-asrFabric -Name $primaryFabricName
     $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
@@ -102,10 +100,9 @@ function Test-ApplyClusterRecoveryPoint {
     $primaryContainerName = getClusterPrimaryContainerName
     $primaryFabricName = getClusterPrimaryFabricName
     $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
-    $vaultResourceGroupName = getClusterVaultResourceGroupName
     $vaultName = getClusterVaultName
     $clusterName = getClusterName
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultResourceGroupName -Name $vaultName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
     Set-ASRVaultContext -Vault $Vault
     $primaryFabric = get-asrFabric -Name $primaryFabricName
     $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric
@@ -127,10 +124,9 @@ function Test-ClusterCommitFailoverJob {
     $primaryContainerName = getClusterPrimaryContainerName
     $primaryFabricName = getClusterPrimaryFabricName
     $recoveryResourceGroupName = getClusterRecoveryResourceGroupName
-    $vaultResourceGroupName = getClusterVaultResourceGroupName
     $vaultName = getClusterVaultName
     $clusterName = getClusterName
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultResourceGroupName -Name $vaultName
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryResourceGroupName -Name $vaultName
     Set-ASRVaultContext -Vault $Vault
     $primaryFabric = get-asrFabric -Name $primaryFabricName
     $protectionContainer = get-asrProtectionContainer -Name $primaryContainerName -Fabric $primaryFabric

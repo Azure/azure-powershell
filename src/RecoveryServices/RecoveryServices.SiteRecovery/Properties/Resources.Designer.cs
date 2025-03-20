@@ -1399,7 +1399,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User input Recovery Point for {0} or more node is already a part of cluster and is not an individual node..
+        ///   Looks up a localized string similar to User input Recovery Point for nodes: {0} is/are already a part of cluster and is not an individual node..
         /// </summary>
         internal static string WrongIndividualNodeRecoveryPointPassed {
             get {
