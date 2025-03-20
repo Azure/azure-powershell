@@ -52,6 +52,7 @@ Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credent
                 }
                 else
                 {
+                    string repository = "PSGallery";
                     findModuleScript = $"Find-PSResource -Name {moduleName} -Repository {repository} -Prerelease";
                 }
                 
