@@ -1,3 +1,18 @@
+## 13.4.0 - April 2025
+#### Az.Accounts 4.0.2 
+* Modified cmdlet `Remove-AzContext`
+   - Removed parameter `-Name`
+* Modified cmdlet `Rename-AzContext`
+   - Removed parameters `-SourceName`, `-TargetName`
+* Modified cmdlet `Select-AzContext`
+   - Removed parameter `-Name`
+#### Az.CognitiveServices 1.16.0 
+* Modified cmdlet `New-AzCognitiveServicesAccountDeployment`
+   - Added parameter `-Tag`
+* Modified cmdlet `New-AzCognitiveServicesObject`
+   - Added parameter `-AsList`
+* Added cmdlet `Get-AzCognitiveServicesAccountDefenderForAISetting`, `Get-AzCognitiveServicesAccountDeploymentSku`, `Get-AzCognitiveServicesAccountRaiBlocklist`, `Get-AzCognitiveServicesAccountRaiBlocklistItem`, `Get-AzCognitiveServicesAccountRaiPolicy`, `Get-AzCognitiveServicesModelCapacity`, `Get-AzCognitiveServicesRaiContentFilter`, `New-AzCognitiveServicesAccountDefenderForAISetting`, `New-AzCognitiveServicesAccountRaiBlocklist`, `New-AzCognitiveServicesAccountRaiBlocklistItem`, `New-AzCognitiveServicesAccountRaiPolicy`, `Remove-AzCognitiveServicesAccountRaiBlocklist`, `Remove-AzCognitiveServicesAccountRaiBlocklistItem`, `Remove-AzCognitiveServicesAccountRaiPolicy`
+
 ## 13.3.0 - March 2025
 #### Az.CosmosDB 1.17.0 
 * Added cmdlet `Get-AzCosmosDBTableRoleAssignment`, `Get-AzCosmosDBTableRoleDefinition`, `New-AzCosmosDBTableRoleAssignment`, `New-AzCosmosDBTableRoleDefinition`, `Remove-AzCosmosDBTableRoleAssignment`, `Remove-AzCosmosDBTableRoleDefinition`, `Update-AzCosmosDBTableRoleAssignment`, `Update-AzCosmosDBTableRoleDefinition`
@@ -425,6 +440,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
 
 
 

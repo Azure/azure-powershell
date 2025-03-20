@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.9.1
 * Fixed the issue that Get-AzReource not working with `-ExpandProperties`. [#11248]
 * Updated Resources SDK to 2024-11-01.
 
