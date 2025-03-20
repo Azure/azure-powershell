@@ -1,59 +1,64 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterloggingconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeteroperationstatus
 schema: 2.0.0
 ---
 
-# Get-AzNetworkSecurityPerimeterLoggingConfiguration
+# Get-AzNetworkSecurityPerimeterOperationStatus
 
 ## SYNOPSIS
-Gets the NSP logging configuration.
+Gets the operation status for the given operation id.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkSecurityPerimeterOperationStatus -Location <String> -OperationId <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
+Get-AzNetworkSecurityPerimeterOperationStatus -InputObject <INetworkSecurityPerimeterIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityNetworkSecurityPerimeter
+### GetViaIdentityLocation
 ```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkSecurityPerimeterOperationStatus -LocationInputObject <INetworkSecurityPerimeterIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the NSP logging configuration.
+Gets the operation status for the given operation id.
 
 ## EXAMPLES
 
-### Example 1: Get the Network security perimeter logging configuration
+### Example 1: Get the Network security perimeter operation status
 ```powershell
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterOperationStatus -Location eastus2euap -OperationId 1e368a97-a861-480f-81bf-bbefba34c4b1 -SubscriptionId e82485c6-11f7-4775-8266-0e2c4e78ee25
 ```
 
 ```output
-EnabledLogCategory           Name
-------------------           ----
-{NspPublicInboundPerimeterRulesAllowed} instance
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 3/12/2025 8:42:00 AM
+Id                : /subscriptions/e82485c6-11f7-4775-8266-0e2c4e78ee25/providers/Microsoft.Network/locations/eastus2euap/networkSecurityPerimeterOperationStatuses/e368a97-a861-480f-81bf-bbefba34c4b1
+Message           :
+Name              : e368a97-a861-480f-81bf-bbefba34c4b1
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+ResourceId        :
+StartTime         : 3/12/2025 8:41:56 AM
+Status            : Succeeded
+Target            :
 ```
 
-Get the Network security perimeter logging configuration
+Get the Network security perimeter operation status
+
 
 ## PARAMETERS
 
@@ -88,28 +93,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the NSP logging configuration.
-Accepts 'instance' as name.
+### -Location
+The location of network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNetworkSecurityPerimeter
-Aliases: LoggingConfigurationName
+Parameter Sets: Get
+Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: "instance"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkSecurityPerimeterInputObject
+### -LocationInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: GetViaIdentityNetworkSecurityPerimeter
+Parameter Sets: GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -119,28 +123,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -OperationId
+The operation id of the async operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityLocation
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityPerimeterName
-The name of the network security perimeter.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases: NetworkSecurityPerimeterName, NSPName
 
 Required: True
 Position: Named
@@ -155,7 +144,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -174,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IOperationStatusResult
 
 ## NOTES
 

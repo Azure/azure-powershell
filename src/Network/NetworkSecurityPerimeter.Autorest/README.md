@@ -34,8 +34,8 @@ require:
 commit: main
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/karthik-gumpu/azure-rest-api-specs/blob/1157b624230057f092736cfcc3374cca5b33a999/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
-  #- E:\Code\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/ce17f4afbeb608bf93c53939fbad155c5859ebf6/specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/networkSecurityPerimeter.json
+  #- E:\Code\azure-rest-api-specs\specification\network\resource-manager\Microsoft.Network\stable\2024-07-01\networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -58,12 +58,13 @@ directive:
 #  - where:
 #      variant: ^Create$|^CreateViaIdentityExpanded$
 #    remove: true
+  
   # Hide Reconcile apis
   - where:
-      subject: NspAccessRulesReconcile
+      subject: ReconcileNetworkSecurityPerimeterAccessRule
     remove: true
   - where:
-      subject: NspAssociationReconcile
+      subject: ReconcileNetworkSecurityPerimeterAssociation
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -77,33 +78,42 @@ directive:
       variant: ^CreateViaIdentity$
     hide: true
   - where:
-      subject: NetworkSecurityPerimeter
+      subject: NetworkSecurityPerimeterProfile
     set:
       subject-prefix: ''
   - where:
-      subject: NspProfile
+      subject: NetworkSecurityPerimeterAccessRule
     set:
-      subject: Profile
+      subject-prefix: ''
   - where:
-      subject: NspAccessRule
+      subject: NetworkSecurityPerimeterAssociation
     set:
-      subject: AccessRule
+      subject-prefix: ''
   - where:
-      subject: NspAssociation
+      subject: NetworkSecurityPerimeterLink
     set:
-      subject: Association
+      subject-prefix: ''
   - where:
-      subject: NspLink
+      subject: NetworkSecurityPerimeterLinkReference
     set:
-      subject: Link
+      subject-prefix: ''
   - where:
-      subject: NspLinkReference
+      subject: NetworkSecurityPerimeterLoggingConfiguration
     set:
-      subject: LinkReference
+      subject-prefix: ''
   - where:
-      subject: NspLoggingConfiguration
+      subject: NetworkSecurityPerimeterAssociableResourceType
     set:
-      subject: LoggingConfiguration
+      subject-prefix: ''
+  - where:
+      subject: NetworkSecurityPerimeterOperationStatuses
+    set:
+      subject-prefix: ''
+      subject: NetworkSecurityPerimeterOperationStatus
+  - where:
+      subject: NetworkSecurityPerimeter
+    set:
+      subject-prefix: ''
 
 # Parameter Update
 # NSP
@@ -125,7 +135,7 @@ directive:
 
 # Profile
   - where:
-      subject: Profile
+      subject: NetworkSecurityPerimeterProfile
       parameter-name: ProfileName
     set:
       parameter-name: Name
@@ -133,7 +143,7 @@ directive:
         - ProfileName
 
   - where:
-      subject: Profile
+      subject: NetworkSecurityPerimeterProfile
       parameter-name: Id
     set:
       parameter-name: ProfileId
@@ -141,7 +151,7 @@ directive:
         - Id
 
   - where:
-      subject: Profile
+      subject: NetworkSecurityPerimeterProfile
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -151,7 +161,7 @@ directive:
 
 # AccessRule
   - where:
-      subject: AccessRule
+      subject: NetworkSecurityPerimeterAccessRule
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -160,7 +170,7 @@ directive:
         - NSPName
 
   - where:
-      subject: AccessRule
+      subject: NetworkSecurityPerimeterAccessRule
       parameter-name: Id
     set:
       parameter-name: AccessRuleId
@@ -168,7 +178,7 @@ directive:
         - Id
 
   - where:
-      subject: AccessRule
+      subject: NetworkSecurityPerimeterAccessRule
       parameter-name: ProfileName
     set:
       parameter-name: ProfileName
@@ -177,7 +187,7 @@ directive:
         - NSPProfileName
 
   - where:
-      subject: AccessRule
+      subject: NetworkSecurityPerimeterAccessRule
       parameter-name: AccessRuleName
     set:
       parameter-name: Name
@@ -185,14 +195,14 @@ directive:
         - AccessRuleName
 
   - where:
-      subject: AccessRule
+      subject: NetworkSecurityPerimeterAccessRule
       parameter-name: NetworkSecurityPerimeter
     set:
       parameter-name: Perimeter
 
 # Association
   - where:
-      subject: Association
+      subject: NetworkSecurityPerimeterAssociation
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -201,7 +211,7 @@ directive:
         - NSPName
 
   - where:
-      subject: Association
+      subject: NetworkSecurityPerimeterAssociation
       parameter-name: ProfileName
     set:
       parameter-name: ProfileName
@@ -210,7 +220,7 @@ directive:
         - NSPProfileName
 
   - where:
-      subject: Association
+      subject: NetworkSecurityPerimeterAssociation
       parameter-name: AssociationName
     set:
       parameter-name: Name
@@ -218,7 +228,7 @@ directive:
         - AssociationName
 
   - where:
-      subject: Association
+      subject: NetworkSecurityPerimeterAssociation
       parameter-name: Id
     set:
       parameter-name: AssociationId
@@ -227,7 +237,7 @@ directive:
 
 # Link
   - where:
-      subject: Link
+      subject: NetworkSecurityPerimeterLink
       parameter-name: LinkName
     set:
       parameter-name: Name
@@ -235,7 +245,7 @@ directive:
         - LinkName
 
   - where:
-      subject: Link
+      subject: NetworkSecurityPerimeterLink
       parameter-name: Id
     set:
       parameter-name: LinkId
@@ -243,7 +253,7 @@ directive:
         - Id
 
   - where:
-      subject: Link
+      subject: NetworkSecurityPerimeterLink
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -253,7 +263,7 @@ directive:
 
 # LinkReference
   - where:
-      subject: LinkReference
+      subject: NetworkSecurityPerimeterLinkReference
       parameter-name: LinkReferenceName
     set:
       parameter-name: Name
@@ -261,7 +271,7 @@ directive:
         - LinkReferenceName
 
   - where:
-      subject: LinkReference
+      subject: NetworkSecurityPerimeterLinkReference
       parameter-name: Id
     set:
       parameter-name: LinkReferenceId
@@ -269,7 +279,7 @@ directive:
         - Id
 
   - where:
-      subject: LinkReference
+      subject: NetworkSecurityPerimeterLinkReference
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -279,7 +289,7 @@ directive:
 
 # LoggingConfiguration
   - where:
-      subject: LoggingConfiguration
+      subject: NetworkSecurityPerimeterLoggingConfiguration
       parameter-name: LoggingConfigurationName
     set:
       parameter-name: Name
@@ -287,7 +297,7 @@ directive:
         - LoggingConfigurationName
 
   - where:
-      subject: LoggingConfiguration
+      subject: NetworkSecurityPerimeterLoggingConfiguration
       parameter-name: Id
     set:
       parameter-name: LoggingConfigurationId
@@ -295,7 +305,7 @@ directive:
         - Id
 
   - where:
-      subject: LoggingConfiguration
+      subject: NetworkSecurityPerimeterLoggingConfiguration
       parameter-name: NetworkSecurityPerimeterName
     set:
       parameter-name: SecurityPerimeterName
@@ -304,7 +314,7 @@ directive:
         - NSPName
 
   - where:
-      subject: LoggingConfiguration
+      subject: NetworkSecurityPerimeterLoggingConfiguration
       parameter-name: Name
     set:
       default:
