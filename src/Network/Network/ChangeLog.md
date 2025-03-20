@@ -28,6 +28,15 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter crud operations
+    - Cmdlets for NetworkSecurityPerimeter profile crud operations
+    - Cmdlets for NetworkSecurityPerimeter association crud operations
+    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
+    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
