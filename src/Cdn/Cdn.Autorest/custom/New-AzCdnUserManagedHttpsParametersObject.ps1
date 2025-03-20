@@ -94,4 +94,3 @@ function New-AzCdnUserManagedHttpsParametersObject {
         return $Object
     }
 }
-

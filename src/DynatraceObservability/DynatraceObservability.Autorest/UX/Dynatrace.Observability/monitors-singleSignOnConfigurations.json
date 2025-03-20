@@ -1,6 +1,6 @@
 {
   "resourceType": "monitors/singleSignOnConfigurations",
-  "apiVersion": "2021-09-01",
+  "apiVersion": "2023-04-27",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability"
   },

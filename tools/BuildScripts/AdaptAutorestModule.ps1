@@ -207,6 +207,7 @@ try{
 
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
+            New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
         }
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
@@ -244,3 +245,8 @@ if ($existingCsprojPath) {
     Create or refresh generate-info.json for submodule
 #>
 New-GenerateInfoJson -GeneratedDirectory $subModulePath
+
+<#
+    Update module in tools\CreateMappings_rules.json
+#>
+Update-MappingJson -RepoRoot $RepoRoot -ModuleName $ModuleRootName

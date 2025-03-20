@@ -19,5 +19,6 @@ namespace AzDev.Services
     internal interface ICodebaseProvider
     {
         Codebase GetCodebase();
+        void SetLogger(ILogger logger);
     }
 }
