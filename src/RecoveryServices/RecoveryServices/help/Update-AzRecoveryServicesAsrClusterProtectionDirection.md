@@ -8,21 +8,12 @@ schema: 2.0.0
 # Update-AzRecoveryServicesAsrClusterProtectionDirection
 
 ## SYNOPSIS
-Updates the replication direction for the specified replication protection cluster. 
+Updates the replication direction for the specified replication protection cluster.
 Used to re-protect/reverse replicate a failed over replication protection cluster.
 
 ## SYNTAX
 
-### AzureToAzure (Default)
-```
-Update-AzRecoveryServicesAsrClusterProtectionDirection [-AzureToAzure]
- -ProtectionContainerMapping <ASRProtectionContainerMapping>
- -AzureToAzureReplicationProtectedItemConfig <ASRAzureToAzureReplicationProtectedItemConfig[]>
- -ReplicationProtectionCluster <ASRReplicationProtectionCluster> -LogStorageAccountId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureToAzureWithoutProtectedItemDetails
+### AzureToAzureWithoutProtectedItemDetails (Default)
 ```
 Update-AzRecoveryServicesAsrClusterProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping>
@@ -35,6 +26,16 @@ Update-AzRecoveryServicesAsrClusterProtectionDirection [-AzureToAzure]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureToAzure
+```
+Update-AzRecoveryServicesAsrClusterProtectionDirection [-AzureToAzure]
+ -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ -AzureToAzureReplicationProtectedItemConfig <ASRAzureToAzureReplicationProtectedItemConfig[]>
+ -ReplicationProtectionCluster <ASRReplicationProtectionCluster> -RecoveryResourceGroupId <String>
+ -LogStorageAccountId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Update-AzRecoveryServicesAsrClusterProtectionDirection** cmdlet updates the replication direction for the specified Azure Site Recovery protection cluster object after the completion of a commit failover operation.
 
@@ -42,17 +43,19 @@ The **Update-AzRecoveryServicesAsrClusterProtectionDirection** cmdlet updates th
 
 ### Example 1
 ```powershell
-Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $ProtectionContainerMapping -AzureToAzureReplicationProtectedItemConfig $RPIList -ReplicationProtectionCluster $ReplicationProtectionCluster -LogStorageAccountId $LogStorageAccountId
+Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ReplicationProtectionCluster $cluster -RecoveryProximityPlacementGroupId $ppg -RecoveryAvailabilitySetId $avset -RecoveryResourceGroupId $rgId -LogStorageAccountId $storage -ProtectionContainerMapping $recoverypcm
 ```
 
-Start the update direction operation for the specified replication protection cluster in target azure region defined by protection container mapping and provided protected item replication configuration.
+
+Start the update direction operation for the specified replication protection cluster in target azure region defined by protection container mapping without protected item replication configuration.
 
 ### Example 2
 ```powershell
-Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ProtectionContainerMapping $ProtectionContainerMapping -ReplicationProtectionCluster $ReplicationProtectionCluster -RecoveryResourceGroupId $RecoveryResourceGroupId -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId -LogStorageAccountId $LogStorageAccountId
+Update-AzRecoveryServicesAsrClusterProtectionDirection -AzureToAzure -ReplicationProtectionCluster $cluster -AzureToAzureReplicationProtectedItemConfig $rpis -LogStorageAccountId $storage -ProtectionContainerMapping $recoverypcm -RecoveryResourceGroupId $rgId
 ```
 
-Start the update direction operation for the specified replication protection cluster and returns the ASR job object used to track the operation.
+
+Start the update direction operation for the specified replication protection cluster in target azure region defined by protection container mapping with protected item replication configuration.
 
 ## PARAMETERS
 
@@ -72,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureReplicationProtectedItemConfig
-Specifies the replication protected item configuration for disaster recovery.
+Specifies the list of all replication protected items available in protection cluster.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzureToAzureReplicationProtectedItemConfig[]
@@ -179,7 +182,6 @@ Accept wildcard characters: False
 ### -ProtectionContainerMapping
 Protection container Mapping to be used for replication.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping
 Parameter Sets: (All)
@@ -272,7 +274,7 @@ Recovery resourceGroup id for protected Vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureToAzureWithoutProtectedItemDetails
+Parameter Sets: (All)
 Aliases:
 
 Required: True

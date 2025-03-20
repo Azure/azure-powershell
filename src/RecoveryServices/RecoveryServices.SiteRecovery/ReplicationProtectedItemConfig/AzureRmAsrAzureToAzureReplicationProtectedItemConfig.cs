@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery replication protected item configuration for A2A replication.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig", DefaultParameterSetName = ASRParameterSets.AzureToAzure,SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig", DefaultParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, SupportsShouldProcess = true)]
     [Alias("New-ASRAzureToAzureReplicationProtectedItemConfig")]
     [OutputType(typeof(ASRAzureToAzureReplicationProtectedItemConfig))]
     public class AzureRmAsrAzureToAzureReplicationProtectedItemConfig : SiteRecoveryCmdletBase
@@ -32,11 +32,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = true)]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails,
-            Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AzureToAzure { get; set; }
+        public SwitchParameter ManagedDisk { get; set; }
 
         /// <summary>
         ///     Gets or sets the replication protected item name.

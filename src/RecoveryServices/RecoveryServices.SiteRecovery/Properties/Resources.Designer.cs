@@ -324,6 +324,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster doesn&apos;t contain protected items..
+        /// </summary>
+        internal static string InvalidClusterInputWithoutProtectedItems {
+            get {
+                return ResourceManager.GetString("InvalidClusterInputWithoutProtectedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid direction for Azure To VMWare.
         /// </summary>
         internal static string InvalidDirectionForAzureToVMWare {
@@ -338,6 +347,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string InvalidDirectionForVMWareToAzure {
             get {
                 return ResourceManager.GetString("InvalidDirectionForVMWareToAzure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input does not contain information of all nodes that are part of the cluster..
+        /// </summary>
+        internal static string InvalidInputForAllNodesInCluster {
+            get {
+                return ResourceManager.GetString("InvalidInputForAllNodesInCluster", resourceCulture);
             }
         }
         
@@ -938,7 +956,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Message: Invalid JobId parameter. The resume job operation cannot be performed on the TestFailover job with Job Id {0} as the operation has already reached a terminal state. To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.
         ///Possible Causes: The resume job operation is not allowed on this Job.
-        ///Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the tes [rest of string was truncated]&quot;;.
+        ///Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ResumeTFOJobNotSupported {
             get {

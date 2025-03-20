@@ -229,6 +229,16 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AReprotectClusterWithoutProtectedItemDetails");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AReprotectClusterWithProtectedItemDetailsTest()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AReprotectClusterWithProtectedItemDetails");
+        }
+
         [Fact(Skip = "Needs investigation, no suitable capacity reservation SKU found in eastus2euap or centraluseuap.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ACRGReplication()

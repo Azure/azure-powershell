@@ -12,25 +12,25 @@ Creates a replication protected item mapping object for Azure virtual machine to
 
 ## SYNTAX
 
-### AzureToAzure (Default)
+### AzureToAzureWithoutDiskDetails (Default)
 ```
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig [-AzureToAzure]
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -ReplicationProtectedItemName <String>
+ -RecoveryResourceGroupId <String> [-RecoveryAvailabilitySetId <String>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-RecoveryAvailabilityZone <String>]
+ [-RecoveryProximityPlacementGroupId <String>] [-RecoveryVirtualMachineScaleSetId <String>]
+ [-RecoveryCapacityReservationGroupId <String>] [-DiskEncryptionVaultId <String>]
+ [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureToAzure
+```
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig [-ManagedDisk]
  -ReplicationProtectedItemName <String> -RecoveryResourceGroupId <String>
  -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
  [-RecoveryAvailabilitySetId <String>] [-RecoveryBootDiagStorageAccountId <String>]
  [-RecoveryAvailabilityZone <String>] [-RecoveryProximityPlacementGroupId <String>]
  [-RecoveryVirtualMachineScaleSetId <String>] [-RecoveryCapacityReservationGroupId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AzureToAzureWithoutDiskDetails
-```
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig [-AzureToAzure]
- -ReplicationProtectedItemName <String> -RecoveryResourceGroupId <String> [-RecoveryAvailabilitySetId <String>]
- [-RecoveryBootDiagStorageAccountId <String>] [-RecoveryAvailabilityZone <String>]
- [-RecoveryProximityPlacementGroupId <String>] [-RecoveryVirtualMachineScaleSetId <String>]
- [-RecoveryCapacityReservationGroupId <String>] [-DiskEncryptionVaultId <String>]
- [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,37 +41,21 @@ Creates a protected item mapping object to get target properties (recovery regio
 
 ### Example 1
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId -AzureToAzureDiskReplicationConfiguration $DiskList -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -ReplicationProtectedItemName $rpiName1 -RecoveryResourceGroupId $rgId -RecoveryAvailabilitySetId $avset -RecoveryProximityPlacementGroupId $ppg
 ```
 
-Create a replication protected item mapping object for Azure virtual machine to be replicated.
+Create a replication protected item mapping object for Azure virtual machine to be replicated without disk details.
 Used during Azure to Azure re-protect operation for Replication protection cluster.
 
 ### Example 2
 ```powershell
-New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -AzureToAzure -ReplicationProtectedItemName $ReplicationProtectedItemName -RecoveryResourceGroupId $RecoveryResourceGroupId -RecoveryAvailabilitySetId $RecoveryAvailabilitySetId -RecoveryProximityPlacementGroupId $RecoveryProximityPlacementGroupId
+New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig -ManagedDisk -ReplicationProtectedItemName $rpiName2 -RecoveryResourceGroupId $rgId -AzureToAzureDiskReplicationConfiguration $disks -RecoveryAvailabilitySetId $avset -RecoveryProximityPlacementGroupId $ppg
 ```
 
-Create a replication protected item mapping object for Azure virtual machine to be replicated.
+Create a replication protected item mapping object for Azure virtual machine to be replicated with disk details.
 Used during Azure to Azure re-protect operation for Replication protection cluster.
 
-
 ## PARAMETERS
-
-### -AzureToAzure
-Specifies Azure to Azure DR scenario.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AzureToAzureDiskReplicationConfiguration
 Specifies disk config for the replication protected item.
@@ -163,6 +147,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedDisk
+Specifies for input with disk details
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryAvailabilitySetId
 The availability set that the virtual machine should be created in upon failover
 
@@ -194,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryBootDiagStorageAccountId
-Specifies the storage account for boot diagnostics for recovery azure VM.
+{{ Fill RecoveryBootDiagStorageAccountId Description }}
 
 ```yaml
 Type: System.String
@@ -209,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryCapacityReservationGroupId
-Specify the capacity reservation group Id to be used by the failover VM in target recovery region.
+Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: System.String
@@ -224,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryProximityPlacementGroupId
-The resource ID of the recovery proximity placement group to failover this virtual machine to.
+Specify the capacity reservation group Id to be used by the failover VM in target recovery region.
 
 ```yaml
 Type: System.String

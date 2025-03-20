@@ -567,6 +567,12 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="InvalidNodeRecoveryPointPassed" xml:space="preserve">
     <value>Node recovery points passed are not correct.</value>
   </data>
+  <data name="InvalidInputForAllNodesInCluster" xml:space="preserve">
+    <value>Input does not contain information of all nodes that are part of the cluster.</value>
+  </data>
+  <data name="InvalidClusterInputWithoutProtectedItems" xml:space="preserve">
+    <value>Cluster doesn't contain protected items.</value>
+  </data>
   <data name="NoRecoveryPointsFound" xml:space="preserve">
 	<value>No recovery points found for {0} which is part of cluster {1}.</value>	
   </data>

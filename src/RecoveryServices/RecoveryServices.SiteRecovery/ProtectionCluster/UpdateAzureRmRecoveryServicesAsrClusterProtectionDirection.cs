@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates the replication direction for the specified replication protection cluster.
     ///     Used to re-protect/reverse replicate a failed over replicated items in protection cluster.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrClusterProtectionDirection", DefaultParameterSetName = ASRParameterSets.AzureToAzure, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrClusterProtectionDirection", DefaultParameterSetName = ASRParameterSets.AzureToAzureWithoutProtectedItemDetails, SupportsShouldProcess = true)]
     [Alias("Update-ASRClusterProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrClusterProtection : SiteRecoveryCmdletBase
@@ -37,9 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzure,
             Mandatory = true)]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.AzureToAzureWithoutProtectedItemDetails, 
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutProtectedItemDetails, Mandatory = true)]
+
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
@@ -53,7 +53,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the list of replication protected Items.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true,
+             HelpMessage = "Specifies the list of all replication protected items available in protection cluster.")]
         [ValidateNotNullOrEmpty]
         public ASRAzureToAzureReplicationProtectedItemConfig[] AzureToAzureReplicationProtectedItemConfig { get; set; }
 
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets recovery resourceGroup id for protected Vm.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutProtectedItemDetails, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryResourceGroupId { get; set; }
 
@@ -254,16 +256,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             A2ASwitchClusterProtectionInput a2aSwitchClusterInput,
             ReplicationProtectionCluster replicationProtectionClusterResponse)
         {
+            var clusterProtectedItemIds = replicationProtectionClusterResponse.Properties.ClusterProtectedItemIds;
+            if (clusterProtectedItemIds == null || clusterProtectedItemIds.Count == 0)
+            {
+                throw new InvalidOperationException(Resources.InvalidClusterInputWithoutProtectedItems);
+            }
+
             if (this.AzureToAzureReplicationProtectedItemConfig == null ||
                 this.AzureToAzureReplicationProtectedItemConfig.Length == 0)
             {
-                var clusterProtectedItemIds = replicationProtectionClusterResponse.Properties.ClusterProtectedItemIds;
-                if (clusterProtectedItemIds == null || clusterProtectedItemIds.Count == 0)
-                {
-                    // TODO vijami Get these scrubbed from PM
-                    throw new Exception("Cluster doesn't contain protected items");
-                }
-
                 foreach(string protectedItem in clusterProtectedItemIds)
                 {
                     var replicationProtectedItemResponse = 
@@ -293,57 +294,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             else
             {
-                foreach (ASRAzureToAzureReplicationProtectedItemConfig rpi in this.AzureToAzureReplicationProtectedItemConfig)
-                {
-                    List<A2AVmManagedDiskInputDetails> diskInput = new List<A2AVmManagedDiskInputDetails>();
-                    if (rpi.AzureToAzureDiskReplicationConfiguration != null
-                        && rpi.AzureToAzureDiskReplicationConfiguration.Length > 0)
-                    {
-                        foreach(ASRAzuretoAzureDiskReplicationConfig disk in rpi.AzureToAzureDiskReplicationConfiguration)
-                        {
-                            diskInput.Add(new A2AVmManagedDiskInputDetails
-                            {
-                                DiskId = disk.DiskId,
-                                RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                                RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                                RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                                PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                                RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
-                                DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
-                                disk.DiskEncryptionSecretUrl,
-                                disk.DiskEncryptionVaultId,
-                                disk.KeyEncryptionKeyUrl,
-                                disk.KeyEncryptionVaultId)
-                            });
-                        }
-                    }
-                    else
-                    {
-                        var replicationProtectedItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                                this.fabricName,
-                                this.protectionContainerName,
-                                rpi.ReplicationProtectedItemName);
-                       diskInput = PopulateManagedDiskDetails(replicationProtectedItemResponse);
-                    }
+                // List of RPI config given in input.
+                List<string> rpiInput = new List<string>(
+                    Array.ConvertAll(
+                    this.AzureToAzureReplicationProtectedItemConfig,
+                    obj => obj.ReplicationProtectedItemName));
 
-                    a2aSwitchClusterInput.ProtectedItemsDetail.Add(new A2AProtectedItemDetail
+                // List of RPIs present in cluster.
+                var rpisInCluster = new HashSet<string>(
+                    clusterProtectedItemIds.Select(
+                        node => Utilities.GetValueFromArmId(
+                            node,
+                            ARMResourceTypeConstants.ReplicationProtectedItems)),
+                    StringComparer.OrdinalIgnoreCase);
+
+                bool allNodesNotPresentInCluster = false;
+
+                // Checking if any RPI existing in cluster is not present RPI input list.
+                allNodesNotPresentInCluster = rpisInCluster
+                    .Where(rpi => !rpiInput.Contains(rpi)).Any();
+
+                if (!allNodesNotPresentInCluster)
+                {
+                    foreach (ASRAzureToAzureReplicationProtectedItemConfig rpi in this.AzureToAzureReplicationProtectedItemConfig)
                     {
-                        ReplicationProtectedItemName = rpi.ReplicationProtectedItemName,
-                        RecoveryResourceGroupId = rpi.RecoveryResourceGroupId,
-                        RecoveryAvailabilitySetId = rpi.RecoveryAvailabilitySetId,
-                        RecoveryAvailabilityZone = rpi.RecoveryAvailabilityZone,
-                        RecoveryBootDiagStorageAccountId = rpi.RecoveryBootDiagStorageAccountId,
-                        RecoveryCapacityReservationGroupId = rpi.RecoveryCapacityReservationGroupId,
-                        RecoveryProximityPlacementGroupId = rpi.RecoveryProximityPlacementGroupId,
-                        RecoveryVirtualMachineScaleSetId = rpi.RecoveryVirtualMachineScaleSetId,
-                        VMManagedDisks = diskInput,
-                        DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
-                            rpi.DiskEncryptionSecretUrl,
-                            rpi.DiskEncryptionVaultId,
-                            rpi.KeyEncryptionKeyUrl,
-                            rpi.KeyEncryptionVaultId)
-                    });
+                        List<A2AVmManagedDiskInputDetails> diskInput = new List<A2AVmManagedDiskInputDetails>();
+                        if (rpi.AzureToAzureDiskReplicationConfiguration != null
+                            && rpi.AzureToAzureDiskReplicationConfiguration.Length > 0)
+                        {
+                            foreach (ASRAzuretoAzureDiskReplicationConfig disk in rpi.AzureToAzureDiskReplicationConfiguration)
+                            {
+                                diskInput.Add(new A2AVmManagedDiskInputDetails
+                                {
+                                    DiskId = disk.DiskId,
+                                    RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
+                                    RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
+                                    RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                                    PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
+                                    RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
+                                    DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
+                                    disk.DiskEncryptionSecretUrl,
+                                    disk.DiskEncryptionVaultId,
+                                    disk.KeyEncryptionKeyUrl,
+                                    disk.KeyEncryptionVaultId)
+                                });
+                            }
+                        }
+                        else
+                        {
+                            var replicationProtectedItemResponse =
+                                RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                                    this.fabricName,
+                                    this.protectionContainerName,
+                                    rpi.ReplicationProtectedItemName);
+                            diskInput = PopulateManagedDiskDetails(replicationProtectedItemResponse);
+                        }
+
+                        a2aSwitchClusterInput.ProtectedItemsDetail.Add(new A2AProtectedItemDetail
+                        {
+                            ReplicationProtectedItemName = rpi.ReplicationProtectedItemName,
+                            RecoveryResourceGroupId = rpi.RecoveryResourceGroupId,
+                            RecoveryAvailabilitySetId = rpi.RecoveryAvailabilitySetId,
+                            RecoveryAvailabilityZone = rpi.RecoveryAvailabilityZone,
+                            RecoveryBootDiagStorageAccountId = rpi.RecoveryBootDiagStorageAccountId,
+                            RecoveryCapacityReservationGroupId = rpi.RecoveryCapacityReservationGroupId,
+                            RecoveryProximityPlacementGroupId = rpi.RecoveryProximityPlacementGroupId,
+                            RecoveryVirtualMachineScaleSetId = rpi.RecoveryVirtualMachineScaleSetId,
+                            VMManagedDisks = diskInput,
+                            DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
+                                rpi.DiskEncryptionSecretUrl,
+                                rpi.DiskEncryptionVaultId,
+                                rpi.KeyEncryptionKeyUrl,
+                                rpi.KeyEncryptionVaultId)
+                        });
+                    }
+                }
+                else
+                {
+                    // If not all RPIs present in cluster are passed as input during reprotect.
+                    throw new InvalidOperationException(Resources.InvalidInputForAllNodesInCluster);
                 }
             }
         }
