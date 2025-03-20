@@ -540,7 +540,7 @@ function Test-GetResourceExpandProperties
     $rname = Get-ResourceName
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $apiversion = "2014-04-01"
-    $resourceType = "Microsoft.Web/sites"
+    $resourceType = "Providers.Test/statefulResources"
 
     try
     {
@@ -550,7 +550,10 @@ function Test-GetResourceExpandProperties
         $resourceGet = Get-AzResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
 
         # Assert
-        Assert-NotNull $resourceGet
+        $properties = $resourceGet.Properties.psobject
+        $keyProperty = $properties.Properties
+        Assert-AreEqual $keyProperty.Name "key"
+        Assert-AreEqual $resourceGet.Properties.key "value"
     }
     finally
     {
