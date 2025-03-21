@@ -16,7 +16,7 @@ Create a new Azure Firewall Policy Rule Collection Group
 ```
 New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -ResourceGroupName <String>
- -FirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -FirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
 ```
 New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -FirewallPolicyObject <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -122,21 +122,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

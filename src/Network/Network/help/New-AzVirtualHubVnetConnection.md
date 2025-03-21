@@ -17,7 +17,7 @@ The New-AzVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection 
 New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubNameByRemoteVirtualNetworkResourceId
@@ -25,7 +25,7 @@ New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <
 New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  -RemoteVirtualNetworkId <String> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByRemoteVirtualNetworkObject
@@ -33,7 +33,7 @@ New-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <
 New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
  -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByRemoteVirtualNetworkResourceId
@@ -41,7 +41,7 @@ New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
 New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String> -RemoteVirtualNetworkId <String>
  [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkObject
@@ -49,7 +49,7 @@ New-AzVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String> -Remo
 New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String>
  -RemoteVirtualNetwork <PSVirtualNetwork> [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkResourceId
@@ -57,7 +57,7 @@ New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String>
 New-AzVirtualHubVnetConnection -ParentResourceId <String> -Name <String> -RemoteVirtualNetworkId <String>
  [-EnableInternetSecurity] [-EnableInternetSecurityFlag <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -273,21 +273,6 @@ Parameter Sets: ByVirtualHubNameByRemoteVirtualNetworkObject, ByVirtualHubNameBy
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

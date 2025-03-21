@@ -15,7 +15,7 @@ To update network manager verifier workspace.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Set-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-AsJob
 ```
 Set-AzNetworkManagerVerifierWorkspace -Name <String> -ResourceGroupName <String> -NetworkManagerName <String>
  [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -198,21 +198,6 @@ Parameter Sets: ByNameParameters
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

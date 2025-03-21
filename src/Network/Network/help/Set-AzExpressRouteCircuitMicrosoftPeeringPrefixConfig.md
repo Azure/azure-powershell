@@ -15,7 +15,7 @@ Modifies prefix validation properties required to validate the advertised public
 ```
 Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeerAddressType <String> -Prefix <String> [-ValidationId <String>] [-Signature <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,21 +97,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-ProgressAction
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,7 +15,7 @@ Creates a route for a route table.
 
 ```
 New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -153,21 +153,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -220,5 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
 [Set-AzRouteConfig](./Set-AzRouteConfig.md)
-
-

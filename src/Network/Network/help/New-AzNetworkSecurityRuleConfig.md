@@ -19,7 +19,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroupId <String[]>]
  [-DestinationApplicationSecurityGroupId <String[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -224,21 +224,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Protocol
 Specifies the network protocol that a new rule configuration applies to.
 The acceptable values for this parameter are:
@@ -350,5 +335,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

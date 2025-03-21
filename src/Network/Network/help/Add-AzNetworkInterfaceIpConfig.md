@@ -21,7 +21,7 @@ Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
  [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -31,7 +31,7 @@ Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
  [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
  [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,21 +277,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

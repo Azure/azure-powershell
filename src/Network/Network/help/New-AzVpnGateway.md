@@ -17,7 +17,7 @@ Creates a Scalable VPN Gateway.
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHubName <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHub <PSVirtualHub> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHubId <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -161,21 +161,6 @@ Parameter Sets: (All)
 Aliases: ResourceName, VpnGatewayName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -352,4 +337,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVpnGateway]()
 
 [Update-AzVpnGateway]()
-

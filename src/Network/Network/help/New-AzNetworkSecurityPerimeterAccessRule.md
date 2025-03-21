@@ -19,21 +19,21 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
  [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
  [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
  [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
@@ -42,13 +42,13 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileInputObject <INe
  [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
  [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
  [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfile
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileInputObject <INetworkSecurityPerimeterIdentity>
- -Parameter <INspAccessRule> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Parameter <INspAccessRule> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,21 +59,21 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
  [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
  [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
  [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspAccessRule>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspAccessRule>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -82,7 +82,7 @@ New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeter
  [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
  [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
  [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -354,21 +354,6 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Crea
 Aliases: SecurityPerimeterProfileName, NSPProfileName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

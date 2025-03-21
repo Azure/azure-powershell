@@ -14,20 +14,20 @@ Get an Azure RouteServer
 
 ### RouteServerSubscriptionIdParameterSet (Default)
 ```
-Get-AzRouteServer [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzRouteServer [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### RouteServerNameParameterSet
 ```
 Get-AzRouteServer -ResourceGroupName <String> [-RouteServerName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
 Get-AzRouteServer -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,21 +55,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

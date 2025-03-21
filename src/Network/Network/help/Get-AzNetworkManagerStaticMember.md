@@ -15,14 +15,14 @@ Gets network manager static members.
 ### NoExpand (Default)
 ```
 Get-AzNetworkManagerStaticMember [-Name <String>] -NetworkGroupName <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzNetworkManagerStaticMember -Name <String> -NetworkGroupName <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -143,21 +143,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

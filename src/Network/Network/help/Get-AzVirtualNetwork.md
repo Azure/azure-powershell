@@ -16,13 +16,13 @@ Gets a virtual network in a resource group.
 ### NoExpand
 ```
 Get-AzVirtualNetwork [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,21 +147,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group that virtual network belongs to.
 
@@ -209,5 +194,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetwork](./Remove-AzVirtualNetwork.md)
 
 [Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
-
-

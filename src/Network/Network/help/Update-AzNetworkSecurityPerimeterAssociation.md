@@ -17,14 +17,14 @@ Updates an association
 Update-AzNetworkSecurityPerimeterAssociation -ResourceGroupName <String> -Name <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Location <String>]
  [-AccessMode <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
  [-Tag <Hashtable>] [-Location <String>] [-AccessMode <String>] [-PrivateLinkResourceId <String>]
- [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -190,21 +190,6 @@ Network security perimeter profile id
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

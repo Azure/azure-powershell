@@ -20,7 +20,7 @@ New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <Strin
  [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>] [-EnableDdosProtection]
  [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-EdgeZone <String>]
  [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -348,21 +348,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

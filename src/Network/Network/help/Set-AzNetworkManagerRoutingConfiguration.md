@@ -15,7 +15,7 @@ Updates a network manager routing configuration.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingCo
 ```
 Set-AzNetworkManagerRoutingConfiguration -Name <String> -ResourceGroupName <String>
  -NetworkManagerName <String> [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -151,21 +151,6 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

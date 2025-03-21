@@ -20,7 +20,7 @@ Set-AzApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGateway> 
  [-FirewallPolicyId <String>] [-SslProfileId <String>] [-HostName <String>] [-HostNames <String[]>]
  [-RequireServerNameIndication <String>] -Protocol <String>
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -32,7 +32,7 @@ Set-AzApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGateway> 
  [-SslCertificate <PSApplicationGatewaySslCertificate>] [-SslProfile <PSApplicationGatewaySslProfile>]
  [-HostName <String>] [-HostNames <String[]>] [-RequireServerNameIndication <String>] -Protocol <String>
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,21 +240,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Protocol
 Specifies the protocol that the HTTP listener uses.
 The acceptable values for this parameter are:
@@ -373,5 +358,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayHttpListener](./New-AzApplicationGatewayHttpListener.md)
 
 [Remove-AzApplicationGatewayHttpListener](./Remove-AzApplicationGatewayHttpListener.md)
-
-

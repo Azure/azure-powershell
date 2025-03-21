@@ -14,20 +14,20 @@ Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR l
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzExpressRouteGateway [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzExpressRouteGateway [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
 Get-AzExpressRouteGateway [-ResourceGroupName <String>] [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByExpressRouteGatewayResourceId
 ```
 Get-AzExpressRouteGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,21 +122,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

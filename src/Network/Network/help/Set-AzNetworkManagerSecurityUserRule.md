@@ -15,7 +15,7 @@ Updates a network manager security user rule.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> 
  -Protocol <String> -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -35,7 +35,7 @@ Set-AzNetworkManagerSecurityUserRule -ResourceId <String> [-Description <String>
  -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -226,21 +226,6 @@ Parameter Sets: ByNameParameters
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,7 +16,7 @@ Creates a probe configuration for a load balancer.
 ```
 New-AzLoadBalancerProbeConfig -Name <String> [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32>
  -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>] [-NoHealthyBackendsBehavior <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -152,21 +152,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Protocol
 Specifies the protocol to use for the probe configuration.
 The acceptable values for this parameter are: Tcp or Http.
@@ -252,5 +237,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
 
 [Set-AzLoadBalancerProbeConfig](./Set-AzLoadBalancerProbeConfig.md)
-
-

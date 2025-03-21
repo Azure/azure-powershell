@@ -20,7 +20,7 @@ Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> 
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnConnectionResourceId
@@ -30,7 +30,7 @@ Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-Connec
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
  [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-VpnLinkConnectionMode <String>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -296,21 +296,6 @@ Parameter Sets: ByVpnConnectionName
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

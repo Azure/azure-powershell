@@ -15,7 +15,7 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -102,21 +102,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Tier
 Specifies the tier of the application gateway.
 The acceptable values for this parameter are:
@@ -154,5 +139,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzApplicationGatewaySku](./Get-AzApplicationGatewaySku.md)
 
 [New-AzApplicationGatewaySku](./New-AzApplicationGatewaySku.md)
-
-

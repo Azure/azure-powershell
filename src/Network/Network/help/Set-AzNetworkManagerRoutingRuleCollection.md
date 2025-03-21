@@ -15,7 +15,7 @@ Updates a network manager routing rule collection.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerRoutingRuleCollection -InputObject <PSNetworkManagerRoutingRuleCollection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,14 +23,14 @@ Set-AzNetworkManagerRoutingRuleCollection -InputObject <PSNetworkManagerRoutingR
 ```
 Set-AzNetworkManagerRoutingRuleCollection -Name <String> -ResourceGroupName <String>
  -NetworkManagerName <String> -RoutingConfigurationName <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzNetworkManagerRoutingRuleCollection -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -168,21 +168,6 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

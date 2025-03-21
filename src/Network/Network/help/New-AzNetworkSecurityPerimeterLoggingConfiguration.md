@@ -16,7 +16,7 @@ create NSP logging configuration.
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-EnabledLogCategory <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,21 +24,21 @@ New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGro
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeterExpanded
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>]
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-EnabledLogCategory <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,21 +46,21 @@ New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>]
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>]
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspLoggingConfiguration>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspLoggingConfiguration>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
  [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,21 +202,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

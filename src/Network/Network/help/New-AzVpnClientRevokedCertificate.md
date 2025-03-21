@@ -15,7 +15,7 @@ Creates a new VPN client-revocation certificate.
 
 ```
 New-AzVpnClientRevokedCertificate -Name <String> -Thumbprint <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,21 +71,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Thumbprint
 Specifies the unique identifier of the certificate being added.
 You can return thumbprint information for your certificates by using a Windows PowerShell command similar to this:
@@ -124,5 +109,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVpnClientRevokedCertificate](./Get-AzVpnClientRevokedCertificate.md)
 
 [Remove-AzVpnClientRevokedCertificate](./Remove-AzVpnClientRevokedCertificate.md)
-
-

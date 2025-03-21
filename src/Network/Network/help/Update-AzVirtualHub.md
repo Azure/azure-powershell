@@ -18,7 +18,7 @@ Update-AzVirtualHub -ResourceGroupName <String> -Name <String> [-AddressPrefix <
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzVirtualHub -ResourceId <String> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
  [-HubVnetConnection <PSHubVirtualNetworkConnection[]>] [-RouteTable <PSVirtualHubRouteTable>]
  [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>] [-HubRoutingPreference <String>]
  [-VirtualRouterAsn <UInt32>] [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -244,21 +244,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: ExpressRoute, VpnGateway
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

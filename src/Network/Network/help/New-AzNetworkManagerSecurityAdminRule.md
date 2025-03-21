@@ -20,7 +20,7 @@ New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String
  [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] -Priority <Int32> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String
 New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String>
  -SecurityAdminConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
  -Flag <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -274,21 +274,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

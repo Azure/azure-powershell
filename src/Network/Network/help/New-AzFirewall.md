@@ -25,7 +25,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
  [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
  [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
  [-FirewallPolicyId <String>] [-AllowActiveFTP] [-EnableFatFlowLogging] [-EnableUDPLogOptimization]
  [-RouteServerId <String>] [-MinCapacity <Int32>] [-MaxCapacity <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -553,21 +553,6 @@ The private IP ranges to which traffic won't be SNAT'ed
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

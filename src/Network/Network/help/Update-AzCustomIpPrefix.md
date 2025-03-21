@@ -16,7 +16,7 @@ Updates a CustomIpPrefix
 ```
 Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decommission] [-Provision]
  [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission]
 ```
 Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decommission] [-Provision]
  [-Deprovision] [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decommis
 ```
 Update-AzCustomIpPrefix -ResourceId <String> [-Commission] [-Decommission] [-Provision] [-Deprovision]
  [-NoInternetAdvertise] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,21 +211,6 @@ Commission the CustomIpPrefix resource with no internet advertise
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

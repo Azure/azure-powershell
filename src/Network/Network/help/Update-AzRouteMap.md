@@ -16,27 +16,27 @@ Update a route map of a VirtualHub.
 ```
 Update-AzRouteMap [-ResourceGroupName <String>] [-VirtualHubName <String>] [-Name <String>]
  [-RouteMapRule <PSRouteMapRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Update-AzRouteMap [-Name <String>] [-VirtualHubObject <PSVirtualHub>] [-RouteMapRule <PSRouteMapRule[]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByRouteMapObject
 ```
 Update-AzRouteMap [-InputObject <PSRouteMap>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByRouteMapResourceId
 ```
 Update-AzRouteMap [-ResourceId <String>] [-RouteMapRule <PSRouteMapRule[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -153,21 +153,6 @@ The route map name.
 Type: System.String
 Parameter Sets: ByRouteMapName, ByVirtualHubObject
 Aliases: ResourceName, RouteMapName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

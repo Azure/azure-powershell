@@ -15,19 +15,19 @@ Gets a private endpoint connection resource.
 ### ByResourceId (Default)
 ```
 Get-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByPrivateLinkResourceId
 ```
 Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
 Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
- -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>]
  -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
@@ -125,21 +125,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

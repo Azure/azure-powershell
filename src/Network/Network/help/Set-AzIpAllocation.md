@@ -15,19 +15,19 @@ Saves a modified IpAllocation.
 ### SetByNameParameterSet
 ```
 Set-AzIpAllocation -ResourceGroupName <String> -Name <String> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzIpAllocation -ResourceId <String> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Set-AzIpAllocation -InputObject <PSIpAllocation> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,21 +111,6 @@ Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

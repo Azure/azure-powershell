@@ -20,7 +20,7 @@ Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
  -DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>
  -DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
  [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### BackendSetByResourceId
@@ -28,7 +28,7 @@ Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> -DefaultBackendAddressPoolId <String>
  -DefaultBackendHttpSettingsId <String> [-DefaultRewriteRuleSetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResource
@@ -36,7 +36,7 @@ Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  -DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResourceId
@@ -44,7 +44,7 @@ Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGatew
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <PSApplicationGatewayPathRule[]> [-DefaultRewriteRuleSetId <String>]
  -DefaultRedirectConfigurationId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -246,21 +246,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -283,5 +268,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayUrlPathMapConfig](./New-AzApplicationGatewayUrlPathMapConfig.md)
 
 [Remove-AzApplicationGatewayUrlPathMapConfig](./Remove-AzApplicationGatewayUrlPathMapConfig.md)
-
-

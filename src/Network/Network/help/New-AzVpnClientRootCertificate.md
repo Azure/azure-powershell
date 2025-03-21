@@ -15,7 +15,7 @@ Creates a new VPN client root certificate.
 
 ```
 New-AzVpnClientRootCertificate -Name <String> -PublicCertData <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,21 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicCertData
 Specifies a text representation of the root certificate to be added.
 To obtain the text representation, export your certificate in .cer format (using Base64 encoding), then open the resulting file in a text editor.
@@ -135,5 +120,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVpnClientRootCertificate](./Get-AzVpnClientRootCertificate.md)
 
 [Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
-
-

@@ -16,27 +16,27 @@ Gets a public IP address.
 ### NoExpandStandAloneIp (Default)
 ```
 Get-AzPublicIpAddress [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ExpandStandAloneIp
 ```
 Get-AzPublicIpAddress -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NoExpandScaleSetIp
 ```
 Get-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
  [-VirtualMachineIndex <String>] [-NetworkInterfaceName <String>] [-IpConfigurationName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetIp
 ```
 Get-AzPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
  -VirtualMachineIndex <String> -NetworkInterfaceName <String> -IpConfigurationName <String>
- -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -224,21 +224,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the public IP address that this cmdlet gets.
 
@@ -340,5 +325,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzPublicIpAddress](./Remove-AzPublicIpAddress.md)
 
 [Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
-
-

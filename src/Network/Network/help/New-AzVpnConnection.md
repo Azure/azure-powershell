@@ -20,7 +20,7 @@ New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Na
  [-UsePolicyBasedTrafficSelectors] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
  [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayNameByVpnSiteResourceId
@@ -30,7 +30,7 @@ New-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Na
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <PSVpnS
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ New-AzVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId <Stri
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ New-AzVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSVpnSit
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ New-AzVpnConnection -ParentResourceId <String> -Name <String> -VpnSiteId <String
  [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
  [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity]
  [-RoutingConfiguration <PSRoutingConfiguration>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -310,21 +310,6 @@ Parameter Sets: ByVpnGatewayNameByVpnSiteObject, ByVpnGatewayNameByVpnSiteResour
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

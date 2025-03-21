@@ -15,7 +15,7 @@ Removes an SSL policy from an Azure application gateway.
 
 ```
 Remove-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -82,21 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -149,4 +134,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
 [Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
-

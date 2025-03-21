@@ -16,7 +16,7 @@ Creates a new custom rule for the application gateway firewall policy.
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration <String>]
  [-RateLimitThreshold <Int32>] -RuleType <String> -MatchCondition <PSApplicationGatewayFirewallCondition[]>
  [-GroupByUserSession <PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]>] -Action <String>
- [-State <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-State <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -209,21 +209,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

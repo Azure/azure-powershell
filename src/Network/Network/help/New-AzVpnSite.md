@@ -20,7 +20,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>]
  [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
  [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanNameByVpnSiteLinkObject
@@ -29,7 +29,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  -VirtualWanResourceGroupName <String> -VirtualWanName <String> [-AddressSpace <String[]>]
  [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] -VpnSiteLink <PSVpnSiteLink[]>
  [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteIpAddress
@@ -38,7 +38,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -338,21 +338,6 @@ The office 365 traffic breakout policy for this VpnSite.
 Type: Microsoft.Azure.Commands.Network.Models.PSO365PolicyProperties
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,7 +16,7 @@ Retrieves boot diagnostic logs for a given NetworkVirtualAppliance VM instance
 ```
 Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName <String> -Name <String> [-InstanceId <Int32>]
  [-SerialConsoleStorageSasUrl <SecureString>] [-ConsoleScreenshotStorageSasUrl <SecureString>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get-AzNetworkVirtualApplianceBootDiagnostics -ResourceGroupName <String> -Name <
 ```
 Get-AzNetworkVirtualApplianceBootDiagnostics [-InstanceId <Int32>] [-SerialConsoleStorageSasUrl <SecureString>]
  [-ConsoleScreenshotStorageSasUrl <SecureString>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -115,21 +115,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

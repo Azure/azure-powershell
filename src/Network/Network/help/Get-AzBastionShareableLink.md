@@ -16,7 +16,7 @@ The Bastion Shareable Link feature lets users connect to a target resource (virt
 ```
 Get-AzBastionShareableLink -ResourceGroupName <String> -Name <String>
  [-TargetVmId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get-AzBastionShareableLink -ResourceGroupName <String> -Name <String>
 ```
 Get-AzBastionShareableLink -ResourceId <String>
  [-TargetVmId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzBastionShareableLink -ResourceId <String>
 ```
 Get-AzBastionShareableLink -InputObject <PSBastion>
  [-TargetVmId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -129,21 +129,6 @@ Parameter Sets: ByResourceGroupNameByName
 Aliases: ResourceName, BastionName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,7 +16,7 @@ Update or Change a Network Virtual Appliance Connection resource.
 ```
 Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RoutingConfiguration <PSRoutingConfiguration>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualA
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
  [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> -Name <String>
  [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,21 +119,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -264,4 +249,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkVirtualAppliance](./Get-AzNetworkVirtualAppliance.md)
 
 [Get-AzNetworkVirtualApplianceConnection](./Get-AzNetworkVirtualApplianceConnection.md)
-

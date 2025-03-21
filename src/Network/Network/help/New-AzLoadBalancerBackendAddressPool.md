@@ -17,7 +17,7 @@ Creates a backend address pool on a loadbalancer.
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
  [-SyncMode <String>] [-VirtualNetworkId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
@@ -25,7 +25,7 @@ New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerNa
 New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
  [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
  [-SyncMode <String>] [-VirtualNetworkId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,21 +142,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
