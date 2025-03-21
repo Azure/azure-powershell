@@ -372,15 +372,6 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            if (ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
-            {
-                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
-                if (!suppressWarningOrError)
-                {
-                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
-                }
-            }
-
             var azureAccount = new AzureAccount();
 
             switch (ParameterSetName)

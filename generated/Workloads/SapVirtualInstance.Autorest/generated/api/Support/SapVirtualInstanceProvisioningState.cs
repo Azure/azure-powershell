@@ -10,16 +10,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapVirtualInstanceProvisioningState :
         System.IEquatable<SapVirtualInstanceProvisioningState>
     {
+        /// <summary>ACSS Canceled provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Canceled = @"Canceled";
 
+        /// <summary>ACSS Creating provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Creating = @"Creating";
 
+        /// <summary>ACSS Deleting provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Deleting = @"Deleting";
 
+        /// <summary>ACSS Failed provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Failed = @"Failed";
 
+        /// <summary>ACSS succeeded provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Succeeded = @"Succeeded";
 
+        /// <summary>ACSS updating provisioning state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceProvisioningState Updating = @"Updating";
 
         /// <summary>

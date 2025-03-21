@@ -4,20 +4,22 @@ This directory contains the service clients of other services for Azure PowerShe
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest.cmd README.md --version=v2 --tag=Compute
-autorest.cmd README.md --version=v2 --tag=HybridConnectivity
-autorest.cmd README.md --version=v2 --tag=HybridCompute
-autorest.cmd README.md --version=v2 --tag=Network
+autorest --reset
+autorest --use:@autorest/powershell@4.x --tag=Compute
+autorest --use:@autorest/powershell@4.x --tag=HybridConnectivity
+autorest --use:@autorest/powershell@4.x --tag=HybridCompute
+autorest --use:@autorest/powershell@4.x --tag=Network
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
+openapi-type: arm
 clear-output-folder: true
 reflect-api-versions: true
-openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 ```
@@ -71,7 +73,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/084da0d41924cd117db8fd0f999cf204ef1e78e8/specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2023-03-15/hybridconnectivity.json
 
 output-folder: HybridConnectivity
-
+title: HybridConnectivityManagementAPIClient
 namespace: Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
 
 directive:

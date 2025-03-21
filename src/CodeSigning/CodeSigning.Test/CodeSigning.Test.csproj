@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>CodeSigning</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="Resources\**" />
+    <Compile Remove="Scripts\**" />
+    <Compile Remove="SessionRecords\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <EmbeddedResource Remove="Scripts\**" />
+    <EmbeddedResource Remove="SessionRecords\**" />
+    <None Remove="Models\**" />
+    <None Remove="Resources\**" />
+    <None Remove="Scripts\**" />
+    <None Remove="SessionRecords\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeSigning\CodeSigning.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ScenarioTests\" />
+  </ItemGroup>
+</Project>
