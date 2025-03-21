@@ -481,6 +481,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>(parameters.Tags);
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
+            if (!string.IsNullOrEmpty(parameters.ValidationLevel))
+            {
+                deployment.Properties.ValidationLevel = parameters.ValidationLevel;
+            }
+
             return deployment;
         }
 
