@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzNetworkCloudConsole
 
 ## SYNOPSIS
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Enabled <ConsoleEnabled> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
  -SshPublicKeyData <String> [-SubscriptionId <String>] [-Expiration <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## EXAMPLES
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The indicator of whether the console access is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ConsoleEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +292,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ## NOTES
 

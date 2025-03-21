@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzNetworkCloudMetricsConfiguration
 
 ## SYNOPSIS
-Create new or update the existing metrics configuration of the provided cluster.
+create new or create the existing metrics configuration of the provided cluster.
 
 ## SYNTAX
 
 ```
-New-AzNetworkCloudMetricsConfiguration -ClusterName <String> -MetricsConfigurationName <String>
- -ResourceGroupName <String> -CollectionInterval <Int64> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>] [-EnabledMetric <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkCloudMetricsConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -CollectionInterval <Int64> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ [-SubscriptionId <String>] [-EnabledMetric <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create new or update the existing metrics configuration of the provided cluster.
+create new or create the existing metrics configuration of the provided cluster.
 
 ## EXAMPLES
 
@@ -160,13 +160,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetricsConfigurationName
+### -Name
 The name of the metrics configuration for the cluster.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: MetricsConfigurationName
 
 Required: True
 Position: Named
@@ -275,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterMetricsConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterMetricsConfiguration
 
 ## NOTES
 
