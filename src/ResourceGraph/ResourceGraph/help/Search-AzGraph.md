@@ -15,7 +15,7 @@ Queries the resources managed by Azure Resource Manager.
 ### SubscriptionScopedQuery (Default)
 ```
 Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
- [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-S
 ```
 Search-AzGraph [-Query] <String> -ManagementGroup <String[]> [-AllowPartialScope] [-First <Int32>]
  [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### TenantScopedQuery
 ```
 Search-AzGraph [-Query] <String> [-UseTenantScope] [-AllowPartialScope] [-First <Int32>] [-Skip <Int32>]
- [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -163,6 +163,21 @@ Parameter Sets: ManagementGroupScopedQuery
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
