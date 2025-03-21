@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDynatraceMonitor_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Update a MonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2021-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2023-04-27")]
     public partial class UpdateAzDynatraceMonitor_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener
     {
@@ -35,29 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The updatable properties of the MonitorResource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdate _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceUpdate();
-
-        /// <summary>Account Id of the account this environment is linked to</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Account Id of the account this environment is linked to")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Account Id of the account this environment is linked to",
-        SerializedName = @"accountId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AccountId { get => _resourceBody.AccountInfoAccountId ?? null; set => _resourceBody.AccountInfoAccountId = value; }
-
-        /// <summary>Region in which the account is created</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Region in which the account is created")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Region in which the account is created",
-        SerializedName = @"regionId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AccountRegionId { get => _resourceBody.AccountInfoRegionId ?? null; set => _resourceBody.AccountInfoRegionId = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResourceUpdate _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResourceUpdate();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -77,61 +55,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Id of the environment created</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Id of the environment created")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Id of the environment created",
-        SerializedName = @"environmentId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string EnvironmentId { get => _resourceBody.EnvironmentInfoEnvironmentId ?? null; set => _resourceBody.EnvironmentInfoEnvironmentId = value; }
-
-        /// <summary>Ingestion key of the environment</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ingestion key of the environment")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Ingestion key of the environment",
-        SerializedName = @"ingestionKey",
-        PossibleTypes = new [] { typeof(string) })]
-        public string EnvironmentIngestionKey { get => _resourceBody.EnvironmentInfoIngestionKey ?? null; set => _resourceBody.EnvironmentInfoIngestionKey = value; }
-
-        /// <summary>Landing URL for Dynatrace environment</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Landing URL for Dynatrace environment")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Landing URL for Dynatrace environment",
-        SerializedName = @"landingURL",
-        PossibleTypes = new [] { typeof(string) })]
-        public string EnvironmentLandingUrl { get => _resourceBody.EnvironmentInfoLandingUrl ?? null; set => _resourceBody.EnvironmentInfoLandingUrl = value; }
-
-        /// <summary>Ingestion endpoint used for sending logs</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ingestion endpoint used for sending logs")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Ingestion endpoint used for sending logs",
-        SerializedName = @"logsIngestionEndpoint",
-        PossibleTypes = new [] { typeof(string) })]
-        public string EnvironmentLogsIngestionEndpoint { get => _resourceBody.EnvironmentInfoLogsIngestionEndpoint ?? null; set => _resourceBody.EnvironmentInfoLogsIngestionEndpoint = value; }
-
-        /// <summary>User id</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User id")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"User id",
-        SerializedName = @"userId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string EnvironmentUserId { get => _resourceBody.DynatraceEnvironmentPropertyUserId ?? null; set => _resourceBody.DynatraceEnvironmentPropertyUserId = value; }
-
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -147,18 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Marketplace subscription status.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Marketplace subscription status.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Marketplace subscription status.",
-        SerializedName = @"marketplaceSubscriptionStatus",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus MarketplaceSubscriptionStatus { get => _resourceBody.MarketplaceSubscriptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus)""); set => _resourceBody.MarketplaceSubscriptionStatus = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -166,18 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>Status of the monitor.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of the monitor.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Status of the monitor.",
-        SerializedName = @"monitoringStatus",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus MonitoringStatus { get => _resourceBody.MonitoringStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus)""); set => _resourceBody.MonitoringStatus = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -198,50 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "different billing cycles like MONTHLY/WEEKLY. this could be enum")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"different billing cycles like MONTHLY/WEEKLY. this could be enum",
-        SerializedName = @"billingCycle",
-        PossibleTypes = new [] { typeof(string) })]
-        public string PlanBillingCycle { get => _resourceBody.PlanDataBillingCycle ?? null; set => _resourceBody.PlanDataBillingCycle = value; }
-
-        /// <summary>plan id as published by Dynatrace</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "plan id as published by Dynatrace")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"plan id as published by Dynatrace",
-        SerializedName = @"planDetails",
-        PossibleTypes = new [] { typeof(string) })]
-        public string PlanDetail { get => _resourceBody.PlanDataPlanDetail ?? null; set => _resourceBody.PlanDataPlanDetail = value; }
-
-        /// <summary>date when plan was applied</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "date when plan was applied")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"date when plan was applied",
-        SerializedName = @"effectiveDate",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime PlanEffectiveDate { get => _resourceBody.PlanDataEffectiveDate ?? default(global::System.DateTime); set => _resourceBody.PlanDataEffectiveDate = value; }
-
-        /// <summary>different usage type like PAYG/COMMITTED. this could be enum</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "different usage type like PAYG/COMMITTED. this could be enum")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"different usage type like PAYG/COMMITTED. this could be enum",
-        SerializedName = @"usageType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string PlanUsageType { get => _resourceBody.PlanDataUsageType ?? null; set => _resourceBody.PlanDataUsageType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -273,52 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>array of Aad(azure active directory) domains</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "array of Aad(azure active directory) domains")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"array of Aad(azure active directory) domains",
-        SerializedName = @"aadDomains",
-        PossibleTypes = new [] { typeof(string) })]
-        public string[] SingleSignOnAadDomain { get => _resourceBody.SingleSignOnPropertyAadDomain ?? null /* arrayOf */; set => _resourceBody.SingleSignOnPropertyAadDomain = value; }
-
-        /// <summary>Version of the Dynatrace agent installed on the VM.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of the Dynatrace agent installed on the VM.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Version of the Dynatrace agent installed on the VM.",
-        SerializedName = @"enterpriseAppId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SingleSignOnEnterpriseAppId { get => _resourceBody.SingleSignOnPropertyEnterpriseAppId ?? null; set => _resourceBody.SingleSignOnPropertyEnterpriseAppId = value; }
-
-        /// <summary>State of Single Sign On</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State of Single Sign On")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"State of Single Sign On",
-        SerializedName = @"singleSignOnState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates SingleSignOnState { get => _resourceBody.SingleSignOnPropertySingleSignOnState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates)""); set => _resourceBody.SingleSignOnPropertySingleSignOnState = value; }
-
-        /// <summary>The login URL specific to this Dynatrace Environment</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The login URL specific to this Dynatrace Environment")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The login URL specific to this Dynatrace Environment",
-        SerializedName = @"singleSignOnUrl",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SingleSignOnUrl { get => _resourceBody.SingleSignOnPropertySingleSignOnUrl ?? null; set => _resourceBody.SingleSignOnPropertySingleSignOnUrl = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -346,63 +155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdateTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
-
-        /// <summary>Country of the user</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Country of the user")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Country of the user",
-        SerializedName = @"country",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserCountry { get => _resourceBody.UserInfoCountry ?? null; set => _resourceBody.UserInfoCountry = value; }
-
-        /// <summary>Email of the user used by Dynatrace for contacting them if needed</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email of the user used by Dynatrace for contacting them if needed")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Email of the user used by Dynatrace for contacting them if needed",
-        SerializedName = @"emailAddress",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserEmailAddress { get => _resourceBody.UserInfoEmailAddress ?? null; set => _resourceBody.UserInfoEmailAddress = value; }
-
-        /// <summary>First Name of the user</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "First Name of the user")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"First Name of the user",
-        SerializedName = @"firstName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserFirstName { get => _resourceBody.UserInfoFirstName ?? null; set => _resourceBody.UserInfoFirstName = value; }
-
-        /// <summary>Last Name of the user</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Last Name of the user")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Last Name of the user",
-        SerializedName = @"lastName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserLastName { get => _resourceBody.UserInfoLastName ?? null; set => _resourceBody.UserInfoLastName = value; }
-
-        /// <summary>Phone number of the user used by Dynatrace for contacting them if needed</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Phone number of the user used by Dynatrace for contacting them if needed")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Phone number of the user used by Dynatrace for contacting them if needed",
-        SerializedName = @"phoneNumber",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UserPhoneNumber { get => _resourceBody.UserInfoPhoneNumber ?? null; set => _resourceBody.UserInfoPhoneNumber = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResourceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResourceUpdateTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -421,12 +175,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -674,12 +428,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -691,7 +445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource
                 WriteObject((await response));
             }
         }

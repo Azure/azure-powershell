@@ -15,10 +15,7 @@
 using Microsoft.Azure.Attestation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
-using Microsoft.Azure.Management.Attestation;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Collections.Generic;
 using Xunit.Abstractions;
 
@@ -55,28 +52,14 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
-                ).WithManagementClients(
-                    GetResourceManagementClient,
-                    GetAttestationManagementClient,
-                    GetAttestationClient
+                )
+                .WithManagementClients(context =>
+                    {
+                        var creds = context.GetClientCredentials(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
+                        return new AttestationClient(creds, HttpMockServer.CreateInstance());
+                    }
                 )
                 .Build();
-        }
-
-        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>();
-        }
-
-        private static AttestationManagementClient GetAttestationManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<AttestationManagementClient>();
-        }
-
-        private static AttestationClient GetAttestationClient(MockContext context)
-        {
-            var creds = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
-            return new AttestationClient(creds, HttpMockServer.CreateInstance());
         }
     }
 }

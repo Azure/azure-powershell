@@ -10,6 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapDatabaseScaleMethod :
         System.IEquatable<SapDatabaseScaleMethod>
     {
+        /// <summary>ScaleUp Hana Database deployment type</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod ScaleUp = @"ScaleUp";
 
         /// <summary>the value for an instance of the <see cref="SapDatabaseScaleMethod" /> Enum.</summary>

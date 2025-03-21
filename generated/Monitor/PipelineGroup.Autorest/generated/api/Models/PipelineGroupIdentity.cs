@@ -12,13 +12,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal
     {
 
-        /// <summary>Backing field for <see cref="AzureMonitorWorkspaceName" /> property.</summary>
-        private string _azureMonitorWorkspaceName;
-
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public string AzureMonitorWorkspaceName { get => this._azureMonitorWorkspaceName; set => this._azureMonitorWorkspaceName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -56,17 +49,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     public partial interface IPipelineGroupIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the Azure Monitor workspace. The name is case insensitive.",
-        SerializedName = @"azureMonitorWorkspaceName",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureMonitorWorkspaceName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -116,8 +98,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     internal partial interface IPipelineGroupIdentityInternal
 
     {
-        /// <summary>The name of the Azure Monitor workspace. The name is case insensitive.</summary>
-        string AzureMonitorWorkspaceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of pipeline group. The name is case insensitive.</summary>

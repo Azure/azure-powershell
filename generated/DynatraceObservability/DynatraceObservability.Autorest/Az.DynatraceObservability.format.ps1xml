@@ -330,9 +330,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AccountInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AccountInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AccountInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AccountInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -358,37 +358,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AccountInfoSecure</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AppServiceInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AccountInfoSecure</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AccountId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RegionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AccountId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RegionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AppServiceInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AppServiceInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AppServiceInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -456,9 +428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AppServiceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AppServiceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.AppServiceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.AppServiceListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceEnvironmentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceEnvironmentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceEnvironmentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceEnvironmentProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,9 +472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -546,9 +518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -592,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.DynatraceSingleSignOnResourceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -614,9 +586,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.EnvironmentInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.EnvironmentInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.EnvironmentInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.EnvironmentInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -654,9 +626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.FilteringTag</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.FilteringTag</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -688,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IdentityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IdentityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -716,9 +688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -738,9 +710,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -772,9 +744,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LinkableEnvironmentResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LinkableEnvironmentResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -800,9 +772,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LogRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LogRules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.LogRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.LogRules</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -834,9 +806,109 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoredResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MarketplaceSaaSResourceDetailsRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoredResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MarketplaceSaaSResourceDetailsRequest</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MarketplaceSaaSResourceDetailsResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MarketplaceSaaSResourceDetailsResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MarketplaceSaaSResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MarketplaceSubscriptionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlanId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MarketplaceSaaSResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MarketplaceSubscriptionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlanId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MetricRules</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MetricRules</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SendingMetric</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SendingMetric</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MetricsStatusResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MetricsStatusResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoredResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoredResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -874,9 +946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoredResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoredResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoredResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoredResourceListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -896,9 +968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoringTagRulesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoringTagRulesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitoringTagRulesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitoringTagRulesProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -918,9 +990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -964,9 +1036,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1016,9 +1088,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResourceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1038,37 +1110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResourceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceUpdate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MarketplaceSubscriptionStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MonitoringStatus</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MarketplaceSubscriptionStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MonitoringStatus</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceUpdateTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResourceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResourceUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1088,9 +1132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.PlanData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.PlanData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.PlanData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.PlanData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1128,9 +1172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.SsoDetailsRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.SsoDetailsRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.SsoDetailsRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.SsoDetailsRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1150,9 +1194,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.SsoDetailsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.SsoDetailsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.SsoDetailsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.SsoDetailsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1196,9 +1240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.TagRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.TagRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.TagRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.TagRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1236,9 +1280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.TagRuleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.TagRuleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.TagRuleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.TagRuleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1258,9 +1302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.UserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.UserAssignedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.UserAssignedIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1286,9 +1330,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.UserInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.UserInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.UserInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.UserInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1332,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMExtensionPayload</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMExtensionPayload</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMExtensionPayload</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMExtensionPayload</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1360,9 +1404,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMHostsListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMHostsListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMHostsListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMHostsListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1382,9 +1426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.VMInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.VMInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

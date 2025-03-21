@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object ValidateAtScope(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult ValidateAtScope(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).ValidateAtScopeAsync(scope, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> ValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object ValidateAtTenantScope(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters)
+        public static DeploymentValidateResult ValidateAtTenantScope(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters)
         {
                 return ((IDeploymentsOperations)operations).ValidateAtTenantScopeAsync(deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> ValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -889,7 +889,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object ValidateAtManagementGroupScope(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters)
+        public static DeploymentValidateResult ValidateAtManagementGroupScope(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters)
         {
                 return ((IDeploymentsOperations)operations).ValidateAtManagementGroupScopeAsync(groupId, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> ValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object ValidateAtSubscriptionScope(this IDeploymentsOperations operations, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult ValidateAtSubscriptionScope(this IDeploymentsOperations operations, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).ValidateAtSubscriptionScopeAsync(deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> ValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1590,7 +1590,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object Validate(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult Validate(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).ValidateAsync(resourceGroupName, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -1612,7 +1612,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> ValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1875,7 +1875,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object BeginValidateAtScope(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult BeginValidateAtScope(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).BeginValidateAtScopeAsync(scope, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -1896,7 +1896,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> BeginValidateAtScopeAsync(this IDeploymentsOperations operations, string scope, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginValidateAtScopeWithHttpMessagesAsync(scope, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1994,7 +1994,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object BeginValidateAtTenantScope(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters)
+        public static DeploymentValidateResult BeginValidateAtTenantScope(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters)
         {
                 return ((IDeploymentsOperations)operations).BeginValidateAtTenantScopeAsync(deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -2012,7 +2012,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> BeginValidateAtTenantScopeAsync(this IDeploymentsOperations operations, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginValidateAtTenantScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -2160,7 +2160,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object BeginValidateAtManagementGroupScope(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters)
+        public static DeploymentValidateResult BeginValidateAtManagementGroupScope(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters)
         {
                 return ((IDeploymentsOperations)operations).BeginValidateAtManagementGroupScopeAsync(groupId, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> BeginValidateAtManagementGroupScopeAsync(this IDeploymentsOperations operations, string groupId, string deploymentName, ScopedDeployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginValidateAtManagementGroupScopeWithHttpMessagesAsync(groupId, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -2320,7 +2320,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object BeginValidateAtSubscriptionScope(this IDeploymentsOperations operations, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult BeginValidateAtSubscriptionScope(this IDeploymentsOperations operations, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).BeginValidateAtSubscriptionScopeAsync(deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -2338,7 +2338,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> BeginValidateAtSubscriptionScopeAsync(this IDeploymentsOperations operations, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginValidateAtSubscriptionScopeWithHttpMessagesAsync(deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -2493,7 +2493,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='deploymentName'>
         /// The name of the deployment.
         /// </param>
-        public static object BeginValidate(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
+        public static DeploymentValidateResult BeginValidate(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters)
         {
                 return ((IDeploymentsOperations)operations).BeginValidateAsync(resourceGroupName, deploymentName, parameters).GetAwaiter().GetResult();
         }
@@ -2515,7 +2515,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentValidateResult> BeginValidateAsync(this IDeploymentsOperations operations, string resourceGroupName, string deploymentName, Deployment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginValidateWithHttpMessagesAsync(resourceGroupName, deploymentName, parameters, null, cancellationToken).ConfigureAwait(false))
             {

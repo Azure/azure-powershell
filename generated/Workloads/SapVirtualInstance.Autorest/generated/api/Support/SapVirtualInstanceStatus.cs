@@ -10,18 +10,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapVirtualInstanceStatus :
         System.IEquatable<SapVirtualInstanceStatus>
     {
+        /// <summary>SAP system is offline.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus Offline = @"Offline";
 
+        /// <summary>SAP system is partially running.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus PartiallyRunning = @"PartiallyRunning";
 
+        /// <summary>SAP system is running.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus Running = @"Running";
 
+        /// <summary>Soft shutdown of SAP system is initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus SoftShutdown = @"SoftShutdown";
 
+        /// <summary>SAP system is getting started.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus Starting = @"Starting";
 
+        /// <summary>SAP system is being stopped.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus Stopping = @"Stopping";
 
+        /// <summary>SAP system status is unavailable.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus Unavailable = @"Unavailable";
 
         /// <summary>the value for an instance of the <see cref="SapVirtualInstanceStatus" /> Enum.</summary>

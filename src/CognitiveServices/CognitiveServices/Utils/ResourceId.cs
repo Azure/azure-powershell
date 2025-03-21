@@ -110,6 +110,16 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             return resourceId.Names[4];
         }
 
+        public static string GetAccountSubSubResourceName(this ResourceId resourceId)
+        {
+            if (resourceId.Types.Count <= 5)
+            {
+                return "";
+            }
+
+            return resourceId.Names[5];
+        }
+
         public static string GetAccountSubResourceName(this ResourceId resourceId, string subResourceType)
         {
             if (resourceId.Types.Count <= 4

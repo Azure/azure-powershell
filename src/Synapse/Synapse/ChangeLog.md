@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 3.1.2
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
+
 ## Version 3.1.1
 * Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
 

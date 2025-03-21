@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support
 {
 
-    /// <summary>Type of managed service identity (only None, UserAssigned types are allowed).</summary>
+    /// <summary>
+    /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    /// </summary>
     public partial class ManagedServiceIdentityTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

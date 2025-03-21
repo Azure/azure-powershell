@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapProductType :
         System.IEquatable<SapProductType>
     {
+        /// <summary>SAP Product ECC.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType Ecc = @"ECC";
 
+        /// <summary>SAP Products other than the ones listed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType Other = @"Other";
 
+        /// <summary>SAP Product S4HANA.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType S4Hana = @"S4HANA";
 
         /// <summary>the value for an instance of the <see cref="SapProductType" /> Enum.</summary>

@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="type">The identity type.
-        /// Possible values include: 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned, UserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned, UserAssigned&#39;</param>
 
         /// <param name="tenantId">The tenant ID of resource.
         /// </param>

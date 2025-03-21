@@ -14,12 +14,8 @@
 
 namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using Microsoft.Azure.Commands.HPCCache.Test.ScenarioTests;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.HPCCache.Test.Utilities;
     using Microsoft.Azure.Commands.TestFx.Recorder;
     using Microsoft.Azure.Management.Authorization;
@@ -33,6 +29,12 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using Constants = Utilities.Constants;
 
     /// <summary>
     /// Defines the <see cref="HpcCacheTestContext" />.
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
+            SetupAzureSession();
             BuildMockServer();
             this.mockContext = MockContext.Start(suiteObject, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
@@ -79,9 +82,19 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             [System.Runtime.CompilerServices.CallerMemberName]
             string methodName = ".ctor")
         {
+            SetupAzureSession();
             BuildMockServer();
             this.mockContext = MockContext.Start(type.Name, methodName);
             this.RegisterSubscriptionForResource("Microsoft.StorageCache");
+        }
+
+        private void SetupAzureSession()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            if (!(AzureSession.Instance?.DataStore is MemoryDataStore))
+            {
+                AzureSession.Instance.DataStore = new MemoryDataStore();
+            }
         }
 
         private void BuildMockServer()

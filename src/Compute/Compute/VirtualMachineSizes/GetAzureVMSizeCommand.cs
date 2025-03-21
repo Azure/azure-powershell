@@ -18,11 +18,13 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+    [GenericBreakingChangeWithVersion("The \"ListVirtualMachineSize\" parameter set will be deprecated as its API: \"Virtual Machine Sizes - List\" is deprecated. For listing available VM sizes by subscription or location, please use instead \"Get-AzComputeResourceSku\". Other parameter sets: \"List Available Sizes for Availability Set\" and \"List Available Sizes for Virtual Machine\" will continue to be supported.", "14.0.0", "10.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSize", DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
     [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet

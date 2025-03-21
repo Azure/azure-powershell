@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct ManagedResourcesNetworkAccessType :
         System.IEquatable<ManagedResourcesNetworkAccessType>
     {
+        /// <summary>Managed resources will be deployed with public network access disabled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType Private = @"Private";
 
+        /// <summary>Managed resources will be deployed with public network access enabled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType Public = @"Public";
 
         /// <summary>

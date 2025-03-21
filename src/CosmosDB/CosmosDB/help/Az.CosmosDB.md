@@ -300,6 +300,9 @@ Creates a new object of type PSIndexes. It can be passed as a parameter value fo
 ### [New-AzCosmosDBSqlIndexingPolicy](New-AzCosmosDBSqlIndexingPolicy.md)
 Creates a new CosmosDB Sql IndexingPolicy object.
 
+### [New-AzCosmosDBSqlVectorEmbeddingPolicy](New-AzCosmosDBSqlVectorEmbeddingPolicy.md)
+Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
+
 ### [New-AzCosmosDBSqlRoleAssignment](New-AzCosmosDBSqlRoleAssignment.md)
 Creates a new CosmosDB Sql Role Assignment.
 

@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 1.2.1
+* Removed "Microsoft.Azure.Management.DataBoxEdge" Version "1.0.0" PackageReference
+
 ## Version 1.2.0
 * Upgraded nuget package to signed package.
 

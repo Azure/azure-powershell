@@ -296,6 +296,9 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -336,7 +339,7 @@ namespace Microsoft.Azure.Management.Resources
             this.Tags = new TagsOperations(this);
             this.DeploymentOperations = new DeploymentOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-07-01";
+            this.ApiVersion = "2024-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

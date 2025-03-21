@@ -10,108 +10,165 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct ProtectionState :
         System.IEquatable<ProtectionState>
     {
+        /// <summary>Cancel failover failed on the primary side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverFailedOnPrimary = @"CancelFailoverFailedOnPrimary";
 
+        /// <summary>Cancel failover failed on the recovery side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverFailedOnRecovery = @"CancelFailoverFailedOnRecovery";
 
+        /// <summary>Cancel failover is in progress on the primary side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverInProgressOnPrimary = @"CancelFailoverInProgressOnPrimary";
 
+        /// <summary>Cancel failover is in progress on the recovery side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverInProgressOnRecovery = @"CancelFailoverInProgressOnRecovery";
 
+        /// <summary>Begin marker for cancel failover states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverStatesBegin = @"CancelFailoverStatesBegin";
 
+        /// <summary>End marker for cancel failover states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CancelFailoverStatesEnd = @"CancelFailoverStatesEnd";
 
+        /// <summary>Change recovery point has been completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ChangeRecoveryPointCompleted = @"ChangeRecoveryPointCompleted";
 
+        /// <summary>Change recovery point has failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ChangeRecoveryPointFailed = @"ChangeRecoveryPointFailed";
 
+        /// <summary>Change recovery point has been initiated..</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ChangeRecoveryPointInitiated = @"ChangeRecoveryPointInitiated";
 
+        /// <summary>Begin marker for change recovery point states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ChangeRecoveryPointStatesBegin = @"ChangeRecoveryPointStatesBegin";
 
+        /// <summary>End marker for change recovery point states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ChangeRecoveryPointStatesEnd = @"ChangeRecoveryPointStatesEnd";
 
+        /// <summary>Commit failover has been completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverCompleted = @"CommitFailoverCompleted";
 
+        /// <summary>Commit failover failed on the primary side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverFailedOnPrimary = @"CommitFailoverFailedOnPrimary";
 
+        /// <summary>Commit failover failed on the recovery side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverFailedOnRecovery = @"CommitFailoverFailedOnRecovery";
 
+        /// <summary>Commit failover is in progress on the primary side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverInProgressOnPrimary = @"CommitFailoverInProgressOnPrimary";
 
+        /// <summary>Commit failover is in progress on the recovery side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverInProgressOnRecovery = @"CommitFailoverInProgressOnRecovery";
 
+        /// <summary>Begin marker for commit failover states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverStatesBegin = @"CommitFailoverStatesBegin";
 
+        /// <summary>End marker for commit failover states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState CommitFailoverStatesEnd = @"CommitFailoverStatesEnd";
 
+        /// <summary>Disable protection failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState DisablingFailed = @"DisablingFailed";
 
+        /// <summary>Disabling protection is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState DisablingProtection = @"DisablingProtection";
 
+        /// <summary>Enable protection failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState EnablingFailed = @"EnablingFailed";
 
+        /// <summary>Enable protection is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState EnablingProtection = @"EnablingProtection";
 
+        /// <summary>Initial replication has completed on the primary side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationCompletedOnPrimary = @"InitialReplicationCompletedOnPrimary";
 
+        /// <summary>Initial replication has completed on the recovery side.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationCompletedOnRecovery = @"InitialReplicationCompletedOnRecovery";
 
+        /// <summary>Initial replication failed and would need to be started again.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationFailed = @"InitialReplicationFailed";
 
+        /// <summary>Initial replication is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationInProgress = @"InitialReplicationInProgress";
 
+        /// <summary>Begin marker for initial replication states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationStatesBegin = @"InitialReplicationStatesBegin";
 
+        /// <summary>End marker for initial replication states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState InitialReplicationStatesEnd = @"InitialReplicationStatesEnd";
 
+        /// <summary>
+        /// Disabling protection succeeded. This is a transient state before the protected item is deleted.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState MarkedForDeletion = @"MarkedForDeletion";
 
+        /// <summary>Planned failover has been completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverCompleted = @"PlannedFailoverCompleted";
 
+        /// <summary>Planned failover preparing protected entities is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverCompleting = @"PlannedFailoverCompleting";
 
+        /// <summary>Planned failover preparing protected entities failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverCompletionFailed = @"PlannedFailoverCompletionFailed";
 
+        /// <summary>Planned failover initiation failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverFailed = @"PlannedFailoverFailed";
 
+        /// <summary>Planned failover has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverInitiated = @"PlannedFailoverInitiated";
 
+        /// <summary>Begin marker for planned failover transition states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverTransitionStatesBegin = @"PlannedFailoverTransitionStatesBegin";
 
+        /// <summary>End marker for planned failover transition states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState PlannedFailoverTransitionStatesEnd = @"PlannedFailoverTransitionStatesEnd";
 
+        /// <summary>
+        /// Protected item is protected and replication is on-going. Any issues with replication will be surfaced separately via the
+        /// health property and will not affect the state.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState Protected = @"Protected";
 
+        /// <summary>Begin marker for protected steady-state states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ProtectedStatesBegin = @"ProtectedStatesBegin";
 
+        /// <summary>End marker for protected steady-state states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ProtectedStatesEnd = @"ProtectedStatesEnd";
 
+        /// <summary>Reprotect has failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ReprotectFailed = @"ReprotectFailed";
 
+        /// <summary>Reprotect has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ReprotectInitiated = @"ReprotectInitiated";
 
+        /// <summary>Begin marker for reprotect states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ReprotectStatesBegin = @"ReprotectStatesBegin";
 
+        /// <summary>End marker for reprotect states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState ReprotectStatesEnd = @"ReprotectStatesEnd";
 
+        /// <summary>Unplanned failover preparing protected entities is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverCompleted = @"UnplannedFailoverCompleted";
 
+        /// <summary>Unplanned failover preparing protected entities is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverCompleting = @"UnplannedFailoverCompleting";
 
+        /// <summary>Unplanned failover preparing protected entities failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverCompletionFailed = @"UnplannedFailoverCompletionFailed";
 
+        /// <summary>Unplanned failover initiation failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverFailed = @"UnplannedFailoverFailed";
 
+        /// <summary>Unplanned failover has been initiated.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverInitiated = @"UnplannedFailoverInitiated";
 
+        /// <summary>Begin marker for unplanned failover transition states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverTransitionStatesBegin = @"UnplannedFailoverTransitionStatesBegin";
 
+        /// <summary>End marker for unplanned failover transition states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnplannedFailoverTransitionStatesEnd = @"UnplannedFailoverTransitionStatesEnd";
 
+        /// <summary>Begin marker for unprotected states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnprotectedStatesBegin = @"UnprotectedStatesBegin";
 
+        /// <summary>End marker for unprotected states.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionState UnprotectedStatesEnd = @"UnprotectedStatesEnd";
 
         /// <summary>the value for an instance of the <see cref="ProtectionState" /> Enum.</summary>

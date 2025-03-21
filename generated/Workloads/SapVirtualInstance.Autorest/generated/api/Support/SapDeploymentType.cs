@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapDeploymentType :
         System.IEquatable<SapDeploymentType>
     {
+        /// <summary>SAP Single server deployment type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType SingleServer = @"SingleServer";
 
+        /// <summary>SAP Distributed deployment type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType ThreeTier = @"ThreeTier";
 
         /// <summary>the value for an instance of the <see cref="SapDeploymentType" /> Enum.</summary>

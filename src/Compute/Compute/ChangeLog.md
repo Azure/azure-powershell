@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added breaking change message for `Get-AzVMSize`.
 
 ## Version 9.1.0
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`

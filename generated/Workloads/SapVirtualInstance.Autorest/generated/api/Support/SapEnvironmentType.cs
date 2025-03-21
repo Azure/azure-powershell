@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapEnvironmentType :
         System.IEquatable<SapEnvironmentType>
     {
+        /// <summary>Non Production SAP system.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType NonProd = @"NonProd";
 
+        /// <summary>Production SAP system.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType Prod = @"Prod";
 
         /// <summary>the value for an instance of the <see cref="SapEnvironmentType" /> Enum.</summary>

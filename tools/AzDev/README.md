@@ -4,6 +4,16 @@ This module is designed to help developers of Azure PowerShell modules. It provi
 
 All the cmdlets in this module are prefixed with `Dev-` to avoid conflicts with other modules.
 
+- [Quick start](#quick-start)
+- [Features](#features)
+  - [Repo inventory](#repo-inventory)
+  - [Connect azure-powershell and azure-powershell-common](#connect-azure-powershell-and-azure-powershell-common)
+  - [Autorest helper](#autorest-helper)
+    - [Open swagger online](#open-swagger-online)
+- [Development](#development)
+  - [Design](#design)
+  - [Testing](#testing)
+
 ## Quick start
 
 ```powershell
@@ -56,10 +66,10 @@ Help you connect the azure-powershell and azure-powershell-common repositories f
 
 ```powershell
 # Connect
-Connect-CommonRepo
+Connect-DevCommonRepo
 
 # Disconnect
-Disconnect-CommonRepo
+Disconnect-DevCommonRepo
 ```
 
 ### Autorest helper
@@ -82,3 +92,22 @@ Enter the number corresponding to your selection
 1
 Opening https://github.com/Azure/azure-rest-api-specs/blob/202321f386ea5b0c103b46902d43b3d3c50e029c/specification/workloads/resource-manager/Microsoft.Workloads/SAPVirtualInstance/readme.md in default browser...
 ```
+
+## Development
+
+### Design
+
+`AzDev` supports both C# based and script based cmdlets.
+
+The script based cmdlets are located in the `AzDev` folder. Take a look at `AzDev/CommonRepo.psm1` for example. Update `NestedModules` in `AzDev.psd1` when you add new scripts.
+
+The C# based cmdlets are located in the `src` folder. It's quite similar to developing a SDK-based module in Azure PowerShell.
+
+Either way, make sure
+
+1. All cmdlets are prefixed with `Dev-`.
+2. Add your new cmdlets to `FunctionsToExport` or `CmdletsToExport` in `AzDev.psd1`.
+
+### Testing
+
+Use `dotnet test` to run the unit tests. `Invoke-Pester` to run the E2E tests located in `Tests/PSTests`.

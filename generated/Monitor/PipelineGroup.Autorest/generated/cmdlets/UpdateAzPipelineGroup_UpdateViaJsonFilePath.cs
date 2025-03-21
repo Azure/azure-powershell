@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Description(@"update a pipeline group instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2024-10-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.NotSuggestDefaultParameterSet]
     public partial class UpdateAzPipelineGroup_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener,

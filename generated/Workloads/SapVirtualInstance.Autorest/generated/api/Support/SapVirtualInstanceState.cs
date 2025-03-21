@@ -10,30 +10,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapVirtualInstanceState :
         System.IEquatable<SapVirtualInstanceState>
     {
+        /// <summary>ACSS installation cannot proceed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState AcssInstallationBlocked = @"ACSSInstallationBlocked";
 
+        /// <summary>Registration has failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState DiscoveryFailed = @"DiscoveryFailed";
 
+        /// <summary>Registration is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState DiscoveryInProgress = @"DiscoveryInProgress";
 
+        /// <summary>Registration has not started.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState DiscoveryPending = @"DiscoveryPending";
 
+        /// <summary>Infrastructure deployment has failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState InfrastructureDeploymentFailed = @"InfrastructureDeploymentFailed";
 
+        /// <summary>Infrastructure deployment is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState InfrastructureDeploymentInProgress = @"InfrastructureDeploymentInProgress";
 
+        /// <summary>Infrastructure is not yet deployed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState InfrastructureDeploymentPending = @"InfrastructureDeploymentPending";
 
+        /// <summary>Registration is complete.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState RegistrationComplete = @"RegistrationComplete";
 
+        /// <summary>Software detection failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState SoftwareDetectionFailed = @"SoftwareDetectionFailed";
 
+        /// <summary>Software detection is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState SoftwareDetectionInProgress = @"SoftwareDetectionInProgress";
 
+        /// <summary>Software installation failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState SoftwareInstallationFailed = @"SoftwareInstallationFailed";
 
+        /// <summary>Software installation is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState SoftwareInstallationInProgress = @"SoftwareInstallationInProgress";
 
+        /// <summary>Infrastructure deployment is successful. Software installation is pending.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceState SoftwareInstallationPending = @"SoftwareInstallationPending";
 
         /// <summary>the value for an instance of the <see cref="SapVirtualInstanceState" /> Enum.</summary>
