@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +51,6 @@ function New-AzCdnUserManagedHttpsParametersObject {
         $CertificateSourceParameterVaultName,
         [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
         [string]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource]
         $CertificateSource,
         [Parameter(HelpMessage="TLS protocol version that will be used for Https.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "TLS10", "TLS12")]
