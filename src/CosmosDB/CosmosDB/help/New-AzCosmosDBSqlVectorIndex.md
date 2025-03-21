@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlVectorIndex
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlvectorindex
 schema: 2.0.0
 ---
 
 # New-AzCosmosDBSqlVectorIndex
 
 ## SYNOPSIS
-Creates a new object of type PSVectorIndex. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
+Creates a new CosmosDB Sql VectorIndex object. 
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzCosmosDBSqlVectorIndex [-Path <String>] [-Type <String>]
 ```
 
 ## DESCRIPTION
-Object corresponding to Sql API's VectorIndex.
+The **New-AzCosmosDBSqlVectorIndex** cmdlet creates a new object of type PSSqlVectorIndex.
 
 ## EXAMPLES
 
@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSVectorIndex
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex
 
 ## NOTES
 
