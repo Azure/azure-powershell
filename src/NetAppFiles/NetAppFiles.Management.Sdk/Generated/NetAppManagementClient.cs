@@ -336,6 +336,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -386,7 +389,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-07-01";
+            this.ApiVersion = "2024-09-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
