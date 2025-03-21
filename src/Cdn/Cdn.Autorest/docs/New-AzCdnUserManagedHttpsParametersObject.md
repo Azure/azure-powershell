@@ -13,11 +13,11 @@ Create an in-memory object for UserManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGroupName <String>
- -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
- -CertificateSourceParameterTypeName <String> -CertificateSourceParameterVaultName <String>
- -ProtocolType <String> [-CertificateSourceParameterSecretVersion <String>] [-MinimumTlsVersion <String>]
- [<CommonParameters>]
+New-AzCdnUserManagedHttpsParametersObject -CertificateSource <String>
+ -CertificateSourceParameterResourceGroupName <String> -CertificateSourceParameterSecretName <String>
+ -CertificateSourceParameterSubscriptionId <String> -CertificateSourceParameterTypeName <String>
+ -CertificateSourceParameterVaultName <String> -ProtocolType <String>
+ [-CertificateSourceParameterSecretVersion <String>] [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,21 @@ rule01
 Create an in-memory object for UrlRedirectAction
 
 ## PARAMETERS
+
+### -CertificateSource
+Defines the source of the SSL certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CertificateSourceParameterResourceGroupName
 Resource group of the user's Key Vault containing the SSL certificate.
