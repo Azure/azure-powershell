@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="tier">This field is required to be implemented by the Resource Provider if the
         /// service has more than one tier, but is not required on a PUT.
-        /// Possible values include: 'Free', 'Basic', 'Standard', 'Premium',
-        /// 'Enterprise'</param>
+        /// Possible values include: &#39;Free&#39;, &#39;Basic&#39;, &#39;Standard&#39;, &#39;Premium&#39;,
+        /// &#39;Enterprise&#39;</param>
 
         /// <param name="size">The SKU size. When the name field is the combination of tier and some other
         /// value, this would be the standalone code.

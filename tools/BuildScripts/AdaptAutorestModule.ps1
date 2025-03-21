@@ -245,3 +245,8 @@ if ($existingCsprojPath) {
     Create or refresh generate-info.json for submodule
 #>
 New-GenerateInfoJson -GeneratedDirectory $subModulePath
+
+<#
+    Update module in tools\CreateMappings_rules.json
+#>
+Update-MappingJson -RepoRoot $RepoRoot -ModuleName $ModuleRootName

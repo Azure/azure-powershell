@@ -949,7 +949,7 @@
     "alias": "DeviceRegistry"
   },
   {
-    "regex": "IoTOperationsService",
+    "module": "IoTOperationsService",
     "alias": "IoTOperationsService"
   }
 ]
