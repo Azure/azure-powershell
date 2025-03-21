@@ -951,5 +951,9 @@
   {
     "module": "IoTOperationsService",
     "alias": "IoTOperationsService"
+  },
+  {
+    "module": "ScVmm",
+    "alias": "ScVmm"
   }
 ]
