@@ -54,6 +54,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (ShouldProcess(Destination.TransformedPath, VerbsCommon.Move))
             {
                 DirectoryEntryType fileType;
+
+                // If destination is a parent of source, then we can never move, even with force. Deleting the destination would be wrong here.
+                // Throw an error in that case
+                if( Destination.TransformedPath.StartsWith(Path.TransformedPath))
+                {
+                    throw new CloudException(string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
+                }
+
                 if (Force.IsPresent && DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
                         out fileType))
                 {
