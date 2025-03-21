@@ -29,8 +29,9 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob] [-AdminState <String>]
- [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>] [-ResiliencyModel <String>]
+ [-ResiliencyModel <String>] [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,7 +240,6 @@ Property to indicate if the Express Route Gateway serves traffic when there are 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -647,7 +647,6 @@ Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named

@@ -21,7 +21,8 @@ Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher <PSNetworkWatcher> -Target
 ### SetByName
 ```
 Get-AzNetworkWatcherSecurityGroupView -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetVirtualMachineId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetVirtualMachineId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation

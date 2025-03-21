@@ -14,8 +14,8 @@ Defines a Interface Configuration for Network Profile of Virtual Appliance.
 
 ```
 New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType <String>
- -IpConfiguration <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -IpConfiguration <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

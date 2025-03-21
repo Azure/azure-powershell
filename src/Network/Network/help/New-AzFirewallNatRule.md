@@ -17,7 +17,8 @@ Creates a Firewall NAT Rule.
 New-AzFirewallNatRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
  [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
  [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

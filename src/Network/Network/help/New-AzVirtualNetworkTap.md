@@ -18,7 +18,8 @@ New-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-Destination
  [-Location <String>] [-Tag <Hashtable>]
  [-DestinationNetworkInterfaceIPConfiguration <PSNetworkInterfaceIPConfiguration>]
  [-DestinationLoadBalancerFrontEndIPConfiguration <PSFrontendIPConfiguration>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -26,7 +27,8 @@ New-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-Destination
 New-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-DestinationPort <Int32>]
  [-Location <String>] [-Tag <Hashtable>] [-DestinationNetworkInterfaceIPConfigurationId <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationId <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

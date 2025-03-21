@@ -18,8 +18,8 @@ New-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
  [-Description <String>] -Protocol <String> -Direction <String>
  [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DestinationPortRange <String[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

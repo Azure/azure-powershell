@@ -15,19 +15,22 @@ Disconnect given connected vpn client connections with a given p2s vpn gateway
 ### ByP2SVpnGatewayName (Default)
 ```
 Disconnect-AzP2SVpnGatewayVpnConnection -ResourceGroupName <String> -Name <String> -VpnConnectionId <String[]>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
 Disconnect-AzP2SVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <String[]> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
 ```
 Disconnect-AzP2SVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <String[]> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -14,7 +14,8 @@ Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all 
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzVpnGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVpnGateway [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName

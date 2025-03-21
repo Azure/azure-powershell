@@ -14,12 +14,13 @@ Creates a virtual network.
 ## SYNTAX
 
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
- [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
- [-EnableEncryption <String>] [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>]
- [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
- [-EdgeZone <String>] [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-DnsServer <String[]>] [-FlowTimeout <Int32>]
+ [-Subnet <PSSubnet[]>] [-BgpCommunity <String>] [-EnableEncryption <String>]
+ [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>] [-EnableDdosProtection]
+ [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-EdgeZone <String>]
+ [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,21 +101,6 @@ Specifies a range of IP addresses for a virtual network.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IpamPoolPrefixAllocation
-Specifies a list of PSIpamPoolPrefixAllocation objects to auto allocate from for virtual network address prefixes.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -295,6 +281,21 @@ Specifies IpAllocations for a virtual network.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpamPoolPrefixAllocation
+Specifies a list of PSIpamPoolPrefixAllocation objects to auto allocate from for virtual network address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
 Parameter Sets: (All)
 Aliases:
 

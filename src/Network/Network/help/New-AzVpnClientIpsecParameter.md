@@ -15,7 +15,8 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 ```
 New-AzVpnClientIpsecParameter [-SALifeTime <Int32>] [-SADataSize <Int32>] [-IpsecEncryption <String>]
  [-IpsecIntegrity <String>] [-IkeEncryption <String>] [-IkeIntegrity <String>] [-DhGroup <String>]
- [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

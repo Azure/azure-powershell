@@ -14,7 +14,8 @@ Creates a VirtualHubRoute object which can be passed as parameter to the Add-AzV
 
 ```
 Add-AzVirtualHubRoute -Destination <String[]> -DestinationType <String> -NextHop <String[]>
- -NextHopType <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -NextHopType <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

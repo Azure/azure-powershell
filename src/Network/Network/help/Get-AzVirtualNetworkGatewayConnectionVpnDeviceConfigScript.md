@@ -15,7 +15,8 @@ This commandlet takes the connection resource, VPN device brand, model, firmware
 ```
 Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name <String> -ResourceGroupName <String>
  -DeviceVendor <String> -DeviceFamily <String> -FirmwareVersion <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

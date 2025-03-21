@@ -22,7 +22,8 @@ New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -Sour
 ### SourceAddressAndFqdnTag
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SourceAddressAndWebCategory
@@ -49,7 +50,8 @@ New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -Sour
 ### SourceIpGroupAndFqdnTag
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
- -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SourceIpGroupAndWebCategory

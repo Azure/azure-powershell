@@ -18,7 +18,8 @@ Set-AzApplicationGatewayFirewallPolicy -InputObject <PSApplicationGatewayWebAppl
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
  [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
  [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByFactoryName
@@ -27,7 +28,8 @@ Set-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
  [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
  [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -36,7 +38,8 @@ Set-AzApplicationGatewayFirewallPolicy -ResourceId <String>
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
  [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
  [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

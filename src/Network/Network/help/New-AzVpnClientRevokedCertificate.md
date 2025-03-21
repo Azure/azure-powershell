@@ -109,5 +109,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVpnClientRevokedCertificate](./Get-AzVpnClientRevokedCertificate.md)
 
 [Remove-AzVpnClientRevokedCertificate](./Remove-AzVpnClientRevokedCertificate.md)
-
-

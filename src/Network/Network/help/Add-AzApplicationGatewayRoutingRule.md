@@ -24,7 +24,8 @@ Add-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -
 ```
 Add-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> -Priority <Int32> [-BackendSettingsId <String>] [-ListenerId <String>]
- [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

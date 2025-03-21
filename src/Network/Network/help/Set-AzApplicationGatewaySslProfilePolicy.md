@@ -15,7 +15,8 @@ Modifies the SSL policy of an application gateway SSL profile.
 ```
 Set-AzApplicationGatewaySslProfilePolicy -SslProfile <PSApplicationGatewaySslProfile>
  [-DisabledSslProtocols <String[]>] [-PolicyType <String>] [-PolicyName <String>] [-CipherSuite <String[]>]
- [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

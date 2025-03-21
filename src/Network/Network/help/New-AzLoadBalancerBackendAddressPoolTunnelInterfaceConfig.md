@@ -14,7 +14,8 @@ Creates a tunnel interface in a backend address pool of a load balancer.
 
 ```
 New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol <String> -Type <String> -Identifier <Int32>
- -Port <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Port <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
