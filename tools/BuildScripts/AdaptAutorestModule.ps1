@@ -182,6 +182,8 @@ try{
             [string]$SubModuleNameTrimmed
         )
 
+        $helpMarkDownScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'HelpMarkDown.psm1'
+        Import-Module $helpMarkDownScriptPath
         $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
         $artifacts = Join-Path $RepoRoot 'artifacts'
         $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
@@ -219,6 +221,8 @@ try{
                 Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
+            Write-Host "Removing ProgressAction parameter from $helpFile.FullName ..."
+            Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
