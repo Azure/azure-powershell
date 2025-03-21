@@ -207,4 +207,17 @@ directive:
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 13.5.0
         change-effective-date: 2025/05/06
+
+  - where:
+      subject: FederatedIdentityCredential
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Audience System.String[]
+        new-output-properties:
+          - Audience System.Collections.Generic.List`1[System.String]
+        change-description: "The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'."
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
 ```
