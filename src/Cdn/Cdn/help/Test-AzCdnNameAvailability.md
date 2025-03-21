@@ -19,18 +19,6 @@ Test-AzCdnNameAvailability -Name <String> -Type <String> [-DefaultProfile <PSObj
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CheckViaJsonString1
-```
-Test-AzCdnNameAvailability [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonFilePath1
-```
-Test-AzCdnNameAvailability [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CheckExpanded1
 ```
 Test-AzCdnNameAvailability [-SubscriptionId <String>] -Name <String> -Type <String>
@@ -91,7 +79,7 @@ Path of Json file supplied to the Check operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckViaJsonFilePath1, CheckViaJsonFilePath
+Parameter Sets: CheckViaJsonFilePath
 Aliases:
 
 Required: True
@@ -106,7 +94,7 @@ Json string supplied to the Check operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckViaJsonString1, CheckViaJsonString
+Parameter Sets: CheckViaJsonString
 Aliases:
 
 Required: True
@@ -151,7 +139,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckViaJsonString1, CheckViaJsonFilePath1, CheckExpanded1
+Parameter Sets: CheckExpanded1
 Aliases:
 
 Required: False

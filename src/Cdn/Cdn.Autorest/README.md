@@ -292,16 +292,12 @@ directive:
       subject: ^CustomDomainCustomHttps$
     remove: true
   - where:
-      variant: ^UpgradeExpanded$
-      subject: AFDProfileSku
+      subject: NameAvailability
+      variant: ^CheckViaJsonFilePath1$
     remove: true
   - where:
       subject: NameAvailability
-      variant: ^CheckViaJsonFilePath1ViaJsonFilePath$
-    remove: true
-  - where:
-      subject: NameAvailability
-      variant: ^CheckViaJsonString1ViaJsonString$
+      variant: ^CheckViaJsonString1$
     remove: true
 
   # Hide Cdn profile
