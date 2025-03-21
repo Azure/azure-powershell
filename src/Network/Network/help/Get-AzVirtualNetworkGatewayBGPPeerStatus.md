@@ -25,7 +25,7 @@ This command enumerates BGP peers an Azure virtual network gateway is configured
 
 ### Example 1
 ```powershell
-Get-AzVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
+Get-AzVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
 ```
 
 ```output
