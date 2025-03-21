@@ -74,6 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
+# This is private az module version
 CmdletsToExport = 'Get-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncGroup', 
                'Get-AzStorageSyncServer', 'Get-AzStorageSyncServerEndpoint', 
                'Get-AzStorageSyncService', 'Invoke-AzStorageSyncChangeDetection', 

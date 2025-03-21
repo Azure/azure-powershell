@@ -36,7 +36,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Management.Sdk", "StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj", "{3D256234-F790-4163-8B45-B99A12022585}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{9A1A777F-25E1-4352-8347-13E96814A6CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Helper", "StorageSync.Helpers\StorageSync.Helper.csproj", "{3BD1FC0B-912C-481B-B755-D958E42FA974}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{3034BB72-0709-4E69-9810-46A89C181ECE}"

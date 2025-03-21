@@ -37,13 +37,19 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Clients.SyncServerRegistrationClientBase" />
     public class MockSyncServerRegistrationClient : MockSyncServerRegistrationClientBase
     {
+        /// <summary>
+        /// Gets the name of the test.
+        /// </summary>
+        /// <value>The name of the test.</value>
+        protected string TestName;
 
         /// <summary>
-        /// Parameterzed constructor for Sync Server Registration Client
+        /// Parameterized constructor for Sync Server Registration Client
         /// </summary>
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
-        public MockSyncServerRegistrationClient(IEcsManagement ecsManagementInteropClient) : base(ecsManagementInteropClient)
+        public MockSyncServerRegistrationClient(string testName, IEcsManagement ecsManagementInteropClient) : base(ecsManagementInteropClient)
         {
+            this.TestName = testName;
         }
 
         /// <summary>
@@ -99,6 +105,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine name</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -117,7 +124,8 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
-            string serverMachineName)
+            string serverMachineName,
+            bool assignIdentity)
         {
             int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                 subscriptionId.ToString(),
@@ -366,7 +374,15 @@ namespace Commands.StorageSync.Interop.Clients
 
         public override Guid? GetApplicationIdOrNull()
         {
-            return null;
+            if(TestName == "TestNewRegisteredServerWithIdentityError")
+            {
+                return null;
+            }
+            if(TestName == "TestPatchRegisteredServer")
+            {
+                return new Guid("3b990c8b-9607-4c2a-8b04-1d41985facca");
+            }
+            return Guid.NewGuid();
         }
     }
 }
