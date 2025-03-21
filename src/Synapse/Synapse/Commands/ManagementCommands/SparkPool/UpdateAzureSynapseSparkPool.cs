@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string NodeSize { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.EnableDynamicExecutorAllocation)]
         public bool? EnableDynamicExecutorAllocation { get; set; }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 };
             }
 
-            if(this.IsParameterBound(c => c.EnableDynamicExecutorAllocation))
+            if (this.IsParameterBound(c => c.EnableDynamicExecutorAllocation))
             {
                 existingSparkPool.DynamicExecutorAllocation = new DynamicExecutorAllocation
                 {
@@ -268,12 +268,12 @@ namespace Microsoft.Azure.Commands.Synapse
                     }
 
                     existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Union(this.Package.Select(psPackage => new LibraryInfo
+                    (uploadedTimestamp: DateTime.Parse(psPackage?.UploadedTimestamp).ToUniversalTime())
                     {
                         Name = psPackage?.Name,
                         Type = psPackage?.PackageType,
                         Path = psPackage?.Path,
-                        ContainerName = psPackage?.ContainerName,
-                        UploadedTimestamp = DateTime.Parse(psPackage?.UploadedTimestamp).ToUniversalTime()
+                        ContainerName = psPackage?.ContainerName
                     }), new LibraryComparer()).ToList();
                 }
                 else if (this.PackageAction == SynapseConstants.PackageActionType.Remove)
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     existingSparkPool.SparkConfigProperties = new SparkConfigProperties()
                     {
                         Filename = SparkConfiguration.Name,
-                        ConfigurationType = ConfigurationType.Artifact,                       
+                        ConfigurationType = ConfigurationType.Artifact,
                         Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
                     };
                 }
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 //Get hash code for the object if it is not null.
                 int hCode = obj.Name.GetHashCode() ^ obj.Path.GetHashCode() ^ obj.ContainerName.GetHashCode() ^ obj.UploadedTimestamp.GetHashCode() ^ obj.Type.GetHashCode();
                 return hCode;
-             }
+            }
         }
     }
 }
