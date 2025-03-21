@@ -16,27 +16,27 @@ Delete a DataflowResource
 ```
 Remove-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityInstance
 ```
 Remove-AzIoTOperationsServiceDataflow -Name <String> -ProfileName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityDataflowProfile
 ```
 Remove-AzIoTOperationsServiceDataflow -Name <String>
  -DataflowProfileInputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzIoTOperationsServiceDataflow -InputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,21 +198,6 @@ Parameter Sets: Delete, DeleteViaIdentityInstance
 Aliases: DataflowProfileName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
