@@ -1,0 +1,1215 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2025-03-01",
+    "title": "WebApplicationFirewallManagement",
+    "description": "APIs to manage web application firewall rules."
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies": {
+      "get": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Lists all of the protection policies within a resource group.",
+        "operationId": "Policies_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicyList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Get all Policies in a Resource Group": {
+            "$ref": "./examples/WafListPolicies.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies": {
+      "get": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Lists all of the protection policies within a subscription.",
+        "operationId": "Policies_ListBySubscription",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicyList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/DefaultErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Get all Policies in a Resource Group": {
+            "$ref": "./examples/WafListPoliciesUnderSubscription.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}": {
+      "get": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Retrieve protection policy with specified name within a resource group.",
+        "operationId": "Policies_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/PolicyNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Policy": {
+            "$ref": "./examples/WafPolicyGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Create or update policy with specified rule set name within a resource group.",
+        "operationId": "Policies_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/PolicyNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "description": "Policy to be created.",
+            "in": "body",
+            "name": "parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          },
+          "201": {
+            "description": "Created. The request has been fulfilled and a new protection policy has been created.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          },
+          "202": {
+            "description": "Accepted. The request has been accepted for processing and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Creates specific policy": {
+            "$ref": "./examples/WafPolicyCreateOrUpdate.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Patch a specific frontdoor webApplicationFirewall policy for tags update under the specified subscription and resource group.",
+        "operationId": "Policies_Update",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/PolicyNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "description": "FrontdoorWebApplicationFirewallPolicy parameters to be patched.",
+            "in": "body",
+            "name": "parameters",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/WebApplicationFirewallPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Patches specific policy": {
+            "$ref": "./examples/WafPolicyPatch.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "tags": [
+          "WebApplicationFirewallPolicies"
+        ],
+        "description": "Deletes Policy",
+        "operationId": "Policies_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/PolicyNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted. The request has been accepted for processing and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "No Content. The request has been accepted but the policy was not found."
+          }
+        },
+        "x-ms-examples": {
+          "Delete protection policy": {
+            "$ref": "./examples/WafPolicyDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallManagedRuleSets": {
+      "get": {
+        "tags": [
+          "WebApplicationFirewallManagedRuleSets"
+        ],
+        "description": "Lists all available managed rule sets.",
+        "operationId": "ManagedRuleSets_List",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of all available web application firewall managed rule sets.",
+            "schema": {
+              "$ref": "#/definitions/ManagedRuleSetDefinitionList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List Policies ManagedRuleSets in a Resource Group": {
+            "$ref": "./examples/WafListManagedRuleSets.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "WebApplicationFirewallPolicy": {
+      "description": "Defines web application firewall policy.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties of the web application firewall policy.",
+          "$ref": "#/definitions/WebApplicationFirewallPolicyProperties"
+        },
+        "etag": {
+          "type": "string",
+          "description": "Gets a unique read-only string that changes whenever the resource is updated."
+        },
+        "sku": {
+          "description": "The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.",
+          "$ref": "#/definitions/Sku"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "WebApplicationFirewallPolicyProperties": {
+      "description": "Defines web application firewall policy properties.",
+      "properties": {
+        "policySettings": {
+          "description": "Describes settings for the policy.",
+          "$ref": "#/definitions/PolicySettings"
+        },
+        "customRules": {
+          "description": "Describes custom rules inside the policy.",
+          "$ref": "#/definitions/CustomRuleList"
+        },
+        "managedRules": {
+          "description": "Describes managed rules inside the policy.",
+          "$ref": "#/definitions/ManagedRuleSetList"
+        },
+        "frontendEndpointLinks": {
+          "description": "Describes Frontend Endpoints associated with this Web Application Firewall policy.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/FrontendEndpointLink"
+          }
+        },
+        "routingRuleLinks": {
+          "description": "Describes Routing Rules associated with this Web Application Firewall policy.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/RoutingRuleLink"
+          }
+        },
+        "securityPolicyLinks": {
+          "description": "Describes Security Policy associated with this Web Application Firewall policy.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/SecurityPolicyLink"
+          }
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Provisioning state of the policy."
+        },
+        "resourceState": {
+          "title": "Resource status of the policy.",
+          "readOnly": true,
+          "enum": [
+            "Creating",
+            "Enabling",
+            "Enabled",
+            "Disabling",
+            "Disabled",
+            "Deleting"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "PolicyResourceState",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "Sku": {
+      "description": "The pricing tier of the web application firewall policy.",
+      "properties": {
+        "name": {
+          "description": "Name of the pricing tier.",
+          "enum": [
+            "Classic_AzureFrontDoor",
+            "Standard_AzureFrontDoor",
+            "Premium_AzureFrontDoor"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SkuName",
+            "modelAsString": true
+          }
+        }
+      },
+      "type": "object"
+    },
+    "WebApplicationFirewallPolicyList": {
+      "description": "Defines a list of WebApplicationFirewallPolicies. It contains a list of WebApplicationFirewallPolicy objects and a URL link to get the next set of results.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/WebApplicationFirewallPolicy"
+          },
+          "description": "List of WebApplicationFirewallPolicies within a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of WebApplicationFirewallPolicy objects if there are any."
+        }
+      }
+    },
+    "PolicySettings": {
+      "description": "Defines top-level WebApplicationFirewallPolicy configuration settings.",
+      "properties": {
+        "enabledState": {
+          "description": "Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.",
+          "type": "string",
+          "enum": [
+            "Disabled",
+            "Enabled"
+          ],
+          "x-ms-enum": {
+            "name": "PolicyEnabledState",
+            "modelAsString": true
+          }
+        },
+        "mode": {
+          "description": "Describes if it is in detection mode or prevention mode at policy level.",
+          "type": "string",
+          "enum": [
+            "Prevention",
+            "Detection"
+          ],
+          "x-ms-enum": {
+            "name": "PolicyMode",
+            "modelAsString": true
+          }
+        },
+        "redirectUrl": {
+          "description": "If action type is redirect, this field represents redirect URL for the client.",
+          "type": "string"
+        },
+        "customBlockResponseStatusCode": {
+          "description": "If the action type is block, customer can override the response status code.",
+          "type": "integer"
+        },
+        "customBlockResponseBody": {
+          "description": "If the action type is block, customer can override the response body. The body must be specified in base64 encoding.",
+          "type": "string",
+          "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+        },
+        "requestBodyCheck": {
+          "description": "Describes if policy managed rules will inspect the request body content.",
+          "type": "string",
+          "enum": [
+            "Disabled",
+            "Enabled"
+          ],
+          "x-ms-enum": {
+            "name": "PolicyRequestBodyCheck",
+            "modelAsString": true
+          }
+        },
+        "javascriptChallengeExpirationInMinutes": {
+          "description": "Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 5,
+          "maximum": 1440
+        },
+        "captchaExpirationInMinutes": {
+          "description": "Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 5,
+          "maximum": 1440
+        },
+        "logScrubbing": {
+          "description": "Defines rules that scrub sensitive fields in the Web Application Firewall logs.",
+          "type": "object",
+          "x-ms-client-flatten": true,
+          "properties": {
+            "state": {
+              "type": "string",
+              "description": "State of the log scrubbing config. Default value is Enabled.",
+              "enum": [
+                "Enabled",
+                "Disabled"
+              ],
+              "x-ms-enum": {
+                "name": "WebApplicationFirewallScrubbingState",
+                "modelAsString": true
+              }
+            },
+            "scrubbingRules": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WebApplicationFirewallScrubbingRules"
+              },
+              "x-ms-identifiers": [],
+              "description": "List of log scrubbing rules applied to the Web Application Firewall logs."
+            }
+          }
+        }
+      }
+    },
+    "CustomRuleList": {
+      "description": "Defines contents of custom rules",
+      "properties": {
+        "rules": {
+          "description": "List of rules",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomRule"
+          }
+        }
+      }
+    },
+    "CustomRule": {
+      "description": "Defines contents of a web application rule",
+      "required": [
+        "priority",
+        "ruleType",
+        "matchConditions",
+        "action"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Describes the name of the rule.",
+          "maxLength": 128
+        },
+        "priority": {
+          "description": "Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.",
+          "type": "integer"
+        },
+        "enabledState": {
+          "description": "Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.",
+          "type": "string",
+          "enum": [
+            "Disabled",
+            "Enabled"
+          ],
+          "x-ms-enum": {
+            "name": "CustomRuleEnabledState",
+            "modelAsString": true
+          }
+        },
+        "ruleType": {
+          "description": "Describes type of rule.",
+          "type": "string",
+          "enum": [
+            "MatchRule",
+            "RateLimitRule"
+          ],
+          "x-ms-enum": {
+            "name": "RuleType",
+            "modelAsString": true
+          }
+        },
+        "rateLimitDurationInMinutes": {
+          "description": "Time window for resetting the rate limit count. Default is 1 minute.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "rateLimitThreshold": {
+          "description": "Number of allowed requests per client within the time window.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "groupBy": {
+          "description": "Describes the list of variables to group the rate limit requests",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupByVariable"
+          },
+          "x-ms-identifiers": []
+        },
+        "matchConditions": {
+          "description": "List of match conditions.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MatchCondition"
+          }
+        },
+        "action": {
+          "description": "Describes what action to be applied when rule matches.",
+          "$ref": "#/definitions/ActionType"
+        }
+      }
+    },
+    "GroupByVariable": {
+      "description": "Describes the variables available to group the rate limit requests",
+      "required": [
+        "variableName"
+      ],
+      "type": "object",
+      "properties": {
+        "variableName": {
+          "description": "Describes the supported variable for group by",
+          "type": "string",
+          "enum": [
+            "SocketAddr",
+            "GeoLocation",
+            "None"
+          ],
+          "x-ms-enum": {
+            "name": "VariableName",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "TransformType": {
+      "description": "Describes what transforms applied before matching.",
+      "type": "string",
+      "enum": [
+        "Lowercase",
+        "Uppercase",
+        "Trim",
+        "UrlDecode",
+        "UrlEncode",
+        "RemoveNulls"
+      ],
+      "x-ms-enum": {
+        "name": "TransformType",
+        "modelAsString": true
+      }
+    },
+    "MatchCondition": {
+      "description": "Define a match condition.",
+      "required": [
+        "matchVariable",
+        "operator",
+        "matchValue"
+      ],
+      "properties": {
+        "matchVariable": {
+          "description": "Request variable to compare with.",
+          "type": "string",
+          "enum": [
+            "RemoteAddr",
+            "RequestMethod",
+            "QueryString",
+            "PostArgs",
+            "RequestUri",
+            "RequestHeader",
+            "RequestBody",
+            "Cookies",
+            "SocketAddr"
+          ],
+          "x-ms-enum": {
+            "name": "MatchVariable",
+            "modelAsString": true
+          }
+        },
+        "selector": {
+          "description": "Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.",
+          "type": "string"
+        },
+        "operator": {
+          "description": "Comparison type to use for matching with the variable value.",
+          "type": "string",
+          "enum": [
+            "Any",
+            "IPMatch",
+            "GeoMatch",
+            "Equal",
+            "Contains",
+            "LessThan",
+            "GreaterThan",
+            "LessThanOrEqual",
+            "GreaterThanOrEqual",
+            "BeginsWith",
+            "EndsWith",
+            "RegEx"
+          ],
+          "x-ms-enum": {
+            "name": "Operator",
+            "modelAsString": true
+          }
+        },
+        "negateCondition": {
+          "description": "Describes if the result of this condition should be negated.",
+          "type": "boolean"
+        },
+        "matchValue": {
+          "description": "List of possible match values.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transforms": {
+          "description": "List of transforms.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformType"
+          }
+        }
+      }
+    },
+    "ManagedRuleSetList": {
+      "description": "Defines the list of managed rule sets for the policy.",
+      "properties": {
+        "managedRuleSets": {
+          "description": "List of rule sets.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleSet"
+          }
+        }
+      }
+    },
+    "ManagedRuleSet": {
+      "type": "object",
+      "description": "Defines a managed rule set.",
+      "required": [
+        "ruleSetType",
+        "ruleSetVersion"
+      ],
+      "properties": {
+        "ruleSetType": {
+          "description": "Defines the rule set type to use.",
+          "type": "string"
+        },
+        "ruleSetVersion": {
+          "description": "Defines the version of the rule set to use.",
+          "type": "string"
+        },
+        "ruleSetAction": {
+          "description": "Defines the rule set action.",
+          "title": "ruleSetAction",
+          "$ref": "#/definitions/ManagedRuleSetActionType"
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleExclusion"
+          },
+          "description": "Describes the exclusions that are applied to all rules in the set."
+        },
+        "ruleGroupOverrides": {
+          "description": "Defines the rule group overrides to apply to the rule set.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleGroupOverride"
+          }
+        }
+      }
+    },
+    "ManagedRuleGroupOverride": {
+      "description": "Defines a managed rule group override setting.",
+      "required": [
+        "ruleGroupName"
+      ],
+      "properties": {
+        "ruleGroupName": {
+          "description": "Describes the managed rule group to override.",
+          "type": "string"
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleExclusion"
+          },
+          "description": "Describes the exclusions that are applied to all rules in the group."
+        },
+        "rules": {
+          "description": "List of rules that will be disabled. If none specified, all rules in the group will be disabled.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleOverride"
+          }
+        }
+      }
+    },
+    "ManagedRuleOverride": {
+      "description": "Defines a managed rule group override setting.",
+      "required": [
+        "ruleId"
+      ],
+      "properties": {
+        "ruleId": {
+          "description": "Identifier for the managed rule.",
+          "type": "string"
+        },
+        "enabledState": {
+          "description": "Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.",
+          "$ref": "#/definitions/ManagedRuleEnabledState"
+        },
+        "action": {
+          "description": "Describes the override action to be applied when rule matches.",
+          "$ref": "#/definitions/ActionType"
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleExclusion"
+          },
+          "description": "Describes the exclusions that are applied to this specific rule."
+        }
+      }
+    },
+    "ManagedRuleSetDefinitionList": {
+      "description": "List of managed rule set definitions available for use in a policy.",
+      "properties": {
+        "value": {
+          "description": "List of managed rule set definitions.",
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ManagedRuleSetDefinition"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to retrieve next set of managed rule set definitions."
+        }
+      }
+    },
+    "ManagedRuleSetDefinition": {
+      "description": "Describes the a managed rule set definition.",
+      "properties": {
+        "properties": {
+          "description": "Properties for a managed rule set definition.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ManagedRuleSetDefinitionProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "ManagedRuleSetDefinitionProperties": {
+      "description": "Properties for a managed rule set definition.",
+      "properties": {
+        "provisioningState": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Provisioning state of the managed rule set."
+        },
+        "ruleSetId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Id of the managed rule set."
+        },
+        "ruleSetType": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Type of the managed rule set."
+        },
+        "ruleSetVersion": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Version of the managed rule set type."
+        },
+        "ruleGroups": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ManagedRuleGroupDefinition"
+          },
+          "description": "Rule groups of the managed rule set."
+        }
+      }
+    },
+    "ManagedRuleGroupDefinition": {
+      "description": "Describes a managed rule group.",
+      "properties": {
+        "ruleGroupName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Name of the managed rule group."
+        },
+        "description": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Description of the managed rule group."
+        },
+        "rules": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ManagedRuleDefinition"
+          },
+          "description": "List of rules within the managed rule group."
+        }
+      }
+    },
+    "ManagedRuleDefinition": {
+      "description": "Describes a managed rule definition.",
+      "properties": {
+        "ruleId": {
+          "description": "Identifier for the managed rule.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "defaultState": {
+          "description": "Describes the default state for the managed rule.",
+          "readOnly": true,
+          "$ref": "#/definitions/ManagedRuleEnabledState"
+        },
+        "defaultAction": {
+          "description": "Describes the default action to be applied when the managed rule matches.",
+          "readOnly": true,
+          "$ref": "#/definitions/ActionType"
+        },
+        "description": {
+          "description": "Describes the functionality of the managed rule.",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "ManagedRuleExclusion": {
+      "required": [
+        "matchVariable",
+        "selectorMatchOperator",
+        "selector"
+      ],
+      "description": "Exclude variables from managed rule evaluation.",
+      "properties": {
+        "matchVariable": {
+          "type": "string",
+          "enum": [
+            "RequestHeaderNames",
+            "RequestCookieNames",
+            "QueryStringArgNames",
+            "RequestBodyPostArgNames",
+            "RequestBodyJsonArgNames"
+          ],
+          "description": "The variable type to be excluded.",
+          "x-ms-enum": {
+            "name": "ManagedRuleExclusionMatchVariable",
+            "modelAsString": true
+          }
+        },
+        "selectorMatchOperator": {
+          "type": "string",
+          "enum": [
+            "Equals",
+            "Contains",
+            "StartsWith",
+            "EndsWith",
+            "EqualsAny"
+          ],
+          "description": "Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.",
+          "x-ms-enum": {
+            "name": "ManagedRuleExclusionSelectorMatchOperator",
+            "modelAsString": true
+          }
+        },
+        "selector": {
+          "type": "string",
+          "description": "Selector value for which elements in the collection this exclusion applies to."
+        }
+      }
+    },
+    "ActionType": {
+      "description": "Defines the action to take on rule match.",
+      "type": "string",
+      "enum": [
+        "Allow",
+        "Block",
+        "Log",
+        "Redirect",
+        "AnomalyScoring",
+        "JSChallenge",
+        "CAPTCHA"
+      ],
+      "x-ms-enum": {
+        "name": "ActionType",
+        "modelAsString": true
+      }
+    },
+    "WebApplicationFirewallScrubbingRules": {
+      "description": "Defines the contents of the log scrubbing rules.",
+      "type": "object",
+      "required": [
+        "matchVariable",
+        "selectorMatchOperator"
+      ],
+      "properties": {
+        "matchVariable": {
+          "type": "string",
+          "enum": [
+            "RequestIPAddress",
+            "RequestUri",
+            "QueryStringArgNames",
+            "RequestHeaderNames",
+            "RequestCookieNames",
+            "RequestBodyPostArgNames",
+            "RequestBodyJsonArgNames"
+          ],
+          "description": "The variable to be scrubbed from the logs.",
+          "x-ms-enum": {
+            "name": "scrubbingRuleEntryMatchVariable",
+            "modelAsString": true
+          }
+        },
+        "selectorMatchOperator": {
+          "type": "string",
+          "enum": [
+            "EqualsAny",
+            "Equals"
+          ],
+          "description": "When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.",
+          "x-ms-enum": {
+            "name": " scrubbingRuleEntryMatchOperator",
+            "modelAsString": true
+          }
+        },
+        "selector": {
+          "type": "string",
+          "description": "When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "description": "Defines the state of a log scrubbing rule. Default value is enabled.",
+          "x-ms-enum": {
+            "name": " scrubbingRuleEntryState",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "ManagedRuleSetActionType": {
+      "description": "Defines the action to take when a managed rule set score threshold is met.",
+      "type": "string",
+      "enum": [
+        "Block",
+        "Log",
+        "Redirect"
+      ],
+      "x-ms-enum": {
+        "name": "ManagedRuleSetActionType",
+        "modelAsString": true
+      }
+    },
+    "ManagedRuleEnabledState": {
+      "description": "Describes if the managed rule is in enabled or disabled state.",
+      "type": "string",
+      "enum": [
+        "Disabled",
+        "Enabled"
+      ],
+      "x-ms-enum": {
+        "name": "ManagedRuleEnabledState",
+        "modelAsString": true
+      }
+    },
+    "ErrorResponse": {
+      "description": "Error response indicates Front Door service is not able to process the incoming request. The reason is provided in the error message.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "message": {
+          "description": "Error message indicating why the operation failed.",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "DefaultErrorResponse": {
+      "description": "Error response indicates Front Door service is not able to process the incoming request. The reason is provided in the error message.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "description": "Error model.",
+          "type": "object",
+          "properties": {
+            "code": {
+              "description": "Error code.",
+              "readOnly": true,
+              "type": "string"
+            },
+            "message": {
+              "description": "Error message indicating why the operation failed.",
+              "readOnly": true,
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "FrontendEndpointLink": {
+      "description": "Defines the Resource ID for a Frontend Endpoint.",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        }
+      }
+    },
+    "RoutingRuleLink": {
+      "description": "Defines the Resource ID for a Routing Rule.",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        }
+      }
+    },
+    "SecurityPolicyLink": {
+      "description": "Defines the Resource ID for a Security Policy.",
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        }
+      }
+    }
+  },
+  "parameters": {
+    "PolicyNameParameter": {
+      "name": "policyName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "maxLength": 128,
+      "x-ms-parameter-location": "method",
+      "description": "The name of the Web Application Firewall Policy."
+    },
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_\\-\\(\\)\\.]*[^\\.]$",
+      "minLength": 1,
+      "maxLength": 80,
+      "x-ms-parameter-location": "method",
+      "description": "Name of the Resource group within the Azure subscription."
+    }
+  }
+}
