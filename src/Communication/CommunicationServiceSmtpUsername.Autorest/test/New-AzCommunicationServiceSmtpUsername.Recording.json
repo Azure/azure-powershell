@@ -1,0 +1,44 @@
+{
+  "New-AzCommunicationServiceSmtpUsername+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/50ad1522-5c2c-4d9a-a6c8-67c11ecb75b8/resourceGroups/testgroup0sbm37/providers/Microsoft.Communication/communicationServices/persistentACSResourceName0sbm37/smtpUsernames/testSmtpUsernameResource0sbm37?api-version=2024-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/50ad1522-5c2c-4d9a-a6c8-67c11ecb75b8/resourceGroups/testgroup0sbm37/providers/Microsoft.Communication/communicationServices/persistentACSResourceName0sbm37/smtpUsernames/testSmtpUsernameResource0sbm37?api-version=2024-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"username\": \"testusername0sbm37\",\r\n    \"entraApplicationId\": \"735ffca9-2020-4c43-a16d-128dd4221e90\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "190" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "MS-CV": [ "nR6p1AXZOEy232yvHgjYBQ.0" ],
+        "mise-correlation-id": [ "064cdcf2-6df1-42fe-9a7d-182061042465" ],
+        "x-ms-request-id": [ "2aa7c371-6129-4bee-be85-3c56060490c1" ],
+        "x-ms-correlation-request-id": [ "e0583e6d-9548-4852-bc11-b4b51403305b" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20250312T103545Z:e0583e6d-9548-4852-bc11-b4b51403305b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D6221CE8670B4573A01F02C17823997A Ref B: MAA201060514045 Ref C: 2025-03-12T10:35:43Z" ],
+        "Date": [ "Wed, 12 Mar 2025 10:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/50ad1522-5c2c-4d9a-a6c8-67c11ecb75b8/resourceGroups/testgroup0sbm37/providers/Microsoft.Communication/communicationServices/persistentACSResourceName0sbm37/smtpUsernames/testSmtpUsernameResource0sbm37\",\"name\":\"testSmtpUsernameResource0sbm37\",\"type\":\"microsoft.communication/communicationservices/smtpusernames\",\"systemData\":{\"createdBy\":\"v-deepikal@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-12T10:35:44.2078631Z\",\"lastModifiedBy\":\"v-deepikal@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-12T10:35:44.2078631Z\"},\"properties\":{\"username\":\"testusername0sbm37\",\"entraApplicationId\":\"735ffca9-2020-4c43-a16d-128dd4221e90\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"}}",
+      "isContentBase64": false
+    }
+  }
+}
