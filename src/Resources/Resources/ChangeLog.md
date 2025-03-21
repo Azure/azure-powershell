@@ -21,6 +21,12 @@
 ## Upcoming Release
 * Fixed the issue that Get-AzReource not working with `-ExpandProperties`. [#11248]
 * Updated Resources SDK to 2024-11-01.
+* Added breaking change announcement for the following cmdlets due to API version for resource type may change.
+    - `Get-AzResource`
+    - `New-AzResource`
+    - `Set-AzResource`
+    - `Remove-AzResource`
+    - `Invoke-AzResourceAction`
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
