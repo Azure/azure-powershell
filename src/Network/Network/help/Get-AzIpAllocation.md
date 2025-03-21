@@ -15,18 +15,19 @@ Gets a Azure IpAllocation.
 ### GetByNameParameterSet
 ```
 Get-AzIpAllocation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListParameterSet
 ```
 Get-AzIpAllocation [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzIpAllocation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpAllocation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,21 @@ Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

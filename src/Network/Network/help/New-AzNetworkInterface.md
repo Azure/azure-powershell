@@ -19,7 +19,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
  [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
@@ -29,7 +30,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
  [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -41,7 +43,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>] [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
  [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -54,7 +57,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
  [-AuxiliaryMode <String>] [-AuxiliarySku <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -490,6 +494,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

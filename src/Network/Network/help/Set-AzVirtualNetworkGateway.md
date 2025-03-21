@@ -28,9 +28,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>] 
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -48,9 +48,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>] [-MinScaleUnit <Int32>]
  [-MaxScaleUnit <Int32>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>]
- [-AllowRemoteVnetTraffic <Boolean>] [-AllowVirtualWanTraffic <Boolean>] -Tag <Hashtable> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [-ResiliencyModel <String>]
+ [-AllowRemoteVnetTraffic <Boolean>] [-ResiliencyModel <String>] [-AllowVirtualWanTraffic <Boolean>]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -576,7 +576,6 @@ Property to indicate if the Express Route Gateway serves traffic when there are 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -857,6 +856,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RadiusServerAddress
 P2S External Radius server address.
 
@@ -924,7 +938,6 @@ Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named

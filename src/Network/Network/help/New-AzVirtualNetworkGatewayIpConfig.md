@@ -16,13 +16,15 @@ Creates an IP Configuration for a Virtual Network Gateway
 ### SetByResourceId
 ```
 New-AzVirtualNetworkGatewayIpConfig -Name <String> [-PrivateIpAddress <String>] [-SubnetId <String>]
- [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzVirtualNetworkGatewayIpConfig -Name <String> [-PrivateIpAddress <String>] [-Subnet <PSSubnet>]
- [-PublicIpAddress <PSPublicIpAddress>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddress <PSPublicIpAddress>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,6 +74,21 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

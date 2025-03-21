@@ -17,21 +17,22 @@ create a NSP resource association.
 New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessMode <String>] [-AssociationId <String>]
  [-Location <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeterExpanded
@@ -39,30 +40,32 @@ New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <Str
 New-AzNetworkSecurityPerimeterAssociation -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-AccessMode <String>]
  [-AssociationId <String>] [-Location <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspAssociation>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspAssociation>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
  [-AccessMode <String>] [-AssociationId <String>] [-Location <String>] [-PrivateLinkResourceId <String>]
- [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +96,21 @@ Access mode on the association.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,6 +238,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

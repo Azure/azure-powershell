@@ -15,19 +15,19 @@ Generates and returns a SAS url for customer to download Vpn profile for point t
 ### ByP2SVpnGatewayName (Default)
 ```
 Get-AzP2sVpnGatewayVpnProfile [-Name <String>] -ResourceGroupName <String> [-AuthenticationMethod <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
 ```
 Get-AzP2sVpnGatewayVpnProfile -InputObject <PSP2SVpnGateway> [-AuthenticationMethod <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
 Get-AzP2sVpnGatewayVpnProfile -ResourceId <String> [-AuthenticationMethod <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ The resource name.
 Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

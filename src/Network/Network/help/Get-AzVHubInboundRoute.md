@@ -15,19 +15,22 @@ Retrieves the inbound routes of a virtual hub connection
 ### ByVirtualHubName (Default)
 ```
 Get-AzVHubInboundRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzVHubInboundRoute -VirtualHubObject <PSVirtualHub> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzVHubInboundRoute -VirtualHubResourceId <String> [-ResourceUri <String>]
- [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanConnectionType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +70,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
