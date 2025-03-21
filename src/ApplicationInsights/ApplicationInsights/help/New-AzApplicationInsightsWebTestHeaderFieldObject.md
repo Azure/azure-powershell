@@ -1,24 +1,24 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
 Module Name: Az.ApplicationInsights
-online version: https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
+online version: https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightswebtestheaderfieldobject
 schema: 2.0.0
 ---
 
 # New-AzApplicationInsightsWebTestHeaderFieldObject
 
 ## SYNOPSIS
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 
 ## SYNTAX
 
 ```
 New-AzApplicationInsightsWebTestHeaderFieldObject [-Name <String>] [-Value <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 
 ## EXAMPLES
 
@@ -52,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Value
 The value of the header.
 
@@ -74,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField
 
 ## NOTES
 

@@ -52,7 +52,7 @@ Create a Continuous Export configuration of an Application Insights component.
 Replace current linked storage account for an Application Insights component.
 
 ### [New-AzApplicationInsightsMyWorkbook](New-AzApplicationInsightsMyWorkbook.md)
-Create a new private workbook.
+create a new private workbook.
 
 ### [New-AzApplicationInsightsWebTest](New-AzApplicationInsightsWebTest.md)
 Creates or updates an Application Insights web test definition.
@@ -61,13 +61,13 @@ Creates or updates an Application Insights web test definition.
 Create an in-memory object for WebTestGeolocation.
 
 ### [New-AzApplicationInsightsWebTestHeaderFieldObject](New-AzApplicationInsightsWebTestHeaderFieldObject.md)
-Create a in-memory object for HeaderField
+Create an in-memory object for HeaderField.
 
 ### [New-AzApplicationInsightsWorkbook](New-AzApplicationInsightsWorkbook.md)
-Create a new workbook.
+create a new workbook.
 
 ### [New-AzApplicationInsightsWorkbookTemplate](New-AzApplicationInsightsWorkbookTemplate.md)
-Create a new workbook template.
+create a new workbook template.
 
 ### [New-AzApplicationInsightsWorkbookTemplateGalleryObject](New-AzApplicationInsightsWorkbookTemplateGalleryObject.md)
 Create an in-memory object for WorkbookTemplateGallery.
@@ -110,17 +110,17 @@ Creates (or updates) an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzApplicationInsightsLinkedStorageAccount](Update-AzApplicationInsightsLinkedStorageAccount.md)
-Update linked storage accounts for an Application Insights component.
+update linked storage accounts for an Application Insights component.
 
 ### [Update-AzApplicationInsightsMyWorkbook](Update-AzApplicationInsightsMyWorkbook.md)
-Updates a private workbook that has already been added.
+update a new private workbook.
 
 ### [Update-AzApplicationInsightsWebTestTag](Update-AzApplicationInsightsWebTestTag.md)
-Updates the tags associated with an Application Insights web test.
+update the tags associated with an Application Insights web test.
 
 ### [Update-AzApplicationInsightsWorkbook](Update-AzApplicationInsightsWorkbook.md)
-Updates a workbook that has already been added.
+update a workbook that has already been added.
 
 ### [Update-AzApplicationInsightsWorkbookTemplate](Update-AzApplicationInsightsWorkbookTemplate.md)
-Updates a workbook template that has already been added.
+update a workbook template that has already been added.
 
