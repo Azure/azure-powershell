@@ -19,15 +19,6 @@
 --->
 
 ## Upcoming Release
-* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
-    - `Get-AzNetworkVirtualAppliance`
-* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
-    - `Get-AzNetworkVirtualApplianceBootDiagnostics`
-* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
-    - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
-    - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
-    - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
-    - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
 * Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
     - Cmdlets for NetworkSecurityPerimeter crud operations
     - Cmdlets for NetworkSecurityPerimeter profile crud operations
@@ -37,6 +28,15 @@
     - Cmdlets for NetworkSecurityPerimeter link reference operations
     - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
     - Cmdlet to get NetworkSecurityPerimeter associable resource types
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
+    - `Get-AzNetworkVirtualApplianceBootDiagnostics`
+* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
+    - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
