@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+77b771692000aa07036e8b793584c55bacf02095")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+c545a0f811d71ca617ff7475ef521c1974e05c47")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - TrustedSigning")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.0")]
