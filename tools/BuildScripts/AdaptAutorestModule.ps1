@@ -221,7 +221,7 @@ try{
                 Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
-            Write-Host "Removing ProgressAction parameter from $helpFile.FullName ..."
+            Write-Host "Removing ProgressAction parameter from $helpFile ..."
             Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
