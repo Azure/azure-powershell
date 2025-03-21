@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://learn.microsoft.com/en-in/powershell/module/az.network/new-azvirtualnetworkgatewaymigrationparameter
 schema: 2.0.0
 ---
 
@@ -25,8 +25,6 @@ Create migration parameters to trigger prepare migration for a virtual network g
 ### Example 1
 ```powershell
 New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeDeploymentToStandardIP
-[-ResourceUrl "/subscriptions/123/resourceGroups/abc/providers/Microsoft.Network/publicIPAddresses/pip1"]
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## PARAMETERS
