@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkCloudVolume
 
 ## SYNOPSIS
-Create a new volume or update the properties of the existing one.
+create a new volume or create the properties of the existing one.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -ExtendedLoc
 ```
 
 ## DESCRIPTION
-Create a new volume or update the properties of the existing one.
+create a new volume or create the properties of the existing one.
 
 ## EXAMPLES
 
@@ -244,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolume
 
 ## NOTES
 

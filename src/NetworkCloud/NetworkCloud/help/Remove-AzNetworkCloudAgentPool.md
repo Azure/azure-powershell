@@ -19,6 +19,13 @@ Remove-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -R
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityKubernetesCluster
+```
+Remove-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetworkCloudIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkCloudAgentPool -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -72,11 +79,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KubernetesClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: DeleteViaIdentityKubernetesCluster
 Aliases:
 
 Required: True
@@ -106,7 +127,7 @@ The name of the Kubernetes cluster agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityKubernetesCluster
 Aliases: AgentPoolName
 
 Required: True

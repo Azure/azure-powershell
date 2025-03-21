@@ -8,21 +8,20 @@ schema: 2.0.0
 # New-AzNetworkCloudBareMetalMachineKeySet
 
 ## SYNOPSIS
-Create a new bare metal machine key set or update the existing one for the provided cluster.
+create a new bare metal machine key set or create the existing one for the provided cluster.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
- -PrivilegeLevel <BareMetalMachineKeySetPrivilegeLevel> -UserList <IKeySetUser[]> [-OSGroupName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String>
+ -UserList <IKeySetUser[]> [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new bare metal machine key set or update the existing one for the provided cluster.
+create a new bare metal machine key set or create the existing one for the provided cluster.
 
 ## EXAMPLES
 
@@ -238,7 +237,7 @@ Accept wildcard characters: False
 The access level allowed for the users in this key set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BareMetalMachineKeySetPrivilegeLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,10 +297,9 @@ Accept wildcard characters: False
 
 ### -UserList
 The unique list of permitted users.
-To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -350,7 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySet
 
 ## NOTES
 

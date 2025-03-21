@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkCloudKubernetesClusterFeature
 
 ## SYNOPSIS
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClus
 ```
 
 ## DESCRIPTION
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ## EXAMPLES
 
@@ -132,10 +132,9 @@ Accept wildcard characters: False
 
 ### -Option
 The configured options for the feature.
-To construct, see NOTES section for OPTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStringKeyValuePair[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterFeature
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
 
 ## NOTES
 

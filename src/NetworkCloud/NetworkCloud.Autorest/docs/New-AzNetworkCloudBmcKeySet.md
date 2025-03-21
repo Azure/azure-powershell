@@ -8,20 +8,19 @@ schema: 2.0.0
 # New-AzNetworkCloudBmcKeySet
 
 ## SYNOPSIS
-Create a new baseboard management controller key set or update the existing one for the provided cluster.
+create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
- -Location <String> -PrivilegeLevel <BmcKeySetPrivilegeLevel> -UserList <IKeySetUser[]>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new baseboard management controller key set or update the existing one for the provided cluster.
+create a new baseboard management controller key set or create the existing one for the provided cluster.
 
 ## EXAMPLES
 
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 The access level allowed for the users in this key set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BmcKeySetPrivilegeLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -268,10 +267,9 @@ Accept wildcard characters: False
 
 ### -UserList
 The unique list of permitted users.
-To construct, see NOTES section for USERLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKeySetUser[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKeySetUser[]
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +318,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBmcKeySet
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBmcKeySet
 
 ## NOTES
 

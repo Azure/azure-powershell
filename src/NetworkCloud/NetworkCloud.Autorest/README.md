@@ -45,22 +45,15 @@ title: NetworkCloud
 service-name: NetworkCloud
 subject-prefix: NetworkCloud
 
-# If there are post APIs for some kinds of actions in the RP, you may need to
-# uncomment following line to support viaIdentity for these post APIs
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Cordon$|^CordonViaIdentity$|^DeployViaIdentity$|^Deploy$|^Enable$|^EnableViaIdentity$|^Replace$|^ReplaceViaIdentity$|^Run$|^RunViaIdentity$|^PowerOff$|^PowerOffViaIdentity$
+      variant: ^(Create|Update|Cordon|Deploy|Enable|Replace|Run|PowerOff)(?!.*?Expanded)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   - where:
       subject: KuberneteClusterNode
@@ -269,19 +262,19 @@ directive:
 
   # Add model-cmdlet for any properties/sub-properties of complex type
   - model-cmdlet:
-    - BareMetalMachineConfigurationData
-    - BgpAdvertisement
-    - BgpServiceLoadBalancerConfiguration
-    - ControlPlaneNodeConfiguration
-    - EgressEndpoint
-    - EndpointDependency
-    - InitialAgentPoolConfiguration
-    - IpAddressPool
-    - KeySetUser
-    - L3NetworkAttachmentConfiguration
-    - NetworkAttachment
-    - RackDefinition
-    - ServiceLoadBalancerBgpPeer
-    - StorageApplianceConfigurationData
-    - VirtualMachinePlacementHint
+    - model-name: BareMetalMachineConfigurationData
+    - model-name: BgpAdvertisement
+    - model-name: BgpServiceLoadBalancerConfiguration
+    - model-name: ControlPlaneNodeConfiguration
+    - model-name: EgressEndpoint
+    - model-name: EndpointDependency
+    - model-name: InitialAgentPoolConfiguration
+    - model-name: IpAddressPool
+    - model-name: KeySetUser
+    - model-name: L3NetworkAttachmentConfiguration
+    - model-name: NetworkAttachment
+    - model-name: RackDefinition
+    - model-name: ServiceLoadBalancerBgpPeer
+    - model-name: StorageApplianceConfigurationData
+    - model-name: VirtualMachinePlacementHint
 ```

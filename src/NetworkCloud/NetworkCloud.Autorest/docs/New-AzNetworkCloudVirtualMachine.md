@@ -8,31 +8,29 @@ schema: 2.0.0
 # New-AzNetworkCloudVirtualMachine
 
 ## SYNOPSIS
-Create a new virtual machine or update the properties of the existing virtual machine.
+create a new virtual machine or create the properties of the existing virtual machine.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> -AdminUsername <String>
  -CloudServiceNetworkAttachmentAttachedNetworkId <String>
- -CloudServiceNetworkAttachmentIPAllocationMethod <VirtualMachineIPAllocationMethod> -CpuCore <Int64>
- -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -MemorySizeGb <Int64>
- -OSDiskSizeGb <Int64> -VMImage <String> [-SubscriptionId <String>] [-BootMethod <VirtualMachineBootMethod>]
- [-CloudServiceNetworkAttachmentDefaultGateway <DefaultGateway>]
- [-CloudServiceNetworkAttachmentIpv4Address <String>] [-CloudServiceNetworkAttachmentIpv6Address <String>]
- [-CloudServiceNetworkAttachmentName <String>] [-IsolateEmulatorThread <VirtualMachineIsolateEmulatorThread>]
- [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>]
- [-OSDiskCreateOption <OSDiskCreateOption>] [-OSDiskDeleteOption <OSDiskDeleteOption>]
+ -CloudServiceNetworkAttachmentIPAllocationMethod <String> -CpuCore <Int64> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> -MemorySizeGb <Int64> -OSDiskSizeGb <Int64>
+ -VMImage <String> [-SubscriptionId <String>] [-BootMethod <String>]
+ [-CloudServiceNetworkAttachmentDefaultGateway <String>] [-CloudServiceNetworkAttachmentIpv4Address <String>]
+ [-CloudServiceNetworkAttachmentIpv6Address <String>] [-CloudServiceNetworkAttachmentName <String>]
+ [-IsolateEmulatorThread <String>] [-NetworkAttachment <INetworkAttachment[]>] [-NetworkData <String>]
+ [-OSDiskCreateOption <String>] [-OSDiskDeleteOption <String>]
  [-PlacementHint <IVirtualMachinePlacementHint[]>] [-SshPublicKey <ISshPublicKey[]>]
  [-StorageProfileVolumeAttachment <String[]>] [-Tag <Hashtable>] [-UserData <String>]
- [-VirtioInterface <VirtualMachineVirtioInterfaceType>] [-VMDeviceModel <VirtualMachineDeviceModelType>]
- [-VMImageRepositoryCredentialsPassword <SecureString>] [-VMImageRepositoryCredentialsRegistryUrl <String>]
- [-VMImageRepositoryCredentialsUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VirtioInterface <String>] [-VMDeviceModel <String>] [-VMImageRepositoryCredentialsPassword <SecureString>]
+ [-VMImageRepositoryCredentialsRegistryUrl <String>] [-VMImageRepositoryCredentialsUsername <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new virtual machine or update the properties of the existing virtual machine.
+create a new virtual machine or create the properties of the existing virtual machine.
 
 ## EXAMPLES
 
@@ -103,7 +101,7 @@ Accept wildcard characters: False
 Selects the boot method for the virtual machine.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +131,7 @@ Accept wildcard characters: False
 The indicator of whether this is the default gateway.Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +146,7 @@ Accept wildcard characters: False
 The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify Disabled.Otherwise, Disabled is the only permitted value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +268,7 @@ Field Deprecated, the value will be ignored if provided.
 The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -329,10 +327,9 @@ Accept wildcard characters: False
 
 ### -NetworkAttachment
 The list of network attachments to the virtual machine.
-To construct, see NOTES section for NETWORKATTACHMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.INetworkAttachment[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment[]
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +374,7 @@ Accept wildcard characters: False
 The strategy for creating the OS disk.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -392,7 +389,7 @@ Accept wildcard characters: False
 The strategy for deleting the OS disk.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -422,10 +419,9 @@ Accept wildcard characters: False
 
 ### -PlacementHint
 The scheduling hints for the virtual machine.
-To construct, see NOTES section for PLACEMENTHINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachinePlacementHint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -455,10 +451,9 @@ Accept wildcard characters: False
 ### -SshPublicKey
 The list of ssh public keys.
 Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -535,7 +530,7 @@ Field Deprecated, use virtualizationModel instead.
 The type of the virtio interface.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -550,7 +545,7 @@ Accept wildcard characters: False
 The type of the device model to use.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -659,7 +654,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
 
 ## NOTES
 

@@ -15,13 +15,13 @@ Power off the provided virtual machine.
 ### PowerOffExpanded (Default)
 ```
 Stop-AzNetworkCloudVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkipShutdown <SkipShutdown>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PowerOffViaIdentityExpanded
 ```
-Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <SkipShutdown>]
+Stop-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-SkipShutdown <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -73,7 +73,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -152,7 +151,7 @@ Accept wildcard characters: False
 The indicator of whether to skip the graceful OS shutdown and power off the virtual machine immediately.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.SkipShutdown
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

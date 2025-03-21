@@ -21,12 +21,13 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 Create an in-memory object for ControlPlaneNodeConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ControlPlaneNodeConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudControlPlaneNodeConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudcontrolplanenodeconfigurationobject
 #>
 function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ControlPlaneNodeConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +35,7 @@ function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
         [string]
         $AdministratorConfigurationAdminUsername,
         [Parameter(HelpMessage="The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
         $AdministratorConfigurationSshPublicKey,
         [Parameter(HelpMessage="The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.")]
         [string[]]
@@ -42,13 +43,13 @@ function New-AzNetworkCloudControlPlaneNodeConfigurationObject {
         [Parameter(Mandatory, HelpMessage="The number of virtual machines that use this configuration.")]
         [long]
         $Count,
-        [Parameter(Mandatory, HelpMessage="The name of the VM SKU supplied during creation.")]
+        [Parameter(HelpMessage="The name of the VM SKU supplied during creation.")]
         [string]
         $VMSkuName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ControlPlaneNodeConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('AdministratorConfigurationAdminUsername')) {
             $Object.AdministratorConfigurationAdminUsername = $AdministratorConfigurationAdminUsername

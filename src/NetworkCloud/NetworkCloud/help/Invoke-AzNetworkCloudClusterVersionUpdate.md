@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzNetworkCloudClusterVersionUpdate
 
 ## SYNOPSIS
-Update the version of the provided cluster to one of the available supported versions.
+update the version of the provided cluster to one of the available supported versions.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Invoke-AzNetworkCloudClusterVersionUpdate -InputObject <INetworkCloudIdentity> -
 ```
 
 ## DESCRIPTION
-Update the version of the provided cluster to one of the available supported versions.
+update the version of the provided cluster to one of the available supported versions.
 
 ## EXAMPLES
 
@@ -94,7 +94,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity

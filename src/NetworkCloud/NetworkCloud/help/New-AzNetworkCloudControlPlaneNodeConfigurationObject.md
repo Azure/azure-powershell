@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudControlPlaneNodeConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudcontrolplanenodeconfigurationobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count <Int64> -VMSkuName <String>
+New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count <Int64>
  [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AvailabilityZone <String[]>]
- [<CommonParameters>]
+ [-VMSkuName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,10 +61,9 @@ Accept wildcard characters: False
 ### -AdministratorConfigurationSshPublicKey
 The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
 In some cases, specification of public keys may be required to produce a working environment.
-To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +113,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ControlPlaneNodeConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ControlPlaneNodeConfiguration
 
 ## NOTES
 
