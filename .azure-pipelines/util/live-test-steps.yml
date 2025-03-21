@@ -22,14 +22,14 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: Install desired .NET version ${{ parameters.dotnetVersion }}
+    displayName: Install .NET SDK ${{ parameters.dotnetVersion }}
     condition: ne('${{ parameters.dotnetVersion }}', '')
     inputs:
       packageType: sdk
       version: ${{ parameters.dotnetVersion }}
 
   - task: PowerShell@2
-    displayName: Install desired Powershell version ${{ parameters.psVersion }}
+    displayName: Install Powershell ${{ parameters.psVersion }}
     condition: ne('${{ parameters.psVersion }}', '')
     inputs:
       pwsh: true

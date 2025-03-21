@@ -241,16 +241,6 @@ namespace Microsoft.Azure.Commands.TestFx
             return GetModuleManifest(StackRmDirectory, moduleDirectory);
         }
 
-        public void SetupManagementClients(MockContext context, params object[] initializedManagementClients)
-        {
-            AzureSession.Instance.ClientFactory = new MockClientFactory(context, initializedManagementClients);
-        }
-
-        public void SetupSomeOfManagementClients(MockContext context, params object[] initializedManagementClients)
-        {
-            AzureSession.Instance.ClientFactory = new MockClientFactory(context, initializedManagementClients);
-        }
-
         public void SetupEnvironment(AzureModule mode)
         {
             SetupAzureEnvironmentFromEnvironmentVariables(mode);
@@ -370,6 +360,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId
             };
             testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, currentEnvironment.Endpoints.GraphUri.AbsoluteUri);
+            testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId, currentEnvironment.Endpoints.GraphUri.AbsoluteUri);
             testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
             testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
             testEnvironment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, AzureEnvironmentConstants.AzureSynapseAnalyticsEndpointSuffix);
@@ -415,7 +406,7 @@ namespace Microsoft.Azure.Commands.TestFx
             testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
             testAccount.SetTenants(currentEnvironment.TenantId);
 
-            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            //AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, testEnvironment, testTenant);
         }
 

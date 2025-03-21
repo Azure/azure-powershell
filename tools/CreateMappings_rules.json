@@ -725,10 +725,6 @@
     "regex": "Elastic"
   },
   {
-    "regex": "Logz",
-    "alias": "Logz"
-  },
-  {
     "alias": "DiskPool",
     "regex": "DiskPool"
   },
@@ -951,5 +947,9 @@
   {
     "module": "DeviceRegistry",
     "alias": "DeviceRegistry"
+  },
+  {
+    "module": "IoTOperationsService",
+    "alias": "IoTOperationsService"
   }
 ]

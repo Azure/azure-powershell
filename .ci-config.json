@@ -128,7 +128,8 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/*"
+        "src/{ModuleName}/*",
+        "src/{ModuleName}"
       ],
       "phases": [
         "build:related-module",
