@@ -17,7 +17,7 @@ Copy a blob synchronously.
 Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String> [-DestBlob <String>]
  [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
  [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
- [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <St
 Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-DestBlob <String>]
  [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
  [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
- [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-
 Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <String> [-DestBlobType <String>]
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -264,6 +264,21 @@ Force to overwrite the existing blob or file
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
