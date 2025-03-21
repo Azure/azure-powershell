@@ -53,11 +53,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
+
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
 
         /// <param name="vmDisks">The list of disk update properties.
         /// </param>
-        public HyperVReplicaAzureUpdateReplicationProtectedItemInput(string recoveryAzureV1ResourceGroupId = default(string), string recoveryAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), System.Collections.Generic.IDictionary<string, string> diskIdToDiskEncryptionMap = default(System.Collections.Generic.IDictionary<string, string>), string targetProximityPlacementGroupId = default(string), string targetAvailabilityZone = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string sqlServerLicenseType = default(string), System.Collections.Generic.IList<UpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<UpdateDiskInput>))
+        public HyperVReplicaAzureUpdateReplicationProtectedItemInput(string recoveryAzureV1ResourceGroupId = default(string), string recoveryAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), System.Collections.Generic.IDictionary<string, string> diskIdToDiskEncryptionMap = default(System.Collections.Generic.IDictionary<string, string>), string targetProximityPlacementGroupId = default(string), string targetAvailabilityZone = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), System.Collections.Generic.IList<UpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<UpdateDiskInput>))
 
         {
             this.RecoveryAzureV1ResourceGroupId = recoveryAzureV1ResourceGroupId;
@@ -70,6 +76,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetManagedDiskTags = targetManagedDiskTags;
             this.TargetNicTags = targetNicTags;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
+            this.UserSelectedOSName = userSelectedOSName;
             this.VMDisks = vmDisks;
             CustomInit();
         }
@@ -142,6 +150,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
         public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
 
         /// <summary>
         /// Gets or sets the list of disk update properties.

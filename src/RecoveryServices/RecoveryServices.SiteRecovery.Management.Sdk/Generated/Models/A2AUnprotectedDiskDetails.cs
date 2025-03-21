@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="diskAutoProtectionStatus">A value indicating whether the disk auto protection is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
         public A2AUnprotectedDiskDetails(int? diskLunId = default(int?), string diskAutoProtectionStatus = default(string))
 
         {

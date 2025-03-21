@@ -18,12 +18,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<VCenter> ListByReplicationFabrics(this IReplicationvCentersOperations operations, string fabricName)
+        public static Microsoft.Rest.Azure.IPage<VCenter> ListByReplicationFabrics(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationvCentersOperations)operations).ListByReplicationFabricsAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).ListByReplicationFabricsAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +39,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VCenter>> ListByReplicationFabricsAsync(this IReplicationvCentersOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VCenter>> ListByReplicationFabricsAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,15 +65,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static VCenter Get(this IReplicationvCentersOperations operations, string fabricName, string vcenterName)
+        public static VCenter Get(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName)
         {
-                return ((IReplicationvCentersOperations)operations).GetAsync(fabricName, vcenterName).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, vcenterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -68,6 +89,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -77,9 +105,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VCenter> GetAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VCenter> GetAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -90,15 +118,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static VCenter Create(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties))
+        public static VCenter Create(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties))
         {
-                return ((IReplicationvCentersOperations)operations).CreateAsync(fabricName, vcenterName, properties).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -107,6 +142,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -116,18 +158,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VCenter> CreateAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VCenter> CreateAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to remove(unregister) a registered vCenter server from the vault.
+        /// The operation to remove(unregister) a registered vCenter server from the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -135,16 +185,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static void Delete(this IReplicationvCentersOperations operations, string fabricName, string vcenterName)
+        public static void Delete(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName)
         {
-                ((IReplicationvCentersOperations)operations).DeleteAsync(fabricName, vcenterName).GetAwaiter().GetResult();
+                ((IReplicationvCentersOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, vcenterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to remove(unregister) a registered vCenter server from the vault.
+        /// The operation to remove(unregister) a registered vCenter server from the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -155,15 +213,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a registered vCenter.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -171,9 +236,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static VCenter Update(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties))
+        public static VCenter Update(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties))
         {
-                return ((IReplicationvCentersOperations)operations).UpdateAsync(fabricName, vcenterName, properties).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).UpdateAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,6 +246,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -191,9 +263,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VCenter> UpdateAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VCenter> UpdateAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -204,9 +276,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<VCenter> List(this IReplicationvCentersOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VCenter> List(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationvCentersOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -215,12 +294,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VCenter>> ListAsync(this IReplicationvCentersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VCenter>> ListAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -231,15 +317,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static VCenter BeginCreate(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties))
+        public static VCenter BeginCreate(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties))
         {
-                return ((IReplicationvCentersOperations)operations).BeginCreateAsync(fabricName, vcenterName, properties).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -248,6 +341,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -257,18 +357,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VCenter> BeginCreateAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VCenter> BeginCreateAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, AddVCenterRequestProperties properties = default(AddVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to remove(unregister) a registered vCenter server from the vault.
+        /// The operation to remove(unregister) a registered vCenter server from the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -276,16 +384,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static void BeginDelete(this IReplicationvCentersOperations operations, string fabricName, string vcenterName)
+        public static void BeginDelete(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName)
         {
-                ((IReplicationvCentersOperations)operations).BeginDeleteAsync(fabricName, vcenterName).GetAwaiter().GetResult();
+                ((IReplicationvCentersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, vcenterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to remove(unregister) a registered vCenter server from the vault.
+        /// The operation to remove(unregister) a registered vCenter server from the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -296,15 +412,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a registered vCenter.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -312,9 +435,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='vcenterName'>
         /// vcenter name.
         /// </param>
-        public static VCenter BeginUpdate(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties))
+        public static VCenter BeginUpdate(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties))
         {
-                return ((IReplicationvCentersOperations)operations).BeginUpdateAsync(fabricName, vcenterName, properties).GetAwaiter().GetResult();
+                return ((IReplicationvCentersOperations)operations).BeginUpdateAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -322,6 +445,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -332,9 +462,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VCenter> BeginUpdateAsync(this IReplicationvCentersOperations operations, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VCenter> BeginUpdateAsync(this IReplicationvCentersOperations operations, string resourceGroupName, string resourceName, string fabricName, string vcenterName, UpdateVCenterRequestProperties properties = default(UpdateVCenterRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, vcenterName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

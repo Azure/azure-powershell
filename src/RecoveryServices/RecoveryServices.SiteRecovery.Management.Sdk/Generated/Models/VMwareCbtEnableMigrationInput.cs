@@ -32,10 +32,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">License type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
+
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
 
         /// <param name="performSqlBulkRegistration">A value indicating whether bulk SQL RP registration to be done.
         /// </param>
@@ -99,13 +102,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetNicTags">The tags for the target NICs.
         /// </param>
-        public VMwareCbtEnableMigrationInput(string vmwareMachineId, System.Collections.Generic.IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVMName = default(string), string targetVMSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
+        public VMwareCbtEnableMigrationInput(string vmwareMachineId, System.Collections.Generic.IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVMName = default(string), string targetVMSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string userSelectedOSName = default(string))
 
         {
             this.VmwareMachineId = vmwareMachineId;
             this.DisksToInclude = disksToInclude;
             this.LicenseType = licenseType;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
             this.PerformSqlBulkRegistration = performSqlBulkRegistration;
             this.DataMoverRunAsAccountId = dataMoverRunAsAccountId;
             this.SnapshotRunAsAccountId = snapshotRunAsAccountId;
@@ -127,6 +134,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.SeedDiskTags = seedDiskTags;
             this.TargetDiskTags = targetDiskTags;
             this.TargetNicTags = targetNicTags;
+            this.UserSelectedOSName = userSelectedOSName;
             CustomInit();
         }
 
@@ -159,6 +167,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
         public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether bulk SQL RP registration to be
@@ -286,6 +300,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicTags")]
         public System.Collections.Generic.IDictionary<string, string> TargetNicTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -329,6 +349,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
                     }
                 }
             }
+
+
 
 
 
