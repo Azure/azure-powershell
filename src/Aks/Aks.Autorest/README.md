@@ -121,4 +121,279 @@ directive:
   - where:
       subject: ContainerServiceOrchestrator
     hide: true
+
+  #breaking change message
+  - where:
+      subject: MaintenanceConfiguration
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]
+        deprecated-output-properties:
+          - TimeInWeek
+        new-output-properties:
+          - TimeInWeek
+        change-description: The type of property 'TimeInWeek' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: MaintenanceConfiguration
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]
+        deprecated-output-properties:
+          - NotAllowedTime
+        new-output-properties:
+          - NotAllowedTime
+        change-description: The type of property 'NotAllowedTime' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: MaintenanceConfiguration
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.CreatedByType]
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - SystemDataCreatedByType
+          - SystemDataLastModifiedByType
+        new-output-properties:
+          - SystemDataCreatedByType
+          - SystemDataLastModifiedByType
+        change-description: The type of property 'SystemDataCreatedByType' and 'SystemDataLastModifiedByType' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.CreatedByType]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: MaintenanceConfiguration
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Int32[]
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[System.Int32]
+        deprecated-output-properties:
+          - HourSlot
+        new-output-properties:
+          - HourSlot
+        change-description: The type of property 'HourSlot' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeInWeek' has changed from 'System.Int32[]' to 'System.Collections.Generic.List`1[System.Int32]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: MaintenanceConfiguration
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay]
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - Day
+        new-output-properties:
+          - Day
+        change-description: The type of property 'Day' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeInWeek' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: ManagedClusterOSOption
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty]
+        deprecated-output-properties:
+          - OSOptionPropertyList
+        new-output-properties:
+          - OSOptionPropertyList
+        change-description: The type of property 'OSOptionPropertyList' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOSOptionProperty]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: ManagedClusterOutboundNetworkDependencyEndpoint
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency]
+        deprecated-output-properties:
+          - Endpoint
+        new-output-properties:
+          - Endpoint
+        change-description: The type of property 'Endpoint' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IEndpointDependency]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: NodePoolUpgradeProfile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem]
+        deprecated-output-properties:
+          - Upgrade
+        new-output-properties:
+          - Upgrade
+        change-description: The type of property 'Upgrade' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfilePropertiesUpgradesItem]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: NodePoolUpgradeProfile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - OSType
+        new-output-properties:
+          - OSType
+        change-description: The type of property 'OSType' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: Snapshot
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Ossku]
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - OSSku
+        new-output-properties:
+          - OSSku
+        change-description: The type of property 'OSSku' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Ossku]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: Snapshot
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType]
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - OSType
+        new-output-properties:
+          - OSType
+        change-description: The type of property 'OSType' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      verb: Get
+      subject: Snapshot
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType]
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - SnapshotType
+        new-output-properties:
+          - SnapshotType
+        change-description: The type of property 'SnapshotType' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      verb: New
+      subject: Snapshot
+      parameter-name: SnapshotType
+    set:
+      breaking-change:
+        change-description: The cmdlet 'New-AzAksSnapshot' no longer supports the type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType' for parameter 'SnapshotType'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: UpgradeProfile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile]
+        deprecated-output-properties:
+          - AgentPoolProfile
+        new-output-properties:
+          - AgentPoolProfile
+        change-description: The type of property 'AgentPoolProfile' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfile]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: UpgradeProfile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem]
+        deprecated-output-properties:
+          - ControlPlaneProfileUpgrade
+        new-output-properties:
+          - ControlPlaneProfileUpgrade
+        change-description: The type of property 'ControlPlaneProfileUpgrade' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPoolUpgradeProfileUpgradesItem]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: UpgradeProfile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType
+        replacement-cmdlet-output-type: System.String
+        deprecated-output-properties:
+          - ControlPlaneProfileOSType
+        new-output-properties:
+          - ControlPlaneProfileOSType
+        change-description: The type of property 'ControlPlaneProfileOSType' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterUpgradeProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: ContainerServiceOrchestrator
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile
+        replacement-cmdlet-output-type: System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile]
+        deprecated-output-properties:
+          - Orchestrator
+        new-output-properties:
+          - Orchestrator
+        change-description: The type of property 'Orchestrator' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfile]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      subject: TimeInWeek
+      parameter-name: HourSlot
+    set:
+      breaking-change:
+        change-description: The type of property 'HourSlot' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek' has changed from 'System.Int32[]' to 'System.Collections.Generic.List`1[System.Int32]'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+  - where:
+      subject: TimeInWeek
+      parameter-name: Day
+    set:
+      breaking-change:
+        change-description: The type of property 'Day' of type 'Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek' has changed from 'System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay]' to 'System.String'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      verb: Start
+      subject: ManagedClusterCommand
+      parameter-name: __AllParameterSets
+    set:
+      breaking-change:
+        change-description: The parameter set '__AllParameterSets' for cmdlet 'Start-AzAksManagedClusterCommand' has been removed.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
 ```
