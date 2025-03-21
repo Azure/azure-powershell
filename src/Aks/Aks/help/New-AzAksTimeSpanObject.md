@@ -1,7 +1,7 @@
 ---
 external help file: Az.Aks-help.xml
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeSpanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimespanobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for TimeSpan.
 ## SYNTAX
 
 ```
-New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>]
+New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -55,6 +55,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Start
 The start of a time span.
 
@@ -77,7 +92,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan
 
 ## NOTES
 

@@ -21,18 +21,19 @@ Create an in-memory object for TimeInWeek.
 Create an in-memory object for TimeInWeek.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek
 .Link
-https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeInWeekObject
+https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimeinweekobject
 #>
 function New-AzAksTimeInWeekObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The day of the week.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+        [string]
         $Day,
         [Parameter(HelpMessage="Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.")]
         [int[]]
@@ -40,7 +41,7 @@ function New-AzAksTimeInWeekObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek]::New()
 
         if ($PSBoundParameters.ContainsKey('Day')) {
             $Object.Day = $Day
