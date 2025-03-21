@@ -1,84 +1,89 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadsmonitor
+online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadsproviderinstance
 schema: 2.0.0
 ---
 
-# Update-AzWorkloadsMonitor
+# Update-AzWorkloadsProviderInstance
 
 ## SYNOPSIS
-update a SAP monitor for the specified subscription, resource group, and resource name.
+update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AppLocation <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-LogAnalyticsWorkspaceArmId <String>]
- [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
+Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ -ProviderInstanceParameter <IProviderInstance> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity>
+ -ProviderInstanceParameter <IProviderInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-AppLocation <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-LogAnalyticsWorkspaceArmId <String>]
- [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
+Update-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
+ [-ProviderSetting <IProviderSpecificProperties>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityMonitor
+```
+Update-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name <String>
+ -ProviderInstanceParameter <IProviderInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMonitorExpanded
+```
+Update-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name <String>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ProviderSetting <IProviderSpecificProperties>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-update a SAP monitor for the specified subscription, resource group, and resource name.
+update a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
 ## EXAMPLES
 
-### Example 1: Update AMS Monitor Instance
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzWorkloadsMonitor -MonitorName suha-160323-ams7 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c -Tag @{name="tagValue"}
+{{ Add code here }}
 ```
 
 ```output
-Name             ResourceGroupName ManagedResourceGroupConfigurationName Location    ProvisioningState
-----             ----------------- ------------------------------------- --------    -----------------
-suha-160323-ams7 suha-0802-rg1     mrg-16037                             eastus2euap Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update AMS Monitor Instance
+{{ Add description here }}
 
-### Example 2: Update AMS Monitor Instance by Id
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzWorkloadsMonitor -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7" -Tag @{name="tagValue"}
+{{ Add code here }}
 ```
 
 ```output
-
-Name             ResourceGroupName ManagedResourceGroupConfigurationName Location    ProvisioningState
-----             ----------------- ------------------------------------- --------    -----------------
-suha-160323-ams7 suha-0802-rg1     mrg-16037                             eastus2euap Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update AMS Monitor Instance by Arm Id
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AppLocation
-The SAP monitor resources will be deployed in the SAP monitoring region.
-The subnet region should be same as the SAP monitoring region.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -116,7 +121,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -131,7 +136,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -141,45 +146,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LogAnalyticsWorkspaceArmId
-The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
+### -MonitorInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Parameter Sets: UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedResourceGroupName
-Managed resource group name
+### -MonitorName
+Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MonitorSubnet
-The subnet which the SAP monitor will be deployed in
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,12 +177,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the SAP monitor resource.
+Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: MonitorName
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
+Aliases: ProviderInstanceName
 
 Required: True
 Position: Named
@@ -216,32 +206,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ProviderInstanceParameter
+A provider instance associated with SAP monitor.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
+Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityMonitor
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProviderSetting
+Defines the provider specific properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderSpecificProperties
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoutingPreference
-Sets the routing preference of the SAP monitor.
-By default only RFC1918 traffic is routed to the customer VNET.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,27 +257,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -284,23 +273,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneRedundancyPreference
-Sets the preference for zone redundancy on resources created for the SAP monitor.
-By default resources will be created which do not support zone redundancy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: False
@@ -348,9 +321,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 
 ## NOTES
 
