@@ -13,7 +13,7 @@ Gets the systemAssignedIdentity available under the specified RP scope.
 ## SYNTAX
 
 ```
-Get-AzSystemAssignedIdentity -Scope <String> [-DefaultProfile <PSObject>]
+Get-AzSystemAssignedIdentity -Scope <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -53,6 +53,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 The resource provider scope of the resource.
 Parent resource being extended by Managed Identities.
@@ -76,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.ISystemAssignedIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.ISystemAssignedIdentity
 
 ## NOTES
 
