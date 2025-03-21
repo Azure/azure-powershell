@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRule.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleObject -Action <IDeliveryRuleAction1[]> -Order <Int32>
+New-AzCdnDeliveryRuleObject -Action <IDeliveryRuleAction[]> -Order <Int32>
  [-Condition <IDeliveryRuleCondition[]>] [-Name <String>] [<CommonParameters>]
 ```
 
@@ -46,10 +46,9 @@ Create an in-memory object for AzureCDN DeliveryRule
 
 ### -Action
 A list of actions that are executed when all the conditions of a rule are satisfied.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,10 +61,9 @@ Accept wildcard characters: False
 
 ### -Condition
 A list of conditions that must be matched for the actions to be executed.
-To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
 
 ## NOTES
 

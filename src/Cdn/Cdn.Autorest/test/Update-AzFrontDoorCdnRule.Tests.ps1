@@ -27,7 +27,7 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
         -CacheConfigurationQueryParameter "a=test" `
         -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
         $actions = @($overrideAction);
         
         $ruleName = 'ruleName080'
@@ -47,7 +47,7 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
         -CacheConfigurationQueryParameter "a=test1" `
         -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
         $updatedActions = @($updatedOverrideAction);
         Update-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $updatedActions -Condition $updatedConditions
@@ -64,7 +64,7 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
         -CacheConfigurationQueryParameter "a=test2" `
         -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
         $updatedActions = @($updatedOverrideAction);
         $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
         Update-AzFrontDoorCdnRule -Action $updatedActions -Condition $updatedConditions -InputObject $ruleObject

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheExpirationActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecacheexpirationactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleCacheExpirationActionObject -Name <DeliveryRuleAction>
- -ParameterCacheBehavior <CacheBehavior> [-ParameterCacheDuration <String>] [<CommonParameters>]
+New-AzCdnDeliveryRuleCacheExpirationActionObject -ParameterCacheBehavior <String> -ParameterTypeName <String>
+ [-ParameterCacheDuration <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,26 +37,11 @@ Create an in-memory object for AzureCDN DeliveryRuleCacheExpirationAction
 
 ## PARAMETERS
 
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParameterCacheBehavior
 Caching behavior for the requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CacheBehavior
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ParameterTypeName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCacheExpirationAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheExpirationAction
 
 ## NOTES
 
