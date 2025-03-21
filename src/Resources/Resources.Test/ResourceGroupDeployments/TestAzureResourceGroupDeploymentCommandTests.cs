@@ -68,15 +68,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             };
             PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
 
-            List<ErrorDetail> expected = new List<ErrorDetail>()
+            List<ErrorResponse> details = new List<ErrorResponse>()
             {
-                new ErrorDetail(code: "202", message: "bad input"),
-                new ErrorDetail(code: "203", message: "bad input 2"),
-                new ErrorDetail(code: "203", message: "bad input 3")
+                new ErrorResponse(code: "202", message: "bad input"),
+                new ErrorResponse(code: "203", message: "bad input 2"),
+                new ErrorResponse(code: "203", message: "bad input 3")
             };
-            TemplateValidationInfo expectedResults = new(errors: expected, diagnostics: new List<DeploymentDiagnosticsDefinition>(), requiredProviders: new List<Provider>());
+            
+            ErrorResponse expected = new ErrorResponse(details: details);
 
-            var expectedErrors = expected.Select(e => e.ToPSResourceManagerError()).ToList();
+            TemplateValidationInfo expectedResults = new(new DeploymentValidateResult(expected));
+
+            var expectedErrors = expected.Details.Select(e => e.ToPSResourceManagerError()).ToList();
 
             resourcesClientMock.Setup(f => f.ValidateDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
@@ -110,7 +113,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 2", target: "resource2", level: "Warning"),
                 new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 3",  target: "resource3", level: "Error")
             };
-            TemplateValidationInfo expectedResults = new(errors: new List<ErrorDetail>(), diagnostics: diagnostics, requiredProviders: new List<Provider>());
+
+            DeploymentPropertiesExtended deploymentPropertiesExtended = new DeploymentPropertiesExtended(diagnostics: diagnostics);
+
+            DeploymentValidateResult expectedDeploymentValidateResult = new DeploymentValidateResult(properties: deploymentPropertiesExtended);
+            TemplateValidationInfo expectedResults = new(expectedDeploymentValidateResult);
 
             resourcesClientMock.Setup(f => f.ValidateDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Pipeline Group upgraded API version to 2024-10-01-preview
 
 ## Version 6.0.1
 * Upgraded nuget package to signed package.

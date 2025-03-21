@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct VMwareToAzureMigrateResyncState :
         System.IEquatable<VMwareToAzureMigrateResyncState>
     {
+        /// <summary>None state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMwareToAzureMigrateResyncState None = @"None";
 
+        /// <summary>Prepared for resynchronization state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMwareToAzureMigrateResyncState PreparedForResynchronization = @"PreparedForResynchronization";
 
+        /// <summary>Started resynchronization state.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMwareToAzureMigrateResyncState StartedResynchronization = @"StartedResynchronization";
 
         /// <summary>

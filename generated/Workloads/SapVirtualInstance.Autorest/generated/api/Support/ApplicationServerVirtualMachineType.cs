@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct ApplicationServerVirtualMachineType :
         System.IEquatable<ApplicationServerVirtualMachineType>
     {
+        /// <summary>Active Application server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ApplicationServerVirtualMachineType Active = @"Active";
 
+        /// <summary>Standby Application server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ApplicationServerVirtualMachineType Standby = @"Standby";
 
+        /// <summary>Unknown Application server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ApplicationServerVirtualMachineType Unknown = @"Unknown";
 
         /// <summary>

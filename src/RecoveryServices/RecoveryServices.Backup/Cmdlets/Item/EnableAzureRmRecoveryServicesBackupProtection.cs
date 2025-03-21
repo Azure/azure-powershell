@@ -173,6 +173,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
                     ProtectableItemType.SQLInstance.ToString()) == 0))
                     {
+                        WriteDebug("Executing AzureWorkloadParameterSet");
+
                         string backupManagementType = ProtectableItem.BackupManagementType.ToString();
                         string workloadType = ConversionUtils.GetServiceClientWorkloadType(ProtectableItem.WorkloadType.ToString());
                         string containerName = "VMAppContainer;" + ((AzureWorkloadProtectableItem)ProtectableItem).ContainerName;
@@ -237,6 +239,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
+                        WriteDebug("Executing parameter set: " + ParameterSetName);
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
                             {
@@ -258,10 +262,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);
 
+                        WriteDebug("Initialized provider manager");
+
                         IPsBackupProvider psBackupProvider = (Item != null) ?
                             providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                             : providerManager.GetProviderInstance(Policy.WorkloadType);
-                                        
+
+                        WriteDebug("policy workload type: " + Policy.WorkloadType.ToString());
+
                         if (Policy.WorkloadType == Models.WorkloadType.AzureFiles)
                         {
                             // if item & policy are not null and both have ids
@@ -311,6 +319,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                                    
                         var itemResponse = psBackupProvider.EnableProtection();
+
+                        WriteDebug("Enabled protection successfully, going to handle the backup job");
 
                         // Track Response and display job details
                         HandleCreatedJob(
