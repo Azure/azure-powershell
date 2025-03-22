@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Minimum number of entries to search for")]
         public int Count { get; set; } = 100;
 
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "Token returned by system in the previous invocation")]
+        public string listAfter { get; set; }
+
         [Parameter(Mandatory = false,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Run cmdlet in the background")]
@@ -54,8 +60,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, this, CmdletCancellationToken).Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
-            WriteObject(toReturn);
+            var (deletedItems, continuationToken) = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, listAfter, this, CmdletCancellationToken);
+            var toReturn = deletedItems.Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
+
+            // Write the list of deleted items.
+            WriteObject(toReturn, enumerateCollection: true);
+
+            // Write the continuation token.
+            WriteObject($"Continuation Token: {continuationToken}");
         }
     }
 }
