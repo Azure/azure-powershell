@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.ManagedServiceIdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

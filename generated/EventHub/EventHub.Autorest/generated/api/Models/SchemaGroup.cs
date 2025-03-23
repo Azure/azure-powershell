@@ -328,4 +328,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         global::System.DateTime? UpdatedAtUtc { get; set; }
 
     }
-}
+}# this is comment

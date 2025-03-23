@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesSelectorMatchLabels MatchLabel { get; set; }
 
     }
-}
+}# this is comment

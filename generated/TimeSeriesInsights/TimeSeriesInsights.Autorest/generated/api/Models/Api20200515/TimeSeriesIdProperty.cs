@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api202005
         Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType? Type { get; set; }
 
     }
-}
+}# this is comment

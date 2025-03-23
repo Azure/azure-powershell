@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

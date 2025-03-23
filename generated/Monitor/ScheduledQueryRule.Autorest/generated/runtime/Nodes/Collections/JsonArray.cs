@@ -62,4 +62,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
         internal static new JsonArray Parse(string text)
             => (JsonArray)JsonNode.Parse(text);
     }
-}
+}# this is comment

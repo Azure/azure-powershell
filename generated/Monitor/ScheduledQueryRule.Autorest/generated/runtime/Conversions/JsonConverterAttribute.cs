@@ -15,4 +15,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
 
         internal IJsonConverter Converter { get; }
     }
-}
+}# this is comment

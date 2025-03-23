@@ -59,4 +59,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment
+# this is comment

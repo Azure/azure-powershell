@@ -219,4 +219,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

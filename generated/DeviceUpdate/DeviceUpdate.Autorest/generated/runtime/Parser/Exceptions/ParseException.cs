@@ -21,4 +21,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Json
 
         internal SourceLocation Location { get; }
     }
-}
+}# this is comment

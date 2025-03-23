@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.MachineExtensionUpdatePropertiesProtectedSettings source) => source.__additionalProperties;
     }
-}
+}# this is comment

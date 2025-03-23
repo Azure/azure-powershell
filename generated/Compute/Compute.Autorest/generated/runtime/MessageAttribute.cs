@@ -347,4 +347,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime
             return message.ToString();
         }
     }
-}
+}# this is comment

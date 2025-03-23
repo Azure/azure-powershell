@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType ConfigurationType { get; set; }
 
     }
-}
+}# this is comment

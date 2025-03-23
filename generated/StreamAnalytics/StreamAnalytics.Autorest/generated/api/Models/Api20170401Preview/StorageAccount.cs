@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string AccountName { get; set; }
 
     }
-}
+}# this is comment

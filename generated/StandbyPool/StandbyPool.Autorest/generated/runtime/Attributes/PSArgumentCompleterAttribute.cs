@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             return scriptBlock;
         }
     }
-}
+}# this is comment

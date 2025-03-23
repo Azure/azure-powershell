@@ -193,4 +193,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Previ
         global::System.TimeSpan? TotalUsage { get; set; }
 
     }
-}
+}# this is comment

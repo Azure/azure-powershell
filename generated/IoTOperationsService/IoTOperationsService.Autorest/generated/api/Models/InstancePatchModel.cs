@@ -169,4 +169,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IInstancePatchModelTags Tag { get; set; }
 
     }
-}
+}# this is comment

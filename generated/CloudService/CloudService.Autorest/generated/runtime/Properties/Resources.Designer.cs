@@ -5652,4 +5652,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.generated.runtime.Prop
             }
         }
     }
-}
+}# this is comment

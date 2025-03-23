@@ -267,4 +267,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         int? UpdateDomain { get; set; }
 
     }
-}
+}# this is comment

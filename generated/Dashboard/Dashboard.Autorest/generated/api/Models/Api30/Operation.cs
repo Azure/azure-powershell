@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

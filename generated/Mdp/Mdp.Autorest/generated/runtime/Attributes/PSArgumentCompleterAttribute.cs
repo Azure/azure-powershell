@@ -49,4 +49,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp
             return scriptBlock;
         }
     }
-}
+}# this is comment
+# this is comment

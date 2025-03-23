@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<string> AllowedFeature { get; set; }
 
     }
-}
+}# this is comment

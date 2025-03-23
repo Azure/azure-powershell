@@ -8,4 +8,4 @@
     {
         internal static readonly char[] Dash = { '-' };
     }
-}
+}# this is comment

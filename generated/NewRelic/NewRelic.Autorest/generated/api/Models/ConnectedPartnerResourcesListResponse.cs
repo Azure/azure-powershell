@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListFormat> Value { get; set; }
 
     }
-}
+}# this is comment

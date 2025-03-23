@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScope> Value { get; set; }
 
     }
-}
+}# this is comment

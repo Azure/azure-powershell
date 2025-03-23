@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IActionsCustomProperties CustomProperty { get; set; }
 
     }
-}
+}# this is comment

@@ -62,4 +62,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api201806
         string Message { get; set; }
 
     }
-}
+}# this is comment

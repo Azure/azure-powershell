@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         string ReleaseNamespace { get; set; }
 
     }
-}
+}# this is comment

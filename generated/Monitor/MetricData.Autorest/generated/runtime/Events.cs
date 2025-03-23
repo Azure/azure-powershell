@@ -25,3 +25,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime
         public const string Progress = nameof(Progress);
     }
 }
+# this is comment

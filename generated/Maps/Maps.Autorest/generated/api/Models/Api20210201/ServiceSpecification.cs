@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201
         Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[] MetricSpecification { get; set; }
 
     }
-}
+}# this is comment

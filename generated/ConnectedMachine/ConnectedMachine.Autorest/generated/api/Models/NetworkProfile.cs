@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkInterface { get; set; }
 
     }
-}
+}# this is comment

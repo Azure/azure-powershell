@@ -118,4 +118,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string DatasourceType { get; set; }
 
     }
-}
+}# this is comment

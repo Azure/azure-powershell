@@ -139,4 +139,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         long? UpgradeFailureCount { get; set; }
 
     }
-}
+}# this is comment

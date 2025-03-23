@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string TargetVersion { get; set; }
 
     }
-}
+}# this is comment

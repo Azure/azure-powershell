@@ -50,4 +50,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701
         string SerialNumber { get; set; }
 
     }
-}
+}# this is comment

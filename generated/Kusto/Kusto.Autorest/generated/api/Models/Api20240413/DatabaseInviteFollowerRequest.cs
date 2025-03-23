@@ -172,4 +172,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string[] TableLevelSharingPropertyTablesToInclude { get; set; }
 
     }
-}
+}# this is comment

@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment

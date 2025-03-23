@@ -15,4 +15,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
 
         internal IJsonConverter Converter { get; }
     }
-}
+}# this is comment

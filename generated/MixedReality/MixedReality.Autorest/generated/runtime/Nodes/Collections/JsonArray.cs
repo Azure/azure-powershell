@@ -62,4 +62,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
         internal static new JsonArray Parse(string text)
             => (JsonArray)JsonNode.Parse(text);
     }
-}
+}# this is comment
+# this is comment

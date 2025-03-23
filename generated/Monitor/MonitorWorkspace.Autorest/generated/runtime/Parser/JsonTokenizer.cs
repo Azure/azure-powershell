@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Js
             reader.Dispose();
         }
     }
-}
+}# this is comment

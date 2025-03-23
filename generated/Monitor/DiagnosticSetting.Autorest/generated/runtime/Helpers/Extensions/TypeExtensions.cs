@@ -58,4 +58,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
             return false;
         }
     }
-}
+}# this is comment

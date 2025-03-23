@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationProperties source) => source.__additionalProperties;
     }
-}
+}# this is comment

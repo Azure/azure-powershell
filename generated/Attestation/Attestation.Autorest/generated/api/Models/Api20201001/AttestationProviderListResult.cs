@@ -144,4 +144,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[] Value { get; set; }
 
     }
-}
+}# this is comment

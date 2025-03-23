@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties>(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

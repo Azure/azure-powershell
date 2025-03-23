@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule> Rule { get; set; }
 
     }
-}
+}# this is comment

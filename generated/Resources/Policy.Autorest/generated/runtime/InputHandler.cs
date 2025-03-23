@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Cmdlets
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IContext context);
     }
-}
+}# this is comment

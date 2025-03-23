@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20
         string Type { get; set; }
 
     }
-}
+}# this is comment

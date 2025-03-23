@@ -334,3 +334,5 @@ directive:
     where: $
     transform: $ = $.replace('Call remote \'SitesDelete\' operation', '{this.Name} and all dependent resources');
 ```
+
+# this is readme comment

@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric
             return scriptBlock;
         }
     }
-}
+}# this is comment

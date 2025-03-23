@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ResourceIdentityType? Type { get; set; }
 
     }
-}
+}# this is comment

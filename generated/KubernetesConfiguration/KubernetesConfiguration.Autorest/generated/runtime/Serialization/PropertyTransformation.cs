@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Jso
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment

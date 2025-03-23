@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionPublishingProfileAdvancedSettings source) => source.__additionalProperties;
     }
-}
+}# this is comment

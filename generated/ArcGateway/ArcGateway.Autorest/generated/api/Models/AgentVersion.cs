@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string OSType { get; set; }
 
     }
-}
+}# this is comment

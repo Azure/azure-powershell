@@ -13,4 +13,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime
 
         IncludeAll = IncludeHeaders | IncludeReadOnly
     }
-}
+}# this is comment
+# this is comment

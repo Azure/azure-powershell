@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

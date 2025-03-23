@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         System.Collections.Generic.List<string> DnsServer { get; set; }
 
     }
-}
+}# this is comment

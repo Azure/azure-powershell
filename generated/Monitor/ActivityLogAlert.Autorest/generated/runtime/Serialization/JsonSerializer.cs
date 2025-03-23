@@ -347,4 +347,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         #endregion
     }
-}
+}# this is comment
+# this is comment

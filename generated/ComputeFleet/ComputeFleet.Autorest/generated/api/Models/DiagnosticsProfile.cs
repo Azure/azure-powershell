@@ -103,4 +103,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string BootDiagnosticStorageUri { get; set; }
 
     }
-}
+}# this is comment

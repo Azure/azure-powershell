@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         string Secret { get; set; }
 
     }
-}
+}# this is comment

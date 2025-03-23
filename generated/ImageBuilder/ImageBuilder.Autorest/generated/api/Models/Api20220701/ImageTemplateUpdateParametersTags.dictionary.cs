@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateUpdateParametersTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

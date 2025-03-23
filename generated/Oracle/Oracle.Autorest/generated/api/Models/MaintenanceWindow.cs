@@ -295,4 +295,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<int> WeeksOfMonth { get; set; }
 
     }
-}
+}# this is comment

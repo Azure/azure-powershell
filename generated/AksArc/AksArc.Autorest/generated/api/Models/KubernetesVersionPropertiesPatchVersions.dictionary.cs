@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesPatchVersions>(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.KubernetesVersionPropertiesPatchVersions source) => source.__additionalProperties;
     }
-}
+}# this is comment

@@ -36,4 +36,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support
             }
         }
     }
-}
+}# this is comment

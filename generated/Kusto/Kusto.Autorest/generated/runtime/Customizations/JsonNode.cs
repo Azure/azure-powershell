@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

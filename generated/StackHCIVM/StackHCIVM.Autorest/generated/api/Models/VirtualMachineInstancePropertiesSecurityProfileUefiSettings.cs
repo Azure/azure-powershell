@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         bool? SecureBootEnabled { get; set; }
 
     }
-}
+}# this is comment

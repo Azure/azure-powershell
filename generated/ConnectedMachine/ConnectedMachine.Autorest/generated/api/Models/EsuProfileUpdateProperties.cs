@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string AssignedLicense { get; set; }
 
     }
-}
+}# this is comment

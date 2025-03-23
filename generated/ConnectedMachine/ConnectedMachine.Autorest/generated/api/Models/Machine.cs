@@ -1468,4 +1468,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string VMUuid { get; set; }
 
     }
-}
+}# this is comment

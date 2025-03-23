@@ -140,4 +140,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesSubscriptionsItem> Subscription { get; set; }
 
     }
-}
+}# this is comment

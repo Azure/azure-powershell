@@ -245,4 +245,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

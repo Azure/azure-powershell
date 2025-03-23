@@ -83,4 +83,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         int? Rank { get; set; }
 
     }
-}
+}# this is comment

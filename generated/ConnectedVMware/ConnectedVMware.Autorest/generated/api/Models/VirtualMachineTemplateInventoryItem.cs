@@ -258,4 +258,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string ToolsVersionStatus { get; set; }
 
     }
-}
+}# this is comment

@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         int? MinCapacity { get; set; }
 
     }
-}
+}# this is comment

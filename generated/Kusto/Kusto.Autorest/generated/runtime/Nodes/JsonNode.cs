@@ -247,4 +247,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

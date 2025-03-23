@@ -21,4 +21,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
         bool TryGetValue(string key, out T value);
         void Clear();
     }
-}
+}# this is comment

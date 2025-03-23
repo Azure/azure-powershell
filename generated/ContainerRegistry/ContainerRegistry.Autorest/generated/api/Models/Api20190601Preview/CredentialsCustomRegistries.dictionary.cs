@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ICustomRegistryCredentials>(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.CredentialsCustomRegistries source) => source.__additionalProperties;
     }
-}
+}# this is comment

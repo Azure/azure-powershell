@@ -155,4 +155,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

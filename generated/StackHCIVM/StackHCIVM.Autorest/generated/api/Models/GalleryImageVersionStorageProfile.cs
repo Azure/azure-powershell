@@ -63,4 +63,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         long? OSDiskImageSizeInMb { get; set; }
 
     }
-}
+}# this is comment

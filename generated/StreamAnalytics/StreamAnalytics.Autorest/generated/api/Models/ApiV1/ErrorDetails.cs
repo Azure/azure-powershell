@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1
         string Target { get; set; }
 
     }
-}
+}# this is comment

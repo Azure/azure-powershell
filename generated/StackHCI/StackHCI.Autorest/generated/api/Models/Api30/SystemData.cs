@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

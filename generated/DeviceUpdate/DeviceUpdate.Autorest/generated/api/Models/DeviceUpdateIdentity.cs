@@ -164,4 +164,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
         string SubscriptionId { get; set; }
 
     }
-}
+}# this is comment

@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models
         System.Collections.Generic.List<string> SkippedResource { get; set; }
 
     }
-}
+}# this is comment

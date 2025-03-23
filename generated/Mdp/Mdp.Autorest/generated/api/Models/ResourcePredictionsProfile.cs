@@ -53,4 +53,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         string Kind { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

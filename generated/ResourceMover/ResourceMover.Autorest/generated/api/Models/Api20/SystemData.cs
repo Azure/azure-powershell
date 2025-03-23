@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

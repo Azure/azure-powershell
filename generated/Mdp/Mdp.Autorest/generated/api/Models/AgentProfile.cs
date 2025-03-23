@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IResourcePredictionsProfile ResourcePredictionsProfile { get; set; }
 
     }
-}
+}# this is comment

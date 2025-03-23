@@ -39,4 +39,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

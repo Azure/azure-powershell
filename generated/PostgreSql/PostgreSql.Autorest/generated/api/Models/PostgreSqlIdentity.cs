@@ -198,4 +198,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models
         string VirtualNetworkRuleName { get; set; }
 
     }
-}
+}# this is comment

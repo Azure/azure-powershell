@@ -2879,4 +2879,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string WindowsConfigurationPatchSettingsPatchMode { get; set; }
 
     }
-}
+}# this is comment

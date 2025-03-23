@@ -435,4 +435,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string SoftwareRevision { get; set; }
 
     }
-}
+}# this is comment

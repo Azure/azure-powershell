@@ -138,4 +138,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
         string Resource { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

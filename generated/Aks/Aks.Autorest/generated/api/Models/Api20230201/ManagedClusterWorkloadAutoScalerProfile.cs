@@ -61,4 +61,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         bool? KedaEnabled { get; set; }
 
     }
-}
+}# this is comment

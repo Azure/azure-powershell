@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IResourcePatchTags Tag { get; set; }
 
     }
-}
+}# this is comment

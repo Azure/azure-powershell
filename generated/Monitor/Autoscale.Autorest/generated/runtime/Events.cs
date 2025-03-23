@@ -24,4 +24,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime
         public const string Polling = nameof(Polling);
 
     }
-}
+}# this is comment
+# this is comment

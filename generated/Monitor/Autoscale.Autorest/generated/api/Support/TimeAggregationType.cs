@@ -105,4 +105,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment
+# this is comment

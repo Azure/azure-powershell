@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource[] Value { get; set; }
 
     }
-}
+}# this is comment

@@ -52,4 +52,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
             }
         }
     }
-}
+}# this is comment

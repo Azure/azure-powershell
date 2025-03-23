@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet> Value { get; set; }
 
     }
-}
+}# this is comment

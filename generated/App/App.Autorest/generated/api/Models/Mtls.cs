@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         bool? Enabled { get; set; }
 
     }
-}
+}# this is comment

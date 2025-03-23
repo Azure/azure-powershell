@@ -63,3 +63,5 @@ if ($Resources.IsPresent -and ((-not (Test-Path -Path $resourceModule)) -or $Reg
   $null = .\build-module.ps1
   Set-Location $PSScriptRoot
 }
+# this is comment
+# this is comment

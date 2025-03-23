@@ -174,4 +174,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
             reader.Dispose();
         }
     }
-}
+}# this is comment
+# this is comment

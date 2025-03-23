@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

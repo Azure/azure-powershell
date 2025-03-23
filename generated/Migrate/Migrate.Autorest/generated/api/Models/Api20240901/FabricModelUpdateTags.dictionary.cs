@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.FabricModelUpdateTags source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

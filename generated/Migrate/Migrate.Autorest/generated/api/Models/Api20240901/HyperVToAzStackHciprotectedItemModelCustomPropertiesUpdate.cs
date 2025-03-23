@@ -158,4 +158,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         int? TargetMemoryInMegaByte { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

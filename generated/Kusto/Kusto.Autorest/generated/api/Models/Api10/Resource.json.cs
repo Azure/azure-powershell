@@ -118,4 +118,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
             return container;
         }
     }
-}
+}# this is comment

@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PrivateEndpointServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

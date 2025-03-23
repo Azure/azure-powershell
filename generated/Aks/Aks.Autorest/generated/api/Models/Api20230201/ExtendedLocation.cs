@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ExtendedLocationTypes? Type { get; set; }
 
     }
-}
+}# this is comment

@@ -346,4 +346,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string VCenterId { get; set; }
 
     }
-}
+}# this is comment

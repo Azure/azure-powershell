@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp> Value { get; set; }
 
     }
-}
+}# this is comment

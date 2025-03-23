@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.UserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

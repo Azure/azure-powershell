@@ -70,4 +70,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Prev
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

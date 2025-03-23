@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         string ClientAuthenticationType { get; set; }
 
     }
-}
+}# this is comment

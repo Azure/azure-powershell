@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
         int? Major { get; set; }
 
     }
-}
+}# this is comment

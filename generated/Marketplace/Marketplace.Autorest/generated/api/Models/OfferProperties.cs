@@ -275,4 +275,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         bool? UpdateSuppressedDueIdempotence { get; set; }
 
     }
-}
+}# this is comment

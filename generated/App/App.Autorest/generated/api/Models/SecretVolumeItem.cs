@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string SecretRef { get; set; }
 
     }
-}
+}# this is comment

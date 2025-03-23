@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json
             type.JsonConverter = converter;
         }
     }
-}
+}# this is comment

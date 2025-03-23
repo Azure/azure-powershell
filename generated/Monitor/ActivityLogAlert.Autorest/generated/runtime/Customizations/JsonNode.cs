@@ -18,4 +18,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
             return this.ToString();
         }
     }
-}
+}# this is comment
+# this is comment

@@ -3310,4 +3310,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder
             }
         }
     }
-}
+}# this is comment

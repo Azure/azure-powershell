@@ -42,4 +42,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string[] Certificate { get; set; }
 
     }
-}
+}# this is comment

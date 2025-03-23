@@ -36,3 +36,5 @@
     Export-ModuleMember -Function $cmdletNames -Alias (Get-ScriptCmdlet -ScriptFolder $exportsPath -AsAlias)
   }
 # endregion
+# this is comment
+# this is comment

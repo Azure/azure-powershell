@@ -191,4 +191,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleSubscriptionUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

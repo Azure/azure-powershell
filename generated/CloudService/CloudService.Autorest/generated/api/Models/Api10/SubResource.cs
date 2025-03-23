@@ -45,4 +45,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10
         string Id { get; set; }
 
     }
-}
+}# this is comment

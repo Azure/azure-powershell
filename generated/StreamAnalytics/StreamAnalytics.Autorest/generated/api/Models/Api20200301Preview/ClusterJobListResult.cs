@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301P
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob[] Value { get; set; }
 
     }
-}
+}# this is comment

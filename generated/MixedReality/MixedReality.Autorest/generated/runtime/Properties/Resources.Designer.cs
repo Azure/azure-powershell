@@ -5652,4 +5652,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.generated.runtime.Prop
             }
         }
     }
-}
+}# this is comment
+# this is comment

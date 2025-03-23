@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Json
 
         internal override Guid FromJson(JsonNode node) => (Guid)node;
     }
-}
+}# this is comment

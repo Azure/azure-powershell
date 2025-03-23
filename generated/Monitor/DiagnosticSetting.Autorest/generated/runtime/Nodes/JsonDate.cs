@@ -170,4 +170,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
 
         #endregion
     }
-}
+}# this is comment

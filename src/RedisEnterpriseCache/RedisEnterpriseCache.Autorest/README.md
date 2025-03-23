@@ -251,3 +251,5 @@ directive:
     where: $
     transform: $ = $.replace(/Module.Instance.SetProxyConfiguration\(/g, 'Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Module.Instance.SetProxyConfiguration(');
 ```
+
+# this is readme comment

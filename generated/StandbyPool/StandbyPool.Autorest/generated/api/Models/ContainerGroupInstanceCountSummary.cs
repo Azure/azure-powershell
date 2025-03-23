@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount> InstanceCountsByState { get; set; }
 
     }
-}
+}# this is comment

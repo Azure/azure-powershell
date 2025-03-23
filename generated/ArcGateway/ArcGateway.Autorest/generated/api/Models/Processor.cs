@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         int? NumberOfCore { get; set; }
 
     }
-}
+}# this is comment

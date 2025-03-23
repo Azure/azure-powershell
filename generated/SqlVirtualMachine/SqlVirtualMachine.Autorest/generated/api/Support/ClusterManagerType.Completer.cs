@@ -34,4 +34,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support
             }
         }
     }
-}
+}# this is comment

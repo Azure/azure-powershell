@@ -718,4 +718,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         bool? Suspend { get; set; }
 
     }
-}
+}# this is comment

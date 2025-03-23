@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151
         Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.IManagementAssociation[] Value { get; set; }
 
     }
-}
+}# this is comment

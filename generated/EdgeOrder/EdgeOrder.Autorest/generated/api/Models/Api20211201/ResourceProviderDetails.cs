@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         string ResourceProviderNamespace { get; set; }
 
     }
-}
+}# this is comment

@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string Cpu { get; set; }
 
     }
-}
+}# this is comment

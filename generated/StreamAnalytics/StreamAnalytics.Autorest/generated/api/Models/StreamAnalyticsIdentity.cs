@@ -207,4 +207,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
         string TransformationName { get; set; }
 
     }
-}
+}# this is comment

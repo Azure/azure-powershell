@@ -180,4 +180,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json
             return result;
         }
     }
-}
+}# this is comment

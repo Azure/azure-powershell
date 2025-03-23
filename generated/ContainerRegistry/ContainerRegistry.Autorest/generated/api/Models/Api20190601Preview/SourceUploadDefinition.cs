@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
         string UploadUrl { get; set; }
 
     }
-}
+}# this is comment

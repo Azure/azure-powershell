@@ -786,4 +786,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Cmdlets
             }
         }
     }
-}
+}# this is comment

@@ -137,4 +137,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
     {
 
     }
-}
+}# this is comment

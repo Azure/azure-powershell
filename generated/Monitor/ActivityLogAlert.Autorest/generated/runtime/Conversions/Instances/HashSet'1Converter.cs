@@ -24,4 +24,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment
+# this is comment

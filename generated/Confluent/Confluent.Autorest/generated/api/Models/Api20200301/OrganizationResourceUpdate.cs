@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResourceUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

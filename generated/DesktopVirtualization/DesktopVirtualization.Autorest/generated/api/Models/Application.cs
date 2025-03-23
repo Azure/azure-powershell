@@ -384,4 +384,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? ShowInPortal { get; set; }
 
     }
-}
+}# this is comment

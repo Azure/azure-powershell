@@ -20,4 +20,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json
             return text;
         }
     }
-}
+}# this is comment

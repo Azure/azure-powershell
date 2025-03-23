@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

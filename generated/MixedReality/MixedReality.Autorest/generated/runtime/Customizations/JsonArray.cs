@@ -10,4 +10,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
     }
 
 
-}
+}# this is comment
+# this is comment

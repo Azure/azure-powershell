@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         int? Min { get; set; }
 
     }
-}
+}# this is comment

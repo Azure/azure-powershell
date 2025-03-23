@@ -66,4 +66,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IUserAssignedIdentitiesValue>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

@@ -169,4 +169,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

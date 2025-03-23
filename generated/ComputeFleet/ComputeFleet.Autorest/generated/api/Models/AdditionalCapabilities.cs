@@ -87,4 +87,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         bool? UltraSsdEnabled { get; set; }
 
     }
-}
+}# this is comment

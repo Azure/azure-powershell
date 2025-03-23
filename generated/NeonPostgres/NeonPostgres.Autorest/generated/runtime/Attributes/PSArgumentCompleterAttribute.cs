@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres
             return scriptBlock;
         }
     }
-}
+}# this is comment

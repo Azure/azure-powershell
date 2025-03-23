@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityUpdateUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

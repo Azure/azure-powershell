@@ -10,4 +10,4 @@
 
         internal override double FromJson(JsonNode node) => (double)node;
     }
-}
+}# this is comment

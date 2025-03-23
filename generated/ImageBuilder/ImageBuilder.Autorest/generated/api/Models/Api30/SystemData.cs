@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

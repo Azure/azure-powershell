@@ -71,4 +71,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
         string PrincipalId { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

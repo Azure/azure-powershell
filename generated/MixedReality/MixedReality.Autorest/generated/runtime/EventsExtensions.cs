@@ -24,4 +24,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime
         public const string Warning = nameof(Warning);
     }
 
-}
+}# this is comment
+# this is comment

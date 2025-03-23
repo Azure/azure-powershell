@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> NeighborGroupId { get; set; }
 
     }
-}
+}# this is comment

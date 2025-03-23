@@ -184,4 +184,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         int? NumCpUs { get; set; }
 
     }
-}
+}# this is comment

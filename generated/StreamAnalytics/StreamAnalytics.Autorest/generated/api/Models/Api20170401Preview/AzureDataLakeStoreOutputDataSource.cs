@@ -261,4 +261,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string TokenUserPrincipalName { get; set; }
 
     }
-}
+}# this is comment

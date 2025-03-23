@@ -155,4 +155,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115
         Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115.IPublisherInformation[] Publisher { get; set; }
 
     }
-}
+}# this is comment

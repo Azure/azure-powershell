@@ -374,4 +374,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Warning { get; set; }
 
     }
-}
+}# this is comment

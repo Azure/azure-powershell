@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301P
         int? StreamingUnit { get; set; }
 
     }
-}
+}# this is comment

@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
         int? VCore { get; set; }
 
     }
-}
+}# this is comment

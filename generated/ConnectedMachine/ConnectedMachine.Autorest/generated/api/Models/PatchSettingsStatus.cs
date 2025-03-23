@@ -169,4 +169,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Target { get; set; }
 
     }
-}
+}# this is comment

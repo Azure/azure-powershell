@@ -125,4 +125,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10
         string Type { get; set; }
 
     }
-}
+}# this is comment

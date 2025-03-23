@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateLinkResource[] Value { get; set; }
 
     }
-}
+}# this is comment

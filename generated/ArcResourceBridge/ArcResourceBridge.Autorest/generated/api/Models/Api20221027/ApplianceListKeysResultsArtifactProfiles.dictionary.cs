@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api2022102
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IArtifactProfile>(Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.ApplianceListKeysResultsArtifactProfiles source) => source.__additionalProperties;
     }
-}
+}# this is comment

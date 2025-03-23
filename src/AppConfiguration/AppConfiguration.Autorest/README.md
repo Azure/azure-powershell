@@ -153,3 +153,5 @@ directive:
     set:
       subject: ConfigurationDeletedStore
 ```
+
+# this is readme comment

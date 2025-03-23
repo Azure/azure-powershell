@@ -228,4 +228,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         bool? RangeVariableTypeReferenceIsNullable { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

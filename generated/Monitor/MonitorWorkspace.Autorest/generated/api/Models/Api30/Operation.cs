@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

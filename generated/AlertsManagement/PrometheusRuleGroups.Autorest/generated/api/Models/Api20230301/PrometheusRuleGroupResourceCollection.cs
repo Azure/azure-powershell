@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource[] Value { get; set; }
 
     }
-}
+}# this is comment

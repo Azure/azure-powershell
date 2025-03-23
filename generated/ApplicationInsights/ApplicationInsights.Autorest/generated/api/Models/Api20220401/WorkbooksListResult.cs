@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook[] Value { get; set; }
 
     }
-}
+}# this is comment

@@ -611,4 +611,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701
         bool? TreatFailureAsDeploymentFailure { get; set; }
 
     }
-}
+}# this is comment

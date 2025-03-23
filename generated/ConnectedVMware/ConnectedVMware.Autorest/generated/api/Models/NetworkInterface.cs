@@ -440,4 +440,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string PowerOnBoot { get; set; }
 
     }
-}
+}# this is comment

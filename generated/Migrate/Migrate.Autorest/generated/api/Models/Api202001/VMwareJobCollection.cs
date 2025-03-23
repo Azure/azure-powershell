@@ -71,4 +71,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareJob[] Value { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

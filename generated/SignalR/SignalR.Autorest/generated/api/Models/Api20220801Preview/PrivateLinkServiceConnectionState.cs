@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview
         Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.PrivateLinkServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

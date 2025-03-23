@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

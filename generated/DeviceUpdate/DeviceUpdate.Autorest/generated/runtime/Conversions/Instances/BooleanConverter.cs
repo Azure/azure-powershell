@@ -10,4 +10,4 @@
 
         internal override bool FromJson(JsonNode node) => (bool)node;
     }
-}
+}# this is comment

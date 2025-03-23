@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[] OSDisk { get; set; }
 
     }
-}
+}# this is comment

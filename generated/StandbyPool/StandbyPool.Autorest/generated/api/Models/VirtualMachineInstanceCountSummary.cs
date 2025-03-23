@@ -85,4 +85,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         long? Zone { get; set; }
 
     }
-}
+}# this is comment

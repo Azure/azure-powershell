@@ -83,4 +83,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchableProperties Property { get; set; }
 
     }
-}
+}# this is comment

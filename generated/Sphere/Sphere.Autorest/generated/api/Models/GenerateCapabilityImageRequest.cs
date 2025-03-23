@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         System.Collections.Generic.List<string> Capability { get; set; }
 
     }
-}
+}# this is comment

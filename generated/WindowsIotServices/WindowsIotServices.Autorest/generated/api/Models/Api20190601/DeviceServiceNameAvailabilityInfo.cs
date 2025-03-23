@@ -90,4 +90,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api201906
         Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Support.ServiceNameUnavailabilityReason? Reason { get; set; }
 
     }
-}
+}# this is comment

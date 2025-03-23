@@ -184,4 +184,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VMType { get; set; }
 
     }
-}
+}# this is comment

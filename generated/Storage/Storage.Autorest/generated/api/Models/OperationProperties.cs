@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMetricSpecification> ServiceSpecificationMetricSpecification { get; set; }
 
     }
-}
+}# this is comment

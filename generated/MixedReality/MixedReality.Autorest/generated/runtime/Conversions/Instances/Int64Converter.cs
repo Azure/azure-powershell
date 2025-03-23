@@ -10,4 +10,5 @@
 
         internal override long FromJson(JsonNode node) => (long)node;
     }
-}
+}# this is comment
+# this is comment

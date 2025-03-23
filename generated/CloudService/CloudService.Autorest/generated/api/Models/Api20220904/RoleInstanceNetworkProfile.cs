@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904
         Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ISubResource[] NetworkInterface { get; set; }
 
     }
-}
+}# this is comment

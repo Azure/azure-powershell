@@ -281,4 +281,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string Origin { get; set; }
 
     }
-}
+}# this is comment

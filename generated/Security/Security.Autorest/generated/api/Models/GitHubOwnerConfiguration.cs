@@ -87,4 +87,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGitHubOwnerConfigurationRepositoryConfigs RepositoryConfig { get; set; }
 
     }
-}
+}# this is comment

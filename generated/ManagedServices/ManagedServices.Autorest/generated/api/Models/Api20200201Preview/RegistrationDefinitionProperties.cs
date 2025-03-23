@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201P
         string RegistrationDefinitionName { get; set; }
 
     }
-}
+}# this is comment

@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
 
     }
-}
+}# this is comment

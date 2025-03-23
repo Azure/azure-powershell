@@ -68,4 +68,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryOSDiskImage StorageProfileOSDiskImage { get; set; }
 
     }
-}
+}# this is comment

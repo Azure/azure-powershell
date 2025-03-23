@@ -1528,4 +1528,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<string> Zone { get; set; }
 
     }
-}
+}# this is comment

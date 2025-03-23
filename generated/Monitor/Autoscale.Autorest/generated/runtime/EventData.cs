@@ -75,4 +75,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime
         public System.Action Cancel;
     }
 
-}
+}# this is comment
+# this is comment

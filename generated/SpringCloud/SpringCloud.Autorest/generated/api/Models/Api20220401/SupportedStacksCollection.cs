@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ISupportedStackResource[] Value { get; set; }
 
     }
-}
+}# this is comment

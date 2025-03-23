@@ -308,4 +308,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDiskStatusProvisioningStatus StatusProvisioningStatus { get; set; }
 
     }
-}
+}# this is comment

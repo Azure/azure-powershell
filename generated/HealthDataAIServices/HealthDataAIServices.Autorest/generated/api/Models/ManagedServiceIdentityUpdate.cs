@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IManagedServiceIdentityUpdateUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

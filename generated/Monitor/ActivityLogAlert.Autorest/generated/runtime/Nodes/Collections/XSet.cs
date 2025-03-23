@@ -57,4 +57,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment
+# this is comment

@@ -116,4 +116,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IPlacementScore[] PlacementScore { get; set; }
 
     }
-}
+}# this is comment

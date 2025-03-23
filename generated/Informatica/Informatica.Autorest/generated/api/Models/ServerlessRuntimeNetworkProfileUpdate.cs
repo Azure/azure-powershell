@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         string NetworkInterfaceConfigurationVnetResourceGuid { get; set; }
 
     }
-}
+}# this is comment

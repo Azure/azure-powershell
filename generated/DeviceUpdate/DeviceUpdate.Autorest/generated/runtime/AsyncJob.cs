@@ -267,4 +267,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PowerShell
             }
         }
     }
-}
+}# this is comment

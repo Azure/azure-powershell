@@ -18,4 +18,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment
+# this is comment

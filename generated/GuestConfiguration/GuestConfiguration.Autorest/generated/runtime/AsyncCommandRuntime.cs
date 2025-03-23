@@ -829,4 +829,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PowerShe
             completed = null;
         }
     }
-}
+}# this is comment

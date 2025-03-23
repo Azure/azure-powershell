@@ -75,4 +75,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
     }
 
 
-}
+}# this is comment

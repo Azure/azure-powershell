@@ -198,4 +198,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         string VirtualNetworkName { get; set; }
 
     }
-}
+}# this is comment

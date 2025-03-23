@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Previ
         string Pattern { get; set; }
 
     }
-}
+}# this is comment

@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsSubscriptionsMappingDetails>(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsToSubscriptionsMappingResponseProperties source) => source.__additionalProperties;
     }
-}
+}# this is comment

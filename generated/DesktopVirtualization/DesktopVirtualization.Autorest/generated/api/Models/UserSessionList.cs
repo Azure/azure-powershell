@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserSession> Value { get; set; }
 
     }
-}
+}# this is comment

@@ -437,4 +437,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.ITimerTriggerUpdateParameters[] TriggerTimerTrigger { get; set; }
 
     }
-}
+}# this is comment

@@ -351,4 +351,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string TenantId { get; set; }
 
     }
-}
+}# this is comment

@@ -52,4 +52,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support
             }
         }
     }
-}
+}# this is comment

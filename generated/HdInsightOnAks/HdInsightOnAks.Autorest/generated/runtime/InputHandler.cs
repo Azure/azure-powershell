@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext context);
     }
-}
+}# this is comment

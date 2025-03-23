@@ -147,4 +147,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string Target { get; set; }
 
     }
-}
+}# this is comment

@@ -83,4 +83,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string Message { get; set; }
 
     }
-}
+}# this is comment

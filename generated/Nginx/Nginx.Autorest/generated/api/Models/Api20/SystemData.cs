@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

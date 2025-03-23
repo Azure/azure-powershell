@@ -265,4 +265,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IObjectStatusConditionDefinition[] StatusCondition { get; set; }
 
     }
-}
+}# this is comment

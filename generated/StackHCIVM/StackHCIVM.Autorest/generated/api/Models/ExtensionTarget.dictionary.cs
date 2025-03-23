@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IExtensionTargetProperties>(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ExtensionTarget source) => source.__additionalProperties;
     }
-}
+}# this is comment

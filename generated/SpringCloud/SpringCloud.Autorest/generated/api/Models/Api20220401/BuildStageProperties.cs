@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.KPackBuildStageProvisioningState? Status { get; set; }
 
     }
-}
+}# this is comment

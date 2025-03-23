@@ -68,4 +68,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Previ
         string RegistrationCode { get; set; }
 
     }
-}
+}# this is comment

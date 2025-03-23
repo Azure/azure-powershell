@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetMemberUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

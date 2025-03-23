@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
         string SubnetId { get; set; }
 
     }
-}
+}# this is comment

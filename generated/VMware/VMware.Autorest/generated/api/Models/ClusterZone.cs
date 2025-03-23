@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Zone { get; set; }
 
     }
-}
+}# this is comment

@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
             type.JsonConverter = converter;
         }
     }
-}
+}# this is comment

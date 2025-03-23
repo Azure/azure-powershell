@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Jso
             return this.ToString();
         }
     }
-}
+}# this is comment

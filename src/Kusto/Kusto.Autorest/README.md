@@ -152,3 +152,5 @@ directive:
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property');
 ```
+
+# this is readme comment

@@ -448,4 +448,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration TerminalServerConfiguration { get; set; }
 
     }
-}
+}# this is comment

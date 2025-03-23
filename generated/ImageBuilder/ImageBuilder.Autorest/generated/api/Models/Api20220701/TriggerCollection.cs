@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITrigger[] Value { get; set; }
 
     }
-}
+}# this is comment

@@ -395,4 +395,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501
         global::System.DateTime? ValidTill { get; set; }
 
     }
-}
+}# this is comment

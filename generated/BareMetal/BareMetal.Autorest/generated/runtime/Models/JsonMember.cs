@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

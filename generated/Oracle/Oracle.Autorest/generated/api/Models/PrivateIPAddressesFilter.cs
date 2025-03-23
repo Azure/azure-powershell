@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string VnicId { get; set; }
 
     }
-}
+}# this is comment

@@ -21,4 +21,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime
         bool TryGetValue(string key, out T value);
         void Clear();
     }
-}
+}# this is comment
+# this is comment

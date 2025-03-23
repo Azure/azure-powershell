@@ -228,4 +228,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
         string VirtualMachineName { get; set; }
 
     }
-}
+}# this is comment

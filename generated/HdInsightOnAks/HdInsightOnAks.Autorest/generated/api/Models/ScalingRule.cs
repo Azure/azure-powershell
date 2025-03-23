@@ -150,4 +150,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string ScalingMetric { get; set; }
 
     }
-}
+}# this is comment

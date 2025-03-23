@@ -143,4 +143,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api50.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

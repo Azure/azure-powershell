@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingResponseProperties Detail { get; set; }
 
     }
-}
+}# this is comment

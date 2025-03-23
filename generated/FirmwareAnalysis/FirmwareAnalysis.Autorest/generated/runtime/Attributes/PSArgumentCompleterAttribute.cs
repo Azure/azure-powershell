@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             return scriptBlock;
         }
     }
-}
+}# this is comment

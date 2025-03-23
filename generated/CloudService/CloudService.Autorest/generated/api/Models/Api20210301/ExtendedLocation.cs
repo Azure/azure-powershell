@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301
         Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.ExtendedLocationTypes? Type { get; set; }
 
     }
-}
+}# this is comment

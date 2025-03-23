@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         System.Collections.Generic.List<string> ValidationAllowedAudience { get; set; }
 
     }
-}
+}# this is comment

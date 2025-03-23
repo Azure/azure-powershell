@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         global::System.TimeSpan? XmsAsyncOperationTimeout { get; set; }
 
     }
-}
+}# this is comment

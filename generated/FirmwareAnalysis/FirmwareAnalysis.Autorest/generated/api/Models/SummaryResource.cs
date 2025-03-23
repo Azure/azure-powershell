@@ -142,4 +142,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string SummaryType { get; set; }
 
     }
-}
+}# this is comment

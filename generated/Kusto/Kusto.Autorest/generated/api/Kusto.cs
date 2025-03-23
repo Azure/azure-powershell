@@ -18918,4 +18918,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             }
         }
     }
-}
+}# this is comment

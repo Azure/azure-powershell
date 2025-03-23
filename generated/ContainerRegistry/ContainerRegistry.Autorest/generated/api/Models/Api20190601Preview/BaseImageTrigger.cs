@@ -116,4 +116,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.UpdateTriggerPayloadType? UpdateTriggerPayloadType { get; set; }
 
     }
-}
+}# this is comment

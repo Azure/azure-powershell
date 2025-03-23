@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string Kind { get; set; }
 
     }
-}
+}# this is comment

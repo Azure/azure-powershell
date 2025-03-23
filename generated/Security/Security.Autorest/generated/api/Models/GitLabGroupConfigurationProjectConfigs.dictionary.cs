@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IBaseResourceConfiguration>(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitLabGroupConfigurationProjectConfigs source) => source.__additionalProperties;
     }
-}
+}# this is comment

@@ -523,4 +523,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string X509CertificateSettingSecretRef { get; set; }
 
     }
-}
+}# this is comment

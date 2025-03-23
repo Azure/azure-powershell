@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001
         Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold? LowCpuThreshold { get; set; }
 
     }
-}
+}# this is comment

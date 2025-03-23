@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

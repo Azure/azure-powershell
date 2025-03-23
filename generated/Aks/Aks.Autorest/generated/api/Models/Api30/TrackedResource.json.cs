@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

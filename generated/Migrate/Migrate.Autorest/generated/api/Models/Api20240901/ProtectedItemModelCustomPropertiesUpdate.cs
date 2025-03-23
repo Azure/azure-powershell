@@ -50,4 +50,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         string InstanceType { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

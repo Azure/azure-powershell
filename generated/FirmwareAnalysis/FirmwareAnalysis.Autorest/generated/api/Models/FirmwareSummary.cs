@@ -195,4 +195,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         long? RootFileSystem { get; set; }
 
     }
-}
+}# this is comment

@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.AssessmentDetailsTargetStorageType source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

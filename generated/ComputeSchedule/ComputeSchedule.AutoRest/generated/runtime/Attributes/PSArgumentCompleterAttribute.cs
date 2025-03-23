@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule
             return scriptBlock;
         }
     }
-}
+}# this is comment

@@ -108,4 +108,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRuleProperties Property { get; set; }
 
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801
         Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IAffectedMoveResource[] MoveResource { get; set; }
 
     }
-}
+}# this is comment

@@ -120,4 +120,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

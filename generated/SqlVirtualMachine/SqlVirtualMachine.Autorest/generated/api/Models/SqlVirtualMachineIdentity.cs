@@ -139,4 +139,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         string SubscriptionId { get; set; }
 
     }
-}
+}# this is comment

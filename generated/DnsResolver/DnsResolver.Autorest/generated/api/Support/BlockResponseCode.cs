@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

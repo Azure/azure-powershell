@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PrivateEndpointServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

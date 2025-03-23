@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string NewCloudAccountActivationLink { get; set; }
 
     }
-}
+}# this is comment

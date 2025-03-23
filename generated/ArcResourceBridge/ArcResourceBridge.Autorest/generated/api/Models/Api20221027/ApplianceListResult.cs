@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api2022102
         Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance[] Value { get; set; }
 
     }
-}
+}# this is comment

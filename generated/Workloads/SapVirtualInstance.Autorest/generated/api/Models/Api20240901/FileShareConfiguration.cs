@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.FileShareConfigurationType ConfigurationType { get; set; }
 
     }
-}
+}# this is comment

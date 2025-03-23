@@ -146,4 +146,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string Target { get; set; }
 
     }
-}
+}# this is comment

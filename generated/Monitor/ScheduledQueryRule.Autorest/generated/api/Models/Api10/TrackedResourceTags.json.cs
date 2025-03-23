@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

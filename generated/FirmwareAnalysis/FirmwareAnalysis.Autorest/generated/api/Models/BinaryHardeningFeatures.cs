@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         bool? Stripped { get; set; }
 
     }
-}
+}# this is comment

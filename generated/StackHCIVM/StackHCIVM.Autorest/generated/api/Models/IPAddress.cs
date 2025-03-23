@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string Version { get; set; }
 
     }
-}
+}# this is comment

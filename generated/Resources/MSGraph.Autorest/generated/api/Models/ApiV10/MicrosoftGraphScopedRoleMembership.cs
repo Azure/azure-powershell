@@ -120,4 +120,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphIdentity RoleMemberInfo { get; set; }
 
     }
-}
+}# this is comment

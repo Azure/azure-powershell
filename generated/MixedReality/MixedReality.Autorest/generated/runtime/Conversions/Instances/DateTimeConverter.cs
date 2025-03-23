@@ -15,4 +15,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
 
         internal override DateTime FromJson(JsonNode node) => (DateTime)node;
     }
-}
+}# this is comment
+# this is comment

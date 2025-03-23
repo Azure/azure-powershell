@@ -757,4 +757,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         long? Version { get; set; }
 
     }
-}
+}# this is comment

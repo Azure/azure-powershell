@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Terraform
             return scriptBlock;
         }
     }
-}
+}# this is comment

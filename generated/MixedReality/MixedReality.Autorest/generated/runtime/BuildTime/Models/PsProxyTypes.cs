@@ -512,3 +512,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.PowerShell
         public static DefaultInfo ToDefaultInfo(this PSDefaultValueAttribute defaultValueAttribute, ParameterGroup parameterGroup) => new DefaultInfo(defaultValueAttribute, parameterGroup);
     }
 }
+# this is comment
+# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType AuthType { get; set; }
 
     }
-}
+}# this is comment

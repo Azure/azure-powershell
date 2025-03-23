@@ -95,4 +95,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string SubscriptionStatus { get; set; }
 
     }
-}
+}# this is comment

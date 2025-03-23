@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         int? Port { get; set; }
 
     }
-}
+}# this is comment

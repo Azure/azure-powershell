@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInformaticaOrganizationResourceUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

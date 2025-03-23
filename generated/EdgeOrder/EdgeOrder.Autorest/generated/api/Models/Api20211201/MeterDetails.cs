@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         double? Multiplier { get; set; }
 
     }
-}
+}# this is comment

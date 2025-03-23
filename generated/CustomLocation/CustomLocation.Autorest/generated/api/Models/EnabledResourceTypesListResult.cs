@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IEnabledResourceType> Value { get; set; }
 
     }
-}
+}# this is comment

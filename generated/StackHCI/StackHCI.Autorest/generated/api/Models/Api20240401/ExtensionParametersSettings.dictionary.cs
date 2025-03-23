@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionParametersSettings source) => source.__additionalProperties;
     }
-}
+}# this is comment

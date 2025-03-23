@@ -347,4 +347,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
 
         #endregion
     }
-}
+}# this is comment

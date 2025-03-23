@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         System.Collections.Generic.List<string> Value { get; set; }
 
     }
-}
+}# this is comment

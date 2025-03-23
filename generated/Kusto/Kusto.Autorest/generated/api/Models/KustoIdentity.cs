@@ -283,4 +283,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string SubscriptionId { get; set; }
 
     }
-}
+}# this is comment

@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

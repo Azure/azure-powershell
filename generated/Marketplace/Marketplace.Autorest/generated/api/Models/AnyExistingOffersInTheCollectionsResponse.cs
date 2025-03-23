@@ -59,4 +59,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         bool? Value { get; set; }
 
     }
-}
+}# this is comment

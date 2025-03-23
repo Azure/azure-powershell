@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.IOperationErrorsResult> Result { get; set; }
 
     }
-}
+}# this is comment

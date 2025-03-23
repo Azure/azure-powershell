@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         long Memory { get; set; }
 
     }
-}
+}# this is comment

@@ -106,4 +106,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Runtime.Json
 
         public override string ToString() => value;
     }
-}
+}# this is comment
+# this is comment

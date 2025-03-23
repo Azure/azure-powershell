@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string PerimeterGuid { get; set; }
 
     }
-}
+}# this is comment

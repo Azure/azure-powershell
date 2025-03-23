@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string AddressPrefix { get; set; }
 
     }
-}
+}# this is comment

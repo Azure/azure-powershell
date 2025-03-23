@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ISkuCapability[] SupportedSku { get; set; }
 
     }
-}
+}# this is comment

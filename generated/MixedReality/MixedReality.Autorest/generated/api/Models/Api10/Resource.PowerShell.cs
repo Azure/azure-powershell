@@ -179,4 +179,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10
     {
 
     }
-}
+}# this is comment
+# this is comment

@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ICorsRule[] CorsRule { get; set; }
 
     }
-}
+}# this is comment

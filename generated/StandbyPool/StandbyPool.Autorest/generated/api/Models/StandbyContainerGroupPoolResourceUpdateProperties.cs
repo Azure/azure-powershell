@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         string ElasticityProfileRefillPolicy { get; set; }
 
     }
-}
+}# this is comment

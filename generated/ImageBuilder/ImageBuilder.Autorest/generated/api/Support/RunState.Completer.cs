@@ -52,4 +52,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
             }
         }
     }
-}
+}# this is comment

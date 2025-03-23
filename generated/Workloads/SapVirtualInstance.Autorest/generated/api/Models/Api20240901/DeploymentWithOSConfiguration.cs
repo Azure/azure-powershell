@@ -196,4 +196,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapSoftwareInstallationType? SoftwareConfigurationSoftwareInstallationType { get; set; }
 
     }
-}
+}# this is comment

@@ -106,4 +106,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10
             AfterFromJson(json);
         }
     }
-}
+}# this is comment
+# this is comment

@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string JobType { get; set; }
 
     }
-}
+}# this is comment

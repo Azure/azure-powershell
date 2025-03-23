@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IRecommendationSolution> Solution { get; set; }
 
     }
-}
+}# this is comment

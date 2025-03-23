@@ -139,4 +139,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         string TriggerName { get; set; }
 
     }
-}
+}# this is comment

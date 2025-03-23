@@ -64,4 +64,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         global::System.TimeSpan? WaitDuration { get; set; }
 
     }
-}
+}# this is comment

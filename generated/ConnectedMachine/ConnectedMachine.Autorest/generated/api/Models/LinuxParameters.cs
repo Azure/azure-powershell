@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<string> PackageNameMasksToInclude { get; set; }
 
     }
-}
+}# this is comment

@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api30
         string Type { get; set; }
 
     }
-}
+}# this is comment

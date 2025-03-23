@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201P
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider MultiFactorAuthProvider { get; set; }
 
     }
-}
+}# this is comment

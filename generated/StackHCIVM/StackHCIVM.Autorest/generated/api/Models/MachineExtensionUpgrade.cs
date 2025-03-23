@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IExtensionTarget ExtensionTarget { get; set; }
 
     }
-}
+}# this is comment

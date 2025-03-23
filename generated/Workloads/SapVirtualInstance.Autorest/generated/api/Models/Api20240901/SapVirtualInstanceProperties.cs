@@ -306,4 +306,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapVirtualInstanceStatus? Status { get; set; }
 
     }
-}
+}# this is comment

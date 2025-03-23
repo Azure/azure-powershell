@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string Certificate { get; set; }
 
     }
-}
+}# this is comment

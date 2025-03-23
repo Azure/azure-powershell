@@ -75,4 +75,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime
         public System.Action Cancel;
     }
 
-}
+}# this is comment

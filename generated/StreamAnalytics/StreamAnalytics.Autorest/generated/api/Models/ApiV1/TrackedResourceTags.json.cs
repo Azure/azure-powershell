@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

@@ -108,4 +108,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

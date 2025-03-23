@@ -357,4 +357,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[] TriggerCriterion { get; set; }
 
     }
-}
+}# this is comment

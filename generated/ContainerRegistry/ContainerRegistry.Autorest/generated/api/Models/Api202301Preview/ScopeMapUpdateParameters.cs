@@ -85,4 +85,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IScopeMapPropertiesUpdateParameters Property { get; set; }
 
     }
-}
+}# this is comment

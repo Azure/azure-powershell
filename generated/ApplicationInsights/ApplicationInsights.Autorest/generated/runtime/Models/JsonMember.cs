@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

@@ -10,4 +10,5 @@
 
         internal override ushort FromJson(JsonNode node) => (ushort)node;
     }
-}
+}# this is comment
+# this is comment

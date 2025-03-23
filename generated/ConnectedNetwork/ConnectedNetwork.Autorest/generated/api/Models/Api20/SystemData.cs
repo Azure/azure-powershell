@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

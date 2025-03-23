@@ -32,4 +32,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support
             }
         }
     }
-}
+}# this is comment
+# this is comment

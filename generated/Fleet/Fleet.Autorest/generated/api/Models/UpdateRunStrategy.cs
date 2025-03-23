@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage> Stage { get; set; }
 
     }
-}
+}# this is comment

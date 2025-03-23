@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string CertificateSecretName { get; set; }
 
     }
-}
+}# this is comment

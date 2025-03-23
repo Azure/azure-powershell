@@ -264,4 +264,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParameters WindowsParameter { get; set; }
 
     }
-}
+}# this is comment

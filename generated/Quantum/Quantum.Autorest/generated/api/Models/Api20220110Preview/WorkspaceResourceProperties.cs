@@ -125,4 +125,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.UsableStatus? Usable { get; set; }
 
     }
-}
+}# this is comment

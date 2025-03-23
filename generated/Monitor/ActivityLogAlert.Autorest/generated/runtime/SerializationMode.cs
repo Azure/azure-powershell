@@ -13,4 +13,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime
 
         IncludeAll = IncludeHeaders | IncludeReadOnly
     }
-}
+}# this is comment
+# this is comment

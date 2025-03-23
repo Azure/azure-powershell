@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         System.Collections.Generic.List<string> Scope { get; set; }
 
     }
-}
+}# this is comment

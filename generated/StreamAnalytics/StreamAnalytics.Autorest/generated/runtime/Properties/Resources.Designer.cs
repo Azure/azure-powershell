@@ -5652,4 +5652,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.generated.runtime.P
             }
         }
     }
-}
+}# this is comment

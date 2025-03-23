@@ -48,4 +48,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IDeploymentPreflightResource[] Resource { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

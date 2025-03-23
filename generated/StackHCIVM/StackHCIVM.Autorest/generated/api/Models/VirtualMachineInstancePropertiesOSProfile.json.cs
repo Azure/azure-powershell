@@ -119,4 +119,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

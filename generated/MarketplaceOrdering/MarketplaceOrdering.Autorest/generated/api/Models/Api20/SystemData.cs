@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

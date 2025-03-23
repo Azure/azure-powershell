@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.SkuScaleType? ScaleType { get; set; }
 
     }
-}
+}# this is comment

@@ -125,4 +125,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ISystemComponent[] SystemComponent { get; set; }
 
     }
-}
+}# this is comment

@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IGatewayUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Pre
         bool? Offline { get; set; }
 
     }
-}
+}# this is comment

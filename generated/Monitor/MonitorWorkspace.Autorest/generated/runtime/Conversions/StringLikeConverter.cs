@@ -42,4 +42,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Js
             return method;
         }
     }
-}
+}# this is comment

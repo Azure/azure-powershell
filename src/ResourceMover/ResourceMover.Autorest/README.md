@@ -193,3 +193,5 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor"].get
     transform: $["description"] = "List of the move resources for which an arm resource is required for.\<br>\<br>**The 'Get-AzResourceMoverRequiredForResources' command is applicable for 'RegionToRegion' type move collections.\<br>\<br>However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed. Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**"
 ```
+
+# this is readme comment

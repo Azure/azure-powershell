@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api
         string PrometheusQueryEndpoint { get; set; }
 
     }
-}
+}# this is comment

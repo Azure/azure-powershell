@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference> Secret { get; set; }
 
     }
-}
+}# this is comment

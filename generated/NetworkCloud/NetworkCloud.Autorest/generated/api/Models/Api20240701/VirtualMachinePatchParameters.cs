@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701
         string VMImageRepositoryCredentialsUsername { get; set; }
 
     }
-}
+}# this is comment

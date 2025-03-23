@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage[] Value { get; set; }
 
     }
-}
+}# this is comment

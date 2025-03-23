@@ -36,4 +36,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support
             }
         }
     }
-}
+}# this is comment

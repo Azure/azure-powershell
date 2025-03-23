@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string KeyType { get; set; }
 
     }
-}
+}# this is comment

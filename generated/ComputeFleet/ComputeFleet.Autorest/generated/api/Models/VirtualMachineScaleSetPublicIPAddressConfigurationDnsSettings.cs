@@ -107,4 +107,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string DomainNameLabelScope { get; set; }
 
     }
-}
+}# this is comment

@@ -50,4 +50,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ITrunkedNetworkPatchParametersTags Tag { get; set; }
 
     }
-}
+}# this is comment

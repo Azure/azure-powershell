@@ -27,4 +27,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json
             return Enum.Parse(type, node.ToString(), ignoreCase: true);
         }
     }
-}
+}# this is comment

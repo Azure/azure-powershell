@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProduct> Value { get; set; }
 
     }
-}
+}# this is comment

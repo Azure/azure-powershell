@@ -196,4 +196,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         bool? TreatFailureAsDeploymentFailure { get; set; }
 
     }
-}
+}# this is comment

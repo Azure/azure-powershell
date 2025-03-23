@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Location { get; set; }
 
     }
-}
+}# this is comment

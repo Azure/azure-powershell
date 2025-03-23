@@ -282,4 +282,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string TerminalServerConfigurationUsername { get; set; }
 
     }
-}
+}# this is comment

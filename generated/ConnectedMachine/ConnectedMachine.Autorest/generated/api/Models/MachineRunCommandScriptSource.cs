@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ScriptUriManagedIdentityObjectId { get; set; }
 
     }
-}
+}# this is comment

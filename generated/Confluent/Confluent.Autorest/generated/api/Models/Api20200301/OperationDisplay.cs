@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         string Resource { get; set; }
 
     }
-}
+}# this is comment

@@ -298,4 +298,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetNetworkConfigurationProperties Property { get; set; }
 
     }
-}
+}# this is comment

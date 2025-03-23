@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         bool? UefiSettingSecureBootEnabled { get; set; }
 
     }
-}
+}# this is comment

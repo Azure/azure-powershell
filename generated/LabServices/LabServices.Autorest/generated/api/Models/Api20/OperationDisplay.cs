@@ -138,4 +138,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20
         string Resource { get; set; }
 
     }
-}
+}# this is comment

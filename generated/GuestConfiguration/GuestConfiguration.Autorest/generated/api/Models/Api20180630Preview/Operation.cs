@@ -148,4 +148,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api201806
         string StatusCode { get; set; }
 
     }
-}
+}# this is comment

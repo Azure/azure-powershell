@@ -538,4 +538,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageVersionProperties VersionProperty { get; set; }
 
     }
-}
+}# this is comment

@@ -218,4 +218,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string TypeHandlerVersion { get; set; }
 
     }
-}
+}# this is comment

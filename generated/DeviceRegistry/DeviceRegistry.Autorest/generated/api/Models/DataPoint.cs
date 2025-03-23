@@ -89,4 +89,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string ObservabilityMode { get; set; }
 
     }
-}
+}# this is comment

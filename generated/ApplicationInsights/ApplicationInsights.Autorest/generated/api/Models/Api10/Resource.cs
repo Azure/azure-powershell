@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api10
         string Type { get; set; }
 
     }
-}
+}# this is comment

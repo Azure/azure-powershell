@@ -88,4 +88,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
             type.JsonConverter = converter;
         }
     }
-}
+}# this is comment
+# this is comment

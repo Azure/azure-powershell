@@ -152,4 +152,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.OperationResultStatus? Status { get; set; }
 
     }
-}
+}# this is comment

@@ -260,4 +260,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime
             return container;
         }
     }
-}
+}# this is comment

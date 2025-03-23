@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         string NamingPatternType { get; set; }
 
     }
-}
+}# this is comment

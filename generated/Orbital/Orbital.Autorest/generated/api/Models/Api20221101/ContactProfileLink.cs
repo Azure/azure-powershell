@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization Polarization { get; set; }
 
     }
-}
+}# this is comment

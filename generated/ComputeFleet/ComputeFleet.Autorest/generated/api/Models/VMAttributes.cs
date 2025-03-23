@@ -820,4 +820,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<string> VMCategory { get; set; }
 
     }
-}
+}# this is comment

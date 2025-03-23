@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IOperation> Value { get; set; }
 
     }
-}
+}# this is comment

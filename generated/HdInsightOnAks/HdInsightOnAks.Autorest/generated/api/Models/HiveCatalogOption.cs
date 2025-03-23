@@ -176,4 +176,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string MetastoreWarehouseDir { get; set; }
 
     }
-}
+}# this is comment

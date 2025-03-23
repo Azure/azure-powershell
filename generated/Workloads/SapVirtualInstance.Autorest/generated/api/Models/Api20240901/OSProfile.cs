@@ -141,4 +141,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.OSType? OSConfigurationOstype { get; set; }
 
     }
-}
+}# this is comment

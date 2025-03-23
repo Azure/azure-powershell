@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? HighAvailabilityEnabled { get; set; }
 
     }
-}
+}# this is comment

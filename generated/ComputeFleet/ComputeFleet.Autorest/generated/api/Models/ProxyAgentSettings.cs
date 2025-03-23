@@ -136,4 +136,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string Mode { get; set; }
 
     }
-}
+}# this is comment

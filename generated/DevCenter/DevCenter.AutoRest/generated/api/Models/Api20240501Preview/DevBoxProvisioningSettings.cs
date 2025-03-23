@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.InstallAzureMonitorAgentEnableStatus? InstallAzureMonitorAgentEnableStatus { get; set; }
 
     }
-}
+}# this is comment

@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

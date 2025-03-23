@@ -5652,4 +5652,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.generated.runtime
             }
         }
     }
-}
+}# this is comment
+# this is comment

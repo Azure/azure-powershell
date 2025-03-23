@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         string Resource { get; set; }
 
     }
-}
+}# this is comment

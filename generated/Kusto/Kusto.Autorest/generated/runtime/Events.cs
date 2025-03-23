@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime
         public const string Polling = nameof(Polling);
 
     }
-}
+}# this is comment

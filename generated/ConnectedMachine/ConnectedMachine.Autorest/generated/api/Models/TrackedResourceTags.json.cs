@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

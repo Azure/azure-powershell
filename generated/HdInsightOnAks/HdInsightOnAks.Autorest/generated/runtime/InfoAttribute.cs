@@ -35,4 +35,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime
         public string Description { get; set; } = "";
         public string SetCondition { get; set; } = "";
     }
-}
+}# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
         string Scheme { get; set; }
 
     }
-}
+}# this is comment

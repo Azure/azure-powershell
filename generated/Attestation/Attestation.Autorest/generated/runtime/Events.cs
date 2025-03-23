@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime
         public const string Polling = nameof(Polling);
 
     }
-}
+}# this is comment

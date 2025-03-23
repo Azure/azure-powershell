@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity[] Value { get; set; }
 
     }
-}
+}# this is comment

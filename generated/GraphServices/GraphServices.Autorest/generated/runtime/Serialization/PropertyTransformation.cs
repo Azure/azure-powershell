@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.Json
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment

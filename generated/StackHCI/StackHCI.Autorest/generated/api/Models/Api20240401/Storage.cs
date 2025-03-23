@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string ConfigurationMode { get; set; }
 
     }
-}
+}# this is comment

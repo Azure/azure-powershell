@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent[] Value { get; set; }
 
     }
-}
+}# this is comment

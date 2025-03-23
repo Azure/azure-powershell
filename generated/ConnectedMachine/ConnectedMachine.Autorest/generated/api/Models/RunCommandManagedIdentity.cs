@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ObjectId { get; set; }
 
     }
-}
+}# this is comment

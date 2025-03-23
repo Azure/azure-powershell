@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201
         Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShareCredentialDetails[] ShareCredentialDetail { get; set; }
 
     }
-}
+}# this is comment

@@ -645,4 +645,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         global::System.DateTime? TableLastEnabledTime { get; set; }
 
     }
-}
+}# this is comment

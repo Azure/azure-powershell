@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

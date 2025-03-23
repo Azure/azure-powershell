@@ -311,4 +311,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules> VirtualNetworkRule { get; set; }
 
     }
-}
+}# this is comment

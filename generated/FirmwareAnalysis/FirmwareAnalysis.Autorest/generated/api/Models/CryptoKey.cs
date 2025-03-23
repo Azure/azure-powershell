@@ -220,4 +220,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         System.Collections.Generic.List<string> Usage { get; set; }
 
     }
-}
+}# this is comment

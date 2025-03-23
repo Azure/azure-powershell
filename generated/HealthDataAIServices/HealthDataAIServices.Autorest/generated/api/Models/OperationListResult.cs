@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IOperation> Value { get; set; }
 
     }
-}
+}# this is comment

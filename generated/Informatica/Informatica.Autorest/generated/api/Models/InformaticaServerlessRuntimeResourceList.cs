@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInfaRuntimeResourceFetchMetaData> InformaticaRuntimeResource { get; set; }
 
     }
-}
+}# this is comment

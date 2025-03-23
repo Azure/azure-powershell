@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         bool? SecureBootEnabled { get; set; }
 
     }
-}
+}# this is comment

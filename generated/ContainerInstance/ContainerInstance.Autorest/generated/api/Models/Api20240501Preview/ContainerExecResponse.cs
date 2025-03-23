@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         string WebSocketUri { get; set; }
 
     }
-}
+}# this is comment

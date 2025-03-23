@@ -44,4 +44,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Support
             }
         }
     }
-}
+}# this is comment

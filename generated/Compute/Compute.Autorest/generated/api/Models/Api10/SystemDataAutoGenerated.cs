@@ -89,4 +89,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10
         global::System.DateTime? LastModifiedAt { get; set; }
 
     }
-}
+}# this is comment

@@ -113,4 +113,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
             AfterFromJson(json);
         }
     }
-}
+}# this is comment
+# this is comment

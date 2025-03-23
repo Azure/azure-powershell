@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Jso
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment

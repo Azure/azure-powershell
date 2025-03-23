@@ -982,4 +982,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         bool? UefiSettingSecureBootEnabled { get; set; }
 
     }
-}
+}# this is comment

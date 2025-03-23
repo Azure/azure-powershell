@@ -37,4 +37,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json
 
         public override string ToString() => _base64 ?? Convert.ToBase64String(_value);
     }
-}
+}# this is comment

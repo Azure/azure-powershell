@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
         long? VCore { get; set; }
 
     }
-}
+}# this is comment

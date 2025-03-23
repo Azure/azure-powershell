@@ -247,4 +247,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment
+# this is comment

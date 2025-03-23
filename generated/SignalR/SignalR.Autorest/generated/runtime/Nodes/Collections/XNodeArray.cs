@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

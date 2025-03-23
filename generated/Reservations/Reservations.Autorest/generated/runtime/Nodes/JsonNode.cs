@@ -247,4 +247,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

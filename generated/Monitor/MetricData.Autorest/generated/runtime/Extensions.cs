@@ -114,4 +114,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime
             public void Dispose() => System.Threading.SynchronizationContext.SetSynchronizationContext(original);
         }
     }
-}
+}# this is comment

@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701
         Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState? State { get; set; }
 
     }
-}
+}# this is comment

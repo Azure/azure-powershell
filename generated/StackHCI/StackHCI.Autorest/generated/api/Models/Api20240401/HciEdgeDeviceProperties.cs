@@ -357,4 +357,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string SbeDeploymentPackageInfoSbeManifest { get; set; }
 
     }
-}
+}# this is comment

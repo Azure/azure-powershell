@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IEndpointDetail[] EndpointDetail { get; set; }
 
     }
-}
+}# this is comment

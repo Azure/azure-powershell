@@ -10,4 +10,5 @@
 
         internal override uint FromJson(JsonNode node) => (uint)node;
     }
-}
+}# this is comment
+# this is comment

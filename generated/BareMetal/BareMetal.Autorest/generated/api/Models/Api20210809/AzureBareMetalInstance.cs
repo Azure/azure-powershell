@@ -486,4 +486,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

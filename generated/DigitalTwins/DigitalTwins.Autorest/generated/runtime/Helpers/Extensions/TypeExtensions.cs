@@ -58,4 +58,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json
             return false;
         }
     }
-}
+}# this is comment

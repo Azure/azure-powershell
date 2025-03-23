@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string HttpsProxy { get; set; }
 
     }
-}
+}# this is comment

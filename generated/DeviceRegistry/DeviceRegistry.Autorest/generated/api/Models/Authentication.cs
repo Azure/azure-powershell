@@ -142,4 +142,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string X509CredentialsCertificateSecretName { get; set; }
 
     }
-}
+}# this is comment

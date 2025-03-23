@@ -95,4 +95,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string ConsumerSecretSettingName { get; set; }
 
     }
-}
+}# this is comment

@@ -170,4 +170,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

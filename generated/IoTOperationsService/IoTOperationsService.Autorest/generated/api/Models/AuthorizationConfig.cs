@@ -79,4 +79,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IAuthorizationRule> Rule { get; set; }
 
     }
-}
+}# this is comment

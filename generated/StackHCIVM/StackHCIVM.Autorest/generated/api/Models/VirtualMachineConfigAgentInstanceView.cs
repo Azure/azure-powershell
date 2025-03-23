@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string VMConfigAgentVersion { get; set; }
 
     }
-}
+}# this is comment

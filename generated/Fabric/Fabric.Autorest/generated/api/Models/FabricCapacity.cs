@@ -258,4 +258,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         string State { get; set; }
 
     }
-}
+}# this is comment

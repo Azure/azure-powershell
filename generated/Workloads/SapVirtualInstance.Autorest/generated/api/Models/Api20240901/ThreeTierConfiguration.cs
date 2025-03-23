@@ -1027,4 +1027,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.FileShareConfigurationType? TransportFileShareConfigurationType { get; set; }
 
     }
-}
+}# this is comment

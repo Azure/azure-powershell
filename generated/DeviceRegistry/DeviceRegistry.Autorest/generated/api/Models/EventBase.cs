@@ -160,4 +160,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string TopicRetain { get; set; }
 
     }
-}
+}# this is comment

@@ -79,4 +79,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         float? ProgressPercentage { get; set; }
 
     }
-}
+}# this is comment

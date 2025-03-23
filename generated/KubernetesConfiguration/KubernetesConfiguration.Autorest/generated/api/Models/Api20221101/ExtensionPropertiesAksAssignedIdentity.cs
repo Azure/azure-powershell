@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType? Type { get; set; }
 
     }
-}
+}# this is comment

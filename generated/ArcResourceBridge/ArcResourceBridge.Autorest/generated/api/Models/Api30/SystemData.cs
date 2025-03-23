@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

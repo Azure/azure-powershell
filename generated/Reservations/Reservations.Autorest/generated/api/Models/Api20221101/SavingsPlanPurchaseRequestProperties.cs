@@ -275,4 +275,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.SavingsPlanTerm? Term { get; set; }
 
     }
-}
+}# this is comment

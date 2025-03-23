@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IUserIdentityProperties>(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IdentityPropertiesUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

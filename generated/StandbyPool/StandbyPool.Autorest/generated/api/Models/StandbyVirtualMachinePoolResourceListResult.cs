@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> Value { get; set; }
 
     }
-}
+}# this is comment

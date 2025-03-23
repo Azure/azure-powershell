@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

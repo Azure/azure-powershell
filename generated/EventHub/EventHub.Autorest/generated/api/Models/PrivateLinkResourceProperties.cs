@@ -92,4 +92,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

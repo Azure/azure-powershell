@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IUserRoleAssignmentValue>(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments source) => source.__additionalProperties;
     }
-}
+}# this is comment

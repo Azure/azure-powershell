@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string PrivateFqdn { get; set; }
 
     }
-}
+}# this is comment

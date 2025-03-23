@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string InternetGatewayRuleId { get; set; }
 
     }
-}
+}# this is comment

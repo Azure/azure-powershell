@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.ITagUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

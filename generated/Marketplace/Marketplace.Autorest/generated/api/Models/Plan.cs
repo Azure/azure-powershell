@@ -165,4 +165,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         string StackType { get; set; }
 
     }
-}
+}# this is comment

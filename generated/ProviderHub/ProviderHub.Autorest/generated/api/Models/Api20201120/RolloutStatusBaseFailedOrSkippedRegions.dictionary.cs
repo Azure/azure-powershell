@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedErrorInfo>(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.RolloutStatusBaseFailedOrSkippedRegions source) => source.__additionalProperties;
     }
-}
+}# this is comment

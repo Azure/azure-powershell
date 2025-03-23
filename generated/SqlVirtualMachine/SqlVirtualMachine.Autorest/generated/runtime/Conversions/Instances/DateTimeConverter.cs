@@ -15,4 +15,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json
 
         internal override DateTime FromJson(JsonNode node) => (DateTime)node;
     }
-}
+}# this is comment

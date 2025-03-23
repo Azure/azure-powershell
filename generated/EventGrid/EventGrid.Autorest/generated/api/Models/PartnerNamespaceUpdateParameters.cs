@@ -166,4 +166,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerNamespaceUpdateParametersTags Tag { get; set; }
 
     }
-}
+}# this is comment

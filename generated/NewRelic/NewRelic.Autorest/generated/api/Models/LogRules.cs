@@ -139,4 +139,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         string SendSubscriptionLog { get; set; }
 
     }
-}
+}# this is comment

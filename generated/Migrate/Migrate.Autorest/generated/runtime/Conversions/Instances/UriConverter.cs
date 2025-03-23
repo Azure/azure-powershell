@@ -12,4 +12,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json
 
         internal override Uri FromJson(JsonNode node) => (Uri)node;
     }
-}
+}# this is comment
+# this is comment

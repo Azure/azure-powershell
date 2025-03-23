@@ -127,4 +127,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         global::System.TimeSpan WindowSize { get; set; }
 
     }
-}
+}# this is comment

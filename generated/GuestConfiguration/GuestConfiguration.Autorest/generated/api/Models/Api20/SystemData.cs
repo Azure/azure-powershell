@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

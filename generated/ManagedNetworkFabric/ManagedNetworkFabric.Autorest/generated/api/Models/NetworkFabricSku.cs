@@ -251,4 +251,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> SupportedVersion { get; set; }
 
     }
-}
+}# this is comment

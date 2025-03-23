@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         string Type { get; set; }
 
     }
-}
+}# this is comment

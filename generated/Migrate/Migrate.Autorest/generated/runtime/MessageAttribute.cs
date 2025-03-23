@@ -347,4 +347,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime
             return message.ToString();
         }
     }
-}
+}# this is comment
+# this is comment

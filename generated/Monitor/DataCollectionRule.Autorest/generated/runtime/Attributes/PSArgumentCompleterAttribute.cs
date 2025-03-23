@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
             return scriptBlock;
         }
     }
-}
+}# this is comment

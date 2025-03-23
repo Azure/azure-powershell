@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json
 
         internal override TimeSpan FromJson(JsonNode node) => (TimeSpan)node;
     }
-}
+}# this is comment

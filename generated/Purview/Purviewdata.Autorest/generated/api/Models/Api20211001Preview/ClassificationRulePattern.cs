@@ -45,4 +45,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Previ
         string Kind { get; set; }
 
     }
-}
+}# this is comment

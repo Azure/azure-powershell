@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         string State { get; set; }
 
     }
-}
+}# this is comment

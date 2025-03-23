@@ -47,4 +47,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         bool? Enabled { get; set; }
 
     }
-}
+}# this is comment

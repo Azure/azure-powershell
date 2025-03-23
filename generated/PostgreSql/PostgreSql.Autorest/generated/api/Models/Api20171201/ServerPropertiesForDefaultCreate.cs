@@ -140,4 +140,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         System.Security.SecureString AdministratorLoginPassword { get; set; }
 
     }
-}
+}# this is comment

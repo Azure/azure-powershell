@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Previe
         string Resource { get; set; }
 
     }
-}
+}# this is comment

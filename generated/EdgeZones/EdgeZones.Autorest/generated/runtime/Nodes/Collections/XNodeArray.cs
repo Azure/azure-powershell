@@ -70,4 +70,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

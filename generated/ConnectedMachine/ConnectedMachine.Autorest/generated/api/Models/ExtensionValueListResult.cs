@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue> Value { get; set; }
 
     }
-}
+}# this is comment

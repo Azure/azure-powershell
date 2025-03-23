@@ -129,4 +129,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string LicenseAssignmentState { get; set; }
 
     }
-}
+}# this is comment

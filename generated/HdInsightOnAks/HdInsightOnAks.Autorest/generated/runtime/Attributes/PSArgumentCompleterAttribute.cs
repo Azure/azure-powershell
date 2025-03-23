@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             return scriptBlock;
         }
     }
-}
+}# this is comment

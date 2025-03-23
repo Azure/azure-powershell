@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

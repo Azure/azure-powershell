@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api30.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment

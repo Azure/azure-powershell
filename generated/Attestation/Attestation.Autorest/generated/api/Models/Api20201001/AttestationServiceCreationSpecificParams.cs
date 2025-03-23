@@ -87,4 +87,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IJsonWebKey[] PolicySigningCertificateKey { get; set; }
 
     }
-}
+}# this is comment

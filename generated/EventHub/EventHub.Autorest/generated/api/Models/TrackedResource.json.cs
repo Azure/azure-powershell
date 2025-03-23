@@ -112,4 +112,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

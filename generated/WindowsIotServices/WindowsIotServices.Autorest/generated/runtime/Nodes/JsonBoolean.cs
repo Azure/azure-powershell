@@ -39,4 +39,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

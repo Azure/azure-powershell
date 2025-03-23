@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

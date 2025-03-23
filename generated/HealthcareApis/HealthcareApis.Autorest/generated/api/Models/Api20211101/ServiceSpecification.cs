@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IMetricSpecification[] MetricSpecification { get; set; }
 
     }
-}
+}# this is comment

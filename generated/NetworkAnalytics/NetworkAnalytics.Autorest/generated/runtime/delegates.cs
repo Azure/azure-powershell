@@ -20,4 +20,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Runtime
     public delegate void SynchEvent(EventData message);
     public delegate Task OnResponse(Response message);
     public delegate Task OnResponse<T>(Response<T> message);
-}
+}# this is comment

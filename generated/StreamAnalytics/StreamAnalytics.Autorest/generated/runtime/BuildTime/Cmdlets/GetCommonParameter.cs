@@ -50,3 +50,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PowerShell
     }
   }
 }
+# this is comment

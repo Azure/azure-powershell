@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ResourceTags source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

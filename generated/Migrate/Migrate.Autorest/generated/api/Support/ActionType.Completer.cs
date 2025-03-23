@@ -34,4 +34,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             }
         }
     }
-}
+}# this is comment
+# this is comment

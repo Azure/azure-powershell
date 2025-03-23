@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BindingResourcePropertiesBindingParameters source) => source.__additionalProperties;
     }
-}
+}# this is comment

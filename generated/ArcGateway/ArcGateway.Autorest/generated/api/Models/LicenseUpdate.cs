@@ -187,4 +187,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ILicenseUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

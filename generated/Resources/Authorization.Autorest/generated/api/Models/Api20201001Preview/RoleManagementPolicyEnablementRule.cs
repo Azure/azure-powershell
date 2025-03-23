@@ -103,4 +103,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.EnablementRules[] EnabledRule { get; set; }
 
     }
-}
+}# this is comment

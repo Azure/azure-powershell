@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

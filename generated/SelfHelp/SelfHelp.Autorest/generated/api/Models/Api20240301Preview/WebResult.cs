@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISearchResult[] SearchResult { get; set; }
 
     }
-}
+}# this is comment

@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime
         public const string Warning = nameof(Warning);
     }
 
-}
+}# this is comment

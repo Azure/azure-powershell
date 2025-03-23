@@ -81,4 +81,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string PatchSettingPatchMode { get; set; }
 
     }
-}
+}# this is comment

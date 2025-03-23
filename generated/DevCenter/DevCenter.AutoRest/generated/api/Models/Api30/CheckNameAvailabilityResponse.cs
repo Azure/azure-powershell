@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CheckNameAvailabilityReason? Reason { get; set; }
 
     }
-}
+}# this is comment

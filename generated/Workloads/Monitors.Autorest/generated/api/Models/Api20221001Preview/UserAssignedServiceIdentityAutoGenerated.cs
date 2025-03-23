@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api202210
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api30.IUserAssignedIdentities1 UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

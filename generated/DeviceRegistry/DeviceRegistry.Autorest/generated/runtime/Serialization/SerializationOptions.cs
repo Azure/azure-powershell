@@ -62,4 +62,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json
             return null;
         }
     }
-}
+}# this is comment

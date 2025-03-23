@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api30.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment

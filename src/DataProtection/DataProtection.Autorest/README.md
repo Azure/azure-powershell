@@ -462,3 +462,5 @@ This section is only activated if the `--make-it-rain` switch is added to the co
 ``` yaml $(make-it-rain)
 namespace: MyCompany.Special.Rest
 ```
+
+# this is readme comment

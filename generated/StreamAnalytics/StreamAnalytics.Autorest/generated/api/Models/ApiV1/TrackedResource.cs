@@ -109,4 +109,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.ApiV1.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

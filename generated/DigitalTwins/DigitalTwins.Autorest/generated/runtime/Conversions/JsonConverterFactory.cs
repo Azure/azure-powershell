@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json
             type.JsonConverter = converter;
         }
     }
-}
+}# this is comment

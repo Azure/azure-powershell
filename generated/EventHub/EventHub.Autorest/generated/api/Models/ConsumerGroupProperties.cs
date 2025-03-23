@@ -110,4 +110,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string UserMetadata { get; set; }
 
     }
-}
+}# this is comment

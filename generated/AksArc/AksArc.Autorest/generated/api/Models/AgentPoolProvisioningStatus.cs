@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile> StatusReadyReplica { get; set; }
 
     }
-}
+}# this is comment

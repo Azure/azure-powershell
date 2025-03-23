@@ -194,4 +194,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         string ResourceType { get; set; }
 
     }
-}
+}# this is comment

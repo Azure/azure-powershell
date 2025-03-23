@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             return scriptBlock;
         }
     }
-}
+}# this is comment

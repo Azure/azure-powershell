@@ -59,4 +59,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

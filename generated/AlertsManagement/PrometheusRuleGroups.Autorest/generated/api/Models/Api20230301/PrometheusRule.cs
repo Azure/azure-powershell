@@ -248,4 +248,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         int? Severity { get; set; }
 
     }
-}
+}# this is comment

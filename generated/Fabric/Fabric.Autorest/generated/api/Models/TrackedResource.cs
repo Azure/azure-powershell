@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

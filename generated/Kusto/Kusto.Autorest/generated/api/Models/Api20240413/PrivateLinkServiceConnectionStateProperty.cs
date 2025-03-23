@@ -87,4 +87,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string Status { get; set; }
 
     }
-}
+}# this is comment

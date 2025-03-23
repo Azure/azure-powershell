@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.ResourcePoolTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

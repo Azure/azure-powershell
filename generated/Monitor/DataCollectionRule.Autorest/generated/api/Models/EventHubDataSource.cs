@@ -98,4 +98,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         string Stream { get; set; }
 
     }
-}
+}# this is comment

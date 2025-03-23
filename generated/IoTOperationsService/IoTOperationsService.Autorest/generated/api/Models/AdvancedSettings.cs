@@ -298,4 +298,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string SubscriberQueueLimitStrategy { get; set; }
 
     }
-}
+}# this is comment

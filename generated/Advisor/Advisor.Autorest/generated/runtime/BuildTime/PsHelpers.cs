@@ -103,3 +103,4 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
         public PSObject HelpInfo { get; set; }
     }
 }
+# this is comment

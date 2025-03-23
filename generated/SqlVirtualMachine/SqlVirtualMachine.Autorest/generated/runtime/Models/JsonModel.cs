@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json
             return new JsonModel(type, members);
         }
     }
-}
+}# this is comment

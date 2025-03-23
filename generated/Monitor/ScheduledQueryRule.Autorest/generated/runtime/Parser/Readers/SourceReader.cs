@@ -127,4 +127,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
             source.Dispose();
         }
     }
-}
+}# this is comment

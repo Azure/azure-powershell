@@ -264,4 +264,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string RuleId { get; set; }
 
     }
-}
+}# this is comment

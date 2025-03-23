@@ -240,4 +240,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         int? UpdateRollup { get; set; }
 
     }
-}
+}# this is comment

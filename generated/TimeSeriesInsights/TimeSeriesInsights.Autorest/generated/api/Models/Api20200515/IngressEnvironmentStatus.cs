@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api202005
         string StateDetailMessage { get; set; }
 
     }
-}
+}# this is comment

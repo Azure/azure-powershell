@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json
             reader.Dispose();
         }
     }
-}
+}# this is comment

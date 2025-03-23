@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json
 
         internal override DateTimeOffset FromJson(JsonNode node) => (DateTimeOffset)node;
     }
-}
+}# this is comment

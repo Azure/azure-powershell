@@ -1054,4 +1054,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule
             }
         }
     }
-}
+}# this is comment

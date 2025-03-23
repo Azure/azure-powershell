@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string SerialNumber { get; set; }
 
     }
-}
+}# this is comment

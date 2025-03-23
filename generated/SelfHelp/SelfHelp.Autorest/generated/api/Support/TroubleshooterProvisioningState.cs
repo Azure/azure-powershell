@@ -107,4 +107,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

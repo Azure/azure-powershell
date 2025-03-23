@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Previ
         Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType Kind { get; set; }
 
     }
-}
+}# this is comment

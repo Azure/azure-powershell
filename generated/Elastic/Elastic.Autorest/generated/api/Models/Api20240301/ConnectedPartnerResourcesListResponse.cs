@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IConnectedPartnerResourcesListFormat[] Value { get; set; }
 
     }
-}
+}# this is comment

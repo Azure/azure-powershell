@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string[] PropertyColumn { get; set; }
 
     }
-}
+}# this is comment

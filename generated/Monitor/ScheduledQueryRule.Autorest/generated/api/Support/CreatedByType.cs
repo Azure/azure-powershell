@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

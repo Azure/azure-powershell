@@ -885,4 +885,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         float? TrialDaysRemaining { get; set; }
 
     }
-}
+}# this is comment

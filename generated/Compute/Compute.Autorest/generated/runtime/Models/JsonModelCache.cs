@@ -16,4 +16,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json
 
         private static JsonModel Create(Type type) => JsonModel.FromType(type);
     }
-}
+}# this is comment

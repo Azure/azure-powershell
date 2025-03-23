@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer> Value { get; set; }
 
     }
-}
+}# this is comment

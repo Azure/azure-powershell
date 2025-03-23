@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Security.SecureString Password { get; set; }
 
     }
-}
+}# this is comment

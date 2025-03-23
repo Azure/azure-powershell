@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

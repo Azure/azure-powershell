@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment

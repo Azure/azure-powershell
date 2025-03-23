@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.ConfigurationDictionary source) => source.__additionalProperties;
     }
-}
+}# this is comment

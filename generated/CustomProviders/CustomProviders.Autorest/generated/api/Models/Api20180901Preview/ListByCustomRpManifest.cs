@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901P
         Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest[] Value { get; set; }
 
     }
-}
+}# this is comment

@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
             return new JsonModel(type, members);
         }
     }
-}
+}# this is comment

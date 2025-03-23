@@ -122,4 +122,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
         string Scope { get; set; }
 
     }
-}
+}# this is comment

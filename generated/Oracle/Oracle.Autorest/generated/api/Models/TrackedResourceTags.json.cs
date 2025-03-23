@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

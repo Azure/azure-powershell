@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         int? TerminalSizeRow { get; set; }
 
     }
-}
+}# this is comment

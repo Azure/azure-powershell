@@ -125,4 +125,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview
         Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

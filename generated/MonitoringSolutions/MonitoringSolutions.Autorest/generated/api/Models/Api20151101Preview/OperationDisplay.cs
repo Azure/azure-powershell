@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151
         string Resource { get; set; }
 
     }
-}
+}# this is comment

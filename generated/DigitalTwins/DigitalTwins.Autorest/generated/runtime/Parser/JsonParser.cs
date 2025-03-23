@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

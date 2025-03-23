@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         string Resource { get; set; }
 
     }
-}
+}# this is comment

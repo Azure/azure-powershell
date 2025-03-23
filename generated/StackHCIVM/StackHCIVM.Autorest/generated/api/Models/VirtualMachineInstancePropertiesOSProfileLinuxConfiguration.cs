@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey> SshPublicKey { get; set; }
 
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ICredentialResult> Kubeconfig { get; set; }
 
     }
-}
+}# this is comment

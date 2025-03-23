@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150
         global::System.DateTime? Time { get; set; }
 
     }
-}
+}# this is comment

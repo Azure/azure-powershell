@@ -386,4 +386,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Previ
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.VirtualMachineType? VMType { get; set; }
 
     }
-}
+}# this is comment

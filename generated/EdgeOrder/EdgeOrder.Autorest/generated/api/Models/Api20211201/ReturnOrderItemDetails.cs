@@ -139,4 +139,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         bool? ShippingBoxRequired { get; set; }
 
     }
-}
+}# this is comment

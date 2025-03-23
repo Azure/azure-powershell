@@ -518,4 +518,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
             }
         }
     }
-}
+}# this is comment

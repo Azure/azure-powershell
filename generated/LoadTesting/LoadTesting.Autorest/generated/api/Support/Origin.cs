@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

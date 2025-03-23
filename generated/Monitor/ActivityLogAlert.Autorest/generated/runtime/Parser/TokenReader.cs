@@ -36,4 +36,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
             tokenizer.Dispose();
         }
     }
-}
+}# this is comment
+# this is comment

@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string ScriptUriManagedIdentityObjectId { get; set; }
 
     }
-}
+}# this is comment

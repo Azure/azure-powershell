@@ -95,4 +95,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         string EnabledDnsType { get; set; }
 
     }
-}
+}# this is comment

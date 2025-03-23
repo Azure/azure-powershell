@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         string Resource { get; set; }
 
     }
-}
+}# this is comment

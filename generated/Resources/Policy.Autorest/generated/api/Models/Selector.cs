@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         System.Collections.Generic.List<string> NotIn { get; set; }
 
     }
-}
+}# this is comment

@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.UserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

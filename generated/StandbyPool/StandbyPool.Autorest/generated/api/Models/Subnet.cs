@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         string Id { get; set; }
 
     }
-}
+}# this is comment

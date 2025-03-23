@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
         string DistributionVersion { get; set; }
 
     }
-}
+}# this is comment

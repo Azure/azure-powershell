@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string Shape { get; set; }
 
     }
-}
+}# this is comment

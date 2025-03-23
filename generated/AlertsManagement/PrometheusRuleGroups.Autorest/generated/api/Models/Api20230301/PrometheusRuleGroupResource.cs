@@ -254,4 +254,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         string[] Scope { get; set; }
 
     }
-}
+}# this is comment

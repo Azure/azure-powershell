@@ -631,3 +631,5 @@ directive:
     # - ServicePrincipalAuthTypeWorkspaceConnectionProperties
     # - UsernamePasswordAuthTypeWorkspaceConnectionProperties
 ```
+
+# this is readme comment

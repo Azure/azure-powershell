@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

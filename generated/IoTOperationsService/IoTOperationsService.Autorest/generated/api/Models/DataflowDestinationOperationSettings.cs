@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string EndpointRef { get; set; }
 
     }
-}
+}# this is comment

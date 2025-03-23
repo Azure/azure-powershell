@@ -27,4 +27,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Json
             return Enum.Parse(type, node.ToString(), ignoreCase: true);
         }
     }
-}
+}# this is comment

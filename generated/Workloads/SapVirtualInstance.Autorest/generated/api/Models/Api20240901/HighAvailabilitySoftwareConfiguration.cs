@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         System.Security.SecureString FencingClientPassword { get; set; }
 
     }
-}
+}# this is comment

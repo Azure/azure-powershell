@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string RegistrationTokenOperation { get; set; }
 
     }
-}
+}# this is comment

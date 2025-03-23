@@ -16,4 +16,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Runtime.Json
 
         private static JsonModel Create(Type type) => JsonModel.FromType(type);
     }
-}
+}# this is comment

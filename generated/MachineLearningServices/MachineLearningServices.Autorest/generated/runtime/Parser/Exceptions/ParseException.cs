@@ -21,4 +21,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Jso
 
         internal SourceLocation Location { get; }
     }
-}
+}# this is comment

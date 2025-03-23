@@ -829,4 +829,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
             completed = null;
         }
     }
-}
+}# this is comment

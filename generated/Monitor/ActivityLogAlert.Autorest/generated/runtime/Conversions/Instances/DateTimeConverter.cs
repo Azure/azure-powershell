@@ -15,4 +15,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         internal override DateTime FromJson(JsonNode node) => (DateTime)node;
     }
-}
+}# this is comment
+# this is comment

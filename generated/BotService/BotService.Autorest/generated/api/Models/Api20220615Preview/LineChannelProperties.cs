@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Previe
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ILineRegistration[] LineRegistration { get; set; }
 
     }
-}
+}# this is comment

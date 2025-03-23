@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

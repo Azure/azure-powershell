@@ -264,4 +264,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IWindowsParameters WindowsParameter { get; set; }
 
     }
-}
+}# this is comment

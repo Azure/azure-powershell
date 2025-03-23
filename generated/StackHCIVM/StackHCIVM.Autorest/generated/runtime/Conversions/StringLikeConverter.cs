@@ -42,4 +42,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json
             return method;
         }
     }
-}
+}# this is comment

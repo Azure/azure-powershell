@@ -20,4 +20,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json
             return text;
         }
     }
-}
+}# this is comment
+# this is comment

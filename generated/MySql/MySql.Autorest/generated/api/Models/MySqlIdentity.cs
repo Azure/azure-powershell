@@ -232,4 +232,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         string VirtualNetworkRuleName { get; set; }
 
     }
-}
+}# this is comment

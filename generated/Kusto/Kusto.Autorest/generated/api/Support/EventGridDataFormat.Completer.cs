@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             }
         }
     }
-}
+}# this is comment

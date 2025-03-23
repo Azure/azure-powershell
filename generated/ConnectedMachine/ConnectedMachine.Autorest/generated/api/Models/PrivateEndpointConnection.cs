@@ -245,4 +245,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ProvisioningState { get; set; }
 
     }
-}
+}# this is comment
