@@ -195,6 +195,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public bool? AlignRegionalDisksToVMZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -422,6 +428,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
                         parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+                    }
+
+                    if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))
+                    {
+                        if (parameters.StorageProfile == null)
+                        {
+                            parameters.StorageProfile = new StorageProfile();
+                        }
+                        parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
                     }
 
                     if (NoWait.IsPresent)
