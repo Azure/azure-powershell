@@ -168,6 +168,6 @@ directive:
         change-description: 
           - The type of property 'PrivateEndpointConnection' of type 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]'
         deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 13.5.0
-        change-effective-date: 2025/05/06
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/05/19
 ```
