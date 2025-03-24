@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="customerResolvability">Value indicating whether the health error is customer resolvable.
-        /// Possible values include: 'Allowed', 'NotAllowed'</param>
+        /// Possible values include: &#39;Allowed&#39;, &#39;NotAllowed&#39;</param>
         public InnerHealthError(string errorSource = default(string), string errorType = default(string), string errorLevel = default(string), string errorCategory = default(string), string errorCode = default(string), string summaryMessage = default(string), string errorMessage = default(string), string possibleCauses = default(string), string recommendedAction = default(string), System.DateTime? creationTimeUtc = default(System.DateTime?), string recoveryProviderErrorMessage = default(string), string entityId = default(string), string errorId = default(string), string customerResolvability = default(string))
 
         {

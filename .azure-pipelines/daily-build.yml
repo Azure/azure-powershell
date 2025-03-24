@@ -31,7 +31,7 @@ jobs:
     displayName: 'Use .NET SDK'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: Prepare Powershell $(PSVersion)
     inputs:

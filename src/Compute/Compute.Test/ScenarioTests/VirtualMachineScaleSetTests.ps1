@@ -3831,6 +3831,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+
     }
     finally
     {
@@ -4466,7 +4467,7 @@ function Test-VirtualMachineScaleSetSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "eastus2euap";
 
     try
     {
@@ -4534,6 +4535,17 @@ function Test-VirtualMachineScaleSetSecurityType
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
         # Vmss Identity is now in fact only UserAssigned as expected.
 
+        
+        # Update SecurityType to Standard. 
+        Stop-Azvmss -ResourceGroupName $rgname -Name $vmssName2 -Force
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -SecurityType "Standard"
+        Start-AzVmss -ResourceGroupName $rgname -Name $vmssName2
+        $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
+        
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
+        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+
         # Guest Attestation extension defaulting test
         # Removed this portion as this logic was removed as per feature team request. 
         <#
@@ -4570,7 +4582,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4648,7 +4660,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4690,7 +4702,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4831,7 +4843,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4886,7 +4898,7 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -4967,7 +4979,7 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaulting
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5046,7 +5058,7 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5209,7 +5221,7 @@ function Test-VirtualMachineScaleSetSecurityTypeNoVMProfile
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5241,7 +5253,7 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -5283,7 +5295,7 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {

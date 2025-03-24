@@ -10,7 +10,7 @@ autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
 autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
 autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
 autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
+autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
 autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
 autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
 ```
@@ -31,7 +31,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ## Configuration
 
 ```yaml
-commit: 44051823078bc61d1210c324faf6d12e409497b7
+commit: 5e5d8196f6ba69545a9c4882ab4769d108b513c9
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -47,13 +47,13 @@ suppressions:
     reason: OperationsAPI will come from Resources
 ```
 
-### Tag: package-resources-2024-07
+### Tag: package-resources-2024-11
 
-These settings apply only when `--tag=package-resources-2024-07` is specified on the command line.
+These settings apply only when `--tag=package-resources-2024-11` is specified on the command line.
 
-``` yaml $(tag) == 'package-resources-2024-07'
+``` yaml $(tag) == 'package-resources-2024-11'
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-07-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-11-01/resources.json
 ```
 
 ### Tag: package-privatelinks-2020-05
