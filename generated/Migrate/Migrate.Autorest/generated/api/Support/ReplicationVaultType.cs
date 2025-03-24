@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct ReplicationVaultType :
         System.IEquatable<ReplicationVaultType>
     {
+        /// <summary>Disaster recovery vault.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType DisasterRecovery = @"DisasterRecovery";
 
+        /// <summary>Migrate vault.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationVaultType Migrate = @"Migrate";
 
         /// <summary>the value for an instance of the <see cref="ReplicationVaultType" /> Enum.</summary>

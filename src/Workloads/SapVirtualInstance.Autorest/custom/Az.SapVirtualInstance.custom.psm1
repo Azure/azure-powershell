@@ -1,4 +1,4 @@
-# region Generated 
+# region Generated
   # Load the private module dll
   $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.SapVirtualInstance.private.dll')
 

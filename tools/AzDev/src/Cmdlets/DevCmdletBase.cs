@@ -75,8 +75,17 @@ namespace AzDev.Cmdlets
         {
             var contextProvider = new DefaultContextProvider(Constants.DevContextFilePath);
             var codebaseProvider = new DefaultCodebaseProvider(contextProvider);
+
             AzDevModule.SetComponent<IContextProvider>(nameof(IContextProvider), contextProvider);
             AzDevModule.SetComponent<ICodebaseProvider>(nameof(ICodebaseProvider), codebaseProvider);
+        }
+
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            ILogger logger = new PSCmdletLogger(this);
+            AzDevModule.GetComponent<IContextProvider>(nameof(IContextProvider)).SetLogger(logger);
+            AzDevModule.GetComponent<ICodebaseProvider>(nameof(ICodebaseProvider)).SetLogger(logger);
         }
 
         protected T SelectFrom<T>(string message, IEnumerable<T> options, bool retryIfInvalid = true)

@@ -21,10 +21,16 @@ Gets list of App Services with Dynatrace PaaS OneAgent enabled
 List the resources currently being monitored by the Dynatrace monitor resource.
 
 ### [Get-AzDynatraceMonitorHost](Get-AzDynatraceMonitorHost.md)
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 
 ### [Get-AzDynatraceMonitorLinkableEnv](Get-AzDynatraceMonitorLinkableEnv.md)
 Gets all the Dynatrace environments that a user can link a azure resource to
+
+### [Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail](Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail.md)
+Get Marketplace SaaS resource details of a tenant under a specific subscription
+
+### [Get-AzDynatraceMonitorMetricStatus](Get-AzDynatraceMonitorMetricStatus.md)
+Get metric status
 
 ### [Get-AzDynatraceMonitorSSOConfig](Get-AzDynatraceMonitorSSOConfig.md)
 Get a DynatraceSingleSignOnResource
@@ -58,7 +64,4 @@ Delete a TagRule
 
 ### [Update-AzDynatraceMonitor](Update-AzDynatraceMonitor.md)
 Update a MonitorResource
-
-### [Update-AzDynatraceMonitorTagRule](Update-AzDynatraceMonitorTagRule.md)
-Update a TagRule
 

@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct ProtectedItemActiveLocation :
         System.IEquatable<ProtectedItemActiveLocation>
     {
+        /// <summary>Protected item is active on Primary.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectedItemActiveLocation Primary = @"Primary";
 
+        /// <summary>Protected item is active on Recovery.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectedItemActiveLocation Recovery = @"Recovery";
 
         /// <summary>
