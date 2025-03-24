@@ -15,25 +15,25 @@ Creates a directory.
 
 ### ShareName (Default)
 ```
-New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-DisAllowTrailingDot]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ### Share
 ```
-New-AzStorageDirectory [-ShareClient] <ShareClient> [-Path] <String> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+New-AzStorageDirectory [-ShareClient] <ShareClient> [-Path] <String> [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ### Directory
 ```
-New-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String>
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+New-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <String> [-FileMode <String>]
+ [-Owner <String>] [-Group <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -57,6 +57,14 @@ Get-AzStorageShare -Name "ContosoShare06" | New-AzStorageDirectory -Path "Contos
 
 This command uses the **Get-AzStorageShare** cmdlet to get the file share named ContosoShare06, and then passes it to the current cmdlet by using the pipeline operator.
 The current cmdlet creates the folder named ContosoWorkingFolder in ContosoShare06.
+
+### Example 3: Create a folder with FileMode, Owner and Group in a NFS file share
+```powershell
+New-AzStorageDirectory -ShareName "contosochare06" -Path "ContosoWorkingFolder" -FileMode rwxrwSrwx -Owner 1 -Group 1
+```
+
+This command creates a folder with FileMode rwxrwSrwx, Owner 1 and Group 1. 
+FileMode, Owner, Group only works on NFS file share. 
 
 ## PARAMETERS
 
@@ -133,6 +141,51 @@ Disallow trailing dot (.) to suffix directory and file names.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileMode
+Only applicable to NFS Directory. The mode permissions to be set on the directory. Symbolic (rwxrw-rw-) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Group
+Only applicable to NFS Directory. The owner group identifier (GID) to be set on the directory. The default value is 0 (root group).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+Only applicable to NFS Directory. The owner user identifier (UID) to be set on the directory. The default value is 0 (root).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
