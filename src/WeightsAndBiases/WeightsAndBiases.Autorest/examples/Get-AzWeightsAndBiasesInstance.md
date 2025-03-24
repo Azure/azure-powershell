@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Instance using RG Name.
 ```powershell
 Get-AzWeightsAndBiasesInstance -ResourceGroupName jawt-rg
 ```
@@ -13,7 +13,7 @@ East US  efref4                   2/28/2025 10:38:03 AM shijoy@microsoft.com Use
 
 This command lists all the resources in a given resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Instance using RG Name and Instance Name.
 ```powershell
 Get-AzWeightsAndBiasesInstance -ResourceGroupName jawt-rg -Name wnb-test-org-5
 ```
