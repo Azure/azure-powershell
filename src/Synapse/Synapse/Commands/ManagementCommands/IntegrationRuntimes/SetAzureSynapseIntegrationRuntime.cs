@@ -241,6 +241,90 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.IntegrationRuntimeDataFlowTimeToLive)]
         public int? DataFlowTimeToLive { get; set; }
 
+        [Parameter(
+          ParameterSetName = SetByIntegrationRuntimeName,
+          Mandatory = false,
+          HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+          ParameterSetName = SetByResourceId,
+          Mandatory = false,
+          HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+          ParameterSetName = SetByParentObject,
+          Mandatory = false,
+          HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        public int? ManagedVNetCopyComputeScaleDataIntegrationUnit { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = SetByResourceId,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = SetByParentObject,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        public int? ManagedVNetCopyComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = SetByResourceId,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = SetByParentObject,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        public int? ManagedVNetPipelineExternalComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = SetByResourceId,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = SetByParentObject,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        public int? ManagedVNetNumberOfPipelineNodeCount { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        [Parameter(
+           ParameterSetName = SetByResourceId,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        [Parameter(
+           ParameterSetName = SetByParentObject,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        public int? ManagedVNetNumberOfExternalNodeCount { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = SetByResourceId,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = SetByParentObject,
+           Mandatory = false,
+           HelpMessage = HelpMessages.IntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        public SwitchParameter SelfContainedInteractiveAuthoringEnabled { get; set; }
+
         [Parameter(ParameterSetName = SetByIntegrationRuntimeName,
             Mandatory = false, HelpMessage = HelpMessages.IntegrationRuntimeSetupScriptContainerSasUri)]
         [Parameter(ParameterSetName = SetByResourceId,
@@ -451,6 +535,10 @@ namespace Microsoft.Azure.Commands.Synapse
                             var authKey = ConvertToUnsecureString(AuthKey);
                             selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
                         }
+                        if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                        {
+                            selfHosted.SelfContainedInteractiveAuthoringEnabled = true;
+                        }
 
                         resource.Properties = selfHosted;
                     }
@@ -467,6 +555,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 if (selfHostedIr != null)
                 {
                     selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                    if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                    {
+                        selfHostedIr.SelfContainedInteractiveAuthoringEnabled = true;
+                    }
                 }
                 else
                 {
@@ -673,6 +765,37 @@ namespace Microsoft.Azure.Commands.Synapse
                 integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
                 integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+            }
+
+            if (ManagedVNetCopyComputeScaleDataIntegrationUnit != null || ManagedVNetCopyComputeScaleTimeToLive != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.CopyComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.CopyComputeScaleProperties = new CopyComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit = ManagedVNetCopyComputeScaleDataIntegrationUnit ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit;
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = ManagedVNetCopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
+            }
+
+            if (ManagedVNetPipelineExternalComputeScaleTimeToLive != null || ManagedVNetNumberOfPipelineNodeCount != null || ManagedVNetNumberOfExternalNodeCount != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties = new PipelineExternalComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = ManagedVNetPipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = ManagedVNetNumberOfPipelineNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = ManagedVNetNumberOfExternalNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
             if (PublicIP != null)
