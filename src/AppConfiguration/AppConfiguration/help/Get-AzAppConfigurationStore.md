@@ -15,25 +15,25 @@ Get or list app configuration stores.
 ### List (Default)
 ```
 Get-AzAppConfigurationStore [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzAppConfigurationStore -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
@@ -124,6 +123,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
 
 ## NOTES
 
