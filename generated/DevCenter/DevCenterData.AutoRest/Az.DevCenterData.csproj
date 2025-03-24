@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PsModuleName>DevCenterdata</PsModuleName>
+    <PsModuleName>DevCenterData</PsModuleName>
     <PsRootModuleName>DevCenter</PsRootModuleName>
     <PsModuleFolder>DevCenterData.AutoRest</PsModuleFolder>
   </PropertyGroup>
