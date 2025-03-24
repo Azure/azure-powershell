@@ -25,6 +25,15 @@
     - `Invoke-AzVirtualNetworkGatewayExecuteMigration`
     - `Invoke-AzVirtualNetworkGatewayCommitMigration`
     - `Invoke-AzVirtualNetworkGatewayAbortMigration`
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter crud operations
+    - Cmdlets for NetworkSecurityPerimeter profile crud operations
+    - Cmdlets for NetworkSecurityPerimeter association crud operations
+    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
+    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
 * Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
     - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
