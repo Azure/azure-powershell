@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHardLink", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHardLink", DefaultParameterSetName = Constants.ShareNameParameterSetName, SupportsShouldProcess = true), OutputType(typeof(AzureStorageFile))]
     public class NewAzureStorageFileHardLink : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -80,38 +80,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-
-            ShareDirectoryClient baseDirClient;
-            switch (this.ParameterSetName)
+            if (ShouldProcess(this.Path, "Create File Hard Link"))
             {
-                case Constants.DirectoryParameterSetName:
-                    CheckContextForObjectInput((AzureStorageContext)this.Context);
-                    baseDirClient = this.ShareDirectoryClient;
-                    break;
-
-                case Constants.ShareNameParameterSetName:
-                    NamingUtil.ValidateShareName(this.ShareName, false);
-                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
-                    baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
-                    break;
-
-                case Constants.ShareParameterSetName:
-                    CheckContextForObjectInput((AzureStorageContext)this.Context);
-                    baseDirClient = this.ShareClient.GetRootDirectoryClient();
-                    break;
-
-                default:
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
-            }
-
-            ShareFileClient sharefile = baseDirClient.GetFileClient(this.Path);
-            ShareFileInfo info = sharefile.CreateHardLink(this.TargetFile, 
-                this.TargetFileLeaseId is null ? null : new ShareFileRequestConditions()
+                ShareDirectoryClient baseDirClient;
+                switch (this.ParameterSetName)
                 {
-                    LeaseId = null,
-                },
-                this.CmdletCancellationToken).Value;
-            WriteObject(new AzureStorageFile(sharefile, (AzureStorageContext)this.Context, info, this.ClientOptions));
+                    case Constants.DirectoryParameterSetName:
+                        CheckContextForObjectInput((AzureStorageContext)this.Context);
+                        baseDirClient = this.ShareDirectoryClient;
+                        break;
+
+                    case Constants.ShareNameParameterSetName:
+                        NamingUtil.ValidateShareName(this.ShareName, false);
+                        ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                        baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
+                        break;
+
+                    case Constants.ShareParameterSetName:
+                        CheckContextForObjectInput((AzureStorageContext)this.Context);
+                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
+                        break;
+
+                    default:
+                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
+                }
+                ShareFileClient sharefile = baseDirClient.GetFileClient(this.Path);
+                ShareFileInfo info = sharefile.CreateHardLink(this.TargetFile,
+                    this.TargetFileLeaseId is null ? null : new ShareFileRequestConditions()
+                    {
+                        LeaseId = null,
+                    },
+                    this.CmdletCancellationToken).Value;
+                WriteObject(new AzureStorageFile(sharefile, (AzureStorageContext)this.Context, info, this.ClientOptions));
+            }
         }
     }
 }
