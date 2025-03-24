@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 return container;
             }
+            AddIf( null != this._jsonArrayMapper ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._jsonArrayMapper.ToJson(null,serializationMode) : null, "jsonArrayMapper" ,container.Add );
             AddIf( null != (((object)this._endpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._endpoint.ToString()) : null, "endpoint" ,container.Add );
             AddIf( null != (((object)this._encoding)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._encoding.ToString()) : null, "encoding" ,container.Add );
             AddIf( null != this._readQueueLength ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNumber((int)this._readQueueLength) : null, "readQueueLength" ,container.Add );
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 return;
             }
+            {_jsonArrayMapper = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("jsonArrayMapper"), out var __jsonJsonArrayMapper) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonArrayMapper.FromJson(__jsonJsonArrayMapper) : _jsonArrayMapper;}
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("endpoint"), out var __jsonEndpoint) ? (string)__jsonEndpoint : (string)_endpoint;}
             {_encoding = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("encoding"), out var __jsonEncoding) ? (string)__jsonEncoding : (string)_encoding;}
             {_readQueueLength = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNumber>("readQueueLength"), out var __jsonReadQueueLength) ? (int?)__jsonReadQueueLength : _readQueueLength;}

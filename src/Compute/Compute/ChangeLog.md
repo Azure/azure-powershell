@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added new parameter `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
+* Added breaking change message for `Get-AzVMSize`.
 
 ## Version 9.1.0
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`

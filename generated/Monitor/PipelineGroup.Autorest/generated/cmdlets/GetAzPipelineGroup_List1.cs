@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Description(@"Lists all workspaces in the specified resource group")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups", ApiVersion = "2024-10-01-preview")]
     public partial class GetAzPipelineGroup_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IContext
