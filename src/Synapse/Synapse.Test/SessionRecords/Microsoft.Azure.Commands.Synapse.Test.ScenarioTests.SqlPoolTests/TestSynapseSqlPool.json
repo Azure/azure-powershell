@@ -591,7 +591,7 @@
           "368"
         ]
       },
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://sqlstorageps8104.dfs.core.windows.net\",\r\n      \"filesystem\": \"sqlcmdletfsps8104\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"o$gt&t609k%r*M*M*M$L7i^%4t\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://sqlstorageps8104.dfs.core.windows.net\",\r\n      \"filesystem\": \"sqlcmdletfsps8104\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
