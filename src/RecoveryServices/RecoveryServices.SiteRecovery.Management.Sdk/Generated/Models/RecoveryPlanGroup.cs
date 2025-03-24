@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="groupType">The group type.
-        /// Possible values include: 'Shutdown', 'Boot', 'Failover'</param>
+        /// Possible values include: &#39;Shutdown&#39;, &#39;Boot&#39;, &#39;Failover&#39;</param>
 
         /// <param name="replicationProtectedItems">The list of protected items.
         /// </param>

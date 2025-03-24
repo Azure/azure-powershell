@@ -20,8 +20,8 @@ Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Ha
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -32,8 +32,8 @@ Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -44,8 +44,8 @@ Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

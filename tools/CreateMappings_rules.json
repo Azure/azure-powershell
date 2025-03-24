@@ -951,5 +951,13 @@
   {
     "module": "IoTOperationsService",
     "alias": "IoTOperationsService"
+  },
+  {
+    "module": "TrustedSigning",
+    "alias": "TrustedSigning"
+  },
+  {
+    "module": "ScVmm",
+    "alias": "ScVmm"
   }
 ]

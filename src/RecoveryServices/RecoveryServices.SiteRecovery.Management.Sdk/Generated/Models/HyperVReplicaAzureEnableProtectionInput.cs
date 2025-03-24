@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="osType">The OS type associated with VM.
         /// </param>
 
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
+
         /// <param name="vhdId">The OS disk VHD id associated with VM.
         /// </param>
 
@@ -77,10 +80,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">License type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
+
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
+        /// <param name="targetVMSecurityProfile">The target VM security profile.
+        /// </param>
 
         /// <param name="targetVMSize">The target VM size.
         /// </param>
@@ -91,8 +100,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="useManagedDisksForReplication">A value indicating whether managed disks should be used during replication.
         /// </param>
 
-        /// <param name="diskType">The DiskType.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// <param name="diskType">The disk type.
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="disksToIncludeForManagedDisks">The disks to include list for managed disks.
         /// </param>
@@ -111,12 +121,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetNicTags">The tags for the target NICs.
         /// </param>
-        public HyperVReplicaAzureEnableProtectionInput(string hvHostVMId = default(string), string vmName = default(string), string osType = default(string), string vhdId = default(string), string targetStorageAccountId = default(string), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVMName = default(string), string logStorageAccountId = default(string), System.Collections.Generic.IList<string> disksToInclude = default(System.Collections.Generic.IList<string>), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string targetVMSize = default(string), string targetProximityPlacementGroupId = default(string), string useManagedDisksForReplication = default(string), string diskType = default(string), System.Collections.Generic.IList<HyperVReplicaAzureDiskInputDetails> disksToIncludeForManagedDisks = default(System.Collections.Generic.IList<HyperVReplicaAzureDiskInputDetails>), string diskEncryptionSetId = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public HyperVReplicaAzureEnableProtectionInput(string hvHostVMId = default(string), string vmName = default(string), string osType = default(string), string userSelectedOSName = default(string), string vhdId = default(string), string targetStorageAccountId = default(string), string targetAzureNetworkId = default(string), string targetAzureSubnetId = default(string), string enableRdpOnTargetOption = default(string), string targetAzureVMName = default(string), string logStorageAccountId = default(string), System.Collections.Generic.IList<string> disksToInclude = default(System.Collections.Generic.IList<string>), string targetAzureV1ResourceGroupId = default(string), string targetAzureV2ResourceGroupId = default(string), string useManagedDisks = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties), string targetVMSize = default(string), string targetProximityPlacementGroupId = default(string), string useManagedDisksForReplication = default(string), string diskType = default(string), System.Collections.Generic.IList<HyperVReplicaAzureDiskInputDetails> disksToIncludeForManagedDisks = default(System.Collections.Generic.IList<HyperVReplicaAzureDiskInputDetails>), string diskEncryptionSetId = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> seedManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetManagedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
             this.HvHostVMId = hvHostVMId;
             this.VMName = vmName;
             this.OSType = osType;
+            this.UserSelectedOSName = userSelectedOSName;
             this.VhdId = vhdId;
             this.TargetStorageAccountId = targetStorageAccountId;
             this.TargetAzureNetworkId = targetAzureNetworkId;
@@ -132,6 +143,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetAvailabilityZone = targetAvailabilityZone;
             this.LicenseType = licenseType;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
+            this.TargetVMSecurityProfile = targetVMSecurityProfile;
             this.TargetVMSize = targetVMSize;
             this.TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
             this.UseManagedDisksForReplication = useManagedDisksForReplication;
@@ -168,6 +181,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
         public string OSType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
 
         /// <summary>
         /// Gets or sets the OS disk VHD id associated with VM.
@@ -265,6 +284,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string SqlServerLicenseType {get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM security profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmSecurityProfile")]
+        public SecurityProfileProperties TargetVMSecurityProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets the target VM size.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetVmSize")]
@@ -284,7 +315,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string UseManagedDisksForReplication {get; set; }
 
         /// <summary>
-        /// Gets or sets the DiskType. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }

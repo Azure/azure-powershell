@@ -82,25 +82,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="throughputStatus">The throughput status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Warning&#39;, &#39;Critical&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="systemLoad">The system load.
         /// </param>
 
         /// <param name="systemLoadStatus">The system load status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Warning&#39;, &#39;Critical&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="diskUsageStatus">The disk usage status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Warning&#39;, &#39;Critical&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="memoryUsageStatus">The memory usage status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Warning&#39;, &#39;Critical&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="processorUsageStatus">The processor usage status.
-        /// Possible values include: 'Healthy', 'Warning', 'Critical', 'Unknown'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Warning&#39;, &#39;Critical&#39;, &#39;Unknown&#39;</param>
 
         /// <param name="health">The health of the process server.
-        /// Possible values include: 'None', 'Normal', 'Warning', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Normal&#39;, &#39;Warning&#39;, &#39;Critical&#39;</param>
 
         /// <param name="healthErrors">The health errors.
         /// </param>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="historicHealth">The historic health of the process server based on the health in last 24
         /// hours.
-        /// Possible values include: 'None', 'Normal', 'Warning', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Normal&#39;, &#39;Warning&#39;, &#39;Critical&#39;</param>
         public ProcessServerDetails(string id = default(string), string name = default(string), string biosId = default(string), string fabricObjectId = default(string), string fqdn = default(string), System.Collections.Generic.IList<string> ipAddresses = default(System.Collections.Generic.IList<string>), string version = default(string), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), long? totalMemoryInBytes = default(long?), long? availableMemoryInBytes = default(long?), long? usedMemoryInBytes = default(long?), double? memoryUsagePercentage = default(double?), long? totalSpaceInBytes = default(long?), long? availableSpaceInBytes = default(long?), long? usedSpaceInBytes = default(long?), double? freeSpacePercentage = default(double?), long? throughputUploadPendingDataInBytes = default(long?), long? throughputInBytes = default(long?), double? processorUsagePercentage = default(double?), string throughputStatus = default(string), long? systemLoad = default(long?), string systemLoadStatus = default(string), string diskUsageStatus = default(string), string memoryUsageStatus = default(string), string processorUsageStatus = default(string), string health = default(string), System.Collections.Generic.IList<HealthError> healthErrors = default(System.Collections.Generic.IList<HealthError>), int? protectedItemCount = default(int?), string historicHealth = default(string))
 
         {
