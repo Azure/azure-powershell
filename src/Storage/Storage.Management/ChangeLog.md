@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add warning message for upcoming breaking change on upload Azure file
+* Added warning message for upcoming breaking change on upload Azure file
     - `Set-AzStorageFileContent`
 * Added warning messages for an upcoming breaking change when converting the account's redundancy configuration
     - `Start-AzStorageAccountMigration`
