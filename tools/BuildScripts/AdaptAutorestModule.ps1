@@ -122,9 +122,11 @@ if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PrivateData.PSD
 
 $subMoudleMetadata = Import-LocalizedData -BaseDirectory $SubModulePath -FileName "Az.$subModuleNameTrimmed.psd1"
 
+$parentModuleMetadata.FunctionsToExport = @($parentModuleMetadata.FunctionsToExport)
 $subMoudleMetadata.FunctionsToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.FunctionsToExport += $_ }
 $parentModuleMetadata.FunctionsToExport = $parentModuleMetadata.FunctionsToExport | Select-Object -Unique
 
+$parentModuleMetadata.AliasesToExport = @($parentModuleMetadata.AliasesToExport)
 $subMoudleMetadata.AliasesToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.AliasesToExport += $_ }
 $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | Select-Object -Unique
 
