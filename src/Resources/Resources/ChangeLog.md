@@ -27,6 +27,7 @@
     - `Set-AzResource`
     - `Remove-AzResource`
     - `Invoke-AzResourceAction`
+* Added ValidationLevel Parameter to WhatIf and Validate cmdlets for deployments.
 
 ## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
