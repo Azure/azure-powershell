@@ -21,7 +21,7 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using ResourceManagerModel = Microsoft.Azure.Management.Internal.Resources.Models;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
-using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -413,5 +413,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return resources;
         }
+
+        #region Common Helper Functions
+        /// <summary>
+        /// Helper function to return one of Token or SecureToken after decryption
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="secureToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string GetPlainToken(string token, System.Security.SecureString secureToken)
+        {
+            bool hasToken = !string.IsNullOrEmpty(token);
+            bool hasSecureToken = secureToken != null && secureToken.Length > 0; // chck
+
+            if (hasToken || hasSecureToken)
+            {
+                if (hasToken && hasSecureToken)
+                {
+                    throw new ArgumentException("Both Token and SecureToken parameters cannot be provided together"); // Resources.BothTokenProvided);
+                }
+                else if (hasToken)
+                {
+                    Logger.Instance.WriteWarning("The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.");
+                    return token;
+                }
+                else
+                {
+                    var plainToken = secureToken.ConvertToString();
+                    Logger.Instance.WriteDebug("Converted secure token : " + plainToken);
+
+                    return plainToken;
+                }
+            }
+            Logger.Instance.WriteDebug("plainToken returning empty");
+            return "";
+        }
+
+        #endregion
     }
 }
