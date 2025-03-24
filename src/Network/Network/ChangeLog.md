@@ -37,6 +37,10 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - New-AzVirtualNetworkGateway
+    - Get-AzVirtualNetworkGateway
+    - Get-AzVirtualNetworkGatewayConnection
 
 ## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
