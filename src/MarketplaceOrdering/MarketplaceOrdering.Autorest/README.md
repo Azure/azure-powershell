@@ -35,8 +35,6 @@ input-file:
 
 title: MarketplaceOrdering
 subject-prefix: Marketplace
-
-nested-object-to-string: true
 inlining-threshold: 50
 
 directive:
