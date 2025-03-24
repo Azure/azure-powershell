@@ -1,0 +1,105 @@
+{
+  "resourceType": "instances/brokers/authentications",
+  "apiVersion": "2024-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzIoTOperationsServiceBrokerAuthentication",
+      "description": "Get a BrokerAuthenticationResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/get-aziotoperationsservicebrokerauthentication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AuthenticationName <String>",
+              "-BrokerName <String>",
+              "-InstanceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a BrokerAuthenticationResource",
+          "parameters": [
+            {
+              "name": "-AuthenticationName",
+              "value": "[Path.authenticationName]"
+            },
+            {
+              "name": "-BrokerName",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzIoTOperationsServiceBrokerAuthentication",
+      "description": "Delete a BrokerAuthenticationResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/remove-aziotoperationsservicebrokerauthentication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AuthenticationName <String>",
+              "-BrokerName <String>",
+              "-InstanceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a BrokerAuthenticationResource",
+          "parameters": [
+            {
+              "name": "-AuthenticationName",
+              "value": "[Path.authenticationName]"
+            },
+            {
+              "name": "-BrokerName",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

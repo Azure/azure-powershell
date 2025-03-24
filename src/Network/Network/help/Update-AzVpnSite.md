@@ -27,8 +27,8 @@ Update-AzVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanResourceG
  -VirtualWanName <String> [-IpAddress <String>] [-AddressSpace <String[]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-VpnSiteLink <PSVpnSiteLink[]>] [-O365Policy <PSO365PolicyProperties>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnSiteNameByVirtualWanResourceId
@@ -55,7 +55,8 @@ Update-AzVpnSite -InputObject <PSVpnSite> -VirtualWanResourceGroupName <String> 
  [-IpAddress <String>] [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
  [-VpnSiteLink <PSVpnSiteLink[]>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnSiteObjectByVirtualWanResourceId
@@ -91,7 +92,8 @@ Update-AzVpnSite -ResourceId <String> -VirtualWanResourceGroupName <String> -Vir
  [-IpAddress <String>] [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
  [-VpnSiteLink <PSVpnSiteLink[]>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnSiteResourceIdByVirtualWanResourceId
@@ -117,8 +119,8 @@ Update-AzVpnSite -ResourceId <String> -VirtualWan <PSVirtualWan> [-IpAddress <St
 Update-AzVpnSite -ResourceId <String> [-IpAddress <String>] [-AddressSpace <String[]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-VpnSiteLink <PSVpnSiteLink[]>] [-O365Policy <PSO365PolicyProperties>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

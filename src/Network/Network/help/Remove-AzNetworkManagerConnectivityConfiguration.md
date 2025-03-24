@@ -15,7 +15,8 @@ Removes a connectivity configuration.
 ```
 Remove-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-ForceDelete] [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter crud operations
+    - Cmdlets for NetworkSecurityPerimeter profile crud operations
+    - Cmdlets for NetworkSecurityPerimeter association crud operations
+    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
+    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
 * Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
     - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
@@ -32,6 +41,14 @@
     - `New-AzNetworkManagerConnectivityConfiguration`
     - `Set-AzNetworkManagerConnectivityConfiguration`
     - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.15.1
+* Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+
+## Version 7.15.0
+* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
@@ -88,7 +105,7 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
-
+  
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links

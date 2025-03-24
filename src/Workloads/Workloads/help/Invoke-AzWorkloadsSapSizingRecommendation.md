@@ -8,11 +8,11 @@ schema: 2.0.0
 # Invoke-AzWorkloadsSapSizingRecommendation
 
 ## SYNOPSIS
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 
 ## SYNTAX
 
-### SapExpanded (Default)
+### InvokeExpanded (Default)
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
@@ -21,7 +21,14 @@ Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SapViaIdentityExpanded
+### Invoke
+```
+Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <String>]
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
 ```
 Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
@@ -30,8 +37,15 @@ Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdent
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InvokeViaIdentity
+```
+Invoke-AzWorkloadsSapSizingRecommendation -InputObject <ISapVirtualInstanceIdentity>
+ -Body <ISapSizingRecommendationRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 
 ## EXAMPLES
 
@@ -55,7 +69,7 @@ The geo-location where the resource is to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -65,12 +79,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Body
+The SAP Sizing Recommendation request.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSizingRecommendationRequest
+Parameter Sets: Invoke, InvokeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseType
 The database type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -85,7 +115,7 @@ The database memory configuration.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -100,7 +130,7 @@ The DB scale method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseScaleMethod
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -132,7 +162,7 @@ Eg: SingleServer/ThreeTier
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -147,7 +177,7 @@ Defines the environment type - Production/Non Production.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,7 +192,7 @@ The high availability type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -178,7 +208,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
-Parameter Sets: SapViaIdentityExpanded
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -189,11 +219,11 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of Azure region.
+The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeExpanded, Invoke
 Aliases:
 
 Required: True
@@ -208,7 +238,7 @@ The SAP Application Performance Standard measurement.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -223,7 +253,7 @@ Defines the SAP Product type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -235,10 +265,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeExpanded, Invoke
 Aliases:
 
 Required: False
@@ -283,6 +314,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapSizingRecommendationRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 

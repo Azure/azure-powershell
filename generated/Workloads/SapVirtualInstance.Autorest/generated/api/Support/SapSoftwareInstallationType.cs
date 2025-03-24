@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapSoftwareInstallationType :
         System.IEquatable<SapSoftwareInstallationType>
     {
+        /// <summary>External software installation type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapSoftwareInstallationType External = @"External";
 
+        /// <summary>SAP Install without OS Config.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapSoftwareInstallationType SapInstallWithoutOsconfig = @"SAPInstallWithoutOSConfig";
 
+        /// <summary>SAP Install managed by service.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapSoftwareInstallationType ServiceInitiated = @"ServiceInitiated";
 
         /// <summary>

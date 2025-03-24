@@ -16,7 +16,8 @@ Modifies an ExpressRoute cross connection.
 ### ModifyByCircuitReference
 ```
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ModifyByParameterValues
@@ -24,7 +25,8 @@ Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCr
 Set-AzExpressRouteCrossConnection -ResourceGroupName <String> -Name <String>
  [-ServiceProviderProvisioningState <String>] [-ServiceProviderNotes <String>]
  [-Peerings <PSExpressRouteCrossConnectionPeering[]>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

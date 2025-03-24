@@ -182,6 +182,8 @@ try{
             [string]$SubModuleNameTrimmed
         )
 
+        $helpMarkDownScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'HelpMarkDown.psm1'
+        Import-Module $helpMarkDownScriptPath
         $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
         $artifacts = Join-Path $RepoRoot 'artifacts'
         $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
@@ -207,6 +209,7 @@ try{
 
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
+            New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
         }
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
@@ -218,6 +221,8 @@ try{
                 Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
+            Write-Host "Removing ProgressAction parameter from $helpFile ..."
+            Remove-CommonParameterFromMarkdown -Path $helpFile.FullName -ParameterName 'ProgressAction'
         }
         & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
     } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
@@ -244,3 +249,8 @@ if ($existingCsprojPath) {
     Create or refresh generate-info.json for submodule
 #>
 New-GenerateInfoJson -GeneratedDirectory $subModulePath
+
+<#
+    Update module in tools\CreateMappings_rules.json
+#>
+Update-MappingJson -RepoRoot $RepoRoot -ModuleName $ModuleRootName

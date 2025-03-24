@@ -29,7 +29,7 @@ Get-AzWorkloadsSapApplicationInstance -InputObject /subscriptions/49d64d54-e966-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapApplicationServerInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapApplicationServerInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,16 +40,16 @@ INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [CentralInstanceName <String>]: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   [DatabaseInstanceName <String>]: Database resource name string modeled as parameter for auto generation to work correctly.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SapVirtualInstanceName <String>]: The name of the Virtual Instances for SAP solutions resource
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapapplicationinstance
 #>
 function Get-AzWorkloadsSapApplicationInstance {
 [Alias('Get-AzVISApplicationInstance')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapApplicationServerInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapApplicationServerInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -79,6 +79,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]

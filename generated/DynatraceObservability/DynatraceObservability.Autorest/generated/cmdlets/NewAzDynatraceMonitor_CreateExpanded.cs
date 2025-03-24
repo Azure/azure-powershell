@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDynatraceMonitor_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Create a MonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2021-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}", ApiVersion = "2023-04-27")]
     public partial class NewAzDynatraceMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener
     {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Dynatrace Monitor Resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.MonitorResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.MonitorResource();
 
         /// <summary>Account Id of the account this environment is linked to</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Account Id of the account this environment is linked to")]
@@ -394,8 +394,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         ReadOnly = false,
         Description = @"The identities assigned to this resource by the user.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IIdentityPropertiesUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IIdentityPropertiesUserAssignedIdentities UserAssignedIdentity { get => _resourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _resourceBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IIdentityPropertiesUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IIdentityPropertiesUserAssignedIdentities UserAssignedIdentity { get => _resourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _resourceBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Country of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Country of the user")]
@@ -469,12 +469,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -776,12 +776,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource
                 WriteObject((await response));
             }
         }

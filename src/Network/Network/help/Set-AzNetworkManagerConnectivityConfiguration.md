@@ -14,7 +14,8 @@ Updates a connectivity configuration.
 
 ```
 Set-AzNetworkManagerConnectivityConfiguration -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

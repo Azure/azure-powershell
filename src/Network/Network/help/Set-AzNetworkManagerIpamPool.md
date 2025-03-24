@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates an IPAM pool.
+
 ## SYNTAX
 
 ```
@@ -71,7 +72,6 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 Update the IPAM pool's addressPrefixes.
 
-
 ### Example 2
 ```powershell
 $ResourceGroupName = "testRG"
@@ -121,13 +121,14 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 ```
 
 Gives the IPAM pool 'testPool' Display Name of 'My Test Pool'
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +143,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 The Ipam Pool
 
 ```yaml
-Type: PSIpamPool
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIpamPool
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +173,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -188,7 +189,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -213,6 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerIpamPool](./New-AzNetworkManagerIpamPool.md)
 
 [Get-AzNetworkManagerIpamPool](./Get-AzNetworkManagerIpamPool.md)
