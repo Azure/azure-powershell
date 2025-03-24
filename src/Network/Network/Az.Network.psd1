@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '7.14.0'
+ModuleVersion = '7.15.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -792,7 +792,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated ''New-AzRouteServer'', ''Get-AzRouteServer'', and ''Update-AzRouteServer'' to include VirtualRouterAutoScaleConfiguration.'
+        ReleaseNotes = '* Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
+    - ''New-AzVirtualNetworkGatewayConnection''
+    - ''Set-AzVirtualNetworkGatewayConnection'''
 
         # Prerelease string of this module
         # Prerelease = ''
