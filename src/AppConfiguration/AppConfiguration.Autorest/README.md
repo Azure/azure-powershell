@@ -152,4 +152,31 @@ directive:
       subject: ^ConfigurationStoreDeleted$
     set:
       subject: ConfigurationDeletedStore
+
+  #breaking change message
+  - where:
+      verb: Get|New|Update
+      subject: ConfigurationStore
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore
+        deprecated-output-properties:
+          - PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference
+        new-output-properties:
+          - PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]
+        change-description: 
+          - The type of property 'PrivateEndpointConnection' of type 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]'
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
+
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.5.0
+        change-effective-date: 2025/05/06
 ```
