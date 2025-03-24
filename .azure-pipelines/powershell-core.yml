@@ -8,7 +8,7 @@ variables:
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'
   MacOSAgentPoolVMImage: macOS-latest
-  TestFramework: net6.0
+  TestFramework: net8.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
@@ -40,10 +40,10 @@ jobs:
   steps:
   - checkout: self
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
@@ -118,10 +118,10 @@ jobs:
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -160,10 +160,10 @@ jobs:
     parameters:
       artifactName: build-${{ variables.TestFramework }}
   - task: UseDotNet@2
-    displayName: 'Use .NET SDK 6 for tests'
+    displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:

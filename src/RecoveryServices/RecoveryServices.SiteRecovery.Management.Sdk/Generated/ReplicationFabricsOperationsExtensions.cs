@@ -18,9 +18,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Fabric> List(this IReplicationFabricsOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Fabric> List(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationFabricsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -29,12 +36,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Fabric>> ListAsync(this IReplicationFabricsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Fabric>> ListAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -48,12 +62,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
-        public static Fabric Get(this IReplicationFabricsOperations operations, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter>))
+        public static Fabric Get(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter>))
         {
-                return ((IReplicationFabricsOperations)operations).GetAsync(fabricName, odataQuery).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, odataQuery).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -65,38 +86,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='odataQuery'>
         /// 
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> GetAsync(this IReplicationFabricsOperations operations, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> GetAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<FabricQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).
+        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
+        /// site).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the ASR fabric.
         /// </param>
-        public static Fabric Create(this IReplicationFabricsOperations operations, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties))
+        public static Fabric Create(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties))
         {
-                return ((IReplicationFabricsOperations)operations).CreateAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).
+        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
+        /// site).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the ASR fabric.
@@ -104,9 +148,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> CreateAsync(this IReplicationFabricsOperations operations, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> CreateAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -117,12 +161,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to purge.
         /// </param>
-        public static void Purge(this IReplicationFabricsOperations operations, string fabricName)
+        public static void Purge(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).PurgeAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).PurgeAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,15 +182,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to purge.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task PurgeAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task PurgeAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.PurgeWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.PurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to perform a consistency check on the fabric.
@@ -147,12 +205,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
-        public static Fabric CheckConsistency(this IReplicationFabricsOperations operations, string fabricName)
+        public static Fabric CheckConsistency(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationFabricsOperations)operations).CheckConsistencyAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).CheckConsistencyAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -161,15 +226,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> CheckConsistencyAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> CheckConsistencyAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CheckConsistencyWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CheckConsistencyWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -180,12 +252,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to migrate.
         /// </param>
-        public static void MigrateToAad(this IReplicationFabricsOperations operations, string fabricName)
+        public static void MigrateToAad(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).MigrateToAadAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).MigrateToAadAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -194,35 +273,58 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to migrate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task MigrateToAadAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task MigrateToAadAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.MigrateToAadWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.MigrateToAadWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// The operation to move replications from a process server to another process server.
+        /// The operation to move replications from a process server to another process
+        /// server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric containing the process server.
         /// </param>
-        public static Fabric ReassociateGateway(this IReplicationFabricsOperations operations, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties))
+        public static Fabric ReassociateGateway(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties))
         {
-                return ((IReplicationFabricsOperations)operations).ReassociateGatewayAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).ReassociateGatewayAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to move replications from a process server to another process server.
+        /// The operation to move replications from a process server to another process
+        /// server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric containing the process server.
@@ -230,9 +332,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> ReassociateGatewayAsync(this IReplicationFabricsOperations operations, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> ReassociateGatewayAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ReassociateGatewayWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ReassociateGatewayWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -243,12 +345,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to delete.
         /// </param>
-        public static void Delete(this IReplicationFabricsOperations operations, string fabricName)
+        public static void Delete(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).DeleteAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -257,15 +366,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to delete.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Renews the connection certificate for the ASR replication fabric.
@@ -273,12 +389,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// fabric name to renew certs for.
         /// </param>
-        public static Fabric RenewCertificate(this IReplicationFabricsOperations operations, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties))
+        public static Fabric RenewCertificate(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties))
         {
-                return ((IReplicationFabricsOperations)operations).RenewCertificateAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).RenewCertificateAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -287,38 +410,108 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// fabric name to renew certs for.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> RenewCertificateAsync(this IReplicationFabricsOperations operations, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> RenewCertificateAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RenewCertificateWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.RenewCertificateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).
+        /// Removes the appliance&#39;s infrastructure under the fabric.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        public static ReplicationFabricsRemoveInfraHeaders RemoveInfra(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
+        {
+                return ((IReplicationFabricsOperations)operations).RemoveInfraAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Removes the appliance&#39;s infrastructure under the fabric.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationFabricsRemoveInfraHeaders> RemoveInfraAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RemoveInfraWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
+        /// site).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the ASR fabric.
         /// </param>
-        public static Fabric BeginCreate(this IReplicationFabricsOperations operations, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties))
+        public static Fabric BeginCreate(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties))
         {
-                return ((IReplicationFabricsOperations)operations).BeginCreateAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V site).
+        /// The operation to create an Azure Site Recovery fabric (for e.g. Hyper-V
+        /// site).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the ASR fabric.
@@ -326,9 +519,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> BeginCreateAsync(this IReplicationFabricsOperations operations, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> BeginCreateAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FabricCreationInputProperties properties = default(FabricCreationInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -339,12 +532,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to purge.
         /// </param>
-        public static void BeginPurge(this IReplicationFabricsOperations operations, string fabricName)
+        public static void BeginPurge(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).BeginPurgeAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).BeginPurgeAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -353,15 +553,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to purge.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginPurgeAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginPurgeAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginPurgeWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginPurgeWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to perform a consistency check on the fabric.
@@ -369,12 +576,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
-        public static Fabric BeginCheckConsistency(this IReplicationFabricsOperations operations, string fabricName)
+        public static Fabric BeginCheckConsistency(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationFabricsOperations)operations).BeginCheckConsistencyAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).BeginCheckConsistencyAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -383,15 +597,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> BeginCheckConsistencyAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> BeginCheckConsistencyAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCheckConsistencyWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCheckConsistencyWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -402,12 +623,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to migrate.
         /// </param>
-        public static void BeginMigrateToAad(this IReplicationFabricsOperations operations, string fabricName)
+        public static void BeginMigrateToAad(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).BeginMigrateToAadAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).BeginMigrateToAadAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -416,35 +644,58 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to migrate.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginMigrateToAadAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginMigrateToAadAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginMigrateToAadWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginMigrateToAadWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// The operation to move replications from a process server to another process server.
+        /// The operation to move replications from a process server to another process
+        /// server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric containing the process server.
         /// </param>
-        public static Fabric BeginReassociateGateway(this IReplicationFabricsOperations operations, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties))
+        public static Fabric BeginReassociateGateway(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties))
         {
-                return ((IReplicationFabricsOperations)operations).BeginReassociateGatewayAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).BeginReassociateGatewayAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to move replications from a process server to another process server.
+        /// The operation to move replications from a process server to another process
+        /// server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// The name of the fabric containing the process server.
@@ -452,9 +703,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> BeginReassociateGatewayAsync(this IReplicationFabricsOperations operations, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> BeginReassociateGatewayAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, FailoverProcessServerRequestProperties properties = default(FailoverProcessServerRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginReassociateGatewayWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginReassociateGatewayWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -465,12 +716,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to delete.
         /// </param>
-        public static void BeginDelete(this IReplicationFabricsOperations operations, string fabricName)
+        public static void BeginDelete(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                ((IReplicationFabricsOperations)operations).BeginDeleteAsync(fabricName).GetAwaiter().GetResult();
+                ((IReplicationFabricsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -479,15 +737,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// ASR fabric to delete.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationFabricsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Renews the connection certificate for the ASR replication fabric.
@@ -495,12 +760,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// fabric name to renew certs for.
         /// </param>
-        public static Fabric BeginRenewCertificate(this IReplicationFabricsOperations operations, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties))
+        public static Fabric BeginRenewCertificate(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties))
         {
-                return ((IReplicationFabricsOperations)operations).BeginRenewCertificateAsync(fabricName, properties).GetAwaiter().GetResult();
+                return ((IReplicationFabricsOperations)operations).BeginRenewCertificateAsync(resourceGroupName, resourceName, fabricName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -509,17 +781,71 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// fabric name to renew certs for.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Fabric> BeginRenewCertificateAsync(this IReplicationFabricsOperations operations, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Fabric> BeginRenewCertificateAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, RenewCertificateInputProperties properties = default(RenewCertificateInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRenewCertificateWithHttpMessagesAsync(fabricName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginRenewCertificateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Removes the appliance&#39;s infrastructure under the fabric.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        public static ReplicationFabricsRemoveInfraHeaders BeginRemoveInfra(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName)
+        {
+                return ((IReplicationFabricsOperations)operations).BeginRemoveInfraAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Removes the appliance&#39;s infrastructure under the fabric.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource name.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationFabricsRemoveInfraHeaders> BeginRemoveInfraAsync(this IReplicationFabricsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRemoveInfraWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

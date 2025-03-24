@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning message for upcoming breaking change on upload Azure file
+    - `Set-AzStorageFileContent`
+* Added warning messages for an upcoming breaking change when converting the account's redundancy configuration
+    - `Start-AzStorageAccountMigration`
 
 ## Version 8.2.0
 * Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
