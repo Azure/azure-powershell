@@ -24,7 +24,7 @@ $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'E
 New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ITagRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for 
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
 #>
 function New-AzDynatraceMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ITagRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IFilteringTag[]]
     # List of filtering tags to be used for capturing logs.
     # This only takes effect if SendActivityLogs flag is enabled.
     # If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.
@@ -101,13 +101,20 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IFilteringTag[]]
     # List of filtering tags to be used for capturing metrics.
     # If empty, all resources will be captured.
     # If only Exclude action is specified, the rules will apply to the list of all available resources.
     # If Include actions are specified, the rules will only include resources with the associated tags.
     # To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
     ${MetricRuleFilteringTag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendingMetricsStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SendingMetricsStatus]
+    # Flag specifying if metrics from Azure resources should be sent for the Monitor resource.
+    ${MetricRuleSendingMetric},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

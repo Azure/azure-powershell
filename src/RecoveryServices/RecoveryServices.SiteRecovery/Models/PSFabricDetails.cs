@@ -2097,6 +2097,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public ASRAzureToAzureSpecificRPIDetails(A2AReplicationDetails details)
         {
+            this.ProtectionClusterId = details.ProtectionClusterId;
             this.FabricObjectId = details.FabricObjectId;
             this.MultiVmGroupId = details.MultiVMGroupId;
             this.MultiVmGroupName = details.MultiVMGroupName;
@@ -2191,6 +2192,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Multi vm group name.
         /// </summary>
         public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication protection cluster Id.
+        /// </summary>
+        public string ProtectionClusterId { get; set; }
 
         /// <summary>
         /// Operating system type.
