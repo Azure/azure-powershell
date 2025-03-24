@@ -16,21 +16,22 @@ Update or Change a Network Virtual Appliance Connection resource.
 ```
 Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RoutingConfiguration <PSRoutingConfiguration>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
- [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> -Name <String>
- [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -248,4 +249,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkVirtualAppliance](./Get-AzNetworkVirtualAppliance.md)
 
 [Get-AzNetworkVirtualApplianceConnection](./Get-AzNetworkVirtualApplianceConnection.md)
-

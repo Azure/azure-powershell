@@ -16,21 +16,24 @@ The Bastion Shareable Link feature lets users connect to a target resource (virt
 ```
 Remove-AzBastionShareableLink -ResourceGroupName <String> -Name <String>
  -TargetVmId <System.Collections.Generic.List`1[System.String]> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Remove-AzBastionShareableLink -ResourceId <String>
  -TargetVmId <System.Collections.Generic.List`1[System.String]> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzBastionShareableLink -InputObject <PSBastion>
  -TargetVmId <System.Collections.Generic.List`1[System.String]> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

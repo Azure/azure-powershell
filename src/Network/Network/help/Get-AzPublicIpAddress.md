@@ -36,7 +36,8 @@ Get-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMach
 ```
 Get-AzPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
  -VirtualMachineIndex <String> -NetworkInterfaceName <String> -IpConfigurationName <String>
- -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -324,5 +325,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzPublicIpAddress](./Remove-AzPublicIpAddress.md)
 
 [Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
-
-

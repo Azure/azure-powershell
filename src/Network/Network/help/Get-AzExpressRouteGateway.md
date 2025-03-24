@@ -14,7 +14,8 @@ Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR l
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzExpressRouteGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExpressRouteGateway [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
@@ -25,7 +26,8 @@ Get-AzExpressRouteGateway [-ResourceGroupName <String>] [-Name <String>]
 
 ### ByExpressRouteGatewayResourceId
 ```
-Get-AzExpressRouteGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExpressRouteGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
