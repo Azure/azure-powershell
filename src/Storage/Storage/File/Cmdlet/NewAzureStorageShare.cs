@@ -66,6 +66,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private ShareProtocols? protocol = null;
 
+        [Parameter(HelpMessage = "Only applicable for premium file storage accounts. Specifies whether the snapshot virtual directory should be accessible at the root of share mount point when NFS is enabled. If not specified, the default is true.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSnapshotVirtualDirectoryAccess
+        {
+            get
+            {
+                return enableSnapshotVirtualDirectoryAccess is null? true : enableSnapshotVirtualDirectoryAccess.Value;
+            }
+            set
+            {
+                enableSnapshotVirtualDirectoryAccess = value;
+            }
+        }
+        private bool? enableSnapshotVirtualDirectoryAccess = null;
+
         // Overwrite the useless parameter
         public override SwitchParameter DisAllowTrailingDot { get; set; }
 
@@ -79,6 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 ClientOptions);
             ShareCreateOptions options = new ShareCreateOptions();
             options.Protocols = this.protocol;
+            options.EnableSnapshotVirtualDirectoryAccess = this.enableSnapshotVirtualDirectoryAccess;
             share.Create(options, cancellationToken: this.CmdletCancellationToken);
             ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
             WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));

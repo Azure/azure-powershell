@@ -14,8 +14,8 @@ Creates a file share.
 ## SYNTAX
 
 ```
-New-AzStorageShare [-Name] <String> [-Protocol <String>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+New-AzStorageShare [-Name] <String> [-Protocol <String>] [-EnableSnapshotVirtualDirectoryAccess <Boolean>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
@@ -31,12 +31,12 @@ New-AzStorageShare -Name "ContosoShare06"
 
 This command creates a file share named ContosoShare06.
 
-### Example 2: Create a file share with NFS protocol
+### Example 2: Create a file share with NFS protocol and EnableSnapshotVirtualDirectoryAccess
 ```powershell
-New-AzStorageShare -Name "contososhare07" -Protocol Nfs
+New-AzStorageShare -Name "contososhare07" -Protocol Nfs -EnableSnapshotVirtualDirectoryAccess $true
 ```
 
-This command creates a file share named contososhare07 with NFS protocal.
+This command creates a file share named contososhare07 with NFS protocal, and EnableSnapshotVirtualDirectoryAccess as true.
 
 ## PARAMETERS
 
@@ -99,6 +99,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSnapshotVirtualDirectoryAccess
+Only applicable for premium file storage accounts. Specifies whether the snapshot virtual directory should be accessible at the root of share mount point when NFS is enabled. If not specified, the default is true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

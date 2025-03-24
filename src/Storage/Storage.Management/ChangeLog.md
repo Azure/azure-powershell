@@ -19,14 +19,15 @@
 -->
 ## Upcoming Release
 * Supported NFS File Share and NFS file and directory properties
-    - `New-AzStorageShare`
-    - `Get-AzStorageShare`
     - `Get-AzStorageFile`
     - `Get-AzStorageFileContent`
     - `New-AzStorageDirectory`
     - `Remove-AzStorageFile`
     - `Set-AzStorageFileContent`
     - `Start-AzStorageFileCopy`
+* Supported File share properties: Protocol, EnableSnapshotVirtualDirectoryAccess.
+    - `New-AzStorageShare`
+    - `Get-AzStorageShare`
 * Supported create hard link in NFS File Share 
     - `New-AzStorageFileHardLink`
 * Added warning message for upcoming breaking change on upload Azure file
