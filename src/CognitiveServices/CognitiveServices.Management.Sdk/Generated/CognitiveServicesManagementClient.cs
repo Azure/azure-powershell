@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -89,6 +89,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// </summary>
         public virtual IModelsOperations Models { get; private set; }
         /// <summary>
+        /// Gets the ILocationBasedModelCapacitiesOperations
+        /// </summary>
+        public virtual ILocationBasedModelCapacitiesOperations LocationBasedModelCapacities { get; private set; }
+        /// <summary>
+        /// Gets the IModelCapacitiesOperations
+        /// </summary>
+        public virtual IModelCapacitiesOperations ModelCapacities { get; private set; }
+        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
@@ -104,6 +112,34 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Gets the ICommitmentPlansOperations
         /// </summary>
         public virtual ICommitmentPlansOperations CommitmentPlans { get; private set; }
+        /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
+        /// <summary>
+        /// Gets the IRaiPoliciesOperations
+        /// </summary>
+        public virtual IRaiPoliciesOperations RaiPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IRaiBlocklistsOperations
+        /// </summary>
+        public virtual IRaiBlocklistsOperations RaiBlocklists { get; private set; }
+        /// <summary>
+        /// Gets the IRaiBlocklistItemsOperations
+        /// </summary>
+        public virtual IRaiBlocklistItemsOperations RaiBlocklistItems { get; private set; }
+        /// <summary>
+        /// Gets the IRaiContentFiltersOperations
+        /// </summary>
+        public virtual IRaiContentFiltersOperations RaiContentFilters { get; private set; }
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        public virtual INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IDefenderForAiSettingsOperations
+        /// </summary>
+        public virtual IDefenderForAiSettingsOperations DefenderForAiSettings { get; private set; }
         /// <summary>
         /// Initializes a new instance of the CognitiveServicesManagementClient class.
         /// </summary>
@@ -308,6 +344,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -346,12 +385,21 @@ namespace Microsoft.Azure.Management.CognitiveServices
             this.Operations = new Operations(this);
             this.CommitmentTiers = new CommitmentTiersOperations(this);
             this.Models = new ModelsOperations(this);
+            this.LocationBasedModelCapacities = new LocationBasedModelCapacitiesOperations(this);
+            this.ModelCapacities = new ModelCapacitiesOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.Deployments = new DeploymentsOperations(this);
             this.CommitmentPlans = new CommitmentPlansOperations(this);
+            this.EncryptionScopes = new EncryptionScopesOperations(this);
+            this.RaiPolicies = new RaiPoliciesOperations(this);
+            this.RaiBlocklists = new RaiBlocklistsOperations(this);
+            this.RaiBlocklistItems = new RaiBlocklistItemsOperations(this);
+            this.RaiContentFilters = new RaiContentFiltersOperations(this);
+            this.NetworkSecurityPerimeterConfigurations = new NetworkSecurityPerimeterConfigurationsOperations(this);
+            this.DefenderForAiSettings = new DefenderForAiSettingsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-05-01";
+            this.ApiVersion = "2024-10-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -395,7 +443,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The SKU of the resource.
         /// </param>
         /// <param name='kind'>
-        /// The Kind of the resource.
+        /// The kind (type) of cognitive service account.
         /// </param>
         /// <param name='type'>
         /// The Type of the resource.
@@ -807,6 +855,223 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 try
                 {
                     _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DomainAvailability>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Model capacity calculator.
+        /// </summary>
+        /// <param name='model'>
+        /// Properties of Cognitive Services account deployment model.
+        /// </param>
+        /// <param name='skuName'>
+        /// The name of SKU.
+        /// </param>
+        /// <param name='workloads'>
+        /// List of Model Capacity Calculator Workload.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CalculateModelCapacityResult>> CalculateModelCapacityWithHttpMessagesAsync(DeploymentModel model = default(DeploymentModel), string skuName = default(string), System.Collections.Generic.IList<ModelCapacityCalculatorWorkload> workloads = default(System.Collections.Generic.IList<ModelCapacityCalculatorWorkload>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+            }
+            if (this.SubscriptionId != null)
+            {
+                if (this.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "SubscriptionId", 1);
+                }
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+
+            CalculateModelCapacityParameter parameters = new CalculateModelCapacityParameter();
+            if(model != null||skuName != null||workloads != null)
+            {
+                parameters.Model = model;
+                parameters.SkuName = skuName;
+                parameters.Workloads = workloads;
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+                tracingParameters.Add("parameters", parameters);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "CalculateModelCapacity", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (this.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(parameters != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<CalculateModelCapacityResult>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CalculateModelCapacityResult>(_responseContent, this.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

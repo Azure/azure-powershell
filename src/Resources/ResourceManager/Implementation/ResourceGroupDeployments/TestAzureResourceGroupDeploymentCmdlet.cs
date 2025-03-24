@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
                         DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                     }
-                    : null
+                    : null,
+                ValidationLevel = ValidationLevel
             };
 
             var validationInfo = NewResourceManagerSdkClient.ValidateDeployment(parameters);
