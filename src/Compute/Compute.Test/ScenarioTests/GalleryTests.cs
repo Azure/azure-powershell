@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GalleryImageDefinitionDefaults");
         }
 
+        [Fact(Skip = "Cannot test EOD as it prevents deletion")]
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void testgenupdateazgalleryimageversion()
