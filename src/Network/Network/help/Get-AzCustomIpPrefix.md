@@ -20,7 +20,8 @@ Get-AzCustomIpPrefix [-Name <String>] [-ResourceGroupName <String>] [-DefaultPro
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzCustomIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCustomIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

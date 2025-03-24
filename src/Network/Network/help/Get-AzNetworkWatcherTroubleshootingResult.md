@@ -21,7 +21,8 @@ Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcher <PSNetworkWatcher> -Ta
 ### SetByName
 ```
 Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation

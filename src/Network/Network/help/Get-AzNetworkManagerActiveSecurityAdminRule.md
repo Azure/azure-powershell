@@ -14,7 +14,8 @@ Lists NetworkManager Active Security Admin Rules in network manager.
 
 ```
 Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

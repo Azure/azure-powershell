@@ -15,7 +15,8 @@ Removes a network security group.
 
 ```
 Remove-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,5 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetworkSecurityGroup](./New-AzNetworkSecurityGroup.md)
 
 [Set-AzNetworkSecurityGroup](./Set-AzNetworkSecurityGroup.md)
-
-

@@ -13,7 +13,8 @@ Get available service aliases in the region.
 ## SYNTAX
 
 ```
-Get-AzAvailableServiceAlias -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAvailableServiceAlias -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
