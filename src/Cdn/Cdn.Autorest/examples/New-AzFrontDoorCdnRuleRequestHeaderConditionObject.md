@@ -1,12 +1,12 @@
-### Example 1: Create an in-memory object for DeliveryRuleRequestHeaderCondition
+### Example 1: Create an in-memory object for DeliveryRuleRequestHeaderAction
 ```powershell
-New-AzFrontDoorCdnRuleRequestHeaderConditionObject -Name RequestHeader -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
 ```
 
 ```output
 Name
 ----
-RequestHeader
+ModifyRequestHeader
 ```
 
-Create an in-memory object for DeliveryRuleRequestHeaderCondition
+Create an in-memory object for DeliveryRuleRequestHeaderAction

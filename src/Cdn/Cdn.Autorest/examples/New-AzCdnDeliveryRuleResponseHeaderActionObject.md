@@ -10,4 +10,3 @@ ModifyResponseHeader
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction
-

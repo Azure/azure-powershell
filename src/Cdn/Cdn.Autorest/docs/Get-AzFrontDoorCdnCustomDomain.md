@@ -29,6 +29,12 @@ Get-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> 
 Get-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityProfile
+```
+Get-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -81,7 +87,7 @@ Name of the domain under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProfile
 Aliases:
 
 Required: True
@@ -109,11 +115,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityProfile
 Aliases:
 
 Required: True
@@ -177,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain
 
 ## NOTES
 
