@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking change: The default value of `-NodeVmSize` parameter of `New-AzAksCluster` will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
 
 ## Version 6.1.0
 * Upgraded nuget package to signed package.
