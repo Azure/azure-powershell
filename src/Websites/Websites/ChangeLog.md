@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Add support for pull based deployments from a URL with MSI authentication in `Publish-AzWebApp`
+
+## Version 3.3.1
 * Migrated Websites.Helper generation from autorest csharp to autorest powershell.
 
 ## Version 3.3.0
