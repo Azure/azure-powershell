@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Commands.Compute
                     && _cmdlet.SecurityType != null
                     && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
                 {
-                    _cmdlet.SecurityType = null;
+                    _cmdlet.SecurityType = "Standard";
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -1095,22 +1095,6 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
-                }
-            }
-
-            // Standard security type removing value since API does not support it yet.
-            if (this.VM.SecurityProfile?.SecurityType != null
-                && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
-            {
-                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
-                    && this.VM.SecurityProfile.EncryptionAtHost == null)
-                {
-                    this.VM.SecurityProfile = null;
-                }
-                else
-                {
-                    this.VM.SecurityProfile.SecurityType = null;
                 }
             }
 
