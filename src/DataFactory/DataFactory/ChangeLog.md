@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added more support for M365 connection properties.
-* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
 
 ## Version 1.19.1
 * Added more support for Oracle connection properties.
