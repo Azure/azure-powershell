@@ -1,44 +1,49 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
-online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstanceupdate
 schema: 2.0.0
 ---
 
-# Test-AzDataProtectionBackupInstanceReadiness
+# Test-AzDataProtectionBackupInstanceUpdate
 
 ## SYNOPSIS
-Validate whether adhoc backup will be successful or not
+Validate whether update for backup instance will be successful or not
 
 ## SYNTAX
 
 ```
-Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName <String> -VaultName <String>
- -BackupInstance <IBackupInstance> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzDataProtectionBackupInstanceUpdate -Name <String> -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -BackupInstance <IBackupInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Validate whether adhoc backup will be successful or not
+Validate whether update for backup instance will be successful or not
 
 ## EXAMPLES
 
-### Example 1: Test the backup instance 
+### Example 1: {{ Add title here }}
 ```powershell
-$vault = Get-AzDataProtectionBackupVault -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
-$diskBackupPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -Name "diskBackupPolicy"
-$diskId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Compute/disks/test-disk" 
-$snapshotRG = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName"
-$instance = Initialize-AzDataProtectionBackupInstance -SnapshotResourceGroupId $Snapshotrg -DatasourceType AzureDisk -DatasourceLocation $vault.Location -PolicyId $diskBackupPolicy[0].Id -DatasourceId $diskId 
-Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -BackupInstance  $instance[0].Property
+{{ Add code here }}
 ```
 
-The first command gets the backup vault.
-The second command gets the disk policy.
-Next we initialize $diskId and $snapshotRG variables with disk and snapshot ARM Ids.
-The fifth line runs the Initialize command to create a client side backup instance object.
-Finally we trigger the Test-AzDataProtectionBackupInstanceReadiness command to validate whether the backup instance is ready for configuring backup or not, the command will fail or pass accordingly.
-This command can be use to check whether the backup vault has all the necessary permissions to configure backup.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -83,6 +88,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the backup instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BackupInstanceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
