@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{35102A7D-CDFE-4854-B4D8-21C68EC04172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Portal", "..\..\generated\Portal\Portal.Autorest\Az.Portal.csproj", "{B72647DA-6C82-49DA-8295-032F7712D7E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Portal", "..\..\generated\Portal\Portal.Autorest\Az.Portal.csproj", "{45CAE1FB-7EC2-43FF-B65E-DA4BF2319617}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{35102A7D-CDFE-4854-B4D8-21C68EC04172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35102A7D-CDFE-4854-B4D8-21C68EC04172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35102A7D-CDFE-4854-B4D8-21C68EC04172}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B72647DA-6C82-49DA-8295-032F7712D7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B72647DA-6C82-49DA-8295-032F7712D7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B72647DA-6C82-49DA-8295-032F7712D7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B72647DA-6C82-49DA-8295-032F7712D7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45CAE1FB-7EC2-43FF-B65E-DA4BF2319617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CAE1FB-7EC2-43FF-B65E-DA4BF2319617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CAE1FB-7EC2-43FF-B65E-DA4BF2319617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CAE1FB-7EC2-43FF-B65E-DA4BF2319617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{18EAC80C-6DEC-4EBC-A0BB-320B5324264A} = {7913BDC6-0FBA-43BB-AB8D-D809BD22EE94}
