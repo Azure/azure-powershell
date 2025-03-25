@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Quantum
-Module Guid: 7532d806-a02e-4287-87ef-54f4c6c45469
+Module Guid: 65936c1e-015a-4add-ade9-753f9194ee60
 Download Help Link: https://learn.microsoft.com/powershell/module/az.quantum
 Help Version: 1.0.0.0
 Locale: en-US
