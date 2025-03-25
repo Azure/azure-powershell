@@ -7,14 +7,16 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for PublicIPAddressSkuName.
+    /// Defines values for VirtualNetworkGatewayMigrationType.
     /// </summary>
 
 
-    public static class PublicIPAddressSkuName
+    public static class VirtualNetworkGatewayMigrationType
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string StandardV2 = "StandardV2";
+        /// <summary>
+        /// Indicates that it is a migration process from basic IP CSES to standard IP
+        /// VMSS.
+        /// </summary>
+        public const string UpgradeDeploymentToStandardIP = "UpgradeDeploymentToStandardIP";
     }
 }

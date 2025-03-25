@@ -7,29 +7,26 @@ namespace Microsoft.Azure.Management.Network.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// SKU of nat gateway.
-    /// </summary>
-    public partial class NatGatewaySku
+    public partial class VirtualNetworkGatewaysGetResiliencyInformationHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the NatGatewaySku class.
+        /// Initializes a new instance of the VirtualNetworkGatewaysGetResiliencyInformationHeaders class.
         /// </summary>
-        public NatGatewaySku()
+        public VirtualNetworkGatewaysGetResiliencyInformationHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NatGatewaySku class.
+        /// Initializes a new instance of the VirtualNetworkGatewaysGetResiliencyInformationHeaders class.
         /// </summary>
 
-        /// <param name="name">Name of Nat Gateway SKU.
-        /// Possible values include: &#39;Standard&#39;, &#39;StandardV2&#39;</param>
-        public NatGatewaySku(string name = default(string))
+        /// <param name="location">
+        /// </param>
+        public VirtualNetworkGatewaysGetResiliencyInformationHeaders(string location = default(string))
 
         {
-            this.Name = name;
+            this.Location = location;
             CustomInit();
         }
 
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of Nat Gateway SKU. Possible values include: &#39;Standard&#39;, &#39;StandardV2&#39;
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
     }
 }

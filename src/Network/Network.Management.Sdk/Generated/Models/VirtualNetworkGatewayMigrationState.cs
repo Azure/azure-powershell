@@ -7,16 +7,15 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ApplicationGatewayFirewallUserSessionVariable.
+    /// Defines values for VirtualNetworkGatewayMigrationState.
     /// </summary>
 
 
-    public static class ApplicationGatewayFirewallUserSessionVariable
+    public static class VirtualNetworkGatewayMigrationState
     {
-        public const string ClientAddr = "ClientAddr";
-        public const string GeoLocation = "GeoLocation";
         public const string None = "None";
-        public const string ClientAddrXFFHeader = "ClientAddrXFFHeader";
-        public const string GeoLocationXFFHeader = "GeoLocationXFFHeader";
+        public const string InProgress = "InProgress";
+        public const string Succeeded = "Succeeded";
+        public const string Failed = "Failed";
     }
 }
