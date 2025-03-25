@@ -2040,7 +2040,7 @@
               </ListItem>
               <ListItem>
                 <Label>ApplicationSecurityGroups</Label>
-                <PropertyName>ApplicationSecurityGroupsText2</PropertyName>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
