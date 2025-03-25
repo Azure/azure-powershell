@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
                         SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
-                    ? new SecurityProfile
-                    {
-                        EncryptionAtHost = encryptionAtHostPresent,
-                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
-                        SecurityType = securityType,
-                    } : null,
+                        ? new SecurityProfile
+                        {
+                            EncryptionAtHost = encryptionAtHostPresent,
+                            UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                            SecurityType = securityType,
+                        } : null,
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
