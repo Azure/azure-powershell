@@ -12,12 +12,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for AllocationStrategy.
+    /// Defines values for RebalanceStrategy.
     /// </summary>
-    public static class AllocationStrategy
+    public static class RebalanceStrategy
     {
-        public const string LowestPrice = "LowestPrice";
-        public const string CapacityOptimized = "CapacityOptimized";
-        public const string Prioritized = "Prioritized";
+        public const string Recreate = "Recreate";
     }
 }

@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for AllocationStrategy.
+    /// Defines values for ResilientVMDeletionStatus.
     /// </summary>
-    public static class AllocationStrategy
+    public static class ResilientVMDeletionStatus
     {
-        public const string LowestPrice = "LowestPrice";
-        public const string CapacityOptimized = "CapacityOptimized";
-        public const string Prioritized = "Prioritized";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
+        public const string InProgress = "InProgress";
+        public const string Failed = "Failed";
     }
 }

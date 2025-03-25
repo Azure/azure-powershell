@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for AllocationStrategy.
+    /// Defines values for Modes.
     /// </summary>
-    public static class AllocationStrategy
+    public static class Modes
     {
-        public const string LowestPrice = "LowestPrice";
-        public const string CapacityOptimized = "CapacityOptimized";
-        public const string Prioritized = "Prioritized";
+        public const string Audit = "Audit";
+        public const string Enforce = "Enforce";
+        public const string Disabled = "Disabled";
     }
 }
