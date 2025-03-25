@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzFederatedIdentityCredential_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Remove-AzFederatedIdentityCredentials")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.OutputBreakingChange("bool", "14.0.0", "2.0.0", "2025/05/19", DeprecatedOutputProperties=new string[] {"Audience <System.String[]>"}, NewOutputProperties=new string[] {"Audience <System.Collections.Generic.List`1[System.String]>"}, ChangeDescription="The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Description(@"Deletes the federated identity credential.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Generated]
