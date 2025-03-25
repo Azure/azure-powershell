@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
+    - `New-AzVirtualNetworkGatewayMigrationParameter`
+    - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
+    - `Invoke-AzVirtualNetworkGatewayExecuteMigration`
+    - `Invoke-AzVirtualNetworkGatewayCommitMigration`
+    - `Invoke-AzVirtualNetworkGatewayAbortMigration`
 * Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
     - Cmdlets for NetworkSecurityPerimeter crud operations
     - Cmdlets for NetworkSecurityPerimeter profile crud operations

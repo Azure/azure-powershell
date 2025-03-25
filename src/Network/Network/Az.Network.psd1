@@ -514,6 +514,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzVpnServerConfiguration', 
                'New-AzVpnServerConfigurationPolicyGroup', 'New-AzVpnSite', 
                'New-AzVpnSiteLink', 'New-AzVpnSiteLinkConnection', 
+               'New-AzVirtualNetworkGatewayMigrationParameter',
                'Remove-AzApplicationGateway', 
                'Remove-AzApplicationGatewayAuthenticationCertificate', 
                'Remove-AzApplicationGatewayAutoscaleConfiguration', 
@@ -745,7 +746,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Update-AzVirtualRouterPeer', 'Update-AzVirtualWan', 
                'Update-AzVpnConnection', 'Update-AzVpnGateway', 
                'Update-AzVpnGatewayNatRule', 'Update-AzVpnServerConfiguration', 
-               'Update-AzVpnServerConfigurationPolicyGroup', 'Update-AzVpnSite'
+               'Update-AzVpnServerConfigurationPolicyGroup', 'Update-AzVpnSite',
+               'Invoke-AzVirtualNetworkGatewayPrepareMigration',
+               'Invoke-AzVirtualNetworkGatewayExecuteMigration',
+               'Invoke-AzVirtualNetworkGatewayCommitMigration',
+               'Invoke-AzVirtualNetworkGatewayAbortMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

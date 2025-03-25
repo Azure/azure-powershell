@@ -1257,6 +1257,7 @@ function Test-DisconnectVNGVpnConnection
 
 	# Setup
     $rgname = Get-ResourceGroupName
+    $rgname
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $vnetName = Get-ResourceName
@@ -1792,6 +1793,83 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithResiliencyModel
 	  Assert-AreEqual "Disabled" $expected.AdminState
       Assert-AreEqual "MultiHomed" $expected.ResiliencyModel
 
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway migration from basic ip to standard ip tesr
+#>
+function Test-VirtualNetworkGatewayBasicIPToStandardIPMigration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "eastus2euap"
+    
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -Sku Basic
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku "VpnGw1" -VpnGatewayGeneration "Generation1" -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $actual.Name	
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+
+      #Trigger prepare migration on gateway
+      $migrationParams = New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeDeploymentToStandardIP
+      $job = Invoke-AzVirtualNetworkGatewayPrepareMigration -InputObject $gateway -MigrationParameter $migrationParams -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "PrepareSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger execute migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "ExecuteSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger commit migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayCommitMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "Succeeded" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "CommitSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
      }
      finally
      {
