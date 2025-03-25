@@ -1,5 +1,5 @@
-# To version all modules in Az (standard release), run the following command: .\RunVersionController.ps1 -Release "December 2017"
-# To version a single module (one-off release), run the following command: .\RunVersionController.ps1 -ModuleName "Az.Compute"
+# To version all modules in Az (standard release), run the following command: ./RunVersionController.ps1 -Release "December 2017"
+# To version a single module (one-off release), run the following command: ./RunVersionController.ps1 -ModuleName "Az.Compute"
 
 #Requires -Modules @{ModuleName="PowerShellGet"; ModuleVersion="2.2.1"}
 
@@ -82,7 +82,7 @@ function Update-AzurecmdFile
         [string]$RootPath
     )
 
-    $AzurecmdFile = Get-Item -Path "$RootPath\setup\generate.ps1"
+    $AzurecmdFile = Get-Item -Path "$RootPath/setup/generate.ps1"
     (Get-Content $AzurecmdFile.FullName) | % {
         $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\d*)", "Microsoft Azure PowerShell - $Release"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
@@ -103,7 +103,7 @@ function Update-AzurePowerShellFile
         [string]$RootPath
     )
 
-    $AzurePowerShellFile = Get-Item -Path "$RootPath\src\Common\Commands.Common\AzurePowerShell.cs"
+    $AzurePowerShellFile = Get-Item -Path "$RootPath/src/Common/Commands.Common/AzurePowerShell.cs"
     (Get-Content $AzurePowerShellFile.FullName) | % {
         $_ -replace "$OldVersion", "$NewVersion"
     } | Set-Content -Path $AzurePowerShellFile.FullName -Encoding UTF8
@@ -118,9 +118,9 @@ function Get-ModuleMetadata
         [string]$RootPath
     )
 
-    $ProjectPaths = @( "$RootPath\src" )
+    $ProjectPaths = @( "$RootPath/src" )
 
-    .($PSScriptRoot + "\PreloadToolDll.ps1")
+    .($PSScriptRoot + "/PreloadToolDll.ps1")
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
     # Skip psd1 of generated modules in HYBRID modules because they are not really used
     # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
@@ -167,13 +167,13 @@ function Update-Image-Releases
 
 function Get-ExistSerializedCmdletJsonFile
 {
-    return $(ls "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
+    return $(ls "$PSScriptRoot/Tools.Common/SerializedCmdlets").Name
 }
 
 function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot/Az/Az.psd1"
     Write-Host "Getting Az $ReleaseType information from gallery..." -ForegroundColor Yellow
     if("LTS" -eq $ReleaseType){
         $galleryAz = (Find-Module -Name Az -Repository $GalleryName -AllVersions | Where-Object {([System.Version]($_.Version)).Major%2 -eq 0} | Sort-Object {[System.Version]$_.Version} -Descending)[0]
@@ -240,7 +240,7 @@ function Bump-AzVersion
 
     Write-Host "New version of Az: $newVersion" -ForegroundColor Green
 
-    $rootPath = "$PSScriptRoot\.."
+    $rootPath = "$PSScriptRoot/.."
     $oldVersion = $galleryAz.Version
 
     Update-AzurecmdFile -OldVersion $oldVersion -NewVersion $newVersion -Release $Release -RootPath $rootPath
@@ -277,8 +277,8 @@ function Bump-AzVersion
         $env:PSModulePath += ";$resolvedArtifactsOutputPath"
     }
 
-    Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
-    Update-ChangeLog -Content $changeLog -FilePath "$rootPath\ChangeLog.md"
+    Update-ModuleManifest -Path "$PSScriptRoot/Az/Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
+    Update-ChangeLog -Content $changeLog -FilePath "$rootPath/ChangeLog.md"
 
     New-CommandMappingFile
 
@@ -288,7 +288,7 @@ function Bump-AzVersion
 function Update-AzPreview
 {
     # The version of AzPrview aligns with Az
-    $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+    $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot/Az/Az.psd1").ModuleVersion
 
     $requiredModulesString = "RequiredModules = @("
     $rawRequiredModulesString = "RequiredModules = @\("
@@ -308,7 +308,7 @@ function Update-AzPreview
     $requiredModulesString = $requiredModulesString.Trim()
     $requiredModulesString = $requiredModulesString.TrimEnd(",")
 
-    $AzPreviewTemplate = Get-Item -Path "$PSScriptRoot\AzPreview.psd1.template"
+    $AzPreviewTemplate = Get-Item -Path "$PSScriptRoot/AzPreview.psd1.template"
     $AzPreviewTemplateContent = Get-Content -Path $AzPreviewTemplate.FullName
     $AzPreviewPsd1Content = $AzPreviewTemplateContent | % {
         $_ -replace "ModuleVersion = 'x.x.x'", "ModuleVersion = '$AzPreviewVersion'"
@@ -316,14 +316,14 @@ function Update-AzPreview
         $_ -replace "$rawRequiredModulesString", "$requiredModulesString"
     }
 
-    $AzPreviewPsd1 = New-Item -Path "$PSScriptRoot\AzPreview\" -Name "AzPreview.psd1" -ItemType "file" -Force
+    $AzPreviewPsd1 = New-Item -Path "$PSScriptRoot/AzPreview/" -Name "AzPreview.psd1" -ItemType "file" -Force
     Set-Content -Path $AzPreviewPsd1.FullName -Value $AzPreviewPsd1Content -Encoding UTF8
 }
 
 function Update-AzPreviewChangelog
 {
-    $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
+    $AzPreviewVersion = (Import-PowerShellDataFile "$PSScriptRoot/Az/Az.psd1").ModuleVersion
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot/AzPreview/AzPreview.psd1"
     Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
     $galleryAz = Find-Module -Name AzPreview -Repository $GalleryName
     $updatedModules = @()
@@ -360,7 +360,7 @@ function Update-AzPreviewChangelog
     $releaseNotes += "$AzPreviewVersion - $Release"
     $changeLog = @()
     $changeLog += "## $AzPreviewVersion - $Release"
-    $rootPath = "$PSScriptRoot\.."
+    $rootPath = "$PSScriptRoot/.."
     foreach ($updatedModule in $updatedModules)
     {
         $moduleMetadata = $(Get-ModuleMetadata -Module $updatedModule -RootPath $rootPath)
@@ -381,13 +381,13 @@ function Update-AzPreviewChangelog
 function Update-AzSyntaxChangelog
 {
     Write-Host "starting revise SyntaxChangeLog"
-    $rootPath = "$PSScriptRoot\.."
-    $NewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+    $rootPath = "$PSScriptRoot/.."
+    $NewVersion = (Import-PowerShellDataFile "$PSScriptRoot/Az/Az.psd1").ModuleVersion
     $majorVersion = $NewVersion.Split('.')[0]
-    $syntaxChangeLog = "$rootPath\documentation\SyntaxChangeLog\SyntaxChangeLog.md"
+    $syntaxChangeLog = "$rootPath/documentation/SyntaxChangeLog/SyntaxChangeLog.md"
     Update-ChangeLog -Content "## $NewVersion - $Release" -FilePath $syntaxChangeLog
     $changeLog = Get-Content $syntaxChangeLog -Raw
-    $targetFile = "$rootPath\documentation\SyntaxChangeLog\SyntaxChangeLog-Az$majorVersion.md"
+    $targetFile = "$rootPath/documentation/SyntaxChangeLog/SyntaxChangeLog-Az$majorVersion.md"
     if (-not (Test-Path $targetFile)) {
         New-Item -Path $targetFile -ItemType File
     }
@@ -410,7 +410,7 @@ function Update-AzSyntaxChangelog
 function New-CommandMappingFile
 {
     # Regenerate the cmdlet-to-module mappings for the recommendation feature of uninstalled modules
-    $MappingsFilePath = "$PSScriptRoot\..\src\Accounts\Accounts\Utilities\CommandMappings.json"
+    $MappingsFilePath = "$PSScriptRoot/../src/Accounts/Accounts/Utilities/CommandMappings.json"
     Write-Host "Generating command mapping file at $MappingsFilePath"
     $content = Get-Content $MappingsFilePath | ConvertFrom-Json -Depth 10
     $content.modules = [ordered]@{}
@@ -440,7 +440,7 @@ function New-CommandMappingFile
 
 function Get-Psd1Path {
     $paths = @()
-    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "../src"
     foreach ($DirName in $(Get-ChildItem $SrcPath -Directory).Name)
     {
         $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $DirName)
@@ -481,7 +481,7 @@ switch ($PSCmdlet.ParameterSetName)
         # clean the unnecessary SerializedCmdlets json file
         $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
         $ExpectJsonHashSet = @{}
-        $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+        $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "../src"
         foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
         {
             $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
@@ -524,4 +524,4 @@ switch ($PSCmdlet.ParameterSetName)
 }
 
 # Generate dotnet csv
-&$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
+&$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot/AzPreview/AzPreview.psd1"

@@ -66,8 +66,8 @@ namespace VersionController
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
             _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
-            _projectDirectories = new List<string> { Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
-            _outputDirectories = new List<string> { Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
+            _projectDirectories = new List<string> { Path.Combine(_rootDirectory, @"src/") }.Where((d) => Directory.Exists(d)).ToList();
+            _outputDirectories = new List<string> { Path.Combine(_rootDirectory, @"artifacts/Release/") }.Where((d) => Directory.Exists(d)).ToList();
             _moduleNameFilter = string.Empty;
             _exceptionsDirectory  = Path.Combine(versionControllerDirectory, "Exceptions");
             SharedAssemblyLoader.Load(_outputDirectories.FirstOrDefault());
@@ -106,7 +106,7 @@ namespace VersionController
                         }
                         break;
                 }
-            }           
+            }
         }
 
         private static void GenerateSyntaxChangelog(string projectDirectories)
@@ -167,6 +167,17 @@ namespace VersionController
                 powershell.AddScript("Register-PackageSource -Name PSGallery -Location https://www.powershellgallery.com/api/v2 -ProviderName PowerShellGet");
                 powershell.AddScript("Get-PSRepository");
                 var repositories = powershell.Invoke();
+
+                // write error stream to console
+                if (powershell.Streams.Error.Count > 0)
+                {
+                    Console.WriteLine("Error occurred while executing PowerShell script:");
+                    foreach (var error in powershell.Streams.Error)
+                    {
+                        Console.WriteLine(error.ToString());
+                    }
+                }
+
                 string psgallery = null;
                 foreach (var repo in repositories)
                 {
@@ -225,7 +236,7 @@ namespace VersionController
                 }
 
                 // Clean MinimalVersion.csv
-                File.WriteAllLines(Path.Combine(_rootDirectory, @"tools\VersionController", "MinimalVersion.csv"), _minimalVersionContent.ToArray());
+                File.WriteAllLines(Path.Combine(_rootDirectory, @"tools/VersionController", "MinimalVersion.csv"), _minimalVersionContent.ToArray());
             }
 
             //Make Az.Accounts as the last module to calculate
@@ -263,7 +274,7 @@ namespace VersionController
                 _versionBumper.BumpAllVersions();
             }
         }
-        
+
         /// <summary>
         /// Check if a change log has anything under the Upcoming Release header.
         /// </summary>

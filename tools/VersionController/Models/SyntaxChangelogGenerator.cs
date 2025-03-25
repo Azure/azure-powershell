@@ -20,8 +20,8 @@ namespace VersionController.Netcore.Models
         private List<CmdletDiffInformation> diffInfo = new List<CmdletDiffInformation>();
         public void Analyze(String rootDirectory)
         {
-            var srcDirs = Path.Combine(rootDirectory, @"src\");
-            var toolsCommonDirs = Path.Combine(rootDirectory, @"tools\Tools.Common");
+            var srcDirs = Path.Combine(rootDirectory, @"src/");
+            var toolsCommonDirs = Path.Combine(rootDirectory, @"tools/Tools.Common");
             var manifestFiles = Directory.EnumerateFiles(srcDirs, "Az.*.psd1", SearchOption.AllDirectories)
                                          .Where(file =>
                                              !Path.GetDirectoryName(file)
@@ -424,7 +424,7 @@ namespace VersionController.Netcore.Models
                         }
                         if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
                             sb.AppendFormat("\n");
-                        }                        
+                        }
                     }
                     else
                     {
