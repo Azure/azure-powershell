@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Az.ArizeAI
-This directory contains the PowerShell module for the ArizeAI service.
+This directory contains the PowerShell module for the ArizeAi service.
 
 ---
 ## Info
