@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Validate for modify backup instance operation
 ```powershell
-{{ Add code here }}
+$backupInstanceResource = Get-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId | Where-Object { $_.Name -match $backupInstanceName }
+$backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicy
+
+Test-AzDataProtectionBackupInstanceUpdate -BackupInstanceName $backupInstanceResource.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -BackupInstance $backupInstanceResource.Property
 ```
 
 ```output
-{{ Add output here }}
+ObjectType               JobId
+----------               -----
+OperationJobExtendedInfo
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+First command gets the backup instance resource and updates the policy id. Second command validates whether the update operation will be successful or not. If the output is coming as OperationJobExtendedInfo, then the update operation will be successful and can be continued with Update-AzDataProtectionBackupInstance cmdlet.
