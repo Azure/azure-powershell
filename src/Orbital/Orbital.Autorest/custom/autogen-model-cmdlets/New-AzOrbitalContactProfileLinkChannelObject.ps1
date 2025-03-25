@@ -21,12 +21,13 @@ Create an in-memory object for ContactProfileLinkChannel.
 Create an in-memory object for ContactProfileLinkChannel.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkchannelobject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,16 +37,16 @@ function New-AzOrbitalContactProfileLinkChannelObject {
         [Parameter(Mandatory, HelpMessage="Center Frequency in MHz.")]
         [float]
         $CenterFrequencyMHz,
-        [Parameter(HelpMessage="Configuration for decoding.")]
+        [Parameter(HelpMessage="Currently unused.")]
         [string]
         $DecodingConfiguration,
-        [Parameter(HelpMessage="Configuration for demodulation.")]
+        [Parameter(HelpMessage="Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.")]
         [string]
         $DemodulationConfiguration,
-        [Parameter(HelpMessage="Configuration for encoding.")]
+        [Parameter(HelpMessage="Currently unused.")]
         [string]
         $EncodingConfiguration,
-        [Parameter(Mandatory, HelpMessage="IP Address.")]
+        [Parameter(Mandatory, HelpMessage="IP Address (IPv4).")]
         [string]
         $EndPointIPAddress,
         [Parameter(Mandatory, HelpMessage="Name of an end point.")]
@@ -55,10 +56,10 @@ function New-AzOrbitalContactProfileLinkChannelObject {
         [string]
         $EndPointPort,
         [Parameter(Mandatory, HelpMessage="Protocol either UDP or TCP.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [string]
         $EndPointProtocol,
-        [Parameter(HelpMessage="Configuration for modulation.")]
+        [Parameter(HelpMessage="Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.")]
         [string]
         $ModulationConfiguration,
         [Parameter(Mandatory, HelpMessage="Channel name.")]
@@ -67,7 +68,7 @@ function New-AzOrbitalContactProfileLinkChannelObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLinkChannel]::New()
 
         if ($PSBoundParameters.ContainsKey('BandwidthMHz')) {
             $Object.BandwidthMHz = $BandwidthMHz
