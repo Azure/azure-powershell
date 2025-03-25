@@ -73,9 +73,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact(Skip = "Cannot test EOD as it prevents deletion")]
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void testgenupdateazgalleryimageversion()
+        public void TestGalleryBlockDeletionBeforeEndOfLife()
         {
             TestRunner.RunTestScript("TestGen-BlockDeletionBeforeEndOfLife");
         }

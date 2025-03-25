@@ -1030,7 +1030,7 @@ function TestGen-BlockDeletionBeforeEndOfLife
             -ResourceGroupName $rgname `
             -Location $loc `
             -SourceImageVMId $vm.Id.ToString() `
-            -PublishingProfileEndOfLifeDate '2030-12-01' `
+            -PublishingProfileEndOfLifeDate '2024-12-01' `
             -BlockDeletionBeforeEndOfLife $True
 
         Assert-AreEqual $imagever.SafetyProfile.BlockDeletionBeforeEndOfLife $True
