@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Private IPAddress Prefix Length")]
         public int? PrivateIPAddressPrefixLength { get; set; }
 
-
         public override void Execute()
         {
             base.Execute();
