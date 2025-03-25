@@ -27,7 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParame
 #>
 function New-AzCdnManagedHttpsParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("Add new mandatory parameter CertificateSourceParameterTypeName.", "14.0.0", "4.0.0", "2025-05-19")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("Add new mandatory parameter CertificateSourceParameterTypeName.", "14.0.0", "5.0.0", "2025-05-19")]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
