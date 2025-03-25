@@ -228,16 +228,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 foreach (var newOutput in newCmdlet.OutputTypes)
                 {
-                    if (newOutput != null && newOutput.Type != null)
+                    if (!outputDictionary.ContainsKey(newOutput.Type.Name))
                     {
-                        if (!outputDictionary.ContainsKey(newOutput.Type.Name))
-                        {
-                            outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("This cmdlet {0} has OutputTypes {1} with null type. Please check.", newCmdlet.Name, newOutput.ToString());
+                        outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
                     }
                 }
             }
