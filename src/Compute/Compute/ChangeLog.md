@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 9.1.1
 * Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
 * Added breaking change message for `Get-AzVMSize`.
 
