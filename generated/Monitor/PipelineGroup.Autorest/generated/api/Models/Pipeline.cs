@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         public System.Collections.Generic.List<string> Receiver { get => this._receiver; set => this._receiver = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type= @"logs";
+        private string _type= @"Logs";
 
         /// <summary>The type of pipeline</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]

@@ -31,6 +31,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using FluentAssertions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -146,6 +147,37 @@ Diagnostics (3):
 
             commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Once());
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateProviderNoRbac()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile,
+                ValidationLevel = ValidationLevel.ProviderNoRbac
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            TemplateValidationInfo expectedResults = new(new DeploymentValidateResult());
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+            cmdlet.ValidationLevel = ValidationLevel.ProviderNoRbac;
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+
+            actualParameters.ValidationLevel.Should().Be(ValidationLevel.ProviderNoRbac);
+
+            Assert.NotNull(actualParameters.TemplateParameterObject);
         }
     }
 }

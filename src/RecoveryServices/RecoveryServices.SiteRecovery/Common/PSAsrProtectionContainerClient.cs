@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     mappingName,
@@ -63,6 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             CreateProtectionContainerInput input)
         {
             var op = this.GetSiteRecoveryClient().ReplicationProtectionContainers.BeginCreateWithHttpMessagesAsync(
+                asrVaultCreds.ResourceGroupName,
+                asrVaultCreds.ResourceName,
                 fabricName,
                 protectionContainerName,
                 input.Properties,
@@ -81,7 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainers
-                .ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -107,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainers.ListByReplicationFabricsWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -137,6 +146,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainers.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     this.GetRequestHeaders(true))
@@ -158,6 +169,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings
                 .ListByReplicationProtectionContainersWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     this.GetRequestHeaders(true))
@@ -194,6 +207,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     mappingName,
@@ -219,6 +234,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     mappingName,
@@ -242,6 +259,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings.BeginPurgeWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     mappingName,
@@ -263,6 +282,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string protectionContainerName)
         {
             var op = this.GetSiteRecoveryClient().ReplicationProtectionContainers.BeginDeleteWithHttpMessagesAsync(
+                asrVaultCreds.ResourceGroupName,
+                asrVaultCreds.ResourceName,
                 fabricName,
                 protectionContainerName,
                 this.GetRequestHeaders(true))
@@ -288,6 +309,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectionContainerMappings.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     protectionContainerName,
                     mappingName,
