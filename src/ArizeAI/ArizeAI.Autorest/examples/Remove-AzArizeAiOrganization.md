@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an Organization
 ```powershell
 Remove-AzArizeAIOrganization -ResourceGroupName QM_clitest_qumulo2_eastus -Name test-instance-cli-1
 ```
