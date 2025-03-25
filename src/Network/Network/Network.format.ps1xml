@@ -2011,6 +2011,10 @@
                 <PropertyName>PrivateIpAddressVersion</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PrivateIPAddressPrefixLength</Label>
+                <PropertyName>PrivateIPAddressPrefixLength</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PrivateIpAllocationMethod</Label>
                 <PropertyName>PrivateIpAllocationMethod</PropertyName>
               </ListItem>
@@ -2036,7 +2040,7 @@
               </ListItem>
               <ListItem>
                 <Label>ApplicationSecurityGroups</Label>
-                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
+                <PropertyName>ApplicationSecurityGroupsText2</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

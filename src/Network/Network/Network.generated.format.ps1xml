@@ -6486,6 +6486,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PrivateIpAddressPrefixLength</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>PrivateIpAllocationMethod</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6523,6 +6527,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>PrivateIpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAddressPrefixLength</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

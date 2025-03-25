@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string GatewayLoadBalancerText
+        public string GatewayLoadBalancerText2
         {
             get { return JsonConvert.SerializeObject(GatewayLoadBalancer, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }

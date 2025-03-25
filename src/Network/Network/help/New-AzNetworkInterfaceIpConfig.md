@@ -274,6 +274,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateIPAddressPrefixLength
+Specifies the static IP address prefix length of the network interface IP configuration.
+
+```yaml
+Type: Type: System.UInt16
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrivateIpAddressVersion
 Specifies the IP address version of a network interface IP configuration.
 The acceptable values for this parameter are:
