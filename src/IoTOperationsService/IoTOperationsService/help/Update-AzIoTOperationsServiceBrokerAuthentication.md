@@ -17,14 +17,14 @@ update a BrokerAuthenticationResource
 Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
  -InstanceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthenticationMethod <IBrokerAuthenticatorMethods[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
 ```
 Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -BrokerName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-AuthenticationMethod <IBrokerAuthenticatorMethods[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String> -
 ```
 Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String>
  -BrokerInputObject <IIoTOperationsServiceIdentity> [-AuthenticationMethod <IBrokerAuthenticatorMethods[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzIoTOperationsServiceBrokerAuthentication -AuthenticationName <String>
 ```
 Update-AzIoTOperationsServiceBrokerAuthentication -InputObject <IIoTOperationsServiceIdentity>
  [-AuthenticationMethod <IBrokerAuthenticatorMethods[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -237,21 +237,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
