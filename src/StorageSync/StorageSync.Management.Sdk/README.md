@@ -6,7 +6,6 @@ In this directory, run AutoRest:
 ```
 autorest --reset
 autorest --use:@autorest/powershell@4.x
-autorest.cmd README.md --version=v2
 ```
 
 ### AutoRest Configuration
