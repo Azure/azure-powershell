@@ -14,7 +14,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type <SecretType>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +36,6 @@ BYOC
 Create an in-memory object for AzureFirstPartyManagedCertificateParameters
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Type
 The type of the secret resource.
