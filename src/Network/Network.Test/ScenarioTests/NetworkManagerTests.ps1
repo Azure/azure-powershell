@@ -241,9 +241,15 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $connectivityGroup  = @($connectivityGroupItem)  
 
         $hub = New-AzNetworkManagerHub -ResourceId $hubId -ResourceType "Microsoft.Network/virtualNetworks" 
-        $hubList = @($hub) 
+        $hubList = @($hub)
+        
+        $caps = [PSCustomObject]@{
+            ConnectedGroupPrivateEndpointScale = "HighScale"
+            ConnectedGroupAddressOverlap = "Disallowed"
+            PeeringEnforcement = "Enforced"
+        }
 
-        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapabilities $caps
 
         $connConfig = Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName 
         Assert-NotNull $connConfig;
@@ -257,6 +263,9 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "Microsoft.Network/virtualNetworks" $connConfig.Hubs[0].ResourceType;
         Assert-AreEqual "False"  $connConfig.IsGlobal;
         Assert-AreEqual "True"  $connConfig.DeleteExistingPeering;
+        Assert-AreEqual "HighScale" $connConfig.ConnectivityCapabilities.ConnectedGroupPrivateEndpointScale;
+        Assert-AreEqual "Disallowed" $connConfig.ConnectivityCapabilities.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Enforced" $connConfig.ConnectivityCapabilities.PeeringEnforcement;
 
         $connConfig.Description = "A different description.";
         $newConnConfig = Set-AzNetworkManagerConnectivityConfiguration -InputObject $connConfig

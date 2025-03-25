@@ -163,61 +163,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StopWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Starts the specified connection monitor.
-        /// </summary>
-        /// <remarks>
-        /// Starts the specified connection monitor.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <remarks>
-        /// Query a snapshot of the most recent connection states.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionMonitorQueryResult>> QueryWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Lists all connection monitors for the specified Network Watcher.
         /// </summary>
         /// <remarks>
@@ -330,61 +275,6 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginStopWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Starts the specified connection monitor.
-        /// </summary>
-        /// <remarks>
-        /// Starts the specified connection monitor.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginStartWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <remarks>
-        /// Query a snapshot of the most recent connection states.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionMonitorQueryResult>> BeginQueryWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
