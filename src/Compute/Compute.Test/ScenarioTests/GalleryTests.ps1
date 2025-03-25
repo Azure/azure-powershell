@@ -1000,6 +1000,7 @@ function TestGen-newazgallery
     $imageVersionName = '1.0.0';
     $loc = "eastus2"
     $vmname = "vmgallerytest"
+    $domainNameLabel="123"+$rgname
 
     try
     {
@@ -1014,7 +1015,7 @@ function TestGen-newazgallery
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         # Step 1: Create a new virtual machine in Azure
-        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size "Standard_D2s_v3" -Image "Win2022AzureEdition" -SecurityType "TrustedLaunch"
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size "Standard_D2s_v3" -Image "Win2022AzureEdition" -SecurityType "TrustedLaunch" -DomainNameLabel $domainNameLabel
         $vm = get-azvm -ResourceGroupName $rgname -Name $vmname
 
         # Create a gallery
