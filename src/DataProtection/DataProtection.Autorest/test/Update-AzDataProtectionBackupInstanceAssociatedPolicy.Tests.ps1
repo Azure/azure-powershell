@@ -33,6 +33,10 @@ Describe 'Update-AzDataProtectionBackupInstanceAssociatedPolicy' {
 
         $instance.Property.IdentityDetail.UseSystemAssignedIdentity | Should be $false
         $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl -eq $userAssignedIdentityARMId | Should be $true
+        
+        $validateForModifyBackup = Test-AzDataProtectionBackupInstanceUpdate -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -BackupInstance $instance.Property
+
+        $validateForModifyBackup.ObjectType | Should be "OperationJobExtendedInfo"
 
         $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -SubscriptionId $subscriptionId -UseSystemAssignedIdentity $true
 
