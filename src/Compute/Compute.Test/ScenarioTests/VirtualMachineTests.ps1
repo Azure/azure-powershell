@@ -7889,3 +7889,47 @@ function Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm{
     }
 }
 
+<#
+.SYNOPSIS
+Test-VirtualMachinePlacement creates a VM with zone placement feature. 
+#>
+function Test-VirtualMachinePlacement
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+
+        # create credential
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # create VM with placement feature 
+        $vmname = '1' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -ZonePlacementPolicy "Any" -IncludeZone "1","2" -AlignRegionalDisksToVMZone
+
+        # validate 
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        Assert-AreEqual $vm.placement.zonePlacementPolicy "Any"
+        Assert-AreEqual $vm.placement.includeZones.count 2 
+        Assert-AreEqual $vm.StorageProfile.AlignRegionalDisksToVMZone $true
+
+        # update VM to turn off align 
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -AlignRegionalDisksToVMZone $false
+
+        #Validate
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        Assert-AreEqual $vm.StorageProfile.AlignRegionalDisksToVMZone $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

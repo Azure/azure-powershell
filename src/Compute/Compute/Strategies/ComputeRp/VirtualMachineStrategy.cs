@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
                         ExtendedLocation = extendedLocation,
-                        Placement = (zonePlacementPolicy == null || includeZone == null || excludeZone == null) ? null : new Placement
+                        Placement = (zonePlacementPolicy == null && includeZone == null && excludeZone == null) ? null : new Placement
                         {
                             ZonePlacementPolicy = zonePlacementPolicy,
                             IncludeZones = includeZone,
