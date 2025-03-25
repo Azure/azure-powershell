@@ -959,5 +959,9 @@
   {
     "module": "ScVmm",
     "alias": "ScVmm"
-  }
+  },
+  {
+    "module": "WeightsAndBiases",
+    "alias": "WeightsAndBiases"
+  },
 ]
