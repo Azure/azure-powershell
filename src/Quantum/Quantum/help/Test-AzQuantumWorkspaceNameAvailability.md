@@ -15,27 +15,27 @@ Check the availability of the resource name.
 ### CheckExpanded (Default)
 ```
 Test-AzQuantumWorkspaceNameAvailability -LocationName <String> [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzQuantumWorkspaceNameAvailability -LocationName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzQuantumWorkspaceNameAvailability -LocationName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzQuantumWorkspaceNameAvailability -InputObject <IQuantumIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,21 +141,6 @@ Name for checking availability.
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
