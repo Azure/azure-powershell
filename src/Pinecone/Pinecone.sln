@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinecone", "Pinecone\Pinecone.csproj", "{E1681B16-0A31-4B70-8248-92F7A7ACF120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Pinecone", "..\..\generated\Pinecone\Pinecone.Autorest\Az.Pinecone.csproj", "{1422E40D-56CE-4230-BDEE-F02F998D312E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Pinecone", "Pinecone.Autorest\Az.Pinecone.csproj", "{FC56BEEB-071C-4EBF-97A9-10C972A9752E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{E1681B16-0A31-4B70-8248-92F7A7ACF120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1681B16-0A31-4B70-8248-92F7A7ACF120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1681B16-0A31-4B70-8248-92F7A7ACF120}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1422E40D-56CE-4230-BDEE-F02F998D312E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1422E40D-56CE-4230-BDEE-F02F998D312E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1422E40D-56CE-4230-BDEE-F02F998D312E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1422E40D-56CE-4230-BDEE-F02F998D312E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC56BEEB-071C-4EBF-97A9-10C972A9752E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC56BEEB-071C-4EBF-97A9-10C972A9752E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC56BEEB-071C-4EBF-97A9-10C972A9752E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC56BEEB-071C-4EBF-97A9-10C972A9752E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D825394-3586-4625-A27C-41E39DF8C4D2} = {7D340297-09D0-4E97-978F-2CAF6BCFCB26}
