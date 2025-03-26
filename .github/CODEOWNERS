@@ -1,6 +1,6 @@
 # To make sure Network PRs go to the right branch, e.g. network-april
 /src/Network/    @Joanna-Yang-Art @htippanaboya
-/src/Compute/    @EdwinBernal1 @grizzlytheodore @ntangy @sandido
+/src/Compute/    @edwinbernal1 @grizzlytheodore @ntangy @sandido
 /src/PolicyInsights/  @pilor
 /src/Batch/ @wiboris @dpwatrous
 
