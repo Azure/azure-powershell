@@ -22,7 +22,7 @@ using System.Xml.Linq;
 namespace Microsoft.Azure.Commands.TrustedSigning
 {
     [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning")]
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "TrustedSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class InvokeCIPolicySigning : CodeSigningCmdletBase
     {
@@ -120,19 +120,21 @@ namespace Microsoft.Azure.Commands.TrustedSigning
         {
             ValidateFileType(ResolvePath(Path));
 
-
-            WriteMessage("CI Policy signing in progress....");
-
-            if (!string.IsNullOrEmpty(AccountName))
+            if (ShouldProcess(Destination, string.Format("Signing file '{0}' into destination '{1}'", Path, Destination)))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
-            }
-            else if (!string.IsNullOrEmpty(MetadataFilePath))
-            {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
-            }
+                WriteMessage("CI Policy signing in progress....");
 
-            WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));
+                if (!string.IsNullOrEmpty(AccountName))
+                {
+                    CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
+                }
+                else if (!string.IsNullOrEmpty(MetadataFilePath))
+                {
+                    CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
+                }
+
+                WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));
+            }
         }
         private void WriteMessage(string message)
         {
