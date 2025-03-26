@@ -1,7 +1,7 @@
 ### Example 1: Validate for modify backup instance operation
 ```powershell
 $backupInstanceResource = Get-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId | Where-Object { $_.Name -match $backupInstanceName }
-$backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicy
+$backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicyARMId
 
 Test-AzDataProtectionBackupInstanceUpdate -BackupInstanceName $backupInstanceResource.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -BackupInstance $backupInstanceResource.Property
 ```
