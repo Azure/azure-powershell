@@ -8,29 +8,58 @@ schema: 2.0.0
 # New-AzADDomainService
 
 ## SYNOPSIS
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DomainName <String> -ReplicaSet <IReplicaSet[]> [-DomainConfigurationType <String>]
- [-DomainSecuritySettingNtlmV1 <NtlmV1>] [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
- [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
- [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
- [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
- [-LdapSettingExternalAccess <ExternalAccess>] [-LdapSettingLdaps <Ldaps>]
- [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
- [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
- [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
- [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ResourceForest <String>] [-Sku <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -DomainName <String> [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
+ [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
+ [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>] [-Etag <String>]
+ [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
+ [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificateInputFile <String>]
+ [-LdapSettingPfxCertificatePassword <SecureString>] [-Location <String>]
+ [-NotificationSettingAdditionalRecipient <String[]>] [-NotificationSettingNotifyDcAdmin <String>]
+ [-NotificationSettingNotifyGlobalAdmin <String>] [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>]
+ [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DomainName <String> [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
+ [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
+ [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>] [-Etag <String>]
+ [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
+ [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificateInputFile <String>]
+ [-LdapSettingPfxCertificatePassword <SecureString>] [-Location <String>]
+ [-NotificationSettingAdditionalRecipient <String[]>] [-NotificationSettingNotifyDcAdmin <String>]
+ [-NotificationSettingNotifyGlobalAdmin <String>] [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>]
+ [-Sku <String>] [-Tag <Hashtable>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DomainName <String> [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
+ [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
+ [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>] [-Etag <String>]
+ [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
+ [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificateInputFile <String>]
+ [-LdapSettingPfxCertificatePassword <SecureString>] [-Location <String>]
+ [-NotificationSettingAdditionalRecipient <String[]>] [-NotificationSettingNotifyDcAdmin <String>]
+ [-NotificationSettingNotifyGlobalAdmin <String>] [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>]
+ [-Sku <String>] [-Tag <Hashtable>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 
 ## EXAMPLES
@@ -55,9 +84,9 @@ Create a new ADDomainService
 $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
 $certificateBytes = Get-Content "certificate.pfx" -AsByteStream
 $base64String = [System.Convert]::ToBase64String($certificateBytes) 
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$ldaps_pfx_pass = "MyStrongPassword"
 
-New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $password
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
 ```
 
 ```output
@@ -86,7 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -134,7 +164,7 @@ Accept wildcard characters: False
 A flag to determine whether or not NtlmV1 is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +179,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +194,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +209,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +224,7 @@ Accept wildcard characters: False
 A flag to determine whether or not TlsV1 is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +254,7 @@ Accept wildcard characters: False
 Enabled or Disabled flag to turn on Group-based filtered sync
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -237,10 +267,9 @@ Accept wildcard characters: False
 
 ### -ForestTrust
 List of settings for Resource Forest
-To construct, see NOTES section for FORESTTRUST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]
 Parameter Sets: (All)
 Aliases:
 
@@ -251,11 +280,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LdapSettingExternalAccess
 A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +329,7 @@ Accept wildcard characters: False
 A flag to determine whether or not Secure LDAP is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -361,7 +420,7 @@ Accept wildcard characters: False
 Should domain controller admins be notified
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +435,7 @@ Accept wildcard characters: False
 Should global admins be notified
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -404,14 +463,13 @@ Accept wildcard characters: False
 
 ### -ReplicaSet
 List of ReplicaSets
-To construct, see NOTES section for REPLICASET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -533,7 +591,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 
 ## NOTES
 
