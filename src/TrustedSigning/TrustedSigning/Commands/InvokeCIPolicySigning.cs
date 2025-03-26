@@ -118,10 +118,10 @@ namespace Microsoft.Azure.Commands.TrustedSigning
 
         public override void ExecuteCmdlet()
         {
-            ValidateFileType(ResolvePath(Path));
-
-            if (ShouldProcess(Destination, string.Format("Signing file '{0}' into destination '{1}'", Path, Destination)))
+            if (ShouldProcess(Destination, string.Format("Signing '{0}'", Path)))
             {
+                ValidateFileType(ResolvePath(Path));
+
                 WriteMessage("CI Policy signing in progress....");
 
                 if (!string.IsNullOrEmpty(AccountName))
