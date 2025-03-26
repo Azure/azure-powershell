@@ -4,6 +4,8 @@ This module is designed to help developers of Azure PowerShell modules. It provi
 
 All the cmdlets in this module are prefixed with `Dev-` to avoid conflicts with other modules.
 
+Like many other tools, this module targets `net8.0` so always run it in PowerShell 7.2 or later.
+
 - [Quick start](#quick-start)
 - [Features](#features)
   - [Repo inventory](#repo-inventory)
