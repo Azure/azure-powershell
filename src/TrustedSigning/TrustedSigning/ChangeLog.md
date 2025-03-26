@@ -22,4 +22,5 @@
 ## Version 0.1.0
 * Renamed from Az.CodeSigning
 * Adding support for control-plane commands via Az.TrustedSigning.Autorest
+* Modified InvokeCiPolicySigning to include ShouldProcess command confirmation
     
