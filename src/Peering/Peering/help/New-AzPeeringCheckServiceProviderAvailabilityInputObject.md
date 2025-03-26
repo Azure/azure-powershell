@@ -22,27 +22,18 @@ Create an in-memory object for CheckServiceProviderAvailabilityInput.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a check service provider availability object
 ```powershell
-{{ Add code here }}
+New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+PeeringServiceLocation PeeringServiceProvider
+---------------------- ----------------------
+Osaka                  IIJ
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a CheckServiceProviderAvailabilityInputObject with the specified location and provider and stores it in memory
 
 ## PARAMETERS
 
