@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcontactdetailobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for ContactDetail.
 ## SYNTAX
 
 ```
-New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <Role>] [<CommonParameters>]
+New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,18 +21,27 @@ Create an in-memory object for ContactDetail.
 
 ## EXAMPLES
 
-### Example 1: Create a Contact Detail object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
+{{ Add code here }}
 ```
 
 ```output
-Email       Phone      Role
------       -----      ----
-abc@xyz.com 1234567890 Noc
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a ContactDetail object with the specified email phone and role stores it in memory
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,7 +79,7 @@ Accept wildcard characters: False
 The role of the contact.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Role
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ContactDetail
 
 ## NOTES
 

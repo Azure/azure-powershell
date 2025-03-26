@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringCheckServiceProviderAvailabilityInputObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringcheckserviceprovideravailabilityinputobject
 schema: 2.0.0
 ---
 
@@ -22,18 +22,27 @@ Create an in-memory object for CheckServiceProviderAvailabilityInput.
 
 ## EXAMPLES
 
-### Example 1: Create a check service provider availability object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
+{{ Add code here }}
 ```
 
 ```output
-PeeringServiceLocation PeeringServiceProvider
----------------------- ----------------------
-Osaka                  IIJ
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a CheckServiceProviderAvailabilityInputObject with the specified location and provider and stores it in memory
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput
 
 ## NOTES
 

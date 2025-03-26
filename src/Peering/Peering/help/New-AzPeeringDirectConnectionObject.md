@@ -1,7 +1,7 @@
 ---
 external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringdirectconnectionobject
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ New-AzPeeringDirectConnectionObject [-BandwidthInMbps <Int32>] [-BgpSessionMaxPr
  [-BgpSessionMicrosoftSessionIPv4Address <String>] [-BgpSessionMicrosoftSessionIPv6Address <String>]
  [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
  [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
- [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <SessionAddressProvider>]
- [-UseForPeeringService <Boolean>] [<CommonParameters>]
+ [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <String>] [-UseForPeeringService <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,20 +27,27 @@ Create an in-memory object for DirectConnection.
 
 ## EXAMPLES
 
-### Example 1: Create a direct connection object
+### Example 1: {{ Add title here }}
 ```powershell
-$md5Key = "******"
-
-New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
+{{ Add code here }}
 ```
 
 ```output
-BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps
---------------- -------------------- --------------- ------------ ------------------- ------------------- --------------------------
-10000           c111111111111        PendingApproval                                  82
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates an in-memory direct connection object
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -228,7 +235,7 @@ Accept wildcard characters: False
 The field indicating if Microsoft provides session ip addresses.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection
 
 ## NOTES
 

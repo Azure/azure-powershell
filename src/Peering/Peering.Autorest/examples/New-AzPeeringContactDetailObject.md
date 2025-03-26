@@ -1,13 +1,22 @@
-### Example 1: Create a Contact Detail object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
+{{ Add code here }}
 ```
 
 ```output
-Email       Phone      Role
------       -----      ----
-abc@xyz.com 1234567890 Noc
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a ContactDetail object with the specified email phone and role stores it in memory
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

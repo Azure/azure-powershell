@@ -1,15 +1,22 @@
-### Example 1: Create an exchange connection object
+### Example 1: {{ Add title here }}
 ```powershell
-$md5Key = "******"
-
-New-AzPeeringExchangeConnectionObject -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -ConnectionIdentifier c111111111111
+{{ Add code here }}
 ```
 
 ```output
-ConnectionIdentifier ConnectionState ErrorMessage PeeringDbFacilityId
--------------------- --------------- ------------ -------------------
-c111111111111                                     82
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a exchange connection object in memory
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
