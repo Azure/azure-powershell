@@ -751,7 +751,7 @@ function Test-GetAzApplyUpdateWithoutParentResource
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
     $virtualMachineName = Get-RandomVirtualMachineName
-    $location = "westus"
+    $location = "westus2"
     $maintenanceScope = "InGuestPatch"
     $duration = "02:00"
     $actualStartDateTime = $actualStartTime.ToString("yyyy-MM-dd HH:mm")
