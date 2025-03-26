@@ -72,6 +72,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GalleryImageDefinitionDefaults");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void testgennewazgallery()
+        {
+            TestRunner.RunTestScript("TestGen-newazgallery");
+        }
+        
         [Fact(Skip = "Cannot test EOD as it prevents deletion")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGalleryBlockDeletionBeforeEndOfLife()
