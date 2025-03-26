@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void testgennewazgallery()
         {
             TestRunner.RunTestScript("TestGen-newazgallery");
+        }
+        
+        [Fact(Skip = "Cannot test EOD as it prevents deletion")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryBlockDeletionBeforeEndOfLife()
+        {
+            TestRunner.RunTestScript("TestGen-BlockDeletionBeforeEndOfLife");
         }
     }
 }

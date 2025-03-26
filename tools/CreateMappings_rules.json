@@ -959,5 +959,17 @@
   {
     "module": "ScVmm",
     "alias": "ScVmm"
-  }
+  },
+  {
+    "alias": "ArizeAI",
+    "module": "ArizeAI"
+  },
+  {
+    "module": "WeightsAndBiases",
+    "alias": "WeightsAndBiases"
+  },
+  {
+    "module": "Pinecone",
+    "alias": "Pinecone"
+  },
 ]

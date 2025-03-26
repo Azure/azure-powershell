@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
+* Added new parameter `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
 * Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
 * Added breaking change message for `Get-AzVMSize`.
 
