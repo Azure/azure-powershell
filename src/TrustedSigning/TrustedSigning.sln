@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{7A062235-C440-491C-AB28-1BEF6066B5C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{DA76563A-9EDD-4C16-B145-3729C71CE139}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "..\..\generated\TrustedSigning\TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{DA76563A-9EDD-4C16-B145-3729C71CE139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
