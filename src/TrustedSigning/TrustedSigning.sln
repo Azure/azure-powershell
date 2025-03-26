@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.TrustedSigning", "..\..\generated\TrustedSigning\TrustedSigning.Autorest\Az.TrustedSigning.csproj", "{DA76563A-9EDD-4C16-B145-3729C71CE139}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{86128D66-090F-3D0D-B081-F8F6D609F8F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{DA76563A-9EDD-4C16-B145-3729C71CE139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA76563A-9EDD-4C16-B145-3729C71CE139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA76563A-9EDD-4C16-B145-3729C71CE139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86128D66-090F-3D0D-B081-F8F6D609F8F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
