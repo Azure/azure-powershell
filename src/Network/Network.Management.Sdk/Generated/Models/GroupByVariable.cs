@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
 
         /// <param name="variableName">User Session clause variable.
-        /// Possible values include: &#39;ClientAddr&#39;, &#39;GeoLocation&#39;, &#39;None&#39;,
-        /// &#39;ClientAddrXFFHeader&#39;, &#39;GeoLocationXFFHeader&#39;</param>
+        /// Possible values include: &#39;ClientAddr&#39;, &#39;GeoLocation&#39;, &#39;None&#39;</param>
         public GroupByVariable(string variableName)
 
         {
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets user Session clause variable. Possible values include: &#39;ClientAddr&#39;, &#39;GeoLocation&#39;, &#39;None&#39;, &#39;ClientAddrXFFHeader&#39;, &#39;GeoLocationXFFHeader&#39;
+        /// Gets or sets user Session clause variable. Possible values include: &#39;ClientAddr&#39;, &#39;GeoLocation&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "variableName")]
         public string VariableName {get; set; }

@@ -98,11 +98,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateEndpointVNetPolicies">Private Endpoint VNet Policies.
         /// Possible values include: &#39;Disabled&#39;, &#39;Basic&#39;</param>
-
-        /// <param name="defaultPublicNatGateway">A reference to the default public nat gateway being used by this virtual
-        /// network resource.
-        /// </param>
-        public VirtualNetwork(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), string provisioningState = default(string), int? flowTimeoutInMinutes = default(int?), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<VirtualNetworkPeering> virtualNetworkPeerings = default(System.Collections.Generic.IList<VirtualNetworkPeering>), string resourceGuid = default(string), bool? enableDdosProtection = default(bool?), bool? enableVMProtection = default(bool?), SubResource ddosProtectionPlan = default(SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), VirtualNetworkEncryption encryption = default(VirtualNetworkEncryption), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<FlowLog> flowLogs = default(System.Collections.Generic.IList<FlowLog>), string privateEndpointVNetPolicies = default(string), SubResource defaultPublicNatGateway = default(SubResource))
+        public VirtualNetwork(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), string provisioningState = default(string), int? flowTimeoutInMinutes = default(int?), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<VirtualNetworkPeering> virtualNetworkPeerings = default(System.Collections.Generic.IList<VirtualNetworkPeering>), string resourceGuid = default(string), bool? enableDdosProtection = default(bool?), bool? enableVMProtection = default(bool?), SubResource ddosProtectionPlan = default(SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), VirtualNetworkEncryption encryption = default(VirtualNetworkEncryption), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<FlowLog> flowLogs = default(System.Collections.Generic.IList<FlowLog>), string privateEndpointVNetPolicies = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -123,7 +119,6 @@ namespace Microsoft.Azure.Management.Network.Models
             this.IPAllocations = ipAllocations;
             this.FlowLogs = flowLogs;
             this.PrivateEndpointVNetPolicies = privateEndpointVNetPolicies;
-            this.DefaultPublicNatGateway = defaultPublicNatGateway;
             CustomInit();
         }
 
@@ -242,13 +237,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpointVNetPolicies")]
         public string PrivateEndpointVNetPolicies {get; set; }
-
-        /// <summary>
-        /// Gets a reference to the default public nat gateway being used by this
-        /// virtual network resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultPublicNatGateway")]
-        public SubResource DefaultPublicNatGateway {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -283,7 +271,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.Encryption.Validate();
             }
-
 
 
 

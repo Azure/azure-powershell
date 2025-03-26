@@ -32,16 +32,12 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ruleGroupOverrides">Defines the rule group overrides to apply to the rule set.
         /// </param>
-
-        /// <param name="computedDisabledRules">Stores the final list of disabled rule groups
-        /// </param>
-        public ManagedRuleSet(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ManagedRuleGroupOverride> ruleGroupOverrides = default(System.Collections.Generic.IList<ManagedRuleGroupOverride>), System.Collections.Generic.IList<ManagedRuleSetRuleGroup> computedDisabledRules = default(System.Collections.Generic.IList<ManagedRuleSetRuleGroup>))
+        public ManagedRuleSet(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ManagedRuleGroupOverride> ruleGroupOverrides = default(System.Collections.Generic.IList<ManagedRuleGroupOverride>))
 
         {
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
             this.RuleGroupOverrides = ruleGroupOverrides;
-            this.ComputedDisabledRules = computedDisabledRules;
             CustomInit();
         }
 
@@ -68,12 +64,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ruleGroupOverrides")]
         public System.Collections.Generic.IList<ManagedRuleGroupOverride> RuleGroupOverrides {get; set; }
-
-        /// <summary>
-        /// Gets stores the final list of disabled rule groups
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "computedDisabledRules")]
-        public System.Collections.Generic.IList<ManagedRuleSetRuleGroup> ComputedDisabledRules {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -95,16 +85,6 @@ namespace Microsoft.Azure.Management.Network.Models
             if (this.RuleGroupOverrides != null)
             {
                 foreach (var element in this.RuleGroupOverrides)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (this.ComputedDisabledRules != null)
-            {
-                foreach (var element in this.ComputedDisabledRules)
                 {
                     if (element != null)
                     {

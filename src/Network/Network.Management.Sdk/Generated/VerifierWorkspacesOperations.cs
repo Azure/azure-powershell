@@ -533,10 +533,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='workspaceName'>
         /// Workspace name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='body'>
         /// Verifier Workspace object to create/update.
         /// </param>
@@ -561,7 +557,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VerifierWorkspace>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, VerifierWorkspace body, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VerifierWorkspace>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, VerifierWorkspace body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -607,7 +603,6 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-
             string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -620,7 +615,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("ifMatch", ifMatch);
 
                 tracingParameters.Add("body", body);
 
@@ -662,14 +656,6 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-            if (ifMatch != null)
-            {
-                if (_httpRequest.Headers.Contains("If-Match"))
-                {
-                    _httpRequest.Headers.Remove("If-Match");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)
@@ -810,10 +796,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='workspaceName'>
         /// Workspace name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='body'>
         /// Verifier Workspace object to create/update.
         /// </param>
@@ -838,7 +820,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VerifierWorkspace>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), VerifierWorkspaceUpdate body = default(VerifierWorkspaceUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VerifierWorkspace>> UpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, VerifierWorkspaceUpdate body = default(VerifierWorkspaceUpdate), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -876,7 +858,6 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-
             string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -889,7 +870,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("ifMatch", ifMatch);
 
                 tracingParameters.Add("body", body);
 
@@ -931,14 +911,6 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-            if (ifMatch != null)
-            {
-                if (_httpRequest.Headers.Contains("If-Match"))
-                {
-                    _httpRequest.Headers.Remove("If-Match");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)
@@ -1061,20 +1033,16 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='workspaceName'>
         /// Workspace name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1089,10 +1057,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='workspaceName'>
         /// Workspace name.
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1112,7 +1076,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VerifierWorkspacesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1150,7 +1114,6 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "workspaceName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
-
             string apiVersion = "2024-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -1163,7 +1126,6 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("ifMatch", ifMatch);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1204,14 +1166,6 @@ namespace Microsoft.Azure.Management.Network
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
-            }
-            if (ifMatch != null)
-            {
-                if (_httpRequest.Headers.Contains("If-Match"))
-                {
-                    _httpRequest.Headers.Remove("If-Match");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("If-Match", ifMatch);
             }
 
             if (customHeaders != null)

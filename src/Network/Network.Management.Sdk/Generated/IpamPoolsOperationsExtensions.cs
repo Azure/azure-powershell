@@ -96,13 +96,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
-        public static IpamPool Create(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string))
+        public static IpamPool Create(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body)
         {
-                return ((IIpamPoolsOperations)operations).CreateAsync(resourceGroupName, networkManagerName, poolName, body, ifMatch).GetAwaiter().GetResult();
+                return ((IIpamPoolsOperations)operations).CreateAsync(resourceGroupName, networkManagerName, poolName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -120,16 +116,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPool> CreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPool> CreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -149,13 +141,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
-        public static IpamPool Update(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), IpamPoolUpdate body = default(IpamPoolUpdate))
+        public static IpamPool Update(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPoolUpdate body = default(IpamPoolUpdate))
         {
-                return ((IIpamPoolsOperations)operations).UpdateAsync(resourceGroupName, networkManagerName, poolName, ifMatch, body).GetAwaiter().GetResult();
+                return ((IIpamPoolsOperations)operations).UpdateAsync(resourceGroupName, networkManagerName, poolName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -173,16 +161,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPool> UpdateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), IpamPoolUpdate body = default(IpamPoolUpdate), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPool> UpdateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPoolUpdate body = default(IpamPoolUpdate), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, ifMatch, body, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -247,13 +231,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
-        public static IpamPoolsDeleteHeaders Delete(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string))
+        public static IpamPoolsDeleteHeaders Delete(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName)
         {
-                return ((IIpamPoolsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName, ifMatch).GetAwaiter().GetResult();
+                return ((IIpamPoolsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -271,16 +251,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPoolsDeleteHeaders> DeleteAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPoolsDeleteHeaders> DeleteAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -390,13 +366,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
-        public static IpamPool BeginCreate(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string))
+        public static IpamPool BeginCreate(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body)
         {
-                return ((IIpamPoolsOperations)operations).BeginCreateAsync(resourceGroupName, networkManagerName, poolName, body, ifMatch).GetAwaiter().GetResult();
+                return ((IIpamPoolsOperations)operations).BeginCreateAsync(resourceGroupName, networkManagerName, poolName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -414,16 +386,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPool> BeginCreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPool> BeginCreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -443,13 +411,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
-        public static IpamPoolsDeleteHeaders BeginDelete(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string))
+        public static IpamPoolsDeleteHeaders BeginDelete(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName)
         {
-                return ((IIpamPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName, ifMatch).GetAwaiter().GetResult();
+                return ((IIpamPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -467,16 +431,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// Pool resource name.
         /// </param>
-        /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the pool to update. This value can be
-        /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPoolsDeleteHeaders> BeginDeleteAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPoolsDeleteHeaders> BeginDeleteAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }

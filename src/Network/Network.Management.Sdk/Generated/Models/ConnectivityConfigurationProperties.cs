@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConnectivityConfigurationProperties(string connectivityTopology, System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups, string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), string isGlobal = default(string), ConnectivityConfigurationPropertiesConnectivityCapabilities connectivityCapabilities = default(ConnectivityConfigurationPropertiesConnectivityCapabilities), string provisioningState = default(string), string deleteExistingPeering = default(string), string resourceGuid = default(string))
+        public ConnectivityConfigurationProperties(string connectivityTopology, System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups, string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), string isGlobal = default(string), object connectivityCapabilities = default(object), string provisioningState = default(string), string deleteExistingPeering = default(string), string resourceGuid = default(string))
 
         {
             this.Description = description;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// behaviors of the connectivity configuration resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectivityCapabilities")]
-        public ConnectivityConfigurationPropertiesConnectivityCapabilities ConnectivityCapabilities {get; set; }
+        public object ConnectivityCapabilities {get; set; }
 
         /// <summary>
         /// Gets or sets groups for configuration
@@ -147,10 +147,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
-            if (this.ConnectivityCapabilities != null)
-            {
-                this.ConnectivityCapabilities.Validate();
-            }
+
             if (this.AppliesToGroups != null)
             {
                 foreach (var element in this.AppliesToGroups)
