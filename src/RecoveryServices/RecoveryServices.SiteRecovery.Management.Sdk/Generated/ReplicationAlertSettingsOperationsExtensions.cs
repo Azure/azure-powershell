@@ -18,9 +18,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Alert> List(this IReplicationAlertSettingsOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Alert> List(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationAlertSettingsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationAlertSettingsOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -29,12 +36,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Alert>> ListAsync(this IReplicationAlertSettingsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Alert>> ListAsync(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -45,12 +59,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='alertSettingName'>
         /// The name of the email notification configuration.
         /// </param>
-        public static Alert Get(this IReplicationAlertSettingsOperations operations, string alertSettingName)
+        public static Alert Get(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName, string alertSettingName)
         {
-                return ((IReplicationAlertSettingsOperations)operations).GetAsync(alertSettingName).GetAwaiter().GetResult();
+                return ((IReplicationAlertSettingsOperations)operations).GetAsync(resourceGroupName, resourceName, alertSettingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -59,15 +80,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='alertSettingName'>
         /// The name of the email notification configuration.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Alert> GetAsync(this IReplicationAlertSettingsOperations operations, string alertSettingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Alert> GetAsync(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName, string alertSettingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(alertSettingName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, alertSettingName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +106,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='alertSettingName'>
         /// The name of the email notification(alert) configuration.
         /// </param>
-        public static Alert Create(this IReplicationAlertSettingsOperations operations, string alertSettingName, ConfigureAlertRequestProperties properties = default(ConfigureAlertRequestProperties))
+        public static Alert Create(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName, string alertSettingName, ConfigureAlertRequestProperties properties = default(ConfigureAlertRequestProperties))
         {
-                return ((IReplicationAlertSettingsOperations)operations).CreateAsync(alertSettingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationAlertSettingsOperations)operations).CreateAsync(resourceGroupName, resourceName, alertSettingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -92,15 +127,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='alertSettingName'>
         /// The name of the email notification(alert) configuration.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Alert> CreateAsync(this IReplicationAlertSettingsOperations operations, string alertSettingName, ConfigureAlertRequestProperties properties = default(ConfigureAlertRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Alert> CreateAsync(this IReplicationAlertSettingsOperations operations, string resourceGroupName, string resourceName, string alertSettingName, ConfigureAlertRequestProperties properties = default(ConfigureAlertRequestProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(alertSettingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, alertSettingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

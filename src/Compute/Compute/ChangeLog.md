@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
 * Added breaking change message for `Get-AzVMSize`.
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
 * Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.
