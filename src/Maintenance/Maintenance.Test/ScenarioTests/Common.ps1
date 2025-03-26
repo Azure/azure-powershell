@@ -122,9 +122,9 @@ function New-VirtualMachine(
     $vnetAddressPrefix = "10.0.0.0/16"
     $securityType = "Standard"
     $imagePublisher = "MicrosoftWindowsServer"
-    $imageOffer = "WinsowsServer"
-    $imageSku = "2022-datacenter-azure-edition"
-    $imageVersion = "latest"
+    $imagePublisher = "MicrosoftVisualStudio"
+    $imageOffer = "Windows"
+    $imageSku = "Windows-10-N-x64"
 
     $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
     $vnet = New-AzVirtualNetwork `
