@@ -1,4 +1,4 @@
-//
+ //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,6 +100,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
                         }
                         galleryImageVersion.PublishingProfile.EndOfLifeDate = this.PublishingProfileEndOfLifeDate;
+                    }
+                    if (this.IsParameterBound(c => c.BlockDeletionBeforeEndOfLife))
+                    {
+                        if (galleryImageVersion.SafetyProfile == null)
+                        {
+                            galleryImageVersion.SafetyProfile = new GalleryImageVersionSafetyProfile();
+                        }
+                        galleryImageVersion.SafetyProfile.BlockDeletionBeforeEndOfLife = this.BlockDeletionBeforeEndOfLife.IsPresent;
                     }
 
                     if (this.IsParameterBound(c => c.StorageAccountType))
@@ -410,6 +418,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The target extended locations where the Image Version is going to be replicated to. This property is updatable.")]
         public Hashtable[] TargetExtendedLocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "This boolean will be passed by the customers to enable their GalleryImageVersion resources from accidental deletions. If this boolean is set to true, the image deletions will be blocked before its EndOfLife date.")]
+        public SwitchParameter BlockDeletionBeforeEndOfLife { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageVersion", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -490,6 +504,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
                         }
                         galleryImageVersion.PublishingProfile.EndOfLifeDate = this.PublishingProfileEndOfLifeDate;
+                    }
+
+                    if (this.IsParameterBound(c => c.BlockDeletionBeforeEndOfLife))
+                    {
+                        if (galleryImageVersion.SafetyProfile == null)
+                        {
+                            galleryImageVersion.SafetyProfile = new GalleryImageVersionSafetyProfile();
+                        }
+                        galleryImageVersion.SafetyProfile.BlockDeletionBeforeEndOfLife = this.BlockDeletionBeforeEndOfLife;
                     }
 
                     if (this.IsParameterBound(c => c.TargetRegion))
@@ -714,5 +737,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.")]
         public bool AllowDeletionOfReplicatedLocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "This boolean will be passed by the customers to enable their GalleryImageVersion resources from accidental deletions. If this boolean is set to true, the image deletions will be blocked before its EndOfLife date.")]
+        public bool? BlockDeletionBeforeEndOfLife { get; set; }
     }
 }
