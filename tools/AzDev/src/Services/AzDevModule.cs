@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using AzDev.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Tests")]
 
@@ -22,28 +23,21 @@ namespace AzDev.Services
 {
     internal static class AzDevModule
     {
-        private static readonly IDictionary<string, object> Components;
+        private static IServiceProvider _serviceProvider;
 
-        static AzDevModule()
+        public static void Initialize()
         {
-            Components = new Dictionary<string, object>();
+            var services = new ServiceCollection();
+
+            services.AddSingleton<IContextProvider, DefaultContextProvider>(sp => new DefaultContextProvider(Constants.DevContextFilePath));
+            services.AddSingleton<ICodebaseProvider, DefaultCodebaseProvider>(sp => new DefaultCodebaseProvider(sp.GetRequiredService<IContextProvider>()));
+
+            _serviceProvider = services.BuildServiceProvider();
         }
 
-        public static T GetComponent<T>(string key)
+        public static T GetService<T>() where T : class
         {
-            if (Components[key] is T t)
-            {
-                return t;
-            }
-            else
-            {
-                throw new ArgumentException($"Mismatching type. Expect [{typeof(T)}]. Got [{Components[key].GetType()}].");
-            }
-        }
-
-        public static void SetComponent<T>(string key, T value)
-        {
-            Components[key] = value;
+            return _serviceProvider.GetService<T>();
         }
     }
 }
