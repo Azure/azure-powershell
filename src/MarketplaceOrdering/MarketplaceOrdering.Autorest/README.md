@@ -35,14 +35,7 @@ input-file:
 
 title: MarketplaceOrdering
 subject-prefix: Marketplace
-
-identity-correction-for-post: true
-nested-object-to-string: true
 inlining-threshold: 50
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -54,6 +47,19 @@ directive:
       subject: SignMarketplaceAgreement
     set:
       subject: SignTerms
+  
+  # Hide not mapped variant. 
+  - where:
+      verb: Stop
+      subject: MarketplaceTerms
+      variant: ^CancelViaIdentityAgreement$|^CancelViaIdentityOffer$
+    hide: true
+
+  - where:
+      verb: Invoke
+      subject: SignTerms
+      variant: ^SignViaIdentityAgreement$|^SignViaIdentityOffer$
+    hide: true
 
   - where: 
       subject: ^MarketplaceTerms$
@@ -122,7 +128,7 @@ directive:
       parameter-name: Name
 
   - where:
-      verb: Set
+      verb: Set|Update
       subject: MarketplaceTerms
     hide: true
 
