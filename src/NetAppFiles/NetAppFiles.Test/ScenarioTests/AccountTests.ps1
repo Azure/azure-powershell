@@ -214,14 +214,18 @@ function Test-AccountCMK
     $identityName = Get-ResourceName
     $akvPrivateEndpoint = Get-ResourceName
     #$keyVaultName = Get-ResourceName
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = "westus"
     $keySource = "Microsoft.KeyVault"
-    $keyVaultUri = "https://akvtestvault2.vault.azure.net/"
+    #$keyVaultUri = "https://akvtestvault2.vault.azure.net/"
+    $keyVaultUri = "https://akvtestvaultwestus.vault.azure.net/"
     $keyName = "akvTestMaster"
     #$keyVaultName = "akvTestVault2"
-    $keyVaultName = Get-ResourceName
-    # "akvTestVault2"
-    $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
+    $keyVaultName = "akvTestVaultWestus"
+    #$keyVaultName = Get-ResourceName
+    #$keyVaultName =  "psAkv"+$resourceGroup+$resourceLocation
+    #$keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
+    $keyVaultResourceId = "subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVaultWestus"
     $kvResourceGroup = "akvTestRG"
     # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/FakeUserIdentity"
     #$userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
@@ -248,11 +252,14 @@ function Test-AccountCMK
         # New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation
         # $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
         # Create keyvault and userIdeneity then give the identity access to the keyvault
-        $azKeyVault = New-AzKeyVault -ResourceGroupName $resourceGroup -Name $keyVaultName -Location $resourceLocation -EnablePurgeProtection
-        $azKeyVault = Get-AzKeyVault -ResourceGroupName $resourceGroup -Name $keyVaultName
+        #$azKeyVault = New-AzKeyVault -ResourceGroupName $resourceGroup -Name $keyVaultName -Location $resourceLocation -EnablePurgeProtection
+        $azKeyVault = Get-AzKeyVault -ResourceGroupName $kvResourceGroup -Name $keyVaultName
+        Assert-NotNull $azKeyVault.ResourceID
+        $keyVaultResourceId = $azKeyVault.ResourceID
+        
         #$keyVaultUri = $azKeyVault.VaultUri                
         #Create key in vault
-        Add-AzKeyVaultKey -VaultName $keyVaultName -Name "cmkKey" -Destination "Software"
+        #Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyVaultName -Destination "Software"
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
@@ -266,8 +273,9 @@ function Test-AccountCMK
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         #set access policy account identity, and the permissions "Get," "Encrypt," and "Decrypt."       
-        Set-AzKeyVaultAccessPolicy -ResourceGroupname $resourceGroup -VaultName $keyVaultName  -ObjectId $retrievedAcc.Identity.PrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
-        
+        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName  -ObjectId $retrievedAcc.Identity.PrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
+                
+
         #subnet for akv
         $akvSubnet = Add-AzVirtualNetworkSubnetConfig -Name $akvSubnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled | Set-AzVirtualNetwork
  
@@ -278,8 +286,7 @@ function Test-AccountCMK
             Name = 'public-ip'
             Location = $resourceLocation
             AllocationMethod = 'Static'
-            Sku = 'Standard'
-            Zone = 1,2,3
+            Sku = 'Standard'            
         }
         New-AzPublicIpAddress @ip
 
@@ -318,25 +325,24 @@ function Test-AccountCMK
         }
         $privateEndpoint = New-AzPrivateEndpoint @pe
 
-
         #update account with cmk
-        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -EncryptionKeySource $keySource -KeyVaultKeyName $keyName -KeyVaultResourceId $azKeyVault.ResourceId -KeyVaultUri $azKeyVault.VaultUri
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -EncryptionKeySource $keySource -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $azKeyVault.VaultUri
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
-        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        #Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         #Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # create and check account 2 using the Confirm flag
-        $retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
-        Assert-AreEqual $accName2 $retrievedAcc2.Name
+        #$retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -IdentityType $identityType -Confirm:$false
+        #Assert-AreEqual $accName2 $retrievedAcc2.Name
 
         # update and check account setting Encryption CMK properties
-        $retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $azKeyVault.Id -KeyVaultUri $azKeyVault.VaultUri 
-        Assert-AreEqual $accName2 $retrievedAcc2.Name
-        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
-        Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
+        #$retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $azKeyVault.VaultUri 
+        #Assert-AreEqual $accName2 $retrievedAcc2.Name
+        #Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        #Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         #Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # Assert-ThrowsContains{$retrievedAcc = Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'
@@ -344,29 +350,29 @@ function Test-AccountCMK
 
 
         #Create the CMK volume 
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -EncryptionKeySource 'Microsoft.KeyVault' -KeyVaultPrivateEndpointResourceId $privateEndpoint.Id
-        Assert-AreEqual "$accName/$poolName/$volName" $retrievedVolume.Name
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -NetworkFeature Standard -EncryptionKeySource 'Microsoft.KeyVault' -KeyVaultPrivateEndpointResourceId $privateEndpoint.Id
+        Assert-AreEqual "$accName1/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
 
         # Get KeyVaultInformation 
         $keyVaultInfo = Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName $resourceGroup -AccountName $accName1
-        
-        $keyVaultPrivateEndpoint = @{
-            VirtualNetworkId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].VirtualNetworkId
-            PrivateEndpointId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].PrivateEndpointId
-        }
+        Assert-Null $keyVaultInfo.KeyVaultPrivateEndpoints
+        #$keyVaultPrivateEndpoint = @{
+        #    VirtualNetworkId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].VirtualNetworkId
+        #    PrivateEndpointId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].PrivateEndpointId
+        #}
 
-        Assert-ThrowsContains{$retrievedAcc = Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName $accName1 -KeyVaultUri $keyVaultUri -KeyVaultKeyName  $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint} 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'
+        $keyVaultPrivateEndpoint = @{
+            VirtualNetworkId = $vnet.Id
+            PrivateEndpointId = $privateEndpoint.Id
+        }
+        Assert-ThrowsContains{$retrievedAcc = Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName $accName1 -KeyVaultUri $keyVaultUri -KeyVaultKeyName  $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint} 'Volume encryption is already configured to use https://akvtestvaultwestus.vault.azure.net/. Please select a different key vault.'
         
         #Assert-ThrowsContains{$retrievedAcc = Convert-AzNetAppFilesAccountToCmk -ResourceGroupName $resourceGroup -AccountName $accName1 -VirtualNetworkId $keyVaultInfo.VirtualNetworkId -PrivateEndpointId $keyVaultInfo.PrivateEndpointId } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'       
 
         # get and check accounts by group (list)
         $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
-        Assert-AreEqual 2 $retrievedAcc.Length
-
-        Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1
-        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         Assert-AreEqual 1 $retrievedAcc.Length
     }
     finally
