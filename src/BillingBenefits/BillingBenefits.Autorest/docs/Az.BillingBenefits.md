@@ -1,6 +1,6 @@
 ---
 Module Name: Az.BillingBenefits
-Module Guid: 7c220d70-27ec-4403-aedd-429aa925a6a6
+Module Guid: 8fe814ad-0f9c-4c31-98cd-a19e4f1490ec
 Download Help Link: https://learn.microsoft.com/powershell/module/az.billingbenefits
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,9 +16,6 @@ Get a reservation order alias.
 
 ### [Get-AzBillingBenefitsSavingsPlan](Get-AzBillingBenefitsSavingsPlan.md)
 Get savings plan.
-
-### [Get-AzBillingBenefitsSavingsPlanList](Get-AzBillingBenefitsSavingsPlanList.md)
-List savings plans.
 
 ### [Get-AzBillingBenefitsSavingsPlanOrder](Get-AzBillingBenefitsSavingsPlanOrder.md)
 Get a savings plan order.
@@ -36,12 +33,16 @@ Validate savings plan purchase.
 Validate savings plan patch.
 
 ### [New-AzBillingBenefitsReservationOrderAlias](New-AzBillingBenefitsReservationOrderAlias.md)
-Create a reservation order alias.
+create a reservation order alias.
 
 ### [New-AzBillingBenefitsSavingsPlanOrderAlias](New-AzBillingBenefitsSavingsPlanOrderAlias.md)
-Create a savings plan.
+create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ### [Update-AzBillingBenefitsSavingsPlan](Update-AzBillingBenefitsSavingsPlan.md)
-Update savings plan.
+update savings plan.
+
+### [Update-AzBillingBenefitsSavingsPlanOrderAlias](Update-AzBillingBenefitsSavingsPlanOrderAlias.md)
+update a savings plan.
+Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
