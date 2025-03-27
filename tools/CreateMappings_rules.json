@@ -972,4 +972,8 @@
     "module": "Pinecone",
     "alias": "Pinecone"
   },
+  {
+    "alias": "AgriculturePlatform",
+    "module": "AgriculturePlatform"
+  }
 ]
