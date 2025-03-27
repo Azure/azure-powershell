@@ -1,7 +1,7 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
 Module Name: Az.ApplicationInsights
-online version: https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-AzApplicationInsightsWorkbookTemplateGalleryObject
+online version: https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightsworkbooktemplategalleryobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for WorkbookTemplateGallery.
 
 ```
 New-AzApplicationInsightsWorkbookTemplateGalleryObject [-Category <String>] [-Name <String>] [-Order <Int32>]
- [-ResourceType <String>] [-Type <String>] [<CommonParameters>]
+ [-ResourceType <String>] [-Type <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +82,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceType
 Azure resource type supported by the gallery.
 
@@ -119,7 +134,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery
 
 ## NOTES
 

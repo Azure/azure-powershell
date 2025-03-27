@@ -22,7 +22,7 @@ Returns an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
     [CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -66,7 +66,6 @@ function Get-AzApplicationInsights {
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
         [Parameter()]
@@ -74,7 +73,8 @@ function Get-AzApplicationInsights {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

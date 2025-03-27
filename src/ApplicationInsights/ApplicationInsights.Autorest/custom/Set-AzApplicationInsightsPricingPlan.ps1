@@ -23,7 +23,7 @@ Update current billing features for an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 #>
 function Set-AzApplicationInsightsPricingPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentBillingFeatures])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -50,7 +50,7 @@ function Set-AzApplicationInsightsPricingPlan {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [ValidateSet("Basic", "Application Insights Enterprise", "Limited Basic")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Basic", "Application Insights Enterprise", "Limited Basic")]
         [System.String]
         # Current enabled pricing plan.
         # When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
@@ -73,7 +73,8 @@ function Set-AzApplicationInsightsPricingPlan {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
