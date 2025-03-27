@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Qumulo
-Module Guid: 181af76f-3704-40ce-9fa9-c5826313916c
+Module Guid: ae816842-9c94-407e-b5ca-567ce7d027ce
 Download Help Link: https://learn.microsoft.com/powershell/module/az.qumulo
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: Qumulo cmdlets
 Get a file system resource
 
 ### [New-AzQumuloFileSystem](New-AzQumuloFileSystem.md)
-Create a file system resource
+create a file system resource
 
 ### [Remove-AzQumuloFileSystem](Remove-AzQumuloFileSystem.md)
 Delete a file system resource
