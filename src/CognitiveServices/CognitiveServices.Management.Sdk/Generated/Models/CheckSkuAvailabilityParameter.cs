@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="skus">The SKU of the resource.
         /// </param>
 
-        /// <param name="kind">The Kind of the resource.
+        /// <param name="kind">The kind (type) of cognitive service account.
         /// </param>
 
         /// <param name="type">The Type of the resource.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public System.Collections.Generic.IList<string> Skus {get; set; }
 
         /// <summary>
-        /// Gets or sets the Kind of the resource.
+        /// Gets or sets the kind (type) of cognitive service account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
         public string Kind {get; set; }

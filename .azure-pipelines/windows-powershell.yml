@@ -39,7 +39,7 @@ jobs:
     displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
@@ -117,7 +117,7 @@ jobs:
     displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -142,7 +142,7 @@ jobs:
     displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:

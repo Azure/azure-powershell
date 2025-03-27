@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -346,15 +346,20 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.SecurityProfile = new SecurityProfile();
                         }
-                        if (parameters.SecurityProfile.UefiSettings == null)
-                        {
-                            parameters.SecurityProfile.UefiSettings = new UefiSettings();
-                        }
                         parameters.SecurityProfile.SecurityType = this.SecurityType;
+
                         if (parameters.SecurityProfile.SecurityType == "TrustedLaunch" || parameters.SecurityProfile.SecurityType == "ConfidentialVM")
                         {
+                            if (parameters.SecurityProfile.UefiSettings == null)
+                            {
+                                parameters.SecurityProfile.UefiSettings = new UefiSettings();
+                            }
                             parameters.SecurityProfile.UefiSettings.VTpmEnabled = parameters.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                             parameters.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                        }
+                        else
+                        {
+                            parameters.SecurityProfile.UefiSettings = null;
                         }
                     }
 

@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 .Description
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 .Example
 Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IVMInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
 #>
 function Get-AzDynatraceMonitorHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IVMInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

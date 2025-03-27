@@ -15,8 +15,7 @@ Stops a trigger run in a synapse workspace.
 ### StopByName (Default)
 ```
 Stop-AzSynapseTriggerRun -WorkspaceName <String> -Name <String> -TriggerRunId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByInputObject
@@ -28,8 +27,7 @@ Stop-AzSynapseTriggerRun -InputObject <PSTriggerRun> [-PassThru] [-DefaultProfil
 ### StopByWorkspaceObject
 ```
 Stop-AzSynapseTriggerRun -WorkspaceObject <PSSynapseWorkspace> -Name <String> -TriggerRunId <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

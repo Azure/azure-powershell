@@ -64,6 +64,7 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storage/start-azstorageaccountmigration
 #>
 function Start-AzStorageAccountMigration {
+[Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.GenericBreakingChangeAttribute("A prompt that needs users' confirmation will be added when converting the account's redundancy configuration. Suppress it with -Force.", "14.0.0", "9.0.0", "2025/05/19")]
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='CustomerExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
