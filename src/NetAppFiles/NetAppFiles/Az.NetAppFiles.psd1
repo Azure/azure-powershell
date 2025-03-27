@@ -130,7 +130,8 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Start-AzNetAppFilesAuthorizeExternalReplication', 
                'Get-AzNetAppFilesFilePathAvailability', 
                'Get-AzNetAppFilesQuotaAvailability', 
-               'Get-AzNetAppFilesNameAvailability'
+               'Get-AzNetAppFilesNameAvailability',
+               'Get-AzNetAppFilesAccountKeyVaultStatus', 'Invoke-AzNetAppFilesAccountChangeKeyVault','Convert-AzNetAppFilesAccountToCmk'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -169,7 +170,8 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Start-AnfPerformExternalReplication', 
                'Start-AnfAuthorizeExternalReplication', 
                'Get-AnfFilePathAvailability', 'Get-AnfQuotaAvailability', 
-               'Get-AnfNameAvailability'
+               'Get-AnfNameAvailability',
+               'Get-AnfAccountKeyVaultStatus','Invoke-AnfAccountChangeKeyVault','Convert-AnfFilesAccountToCmk'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

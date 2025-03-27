@@ -16,25 +16,25 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-BackupVaultName <String>]
  [-Name <String>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesBackup [-Name <String>] -BackupVaultObject <PSNetAppFilesBackupVault>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesBackup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,6 @@ Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -Back
 ```
 
 This command gets the backups for the volume with resource Id volume with resource Id $volumeResourceId from the Backup Vault "MyVault".
-
 
 ## PARAMETERS
 
@@ -142,6 +141,21 @@ The name of the ANF backup
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: BackupName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
