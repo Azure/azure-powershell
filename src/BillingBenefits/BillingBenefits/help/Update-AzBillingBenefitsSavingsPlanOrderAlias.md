@@ -1,57 +1,68 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/new-azbillingbenefitsreservationorderalias
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/update-azbillingbenefitssavingsplanorderalias
 schema: 2.0.0
 ---
 
-# New-AzBillingBenefitsReservationOrderAlias
+# Update-AzBillingBenefitsSavingsPlanOrderAlias
 
 ## SYNOPSIS
-create a reservation order alias.
+update a savings plan.
+Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzBillingBenefitsReservationOrderAlias -Name <String> [-AppliedScopePropertyDisplayName <String>]
+Update-AzBillingBenefitsSavingsPlanOrderAlias -Name <String> [-AppliedScopePropertyDisplayName <String>]
  [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
  [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
- [-AppliedScopeType <String>] [-BillingPlan <String>] [-BillingScopeId <String>] [-DisplayName <String>]
- [-Location <String>] [-Quantity <Int32>] [-Renew] [-ReservedResourcePropertyInstanceFlexibility <String>]
- [-ReservedResourceType <String>] [-ReviewDateTime <DateTime>] [-SkuName <String>] [-Term <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AppliedScopeType <String>] [-BillingPlan <String>] [-BillingScopeId <String>] [-CommitmentAmount <Double>]
+ [-CommitmentCurrencyCode <String>] [-CommitmentGrain <String>] [-DisplayName <String>] [-Kind <String>]
+ [-SkuName <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentity>
+Update-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentity>
  [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
  [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-BillingPlan <String>]
- [-BillingScopeId <String>] [-DisplayName <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
- [-ReservedResourcePropertyInstanceFlexibility <String>] [-ReservedResourceType <String>]
- [-ReviewDateTime <DateTime>] [-SkuName <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BillingScopeId <String>] [-CommitmentAmount <Double>] [-CommitmentCurrencyCode <String>]
+ [-CommitmentGrain <String>] [-DisplayName <String>] [-Kind <String>] [-SkuName <String>] [-Term <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a reservation order alias.
+update a savings plan.
+Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ## EXAMPLES
 
-### Example 1: Create a reservation order alias.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzBillingBenefitsReservationOrderAlias -Name "PSRITest1" -AppliedScopeType "Shared" -BillingPlan "P1M" -BillingScopeId "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47" -SkuName "Standard_B1ls" -Location "westus" -Quantity 1 -ReservedResourceType 'VirtualMachines' -Term "P1Y" -DisplayName "PSRITest1"
+{{ Add code here }}
 ```
 
 ```output
-Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId   ProvisioningState BillingScopeId                                      AppliedScopeType                 
-----      ----------- -------       -------- ---- ----------- -------------------- ------------------   ----------------- --------------                                      --------
-PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...  Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared  
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a reservation order alias.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -191,6 +202,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommitmentAmount
+.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommitmentCurrencyCode
+The ISO 4217 3-letter currency code for the currency used by this purchase record.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommitmentGrain
+Commitment grain.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -227,7 +283,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -237,8 +293,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The Azure Region where the reservation benefits are applied to.
+### -Kind
+Resource provider kind
 
 ```yaml
 Type: System.String
@@ -253,12 +309,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the reservation order alias
+Name of the savings plan order alias
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases: ReservationOrderAliasName
+Parameter Sets: UpdateExpanded
+Aliases: SavingsPlanOrderAliasName
 
 Required: True
 Position: Named
@@ -272,81 +328,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Quantity
-Total Quantity of the SKUs purchased in the Reservation.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Renew
-Setting this to true will automatically purchase a new benefit on the expiration date time.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReservedResourcePropertyInstanceFlexibility
-Turning this on will apply the reservation discount to other VMs in the same VM size group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReservedResourceType
-The type of the resource that is being reserved.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReviewDateTime
-This is the date-time when the Azure Hybrid Benefit needs to be reviewed.
-
-```yaml
-Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -427,9 +408,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IReservationOrderAliasResponse
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel
 
 ## NOTES
 
 ## RELATED LINKS
 
+[https://go.microsoft.com/fwlink/?linkid=2215851/](https://go.microsoft.com/fwlink/?linkid=2215851/)

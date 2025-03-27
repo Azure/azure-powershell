@@ -53,25 +53,26 @@ module-version: 0.1.0
 title: BillingBenefits
 subject-prefix: $(service-name)
 
-resourcegroup-append: true
-nested-object-to-string: true
-  
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  ### No inline
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+## No inline
   - no-inline:
     - RenewProperties
 
-  ### Rename Cmdlet names
+  # ### Rename Cmdlet names
   - where:
       verb: Get
       subject: SavingPlan
     set:
-      verb: Get
       subject: SavingsPlanList
+  - where:
+      verb: Invoke
+      subject: ElevateSavingsPlanOrder
+    set:
+      verb: Invoke
+      subject: ElevateSavingPlanOrder
   - where:
       verb: Test
       subject: Purchase
@@ -80,7 +81,7 @@ directive:
       subject: SavingsPlanPurchaseValidation
   - where:
       verb: Test
-      subject: SavingPlanUpdate
+      subject: SavingsPlanUpdate
     set:
       verb: Invoke
       subject: SavingsPlanUpdateValidation

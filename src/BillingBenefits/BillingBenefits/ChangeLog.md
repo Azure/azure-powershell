@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The cmdlet `Get-AzBillingBenefitsSavingsPlanList` has been deleted and its functionality has been merged into the original cmdlet `Get-AzBillingBenefitsSavingsPlan`.
+* Added cmdlet `Update-AzBillingBenefitsSavingsPlanOrderAlias`.
 
 ## Version 0.1.2
 * Upgraded nuget package to signed package.

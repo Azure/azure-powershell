@@ -24,6 +24,18 @@ Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body <ISavingsPlanPurchas
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ValidateViaJsonFilePath
+```
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaJsonString
+```
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -JsonString <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Validate savings plan purchase.
 
@@ -72,10 +84,9 @@ Validate savings plan purchase.
 
 ### -Benefit
 .
-To construct, see NOTES section for BENEFIT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanOrderAliasModel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel[]
 Parameter Sets: ValidateExpanded
 Aliases:
 
@@ -88,10 +99,9 @@ Accept wildcard characters: False
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanPurchaseValidateRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanPurchaseValidateRequest
 Parameter Sets: Validate
 Aliases:
 
@@ -112,6 +122,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,11 +194,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanPurchaseValidateRequest
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanPurchaseValidateRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanValidateResponse
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanValidateResponse
 
 ## NOTES
 

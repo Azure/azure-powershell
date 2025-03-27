@@ -12,9 +12,11 @@ Get savings plan.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzBillingBenefitsSavingsPlan -OrderId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzBillingBenefitsSavingsPlan [-Filter <String>] [-Orderby <String>] [-RefreshSummary <String>]
+ [-SelectedState <String>] [-Skiptoken <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -27,6 +29,17 @@ Get-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> [-Expand <String
 ```
 Get-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySavingsPlanOrder
+```
+Get-AzBillingBenefitsSavingsPlan -Id <String> -SavingsPlanOrderInputObject <IBillingBenefitsIdentity>
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzBillingBenefitsSavingsPlan -OrderId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +73,41 @@ PSTest7 Succeeded 11/29/2025 2:23:51 AM 11/29/2022 2:20:38 AM P3Y  Shared       
 
 Get a single savings plan
 
+### Example 3: List savings plans.
+```powershell
+Get-AzBillingBenefitsSavingsPlan
+```
+
+```output
+Name                                 Status    ExpiryDate             PurchaseDate           Term Scope           AppliedScopeDisplayName  ProductName          CommitmentAmount CommitmentCurrencyCode
+----                                 ------    ----------             ------------           ---- -----           -----------------------  -----------          ---------------- ------------------
+Compute_SavingsPlan_11-30-2022_15-19 Succeeded 11/30/2023 11:22:53 PM 11/30/2022 11:19:31 PM P1Y  Shared                                   Compute_Savings_Plan 0.001            USD
+PSTesth1234                          Succeeded 11/30/2025 12:36:25 AM 11/30/2022 12:34:31 AM P3Y  Shared                                   Compute_Savings_Plan 0.001            USD
+PSTesth123                           Succeeded 11/29/2025 2:51:18 AM  11/29/2022 2:49:24 AM  P3Y  Shared                                   Compute_Savings_Plan 0.001            USD
+PSTesth12                            Succeeded 11/29/2025 2:48:30 AM  11/29/2022 2:46:45 AM  P3Y  Shared                                   Compute_Savings_Plan 0.001            USD
+PSTesth1                             Succeeded 11/29/2025 2:45:28 AM  11/29/2022 2:43:36 AM  P3Y  Shared                                   Compute_Savings_Plan 0.001            USD
+PSTesth                              Succeeded 11/29/2025 2:42:49 AM  11/29/2022 2:41:03 AM  P3Y  Shared                                   Compute_Savings_Plan 0.001            USD
+```
+
+List savings plans.
+
+### Example 4: List savings plans with filtering condition.
+```powershell
+Get-AzBillingBenefitsSavingsPlan -Filter "properties/userFriendlyAppliedScopeType eq 'Shared'"
+```
+
+```output
+Name                                 Status    ExpiryDate             PurchaseDate           Term Scope  AppliedScopeDisplayName ProductName          CommitmentAmount CommitmentCurrencyCode
+----                                 ------    ----------             ------------           ---- -----  ----------------------- -----------          ---------------- ------------------
+Compute_SavingsPlan_11-30-2022_15-19 Succeeded 11/30/2023 11:22:53 PM 11/30/2022 11:19:31 PM P1Y  Shared                         Compute_Savings_Plan 0.001            USD
+PSTesth1234                          Succeeded 11/30/2025 12:36:25 AM 11/30/2022 12:34:31 AM P3Y  Shared                         Compute_Savings_Plan 0.001            USD
+PSTesth123                           Succeeded 11/29/2025 2:51:18 AM  11/29/2022 2:49:24 AM  P3Y  Shared                         Compute_Savings_Plan 0.001            USD
+PSTesth12                            Succeeded 11/29/2025 2:48:30 AM  11/29/2022 2:46:45 AM  P3Y  Shared                         Compute_Savings_Plan 0.001            USD
+PSTesth1                             Succeeded 11/29/2025 2:45:28 AM  11/29/2022 2:43:36 AM  P3Y  Shared                         Compute_Savings_Plan 0.001            USD
+```
+
+List savings plans with filtering condition.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -83,7 +131,25 @@ May be used to expand the detail information of some properties.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentitySavingsPlanOrder
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+May be used to filter by reservation properties.
+The filter supports 'eq', 'or', and 'and'.
+It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'.
+Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
+
+```yaml
+Type: System.String
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -98,7 +164,7 @@ ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySavingsPlanOrder
 Aliases: SavingsPlanId
 
 Required: True
@@ -110,7 +176,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
@@ -121,6 +186,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Orderby
+May be used to sort order by reservation properties.
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -139,6 +219,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RefreshSummary
+To indicate whether to refresh the roll up counts of the savings plans group by provisioning states
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SavingsPlanOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+Parameter Sets: GetViaIdentitySavingsPlanOrder
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SelectedState
+The selected provisioning state
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skiptoken
+The number of savings plans to skip from the list before returning results
+
+```yaml
+Type: System.Single
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Take
+To number of savings plans to return
+
+```yaml
+Type: System.Single
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -148,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModel
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModel
 
 ## NOTES
 
