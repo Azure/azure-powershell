@@ -27,7 +27,7 @@ Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Update-AzDy
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitor
 #>
 function Update-AzDynatraceMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -77,148 +77,10 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Account Id of the account this environment is linked to
-    ${AccountId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Region in which the account is created
-    ${AccountRegionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Id of the environment created
-    ${EnvironmentId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion key of the environment
-    ${EnvironmentIngestionKey},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Landing URL for Dynatrace environment
-    ${EnvironmentLandingUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Ingestion endpoint used for sending logs
-    ${EnvironmentLogsIngestionEndpoint},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # User id
-    ${EnvironmentUserId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MarketplaceSubscriptionStatus]
-    # Marketplace subscription status.
-    ${MarketplaceSubscriptionStatus},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.MonitoringStatus]
-    # Status of the monitor.
-    ${MonitoringStatus},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # different billing cycles like MONTHLY/WEEKLY.
-    # this could be enum
-    ${PlanBillingCycle},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # plan id as published by Dynatrace
-    ${PlanDetail},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.DateTime]
-    # date when plan was applied
-    ${PlanEffectiveDate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # different usage type like PAYG/COMMITTED.
-    # this could be enum
-    ${PlanUsageType},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String[]]
-    # array of Aad(azure active directory) domains
-    ${SingleSignOnAadDomain},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Version of the Dynatrace agent installed on the VM.
-    ${SingleSignOnEnterpriseAppId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates]
-    # State of Single Sign On
-    ${SingleSignOnState},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # The login URL specific to this Dynatrace Environment
-    ${SingleSignOnUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.IMonitorResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Country of the user
-    ${UserCountry},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Email of the user used by Dynatrace for contacting them if needed
-    ${UserEmailAddress},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # First Name of the user
-    ${UserFirstName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Last Name of the user
-    ${UserLastName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category('Body')]
-    [System.String]
-    # Phone number of the user used by Dynatrace for contacting them if needed
-    ${UserPhoneNumber},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

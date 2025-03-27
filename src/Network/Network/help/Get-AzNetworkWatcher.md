@@ -20,7 +20,8 @@ Get-AzNetworkWatcher [-Name <String>] [-ResourceGroupName <String>] [-DefaultPro
 
 ### SetByLocation
 ```
-Get-AzNetworkWatcher -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkWatcher -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

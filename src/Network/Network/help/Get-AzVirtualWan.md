@@ -14,7 +14,8 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzVirtualWan [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualWan [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName

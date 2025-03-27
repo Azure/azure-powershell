@@ -23,58 +23,82 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 Invoke-AzWorkloadsSapDiskConfiguration -Location eastus -AppLocation eastus -DatabaseType HANA -DbVMSku Standard_M32ts -DeploymentType SingleServer -Environment NonProd -SapProduct S4HANA
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsRequest
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsResultVolumeConfigurations
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <ISapDiskConfigurationsRequest>: The SAP request to get list of disk configurations.
+  AppLocation <String>: The geo-location where the SAP resources will be created.
+  DatabaseType <SapDatabaseType>: The database type. Eg: HANA, DB2, etc
+  DbVMSku <String>: The VM SKU for database instance.
+  DeploymentType <SapDeploymentType>: The deployment type. Eg: SingleServer/ThreeTier
+  Environment <SapEnvironmentType>: Defines the environment type - Production/Non Production.
+  SapProduct <SapProductType>: Defines the SAP Product type.
 
 INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [ApplicationInstanceName <String>]: The name of SAP Application Server instance resource.
   [CentralInstanceName <String>]: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   [DatabaseInstanceName <String>]: Database resource name string modeled as parameter for auto generation to work correctly.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SapVirtualInstanceName <String>]: The name of the Virtual Instances for SAP solutions resource
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapdiskconfiguration
 #>
 function Invoke-AzWorkloadsSapDiskConfiguration {
 [Alias('Invoke-AzVISDiskConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations])]
-[CmdletBinding(DefaultParameterSetName='SapExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsResultVolumeConfigurations])]
+[CmdletBinding(DefaultParameterSetName='InvokeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='SapExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Invoke', Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [System.String]
-    # The name of Azure region.
+    # The name of the Azure region.
     ${Location},
 
-    [Parameter(ParameterSetName='SapExpanded')]
+    [Parameter(ParameterSetName='Invoke')]
+    [Parameter(ParameterSetName='InvokeExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='SapViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Invoke', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InvokeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsRequest]
+    # The SAP request to get list of disk configurations.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [System.String]
     # The geo-location where the SAP resources will be created.
     ${AppLocation},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType]
@@ -82,13 +106,15 @@ param(
     # Eg: HANA, DB2, etc
     ${DatabaseType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [System.String]
     # The VM SKU for database instance.
     ${DbVMSku},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType]
@@ -96,14 +122,16 @@ param(
     # Eg: SingleServer/ThreeTier
     ${DeploymentType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
     # Defines the environment type - Production/Non Production.
     ${Environment},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InvokeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InvokeViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
@@ -185,10 +213,12 @@ begin {
         }
 
         $mapping = @{
-            SapExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_SapExpanded';
-            SapViaIdentityExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_SapViaIdentityExpanded';
+            Invoke = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_Invoke';
+            InvokeExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_InvokeExpanded';
+            InvokeViaIdentity = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_InvokeViaIdentity';
+            InvokeViaIdentityExpanded = 'Az.SapVirtualInstance.private\Invoke-AzWorkloadsSapDiskConfiguration_InvokeViaIdentityExpanded';
         }
-        if (('SapExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Invoke', 'InvokeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

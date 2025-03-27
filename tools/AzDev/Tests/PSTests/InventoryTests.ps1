@@ -5,6 +5,13 @@ BeforeAll {
 }
 
 Describe 'Repo inventory' {
+    It 'Should get all modules and projects' {
+        (Get-DevModule).Count | Should -BeGreaterThan 0
+        (Get-DevProject -Type Wrapper).Count | Should -BeGreaterThan 0
+        (Get-DevProject -Type SdkBased).Count | Should -BeGreaterThan 0
+        (Get-DevProject -Type AutoRestBased).Count | Should -BeGreaterThan 0
+    }
+
     It 'Every autorest project should have either a Wrapper or SdkBased project' {
         (Get-DevModule).Project.Count | Should -BeGreaterThan 0
         Get-DevModule | ForEach-Object{

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workloads", "Workloads\Work
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Monitors", "..\..\generated\Workloads\Monitors.Autorest\Az.Monitors.csproj", "{74EA2E4F-203E-47AB-8EB7-8FD701000929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SapVirtualInstance", "..\..\generated\Workloads\SapVirtualInstance.Autorest\Az.SapVirtualInstance.csproj", "{F4FD5F7A-CCF6-496F-879B-0E417F16243E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SapVirtualInstance", "..\..\generated\Workloads\SapVirtualInstance.Autorest\Az.SapVirtualInstance.csproj", "{D67631EA-2CEA-4451-8365-E711678C8207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +68,10 @@ Global
 		{74EA2E4F-203E-47AB-8EB7-8FD701000929}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74EA2E4F-203E-47AB-8EB7-8FD701000929}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74EA2E4F-203E-47AB-8EB7-8FD701000929}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4FD5F7A-CCF6-496F-879B-0E417F16243E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4FD5F7A-CCF6-496F-879B-0E417F16243E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4FD5F7A-CCF6-496F-879B-0E417F16243E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4FD5F7A-CCF6-496F-879B-0E417F16243E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67631EA-2CEA-4451-8365-E711678C8207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67631EA-2CEA-4451-8365-E711678C8207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67631EA-2CEA-4451-8365-E711678C8207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67631EA-2CEA-4451-8365-E711678C8207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FAEF600D-0073-487E-B125-669EB7D06E3D} = {CDFD4C75-7CF6-4B30-9A7E-D8B5D25EB75A}

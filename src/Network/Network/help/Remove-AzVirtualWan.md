@@ -15,7 +15,8 @@ Removes an Azure Virtual WAN.
 ### ByVirtualWanName (Default)
 ```
 Remove-AzVirtualWan -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject

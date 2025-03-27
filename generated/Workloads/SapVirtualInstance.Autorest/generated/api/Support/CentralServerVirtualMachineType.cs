@@ -10,18 +10,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct CentralServerVirtualMachineType :
         System.IEquatable<CentralServerVirtualMachineType>
     {
+        /// <summary>ASCS Central server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Ascs = @"ASCS";
 
+        /// <summary>ERS Central server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Ers = @"ERS";
 
+        /// <summary>ERSInactive Central server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType ErsInactive = @"ERSInactive";
 
+        /// <summary>Primary central server vm.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Primary = @"Primary";
 
+        /// <summary>Secondary central server vm.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Secondary = @"Secondary";
 
+        /// <summary>Standby Central server vm type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Standby = @"Standby";
 
+        /// <summary>Central server vm type unknown.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.CentralServerVirtualMachineType Unknown = @"Unknown";
 
         /// <summary>

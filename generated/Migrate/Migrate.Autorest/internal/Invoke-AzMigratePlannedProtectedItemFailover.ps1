@@ -25,11 +25,11 @@ Performs the planned failover on the protected item.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IPlannedFailoverModel>: Planned failover model.
   Property <IPlannedFailoverModelProperties>: Planned failover model properties.
     CustomProperty <IPlannedFailoverModelCustomProperties>: Planned failover model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
+      InstanceType <String>: Discriminator property for PlannedFailoverModelCustomProperties.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -49,7 +49,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -67,6 +67,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -89,12 +92,12 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 
 PROPERTY <IPlannedFailoverModelProperties>: Planned failover model properties.
   CustomProperty <IPlannedFailoverModelCustomProperties>: Planned failover model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for PlannedFailoverModelCustomProperties.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigrateplannedprotecteditemfailover
 #>
 function Invoke-AzMigratePlannedProtectedItemFailover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties])]
 [CmdletBinding(DefaultParameterSetName='PlannedViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Planned', Mandatory)]
@@ -138,7 +141,7 @@ param(
     [Parameter(ParameterSetName='Planned', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PlannedViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModel]
     # Planned failover model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -146,7 +149,7 @@ param(
     [Parameter(ParameterSetName='PlannedExpanded', Mandatory)]
     [Parameter(ParameterSetName='PlannedViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties]
     # Planned failover model properties.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},

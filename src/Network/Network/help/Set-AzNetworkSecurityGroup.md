@@ -15,7 +15,8 @@ Updates a network security group.
 
 ```
 Set-AzNetworkSecurityGroup -NetworkSecurityGroup <PSNetworkSecurityGroup> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,5 +129,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetworkSecurityGroup](./New-AzNetworkSecurityGroup.md)
 
 [Remove-AzNetworkSecurityGroup](./Remove-AzNetworkSecurityGroup.md)
-
-

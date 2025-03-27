@@ -16,8 +16,8 @@ Creates a network manager connectivity configuration.
 New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -AppliesToGroup <PSNetworkManagerConnectivityGroupItem[]>
  -ConnectivityTopology <String> [-Description <String>] [-Hub <PSNetworkManagerHub[]>] [-DeleteExistingPeering]
- [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

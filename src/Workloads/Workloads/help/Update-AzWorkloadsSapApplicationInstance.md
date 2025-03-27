@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzWorkloadsSapApplicationInstance
 
 ## SYNOPSIS
-Updates the SAP Application server instance resource.
-This can be used to update tags on the resource.
+Puts the SAP Application Server Instance resource.
 
 ## SYNTAX
 
@@ -27,8 +26,7 @@ Update-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdenti
 ```
 
 ## DESCRIPTION
-Updates the SAP Application server instance resource.
-This can be used to update tags on the resource.
+Puts the SAP Application Server Instance resource.
 
 ## EXAMPLES
 
@@ -142,6 +140,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -210,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapApplicationServerInstance
 
 ## NOTES
 

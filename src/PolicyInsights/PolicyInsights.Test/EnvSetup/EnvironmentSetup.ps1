@@ -27,8 +27,7 @@ $resourceGroup1 = $(Get-FirstTestResourceGroupName)
 $resourceGroup2 = $(Get-SecondTestResourceGroupName)
 
 # Connect
-Connect-AzAccount -DeviceCode
-Set-AzContext -SubscriptionId $subscriptionId
+Connect-AzAccount -SubscriptionId $subscriptionId
 
 #Create an empty RG
 Get-AzResourceGroup -Name $emptyResourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
@@ -49,20 +48,20 @@ $deployIfNotExistsPolicyDefinition = New-AzPolicyDefinition -Name $(Get-TestDINE
 $modifyPolicyDefinition = New-AzPolicyDefinition -Name $(Get-TestModifyPolicyDefinitionName) -Policy "$PSScriptRoot/NSG_modify_neverCompliant_policyDefinition.json" -DisplayName "PS cmdlet tests: never compliant modify policy" -Mode Indexed -ManagementGroupName $managementGroupId
 
 # Assign the DINE policy in both MG and subscription level
-$mgDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestManagementGroupDINEAssignmentName) -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -DisplayName "PS cmdlet tests: never compliant DINE policy (MG)" -PolicyDefinition $deployIfNotExistsPolicyDefinition -AssignIdentity -Location "westus2"
-$subDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionDINEAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant DINE policy (Sub)" -PolicyDefinition $deployIfNotExistsPolicyDefinition -AssignIdentity -Location "westus2"
+$mgDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestManagementGroupDINEAssignmentName) -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -DisplayName "PS cmdlet tests: never compliant DINE policy (MG)" -PolicyDefinition $deployIfNotExistsPolicyDefinition -IdentityType "SystemAssigned" -Location "westus2"
+$subDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionDINEAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant DINE policy (Sub)" -PolicyDefinition $deployIfNotExistsPolicyDefinition -IdentityType "SystemAssigned" -Location "westus2"
 
 # Assign the modify policy to the subscription
-$subModifyAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionModifyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant modify policy" -PolicyDefinition $modifyPolicyDefinition -AssignIdentity -Location "westus2"
+$subModifyAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionModifyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant modify policy" -PolicyDefinition $modifyPolicyDefinition -IdentityType "SystemAssigned" -Location "westus2"
 
 # Give the assignments permissions to perform remediations
-Start-TestSleep -Seconds 60
-New-AzRoleAssignment -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -ObjectId $mgDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
-New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
-New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subModifyAssignment.Identity.principalId -RoleDefinitionName "Tag Contributor"
+Start-Sleep -Seconds 60
+New-AzRoleAssignment -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -ObjectId $mgDINEAssignment.IdentityPrincipalId -RoleDefinitionName "Key Vault Contributor"
+New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subDINEAssignment.IdentityPrincipalId -RoleDefinitionName "Key Vault Contributor"
+New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subModifyAssignment.IdentityPrincipalId -RoleDefinitionName "Tag Contributor"
 
 # Trigger 101 modify remediations with different names (don't care about the outcome, just want to have 101 remediation entities we can query)
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroup1 -TemplateFile "$PSScriptRoot/CreateRemediationsTemplate.json" -remediationCount 101 -assignmentId $subModifyAssignment.ResourceId
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroup1 -TemplateFile "$PSScriptRoot/CreateRemediationsTemplate.json" -remediationCount 101 -assignmentId $subModifyAssignment.Id
 
 # Create a subscription-level audit policy definition
 $partiallyCompliantAuditPolicyDefinition = New-AzPolicyDefinition -Name $(Get-TestAuditPolicyDefinitionName) -Policy "$PSScriptRoot/NSG_audit_partiallyCompliant_policyDefinition.json" -DisplayName "PS cmdlet tests: partially compliant audit policy" -Mode Indexed -SubscriptionId $subscriptionId
@@ -71,11 +70,11 @@ $partiallyCompliantAuditPolicyDefinition = New-AzPolicyDefinition -Name $(Get-Te
 New-AzPolicyAssignment -Name $(Get-TestSubscriptionAuditAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: partially compliant audit policy (Sub)" -PolicyDefinition $partiallyCompliantAuditPolicyDefinition
 New-AzPolicyAssignment -Name $(Get-TestResourceGroupAuditAssignmentName) -Scope "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup1" -DisplayName "PS cmdlet tests: partially compliant audit policy (RG)" -PolicyDefinition $partiallyCompliantAuditPolicyDefinition
 
-# Create an initiative for the audit policy
+# Create an initiative for the audit policy 
 $policyDefinitions = @"
 [
    {
-      "policyDefinitionId": "$($partiallyCompliantAuditPolicyDefinition.ResourceId)"
+      "policyDefinitionId": "$($partiallyCompliantAuditPolicyDefinition.Id)"
    }
 ]
 "@
@@ -85,7 +84,7 @@ $policySetDefinition = New-AzPolicySetDefinition -Name $(Get-TestPolicySetDefini
 # Assign the initiative to the subscription
 New-AzPolicyAssignment -Name $(Get-TestSubscriptionAuditInitiativeAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: initiative with audit policy (Sub)" -PolicySetDefinition $policySetDefinition
 
-Start-TestSleep -Seconds 60
+Start-Sleep -Seconds 60
 
 # In each RG, create 510 NSGs (will take a while)
 foreach ($resourceGroupName in @($resourceGroup1, $resourceGroup2)) {
@@ -126,7 +125,7 @@ $manualPolicyResourceAssignment = New-AzPolicyAssignment -Name $(Get-TestAttesta
 $manualpolicyDefinitionsSubscription = @"
 [
    {
-      "policyDefinitionId":"$($manualPolicySubcriptionDefinition.ResourceId)",
+      "policyDefinitionId":"$($manualPolicySubcriptionDefinition.Id)",
       "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameSub)_1"
    }
 ]
@@ -135,7 +134,7 @@ $manualpolicyDefinitionsSubscription = @"
 $manualpolicyDefinitionsRG = @"
 [
    {
-      "policyDefinitionId":"$($manualPolicyRGDefinition.ResourceId)",
+      "policyDefinitionId":"$($manualPolicyRGDefinition.Id)",
       "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameRG)_1"
    }
 ]
@@ -144,7 +143,7 @@ $manualpolicyDefinitionsRG = @"
 $manualpolicyDefinitionsResource = @"
 [
    {
-        "policyDefinitionId":"$($manualPolicyResourceDefinition.ResourceId)",
+        "policyDefinitionId":"$($manualPolicyResourceDefinition.Id)",
       "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameResource)_1"
    }
 ]

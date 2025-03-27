@@ -17,7 +17,8 @@ New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <Stri
  -PrivateLinkServiceConnection <PSPrivateLinkServiceConnection[]> [-ByManualRequest] [-EdgeZone <String>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-IpConfiguration <PSPrivateEndpointIPConfiguration[]>] [-CustomNetworkInterfaceName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

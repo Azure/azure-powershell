@@ -10,16 +10,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct TaskState :
         System.IEquatable<TaskState>
     {
+        /// <summary>Task has been cancelled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Cancelled = @"Cancelled";
 
+        /// <summary>Task failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Failed = @"Failed";
 
+        /// <summary>Task has not been started.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Pending = @"Pending";
 
+        /// <summary>Task has been skipped.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Skipped = @"Skipped";
 
+        /// <summary>Task is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Started = @"Started";
 
+        /// <summary>Task has completed successfully.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TaskState Succeeded = @"Succeeded";
 
         /// <summary>the value for an instance of the <see cref="TaskState" /> Enum.</summary>
