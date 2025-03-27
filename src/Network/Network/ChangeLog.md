@@ -38,6 +38,7 @@
     - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
     - `Get-AzNetworkVirtualApplianceBootDiagnostics`
+* Added etag property to Azure Virtual Network Manager -> IpamPool, VerifierWorkspace data models
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
     - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
