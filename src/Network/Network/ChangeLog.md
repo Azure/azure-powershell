@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`

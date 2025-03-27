@@ -20,8 +20,7 @@ Get-AzSynapseWorkspace [-ResourceGroupName <String>] [-Name <String>]
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzSynapseWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSynapseWorkspace -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

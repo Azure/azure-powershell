@@ -1295,31 +1295,6 @@ function Test-UserOwnedStorage
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-    
-    $rgname = Get-CognitiveServicesManagementTestResourceName;
-    try
-    {
-        # Test
-        $accountname = 'csa' + $rgname;
-        $skuname = 'S0';
-        $accounttype = 'SpeechServices';
-        $loc = "EastUS2";
-
-        New-AzResourceGroup -Name $rgname -Location $loc;
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
-        Assert-NotNull $createdAccount;
-        
-        
-        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583") 
-        Assert-NotNull $updatedAccount;
-        Assert-AreEqual $updatedAccount.UserOwnedStorage.Length 1
-        Assert-AreEqual $updatedAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583"
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
 }
 
 <#
@@ -1753,12 +1728,13 @@ function Test-Deployment
 
         $properties = New-AzCognitiveServicesObject -Type DeploymentProperties
         $properties.Model.Format = "OpenAI"
-        $properties.Model.Name = "text-ada-001"
-        $properties.Model.Version = "1"
+        $properties.Model.Name = "gpt-4"
+        $properties.Model.Version = "0613"
 
         New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy -Properties $properties
         Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname
         Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
+        Get-AzCognitiveServicesAccountDeploymentSku -ResourceGroupName $rgname -AccountName $accountname -Name dpy
         Remove-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy
     }
     finally
@@ -1793,6 +1769,165 @@ function Test-ListModels
         $models = Get-AzCognitiveServicesAccountModel -ResourceGroupName $rgname -AccountName $accountname
         
 		Assert-AreNotEqual 0 $$models.Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Rai
+#>
+function Test-Rai
+{
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'OpenAI';
+        $loc = "eastus";
+
+        # Test RAI Content Filter
+        Get-AzCognitiveServicesRaiContentFilter -Location $loc
+
+        Get-AzCognitiveServicesRaiContentFilter -Location $loc -Name "IndirectAttack"
+
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $account = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $account;
+
+         # check default policy
+        $policiesDefault = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+
+        # create a new policy
+		$newPolicyProperties = New-AzCognitiveServicesObject -Type RaiPolicyProperties
+
+        $newPolicyProperties.BasePolicyName = $policiesDefault[0].Name
+        $newPolicyProperties.ContentFilters = $policiesDefault[0].Properties.ContentFilters
+        New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy" -Properties $newPolicyProperties
+
+        # make sure new policy is created
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+
+        # check default block list
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+
+        # create a new block list
+        $b = New-AzCognitiveServicesObject -Type RaiBlocklistProperties
+        $b.Description = "Test Block List"
+        New-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList" -Properties $b
+
+        # make sure new block list is created
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList"
+
+        # check default block list items
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+
+        # create a new block list item
+        $i = New-AzCognitiveServicesObject -Type RaiBlocklistItemProperties
+        $i.Pattern = "*aa"
+        $i.IsRegex = $False
+        New-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList" -Name "testBlockListItem" -Properties $i
+
+        # check new block list item is created
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+
+        $policy = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+        $policieProperties = $policy.Properties
+        $policieProperties.CustomBlocklists = New-AzCognitiveServicesObject -Type CustomBlocklistConfig -AsList
+        $policieProperties.CustomBlocklists.Add($(New-AzCognitiveServicesObject -Type CustomBlocklistConfig))
+        $policieProperties.CustomBlocklists[0].Source = "Completion"
+        $policieProperties.CustomBlocklists[0].BlocklistName = "testBlockList"
+        $policieProperties.CustomBlocklists[0].Blocking = $True
+
+        # update policy to use the custom list
+        New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy" -Properties $policieProperties
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+
+        # delete and check policy
+        Remove-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+
+        # delete and check block list item
+        Remove-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList" -Name "testBlockListItem"
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+
+        # delete and check block list
+        Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList"
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test DefenderForAISetting
+#>
+function Test-DefenderForAISetting
+{
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+         # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'OpenAI';
+        $loc = "eastus";
+
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $account = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $account;
+
+         # check default DefenderForAISetting
+        Get-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName $rgname -AccountName $accountname
+
+        # create a new DefenderForAISetting
+        New-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName $rgname -AccountName $accountname -Name "Default" -State "Enabled"
+
+        # check new DefenderForAISetting is created
+        Get-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountDefenderForAISetting -ResourceGroupName $rgname -AccountName $accountname -Name "Default"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test DefenderForAISetting
+#>
+function Test-ModelCapacity
+{
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+         # Test
+        $format = 'OpenAI';
+        $name = 'gpt-4';
+        $version = '0125-Preview';
+
+        Get-AzCognitiveServicesModelCapacity -Format $format -Name $name -Version $version
+        Get-AzCognitiveServicesModelCapacity -Format $format -Name $name -Version $version -Location $loc
     }
     finally
     {
