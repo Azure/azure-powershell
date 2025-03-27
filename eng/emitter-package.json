@@ -9,7 +9,6 @@
     "@azure-tools/typespec-azure-core": "0.53.0",
     "@azure-tools/typespec-azure-resource-manager": "0.53.0",
     "@azure-tools/typespec-client-generator-core": "0.53.1",
-    "@azure-tools/typespec-providerhub": "0.53.0",
     "@azure-tools/typespec-azure-rulesets": "0.53.0",
     "@typespec/http": "0.67.1",
     "@typespec/openapi": "0.67.1",
