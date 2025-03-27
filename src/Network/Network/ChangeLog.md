@@ -43,7 +43,7 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
-* Deleted NetworkWatcher cmdlets for "Classic" connection monitor
+* Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
     - `Start-AzNetworkWatcherConnectionMonitor`
     - `Get-AzNetworkWatcherConnectionMonitorReport`
 
