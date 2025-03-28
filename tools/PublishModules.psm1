@@ -473,10 +473,6 @@ function Save-PackageLocally {
     $ModuleName = $module['ModuleName']
     $RequiredVersion = $module['RequiredVersion']
 
-    $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
-    $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
-
-
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
         Write-Output "Checking for required module $ModuleName, $RequiredVersion"
@@ -491,6 +487,12 @@ function Save-PackageLocally {
             else {
                 $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
             }
+
+            Write-Host "Checking for Nuget package provider"
+            Write-Host (Get-PackageProvider -Name NuGet)
+            if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+                Install-PackageProvider -Name NuGet -Force -Scope CurrentUser;
+            }
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
             Write-Output "Downloading the package from $PSRepositoryUrl to the path $TempRepoPath"
             # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
@@ -498,7 +500,9 @@ function Save-PackageLocally {
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg
             } else {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg 
+                Write-Host "Downloading the package from PSGallery"
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg
+                Write-Host "Finished downloading the package from PSGallery"
             }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
