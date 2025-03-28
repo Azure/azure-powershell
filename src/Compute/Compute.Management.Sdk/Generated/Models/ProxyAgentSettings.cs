@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Specifies ProxyAgent settings while creating the virtual machine.
-    /// Minimum api-version: 2023-09-01.
+    /// Specifies ProxyAgent settings for the virtual machine or virtual
+    /// machine scale set. Minimum api-version: 2023-09-01.
     /// </summary>
     public partial class ProxyAgentSettings
     {
@@ -34,19 +34,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// be enabled on the virtual machine or virtual machine scale
         /// set.</param>
         /// <param name="mode">Specifies the mode that ProxyAgent will execute
-        /// on if the feature is enabled. ProxyAgent will start to audit or
-        /// monitor but not enforce access control over requests to host
-        /// endpoints in Audit mode, while in Enforce mode it will enforce
-        /// access control. The default value is Enforce mode. Possible values
+        /// on. Warning: this property has been deprecated, please specify
+        /// 'mode' under particular hostendpoint setting. Possible values
         /// include: 'Audit', 'Enforce'</param>
         /// <param name="keyIncarnationId">Increase the value of this property
-        /// allows user to reset the key used for securing communication
+        /// allows users to reset the key used for securing communication
         /// channel between guest and host.</param>
-        public ProxyAgentSettings(bool? enabled = default(bool?), string mode = default(string), int? keyIncarnationId = default(int?))
+        /// <param name="wireServer">Specifies the Wire Server endpoint
+        /// settings while creating the virtual machine or virtual machine
+        /// scale set. Minimum api-version: 2024-03-01.</param>
+        /// <param name="imds">Specifies the IMDS endpoint settings while
+        /// creating the virtual machine or virtual machine scale set. Minimum
+        /// api-version: 2024-03-01.</param>
+        public ProxyAgentSettings(bool? enabled = default(bool?), string mode = default(string), int? keyIncarnationId = default(int?), HostEndpointSettings wireServer = default(HostEndpointSettings), HostEndpointSettings imds = default(HostEndpointSettings))
         {
             Enabled = enabled;
             Mode = mode;
             KeyIncarnationId = keyIncarnationId;
+            WireServer = wireServer;
+            Imds = imds;
             CustomInit();
         }
 
@@ -63,23 +69,37 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the mode that ProxyAgent will execute on if
-        /// the feature is enabled. ProxyAgent will start to audit or monitor
-        /// but not enforce access control over requests to host endpoints in
-        /// Audit mode, while in Enforce mode it will enforce access control.
-        /// The default value is Enforce mode. Possible values include:
+        /// Gets or sets specifies the mode that ProxyAgent will execute on.
+        /// Warning: this property has been deprecated, please specify 'mode'
+        /// under particular hostendpoint setting. Possible values include:
         /// 'Audit', 'Enforce'
         /// </summary>
         [JsonProperty(PropertyName = "mode")]
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets increase the value of this property allows user to
+        /// Gets or sets increase the value of this property allows users to
         /// reset the key used for securing communication channel between guest
         /// and host.
         /// </summary>
         [JsonProperty(PropertyName = "keyIncarnationId")]
         public int? KeyIncarnationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Wire Server endpoint settings while
+        /// creating the virtual machine or virtual machine scale set. Minimum
+        /// api-version: 2024-03-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "wireServer")]
+        public HostEndpointSettings WireServer { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the IMDS endpoint settings while creating
+        /// the virtual machine or virtual machine scale set. Minimum
+        /// api-version: 2024-03-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "imds")]
+        public HostEndpointSettings Imds { get; set; }
 
     }
 }

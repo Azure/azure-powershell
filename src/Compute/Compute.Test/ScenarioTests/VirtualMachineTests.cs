@@ -689,5 +689,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachinePlacement");
+        }
     }
 }

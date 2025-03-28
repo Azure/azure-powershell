@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string LowestPrice = "LowestPrice";
         public const string CapacityOptimized = "CapacityOptimized";
+        public const string Prioritized = "Prioritized";
     }
 }

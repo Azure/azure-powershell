@@ -33,3 +33,6 @@ Az.Compute,New-AzVM,7,9,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not a valid
 Az.Compute,New-AzVM,8,4,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not a valid command name.,New-AzResourceGroup -Name $rgname -Location $loc -Force,Check the spell of New-AzResourceGroup.
 Az.Compute,New-AzVmss,6,3,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not a valid command name.,New-AzResourceGroup -Name $rgname -Location $loc -Force,Check the spell of New-AzResourceGroup.
 Az.Compute,New-AzVmssConfig,5,3,Invalid_Cmdlet,5000,1,New-AzResourceGroup is not a valid command name.,New-AzResourceGroup -Name $rgname -Location $loc -Force,Check the spell of New-AzResourceGroup.
+"Az.Compute","New-AzVMConfig","1","4","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
+"Az.Compute","New-AzVMConfig","2","5","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
+"Az.Compute","New-AzVMConfig","3","3","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgname -Location $loc -Force","Check the spell of New-AzResourceGroup."
