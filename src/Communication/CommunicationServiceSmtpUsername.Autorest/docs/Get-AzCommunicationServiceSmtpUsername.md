@@ -1,5 +1,5 @@
 ---
-external help file: Az.Communication-help.xml
+external help file:
 Module Name: Az.Communication
 online version: https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicesmtpusername
 schema: 2.0.0
@@ -15,27 +15,25 @@ Get a SmtpUsernameResource.
 ### List (Default)
 ```
 Get-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
- -SmtpUsername <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityCommunicationService
-```
-Get-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -SmtpUsername <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzCommunicationServiceSmtpUsername -InputObject <ICommunicationServiceSmtpUsernameIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCommunicationService
+```
+Get-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -127,7 +125,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -174,7 +172,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -205,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -229,3 +227,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Communication-help.xml
+external help file:
 Module Name: Az.Communication
 online version: https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicesmtpusername
 schema: 2.0.0
@@ -14,40 +14,38 @@ create an SmtpUsernameResource.
 
 ### CreateExpanded (Default)
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
- [-Username <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityCommunicationServiceExpanded
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> [-EntraApplicationId <String>]
- [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityCommunicationService
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity>
- -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
+ -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityCommunicationServiceExpanded
+```
+New-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
+ [-EntraApplicationId <String>] [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +83,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-Parameter Sets: CreateViaIdentityCommunicationServiceExpanded, CreateViaIdentityCommunicationService
+Parameter Sets: CreateViaIdentityCommunicationService, CreateViaIdentityCommunicationServiceExpanded
 Aliases:
 
 Required: True
@@ -100,7 +98,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -192,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -223,7 +221,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -311,3 +309,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -16,7 +16,7 @@ update an SmtpUsernameResource.
 ```
 Update-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
  -SmtpUsername <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
- [-Username <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -Re
 ```
 Update-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
  -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> [-EntraApplicationId <String>]
- [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
 ```
 Update-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
  -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity>
- -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
 ```
 Update-AzCommunicationServiceSmtpUsername -InputObject <ICommunicationServiceSmtpUsernameIdentity>
  [-EntraApplicationId <String>] [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,21 +162,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

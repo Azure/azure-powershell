@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCommunicationService
 }
 
 Describe 'Update-AzCommunicationServiceSmtpUsername' {
-    It 'UpdateExpanded' {
+   It 'UpdateExpanded' {
         $updatedEntraApplicationId = "9ebe5d8a-7461-4805-8c91-82ad752bf155"
 
         $UpdateAzCommunicationServiceSmtpUsername = Update-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceName $env.persistentACSResourceName -ResourceGroupName $env.resourceGroup -EntraApplicationId $updatedEntraApplicationId
@@ -30,7 +30,7 @@ Describe 'Update-AzCommunicationServiceSmtpUsername' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+   It 'UpdateViaIdentityExpanded' {
         $updatedEntraApplicationId = "9ebe5d8a-7461-4805-8c91-82ad752bf155"
 
         $GetCommunicationServiceSmtpUsernameInstance = Get-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceName $env.persistentACSResourceName -ResourceGroupName $env.resourceGroup 

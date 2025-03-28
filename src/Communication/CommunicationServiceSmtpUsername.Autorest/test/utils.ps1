@@ -43,7 +43,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-
+    
     $rstr1 = RandomString -allChars $false -len 6
     $rstr2 = RandomString -allChars $false -len 6
     $env.Add("rstr1", $rstr1)

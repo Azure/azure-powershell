@@ -1,74 +1,66 @@
 ---
-external help file: Az.Communication-help.xml
+external help file:
 Module Name: Az.Communication
-online version: https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicesmtpusername
+online version: https://learn.microsoft.com/powershell/module/az.communication/update-azcommunicationservicesmtpusername
 schema: 2.0.0
 ---
 
-# New-AzCommunicationServiceSmtpUsername
+# Update-AzCommunicationServiceSmtpUsername
 
 ## SYNOPSIS
-create an SmtpUsernameResource.
+update an SmtpUsernameResource.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
- [-Username <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityCommunicationService
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityCommunicationServiceExpanded
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> [-EntraApplicationId <String>]
- [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
+ -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCommunicationService
+### UpdateViaIdentityCommunicationServiceExpanded
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity>
- -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
+ [-EntraApplicationId <String>] [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzCommunicationServiceSmtpUsername -InputObject <ICommunicationServiceSmtpUsernameIdentity>
+ [-EntraApplicationId <String>] [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create an SmtpUsernameResource.
+update an SmtpUsernameResource.
 
 ## EXAMPLES
 
-### Example 1: Create a SMTP Username resource
+### Example 1: Updates SMTP Username resource
 ```powershell
-New-AzCommunicationServiceSmtpUsername -SmtpUsername ContosoSmtpUsernameResource1 -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -EntraApplicationId 1ebe1d1a-1111-1111-1c11-11ad111bf111 -TenantId 11f111b1-11f1-11af-11ab-1d1cd111db11 -Username ContosoUsername1
+Update-AzCommunicationServiceSmtpUsername -SmtpUsername ContosoSmtpUsernameResource1 -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -EntraApplicationId 1ebe1d1a-1111-1111-1c11-11ad111bf111
 ```
 
 ```output
 EntraApplicationId           : 1ebe1d1a-1111-1111-1c11-11ad111bf111
-Id                           : /subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/communicationServices/ContosoAcsResource1/smtpUsernames/ContosoSmtpUsernameResource1
+Id                           : /subscriptions/11112222-3333-4444-5555-666677778888/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communicati
+                               on/communicationServices/ContosoAcsResource1/smtpUsernames/ContosoSmtpUsernameResource1
 Name                         : ContosoSmtpUsernameResource1
 ResourceGroupName            : ContosoResourceProvider1
-SystemDataCreatedAt          : 25-02-2025 11:24:05
+SystemDataCreatedAt          : 27-02-2025 10:55:10
 SystemDataCreatedBy          : newuser1@contoso.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 25-02-2025 11:24:05
+SystemDataLastModifiedAt     : 27-02-2025 10:55:10
 SystemDataLastModifiedBy     : newuser1@contoso.com
 SystemDataLastModifiedByType : User
 TenantId                     : aaaa1111-bbbb-2222-3333-aaaa11112222
@@ -76,7 +68,7 @@ Type                         : microsoft.communication/communicationservices/smt
 Username                     : ContosoUsername1
 ```
 
-Create a SMTP Username resource with the provided parameters.
+Updates SMTP Username resource with the provided parameters.
 
 ## PARAMETERS
 
@@ -85,7 +77,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-Parameter Sets: CreateViaIdentityCommunicationServiceExpanded, CreateViaIdentityCommunicationService
+Parameter Sets: UpdateViaIdentityCommunicationService, UpdateViaIdentityCommunicationServiceExpanded
 Aliases:
 
 Required: True
@@ -100,7 +92,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -131,7 +123,7 @@ The application Id for the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,33 +133,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -176,7 +153,7 @@ The object describing the smtp username resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ISmtpUsernameResource
-Parameter Sets: CreateViaIdentityCommunicationService
+Parameter Sets: UpdateViaIdentityCommunicationService
 Aliases:
 
 Required: True
@@ -192,7 +169,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -207,7 +184,7 @@ The name of the SmtpUsernameResource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationService, UpdateViaIdentityCommunicationServiceExpanded
 Aliases:
 
 Required: True
@@ -223,7 +200,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -238,7 +215,7 @@ The tenant of the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -254,7 +231,7 @@ Could be free form or in the email address format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -311,3 +288,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

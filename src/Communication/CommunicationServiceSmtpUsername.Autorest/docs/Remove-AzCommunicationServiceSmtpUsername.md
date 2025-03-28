@@ -1,66 +1,76 @@
 ---
-external help file: Az.Communication-help.xml
+external help file:
 Module Name: Az.Communication
-online version: https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
+online version: https://learn.microsoft.com/powershell/module/az.communication/remove-azcommunicationservicesmtpusername
 schema: 2.0.0
 ---
 
-# Set-AzCommunicationServiceNotificationHub
+# Remove-AzCommunicationServiceSmtpUsername
 
 ## SYNOPSIS
-Links an Azure Notification Hub to this communication service.
+Operation to delete a single SmtpUsername resource.
 
 ## SYNTAX
 
-### LinkExpanded (Default)
+### Delete (Default)
 ```
-Set-AzCommunicationServiceNotificationHub -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ConnectionString <String> -NotificationHubResourceId <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### Link
+### DeleteViaIdentity
 ```
-Set-AzCommunicationServiceNotificationHub -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -LinkNotificationHubParameter <ILinkNotificationHubParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCommunicationServiceSmtpUsername -InputObject <ICommunicationServiceSmtpUsernameIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityCommunicationService
+```
+Remove-AzCommunicationServiceSmtpUsername
+ -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Links an Azure Notification Hub to this communication service.
+Operation to delete a single SmtpUsername resource.
 
 ## EXAMPLES
 
-### Example 1: Provide Notification Hub details interactively
+### Example 1: Removes SMTP Username resource
 ```powershell
-Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
+Remove-AzCommunicationServiceSmtpUsername -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -SmtpUsername ContosoSmtpUsernameResource1
 ```
 
-A linked notification hub allows a ACS resource to send notifications for certain events.
+```output
+The Smtp Username deleted successfully.
+```
+
+Removes SMTP Username resource.
 
 ## PARAMETERS
+
+### -CommunicationServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
+Parameter Sets: DeleteViaIdentityCommunicationService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -CommunicationServiceName
 The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionString
-Connection string for the notification hub
-
-```yaml
-Type: System.String
-Parameter Sets: LinkExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -86,13 +96,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkNotificationHubParameter
-Description of an Azure Notification Hub to link to the communication service
-To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
-Parameter Sets: Link
+Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -102,15 +111,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NotificationHubResourceId
-The resource ID of the notification hub
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: LinkExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,7 +132,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmtpUsername
+The name of the SmtpUsernameResource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityCommunicationService
 Aliases:
 
 Required: True
@@ -139,7 +163,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -185,12 +209,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
+### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
 
 ## OUTPUTS
 
-### System.String
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+
