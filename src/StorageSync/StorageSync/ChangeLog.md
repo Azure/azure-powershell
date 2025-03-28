@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Fixed the bug in server registration
 * Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
 * Added RoleAssignmentExists check

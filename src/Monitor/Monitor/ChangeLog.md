@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.0.2
 * Pipeline Group upgraded API version to 2024-10-01-preview
 
 ## Version 6.0.1
