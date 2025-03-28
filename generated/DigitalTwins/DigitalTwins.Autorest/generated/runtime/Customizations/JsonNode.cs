@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

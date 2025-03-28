@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         global::System.TimeSpan? TimeToResolve { get; set; }
 
     }
-}
+}# this is comment

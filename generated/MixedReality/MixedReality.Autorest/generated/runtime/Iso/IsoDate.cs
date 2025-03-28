@@ -212,3 +212,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
 	TZD  = time zone designator (Z or +hh:mm or -hh:mm)
 	*/
 }
+# this is comment
+# this is comment

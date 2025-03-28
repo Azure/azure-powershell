@@ -122,4 +122,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRuleProperties RuleProperty { get; set; }
 
     }
-}
+}# this is comment

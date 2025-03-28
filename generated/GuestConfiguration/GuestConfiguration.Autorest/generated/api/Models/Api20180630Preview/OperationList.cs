@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api201806
         Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment

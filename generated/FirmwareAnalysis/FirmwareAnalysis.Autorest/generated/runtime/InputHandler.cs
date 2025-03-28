@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext context);
     }
-}
+}# this is comment

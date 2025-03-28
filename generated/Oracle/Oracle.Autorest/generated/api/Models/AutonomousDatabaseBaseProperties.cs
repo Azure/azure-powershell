@@ -2395,4 +2395,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<string> WhitelistedIP { get; set; }
 
     }
-}
+}# this is comment

@@ -81,4 +81,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Offer { get; set; }
 
     }
-}
+}# this is comment

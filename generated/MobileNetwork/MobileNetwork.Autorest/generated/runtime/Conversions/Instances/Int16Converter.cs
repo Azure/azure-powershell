@@ -10,4 +10,5 @@
 
         internal override short FromJson(JsonNode node) => (short)node;
     }
-}
+}# this is comment
+# this is comment

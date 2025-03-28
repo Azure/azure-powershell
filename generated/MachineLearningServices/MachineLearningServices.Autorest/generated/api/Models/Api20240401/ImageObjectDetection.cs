@@ -469,4 +469,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ObjectDetectionPrimaryMetrics? PrimaryMetric { get; set; }
 
     }
-}
+}# this is comment

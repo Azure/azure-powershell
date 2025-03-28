@@ -153,4 +153,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150
         string Value { get; set; }
 
     }
-}
+}# this is comment

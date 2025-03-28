@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RecipientType? RecipientType { get; set; }
 
     }
-}
+}# this is comment

@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001
         string PrivateIPAddress { get; set; }
 
     }
-}
+}# this is comment

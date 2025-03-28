@@ -627,4 +627,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         global::System.TimeSpan? WindowSize { get; set; }
 
     }
-}
+}# this is comment

@@ -666,4 +666,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

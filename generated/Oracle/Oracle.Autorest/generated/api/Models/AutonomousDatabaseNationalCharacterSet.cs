@@ -143,4 +143,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseNationalCharacterSetProperties Property { get; set; }
 
     }
-}
+}# this is comment

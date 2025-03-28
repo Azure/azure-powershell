@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

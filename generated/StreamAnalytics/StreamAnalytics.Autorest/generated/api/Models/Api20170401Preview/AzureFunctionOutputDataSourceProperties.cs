@@ -140,4 +140,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         float? MaxBatchSize { get; set; }
 
     }
-}
+}# this is comment

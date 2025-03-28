@@ -292,4 +292,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         string SolutionName { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

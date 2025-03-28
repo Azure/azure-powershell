@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         string SubscriptionId { get; set; }
 
     }
-}
+}# this is comment

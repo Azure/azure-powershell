@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701
         Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection[] Value { get; set; }
 
     }
-}
+}# this is comment

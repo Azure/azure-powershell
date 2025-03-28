@@ -347,4 +347,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime
             return message.ToString();
         }
     }
-}
+}# this is comment
+# this is comment

@@ -236,4 +236,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models
         string Type { get; set; }
 
     }
-}
+}# this is comment

@@ -59,4 +59,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

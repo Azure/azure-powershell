@@ -305,4 +305,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
         string VaultUri { get; set; }
 
     }
-}
+}# this is comment

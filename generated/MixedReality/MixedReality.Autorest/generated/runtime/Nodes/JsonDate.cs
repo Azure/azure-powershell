@@ -170,4 +170,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment
+# this is comment

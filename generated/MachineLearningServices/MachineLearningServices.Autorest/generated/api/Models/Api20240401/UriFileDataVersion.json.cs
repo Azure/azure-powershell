@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

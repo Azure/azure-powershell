@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IRpSkuDetailsForExistingResource> Value { get; set; }
 
     }
-}
+}# this is comment

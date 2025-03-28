@@ -464,4 +464,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchProperties Property { get; set; }
 
     }
-}
+}# this is comment

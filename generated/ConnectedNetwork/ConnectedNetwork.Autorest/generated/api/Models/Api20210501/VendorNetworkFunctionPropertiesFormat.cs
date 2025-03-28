@@ -122,4 +122,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VendorProvisioningState? VendorProvisioningState { get; set; }
 
     }
-}
+}# this is comment

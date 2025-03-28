@@ -144,4 +144,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> VirtualNetworkRule { get; set; }
 
     }
-}
+}# this is comment

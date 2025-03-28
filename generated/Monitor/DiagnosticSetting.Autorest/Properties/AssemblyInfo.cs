@@ -26,3 +26,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("86493ce8-682c-4aee-b5aa-21dbeb1209b1")]
 [assembly: AssemblyVersion("6.0.1")]
 [assembly: AssemblyFileVersion("6.0.1")]
+# this is comment

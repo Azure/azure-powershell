@@ -487,4 +487,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         int? RampUpStartTimeMinute { get; set; }
 
     }
-}
+}# this is comment

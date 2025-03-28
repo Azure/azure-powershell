@@ -36,4 +36,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json
             tokenizer.Dispose();
         }
     }
-}
+}# this is comment
+# this is comment

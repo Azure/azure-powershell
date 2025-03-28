@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api30
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

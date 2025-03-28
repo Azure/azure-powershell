@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10
         string Type { get; set; }
 
     }
-}
+}# this is comment

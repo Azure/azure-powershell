@@ -89,4 +89,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string RegistrationClientId { get; set; }
 
     }
-}
+}# this is comment

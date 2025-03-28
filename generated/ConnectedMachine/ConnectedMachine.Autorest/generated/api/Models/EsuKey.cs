@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Sku { get; set; }
 
     }
-}
+}# this is comment

@@ -80,4 +80,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualScsiController> ScsiController { get; set; }
 
     }
-}
+}# this is comment

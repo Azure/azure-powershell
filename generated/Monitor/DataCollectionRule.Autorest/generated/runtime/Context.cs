@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.DataCollectionRule Client { get; }
     }
 }
+# this is comment

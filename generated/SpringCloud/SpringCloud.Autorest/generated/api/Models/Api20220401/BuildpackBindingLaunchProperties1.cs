@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackBindingLaunchPropertiesSecrets Secret { get; set; }
 
     }
-}
+}# this is comment

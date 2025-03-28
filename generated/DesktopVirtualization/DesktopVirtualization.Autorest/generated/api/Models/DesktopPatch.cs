@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags Tag { get; set; }
 
     }
-}
+}# this is comment

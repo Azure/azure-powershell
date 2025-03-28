@@ -157,4 +157,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

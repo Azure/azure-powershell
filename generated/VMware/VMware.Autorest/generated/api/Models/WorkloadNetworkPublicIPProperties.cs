@@ -119,4 +119,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string PublicIPBlock { get; set; }
 
     }
-}
+}# this is comment

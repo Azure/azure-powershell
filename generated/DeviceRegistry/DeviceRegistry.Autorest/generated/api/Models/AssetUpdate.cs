@@ -412,4 +412,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

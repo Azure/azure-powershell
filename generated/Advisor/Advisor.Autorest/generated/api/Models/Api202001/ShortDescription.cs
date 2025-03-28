@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001
         string Solution { get; set; }
 
     }
-}
+}# this is comment

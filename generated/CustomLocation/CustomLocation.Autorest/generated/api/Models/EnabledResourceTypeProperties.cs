@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IEnabledResourceTypePropertiesTypesMetadataItem> TypesMetadata { get; set; }
 
     }
-}
+}# this is comment

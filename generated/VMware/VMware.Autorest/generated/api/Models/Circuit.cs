@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string SecondarySubnet { get; set; }
 
     }
-}
+}# this is comment

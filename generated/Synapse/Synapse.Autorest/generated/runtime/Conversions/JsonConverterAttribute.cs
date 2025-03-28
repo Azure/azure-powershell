@@ -15,4 +15,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json
 
         internal IJsonConverter Converter { get; }
     }
-}
+}# this is comment

@@ -308,4 +308,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ISshPublicKey> SshPublicKey { get; set; }
 
     }
-}
+}# this is comment

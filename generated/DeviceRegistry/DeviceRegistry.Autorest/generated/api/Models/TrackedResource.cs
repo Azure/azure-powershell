@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

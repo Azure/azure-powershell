@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string Strategy { get; set; }
 
     }
-}
+}# this is comment

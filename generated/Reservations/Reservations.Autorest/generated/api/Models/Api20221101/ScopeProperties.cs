@@ -61,4 +61,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         bool? Valid { get; set; }
 
     }
-}
+}# this is comment

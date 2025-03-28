@@ -165,4 +165,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string Role { get; set; }
 
     }
-}
+}# this is comment

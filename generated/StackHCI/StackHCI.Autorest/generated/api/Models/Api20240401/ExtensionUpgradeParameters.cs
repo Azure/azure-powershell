@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string TargetVersion { get; set; }
 
     }
-}
+}# this is comment

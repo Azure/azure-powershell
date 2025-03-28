@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileStatusError> Error { get; set; }
 
     }
-}
+}# this is comment

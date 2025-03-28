@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string PollingType { get; set; }
 
     }
-}
+}# this is comment

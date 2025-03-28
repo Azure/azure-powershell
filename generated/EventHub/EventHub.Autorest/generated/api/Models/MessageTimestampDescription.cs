@@ -69,4 +69,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string TimestampType { get; set; }
 
     }
-}
+}# this is comment

@@ -150,4 +150,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState? ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

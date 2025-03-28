@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Previe
         bool? IsValidated { get; set; }
 
     }
-}
+}# this is comment

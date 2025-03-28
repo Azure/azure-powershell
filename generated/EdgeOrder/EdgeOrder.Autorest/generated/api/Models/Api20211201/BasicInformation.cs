@@ -314,4 +314,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IImageInformation[] ImageInformation { get; set; }
 
     }
-}
+}# this is comment

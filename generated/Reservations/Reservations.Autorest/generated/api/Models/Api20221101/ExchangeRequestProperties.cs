@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         string SessionId { get; set; }
 
     }
-}
+}# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmPatchParametersTags Tag { get; set; }
 
     }
-}
+}# this is comment

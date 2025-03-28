@@ -109,4 +109,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType Type { get; set; }
 
     }
-}
+}# this is comment

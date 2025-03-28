@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentStep[] Step { get; set; }
 
     }
-}
+}# this is comment

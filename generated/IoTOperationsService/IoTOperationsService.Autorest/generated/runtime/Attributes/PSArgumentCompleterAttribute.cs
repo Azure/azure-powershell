@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService
             return scriptBlock;
         }
     }
-}
+}# this is comment

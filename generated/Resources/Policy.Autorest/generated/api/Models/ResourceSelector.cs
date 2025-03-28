@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISelector> Selector { get; set; }
 
     }
-}
+}# this is comment

@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone> Value { get; set; }
 
     }
-}
+}# this is comment

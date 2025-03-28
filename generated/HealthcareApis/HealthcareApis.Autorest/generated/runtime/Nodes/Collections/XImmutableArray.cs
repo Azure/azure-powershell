@@ -59,4 +59,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

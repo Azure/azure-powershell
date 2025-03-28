@@ -512,4 +512,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IVerificationStatusRecord VerificationStateSpf { get; set; }
 
     }
-}
+}# this is comment

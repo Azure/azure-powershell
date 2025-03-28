@@ -175,4 +175,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         global::System.DateTime? ClientPublicKeyRenewAfter { get; set; }
 
     }
-}
+}# this is comment

@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         string Type { get; set; }
 
     }
-}
+}# this is comment

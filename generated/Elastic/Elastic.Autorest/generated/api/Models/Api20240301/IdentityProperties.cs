@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes? Type { get; set; }
 
     }
-}
+}# this is comment

@@ -109,4 +109,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment
+# this is comment

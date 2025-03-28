@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

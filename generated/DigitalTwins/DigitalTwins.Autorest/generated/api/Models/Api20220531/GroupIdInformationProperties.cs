@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
         string[] RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

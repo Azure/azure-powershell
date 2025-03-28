@@ -134,4 +134,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetNetworkConfiguration> NetworkInterfaceConfiguration { get; set; }
 
     }
-}
+}# this is comment

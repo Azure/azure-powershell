@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Js
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

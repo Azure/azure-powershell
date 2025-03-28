@@ -141,4 +141,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         int? SpanChannelCapacity { get; set; }
 
     }
-}
+}# this is comment

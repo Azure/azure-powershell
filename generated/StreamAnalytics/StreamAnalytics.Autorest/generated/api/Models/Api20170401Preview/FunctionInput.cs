@@ -83,4 +83,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         bool? IsConfigurationParameter { get; set; }
 
     }
-}
+}# this is comment

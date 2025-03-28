@@ -347,4 +347,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

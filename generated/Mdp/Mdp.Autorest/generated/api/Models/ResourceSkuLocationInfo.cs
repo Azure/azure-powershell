@@ -91,4 +91,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IResourceSkuZoneDetails> ZoneDetail { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

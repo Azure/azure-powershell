@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro
             return scriptBlock;
         }
     }
-}
+}# this is comment

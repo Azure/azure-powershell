@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProductUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

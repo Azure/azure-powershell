@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20
         string Type { get; set; }
 
     }
-}
+}# this is comment

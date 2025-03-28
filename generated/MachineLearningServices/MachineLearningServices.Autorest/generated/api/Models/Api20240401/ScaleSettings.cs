@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         global::System.TimeSpan? NodeIdleTimeBeforeScaleDown { get; set; }
 
     }
-}
+}# this is comment

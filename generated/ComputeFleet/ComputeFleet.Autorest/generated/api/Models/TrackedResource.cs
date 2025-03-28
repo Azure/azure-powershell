@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

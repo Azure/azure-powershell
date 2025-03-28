@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             return scriptBlock;
         }
     }
-}
+}# this is comment

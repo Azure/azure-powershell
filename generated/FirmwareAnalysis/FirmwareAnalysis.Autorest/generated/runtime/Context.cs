@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.FirmwareAnalysis Client { get; }
     }
 }
+# this is comment

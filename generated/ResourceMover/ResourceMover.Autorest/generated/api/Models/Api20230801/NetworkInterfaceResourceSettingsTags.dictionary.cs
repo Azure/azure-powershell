@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.NetworkInterfaceResourceSettingsTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

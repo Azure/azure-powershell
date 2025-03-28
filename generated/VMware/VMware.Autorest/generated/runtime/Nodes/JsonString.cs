@@ -39,4 +39,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

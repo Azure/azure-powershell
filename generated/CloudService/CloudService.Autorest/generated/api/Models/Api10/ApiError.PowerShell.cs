@@ -189,4 +189,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10
     {
 
     }
-}
+}# this is comment

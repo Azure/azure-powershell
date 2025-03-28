@@ -52,4 +52,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Location { get; set; }
 
     }
-}
+}# this is comment

@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

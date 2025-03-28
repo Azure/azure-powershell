@@ -193,4 +193,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionsResourceStatus> Statuses { get; set; }
 
     }
-}
+}# this is comment

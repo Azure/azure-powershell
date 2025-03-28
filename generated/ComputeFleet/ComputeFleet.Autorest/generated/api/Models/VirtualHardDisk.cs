@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string Uri { get; set; }
 
     }
-}
+}# this is comment

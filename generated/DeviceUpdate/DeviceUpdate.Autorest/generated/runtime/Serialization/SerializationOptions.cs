@@ -62,4 +62,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Json
             return null;
         }
     }
-}
+}# this is comment

@@ -31,4 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Json
     }
 
 
-}
+}# this is comment

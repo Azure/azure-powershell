@@ -16,4 +16,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime
         internal static System.Net.Http.HttpMethod Trace = System.Net.Http.HttpMethod.Trace;
         internal static System.Net.Http.HttpMethod Patch = new System.Net.Http.HttpMethod("PATCH");
     }
-}
+}# this is comment

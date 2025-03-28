@@ -187,4 +187,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string PatchMode { get; set; }
 
     }
-}
+}# this is comment

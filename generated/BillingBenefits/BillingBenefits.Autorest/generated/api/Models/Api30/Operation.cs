@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

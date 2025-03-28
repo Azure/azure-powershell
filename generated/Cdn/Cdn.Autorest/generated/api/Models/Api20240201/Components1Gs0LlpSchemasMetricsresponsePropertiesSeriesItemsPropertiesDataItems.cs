@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201
         float? Value { get; set; }
 
     }
-}
+}# this is comment

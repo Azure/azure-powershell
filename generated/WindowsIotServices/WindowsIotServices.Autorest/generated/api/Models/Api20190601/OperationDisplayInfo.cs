@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api201906
         string Resource { get; set; }
 
     }
-}
+}# this is comment

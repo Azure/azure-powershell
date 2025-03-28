@@ -50,3 +50,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerSh
     }
   }
 }
+# this is comment

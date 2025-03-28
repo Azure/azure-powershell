@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.StackHcivm Client { get; }
     }
 }
+# this is comment

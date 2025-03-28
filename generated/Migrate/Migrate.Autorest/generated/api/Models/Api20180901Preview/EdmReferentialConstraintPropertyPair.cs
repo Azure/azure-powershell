@@ -260,4 +260,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         bool? PrincipalPropertyTypeIsNullable { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

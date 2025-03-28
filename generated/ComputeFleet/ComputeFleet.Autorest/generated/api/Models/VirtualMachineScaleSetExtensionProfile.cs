@@ -89,4 +89,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string ExtensionsTimeBudget { get; set; }
 
     }
-}
+}# this is comment

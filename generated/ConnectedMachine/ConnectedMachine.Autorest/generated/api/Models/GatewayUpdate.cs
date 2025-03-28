@@ -83,4 +83,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

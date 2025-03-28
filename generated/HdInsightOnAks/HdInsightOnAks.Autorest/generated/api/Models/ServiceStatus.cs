@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string Ready { get; set; }
 
     }
-}
+}# this is comment

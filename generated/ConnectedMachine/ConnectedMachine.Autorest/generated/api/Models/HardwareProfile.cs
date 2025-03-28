@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         long? TotalPhysicalMemoryInByte { get; set; }
 
     }
-}
+}# this is comment

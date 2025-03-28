@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20161001
         Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.StoragePermissions[] Storage { get; set; }
 
     }
-}
+}# this is comment

@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         int? TargetUtilizationPercentage { get; set; }
 
     }
-}
+}# this is comment

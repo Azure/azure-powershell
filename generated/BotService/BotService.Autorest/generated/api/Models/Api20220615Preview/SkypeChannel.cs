@@ -221,4 +221,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Previe
         Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ISkypeChannelProperties Property { get; set; }
 
     }
-}
+}# this is comment

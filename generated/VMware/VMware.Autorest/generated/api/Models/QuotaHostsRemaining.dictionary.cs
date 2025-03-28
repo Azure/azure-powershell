@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,int>(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.QuotaHostsRemaining source) => source.__additionalProperties;
     }
-}
+}# this is comment

@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileChangeSkuWafMapping[] WafMappingList { get; set; }
 
     }
-}
+}# this is comment

@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? StdOutEnabled { get; set; }
 
     }
-}
+}# this is comment

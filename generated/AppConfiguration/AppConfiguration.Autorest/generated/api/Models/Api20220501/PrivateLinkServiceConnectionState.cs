@@ -85,4 +85,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.ConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Js
 
         public override string ToString() => value;
     }
-}
+}# this is comment

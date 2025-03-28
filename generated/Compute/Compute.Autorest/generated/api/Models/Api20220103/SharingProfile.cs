@@ -191,4 +191,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypes? Permission { get; set; }
 
     }
-}
+}# this is comment

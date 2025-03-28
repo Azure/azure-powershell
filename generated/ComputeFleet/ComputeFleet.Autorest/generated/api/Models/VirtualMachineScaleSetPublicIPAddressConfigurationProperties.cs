@@ -245,4 +245,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string PublicIPPrefixId { get; set; }
 
     }
-}
+}# this is comment

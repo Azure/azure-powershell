@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation
             return scriptBlock;
         }
     }
-}
+}# this is comment

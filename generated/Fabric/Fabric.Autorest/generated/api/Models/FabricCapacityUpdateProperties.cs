@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         System.Collections.Generic.List<string> AdministrationMember { get; set; }
 
     }
-}
+}# this is comment

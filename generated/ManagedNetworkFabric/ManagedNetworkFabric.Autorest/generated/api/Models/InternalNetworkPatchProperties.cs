@@ -387,4 +387,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfiguration StaticRouteConfiguration { get; set; }
 
     }
-}
+}# this is comment

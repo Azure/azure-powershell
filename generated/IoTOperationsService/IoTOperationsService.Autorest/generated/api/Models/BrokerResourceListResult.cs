@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerResource> Value { get; set; }
 
     }
-}
+}# this is comment

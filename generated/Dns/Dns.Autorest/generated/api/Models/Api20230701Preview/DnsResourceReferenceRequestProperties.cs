@@ -55,4 +55,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview
         Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.ISubResource[] TargetResource { get; set; }
 
     }
-}
+}# this is comment

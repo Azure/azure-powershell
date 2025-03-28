@@ -70,4 +70,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string CapacityReservationGroupId { get; set; }
 
     }
-}
+}# this is comment

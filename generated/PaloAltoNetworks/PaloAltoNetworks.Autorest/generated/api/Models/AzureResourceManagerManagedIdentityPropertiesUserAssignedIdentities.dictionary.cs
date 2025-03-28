@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IAzureResourceManagerUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AzureResourceManagerManagedIdentityPropertiesUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

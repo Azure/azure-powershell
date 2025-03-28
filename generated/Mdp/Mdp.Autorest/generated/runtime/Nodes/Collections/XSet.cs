@@ -57,4 +57,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Runtime.Json
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment
+# this is comment

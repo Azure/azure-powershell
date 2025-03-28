@@ -126,4 +126,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string Namespace { get; set; }
 
     }
-}
+}# this is comment

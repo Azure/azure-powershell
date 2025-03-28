@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api202005
         string Type { get; set; }
 
     }
-}
+}# this is comment

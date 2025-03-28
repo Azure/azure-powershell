@@ -355,4 +355,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         bool? WindowConfigurationProvisionVMConfigAgent { get; set; }
 
     }
-}
+}# this is comment

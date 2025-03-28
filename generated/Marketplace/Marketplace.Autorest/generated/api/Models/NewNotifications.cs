@@ -151,4 +151,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlanNotificationDetails> Plan { get; set; }
 
     }
-}
+}# this is comment

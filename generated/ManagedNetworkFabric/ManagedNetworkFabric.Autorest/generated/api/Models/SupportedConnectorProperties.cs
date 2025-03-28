@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         int? MaxSpeedInMbps { get; set; }
 
     }
-}
+}# this is comment

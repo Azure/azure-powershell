@@ -133,4 +133,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

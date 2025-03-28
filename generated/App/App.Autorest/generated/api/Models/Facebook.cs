@@ -152,4 +152,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string RegistrationAppSecretSettingName { get; set; }
 
     }
-}
+}# this is comment

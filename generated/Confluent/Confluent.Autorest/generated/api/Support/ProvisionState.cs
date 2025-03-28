@@ -109,4 +109,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

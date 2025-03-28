@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json
 
         internal override Uri FromJson(JsonNode node) => (Uri)node;
     }
-}
+}# this is comment

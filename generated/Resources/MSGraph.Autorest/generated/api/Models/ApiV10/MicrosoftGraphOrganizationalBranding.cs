@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingLocalization[] Localization { get; set; }
 
     }
-}
+}# this is comment

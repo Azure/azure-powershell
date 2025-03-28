@@ -135,4 +135,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string ResourcePoolId { get; set; }
 
     }
-}
+}# this is comment

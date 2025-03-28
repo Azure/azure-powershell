@@ -138,4 +138,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         string[] MacAddress { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

@@ -216,4 +216,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination> StorageTablesDirect { get; set; }
 
     }
-}
+}# this is comment

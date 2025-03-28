@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IJsonWebKey[] Key { get; set; }
 
     }
-}
+}# this is comment

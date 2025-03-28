@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Host { get; set; }
 
     }
-}
+}# this is comment

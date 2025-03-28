@@ -120,4 +120,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api2024
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency? RdbFrequency { get; set; }
 
     }
-}
+}# this is comment

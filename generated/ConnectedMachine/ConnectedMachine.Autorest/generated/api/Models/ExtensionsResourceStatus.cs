@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         global::System.DateTime? Time { get; set; }
 
     }
-}
+}# this is comment

@@ -138,4 +138,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30
         string Resource { get; set; }
 
     }
-}
+}# this is comment

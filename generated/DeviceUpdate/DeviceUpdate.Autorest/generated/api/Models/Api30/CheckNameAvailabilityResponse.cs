@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.CheckNameAvailabilityReason? Reason { get; set; }
 
     }
-}
+}# this is comment

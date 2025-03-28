@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string Type { get; set; }
 
     }
-}
+}# this is comment

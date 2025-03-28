@@ -274,4 +274,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string VirtualNetworkName { get; set; }
 
     }
-}
+}# this is comment

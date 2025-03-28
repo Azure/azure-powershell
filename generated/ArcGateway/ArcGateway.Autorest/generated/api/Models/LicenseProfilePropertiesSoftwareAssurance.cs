@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         bool? SoftwareAssuranceCustomer { get; set; }
 
     }
-}
+}# this is comment

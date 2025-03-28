@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string RegistryName { get; set; }
 
     }
-}
+}# this is comment

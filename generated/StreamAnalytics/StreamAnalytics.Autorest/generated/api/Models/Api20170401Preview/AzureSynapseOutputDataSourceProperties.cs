@@ -78,4 +78,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
     {
 
     }
-}
+}# this is comment

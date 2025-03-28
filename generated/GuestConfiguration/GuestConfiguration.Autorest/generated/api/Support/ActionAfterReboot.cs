@@ -98,4 +98,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

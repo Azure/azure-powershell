@@ -307,4 +307,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         bool? Primary { get; set; }
 
     }
-}
+}# this is comment

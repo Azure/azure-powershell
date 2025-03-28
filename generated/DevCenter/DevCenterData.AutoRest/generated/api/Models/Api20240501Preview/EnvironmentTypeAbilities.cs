@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Pre
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.EnvironmentTypeAbilityAsDeveloper[] AbilitiesAsDeveloper { get; set; }
 
     }
-}
+}# this is comment

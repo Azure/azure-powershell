@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         long? NumberOfEvaluationPeriod { get; set; }
 
     }
-}
+}# this is comment

@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150
         bool? ShouldBeThrottled { get; set; }
 
     }
-}
+}# this is comment

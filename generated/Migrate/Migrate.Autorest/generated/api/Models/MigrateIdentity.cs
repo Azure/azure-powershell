@@ -844,4 +844,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string VirtualMachineName { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         System.Collections.Generic.List<string> AzureResourceId { get; set; }
 
     }
-}
+}# this is comment

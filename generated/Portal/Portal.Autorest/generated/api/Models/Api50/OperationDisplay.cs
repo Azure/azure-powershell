@@ -138,4 +138,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50
         string Resource { get; set; }
 
     }
-}
+}# this is comment

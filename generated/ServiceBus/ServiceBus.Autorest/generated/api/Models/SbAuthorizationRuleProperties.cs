@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         System.Collections.Generic.List<string> Rights { get; set; }
 
     }
-}
+}# this is comment

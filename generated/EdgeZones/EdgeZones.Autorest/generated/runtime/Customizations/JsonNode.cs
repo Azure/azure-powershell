@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

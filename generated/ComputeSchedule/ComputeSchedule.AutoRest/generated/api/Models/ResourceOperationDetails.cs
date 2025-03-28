@@ -309,4 +309,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         string Timezone { get; set; }
 
     }
-}
+}# this is comment

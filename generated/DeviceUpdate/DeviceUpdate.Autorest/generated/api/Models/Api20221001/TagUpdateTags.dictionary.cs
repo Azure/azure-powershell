@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.TagUpdateTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

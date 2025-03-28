@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         int? Zone { get; set; }
 
     }
-}
+}# this is comment

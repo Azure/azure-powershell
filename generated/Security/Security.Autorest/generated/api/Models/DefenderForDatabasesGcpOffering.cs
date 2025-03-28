@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning DefenderForDatabasesArcAutoProvisioning { get; set; }
 
     }
-}
+}# this is comment

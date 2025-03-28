@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json
 
         internal override Guid FromJson(JsonNode node) => (Guid)node;
     }
-}
+}# this is comment

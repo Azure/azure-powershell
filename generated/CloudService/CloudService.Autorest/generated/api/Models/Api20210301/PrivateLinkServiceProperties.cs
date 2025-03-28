@@ -237,4 +237,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301
         string[] VisibilitySubscription { get; set; }
 
     }
-}
+}# this is comment

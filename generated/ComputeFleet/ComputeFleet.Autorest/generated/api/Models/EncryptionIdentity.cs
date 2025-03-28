@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string UserAssignedIdentityResourceId { get; set; }
 
     }
-}
+}# this is comment

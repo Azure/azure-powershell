@@ -173,4 +173,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         string RequestErrorDetail { get; set; }
 
     }
-}
+}# this is comment

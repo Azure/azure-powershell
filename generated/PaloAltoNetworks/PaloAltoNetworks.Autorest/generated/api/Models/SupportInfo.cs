@@ -279,4 +279,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         string UserRegistered { get; set; }
 
     }
-}
+}# this is comment

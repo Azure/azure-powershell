@@ -65,3 +65,5 @@ directive:
       subject: ^CollectorPolicy(.*)
     hide: true
 ```
+
+# this is readme comment

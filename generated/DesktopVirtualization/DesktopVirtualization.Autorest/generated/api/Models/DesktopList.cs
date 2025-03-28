@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop> Value { get; set; }
 
     }
-}
+}# this is comment

@@ -119,4 +119,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAzureAdPartnerClientAuthenticationProperties Property { get; set; }
 
     }
-}
+}# this is comment

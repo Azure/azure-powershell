@@ -458,4 +458,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

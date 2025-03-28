@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization
             return scriptBlock;
         }
     }
-}
+}# this is comment

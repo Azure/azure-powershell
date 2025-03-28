@@ -135,4 +135,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

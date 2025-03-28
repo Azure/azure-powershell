@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         System.Collections.Generic.List<string> RemovePlan { get; set; }
 
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IWinRmListener> Listener { get; set; }
 
     }
-}
+}# this is comment

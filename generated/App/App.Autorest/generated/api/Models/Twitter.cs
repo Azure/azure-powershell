@@ -127,4 +127,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string RegistrationConsumerSecretSettingName { get; set; }
 
     }
-}
+}# this is comment

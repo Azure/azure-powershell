@@ -212,4 +212,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType? StorageAccountType { get; set; }
 
     }
-}
+}# this is comment

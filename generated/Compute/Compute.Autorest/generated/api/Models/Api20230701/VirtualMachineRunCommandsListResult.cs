@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand[] Value { get; set; }
 
     }
-}
+}# this is comment

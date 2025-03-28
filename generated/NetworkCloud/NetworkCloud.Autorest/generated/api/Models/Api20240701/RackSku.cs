@@ -287,4 +287,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701
         string[] SupportedRackSkuId { get; set; }
 
     }
-}
+}# this is comment

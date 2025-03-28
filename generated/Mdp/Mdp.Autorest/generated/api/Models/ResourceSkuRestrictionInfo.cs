@@ -71,4 +71,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         System.Collections.Generic.List<string> Zone { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

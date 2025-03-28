@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment

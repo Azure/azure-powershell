@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

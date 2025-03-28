@@ -235,4 +235,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersionProperties Property { get; set; }
 
     }
-}
+}# this is comment

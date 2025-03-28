@@ -70,4 +70,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

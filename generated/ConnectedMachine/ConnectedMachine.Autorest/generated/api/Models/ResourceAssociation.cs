@@ -79,4 +79,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Name { get; set; }
 
     }
-}
+}# this is comment

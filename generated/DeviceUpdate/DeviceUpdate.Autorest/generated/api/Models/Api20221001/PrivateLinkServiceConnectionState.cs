@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001
         Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support.PrivateEndpointServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

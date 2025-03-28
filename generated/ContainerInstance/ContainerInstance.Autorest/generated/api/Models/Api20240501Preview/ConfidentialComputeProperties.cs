@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         string CcePolicy { get; set; }
 
     }
-}
+}# this is comment

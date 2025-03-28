@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string AzureAsyncOperation { get; set; }
 
     }
-}
+}# this is comment

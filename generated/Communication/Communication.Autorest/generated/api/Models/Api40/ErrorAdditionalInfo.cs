@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40
         string Type { get; set; }
 
     }
-}
+}# this is comment

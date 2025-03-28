@@ -170,4 +170,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

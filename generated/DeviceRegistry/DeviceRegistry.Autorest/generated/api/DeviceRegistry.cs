@@ -6183,4 +6183,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
             }
         }
     }
-}
+}# this is comment

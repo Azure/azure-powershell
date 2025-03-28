@@ -171,4 +171,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePatchProperties Property { get; set; }
 
     }
-}
+}# this is comment

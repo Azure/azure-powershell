@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string Value { get; set; }
 
     }
-}
+}# this is comment

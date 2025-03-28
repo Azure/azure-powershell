@@ -517,4 +517,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IInMageAzureV2EnableProtectionInputTargetVMTags TargetVMTag { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

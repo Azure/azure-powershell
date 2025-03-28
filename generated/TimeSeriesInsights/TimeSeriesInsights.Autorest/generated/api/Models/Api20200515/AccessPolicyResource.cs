@@ -132,4 +132,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api202005
         Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[] Role { get; set; }
 
     }
-}
+}# this is comment

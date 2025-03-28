@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerAuthenticatorMethodX509Attributes1>(Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.BrokerAuthenticatorMethodX509AuthorizationAttributes source) => source.__additionalProperties;
     }
-}
+}# this is comment

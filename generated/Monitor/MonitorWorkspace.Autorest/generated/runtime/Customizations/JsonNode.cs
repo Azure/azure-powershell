@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Js
             return this.ToString();
         }
     }
-}
+}# this is comment

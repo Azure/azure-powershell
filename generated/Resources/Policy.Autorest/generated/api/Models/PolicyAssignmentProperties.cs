@@ -294,4 +294,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         string Scope { get; set; }
 
     }
-}
+}# this is comment

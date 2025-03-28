@@ -148,4 +148,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Ap
         bool? RetentionPolicyEnabled { get; set; }
 
     }
-}
+}# this is comment

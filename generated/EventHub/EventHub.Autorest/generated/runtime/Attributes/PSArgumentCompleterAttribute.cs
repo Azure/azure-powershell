@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             return scriptBlock;
         }
     }
-}
+}# this is comment

@@ -112,4 +112,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api202005
         global::System.TimeSpan? WarmStoreConfigurationDataRetention { get; set; }
 
     }
-}
+}# this is comment

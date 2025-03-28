@@ -123,4 +123,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151
         string WorkspaceResourceId { get; set; }
 
     }
-}
+}# this is comment

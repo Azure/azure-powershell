@@ -371,4 +371,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         bool? SoftDeletePolicyIsSoftDeleteEnabled { get; set; }
 
     }
-}
+}# this is comment

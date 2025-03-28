@@ -47,4 +47,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support
             }
         }
     }
-}
+}# this is comment

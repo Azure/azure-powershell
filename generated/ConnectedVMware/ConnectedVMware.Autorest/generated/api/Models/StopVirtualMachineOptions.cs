@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         bool? SkipShutdown { get; set; }
 
     }
-}
+}# this is comment

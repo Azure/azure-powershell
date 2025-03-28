@@ -119,4 +119,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         int? VCpUsPerCore { get; set; }
 
     }
-}
+}# this is comment

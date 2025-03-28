@@ -60,4 +60,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> SetIPCommunityId { get; set; }
 
     }
-}
+}# this is comment

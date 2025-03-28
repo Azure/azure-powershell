@@ -521,4 +521,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Status { get; set; }
 
     }
-}
+}# this is comment

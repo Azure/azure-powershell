@@ -270,4 +270,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IProfileType> Profile { get; set; }
 
     }
-}
+}# this is comment

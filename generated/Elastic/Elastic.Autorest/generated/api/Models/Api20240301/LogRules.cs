@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301
         bool? SendSubscriptionLog { get; set; }
 
     }
-}
+}# this is comment

@@ -69,4 +69,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string X509SecretRef { get; set; }
 
     }
-}
+}# this is comment

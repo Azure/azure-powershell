@@ -218,4 +218,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopProperties Property { get; set; }
 
     }
-}
+}# this is comment

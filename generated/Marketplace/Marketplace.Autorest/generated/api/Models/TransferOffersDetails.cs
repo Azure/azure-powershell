@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         System.Collections.Generic.List<string> TargetCollection { get; set; }
 
     }
-}
+}# this is comment

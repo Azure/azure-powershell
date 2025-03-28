@@ -188,4 +188,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

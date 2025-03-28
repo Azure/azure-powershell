@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IOperation> Value { get; set; }
 
     }
-}
+}# this is comment

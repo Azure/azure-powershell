@@ -150,4 +150,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string Resource { get; set; }
 
     }
-}
+}# this is comment

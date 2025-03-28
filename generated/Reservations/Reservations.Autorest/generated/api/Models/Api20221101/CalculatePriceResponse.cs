@@ -214,4 +214,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         double? TaxTotal { get; set; }
 
     }
-}
+}# this is comment

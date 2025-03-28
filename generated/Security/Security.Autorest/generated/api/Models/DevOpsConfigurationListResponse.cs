@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDevOpsConfiguration> Value { get; set; }
 
     }
-}
+}# this is comment

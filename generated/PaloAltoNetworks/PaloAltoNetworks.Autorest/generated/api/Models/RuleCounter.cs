@@ -257,4 +257,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         global::System.DateTime? Timestamp { get; set; }
 
     }
-}
+}# this is comment

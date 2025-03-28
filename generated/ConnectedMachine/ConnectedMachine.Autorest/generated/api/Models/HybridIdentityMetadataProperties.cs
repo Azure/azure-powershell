@@ -142,4 +142,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string VMId { get; set; }
 
     }
-}
+}# this is comment

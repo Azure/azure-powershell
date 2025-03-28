@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         byte[] RawPng { get; set; }
 
     }
-}
+}# this is comment

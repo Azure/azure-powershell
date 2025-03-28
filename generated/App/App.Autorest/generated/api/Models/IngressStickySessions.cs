@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string Affinity { get; set; }
 
     }
-}
+}# this is comment

@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20231230
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionState? State { get; set; }
 
     }
-}
+}# this is comment

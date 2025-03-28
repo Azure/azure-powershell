@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

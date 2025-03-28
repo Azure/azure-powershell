@@ -294,4 +294,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsTags Tag { get; set; }
 
     }
-}
+}# this is comment

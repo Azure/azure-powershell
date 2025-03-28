@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Ap
         bool Enabled { get; set; }
 
     }
-}
+}# this is comment

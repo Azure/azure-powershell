@@ -3603,4 +3603,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration
             }
         }
     }
-}
+}# this is comment

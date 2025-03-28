@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30
         string Type { get; set; }
 
     }
-}
+}# this is comment

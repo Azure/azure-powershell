@@ -125,4 +125,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string HiveMetastoreDbConnectionUserName { get; set; }
 
     }
-}
+}# this is comment

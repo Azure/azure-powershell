@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IOperation> Value { get; set; }
 
     }
-}
+}# this is comment

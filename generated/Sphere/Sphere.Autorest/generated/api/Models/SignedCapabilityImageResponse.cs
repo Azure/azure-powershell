@@ -54,4 +54,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         string Image { get; set; }
 
     }
-}
+}# this is comment

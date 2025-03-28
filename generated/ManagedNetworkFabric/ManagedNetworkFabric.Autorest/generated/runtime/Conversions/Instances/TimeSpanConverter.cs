@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json
 
         internal override TimeSpan FromJson(JsonNode node) => (TimeSpan)node;
     }
-}
+}# this is comment

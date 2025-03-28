@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.PivotType? Type { get; set; }
 
     }
-}
+}# this is comment

@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         float Threshold { get; set; }
 
     }
-}
+}# this is comment

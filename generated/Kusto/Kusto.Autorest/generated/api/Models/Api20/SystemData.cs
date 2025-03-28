@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

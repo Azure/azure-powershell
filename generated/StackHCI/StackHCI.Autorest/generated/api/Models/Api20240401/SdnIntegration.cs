@@ -85,4 +85,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         bool? NetworkControllerNetworkVirtualizationEnabled { get; set; }
 
     }
-}
+}# this is comment

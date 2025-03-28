@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GraphServices.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

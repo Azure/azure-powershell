@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet> SubnetId { get; set; }
 
     }
-}
+}# this is comment

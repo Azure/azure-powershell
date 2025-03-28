@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Previ
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.DnsForwardingRulesetPatchTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

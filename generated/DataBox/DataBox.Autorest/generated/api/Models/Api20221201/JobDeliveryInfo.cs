@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201
         global::System.DateTime? ScheduledDateTime { get; set; }
 
     }
-}
+}# this is comment

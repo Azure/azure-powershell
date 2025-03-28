@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.UserType? UserType { get; set; }
 
     }
-}
+}# this is comment

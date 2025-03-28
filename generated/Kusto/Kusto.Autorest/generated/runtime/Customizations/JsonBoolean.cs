@@ -13,4 +13,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json
     }
 
 
-}
+}# this is comment

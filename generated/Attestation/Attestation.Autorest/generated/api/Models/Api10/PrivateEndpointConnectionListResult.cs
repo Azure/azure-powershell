@@ -50,4 +50,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[] Value { get; set; }
 
     }
-}
+}# this is comment

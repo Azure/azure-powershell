@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

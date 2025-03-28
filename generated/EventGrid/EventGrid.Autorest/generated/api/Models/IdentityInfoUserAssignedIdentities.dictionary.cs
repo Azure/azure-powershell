@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IUserIdentityProperties>(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IdentityInfoUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

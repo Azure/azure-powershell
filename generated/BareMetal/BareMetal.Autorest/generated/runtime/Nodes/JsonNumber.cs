@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.Json
 
         public override string ToString() => value;
     }
-}
+}# this is comment

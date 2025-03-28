@@ -10,4 +10,5 @@
 
         internal override float FromJson(JsonNode node) => (float)node;
     }
-}
+}# this is comment
+# this is comment

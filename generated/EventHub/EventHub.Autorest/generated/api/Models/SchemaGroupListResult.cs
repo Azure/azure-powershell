@@ -78,4 +78,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup> Value { get; set; }
 
     }
-}
+}# this is comment

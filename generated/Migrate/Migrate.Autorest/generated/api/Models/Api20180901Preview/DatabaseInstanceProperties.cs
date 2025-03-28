@@ -97,4 +97,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDatabaseInstancePropertiesSummary Summary { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

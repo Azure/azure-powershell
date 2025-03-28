@@ -143,4 +143,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string PrivateIPAddress { get; set; }
 
     }
-}
+}# this is comment

@@ -149,4 +149,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IUserAssignedIdentities UserAssignedIdentity { get; set; }
 
     }
-}
+}# this is comment

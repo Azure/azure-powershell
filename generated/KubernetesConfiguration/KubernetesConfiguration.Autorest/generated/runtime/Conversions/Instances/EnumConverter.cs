@@ -27,4 +27,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Jso
             return Enum.Parse(type, node.ToString(), ignoreCase: true);
         }
     }
-}
+}# this is comment

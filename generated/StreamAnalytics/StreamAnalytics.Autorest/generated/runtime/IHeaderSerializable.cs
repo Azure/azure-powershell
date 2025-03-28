@@ -11,4 +11,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime
     {
         void ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers);
     }
-}
+}# this is comment

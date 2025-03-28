@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectGlobalRulestackResource> Value { get; set; }
 
     }
-}
+}# this is comment

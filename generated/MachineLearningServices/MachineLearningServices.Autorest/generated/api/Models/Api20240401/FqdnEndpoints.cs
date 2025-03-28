@@ -63,4 +63,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IFqdnEndpointsProperties Property { get; set; }
 
     }
-}
+}# this is comment

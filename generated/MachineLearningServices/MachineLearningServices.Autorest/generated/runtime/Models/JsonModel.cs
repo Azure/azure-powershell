@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Jso
             return new JsonModel(type, members);
         }
     }
-}
+}# this is comment

@@ -119,4 +119,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPatchableParameters Property { get; set; }
 
     }
-}
+}# this is comment

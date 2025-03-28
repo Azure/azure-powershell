@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment

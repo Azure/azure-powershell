@@ -364,4 +364,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string SourceSettingSerializationFormat { get; set; }
 
     }
-}
+}# this is comment

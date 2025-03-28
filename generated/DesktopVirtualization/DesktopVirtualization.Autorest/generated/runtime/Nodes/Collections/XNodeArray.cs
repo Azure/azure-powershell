@@ -70,4 +70,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

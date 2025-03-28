@@ -16,11 +16,14 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
-[assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - Cdn")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("3.3.0")]
-[assembly: System.Reflection.AssemblyVersionAttribute("3.3.0")]
-[assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
-[assembly: System.CLSCompliantAttribute(false)]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - Cdn")]
+[assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
+[assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
+[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+[assembly: Guid("89d80a5c-524f-42ac-9f55-8271fa0bca3d")]
+[assembly: AssemblyVersion("3.3.0")]
+[assembly: AssemblyFileVersion("3.3.0")]
+# this is comment

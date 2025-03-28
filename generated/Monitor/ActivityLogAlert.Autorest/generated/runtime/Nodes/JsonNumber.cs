@@ -106,4 +106,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         public override string ToString() => value;
     }
-}
+}# this is comment
+# this is comment

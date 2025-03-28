@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904
         Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IExtension[] Extension { get; set; }
 
     }
-}
+}# this is comment

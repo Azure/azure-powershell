@@ -103,4 +103,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504
         Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary Configuration { get; set; }
 
     }
-}
+}# this is comment

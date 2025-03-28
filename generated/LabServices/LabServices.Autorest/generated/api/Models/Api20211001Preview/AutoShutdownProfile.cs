@@ -157,4 +157,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Previ
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState? ShutdownWhenNotConnected { get; set; }
 
     }
-}
+}# this is comment

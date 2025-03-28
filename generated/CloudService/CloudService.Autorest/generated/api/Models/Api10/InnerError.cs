@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10
         string Exceptiontype { get; set; }
 
     }
-}
+}# this is comment

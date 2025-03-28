@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string SchemaVersion { get; set; }
 
     }
-}
+}# this is comment

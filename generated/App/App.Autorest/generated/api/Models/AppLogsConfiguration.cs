@@ -101,4 +101,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ILogAnalyticsConfiguration LogAnalyticsConfiguration { get; set; }
 
     }
-}
+}# this is comment

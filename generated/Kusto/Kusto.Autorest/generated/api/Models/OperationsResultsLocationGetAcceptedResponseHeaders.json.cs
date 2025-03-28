@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             return container;
         }
     }
-}
+}# this is comment

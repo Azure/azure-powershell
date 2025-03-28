@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IUserAssignedIdentityProperty>(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

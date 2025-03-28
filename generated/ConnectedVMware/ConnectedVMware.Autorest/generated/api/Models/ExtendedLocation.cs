@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string Type { get; set; }
 
     }
-}
+}# this is comment

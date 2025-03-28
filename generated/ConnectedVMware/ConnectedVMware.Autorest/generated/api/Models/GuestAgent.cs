@@ -323,4 +323,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models
         string Uuid { get; set; }
 
     }
-}
+}# this is comment

@@ -27,4 +27,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json
             return Enum.Parse(type, node.ToString(), ignoreCase: true);
         }
     }
-}
+}# this is comment
+# this is comment

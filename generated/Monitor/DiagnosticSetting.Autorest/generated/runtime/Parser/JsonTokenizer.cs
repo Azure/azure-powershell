@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
             reader.Dispose();
         }
     }
-}
+}# this is comment

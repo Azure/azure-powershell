@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Fabric Client { get; }
     }
 }
+# this is comment

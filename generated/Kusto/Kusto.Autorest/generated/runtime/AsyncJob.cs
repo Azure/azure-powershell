@@ -267,4 +267,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell
             }
         }
     }
-}
+}# this is comment

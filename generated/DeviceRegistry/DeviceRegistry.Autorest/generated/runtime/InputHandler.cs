@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Cmdlets
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext context);
     }
-}
+}# this is comment

@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         long? DownloadSizeInMb { get; set; }
 
     }
-}
+}# this is comment

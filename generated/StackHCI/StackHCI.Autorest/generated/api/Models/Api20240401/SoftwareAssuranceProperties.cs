@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus? SoftwareAssuranceStatus { get; set; }
 
     }
-}
+}# this is comment

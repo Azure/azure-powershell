@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string GatewayResourceId { get; set; }
 
     }
-}
+}# this is comment

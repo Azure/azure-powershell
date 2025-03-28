@@ -72,3 +72,5 @@ directive:
         properties:
           - Sku
 ```
+
+# this is readme comment

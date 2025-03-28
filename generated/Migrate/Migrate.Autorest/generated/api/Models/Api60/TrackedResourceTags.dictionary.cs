@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.TrackedResourceTags source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

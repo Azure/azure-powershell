@@ -152,4 +152,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFileValues Value { get; set; }
 
     }
-}
+}# this is comment

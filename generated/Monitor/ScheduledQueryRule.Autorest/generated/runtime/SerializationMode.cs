@@ -13,4 +13,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime
 
         IncludeAll = IncludeHeaders | IncludeReadOnly
     }
-}
+}# this is comment

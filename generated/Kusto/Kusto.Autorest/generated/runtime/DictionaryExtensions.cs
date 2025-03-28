@@ -30,4 +30,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime
             }
         }
     }
-}
+}# this is comment

@@ -200,3 +200,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PowerShel
         public static PsModuleHelpInfo ToModuleInfo(this PSModuleInfo moduleInfo) => new PsModuleHelpInfo(moduleInfo);
     }
 }
+# this is comment
+# this is comment

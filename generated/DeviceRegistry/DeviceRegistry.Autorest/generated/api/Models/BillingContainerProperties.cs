@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

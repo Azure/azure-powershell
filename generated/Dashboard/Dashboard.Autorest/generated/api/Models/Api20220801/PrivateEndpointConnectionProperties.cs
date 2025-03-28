@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PrivateEndpointConnectionProvisioningState? ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

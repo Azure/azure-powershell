@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
         string Type { get; set; }
 
     }
-}
+}# this is comment

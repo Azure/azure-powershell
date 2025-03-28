@@ -203,4 +203,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMNicInputDetails[] VMNic { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

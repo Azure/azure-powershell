@@ -101,4 +101,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models
             return container;
         }
     }
-}
+}# this is comment

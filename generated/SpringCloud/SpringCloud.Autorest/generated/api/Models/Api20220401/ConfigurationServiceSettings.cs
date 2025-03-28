@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceGitRepository[] GitPropertyRepository { get; set; }
 
     }
-}
+}# this is comment

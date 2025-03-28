@@ -192,4 +192,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string Origin { get; set; }
 
     }
-}
+}# this is comment

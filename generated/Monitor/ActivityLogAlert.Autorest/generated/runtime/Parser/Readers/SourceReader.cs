@@ -127,4 +127,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
             source.Dispose();
         }
     }
-}
+}# this is comment
+# this is comment

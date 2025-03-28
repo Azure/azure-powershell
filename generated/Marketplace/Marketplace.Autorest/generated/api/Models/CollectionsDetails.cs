@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         string CollectionName { get; set; }
 
     }
-}
+}# this is comment

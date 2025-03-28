@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfile[] Orchestrator { get; set; }
 
     }
-}
+}# this is comment

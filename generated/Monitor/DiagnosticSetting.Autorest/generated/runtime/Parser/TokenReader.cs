@@ -36,4 +36,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
             tokenizer.Dispose();
         }
     }
-}
+}# this is comment

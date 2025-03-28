@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionMetadataResource[] Value { get; set; }
 
     }
-}
+}# this is comment

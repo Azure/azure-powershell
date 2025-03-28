@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         string ExtensionParameterTypeHandlerVersion { get; set; }
 
     }
-}
+}# this is comment

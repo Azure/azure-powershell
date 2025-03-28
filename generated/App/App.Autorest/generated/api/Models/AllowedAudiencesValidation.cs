@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         System.Collections.Generic.List<string> AllowedAudience { get; set; }
 
     }
-}
+}# this is comment

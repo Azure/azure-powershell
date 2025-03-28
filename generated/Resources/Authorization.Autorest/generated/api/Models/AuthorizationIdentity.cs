@@ -204,4 +204,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models
         string Scope { get; set; }
 
     }
-}
+}# this is comment

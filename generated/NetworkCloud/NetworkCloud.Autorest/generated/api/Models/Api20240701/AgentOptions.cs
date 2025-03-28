@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize? HugepagesSize { get; set; }
 
     }
-}
+}# this is comment

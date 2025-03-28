@@ -75,3 +75,5 @@ directive:
         description: Sets the Location default value to Global.
         script: '"global"'   
 ```
+
+# this is readme comment

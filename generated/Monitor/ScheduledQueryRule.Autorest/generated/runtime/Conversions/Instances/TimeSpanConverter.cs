@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
 
         internal override TimeSpan FromJson(JsonNode node) => (TimeSpan)node;
     }
-}
+}# this is comment

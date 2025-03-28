@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.DeviceRegistry Client { get; }
     }
 }
+# this is comment

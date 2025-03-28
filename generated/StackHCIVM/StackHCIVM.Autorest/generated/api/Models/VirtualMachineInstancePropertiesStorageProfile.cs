@@ -161,4 +161,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string VMConfigStoragePathId { get; set; }
 
     }
-}
+}# this is comment

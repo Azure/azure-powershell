@@ -238,4 +238,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
         string VendorSkuName { get; set; }
 
     }
-}
+}# this is comment

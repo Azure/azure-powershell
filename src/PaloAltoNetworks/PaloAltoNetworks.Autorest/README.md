@@ -228,3 +228,5 @@ directive:
       subject: FirewallSupportInfo|LocalRuleCounter|LocalRulestackAdvancedSecurityObject|LocalRulestackCountry|LocalRulestackPredefinedUrlCategory|LocalRulestackSecurityService
     remove: true
 ```
+
+# this is readme comment

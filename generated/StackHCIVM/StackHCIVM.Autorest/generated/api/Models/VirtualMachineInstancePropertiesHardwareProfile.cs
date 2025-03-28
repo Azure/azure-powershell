@@ -166,4 +166,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string VMSize { get; set; }
 
     }
-}
+}# this is comment

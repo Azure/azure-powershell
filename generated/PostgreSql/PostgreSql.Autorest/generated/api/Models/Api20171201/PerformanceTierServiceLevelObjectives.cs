@@ -167,4 +167,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
         int? VCore { get; set; }
 
     }
-}
+}# this is comment
