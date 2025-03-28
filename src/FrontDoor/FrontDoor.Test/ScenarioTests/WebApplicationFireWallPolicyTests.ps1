@@ -62,6 +62,9 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule2.RuleSetType $retrievedPolicy.ManagedRules[1].RuleSetType
     Assert-AreEqual $managedRule2.RuleSetVersion $retrievedPolicy.ManagedRules[1].RuleSetVersion
     Assert-AreEqual "Enabled" $retrievedPolicy.LogScrubbing.State
+    Assert-AreEqual $logscrubbingSetting.ScrubbingRule[0].MatchVariable $retrievedPolicy.LogScrubbing.ScrubbingRule[0].MatchVariable
+    Assert-AreEqual 30 $retrievedPolicy.JavascriptChallengeExpirationInMinutes
+    Assert-AreEqual 5 $retrievedPolicy.CaptchaExpirationInMinutes
     
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
     $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting @{}
