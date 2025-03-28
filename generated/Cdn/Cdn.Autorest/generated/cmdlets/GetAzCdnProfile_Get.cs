@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCdnProfile_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.CmdletBreakingChange("14.0.0", "5.0.0", "2025/5/19", ChangeDescription="The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]

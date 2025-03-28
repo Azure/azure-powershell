@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnProfile_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.CmdletBreakingChange("14.0.0", "5.0.0", "2025/5/19", ChangeDescription="The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChange("IdentityType", "14.0.0", "5.0.0", "2025/5/19", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType IdentityType { get => _profileBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType)""); set => _profileBody.IdentityType = value; }
 
@@ -104,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChange("IdentityUserAssignedIdentity", "14.0.0", "5.0.0", "2025/5/19", ChangeDescription="IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.", OldParamaterType="Hashtable", NewParameterType="string[]")]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _profileBody.IdentityUserAssignedIdentity ?? null /* object */; set => _profileBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>

@@ -46,6 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"",
         SerializedName = @"actions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChange("Action", "14.0.0", "5.0.0", "2025/5/19", ChangeDescription="The element type for parameter 'Action' has been changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction'.", OldParamaterType="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1", NewParameterType="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Query)]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction))]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] Action { get => this._action; set => this._action = value; }

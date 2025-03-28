@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFederatedIdentityCredential_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("New-AzFederatedIdentityCredentials")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential", "14.0.0", "2.0.0", "2025/05/19", DeprecatedOutputProperties=new string[] {"Audience <System.String[]>"}, NewOutputProperties=new string[] {"Audience <System.Collections.Generic.List`1[System.String]>"}, ChangeDescription="The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Description(@"Create or update a federated identity credential under the specified user assigned identity.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Generated]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
         Description = @"The list of audiences that can appear in the issued token.",
         SerializedName = @"audiences",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.ParameterBreakingChange("Audience", "14.0.0", "2.0.0", "2025/05/19", ChangeDescription="The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.", OldParamaterType="System.String[]", NewParameterType="System.Collections.Generic.List`1[System.String]")]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",

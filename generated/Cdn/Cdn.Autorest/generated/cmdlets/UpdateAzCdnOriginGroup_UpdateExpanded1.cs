@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCdnOriginGroup_UpdateExpanded1", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.CmdletBreakingChange("14.0.0", "5.0.0", "2025/5/19", ChangeDescription="The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Updates an existing origin group within an endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFederatedIdentityCredential_List")]
     [global::System.Management.Automation.Alias("Get-AzFederatedIdentityCredentials")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential", "14.0.0", "2.0.0", "2025/05/19", DeprecatedOutputProperties=new string[] {"Audience <System.String[]>"}, NewOutputProperties=new string[] {"Audience <System.Collections.Generic.List`1[System.String]>"}, ChangeDescription="The type of property 'Audience' of type 'FederatedIdentityCredential' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Description(@"Lists all the federated identity credentials under the specified user assigned identity.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Generated]

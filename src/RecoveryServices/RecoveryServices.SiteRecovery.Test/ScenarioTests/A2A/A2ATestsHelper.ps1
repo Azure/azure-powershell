@@ -163,6 +163,26 @@ function getRecoveryNicName{
        return "A2ArecNICName"+ $seed;
 }
 
+function getClusterPrimaryContainerName{
+    return "asr-a2a-default-eastus2-container";
+}
+
+function getClusterPrimaryFabricName{
+    return "asr-a2a-default-eastus2";
+}
+
+function getClusterRecoveryResourceGroupName{
+    return "ClusterRG-Shashank-1903224559-asr";
+}
+
+function getClusterVaultName{
+    return "powershell-cluster-vault";
+}
+
+function getClusterName{
+    return "powershell-cluster";
+}
+
 function Get-RandomSuffix(
 	[int] $size = 8)
 {

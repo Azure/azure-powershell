@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzCdnProfile_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.CmdletBreakingChange("14.0.0", "5.0.0", "2025/5/19", ChangeDescription="The type of property 'LogScrubbingRule' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules]'.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters. Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]

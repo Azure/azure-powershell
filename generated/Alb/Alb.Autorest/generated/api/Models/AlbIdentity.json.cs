@@ -69,6 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {_trafficControllerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("trafficControllerName"), out var __jsonTrafficControllerName) ? (string)__jsonTrafficControllerName : (string)_trafficControllerName;}
             {_associationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("associationName"), out var __jsonAssociationName) ? (string)__jsonAssociationName : (string)_associationName;}
             {_frontendName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("frontendName"), out var __jsonFrontendName) ? (string)__jsonFrontendName : (string)_frontendName;}
+            {_securityPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("securityPolicyName"), out var __jsonSecurityPolicyName) ? (string)__jsonSecurityPolicyName : (string)_securityPolicyName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             AddIf( null != (((object)this._trafficControllerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._trafficControllerName.ToString()) : null, "trafficControllerName" ,container.Add );
             AddIf( null != (((object)this._associationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._associationName.ToString()) : null, "associationName" ,container.Add );
             AddIf( null != (((object)this._frontendName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._frontendName.ToString()) : null, "frontendName" ,container.Add );
+            AddIf( null != (((object)this._securityPolicyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._securityPolicyName.ToString()) : null, "securityPolicyName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

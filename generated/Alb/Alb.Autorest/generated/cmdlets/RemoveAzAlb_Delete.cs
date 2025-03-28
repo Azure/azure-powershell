@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Delete a TrafficController")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2025-01-01")]
     public partial class RemoveAzAlb_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.TrafficControllerInterfaceDelete(SubscriptionId, ResourceGroupName, Name, onOk, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.TrafficControllerInterfaceDelete(SubscriptionId, ResourceGroupName, Name, onNoContent, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException urexception)

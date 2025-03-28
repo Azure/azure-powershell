@@ -18,12 +18,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='instanceType'>
         /// The instance type.
         /// </param>
-        public static SupportedOperatingSystems Get(this ISupportedOperatingSystemsOperations operations, string instanceType = default(string))
+        public static SupportedOperatingSystems Get(this ISupportedOperatingSystemsOperations operations, string resourceGroupName, string resourceName, string instanceType = default(string))
         {
-                return ((ISupportedOperatingSystemsOperations)operations).GetAsync(instanceType).GetAwaiter().GetResult();
+                return ((ISupportedOperatingSystemsOperations)operations).GetAsync(resourceGroupName, resourceName, instanceType).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +39,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='instanceType'>
         /// The instance type.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SupportedOperatingSystems> GetAsync(this ISupportedOperatingSystemsOperations operations, string instanceType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SupportedOperatingSystems> GetAsync(this ISupportedOperatingSystemsOperations operations, string resourceGroupName, string resourceName, string instanceType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(instanceType, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, instanceType, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
