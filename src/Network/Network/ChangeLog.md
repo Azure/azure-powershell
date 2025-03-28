@@ -43,6 +43,9 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+* Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
+    - `Start-AzNetworkWatcherConnectionMonitor`
+    - `Get-AzNetworkWatcherConnectionMonitorReport`
 
 ## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
