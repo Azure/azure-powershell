@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.PyPiLibraryProperties
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterpypilibraryobject
 #>
 function New-AzHdInsightOnAksClusterPyPiLibraryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

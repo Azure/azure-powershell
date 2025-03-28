@@ -24,6 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResour
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/new-azacatwebhookresourceobject
 #>
 function New-AzAcatWebhookResourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
