@@ -38,7 +38,7 @@ function Test-PolicyCrud
     $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
     $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($LogScrubbingRule)
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -CaptchaExpirationInMinutes 5 -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
