@@ -1,44 +1,45 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
-online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstanceupdate
 schema: 2.0.0
 ---
 
-# Test-AzDataProtectionBackupInstanceReadiness
+# Test-AzDataProtectionBackupInstanceUpdate
 
 ## SYNOPSIS
-Validate whether adhoc backup will be successful or not
+Validate whether update for backup instance will be successful or not
 
 ## SYNTAX
 
 ```
-Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName <String> -VaultName <String>
- -BackupInstance <IBackupInstance> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzDataProtectionBackupInstanceUpdate -Name <String> -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] -BackupInstance <IBackupInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Validate whether adhoc backup will be successful or not
+Validate whether update for backup instance will be successful or not
 
 ## EXAMPLES
 
-### Example 1: Test the backup instance 
+### Example 1: Validate for modify backup instance operation
 ```powershell
-$vault = Get-AzDataProtectionBackupVault -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
-$diskBackupPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -Name "diskBackupPolicy"
-$diskId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Compute/disks/test-disk" 
-$snapshotRG = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName"
-$instance = Initialize-AzDataProtectionBackupInstance -SnapshotResourceGroupId $Snapshotrg -DatasourceType AzureDisk -DatasourceLocation $vault.Location -PolicyId $diskBackupPolicy[0].Id -DatasourceId $diskId 
-Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -BackupInstance  $instance[0].Property
+$backupInstanceResource = Get-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId | Where-Object { $_.Name -match $backupInstanceName }
+$backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicyARMId
+
+Test-AzDataProtectionBackupInstanceUpdate -BackupInstanceName $backupInstanceResource.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -BackupInstance $backupInstanceResource.Property
 ```
 
-The first command gets the backup vault.
-The second command gets the disk policy.
-Next we initialize $diskId and $snapshotRG variables with disk and snapshot ARM Ids.
-The fifth line runs the Initialize command to create a client side backup instance object.
-Finally we trigger the Test-AzDataProtectionBackupInstanceReadiness command to validate whether the backup instance is ready for configuring backup or not, the command will fail or pass accordingly.
-This command can be use to check whether the backup vault has all the necessary permissions to configure backup.
+```output
+ObjectType               JobId
+----------               -----
+OperationJobExtendedInfo
+```
+
+First command gets the backup instance resource and updates the policy id.
+Second command validates whether the update operation will be successful or not.
+If the output is coming as OperationJobExtendedInfo, then the update operation will be successful and can be continued with Update-AzDataProtectionBackupInstance cmdlet.
 
 ## PARAMETERS
 
@@ -83,6 +84,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the backup instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BackupInstanceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,4 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
