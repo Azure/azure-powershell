@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Orbital
-Module Guid: 4fb1d4af-9f8d-4a19-9f17-d8186bf02cfb
+Module Guid: 6101de4a-589c-42af-b422-b0beeeeb91a3
 Download Help Link: https://learn.microsoft.com/powershell/module/az.orbital
 Help Version: 1.0.0.0
 Locale: en-US
@@ -28,7 +28,7 @@ Gets the specified spacecraft in a specified resource group.
 Gets the specified contact in a specified resource group.
 
 ### [New-AzOrbitalContactProfile](New-AzOrbitalContactProfile.md)
-Creates or updates a contact profile.
+create a contact profile.
 
 ### [New-AzOrbitalContactProfileLinkChannelObject](New-AzOrbitalContactProfileLinkChannelObject.md)
 Create an in-memory object for ContactProfileLinkChannel.
@@ -37,10 +37,10 @@ Create an in-memory object for ContactProfileLinkChannel.
 Create an in-memory object for ContactProfileLink.
 
 ### [New-AzOrbitalSpacecraft](New-AzOrbitalSpacecraft.md)
-Creates or updates a spacecraft resource.
+create a spacecraft resource.
 
 ### [New-AzOrbitalSpacecraftContact](New-AzOrbitalSpacecraftContact.md)
-Creates a contact.
+create a contact.
 
 ### [New-AzOrbitalSpacecraftLinkObject](New-AzOrbitalSpacecraftLinkObject.md)
 Create an in-memory object for SpacecraftLink.
@@ -55,8 +55,8 @@ Deletes a specified spacecraft resource.
 Deletes a specified contact.
 
 ### [Update-AzOrbitalContactProfile](Update-AzOrbitalContactProfile.md)
-Updates the specified contact profile tags.
+update the specified contact profile tags.
 
 ### [Update-AzOrbitalSpacecraft](Update-AzOrbitalSpacecraft.md)
-Updates the specified spacecraft tags.
+update the specified spacecraft tags.
 

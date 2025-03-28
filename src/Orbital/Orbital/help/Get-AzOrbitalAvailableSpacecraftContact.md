@@ -28,6 +28,20 @@ Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ListViaJsonFilePath
+```
+Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Returns list of available contacts.
 A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
@@ -138,6 +152,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Spacecraft ID.
 
@@ -170,10 +214,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Parameters that define the contact resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactParameters
 Parameter Sets: List
 Aliases:
 
@@ -266,11 +309,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContacts
 
 ## NOTES
 

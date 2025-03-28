@@ -8,21 +8,36 @@ schema: 2.0.0
 # New-AzOrbitalContactProfile
 
 ## SYNOPSIS
-Creates or updates a contact profile.
+create a contact profile.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Link <IContactProfileLink[]>
  -Location <String> -NetworkConfigurationSubnetId <String> [-SubscriptionId <String>]
- [-AutoTrackingConfiguration <AutoTrackingConfiguration>] [-EventHubUri <String>]
- [-MinimumElevationDegree <Single>] [-MinimumViableContactDuration <String>] [-Tag <Hashtable>]
+ [-AutoTrackingConfiguration <String>] [-EventHubUri <String>] [-MinimumElevationDegree <Single>]
+ [-MinimumViableContactDuration <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
  [-ThirdPartyConfiguration <IContactProfileThirdPartyConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a contact profile.
+create a contact profile.
 
 ## EXAMPLES
 
@@ -64,8 +79,8 @@ Accept wildcard characters: False
 Auto-tracking configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.AutoTrackingConfiguration
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -97,7 +112,7 @@ Requires granting Orbital Resource Provider the rights to send telemetry into th
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -107,14 +122,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Link
 Links of the Contact Profile.
 Describes RF links, modem processing, and IP endpoints.
-To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLink[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLink[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -129,7 +173,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -145,7 +189,7 @@ Used for listing the available contacts with a spacecraft at a given ground stat
 
 ```yaml
 Type: System.Single
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -161,7 +205,7 @@ Used for listing the available contacts with a spacecraft at a given ground stat
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -192,7 +236,7 @@ Needs to be at least a class C subnet, and should not have any IP created in it.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -208,6 +252,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+The current state of the resource's creation, deletion, or modification.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -253,7 +312,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -266,11 +325,10 @@ Accept wildcard characters: False
 ### -ThirdPartyConfiguration
 Third-party mission configuration of the Contact Profile.
 Describes RF links, modem processing, and IP endpoints.
-To construct, see NOTES section for THIRDPARTYCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileThirdPartyConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileThirdPartyConfiguration[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -318,7 +376,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfile
 
 ## NOTES
 

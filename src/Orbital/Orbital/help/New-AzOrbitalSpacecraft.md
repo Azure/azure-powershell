@@ -8,19 +8,34 @@ schema: 2.0.0
 # New-AzOrbitalSpacecraft
 
 ## SYNOPSIS
-Creates or updates a spacecraft resource.
+create a spacecraft resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Link <ISpacecraftLink[]> -Location <String> -TitleLine <String> -TleLine1 <String> -TleLine2 <String>
- [-NoradId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-NoradId <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a spacecraft resource.
+create a spacecraft resource.
 
 ## EXAMPLES
 
@@ -73,13 +88,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Link
-Immutable list of Spacecraft links.
-To construct, see NOTES section for LINK properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftLink[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Link
+Immutable list of Spacecraft links.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLink[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -94,7 +138,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -124,7 +168,7 @@ NORAD ID of the spacecraft.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -140,6 +184,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+The current state of the resource's creation, deletion, or modification.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +244,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +259,7 @@ Title line of the two-line element set (TLE).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -215,7 +274,7 @@ Line 1 of the two-line element set (TLE).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -230,7 +289,7 @@ Line 2 of the two-line element set (TLE).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -278,7 +337,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft
 
 ## NOTES
 

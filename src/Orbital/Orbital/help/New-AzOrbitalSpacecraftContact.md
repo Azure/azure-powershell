@@ -8,19 +8,35 @@ schema: 2.0.0
 # New-AzOrbitalSpacecraftContact
 
 ## SYNOPSIS
-Creates a contact.
+create a contact.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
  [-SubscriptionId <String>] -ContactProfileId <String> -GroundStationName <String>
- -ReservationEndTime <DateTime> -ReservationStartTime <DateTime> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ReservationEndTime <DateTime> -ReservationStartTime <DateTime> [-ProvisioningState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a contact.
+create a contact.
 
 ## EXAMPLES
 
@@ -62,7 +78,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -93,7 +109,37 @@ Azure Ground Station name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -133,12 +179,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProvisioningState
+The current state of the resource's creation, deletion, or modification.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservationEndTime
 Reservation end time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -153,7 +214,7 @@ Reservation start time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -247,7 +308,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContact
 
 ## NOTES
 

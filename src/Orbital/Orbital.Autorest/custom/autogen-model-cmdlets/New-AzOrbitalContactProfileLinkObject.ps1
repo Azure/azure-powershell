@@ -21,39 +21,40 @@ Create an in-memory object for ContactProfileLink.
 Create an in-memory object for ContactProfileLink.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkobject
 #>
 function New-AzOrbitalContactProfileLinkObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Contact Profile Link Channel.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]]
         $Channel,
-        [Parameter(Mandatory, HelpMessage="Direction (uplink or downlink).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
+        [Parameter(Mandatory, HelpMessage="Direction (Uplink or Downlink).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("Uplink", "Downlink")]
+        [string]
         $Direction,
-        [Parameter(HelpMessage="Effective Isotropic Radiated Power (EIRP) in dBW.")]
+        [Parameter(HelpMessage="Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.")]
         [float]
         $EirpdBw,
-        [Parameter(HelpMessage="Gain To Noise Temperature in db/K.")]
+        [Parameter(HelpMessage="Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.")]
         [float]
         $GainOverTemperature,
         [Parameter(Mandatory, HelpMessage="Link name.")]
         [string]
         $Name,
-        [Parameter(Mandatory, HelpMessage="polarization. eg (RHCP, LHCP).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
+        [Parameter(Mandatory, HelpMessage="Polarization. e.g. (RHCP, LHCP).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("RHCP", "LHCP", "linearVertical", "linearHorizontal")]
+        [string]
         $Polarization
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink]::New()
 
         if ($PSBoundParameters.ContainsKey('Channel')) {
             $Object.Channel = $Channel
