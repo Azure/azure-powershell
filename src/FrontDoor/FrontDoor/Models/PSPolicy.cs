@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string Sku { get; set; }
 
         public int? JavascriptChallengeExpirationInMinutes {  get; set; }
+        public int? CaptchaExpirationInMinutes {  get; set; }
 
         public PSFrontDoorWafLogScrubbingSetting LogScrubbing {  get; set; }
     }
