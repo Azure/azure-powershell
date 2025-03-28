@@ -17,6 +17,12 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Azure.Core;
+using Microsoft.Rest;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -56,19 +62,45 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
-                .WithManagementClients(context =>
-                    {
-                        AdlsClientFactory.IsTest = true;
-                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
-                        AdlsClientFactory.CustomDelegatingHAndler = context.AddHandlers(creds, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = creds;
-                        return new object();
-                    }
+                .WithManagementClients(mockContext =>
+                {
+                    var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                    AdlsClientFactory.IsTest = true;
+                    var serviceClientCredentials = currentEnvironment.TokenInfo[TokenAudience.Management] as ServiceClientCredentials;
+                    AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(serviceClientCredentials, new AdlMockDelegatingHandler());
+                    AdlsClientFactory.MockCredentials = new TokenCredentialAdapter(serviceClientCredentials);
+                    var dummyObj = new object();
+                    return dummyObj;
+                }
                 )
                 .WithCleanupAction(
                     () => AdlsClientFactory.IsTest = false
                 )
                 .Build();
+        }
+    }
+
+    public class TokenCredentialAdapter : TokenCredential
+    {
+        private readonly ServiceClientCredentials _serviceClientCredentials;
+
+        public TokenCredentialAdapter(ServiceClientCredentials serviceClientCredentials)
+        {
+            _serviceClientCredentials = serviceClientCredentials;
+        }
+
+        public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        {
+            var token = GetTokenAsync(requestContext, cancellationToken).Result;
+            return token;
+        }
+
+        public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        {
+            var tokenRequest = new HttpRequestMessage();
+            await _serviceClientCredentials.ProcessHttpRequestAsync(tokenRequest, cancellationToken).ConfigureAwait(false);
+            var token = tokenRequest.Headers.Authorization.Parameter;
+            return new AccessToken(token, DateTimeOffset.MaxValue);
         }
     }
 }

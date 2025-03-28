@@ -3,7 +3,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.DataLake.Store;
 using System.Text.RegularExpressions;
-using Microsoft.Rest;
+using Azure.Core;
+using Azure.Identity;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Net.Http;
 
@@ -20,7 +21,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <summary>
         /// Mock client credentials used for testing, this is set for record
         /// </summary>
-        internal static ServiceClientCredentials MockCredentials = null;
+        internal static TokenCredential MockCredentials = null;
+
         private static string HandleAccntName(string accnt,IAzureContext context)
         {
             if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9\-]+$"))
@@ -47,12 +49,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 AdlsClient client = null;
                 if (IsTest)
                 {
-                    client = AdlsClient.CreateClient(accntNm, MockCredentials, DataLakeStoreFileSystemClient.ImportExportMaxThreads, CustomDelegatingHAndler);
+                    client = AdlsClient.CreateClient(accntNm, MockCredentials, new string[] { });
                 }
                 else
                 {
-                    client = AdlsClient.CreateClient(accntNm, AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context,
-                        AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix), DataLakeStoreFileSystemClient.ImportExportMaxThreads);
+                    var tokenCredential = new DefaultAzureCredential();
+                    client = AdlsClient.CreateClient(accntNm, tokenCredential, new string[] { });
                 }
                 client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
                 ClientFactory.Add(accntNm,client);

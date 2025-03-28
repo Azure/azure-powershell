@@ -93,6 +93,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsEnumerateDeletedItem()
+        {
+            TestRunner.RunTestScript($"Test-EnumerateDataLakeStoreDeletedItem -location '{ResourceGroupLocation}'");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsEnumerateAndRestoreDeletedItem()
         {
             TestRunner.RunTestScript($"Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{ResourceGroupLocation}'");
