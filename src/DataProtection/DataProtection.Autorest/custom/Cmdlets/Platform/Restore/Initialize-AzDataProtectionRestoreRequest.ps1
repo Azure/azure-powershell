@@ -137,7 +137,24 @@
         [Parameter(ParameterSetName="RestoreAsFiles", Mandatory=$false, HelpMessage='Secret store type for secret store authentication of data source. This parameter is only supported for AzureDatabaseForPostgreSQL currently.')]
         [ValidateSet("AzureKeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
-        ${SecretStoreType}    
+        ${SecretStoreType},
+
+        [Parameter(Mandatory=$false, ParameterSetName="OriginalLocationFullRecovery", HelpMessage='Use system assigned identity')]
+        [Parameter(Mandatory=$false, ParameterSetName="AlternateLocationFullRecovery", HelpMessage='Use system assigned identity')]
+        [Parameter(Mandatory=$false, ParameterSetName="OriginalLocationILR", HelpMessage='Use system assigned identity')]
+        [Parameter(Mandatory=$false, ParameterSetName="RestoreAsFiles", HelpMessage='Use system assigned identity')]
+        [Parameter(Mandatory=$false, ParameterSetName="AlternateLocationILR", HelpMessage='Use system assigned identity')]
+        [System.Nullable[System.Boolean]]
+        ${UseSystemAssignedIdentity},
+
+        [Parameter(Mandatory=$false, ParameterSetName="OriginalLocationFullRecovery", HelpMessage='User assigned identity ARM Id')]
+        [Parameter(Mandatory=$false, ParameterSetName="AlternateLocationFullRecovery", HelpMessage='User assigned identity ARM Id')]
+        [Parameter(Mandatory=$false, ParameterSetName="OriginalLocationILR", HelpMessage='User assigned identity ARM Id')]
+        [Parameter(Mandatory=$false, ParameterSetName="RestoreAsFiles", HelpMessage='User assigned identity ARM Id')]
+        [Parameter(Mandatory=$false, ParameterSetName="AlternateLocationILR", HelpMessage='User assigned identity ARM Id')]
+        [Alias('AssignUserIdentity')]
+        [System.String]
+        ${UserAssignedIdentityArmId}    
     )
 
     process
@@ -188,6 +205,23 @@
         
         #Validate Restore Options = recoverypoint, ALR, OLR, ILR
         ValidateRestoreOptions -DatasourceType $DatasourceType -RestoreMode $restoreMode -RestoreTargetType $RestoreType -ItemLevelRecovery $ItemLevelRecovery -SecretStoreURI $SecretStoreURI
+
+        # UAMI for restore
+        $hasUseSystemAssignedIdentity = $PSBoundParameters.Remove("UseSystemAssignedIdentity")
+        $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")
+        if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
+
+            if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
+                throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
+            }
+
+            $restoreRequest.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IdentityDetails]::new()
+            $restoreRequest.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
+
+            if ($hasUserAssignedIdentityArmId) {
+                $restoreRequest.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+            }
+        }
 
         # Initialize Restore Target Info based on Type provided
 
