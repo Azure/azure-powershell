@@ -8,19 +8,48 @@ schema: 2.0.0
 # New-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-Create a TestLine
+create a TestLine
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-PhoneNumber <String>]
- [-Purpose <TestLinePurpose>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Purpose <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityCommunicationsGateway
+```
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
+ -Name <String> -Resource <ITestLine> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityCommunicationsGatewayExpanded
+```
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
+ -Name <String> -Location <String> [-PhoneNumber <String>] [-Purpose <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a TestLine
+create a TestLine
 
 ## EXAMPLES
 
@@ -54,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommunicationsGatewayInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
+Parameter Sets: CreateViaIdentityCommunicationsGateway, CreateViaIdentityCommunicationsGatewayExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CommunicationsGatewayName
 Unique identifier for this deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -85,12 +129,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: True
@@ -135,7 +209,7 @@ The phone number
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -150,8 +224,8 @@ Purpose of this test line, e.g.
 automated or manual testing
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -161,13 +235,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+A TestLine resource
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine
+Parameter Sets: CreateViaIdentityCommunicationsGateway
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -182,7 +271,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -197,7 +286,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -243,9 +332,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine
+
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine
 
 ## NOTES
 
