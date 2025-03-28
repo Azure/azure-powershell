@@ -488,6 +488,8 @@ function Save-PackageLocally {
                 $PSRepositoryUrl = "https://www.powershellgallery.com/api/v2"
             }
 
+            Write-Host "Checking for Nuget package provider"
+            Write-Host (Get-PackageProvider -Name NuGet)
             if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
                 Install-PackageProvider -Name NuGet -Force -Scope CurrentUser;
             }
@@ -498,7 +500,9 @@ function Save-PackageLocally {
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg
             } else {
+                Write-Host "Downloading the package from PSGallery"
                 Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg
+                Write-Host "Finished downloading the package from PSGallery"
             }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
