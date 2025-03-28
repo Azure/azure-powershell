@@ -18,14 +18,16 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
- [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
  [-PrefixMatch <Hashtable>] [<CommonParameters>]
 ```
 
@@ -34,7 +36,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -BackupInstance <BackupInstanceResource>
  [<CommonParameters>]
 ```
 
@@ -43,9 +46,10 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery]
- [-ContainersList <String[]>] -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>]
- [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -53,7 +57,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -TargetContainerURI <String>
  [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
  [<CommonParameters>]
 ```
@@ -538,6 +543,36 @@ use a forward slash (/) to separate the container name from the blob prefix patt
 ```yaml
 Type: System.String[]
 Parameter Sets: OriginalLocationILR
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmId
+User assigned identity ARM Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Use system assigned identity
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

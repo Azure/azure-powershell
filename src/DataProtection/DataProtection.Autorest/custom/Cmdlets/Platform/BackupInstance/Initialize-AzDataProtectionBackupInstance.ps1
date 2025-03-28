@@ -117,7 +117,7 @@
             $backupInstance.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
 
             if ($hasUserAssignedIdentityArmId) {
-                $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+                $backupInstance.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
             }
         }
 
