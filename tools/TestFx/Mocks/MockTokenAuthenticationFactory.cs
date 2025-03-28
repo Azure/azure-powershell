@@ -125,5 +125,10 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public void RemoveUser(IAzureAccount account, string authority)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

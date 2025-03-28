@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                         }
                                         else
                                         {
-                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id))
+                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id, removedContext.Environment.ActiveDirectoryAuthority))
                                             {
                                                 WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
                                             }

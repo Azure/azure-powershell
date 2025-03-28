@@ -822,8 +822,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             string authority = null;
             if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
             {
-                authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
+                authority = $"{sessionEnvironment.ActiveDirectoryAuthority}/organizations";
             }
+            //fixme, if Connect-AzAccount not run, when to get authority
             var accounts = tokenCacheProvider.ListAccounts(authority);
             if (!accounts.Any())
             {

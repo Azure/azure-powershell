@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -449,6 +448,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
+        /// <summary>
+        /// Remove any stored credentials for the given user and the Azure environment used.
+        /// </summary>
+        /// <param name="account">The account to remove credentials for</param>
+        /// <param name="authority">The Microsoft Entra authority</param>
+        public void RemoveUser(IAzureAccount account, string authority)
+        {
+            if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
+            {
+                switch (account.Type)
+                {
+                    case AzureAccount.AccountType.AccessToken:
+                        account.SetProperty(AzureAccount.Property.AccessToken, null);
+                        account.SetProperty(AzureAccount.Property.GraphAccessToken, null);
+                        account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, null);
+                        break;
+                    case AzureAccount.AccountType.ManagedService:
+                        account.SetProperty(AzureAccount.Property.MSILoginUri, null);
+                        break;
+                    case AzureAccount.AccountType.ServicePrincipal:
+                        try
+                        {
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
+                                account.Id, account.GetTenants().FirstOrDefault()));
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
+    account.Id, account.GetTenants().FirstOrDefault()));
+                        }
+                        catch
+                        {
+                            // make best effort to remove credentials
+                        }
+
+                        RemoveFromTokenCache(account, authority);
+                        break;
+                    case AzureAccount.AccountType.User:
+                        RemoveFromTokenCache(account, authority);
+                        break;
+                }
+            }
+        }
+
         private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
         {
             return environment.GetEndpoint(resourceIdorEndpointName) ?? resourceIdorEndpointName;
@@ -485,7 +525,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(IAzureAccount account)
+        private void RemoveFromTokenCache(IAzureAccount account, string authority = null)
         {
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -493,12 +533,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient();
+            var publicClient = tokenCacheProvider.CreatePublicClient(authority);
             var accounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
             foreach (var tokenAccount in tokenAccounts)
-                {
+            {
                 publicClient.RemoveAsync(tokenAccount)
                                 .ConfigureAwait(false).GetAwaiter().GetResult();
             }
