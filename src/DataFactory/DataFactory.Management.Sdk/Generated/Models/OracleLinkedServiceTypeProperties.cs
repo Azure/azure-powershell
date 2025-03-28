@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public OracleLinkedServiceTypeProperties(object connectionString, object server = default(object), string authenticationType = default(string), object username = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object encryptionClient = default(object), object encryptionTypesClient = default(object), object cryptoChecksumClient = default(object), object cryptoChecksumTypesClient = default(object), object initialLobFetchSize = default(object), object fetchSize = default(object), object statementCacheSize = default(object), object initializationString = default(object), object enableBulkLoad = default(object), object supportV1DataTypes = default(object), object fetchTswtzAsTimestamp = default(object), string encryptedCredential = default(string))
+        public OracleLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), string authenticationType = default(string), object username = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object encryptionClient = default(object), object encryptionTypesClient = default(object), object cryptoChecksumClient = default(object), object cryptoChecksumTypesClient = default(object), object initialLobFetchSize = default(object), object fetchSize = default(object), object statementCacheSize = default(object), object initializationString = default(object), object enableBulkLoad = default(object), object supportV1DataTypes = default(object), object fetchTswtzAsTimestamp = default(object), string encryptedCredential = default(string))
 
         {
             this.ConnectionString = connectionString;
@@ -274,10 +274,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
 
 
 
