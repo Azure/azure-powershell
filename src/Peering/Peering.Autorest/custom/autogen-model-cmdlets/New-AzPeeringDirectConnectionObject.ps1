@@ -21,12 +21,13 @@ Create an in-memory object for DirectConnection.
 Create an in-memory object for DirectConnection.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection
 .Link
-https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringdirectconnectionobject
 #>
 function New-AzPeeringDirectConnectionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -67,8 +68,8 @@ function New-AzPeeringDirectConnectionObject {
         [int]
         $PeeringDbFacilityId,
         [Parameter(HelpMessage="The field indicating if Microsoft provides session ip addresses.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.SessionAddressProvider]
+        [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Microsoft", "Peer")]
+        [string]
         $SessionAddressProvider,
         [Parameter(HelpMessage="The flag that indicates whether or not the connection is used for peering service.")]
         [bool]
@@ -76,7 +77,7 @@ function New-AzPeeringDirectConnectionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.DirectConnection]::New()
 
         if ($PSBoundParameters.ContainsKey('BandwidthInMbps')) {
             $Object.BandwidthInMbps = $BandwidthInMbps
