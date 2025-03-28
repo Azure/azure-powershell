@@ -3,6 +3,7 @@
 /src/Compute/    @EdwinBernal1 @grizzlytheodore @ntangy @sandido
 /src/PolicyInsights/  @pilor
 /src/Batch/ @wiboris @dpwatrous
+/src/DataLakeStore/ @akharit @paravin
 
 # Make sure Device Registry team gets notified of any DeviceRegistry PRs:
 # PRLabel: %Device Registry
@@ -10,3 +11,4 @@
 
 # Make sure changes to .github folder go through our team's double check
 /.github/        @isra-fel
+
