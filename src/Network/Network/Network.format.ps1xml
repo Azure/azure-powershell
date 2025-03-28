@@ -2011,6 +2011,10 @@
                 <PropertyName>PrivateIpAddressVersion</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PrivateIPAddressPrefixLength</Label>
+                <PropertyName>PrivateIPAddressPrefixLength</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PrivateIpAllocationMethod</Label>
                 <PropertyName>PrivateIpAllocationMethod</PropertyName>
               </ListItem>
