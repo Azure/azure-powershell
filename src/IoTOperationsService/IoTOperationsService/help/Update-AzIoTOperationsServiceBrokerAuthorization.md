@@ -17,7 +17,7 @@ update a BrokerAuthorizationResource
 Update-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
  -InstanceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthorizationPolicyCache <String>] [-AuthorizationPolicyRule <IAuthorizationRule[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -Br
 Update-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -BrokerName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-AuthorizationPolicyCache <String>]
  [-AuthorizationPolicyRule <IAuthorizationRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityBrokerExpanded
@@ -34,14 +34,14 @@ Update-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String> -Br
 Update-AzIoTOperationsServiceBrokerAuthorization -AuthorizationName <String>
  -BrokerInputObject <IIoTOperationsServiceIdentity> [-AuthorizationPolicyCache <String>]
  [-AuthorizationPolicyRule <IAuthorizationRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTOperationsServiceBrokerAuthorization -InputObject <IIoTOperationsServiceIdentity>
  [-AuthorizationPolicyCache <String>] [-AuthorizationPolicyRule <IAuthorizationRule[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -238,21 +238,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
