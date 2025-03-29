@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.2.0
 * Updated the api version to "2023-04-27" (Stable Version)
 
 ## Version 0.1.2
