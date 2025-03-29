@@ -36,7 +36,7 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     public abstract class MockSyncServerRegistrationClientBase : ISyncServerRegistration
     {
-        public bool EnableMIChecking { get; protected set; } = true;
+        public bool EnableMIChecking { get; protected set; } = false; // enable it in v20 azure file sync agent
 
         /// <summary>
         /// The m is disposed
@@ -94,7 +94,6 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server machine name.</param>
-        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server resource</returns>
         public abstract ServerRegistrationData Setup(
             Uri managementEndpointUri,
@@ -107,11 +106,10 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
-            string serverMachineName,
-            bool assignIdentity);
+            string serverMachineName);
 
         /// <summary>
-        /// Persisting the register server resource from cloud to the local service.
+        /// Persisting the register server resource from clooud to the local service.
         /// </summary>
         /// <param name="registeredServerResource">Registered Server Resource</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -172,11 +170,10 @@ namespace Commands.StorageSync.Interop.Clients
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
-            bool assignIdentity)
+            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback)
         {
             // Get ApplicationId
-            Guid? applicationId = assignIdentity ? GetApplicationIdOrNull() : null;
+            Guid? applicationId = GetApplicationIdOrNull();
 
 #pragma warning disable CA1416 // Validate platform compatibility
             //RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
@@ -191,7 +188,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ValidateSyncServerFailed);
             }
 
-            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName, assignIdentity);
+            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName);
             if (null == serverRegistrationData)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ProcessSyncRegistrationFailed);

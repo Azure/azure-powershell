@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingServicePrincipalResourceIdErrorMessage);
                 }
-                StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
+                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
@@ -256,17 +256,17 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     // Identity , RoleDef, Scope
                     var scope = StorageAccountResourceId;
-                    StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                         storageSyncService.Identity.PrincipalId.Value,
                         Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
                         scope);
 
                     scope = $"{StorageAccountResourceId}/fileServices/default/fileshares/{AzureFileShareName}";
-                    (var identityRoleAssignmentForFilsShareScope , bool alreadyExists) = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                        storageSyncService.Identity.PrincipalId.Value,
                        Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                        scope);
-                    shouldSleep = !alreadyExists;
+                    shouldSleep = true;
                 }
 
                     Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);

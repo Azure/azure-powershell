@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 8.3.0
 * Supported NFS File Share and NFS file and directory properties
     - `Get-AzStorageFile`
     - `Get-AzStorageFileContent`

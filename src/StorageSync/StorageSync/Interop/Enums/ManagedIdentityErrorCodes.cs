@@ -10,9 +10,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.Enums
         ServerManagedIdentityTokenChallengeFailed,
         ServerManagedIdentityTokenParsingFailed,
         ServerManagedIdentitySystemIdentityNotFound,
-        ServerManagedIdentityWebError,
-        ServerManagedIdentityTokenGenerationSocketException,
-        ArcServerNotEnabled
+        ServerManagedIdentityWebError
 
     }
 }

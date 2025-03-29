@@ -693,10 +693,5 @@ namespace Commands.StorageSync.Interop.Clients
         {
             throw new NotImplementedException();
         }
-
-        public int ResetServerCertificateSettingsRegistry()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

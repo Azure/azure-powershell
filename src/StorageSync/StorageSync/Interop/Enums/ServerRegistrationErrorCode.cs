@@ -80,10 +80,6 @@ namespace Commands.StorageSync.Interop.Enums
         /// </summary>
         EnsureSyncServerCertificateFailed,
         /// <summary>
-        /// The reset server certificate settings registry failed
-        /// </summary>
-        ResetServerCertificateSettingsRegistryFailed,
-        /// <summary>
         /// The get server type failed
         /// </summary>
         GetServerTypeFailed,

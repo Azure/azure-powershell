@@ -16,34 +16,34 @@ Get a BrokerListenerResource
 ```
 Get-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityInstance
 ```
 Get-AzIoTOperationsServiceBrokerListener -BrokerName <String> -ListenerName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityBroker
 ```
 Get-AzIoTOperationsServiceBrokerListener -ListenerName <String>
  -BrokerInputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzIoTOperationsServiceBrokerListener -InputObject <IIoTOperationsServiceIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +168,21 @@ Parameter Sets: GetViaIdentityInstance, Get, GetViaIdentityBroker
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

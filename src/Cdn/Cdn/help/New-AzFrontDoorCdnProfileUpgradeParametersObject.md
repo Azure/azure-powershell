@@ -14,7 +14,7 @@ Create an in-memory object for ProfileUpgradeParameters.
 
 ```
 New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList <IProfileChangeSkuWafMapping[]>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,21 @@ $upgrade.ToString()
 Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -WafMappingList
 Web Application Firewall (WAF) and security policy mapping for the profile upgrade.

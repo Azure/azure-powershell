@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 3.2.0
 * Supported copyComputeScale and pipelineExternalComputeScale in `Set-AzSynapseIntegrationRuntime` Command
 
 ## Version 3.1.2
