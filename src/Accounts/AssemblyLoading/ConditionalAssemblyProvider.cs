@@ -52,8 +52,8 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.2.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.35.0.0"),
                 CreateAssembly("netstandard2.0", "System.ClientModel", "1.1.0.0"),
-                CreateAssembly("netstandard2.0", "System.Memory.Data", "6.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Text.Json", "6.0.0.0"),
+                CreateAssembly("netstandard2.0", "System.Memory.Data", "6.0.0.1"), // 6.0.1
+                CreateAssembly("netstandard2.0", "System.Text.Json", "6.0.0.0"), // 6.0.11
                 CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.2").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netfx", "System.Runtime.CompilerServices.Unsafe", "6.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Security.Cryptography.Cng", "4.3.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Security.Cryptography.ProtectedData", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Text.Encodings.Web", "6.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netfx", "System.Text.Encodings.Web", "6.0.0.1").WithWindowsPowerShell(), // net461, 6.0.1
                 CreateAssembly("netfx", "System.Xml.ReaderWriter", "4.1.0.0").WithWindowsPowerShell(),
                 #endregion
             };

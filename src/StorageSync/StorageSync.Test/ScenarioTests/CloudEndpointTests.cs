@@ -40,7 +40,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloudEndpoint()
         {
-            TestRunner.RunTestScript("Test-CloudEndpoint");
+            TestRunner.RunTestScript("Test-CloudEndpoint"); 
         }
 
         /// <summary>
