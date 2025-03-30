@@ -15,7 +15,7 @@ Get a DataflowResource
 ### List (Default)
 ```
 Get-AzIoTOperationsServiceDataflow -InstanceName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,26 +23,26 @@ Get-AzIoTOperationsServiceDataflow -InstanceName <String> -ProfileName <String> 
 ```
 Get-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityInstance
 ```
 Get-AzIoTOperationsServiceDataflow -Name <String> -ProfileName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityDataflowProfile
 ```
 Get-AzIoTOperationsServiceDataflow -Name <String> -DataflowProfileInputObject <IIoTOperationsServiceIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzIoTOperationsServiceDataflow -InputObject <IIoTOperationsServiceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,6 +207,21 @@ Parameter Sets: List, Get, GetViaIdentityInstance
 Aliases: DataflowProfileName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
