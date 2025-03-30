@@ -347,7 +347,7 @@ function Remove-ModuleDependencies {
         $ReplacedNestedModules = ""
         foreach ($nestedModule in $ModuleMetadata.NestedModules)
         {
-            if('.dll' -ne [System.IO.Path]::GetExtension($nestedModule)) 
+            if('.dll' -ne [System.IO.Path]::GetExtension($nestedModule))
             {
                 $ReplacedNestedModules += "'$nestedModule', ";
             }
@@ -473,7 +473,7 @@ function Save-PackageLocally {
     $ModuleName = $module['ModuleName']
     $RequiredVersion = $module['RequiredVersion']
 
-    $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+    $AccessTokenSecureString = $env:SYSTEM_ACCESSTOKEN | ConvertTo-SecureString -AsPlainText -Force
     $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
 
 
@@ -485,7 +485,7 @@ function Save-PackageLocally {
         } else {
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 $PSRepositoryUrl = $Env:DEFAULT_PS_REPOSITORY_URL
-                $AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force
+                $AccessTokenSecureString = $env:SYSTEM_ACCESSTOKEN | ConvertTo-SecureString -AsPlainText -Force
                 $credentialsObject = [pscredential]::new("ONEBRANCH_TOKEN", $AccessTokenSecureString)
             }
             else {
@@ -498,7 +498,7 @@ function Save-PackageLocally {
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
                 Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg
             } else {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg 
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg
             }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
@@ -610,21 +610,21 @@ function Add-AllModules {
     $packages = Get-ChildItem -Path "./artifacts" -Filter "Az.Accounts.*.nupkg"
     $latestVersion = [version]"0.0.0"
     $latestPackage = $null
-    
+
     foreach ($package in $packages) {
         $fileName = $package.Name
         $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
         if ($versionString -match 'preview') {
-            return 
+            return
         }
         $version = [version]$versionString
-        
+
         if ($version -gt $latestVersion) {
             $latestVersion = $version
             $latestPackage = $package
         }
     }
-    
+
     foreach ($package in $packages) {
         if ($package.FullName -ne $latestPackage.FullName) {
             Remove-Item $package.FullName -Force
@@ -756,7 +756,7 @@ function Add-Module {
                 Write-Output "Adding PSM1 dependency is skipped because root module is found"
             } else {
                 Write-Output "Adding PSM1 dependency to $unzippedManifest"
-                Add-PSM1Dependency -Path $unzippedManifest 
+                Add-PSM1Dependency -Path $unzippedManifest
             }
 
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
