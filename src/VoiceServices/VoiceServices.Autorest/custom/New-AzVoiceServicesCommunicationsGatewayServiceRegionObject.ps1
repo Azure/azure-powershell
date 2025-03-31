@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ServiceRegionProperties
 https://learn.microsoft.com/powershell/module/az.VoiceServices/new-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 #>
 function New-AzVoiceServicesCommunicationsGatewayServiceRegionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ServiceRegionProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
