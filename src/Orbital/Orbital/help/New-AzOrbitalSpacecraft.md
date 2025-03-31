@@ -16,8 +16,8 @@ create a spacecraft resource.
 ```
 New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Link <ISpacecraftLink[]> -Location <String> -TitleLine <String> -TleLine1 <String> -TleLine2 <String>
- [-NoradId <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoradId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -184,21 +184,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-The current state of the resource's creation, deletion, or modification.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

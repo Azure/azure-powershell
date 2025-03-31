@@ -17,7 +17,7 @@ create a contact profile.
 New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Link <IContactProfileLink[]>
  -Location <String> -NetworkConfigurationSubnetId <String> [-SubscriptionId <String>]
  [-AutoTrackingConfiguration <String>] [-EventHubUri <String>] [-MinimumElevationDegree <Single>]
- [-MinimumViableContactDuration <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-MinimumViableContactDuration <String>] [-Tag <Hashtable>]
  [-ThirdPartyConfiguration <IContactProfileThirdPartyConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -252,21 +252,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-The current state of the resource's creation, deletion, or modification.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

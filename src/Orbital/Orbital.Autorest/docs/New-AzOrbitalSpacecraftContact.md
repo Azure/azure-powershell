@@ -16,8 +16,8 @@ create a contact.
 ```
 New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
  -ContactProfileId <String> -GroundStationName <String> -ReservationEndTime <DateTime>
- -ReservationStartTime <DateTime> [-SubscriptionId <String>] [-ProvisioningState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ReservationStartTime <DateTime> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -169,21 +169,6 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-The current state of the resource's creation, deletion, or modification.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

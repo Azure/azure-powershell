@@ -38,6 +38,45 @@ title: Orbital
 subject-prefix: $(service-name)
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.SpacecraftsProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
+  - from: swagger-document 
+    where: $.definitions.ContactsProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
+  - from: swagger-document 
+    where: $.definitions.ContactProfilesProperties.properties.provisioningState
+    transform: >-
+      return {
+        "type": "string",
+        "readOnly": true,
+        "allOf": [
+          {
+            "$ref": "#/definitions/ProvisioningState"
+          }
+        ],
+        "description": "The current state of the resource's creation, deletion, or modification."
+      }
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
