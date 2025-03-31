@@ -1,7 +1,7 @@
 ---
 external help file: Az.ScVmm-help.xml
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmdisk
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmdisk
 schema: 2.0.0
 ---
 
