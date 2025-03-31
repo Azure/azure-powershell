@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Regenerate the module using the latest v4 generator to incorporate the new features added in the v4 generator.
 
 ## Version 0.3.0
 * Updated Api Version to 2022-12-01-preview.
-
 
 ## Version 0.2.1
 * Upgraded nuget package to signed package.
@@ -31,4 +31,3 @@
 
 ## Version 0.1.0
 * the first preview release
-
