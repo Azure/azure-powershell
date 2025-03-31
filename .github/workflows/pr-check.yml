@@ -1,0 +1,17 @@
+name: PR Trigger Test
+
+on:
+  pull_request:
+    types:
+      - opene
+      - synchronize
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+
+      - name: Print success message
+        run: echo "GitHub Action triggered successfully!"
