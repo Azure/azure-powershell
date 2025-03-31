@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Regenerate the module using the latest v4 generator to incorporate the new features added in the v4 generator.
 
 ## Version 1.2.0
 * Upgraded API version to 2024-04-01.
