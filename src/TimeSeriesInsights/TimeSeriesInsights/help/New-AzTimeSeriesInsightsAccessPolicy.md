@@ -8,18 +8,47 @@ schema: 2.0.0
 # New-AzTimeSeriesInsightsAccessPolicy
 
 ## SYNOPSIS
-Create or update an access policy in the specified environment.
+create an access policy in the specified environment.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzTimeSeriesInsightsAccessPolicy -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Description <String>] [-PrincipalObjectId <String>] [-Role <AccessPolicyRole[]>]
+New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-PrincipalObjectId <String>] [-Role <String[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEnvironmentExpanded
+```
+New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
+ [-Description <String>] [-PrincipalObjectId <String>] [-Role <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEnvironment
+```
+New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
+ -Parameter <IAccessPolicyCreateOrUpdateParameters> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update an access policy in the specified environment.
+create an access policy in the specified environment.
 
 ## EXAMPLES
 
@@ -59,7 +88,7 @@ An description of the access policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -69,12 +98,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 The name of the Time Series Insights environment associated with the specified resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -99,12 +173,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IAccessPolicyCreateOrUpdateParameters
+Parameter Sets: CreateViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PrincipalObjectId
 The objectId of the principal in Azure Active Directory.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -119,7 +208,7 @@ Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -133,8 +222,8 @@ Accept wildcard characters: False
 The list of roles the principal is assigned on the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -149,7 +238,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -195,9 +284,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IAccessPolicyCreateOrUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IAccessPolicyResource
 
 ## NOTES
 

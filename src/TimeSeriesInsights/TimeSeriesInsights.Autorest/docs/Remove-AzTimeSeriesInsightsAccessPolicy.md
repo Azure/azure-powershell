@@ -24,6 +24,12 @@ Remove-AzTimeSeriesInsightsAccessPolicy -InputObject <ITimeSeriesInsightsIdentit
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityEnvironment
+```
+Remove-AzTimeSeriesInsightsAccessPolicy -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes the access policy with the specified name in the specified subscription, resource group, and environment
 
@@ -64,6 +70,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+Parameter Sets: DeleteViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 The name of the Time Series Insights environment associated with the specified resource group.
 
@@ -81,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
@@ -100,7 +120,7 @@ The name of the Time Series Insights access policy associated with the specified
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityEnvironment
 Aliases: AccessPolicyName
 
 Required: True

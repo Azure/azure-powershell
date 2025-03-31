@@ -8,19 +8,48 @@ schema: 2.0.0
 # New-AzTimeSeriesInsightsReferenceDataSet
 
 ## SYNOPSIS
-Create or update a reference data set in the specified environment.
+create a reference data set in the specified environment.
 
 ## SYNTAX
 
+### CreateViaIdentityEnvironment (Default)
+```
+New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
+ -Parameter <IReferenceDataSetCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpanded
 ```
 New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  -KeyProperty <IReferenceDataSetKeyProperty[]> -Location <String> [-SubscriptionId <String>]
- [-DataStringComparisonBehavior <DataStringComparisonBehavior>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DataStringComparisonBehavior <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityEnvironmentExpanded
+```
+New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
+ -KeyProperty <IReferenceDataSetKeyProperty[]> -Location <String> [-DataStringComparisonBehavior <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzTimeSeriesInsightsReferenceDataSet -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a reference data set in the specified environment.
+create a reference data set in the specified environment.
 
 ## EXAMPLES
 
@@ -46,8 +75,8 @@ By default, the value is 'Ordinal' - which means case sensitive key comparison w
 When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -73,12 +102,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+Parameter Sets: CreateViaIdentityEnvironment, CreateViaIdentityEnvironmentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 The name of the Time Series Insights environment associated with the specified resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -90,11 +164,10 @@ Accept wildcard characters: False
 
 ### -KeyProperty
 The list of key properties for the reference data set.
-To construct, see NOTES section for KEYPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetKeyProperty[]
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -109,7 +182,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -134,12 +207,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetCreateOrUpdateParameters
+Parameter Sets: CreateViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -154,7 +242,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -169,7 +257,7 @@ Key-value pairs of additional properties for the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -215,9 +303,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetCreateOrUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetResource
 
 ## NOTES
 

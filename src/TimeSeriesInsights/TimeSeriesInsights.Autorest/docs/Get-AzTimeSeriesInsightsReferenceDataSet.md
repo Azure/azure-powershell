@@ -30,6 +30,12 @@ Get-AzTimeSeriesInsightsReferenceDataSet -InputObject <ITimeSeriesInsightsIdenti
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityEnvironment
+```
+Get-AzTimeSeriesInsightsReferenceDataSet -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the reference data set with the specified name in the specified environment.
 
@@ -94,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+Parameter Sets: GetViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 The name of the Time Series Insights environment associated with the specified resource group.
 
@@ -111,7 +132,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
@@ -130,7 +150,7 @@ The name of the Time Series Insights reference data set associated with the spec
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityEnvironment
 Aliases: ReferenceDataSetName
 
 Required: True
@@ -179,7 +199,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetListResponse
+
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetResource
 
 ## NOTES
 

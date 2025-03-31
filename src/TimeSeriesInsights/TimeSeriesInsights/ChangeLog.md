@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Implemented code refactoring.
+    * Regenerated the module using the latest v4 generator to incorporate the new features added in the v4 generator.
 
 ## Version 0.2.3
 * Upgraded nuget package to signed package.

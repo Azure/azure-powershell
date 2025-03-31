@@ -8,29 +8,43 @@ schema: 2.0.0
 # New-AzTimeSeriesInsightsEnvironment
 
 ## SYNOPSIS
-Create an environment in the specified subscription and resource group.
+create an environment in the specified subscription and resource group.
 
 ## SYNTAX
 
 ### Gen1 (Default)
 ```
 New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Capacity <Int32>
- -DataRetentionTime <TimeSpan> -Kind <Kind> -Location <String> -Sku <SkuName> [-SubscriptionId <String>]
+ -DataRetentionTime <TimeSpan> -Kind <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
  [-PartitionKeyProperty <ITimeSeriesIdProperty[]>] [-StorageLimitExceededBehavior <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### Gen2
 ```
-New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
- -Sku <SkuName> -StorageAccountKey <SecureString> -StorageAccountName <String>
+New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Kind <String>
+ -Location <String> -Sku <String> -StorageAccountKey <SecureString> -StorageAccountName <String>
  -TimeSeriesIdProperty <ITimeSeriesIdProperty[]> [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-WarmStoreDataRetentionTime <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an environment in the specified subscription and resource group.
+create an environment in the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -112,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -126,12 +141,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 The kind of the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Gen1, Gen2
 Aliases:
 
 Required: True
@@ -146,7 +191,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Gen1, Gen2
 Aliases:
 
 Required: True
@@ -188,11 +233,25 @@ Accept wildcard characters: False
 
 ### -PartitionKeyProperty
 The list of event properties which will be used to partition data in the environment.
-To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]
 Parameter Sets: Gen1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -221,8 +280,8 @@ Accept wildcard characters: False
 The name of this SKU.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Gen1, Gen2
 Aliases:
 
 Required: True
@@ -297,7 +356,7 @@ Key-value pairs of additional properties for the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: Gen1, Gen2
 Aliases:
 
 Required: False
@@ -309,10 +368,9 @@ Accept wildcard characters: False
 
 ### -TimeSeriesIdProperty
 The list of event properties which will be used to define the environment's time series id.
-To construct, see NOTES section for TIMESERIESIDPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]
 Parameter Sets: Gen2
 Aliases:
 
@@ -376,7 +434,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEnvironmentResource
 
 ## NOTES
 

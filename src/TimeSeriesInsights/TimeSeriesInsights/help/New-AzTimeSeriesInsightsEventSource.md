@@ -8,30 +8,59 @@ schema: 2.0.0
 # New-AzTimeSeriesInsightsEventSource
 
 ## SYNOPSIS
-Create an event source under the specified environment.
+create an event source under the specified environment.
 
 ## SYNTAX
 
 ### eventhub (Default)
 ```
-New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
- -EventSourceResourceId <String> -SharedAccessKey <SecureString> -EventHubName <String>
- -ServiceBusNameSpace <String> [-Tag <Hashtable>] [-TimeStampPropertyName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Kind <String> -Location <String> [-Tag <Hashtable>] -ConsumerGroupName <String>
+ -EventHubName <String> -KeyName <String> -EventSourceResourceId <String> -ServiceBusNameSpace <String>
+ -SharedAccessKey <SecureString> [-TimeStampPropertyName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEnvironmentExpanded
+```
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
+ -Kind <String> -Location <String> [-LocalTimestampFormat <String>] [-Tag <Hashtable>]
+ [-TimeZoneOffsetPropertyName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityEnvironment
+```
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
+ -Parameter <IEventSourceCreateOrUpdateParameters> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### iothub
 ```
-New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
- -EventSourceResourceId <String> -SharedAccessKey <SecureString> [-Tag <Hashtable>]
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Kind <String> -Location <String> [-Tag <Hashtable>] -ConsumerGroupName <String>
+ -KeyName <String> -EventSourceResourceId <String> -SharedAccessKey <SecureString>
  [-TimeStampPropertyName <String>] -IoTHubName <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzTimeSeriesInsightsEventSource -Name <String> -EnvironmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create an event source under the specified environment.
+create an event source under the specified environment.
 
 ## EXAMPLES
 
@@ -40,7 +69,7 @@ Create an event source under the specified environment.
 New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
 $ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
 $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
-$k  = ConvertTo-SecureString -String $ks.PrimaryKey -AsPlainText -Force
+$k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
 New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 ```
 
@@ -56,7 +85,7 @@ This command creates an eventhub event source under the specified environment.
 ```powershell
 $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
 $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
-$k  = ConvertTo-SecureString -String $ks[0].PrimaryKey -AsPlainText -Force
+$k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
 New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 ```
 
@@ -75,7 +104,7 @@ The name of the event/iot hub's consumer group that holds the partitions from wh
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub
 Aliases:
 
 Required: True
@@ -86,7 +115,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 The name of the Time Series Insights environment associated with the specified resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -135,7 +180,7 @@ The resource id of the event source in Azure Resource Manager.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub
 Aliases:
 
 Required: True
@@ -160,12 +205,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 The name of the SAS key that grants the Time Series Insights service access to the event/iot hub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub
 Aliases:
 
 Required: True
@@ -179,11 +254,26 @@ Accept wildcard characters: False
 The kind of the event source.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: eventhub, CreateViaIdentityEnvironmentExpanded, iothub
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalTimestampFormat
+An enum that represents the format of the local timestamp property that needs to be set.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaIdentityEnvironmentExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,7 +285,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, CreateViaIdentityEnvironmentExpanded, iothub
 Aliases:
 
 Required: True
@@ -220,12 +310,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Parameters supplied to the Create or Update Event Source operation.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceCreateOrUpdateParameters
+Parameter Sets: CreateViaIdentityEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of an Azure Resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -255,7 +360,7 @@ The value of the shared access key that grants the Time Series Insights service 
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub
 Aliases:
 
 Required: True
@@ -270,7 +375,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -285,7 +390,7 @@ Key-value pairs of additional properties for the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: eventhub, CreateViaIdentityEnvironmentExpanded, iothub
 Aliases:
 
 Required: False
@@ -300,7 +405,24 @@ The event property that will be used as the event source's timestamp.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: eventhub, iothub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TimeZoneOffsetPropertyName
+The event property that will be contain the offset information to calculate the local timestamp.
+When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles).
+When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -346,9 +468,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceCreateOrUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceResource
 
 ## NOTES
 

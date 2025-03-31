@@ -191,7 +191,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
@@ -259,7 +258,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEnvironmentListResponse
+
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEnvironmentResource
 
 ## NOTES
 
