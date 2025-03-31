@@ -19,13 +19,6 @@ Update-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -Re
  [-Username <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityCommunicationService
-```
-Update-AzCommunicationServiceSmtpUsername
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> -SmtpUsername <String>
- -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityCommunicationServiceExpanded
 ```
 Update-AzCommunicationServiceSmtpUsername
@@ -77,7 +70,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-Parameter Sets: UpdateViaIdentityCommunicationService, UpdateViaIdentityCommunicationServiceExpanded
+Parameter Sets: UpdateViaIdentityCommunicationServiceExpanded
 Aliases:
 
 Required: True
@@ -123,7 +116,7 @@ The application Id for the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -139,21 +132,6 @@ Identity Parameter
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
 Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Parameter
-The object describing the smtp username resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ISmtpUsernameResource
-Parameter Sets: UpdateViaIdentityCommunicationService
 Aliases:
 
 Required: True
@@ -184,7 +162,7 @@ The name of the SmtpUsernameResource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationService, UpdateViaIdentityCommunicationServiceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded
 Aliases:
 
 Required: True
@@ -215,7 +193,7 @@ The tenant of the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -231,7 +209,7 @@ Could be free form or in the email address format.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationServiceExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,8 +256,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ISmtpUsernameResource
 
 ## OUTPUTS
 

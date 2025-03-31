@@ -14,40 +14,24 @@ create an SmtpUsernameResource.
 
 ### CreateExpanded (Default)
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] [-EntraApplicationId <String>] [-TenantId <String>]
  [-Username <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String> -CommunicationServiceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCommunicationServiceExpanded
+### CreateViaJsonString
 ```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity> [-EntraApplicationId <String>]
- [-TenantId <String>] [-Username <String>] [-DefaultProfile <PSObject>]
+New-AzCommunicationServiceSmtpUsername -CommunicationServiceName <String> -ResourceGroupName <String>
+ -SmtpUsername <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityCommunicationService
-```
-New-AzCommunicationServiceSmtpUsername -SmtpUsername <String>
- -CommunicationServiceInputObject <ICommunicationServiceSmtpUsernameIdentity>
- -Parameter <ISmtpUsernameResource> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,27 +64,12 @@ Create a SMTP Username resource with the provided parameters.
 
 ## PARAMETERS
 
-### -CommunicationServiceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-Parameter Sets: CreateViaIdentityCommunicationServiceExpanded, CreateViaIdentityCommunicationService
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CommunicationServiceName
 The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -131,7 +100,7 @@ The application Id for the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -171,28 +140,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The object describing the smtp username resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ISmtpUsernameResource
-Parameter Sets: CreateViaIdentityCommunicationService
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -223,7 +177,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,7 +192,7 @@ The tenant of the linked Entra Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -254,7 +208,7 @@ Could be free form or in the email address format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationServiceExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -299,10 +253,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ICommunicationServiceSmtpUsernameIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.CommunicationServiceSmtpUsername.Models.ISmtpUsernameResource
 
 ## OUTPUTS
 

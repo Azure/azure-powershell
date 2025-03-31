@@ -15,24 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCommunicationServiceSmt
 }
 
 Describe 'New-AzCommunicationServiceSmtpUsername' {
-    It 'CreateExpanded' {
+   It 'CreateExpanded' {
         $NewAzCommunicationServiceSmtpUsername = New-AzCommunicationServiceSmtpUsername -SmtpUsername $env.smtpUsernameResource -CommunicationServiceName $env.persistentACSResourceName -ResourceGroupName $env.resourceGroup -EntraApplicationId $env.entraApplicationId -TenantId $env.tenantId -Username $env.username
         $NewAzCommunicationServiceSmtpUsername.Name | Should -Be $env.smtpUsernameResource
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityCommunicationServiceExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityCommunicationService' -skip {
+    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
