@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 4.1.0
+* Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
+
 ## Version 4.0.2
 * Fixed unsigned dll:
     - `System.Buffers.dll`

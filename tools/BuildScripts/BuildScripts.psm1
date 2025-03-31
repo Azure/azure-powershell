@@ -227,3 +227,24 @@ function New-GenerateInfoJson {
         $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
     }
 }
+
+function Update-MappingJson {
+    Param(
+        [string]
+        ${ModuleName},
+        [string]
+        ${RepoRoot}
+    )
+    process {
+        Write-Host "Updating MappingJson: CreateMappings_rules.json." -ForegroundColor Yellow
+        $MappingPath = Join-Path $RepoRoot "tools" "CreateMappings_rules.json"
+        $MappingObject = Get-Content -Path $MappingPath | ConvertFrom-Json
+        Foreach ($Item in $MappingObject) {
+            If ($ModuleName -eq $Item.regex -or $ModuleName -eq $Item.module) {
+                return
+            }
+        }
+        $MappingObject = $MappingObject + @{module = $ModuleName; alias = $ModuleName }
+        ConvertTo-Json $MappingObject -Depth 1 | Set-Content -Path $MappingPath
+    }
+}

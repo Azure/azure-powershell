@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.3.0'
+ModuleVersion = '1.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,8 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.0.2'; })
+
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 
@@ -119,7 +120,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.'
+        ReleaseNotes = '* Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
+  * ''Get-AzFederatedIdentityCredential''
+  * ''New-AzFederatedIdentityCredential''
+  * ''Update-AzFederatedIdentityCredential'''
 
         # Prerelease string of this module
         # Prerelease = ''
