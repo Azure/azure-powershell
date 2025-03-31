@@ -621,9 +621,6 @@ Gets the properties of a Network Watcher
 ### [Get-AzNetworkWatcherConnectionMonitor](Get-AzNetworkWatcherConnectionMonitor.md)
 Returns connection monitor with specified name or the list of connection monitors
 
-### [Get-AzNetworkWatcherConnectionMonitorReport](Get-AzNetworkWatcherConnectionMonitorReport.md)
-Query a snapshot of the most recent connection states.
-
 ### [Get-AzNetworkWatcherFlowLog](Get-AzNetworkWatcherFlowLog.md)
 Gets a flow log resource or a list of flow log resources in the specified subscription and region.
 
@@ -2458,9 +2455,6 @@ Sets the vpn ipsec parameters for existing virtual network gateway.
 
 ### [Start-AzApplicationGateway](Start-AzApplicationGateway.md)
 Starts an application gateway.
-
-### [Start-AzNetworkWatcherConnectionMonitor](Start-AzNetworkWatcherConnectionMonitor.md)
-Start a connection monitor
 
 ### [Start-AzNetworkWatcherResourceTroubleshooting](Start-AzNetworkWatcherResourceTroubleshooting.md)
 Starts troubleshooting on a Networking resource in Azure.
