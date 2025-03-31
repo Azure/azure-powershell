@@ -54,7 +54,7 @@ directive:
       subject: Query$
     remove: true
   - where:
-      vert: Get|New|Update|Remove
+      verb: Get|New|Update|Remove
       parameter-name: ResourceName
     set:
       parameter-name: Name
