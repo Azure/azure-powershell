@@ -16,17 +16,25 @@
 
 <#
 .Synopsis
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 .Description
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 .Example
 $replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default
-New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
+.Example
+# Variables
+$replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
+$certificateBytes = Get-Content "certificate.pfx" -AsByteStream
+$base64String = [System.Convert]::ToBase64String($certificateBytes) 
+$ldaps_pfx_pass = "MyStrongPassword"
+
+New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +54,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
 https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,37 +93,37 @@ param(
     ${DomainName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1]
+    [System.String]
     # A flag to determine whether or not NtlmV1 is enabled or disabled.
     ${DomainSecuritySettingNtlmV1},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords]
+    [System.String]
     # A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncKerberosPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords]
+    [System.String]
     # A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncNtlmPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords]
+    [System.String]
     # A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncOnPremPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1]
+    [System.String]
     # A flag to determine whether or not TlsV1 is enabled or disabled.
     ${DomainSecuritySettingTlsV1},
 
@@ -126,31 +134,30 @@ param(
     ${Etag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync]
+    [System.String]
     # Enabled or Disabled flag to turn on Group-based filtered sync
     ${FilteredSync},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]]
     # List of settings for Resource Forest
-    # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
     ${ForestTrust},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess]
+    [System.String]
     # A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
     ${LdapSettingExternalAccess},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps]
+    [System.String]
     # A flag to determine whether or not Secure LDAP is enabled or disabled.
     ${LdapSettingLdaps},
 
@@ -182,25 +189,24 @@ param(
     ${NotificationSettingAdditionalRecipient},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins]
+    [System.String]
     # Should domain controller admins be notified
     ${NotificationSettingNotifyDcAdmin},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins]
+    [System.String]
     # Should global admins be notified
     ${NotificationSettingNotifyGlobalAdmin},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]]
     # List of ReplicaSets
-    # To construct, see NOTES section for REPLICASET properties and create a hash table.
     ${ReplicaSet},
 
     [Parameter()]
@@ -218,17 +224,30 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
