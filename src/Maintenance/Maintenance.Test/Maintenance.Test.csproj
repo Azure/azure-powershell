@@ -14,8 +14,4 @@
     <Folder Include="SessionRecords\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Maintenance.Management.Sdk\Maintenance.Management.Sdk.csproj" />
-  </ItemGroup>
-
 </Project>
