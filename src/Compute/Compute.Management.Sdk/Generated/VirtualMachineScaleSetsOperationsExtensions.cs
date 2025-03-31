@@ -590,6 +590,8 @@ namespace Microsoft.Azure.Management.Compute
             /// Power off (stop) one or more virtual machines in a VM scale set. Note that
             /// resources are still attached and you are getting charged for the resources.
             /// Instead, use deallocate to release resources and avoid charges.
+            /// Additionally, this operation is not allowed on virtual machines in a VM
+            /// scale set that are being deallocated or have already been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -619,6 +621,8 @@ namespace Microsoft.Azure.Management.Compute
             /// Power off (stop) one or more virtual machines in a VM scale set. Note that
             /// resources are still attached and you are getting charged for the resources.
             /// Instead, use deallocate to release resources and avoid charges.
+            /// Additionally, this operation is not allowed on virtual machines in a VM
+            /// scale set that are being deallocated or have already been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1523,6 +1527,8 @@ namespace Microsoft.Azure.Management.Compute
             /// Power off (stop) one or more virtual machines in a VM scale set. Note that
             /// resources are still attached and you are getting charged for the resources.
             /// Instead, use deallocate to release resources and avoid charges.
+            /// Additionally, this operation is not allowed on virtual machines in a VM
+            /// scale set that are being deallocated or have already been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1552,6 +1558,8 @@ namespace Microsoft.Azure.Management.Compute
             /// Power off (stop) one or more virtual machines in a VM scale set. Note that
             /// resources are still attached and you are getting charged for the resources.
             /// Instead, use deallocate to release resources and avoid charges.
+            /// Additionally, this operation is not allowed on virtual machines in a VM
+            /// scale set that are being deallocated or have already been deallocated.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
