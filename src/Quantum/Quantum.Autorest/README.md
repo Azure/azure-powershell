@@ -39,7 +39,10 @@ subject-prefix: $(service-name)
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
+      variant: ^(Create|Update|Check)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded.*$
     remove: true
   - where:
       verb: Set
