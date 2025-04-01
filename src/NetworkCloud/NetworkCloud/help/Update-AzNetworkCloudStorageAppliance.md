@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkCloudStorageAppliance
 
 ## SYNOPSIS
-Update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag updates can be done independently.
+update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzNetworkCloudStorageAppliance -InputObject <INetworkCloudIdentity> [-Ser
 ```
 
 ## DESCRIPTION
-Update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag updates can be done independently.
+update properties of the provided storage appliance, or update tags associated with the storage appliance Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -79,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -225,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageAppliance
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageAppliance
 
 ## NOTES
 
