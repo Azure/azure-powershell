@@ -90,7 +90,11 @@ directive:
     remove: true
   - where:
       subject: ReferenceDataSet|AccessPolicy
-      variant: ^Create$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: EventSource|Environment
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentityEnvironment$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityEnvironment$
     remove: true
   - where:
       subject: EventSource|Environment

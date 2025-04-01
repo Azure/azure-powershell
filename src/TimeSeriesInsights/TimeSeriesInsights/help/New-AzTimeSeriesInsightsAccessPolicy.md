@@ -40,13 +40,6 @@ New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentInputObject <ITi
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityEnvironment
-```
-New-AzTimeSeriesInsightsAccessPolicy -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
- -Parameter <IAccessPolicyCreateOrUpdateParameters> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 create an access policy in the specified environment.
 
@@ -103,7 +96,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
-Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateViaIdentityEnvironment
+Parameter Sets: CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -170,21 +163,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IAccessPolicyCreateOrUpdateParameters
-Parameter Sets: CreateViaIdentityEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -283,8 +261,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IAccessPolicyCreateOrUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 

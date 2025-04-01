@@ -12,11 +12,12 @@ create a reference data set in the specified environment.
 
 ## SYNTAX
 
-### CreateViaIdentityEnvironment (Default)
+### CreateViaIdentityEnvironmentExpanded (Default)
 ```
 New-AzTimeSeriesInsightsReferenceDataSet -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
- -Parameter <IReferenceDataSetCreateOrUpdateParameters> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyProperty <IReferenceDataSetKeyProperty[]> -Location <String> [-DataStringComparisonBehavior <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -39,14 +40,6 @@ New-AzTimeSeriesInsightsReferenceDataSet -Name <String> -EnvironmentName <String
  [-SubscriptionId <String>] -KeyProperty <IReferenceDataSetKeyProperty[]> -Location <String>
  [-DataStringComparisonBehavior <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityEnvironmentExpanded
-```
-New-AzTimeSeriesInsightsReferenceDataSet -Name <String> -EnvironmentInputObject <ITimeSeriesInsightsIdentity>
- -KeyProperty <IReferenceDataSetKeyProperty[]> -Location <String> [-DataStringComparisonBehavior <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +70,7 @@ When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -108,7 +101,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
-Parameter Sets: CreateViaIdentityEnvironment, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -168,7 +161,7 @@ The list of key properties for the reference data set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetKeyProperty[]
-Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -183,7 +176,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -205,21 +198,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetCreateOrUpdateParameters
-Parameter Sets: CreateViaIdentityEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -258,7 +236,7 @@ Key-value pairs of additional properties for the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -303,8 +281,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IReferenceDataSetCreateOrUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 

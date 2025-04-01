@@ -1,0 +1,11 @@
+{
+    "location": "eastus2",
+    "sku": {
+        "name": "S1",
+        "capacity": 2
+    },
+    "kind": "Gen1",
+    "properties": {
+        "dataRetentionTime": "P1DT1H25M"
+    }
+}

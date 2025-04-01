@@ -21,13 +21,6 @@ New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -Re
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityEnvironment
-```
-New-AzTimeSeriesInsightsEventSource -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
- -Parameter <IEventSourceCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaIdentityEnvironmentExpanded
 ```
 New-AzTimeSeriesInsightsEventSource -EnvironmentInputObject <ITimeSeriesInsightsIdentity> -Name <String>
@@ -134,7 +127,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
-Parameter Sets: CreateViaIdentityEnvironment, CreateViaIdentityEnvironmentExpanded
+Parameter Sets: CreateViaIdentityEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -309,21 +302,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters supplied to the Create or Update Event Source operation.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceCreateOrUpdateParameters
-Parameter Sets: CreateViaIdentityEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of an Azure Resource group.
 
@@ -466,8 +444,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceCreateOrUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity
 
