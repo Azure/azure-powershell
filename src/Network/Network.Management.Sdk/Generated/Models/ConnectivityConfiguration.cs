@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="hubs">List of hubItems
         /// </param>
 
+        /// <param name="connectivityCapabilities">Collection of additional settings to enhance specific topology behaviors of
+        /// the connectivity configuration resource.
+        /// </param>
+
         /// <param name="appliesToGroups">Groups for configuration
         /// </param>
 
@@ -64,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConnectivityConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string))
+        public ConnectivityConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), object connectivityCapabilities = default(object), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, etag)
         {
@@ -74,6 +78,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.Description = description;
             this.Hubs = hubs;
+            this.ConnectivityCapabilities = connectivityCapabilities;
             this.AppliesToGroups = appliesToGroups;
             this.DeleteExistingPeering = deleteExistingPeering;
             this.ResourceGuid = resourceGuid;
@@ -121,6 +126,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hubs")]
         public System.Collections.Generic.IList<Hub> Hubs {get; set; }
+
+        /// <summary>
+        /// Gets or sets collection of additional settings to enhance specific topology
+        /// behaviors of the connectivity configuration resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectivityCapabilities")]
+        public object ConnectivityCapabilities {get; set; }
 
         /// <summary>
         /// Gets or sets groups for configuration

@@ -86,6 +86,9 @@ Adds an ExpressRoute circuit authorization.
 ### [Add-AzExpressRouteCircuitConnectionConfig](Add-AzExpressRouteCircuitConnectionConfig.md)
 Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
 
+### [Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
+Adds prefix validation properties required to validate the advertised public prefixes in Microsoft peering.
+
 ### [Add-AzExpressRouteCircuitPeeringConfig](Add-AzExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
 
@@ -350,6 +353,9 @@ Gets information about ExpressRoute circuit authorizations.
 ### [Get-AzExpressRouteCircuitConnectionConfig](Get-AzExpressRouteCircuitConnectionConfig.md)
 Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
 
+### [Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
+Gets prefix validation properties for an advertised public prefix in Microsoft peering.
+
 ### [Get-AzExpressRouteCircuitPeeringConfig](Get-AzExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
 
@@ -482,6 +488,9 @@ Lists NetworkManager Active Connectivity Configurations in network manager.
 ### [Get-AzNetworkManagerActiveSecurityAdminRule](Get-AzNetworkManagerActiveSecurityAdminRule.md)
 Lists NetworkManager Active Security Admin Rules in network manager.
 
+### [Get-AzNetworkManagerAssociatedResourcesList](Get-AzNetworkManagerAssociatedResourcesList.md)
+Gets list of associated resources in network manager IPAM pool.
+
 ### [Get-AzNetworkManagerConnectivityConfiguration](Get-AzNetworkManagerConnectivityConfiguration.md)
 Gets a connectivity configuration in a network manager.
 
@@ -496,6 +505,15 @@ Lists NetworkManager Effective Security Admin Rules applied on a virtual network
 
 ### [Get-AzNetworkManagerGroup](Get-AzNetworkManagerGroup.md)
 Gets network group(s) in a network manager.
+
+### [Get-AzNetworkManagerIpamPool](Get-AzNetworkManagerIpamPool.md)
+Gets IPAM pool(s).
+
+### [Get-AzNetworkManagerIpamPoolStaticCidr](Get-AzNetworkManagerIpamPoolStaticCidr.md)
+Gets Static Cidr(s) in an IPAM pool.
+
+### [Get-AzNetworkManagerIpamPoolUsage](Get-AzNetworkManagerIpamPoolUsage.md)
+Gets pool usage information for a given pool.
 
 ### [Get-AzNetworkManagerManagementGroupConnection](Get-AzNetworkManagerManagementGroupConnection.md)
 Gets a network manager management group connection.
@@ -536,11 +554,45 @@ Gets network manager static members.
 ### [Get-AzNetworkManagerSubscriptionConnection](Get-AzNetworkManagerSubscriptionConnection.md)
 Gets a network manager subscription connection.
 
+### [Get-AzNetworkManagerVerifierWorkspace](Get-AzNetworkManagerVerifierWorkspace.md)
+To get network manager verifier workspace
+
+### [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
+To get network manager verifier workspace reachability analysis intent.
+
+### [Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
+To get network manager verifier workspace reachability analysis run.
+
 ### [Get-AzNetworkProfile](Get-AzNetworkProfile.md)
 Gets an existing network profile top level resource
 
 ### [Get-AzNetworkSecurityGroup](Get-AzNetworkSecurityGroup.md)
 Gets a network security group.
+
+### [Get-AzNetworkSecurityPerimeter](Get-AzNetworkSecurityPerimeter.md)
+Gets the specified network security perimeter by the name.
+
+### [Get-AzNetworkSecurityPerimeterAccessRule](Get-AzNetworkSecurityPerimeterAccessRule.md)
+Gets the specified NSP access rule by name.
+
+### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
+
+### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
+Gets the specified NSP association by name.
+
+### [Get-AzNetworkSecurityPerimeterLink](Get-AzNetworkSecurityPerimeterLink.md)
+Gets the specified NSP link resource.
+
+### [Get-AzNetworkSecurityPerimeterLinkReference](Get-AzNetworkSecurityPerimeterLinkReference.md)
+Gets the specified NSP linkReference resource.
+
+### [Get-AzNetworkSecurityPerimeterLoggingConfiguration](Get-AzNetworkSecurityPerimeterLoggingConfiguration.md)
+Gets the NSP logging configuration.
+
+### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
+Gets the specified NSP profile.
 
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
@@ -555,7 +607,7 @@ Lists network usages for a subscription
 Get or List Network Virtual Appliances.
 
 ### [Get-AzNetworkVirtualApplianceBootDiagnostics](Get-AzNetworkVirtualApplianceBootDiagnostics.md)
-Get boot diagnostic logs for a given Network Virtual Appliance VM instance.
+Retrieves boot diagnostic logs for a given NetworkVirtualAppliance VM instance
 
 ### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
 Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
@@ -568,9 +620,6 @@ Gets the properties of a Network Watcher
 
 ### [Get-AzNetworkWatcherConnectionMonitor](Get-AzNetworkWatcherConnectionMonitor.md)
 Returns connection monitor with specified name or the list of connection monitors
-
-### [Get-AzNetworkWatcherConnectionMonitorReport](Get-AzNetworkWatcherConnectionMonitorReport.md)
-Query a snapshot of the most recent connection states.
 
 ### [Get-AzNetworkWatcherFlowLog](Get-AzNetworkWatcherFlowLog.md)
 Gets a flow log resource or a list of flow log resources in the specified subscription and region.
@@ -1220,6 +1269,15 @@ Creates a network manager group.
 ### [New-AzNetworkManagerHub](New-AzNetworkManagerHub.md)
 Creates a network manager hub.
 
+### [New-AzNetworkManagerIpamPool](New-AzNetworkManagerIpamPool.md)
+Creates a new IPAM pool.
+
+### [New-AzNetworkManagerIpamPoolStaticCidr](New-AzNetworkManagerIpamPoolStaticCidr.md)
+Creates a new Static Cidr.
+
+### [New-AzNetworkManagerIPTraffic](New-AzNetworkManagerIPTraffic.md)
+Create a new instance of IP Traffic
+
 ### [New-AzNetworkManagerManagementGroupConnection](New-AzNetworkManagerManagementGroupConnection.md)
 Creates a network manager management group connection.
 
@@ -1277,11 +1335,38 @@ Creates a network manager static member.
 ### [New-AzNetworkManagerSubscriptionConnection](New-AzNetworkManagerSubscriptionConnection.md)
 Creates a network manager subscription connection.
 
+### [New-AzNetworkManagerVerifierWorkspace](New-AzNetworkManagerVerifierWorkspace.md)
+To create network manager verifier workspace.
+
+### [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
+To create a new Network Manager Verifier Workspace Reachability Analysis Intent
+
+### [New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
+To create network manager verifier workspace reachability analysis run
+
 ### [New-AzNetworkProfile](New-AzNetworkProfile.md)
 Creates a new network profile.
 
 ### [New-AzNetworkSecurityGroup](New-AzNetworkSecurityGroup.md)
 Creates a network security group.
+
+### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
+create a Network Security Perimeter.
+
+### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
+create a network access rule.
+
+### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
+create a NSP resource association.
+
+### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
+create NSP link resource.
+
+### [New-AzNetworkSecurityPerimeterLoggingConfiguration](New-AzNetworkSecurityPerimeterLoggingConfiguration.md)
+create NSP logging configuration.
+
+### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
+create a network profile.
 
 ### [New-AzNetworkSecurityRuleConfig](New-AzNetworkSecurityRuleConfig.md)
 Creates a network security rule configuration.
@@ -1678,6 +1763,9 @@ Removes an existing ExpressRoute configuration authorization.
 ### [Remove-AzExpressRouteCircuitConnectionConfig](Remove-AzExpressRouteCircuitConnectionConfig.md)
 Removes an ExpressRoute circuit connection configuration.
 
+### [Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
+Removes prefix validation properties for an advertised public prefix from the Microsoft peering.
+
 ### [Remove-AzExpressRouteCircuitPeeringConfig](Remove-AzExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
 
@@ -1771,6 +1859,12 @@ Removes a connectivity configuration.
 ### [Remove-AzNetworkManagerGroup](Remove-AzNetworkManagerGroup.md)
 Removes a network Group.
 
+### [Remove-AzNetworkManagerIpamPool](Remove-AzNetworkManagerIpamPool.md)
+Removes an IPAM pool.
+
+### [Remove-AzNetworkManagerIpamPoolStaticCidr](Remove-AzNetworkManagerIpamPoolStaticCidr.md)
+Removes a Static Cidr.
+
 ### [Remove-AzNetworkManagerManagementGroupConnection](Remove-AzNetworkManagerManagementGroupConnection.md)
 Removes a network manager management group connection.
 
@@ -1810,11 +1904,41 @@ Removes a network manager static member.
 ### [Remove-AzNetworkManagerSubscriptionConnection](Remove-AzNetworkManagerSubscriptionConnection.md)
 Remove a network manager subscription connection.
 
+### [Remove-AzNetworkManagerVerifierWorkspace](Remove-AzNetworkManagerVerifierWorkspace.md)
+To remove network manager verifier workspace. 
+
+### [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent](Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.md)
+To remove network manager verifier workspace reachability analysis intent. 
+
+### [Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
+To remove network manager verifier workspace reachability analysis run.
+
 ### [Remove-AzNetworkProfile](Remove-AzNetworkProfile.md)
 Removes a network profile.
 
 ### [Remove-AzNetworkSecurityGroup](Remove-AzNetworkSecurityGroup.md)
 Removes a network security group.
+
+### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
+Deletes a network security perimeter.
+
+### [Remove-AzNetworkSecurityPerimeterAccessRule](Remove-AzNetworkSecurityPerimeterAccessRule.md)
+Deletes an NSP access rule.
+
+### [Remove-AzNetworkSecurityPerimeterAssociation](Remove-AzNetworkSecurityPerimeterAssociation.md)
+Deletes an NSP association resource.
+
+### [Remove-AzNetworkSecurityPerimeterLink](Remove-AzNetworkSecurityPerimeterLink.md)
+Deletes an NSP Link resource.
+
+### [Remove-AzNetworkSecurityPerimeterLinkReference](Remove-AzNetworkSecurityPerimeterLinkReference.md)
+Deletes an NSP LinkReference resource.
+
+### [Remove-AzNetworkSecurityPerimeterLoggingConfiguration](Remove-AzNetworkSecurityPerimeterLoggingConfiguration.md)
+Deletes an NSP Logging configuration.
+
+### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
+Deletes an NSP profile.
 
 ### [Remove-AzNetworkSecurityRuleConfig](Remove-AzNetworkSecurityRuleConfig.md)
 Removes a network security rule from a network security group.
@@ -2104,6 +2228,9 @@ Modifies an ExpressRoute circuit.
 ### [Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
 Updates a circuit connection configuration created in Private Peerings for an Express Route Circuit. 
 
+### [Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig](Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig.md)
+Modifies prefix validation properties required to validate the advertised public prefixes in Microsoft peering.
+
 ### [Set-AzExpressRouteCircuitPeeringConfig](Set-AzExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
 
@@ -2191,6 +2318,9 @@ Updates a connectivity configuration.
 ### [Set-AzNetworkManagerGroup](Set-AzNetworkManagerGroup.md)
 Updates a network manager group.
 
+### [Set-AzNetworkManagerIpamPool](Set-AzNetworkManagerIpamPool.md)
+Updates an IPAM pool.
+
 ### [Set-AzNetworkManagerManagementGroupConnection](Set-AzNetworkManagerManagementGroupConnection.md)
 Update a network manger management group connection
 
@@ -2226,6 +2356,9 @@ Updates a network manager security user rule collection.
 
 ### [Set-AzNetworkManagerSubscriptionConnection](Set-AzNetworkManagerSubscriptionConnection.md)
 Update a network manager subscription connection.
+
+### [Set-AzNetworkManagerVerifierWorkspace](Set-AzNetworkManagerVerifierWorkspace.md)
+To update network manager verifier workspace.
 
 ### [Set-AzNetworkProfile](Set-AzNetworkProfile.md)
 Updates a network profile.
@@ -2323,9 +2456,6 @@ Sets the vpn ipsec parameters for existing virtual network gateway.
 ### [Start-AzApplicationGateway](Start-AzApplicationGateway.md)
 Starts an application gateway.
 
-### [Start-AzNetworkWatcherConnectionMonitor](Start-AzNetworkWatcherConnectionMonitor.md)
-Start a connection monitor
-
 ### [Start-AzNetworkWatcherResourceTroubleshooting](Start-AzNetworkWatcherResourceTroubleshooting.md)
 Starts troubleshooting on a Networking resource in Azure.
 
@@ -2382,6 +2512,21 @@ The **Test-AzPrivateLinkServiceVisibility** checks whether a private link servic
 
 ### [Update-AzCustomIpPrefix](Update-AzCustomIpPrefix.md)
 Updates a CustomIpPrefix
+
+### [Update-AzNetworkSecurityPerimeter](Update-AzNetworkSecurityPerimeter.md)
+Patch Tags for a Network Security Perimeter.
+
+### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
+Updates an access rule.
+
+### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
+Updates an association
+
+### [Update-AzNetworkSecurityPerimeterLink](Update-AzNetworkSecurityPerimeterLink.md)
+Updates a NSP Link
+
+### [Update-AzNetworkSecurityPerimeterLoggingConfiguration](Update-AzNetworkSecurityPerimeterLoggingConfiguration.md)
+Updates a NSP Logging Configuration
 
 ### [Update-AzNetworkVirtualAppliance](Update-AzNetworkVirtualAppliance.md)
 Update or Change a Network Virtual Appliance resource.

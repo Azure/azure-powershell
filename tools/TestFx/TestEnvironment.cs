@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using System;
@@ -175,24 +173,6 @@ namespace Microsoft.Azure.Commands.TestFx
             }
 
             TokenInfo[audience] = new TokenCredentials(token);
-        }
-
-        public ServiceClientCredentials GetAccessToken(string targetEndpoint)
-        {
-            ServiceClientCredentials credentials;
-            if (IsRunningMocked)
-            {
-                credentials = TokenInfo[TokenAudience.Management];
-            }
-            else
-            {
-                credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext,
-                    targetEndpoint
-                );
-            }
-
-            return credentials;
         }
 
         internal void SetEnvironmentVariables()

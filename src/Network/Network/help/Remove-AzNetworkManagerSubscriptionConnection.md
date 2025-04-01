@@ -14,7 +14,8 @@ Remove a network manager subscription connection.
 
 ```
 Remove-AzNetworkManagerSubscriptionConnection -Name <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

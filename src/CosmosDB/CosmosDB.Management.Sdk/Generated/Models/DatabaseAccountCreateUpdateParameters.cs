@@ -161,7 +161,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="customerManagedKeyStatus">Indicates the status of the Customer Managed Key feature on the account. In
         /// case there are errors, the property provides troubleshooting guidance.
         /// </param>
-        public DatabaseAccountCreateUpdateParameters(System.Collections.Generic.IList<Location> locations, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string kind = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), string createMode = default(string), BackupPolicy backupPolicy = default(BackupPolicy), RestoreParameters restoreParameters = default(RestoreParameters), Capacity capacity = default(Capacity), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string), bool? enableBurstCapacity = default(bool?), string customerManagedKeyStatus = default(string))
+
+        /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale
+        /// feature on the account
+        /// </param>
+        public DatabaseAccountCreateUpdateParameters(System.Collections.Generic.IList<Location> locations, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string kind = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), string createMode = default(string), BackupPolicy backupPolicy = default(BackupPolicy), RestoreParameters restoreParameters = default(RestoreParameters), Capacity capacity = default(Capacity), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), string minimalTlsVersion = default(string), bool? enableBurstCapacity = default(bool?), string customerManagedKeyStatus = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -198,6 +202,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.MinimalTlsVersion = minimalTlsVersion;
             this.EnableBurstCapacity = enableBurstCapacity;
             this.CustomerManagedKeyStatus = customerManagedKeyStatus;
+            this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             CustomInit();
         }
         /// <summary>
@@ -435,6 +440,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customerManagedKeyStatus")]
         public string CustomerManagedKeyStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of
+        /// PerRegionPerPartitionAutoscale feature on the account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePerRegionPerPartitionAutoscale")]
+        public bool? EnablePerRegionPerPartitionAutoscale {get; set; }
         /// <summary>
         /// Gets or sets the offer type for the database
         /// </summary>

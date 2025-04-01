@@ -214,8 +214,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
                 DataBoxEdgeManagementClient.Triggers,
                 this.DeviceName,
                 this.Name,
-                trigger,
-                this.ResourceGroupName));
+                this.ResourceGroupName,
+                trigger));
         }
 
         public override void ExecuteCmdlet()
