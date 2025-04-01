@@ -8,20 +8,21 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Connectivity capabilities item.
+    /// Collection of additional settings to enhance specific topology behaviors of
+    /// the connectivity configuration resource.
     /// </summary>
-    public partial class ConnectivityCapabilitiesItem
+    public partial class ConnectivityConfigurationPropertiesConnectivityCapabilities
     {
         /// <summary>
-        /// Initializes a new instance of the ConnectivityCapabilitiesItem class.
+        /// Initializes a new instance of the ConnectivityConfigurationPropertiesConnectivityCapabilities class.
         /// </summary>
-        public ConnectivityCapabilitiesItem()
+        public ConnectivityConfigurationPropertiesConnectivityCapabilities()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ConnectivityCapabilitiesItem class.
+        /// Initializes a new instance of the ConnectivityConfigurationPropertiesConnectivityCapabilities class.
         /// </summary>
 
         /// <param name="connectedGroupPrivateEndpointScale">Option indicating the scale of private endpoints allowed in the connected
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="peeringEnforcement">Option indicating enforcement of peerings created by the connectivity
         /// configuration.
         /// Possible values include: &#39;Unenforced&#39;, &#39;Enforced&#39;</param>
-        public ConnectivityCapabilitiesItem(string connectedGroupPrivateEndpointScale = default(string), string connectedGroupAddressOverlap = default(string), string peeringEnforcement = default(string))
+        public ConnectivityConfigurationPropertiesConnectivityCapabilities(string connectedGroupPrivateEndpointScale, string connectedGroupAddressOverlap, string peeringEnforcement)
 
         {
             this.ConnectedGroupPrivateEndpointScale = connectedGroupPrivateEndpointScale;
@@ -70,5 +71,29 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "peeringEnforcement")]
         public string PeeringEnforcement {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.ConnectedGroupPrivateEndpointScale == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectedGroupPrivateEndpointScale");
+            }
+            if (this.ConnectedGroupAddressOverlap == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectedGroupAddressOverlap");
+            }
+            if (this.PeeringEnforcement == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PeeringEnforcement");
+            }
+
+
+
+        }
     }
 }
