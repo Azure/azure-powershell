@@ -60,3 +60,6 @@ update the specified contact profile tags.
 ### [Update-AzOrbitalSpacecraft](Update-AzOrbitalSpacecraft.md)
 update the specified spacecraft tags.
 
+### [Update-AzOrbitalSpacecraftContact](Update-AzOrbitalSpacecraftContact.md)
+update a contact.
+

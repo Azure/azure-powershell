@@ -134,11 +134,11 @@ directive:
     set:
       parameter-name: Name
       alias: GroundStationName
-  # Remove unmapped verb, if need please add back
-  - where:
-      subject: SpacecraftContact
-      verb: Update
-    remove: true
+  # Remove contact update cmdlet, if need please add back
+  # - where:
+  #     subject: SpacecraftContact
+  #     verb: Update
+  #   remove: true
   # SpacecraftLink required properties customized to Mandatory.
   - model-cmdlet:
     - model-name: ContactProfileLinkChannel
