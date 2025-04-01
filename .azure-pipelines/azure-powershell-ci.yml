@@ -66,8 +66,6 @@ trigger:
     - test-build-filter
     - generation
     - Azure
-    exclude:
-    - release-network-*
 
 jobs:
 - job: Build
