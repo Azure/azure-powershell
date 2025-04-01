@@ -19,13 +19,6 @@ Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityCommunicationsGateway
-```
-Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
- -Name <String> -Property <ITestLineUpdate> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityCommunicationsGatewayExpanded
 ```
 Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
@@ -90,7 +83,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-Parameter Sets: UpdateViaIdentityCommunicationsGateway, UpdateViaIdentityCommunicationsGatewayExpanded
+Parameter Sets: UpdateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: True
@@ -181,28 +174,13 @@ Unique identifier for this test line
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationsGateway, UpdateViaIdentityCommunicationsGatewayExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationsGatewayExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: TestLineName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Property
-The type used for update operations of the TestLine.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLineUpdate
-Parameter Sets: UpdateViaIdentityCommunicationsGateway
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -287,8 +265,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLineUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 

@@ -85,7 +85,11 @@ directive:
 
   - where:
       subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
+      variant: ^CreateViaIdentity.*$
     remove: true
 
   - where:
