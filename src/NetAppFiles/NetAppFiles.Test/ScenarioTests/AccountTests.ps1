@@ -225,7 +225,7 @@ function Test-AccountCMK
     #$keyVaultName = Get-ResourceName
     #$keyVaultName =  "psAkv"+$resourceGroup+$resourceLocation
     #$keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
-    $keyVaultResourceId = "subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVaultWestus"
+    $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVaultWestus"
     $kvResourceGroup = "akvTestRG"
     # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/FakeUserIdentity"
     #$userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
@@ -253,9 +253,9 @@ function Test-AccountCMK
         # $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
         # Create keyvault and userIdeneity then give the identity access to the keyvault
         #$azKeyVault = New-AzKeyVault -ResourceGroupName $resourceGroup -Name $keyVaultName -Location $resourceLocation -EnablePurgeProtection
-        $azKeyVault = Get-AzKeyVault -ResourceGroupName $kvResourceGroup -Name $keyVaultName
-        Assert-NotNull $azKeyVault.ResourceID
-        $keyVaultResourceId = $azKeyVault.ResourceID
+        #$azKeyVault = Get-AzKeyVault -ResourceGroupName $kvResourceGroup -Name $keyVaultName
+        #Assert-NotNull $azKeyVault.ResourceID
+        #$keyVaultResourceId = $azKeyVault.ResourceID
         
         #$keyVaultUri = $azKeyVault.VaultUri                
         #Create key in vault
@@ -306,7 +306,7 @@ function Test-AccountCMK
         ## Create the private endpoint connection. ## 
         $pec = @{
             Name = 'akvPrivateEndpoint'
-            PrivateLinkServiceId = $azKeyVault.ResourceId
+            PrivateLinkServiceId = $keyVaultResourceId
             GroupID = 'vault'
         }
         $privateEndpointConnection = New-AzPrivateLinkServiceConnection @pec
@@ -326,7 +326,7 @@ function Test-AccountCMK
         $privateEndpoint = New-AzPrivateEndpoint @pe
 
         #update account with cmk
-        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -EncryptionKeySource $keySource -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $azKeyVault.VaultUri
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -EncryptionKeySource $keySource -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
