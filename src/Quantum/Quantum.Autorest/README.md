@@ -42,7 +42,7 @@ directive:
       variant: ^(Create|Update|Check)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentityExpanded.*$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
