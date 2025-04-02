@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConnectivityConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), object connectivityCapabilities = default(object), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string))
+        public ConnectivityConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), ConnectivityConfigurationPropertiesConnectivityCapabilities connectivityCapabilities = default(ConnectivityConfigurationPropertiesConnectivityCapabilities), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, etag)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// behaviors of the connectivity configuration resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectivityCapabilities")]
-        public object ConnectivityCapabilities {get; set; }
+        public ConnectivityConfigurationPropertiesConnectivityCapabilities ConnectivityCapabilities {get; set; }
 
         /// <summary>
         /// Gets or sets groups for configuration
@@ -151,5 +151,36 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+            if (this.ConnectivityCapabilities != null)
+            {
+                this.ConnectivityCapabilities.Validate();
+            }
+            if (this.AppliesToGroups != null)
+            {
+                foreach (var element in this.AppliesToGroups)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+        }
     }
 }
