@@ -38,27 +38,18 @@ update a contact.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates a contact.
 ```powershell
-{{ Add code here }}
+Update-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft -ContactProfileId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 GroundStationName Status    ReservationStartTime ReservationEndTime   ResourceGroupName
+----                 ----------------- ------    -------------------- ------------------   -----------------
+azps-orbital-contact Microsoft_Gavle   scheduled 5/10/2023 3:06:07 AM 5/10/2023 3:16:21 AM azpstest-gp
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates a contact.
 
 ## PARAMETERS
 
