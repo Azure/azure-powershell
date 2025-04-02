@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
-    <PackageReference Include="TestableIO.System.IO.Abstractions.TestingHelpers" Version="22.0.11" />
+    <PackageReference Include="TestableIO.System.IO.Abstractions.TestingHelpers" Version="22.0.12" />
   </ItemGroup>
 
   <ItemGroup>

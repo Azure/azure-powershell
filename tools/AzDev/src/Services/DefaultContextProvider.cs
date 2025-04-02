@@ -21,7 +21,7 @@ namespace AzDev.Services
 {
     internal class DefaultContextProvider : IContextProvider
     {
-        private ILogger _logger;
+        private ILogger _logger = new NoopLogger();
         private readonly string _contextFilePath;
         private IFileSystem _fileSystem;
         private DevContext _cachedContext;
