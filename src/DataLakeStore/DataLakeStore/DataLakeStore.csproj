@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <PsModuleName>DataLakeStore</PsModuleName>
-    <OmitJsonPackage>true</OmitJsonPackage>
-  </PropertyGroup>
+	<PropertyGroup>
+		<PsModuleName>DataLakeStore</PsModuleName>
+		<OmitJsonPackage>true</OmitJsonPackage>
+	</PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>

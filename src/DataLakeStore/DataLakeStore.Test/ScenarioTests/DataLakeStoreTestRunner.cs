@@ -17,12 +17,13 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Azure.Identity;
 using Azure.Core;
-using Microsoft.Rest;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Net.Http.Headers;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -62,17 +63,27 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
-                .WithManagementClients(mockContext =>
+                .WithManagementClients(context =>
                 {
-                    var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
                     AdlsClientFactory.IsTest = true;
-                    var serviceClientCredentials = currentEnvironment.TokenInfo[TokenAudience.Management] as ServiceClientCredentials;
-                    AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(serviceClientCredentials, new AdlMockDelegatingHandler());
-                    AdlsClientFactory.MockCredentials = new TokenCredentialAdapter(serviceClientCredentials);
-                    var dummyObj = new object();
-                    return dummyObj;
-                }
-                )
+                    var creds = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
+                    // https://learn.microsoft.com/en-us/answers/questions/1304758/azure-identity-authenticationfailedexception).
+
+
+                    // Testing - Retrieve an access token for logging
+                    var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+                    var accessToken = creds.GetToken(tokenRequestContext, default);
+
+                    // Testing - Log the credentials and access token
+                    Console.WriteLine("Credentials: " + creds.GetType().Name);
+                    Console.WriteLine("Access Token: " + accessToken.Token);
+                    Console.WriteLine("Access Token Expires On: " + accessToken.ExpiresOn);
+
+                    var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
+                    AdlsClientFactory.CustomDelegatingHAndler = handlers;
+                    AdlsClientFactory.MockCredentials = creds;
+                    return new object();
+                })
                 .WithCleanupAction(
                     () => AdlsClientFactory.IsTest = false
                 )
@@ -80,27 +91,20 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
         }
     }
 
-    public class TokenCredentialAdapter : TokenCredential
+    public class TokenCredentialAdapter : Microsoft.Rest.ServiceClientCredentials
     {
-        private readonly ServiceClientCredentials _serviceClientCredentials;
+        private readonly TokenCredential _tokenCredential;
 
-        public TokenCredentialAdapter(ServiceClientCredentials serviceClientCredentials)
+        public TokenCredentialAdapter(TokenCredential tokenCredential)
         {
-            _serviceClientCredentials = serviceClientCredentials;
+            _tokenCredential = tokenCredential;
         }
 
-        public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var token = GetTokenAsync(requestContext, cancellationToken).Result;
-            return token;
-        }
-
-        public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
-        {
-            var tokenRequest = new HttpRequestMessage();
-            await _serviceClientCredentials.ProcessHttpRequestAsync(tokenRequest, cancellationToken).ConfigureAwait(false);
-            var token = tokenRequest.Headers.Authorization.Parameter;
-            return new AccessToken(token, DateTimeOffset.MaxValue);
+            var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+            var accessToken = await _tokenCredential.GetTokenAsync(tokenRequestContext, cancellationToken).ConfigureAwait(false);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Token);
         }
     }
 }

@@ -3,10 +3,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.DataLake.Store;
 using System.Text.RegularExpressions;
-using Azure.Core;
-using Azure.Identity;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Net.Http;
+using Azure.Core;
+using Azure.Identity;
+using System.Threading; 
+using System.Threading.Tasks;
+using System;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
