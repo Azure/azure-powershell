@@ -33,7 +33,7 @@ Update an exiting AppComplianceAutomation webhook.
 
 ### Example 1: Update certain fields of a webhook under a report.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Update-AzAcatWebhook -Name "test-webhook" -ReportName "test-report" -TriggerMode "all" -PayloadUrl "https://example.com" -Secret $secret
 ```
 
@@ -48,7 +48,7 @@ Update certain fields of a webhook under a report.
 
 ### Example 2: Update all fields of a webhook under a report.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Update-AzAcatWebhook -Name "test-webhook" -ReportName "test-report" -EnableSslVerification "true"  -Disable -TriggerMode "all" -PayloadUrl "https://example.com" -ContentType "application/json" -Secret $secret
 ```
 
@@ -63,7 +63,7 @@ Update all fields of a webhook under a report.
 
 ### Example 3: Update a webhook under a report use parameter object.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $param = New-AzAcatWebhookResourceObject -TriggerMode "all" -PayloadUrl "https://example.com" -Secret $secret
 $param | Update-AzAcatWebhook -Name "test-webhook" -ReportName "test-report"
 ```

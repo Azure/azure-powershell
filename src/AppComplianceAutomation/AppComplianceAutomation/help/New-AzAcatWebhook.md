@@ -33,7 +33,7 @@ Create a new AppComplianceAutomation webhook or update an exiting AppComplianceA
 
 ### Example 1: Create a webhook under a report with default values.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAcatWebhook -Name "test-webhook" -ReportName "test-report" -TriggerMode "all" -PayloadUrl "https://example.com" -Secret $secret
 ```
 
@@ -48,7 +48,7 @@ Create a webhook under a report with default values.
 
 ### Example 2: Create a webhook under a report.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAcatWebhook -Name "test-webhook" -ReportName "test-report" -EnableSslVerification "true"  -Disable -TriggerMode "all" -PayloadUrl "https://example.com" -ContentType "application/json" -Secret $secret
 ```
 
@@ -63,7 +63,7 @@ Create a webhook under a report.
 
 ### Example 3: Create a webhook under a report use parameter object.
 ```powershell
-$secret = ConvertTo-SecureString "testSecret" -AsPlainText
+$secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $param = New-AzAcatWebhookResourceObject -TriggerMode "all" -PayloadUrl "https://example.com" -Secret $secret
 $param | New-AzAcatWebhook -Name "test-webhook" -ReportName "test-report"
 ```
