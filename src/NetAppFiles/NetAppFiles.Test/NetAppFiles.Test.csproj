@@ -19,6 +19,7 @@
 	<ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
 	<PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
 	<ProjectReference Include="..\..\KeyVault\KeyVault\KeyVault.csproj" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
   </ItemGroup>
 
   <ItemGroup>
