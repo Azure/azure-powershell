@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AlertsManagement
-online version: https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusruleobject
 schema: 2.0.0
 ---
 
@@ -41,10 +41,9 @@ Create an in-memory object for PrometheusRule.
 
 ### -Action
 Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -73,10 +72,9 @@ Accept wildcard characters: False
 ### -Annotation
 The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
 The annotation values can be templated.
-To construct, see NOTES section for ANNOTATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleAnnotations
 Parameter Sets: (All)
 Aliases:
 
@@ -136,10 +134,9 @@ Accept wildcard characters: False
 
 ### -Label
 Labels to add or overwrite before storing the result.
-To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleLabels
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
+### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule
 
 ## NOTES
 

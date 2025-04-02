@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Implemented code refactoring, no behavior changes expected.
 
 ## Version 0.6.3
 * Upgraded nuget package to signed package.
