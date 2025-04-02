@@ -20,6 +20,17 @@
 ## Upcoming Release
 * Implemented code refactoring, no behavior changes expected.
 
+## Version 6.1.1
+* Preannounced breaking change: The default value of `-NodeVmSize` parameter of `New-AzAksCluster` will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzAksMaintenanceConfiguration`
+  * `Get-AzAksManagedClusterOSOption`
+  * `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`
+  * `Get-AzAksNodePoolUpgradeProfile`
+  * `Get-AzAksUpgradeProfile`
+  * `Get-AzAksVersion`
+  * `New-AzAksMaintenanceConfiguration`
+
 ## Version 6.1.0
 * Upgraded nuget package to signed package.
 * Fixed the issue that HTTP request body contains empty userAssignedIdentities object when identity type is `SystemAssigned`.

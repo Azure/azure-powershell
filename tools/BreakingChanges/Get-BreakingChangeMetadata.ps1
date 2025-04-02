@@ -289,7 +289,7 @@ Function Get-BreakingChangeOfGeneratedModule
                     })
                 }
                 Else {
-                    $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add($BreakingChangeMessage)
+                    $null = $AllBreakingChangeMessages[$CmdletName][$ParameterSetName]["CmdletBreakingChange"].Add($BreakingChangeMessage)
                 }
             }
         }
@@ -334,7 +334,7 @@ Function Get-BreakingChangeOfGeneratedModule
                 })
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
             }
         }
     }
@@ -363,7 +363,7 @@ Function Get-BreakingChangeOfGeneratedModule
                 })
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].Add($BreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["CmdletBreakingChange"].Add($BreakingChangeMessage)
             }
         }
     }
@@ -394,7 +394,7 @@ Function Get-BreakingChangeOfGeneratedModule
                 })
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["ParameterBreakingChange"].Add($ParameterBreakingChangeMessage)
             }
         }
     }

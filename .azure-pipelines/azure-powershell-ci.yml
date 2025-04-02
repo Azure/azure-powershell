@@ -39,7 +39,7 @@ variables:
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 schedules:
-- cron: 0 4 * * 0,1,2,3,4,5,6
+- cron: 0 16 * * 0,1,2,3,4,5,6
   displayName: Daily Archive
   branches:
     include:
@@ -66,8 +66,6 @@ trigger:
     - test-build-filter
     - generation
     - Azure
-    exclude:
-    - release-network-*
 
 jobs:
 - job: Build
@@ -92,10 +90,10 @@ jobs:
   #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
   - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
@@ -147,7 +145,7 @@ jobs:
           exit 1
         }
         $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
-        
+
         $sourceBranchName = "$(Build.SourceBranch)".Replace("refs/heads/","")
         $baseBranchName = "origin/$sourceBranchName"
         $tmpBranchName = "archive/$sourceBranchName/$(Build.Reason)"
@@ -190,7 +188,7 @@ jobs:
         git add $generatedPath
         git commit -m $prTitle
         git push origin $tmpBranchName --force
-        
+
         & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
@@ -225,10 +223,10 @@ jobs:
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -267,10 +265,10 @@ jobs:
     parameters:
       artifactName: build-${{ variables.TestFramework }}
   - task: UseDotNet@2
-    displayName: 'Use .NET SDK 6 for tests'
+    displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:
