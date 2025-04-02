@@ -43,6 +43,3 @@ Name                                 Category Resource Group   Impact ImpactedVa
 ```
 
 Get Recommendation by Id and resource Id
-
-
-

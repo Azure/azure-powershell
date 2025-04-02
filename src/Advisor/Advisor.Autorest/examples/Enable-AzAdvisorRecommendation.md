@@ -23,4 +23,3 @@ Name                                 Category Resource Group   Impact ImpactedFi
 ```
 
 Enable recommendation byrecommendation name
-

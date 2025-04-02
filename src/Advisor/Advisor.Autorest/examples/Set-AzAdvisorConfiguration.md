@@ -23,4 +23,3 @@ default True
 ```
 
 Set advisor configuration by resource group name
-

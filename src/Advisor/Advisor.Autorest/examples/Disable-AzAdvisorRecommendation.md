@@ -23,4 +23,3 @@ SuppressionId                        Name                     Resource Group   T
 ```
 
 Disable recommendation by recommendation resource id
-

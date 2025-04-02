@@ -22,8 +22,4 @@ Name                                         Exclude LowCpuThreshold
 9e223dbe-3399-4e19-88eb-0975f02ac87f-lnxtest False
 ```
 
- Get Configuration by ResourceGroupName
-
-
-
-
+Get Configuration by ResourceGroupName
