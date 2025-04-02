@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public SwitchParameter RestoreToEdgeZone { get; set; }
 
         /// <summary>
-        /// Parameter deprecate. Please use SecureToken instead
+        /// Parameter deprecated. Please use SecureToken instead
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricate, ValueFromPipeline = false)]        
         public string Token;

@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Parameter deprecate. Please use SecureToken instead")]        
+        [Parameter(Mandatory = false, HelpMessage = "Parameter deprecated. Please use SecureToken instead")]        
         public string Token;
 
         /// <summary>
