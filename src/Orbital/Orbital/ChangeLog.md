@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Implemented code refactoring.
-    * Regenerated the module using the latest v4 generator to incorporate the new features added in the v4 generator.
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
