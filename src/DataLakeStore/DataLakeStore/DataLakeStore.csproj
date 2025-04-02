@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<PsModuleName>DataLakeStore</PsModuleName>
-		<OmitJsonPackage>true</OmitJsonPackage>
-	</PropertyGroup>
+  <PropertyGroup>
+	<PsModuleName>DataLakeStore</PsModuleName>
+	<OmitJsonPackage>true</OmitJsonPackage>
+  </PropertyGroup>
 
-	<Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
-    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+	<RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.DataLake.Store" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
-    <PackageReference Include="NLog" Version="5.4.0" />
-    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+	<PackageReference Include="Microsoft.Azure.DataLake.Store" Version="2.0.2" />
+	<PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.4.2-preview" />
+	<PackageReference Include="NLog" Version="5.4.0" />
+	<PackageReference Include="System.Net.Requests" Version="4.3.0" />
 	<PackageReference Include="Azure.Identity" Version="1.13.2" />
   </ItemGroup>
 
