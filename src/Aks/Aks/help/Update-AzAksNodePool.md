@@ -18,7 +18,7 @@ Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <St
  [-NodeImageOnly] [-AsJob] [-Force] [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
  [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -26,7 +26,7 @@ Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <St
 Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeCount <Int32>] [-NodeImageOnly]
  [-AsJob] [-Force] [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeC
 Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force]
  [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageO
 Update-AzAksNodePool -Id <String> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force] [-MaxSurge <String>]
  [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -337,21 +337,6 @@ The node taints added to new nodes during node pool create and scale
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

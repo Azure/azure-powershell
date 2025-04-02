@@ -23,7 +23,7 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
  [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -37,7 +37,7 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-HostGroupID <String>] [-PodSubnetID <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
  [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -546,21 +546,6 @@ The ID for Proximity Placement Group.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
