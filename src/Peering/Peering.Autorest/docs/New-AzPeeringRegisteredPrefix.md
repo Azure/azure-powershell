@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPeeringRegisteredPrefix
 
 ## SYNOPSIS
-Creates a new registered prefix with the specified name under the given subscription, resource group and peering.
+create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzPeeringRegisteredPrefix -Name <String> -PeeringName <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-Creates a new registered prefix with the specified name under the given subscription, resource group and peering.
+create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ## EXAMPLES
 
@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringRegisteredPrefix
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredPrefix
 
 ## NOTES
 

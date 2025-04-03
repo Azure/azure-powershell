@@ -12,15 +12,8 @@ Initialize Peering Service for Connection Monitor functionality
 
 ## SYNTAX
 
-### Initialize (Default)
 ```
 Initialize-AzPeeringServiceConnectionMonitor [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InitializeViaIdentity
-```
-Initialize-AzPeeringServiceConnectionMonitor -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,22 +47,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-Parameter Sets: InitializeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -90,7 +67,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Initialize
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,8 +112,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 
 ## OUTPUTS
 
