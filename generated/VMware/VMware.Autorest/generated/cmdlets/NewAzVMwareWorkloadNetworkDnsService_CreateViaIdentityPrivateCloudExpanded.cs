@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a WorkloadNetworkDnsService</summary>
+    /// <summary>create a WorkloadNetworkDnsService</summary>
     /// <remarks>
     /// [OpenAPI] CreateDnsService=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwareWorkloadNetworkDnsService_CreateViaIdentityPrivateCloudExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a WorkloadNetworkDnsService")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"create a WorkloadNetworkDnsService")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices/{dnsServiceId}", ApiVersion = "2023-09-01")]
     public partial class NewAzVMwareWorkloadNetworkDnsService_CreateViaIdentityPrivateCloudExpanded : global::System.Management.Automation.PSCmdlet,
