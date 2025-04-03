@@ -81,14 +81,12 @@ directive:
     remove: true
   # Remove parameter set name
   - where:
-      verb: New
       subject: Service$
-      variant: Create$|CreateViaIdentity$|CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      verb: Update
       subject: Service$
-      variant: Update$|UpdateViaIdentity$
+      variant: ^CreateViaIdentity.*$
     remove: true
   # Rename parameter name
   - where:
