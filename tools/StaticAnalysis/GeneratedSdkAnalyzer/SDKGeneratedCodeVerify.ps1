@@ -196,7 +196,9 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff ".\Generated"
+            # Use a single regex to ignore comments in .cs and .psd1 files
+            $diff = git diff ".\Generated"  --ignore-matching-lines="^\s*(//|/\*.*\*/|#)"
+
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{
