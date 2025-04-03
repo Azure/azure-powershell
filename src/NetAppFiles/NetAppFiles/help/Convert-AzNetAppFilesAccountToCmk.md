@@ -43,7 +43,7 @@ Transitions all volumes in a VNet to a different encryption key source (Microsof
 ```powershell
 $virtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/akvVirtualNetwork"
 $privateEndpointId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/akvPrivateEndpoint"
-Convert-AzNetAppFilesAccountToCmk -ResourceGroupName $resourceGroup -AccountName $accName1 -VirtualNetworkId $virtualNetworkId -PrivateEndpointId $privateEndpointId
+Convert-AzNetAppFilesAccountToCmk -ResourceGroupName "MyResourceGroup" -AccountName "MyAccount" -VirtualNetworkId $virtualNetworkId -PrivateEndpointId $privateEndpointId
 ```
 
 Transitions all volumes in a VNet to a differnt key source 

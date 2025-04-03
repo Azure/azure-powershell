@@ -24,7 +24,7 @@ Check if a file path is available
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesFilePathAvailability -Location westus2 -Name filename -SubnetId $subnetId
+Get-AzNetAppFilesFilePathAvailability -Location westus2 -Name filename -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"	
 ```
 
 Checks if a file path filename is available in subnet "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"

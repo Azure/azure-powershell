@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/convert-aznetappfilesaccountchangekeyvault
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/invoke-aznetappfilesaccountchangekeyvault
 schema: 2.0.0
 ---
 
@@ -42,10 +42,15 @@ Affects existing volumes that are encrypted with Key Vault/Managed HSM, and new 
 
 ### Example 1
 ```powershell
-$keyVaultPrivateEndpoint = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/akvPrivateEndpoint"
+$vnet = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/myvnet"
+$privateEndpoint = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ps2501/providers/Microsoft.Network/privateEndpoints/private-endpoint"
 $keyVaultUri = "https://myakv.vault.azure.net/"
 $keyVaultResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/vaults/myakv"
-Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName "MyAccount" -KeyVaultUri $keyVaultUri -KeyVaultKeyName  "MyKeyName" -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint
+$keyVaultPrivateEndpoint = @{
+    VirtualNetworkId = $vnet.Id
+    PrivateEndpointId = $privateEndpoint.Id
+}
+Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName "MyRG" -AccountName "MyAccount" -KeyVaultUri $keyVaultUri -KeyVaultKeyName  "MyKeyName" -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint
 ```
 
 Changes what Key Vault/Managed HSM is used for Volumes in NetAppAccount "MyAccount"

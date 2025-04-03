@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/convert-aznetappfilesaccountkeyvaultstatus
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesaccountkeyvaultstatus
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Contains data from encryption.keyVaultProperties as well as information about wh
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName $resourceGroup -AccountName "MyAccount"
+Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName "MyRG" -AccountName "MyAccount"
 ```
 
 Get information about how volumes under NetApp account MyAccount are encrypted
