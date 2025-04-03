@@ -25,6 +25,7 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Common.Authenticators.Test
 {
@@ -53,9 +54,9 @@ namespace Common.Authenticators.Test
         public SilentAuthenticatorTests(ITestOutputHelper output)
         {
             AzureSessionInitializer.InitializeAzureSession();
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
+            if (!AzureSession.Instance.TryGetComponent(AuthenticationTelemetry.Name, out AuthenticationTelemetry authenticationTelemetry))
             {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             }
             Output = output;
         }
