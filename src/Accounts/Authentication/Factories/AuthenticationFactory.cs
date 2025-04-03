@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     tokenCache = optionalParameters[TokenCacheParameterName] as IAzureTokenCache;
                 }
-                if (AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out authenticationTelemetry))
+                if (AzureSession.Instance.TryGetComponent(AuthenticationTelemetry.Name, out authenticationTelemetry))
                 {
                     if (optionalParameters.ContainsKey(CmdletContextParameterName))
                     {
@@ -195,7 +195,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             }
                             if (cmdletContext!= null)
                             {
-                                authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true));
+                                if (!authenticationTelemetry.PushDataRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true)))
+                                {
+                                    TracingAdapter.Information(string.Format(Resources.AuthenticationTelemetryRecordPushError, (cmdletContext?.CmdletId) ?? "Unknown"));
+                                }
                             }
 
                             break;
@@ -210,7 +213,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         if (cmdletContext != null)
                         {
-                            authenticationTelemetry.PushTelemetryRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false));
+                            if (!authenticationTelemetry.PushDataRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false)))
+                            {
+                                TracingAdapter.Information(string.Format(Resources.AuthenticationTelemetryRecordPushError, (cmdletContext?.CmdletId) ?? "Unknown"));
+                            }
                         }
                         var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
                         if (mfaException != null)
