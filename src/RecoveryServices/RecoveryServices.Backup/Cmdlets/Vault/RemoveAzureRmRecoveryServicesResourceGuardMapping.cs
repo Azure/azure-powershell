@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string DeleteAzureResourceGuardMapping = "DeleteAzureResourceGuardMapping";
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = DeleteAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricate)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = DeleteAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
         [ValidateNotNullOrEmpty]
         public string Token;
 

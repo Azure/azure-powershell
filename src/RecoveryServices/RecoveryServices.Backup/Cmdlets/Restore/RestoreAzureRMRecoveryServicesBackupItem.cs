@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Parameter deprecated. Please use SecureToken instead
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricate, ValueFromPipeline = false)]        
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ValueFromPipeline = false)]        
         public string Token;
 
         /// <summary>

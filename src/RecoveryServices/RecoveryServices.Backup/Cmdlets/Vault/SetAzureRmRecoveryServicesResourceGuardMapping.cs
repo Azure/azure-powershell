@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGuardId;
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = SetAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricate)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = SetAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
         [ValidateNotNullOrEmpty]
         public string Token;
 

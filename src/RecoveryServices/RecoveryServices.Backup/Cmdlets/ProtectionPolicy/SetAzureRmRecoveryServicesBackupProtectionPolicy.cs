@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricate, ParameterSetName = ModifyPolicyParamSet)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ParameterSetName = ModifyPolicyParamSet)]
         [ValidateNotNullOrEmpty]
         public string Token;
 
