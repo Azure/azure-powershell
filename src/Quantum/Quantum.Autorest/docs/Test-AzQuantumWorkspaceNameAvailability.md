@@ -24,6 +24,18 @@ Test-AzQuantumWorkspaceNameAvailability -InputObject <IQuantumIdentity> [-Name <
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CheckViaJsonFilePath
+```
+Test-AzQuantumWorkspaceNameAvailability -LocationName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzQuantumWorkspaceNameAvailability -LocationName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Check the availability of the resource name.
 
@@ -62,7 +74,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumIdentity
@@ -76,12 +87,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LocationName
 Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: True
@@ -96,7 +137,7 @@ Name for checking availability.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -111,7 +152,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: False
@@ -126,7 +167,7 @@ The resource type of Quantum Workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +217,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 
