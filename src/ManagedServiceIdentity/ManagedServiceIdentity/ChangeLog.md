@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Added breaking change announcement for the following cmdlets due to migrating autorest from v3 to v4.
+  * `Get-AzFederatedIdentityCredential`
+  * `New-AzFederatedIdentityCredential`
+  * `Update-AzFederatedIdentityCredential`
+
 ## Version 1.3.0
 * Upgraded nuget package to signed package.
 

@@ -1,4 +1,5 @@
 function Update-AzWvdAppAttachPackage_ImageObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackage])]
     [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
     param(

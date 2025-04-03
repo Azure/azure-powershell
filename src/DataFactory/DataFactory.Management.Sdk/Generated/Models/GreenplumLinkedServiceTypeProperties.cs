@@ -63,11 +63,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// terminating the attempt and generating an error. Set to zero for infinity.
         /// Type: integer. Only used for V2.
         /// </param>
-
-        /// <param name="password">The Azure key vault secret reference of password in connection string.
-        /// Type: string. Only used for V2.
-        /// </param>
-        public GreenplumLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), string authenticationType = default(string), object host = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), SecretBase password = default(SecretBase))
+        public GreenplumLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), string authenticationType = default(string), object host = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object connectionTimeout = default(object), object commandTimeout = default(object))
 
         {
             this.ConnectionString = connectionString;
@@ -81,7 +77,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.SslMode = sslMode;
             this.ConnectionTimeout = connectionTimeout;
             this.CommandTimeout = commandTimeout;
-            this.Password = password;
             CustomInit();
         }
 
@@ -167,13 +162,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "commandTimeout")]
         public object CommandTimeout {get; set; }
-
-        /// <summary>
-        /// Gets or sets the Azure key vault secret reference of password in connection
-        /// string. Type: string. Only used for V2.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "password")]
-        public SecretBase Password {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -187,7 +175,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Pwd.Validate();
             }
-
 
 
 

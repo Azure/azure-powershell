@@ -66,11 +66,14 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// templates. If not specified, default value is outer.
         /// </param>
 
+        /// <param name="validationLevel">The validation level of the deployment
+        /// Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;</param>
+
         /// <param name="whatIfSettings">Optional What-If operation settings.
         /// </param>
-        public DeploymentWhatIfProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions), DeploymentWhatIfSettings whatIfSettings = default(DeploymentWhatIfSettings))
+        public DeploymentWhatIfProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions), string validationLevel = default(string), DeploymentWhatIfSettings whatIfSettings = default(DeploymentWhatIfSettings))
 
-        : base(mode, template, templateLink, parameters, parametersLink, debugSetting, onErrorDeployment, expressionEvaluationOptions)
+        : base(mode, template, templateLink, parameters, parametersLink, debugSetting, onErrorDeployment, expressionEvaluationOptions, validationLevel)
         {
             this.WhatIfSettings = whatIfSettings;
             CustomInit();

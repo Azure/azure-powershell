@@ -16,14 +16,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System.Collections;
     using System.Management.Automation;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// A cmdlet that invokes a resource action.
     /// </summary>
+    [GenericBreakingChangeWithVersion("The API version for the resource type will be updated to use the default version instead of the latest.", "14.0.0", "8.0.0")]
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {

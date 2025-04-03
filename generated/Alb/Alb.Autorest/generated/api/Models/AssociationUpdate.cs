@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateProperties _property;
 
-        /// <summary>The updatable properties of the Association.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.AssociationUpdateProperties()); set => this._property = value; }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         /// <summary>Association Type</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.PSArgumentCompleterAttribute("subnets")]
         string AssociationType { get; set; }
-        /// <summary>The updatable properties of the Association.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdateProperties Property { get; set; }
         /// <summary>Association Subnet</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationSubnetUpdate Subnet { get; set; }

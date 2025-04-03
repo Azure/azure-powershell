@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="status">A value indicating whether security update required.
-        /// Possible values include: 'Supported', 'NotSupported', 'Deprecated',
-        /// 'UpdateRequired', 'SecurityUpdateRequired'</param>
+        /// Possible values include: &#39;Supported&#39;, &#39;NotSupported&#39;, &#39;Deprecated&#39;,
+        /// &#39;UpdateRequired&#39;, &#39;SecurityUpdateRequired&#39;</param>
         public VersionDetails(string version = default(string), System.DateTime? expiryDate = default(System.DateTime?), string status = default(string))
 
         {

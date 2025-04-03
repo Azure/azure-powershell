@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PrivateEndpointConnection
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridprivateendpointconnectionobject
 #>
 function New-AzEventGridPrivateEndpointConnectionObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.PrivateEndpointConnection')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

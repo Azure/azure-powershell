@@ -43,6 +43,7 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
+        /// <param name="assignIdentity"/>
         /// <returns>Registered Server Resource</returns>
         /// </summary>
         RegisteredServer Register(
@@ -56,7 +57,8 @@ namespace Commands.StorageSync.Interop.Interfaces
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback);
+            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
+            bool assignIdentity);
 
         /// <summary>
         /// This function processes the unregistration of the server and performs following steps:
