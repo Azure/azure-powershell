@@ -125,6 +125,18 @@ Checks if the peering service provider is present within 1000 miles of customer'
 ### [Update-AzPeering](Update-AzPeering.md)
 update tags for a peering with the specified name under the given subscription and resource group.
 
+### [Update-AzPeeringAsn](Update-AzPeeringAsn.md)
+update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+
+### [Update-AzPeeringConnectionMonitorTest](Update-AzPeeringConnectionMonitorTest.md)
+update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+
+### [Update-AzPeeringRegisteredAsn](Update-AzPeeringRegisteredAsn.md)
+update a new registered ASN with the specified name under the given subscription, resource group and peering.
+
+### [Update-AzPeeringRegisteredPrefix](Update-AzPeeringRegisteredPrefix.md)
+update a new registered prefix with the specified name under the given subscription, resource group and peering.
+
 ### [Update-AzPeeringService](Update-AzPeeringService.md)
 update tags for a peering service with the specified name under the given subscription and resource group.
 

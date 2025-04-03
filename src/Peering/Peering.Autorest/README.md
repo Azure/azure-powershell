@@ -58,23 +58,23 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove unmapped verb, if need please add back
-  - where:
-      subject: PeerAsn
-      verb: Update
-    remove: true
-  - where:
-      subject: ConnectionMonitorTest
-      verb: Update
-    remove: true
-  - where:
-      subject: RegisteredAsn
-      verb: Update
-    remove: true
-  - where:
-      subject: RegisteredPrefix
-      verb: Update
-    remove: true
+  # remove update cmdlets directive, if need please add back
+  # - where:
+  #     subject: PeerAsn
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: ConnectionMonitorTest
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: RegisteredAsn
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: RegisteredPrefix
+  #     verb: Update
+  #   remove: true
   # Change cmdlet verb: Invoke-AzPeeringInvokeLookingGlass -> Start-AzPeeringInvokeLookingGlass
   - where:
       verb: Invoke
