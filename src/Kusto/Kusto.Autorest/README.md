@@ -50,8 +50,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/kusto.json
-commit: 4c38cb9966cd6afbb03c7e9b14997720a728baee
+  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2024-04-13/kusto.json
+commit: 9a38736f10946d4e41ea40b3ba43d85a738f3263
 
 ```
 
@@ -150,5 +150,5 @@ directive:
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property');
 ```

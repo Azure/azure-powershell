@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SapHanaSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -63,9 +66,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="partitionSettings">The settings that will be leveraged for SAP HANA source partitioning.
         /// </param>
-        public SapHanaSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), object packetSize = default(object), object partitionOption = default(object), SapHanaPartitionSettings partitionSettings = default(SapHanaPartitionSettings))
+        public SapHanaSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), object packetSize = default(object), object partitionOption = default(object), SapHanaPartitionSettings partitionSettings = default(SapHanaPartitionSettings))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.Query = query;
             this.PacketSize = packetSize;

@@ -102,7 +102,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Constants.Standard_LRS,
             Constants.Standard_SSD,
             Constants.StandardSSD_LRS,
-            Constants.StandardSSD_ZRS)]
+            Constants.StandardSSD_ZRS,
+            Constants.PremiumV2_LRS,
+            Constants.UltraSSD_LRS)]
         public string RecoveryTargetDiskAccountType { get; set; }
 
         /// <summary>

@@ -71,6 +71,57 @@ function Test-GetResourceGroupDeploymentStack
 
 <#
 .SYNOPSIS
+Tests deployment via .bicepparam file with inline parameter overrides.
+#>
+function Test-NewResourceGroupDeploymentStackFromBicepparamFileWithOverrides
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+	$expectedAllOutput = @'
+{
+  "array": [
+    "abc"
+  ],
+  "string": "hello",
+  "object": {
+    "def": "ghi"
+  },
+  "int": 42,
+  "bool": true,
+  "secureString": "glabble"
+}
+'@ | ConvertFrom-Json
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -ActionOnUnmanage DetachAll -DenySettingsMode None -TemplateParameterFile deployWithParamOverrides.bicepparam `
+          -myArray @("abc") `
+		  -myObject @{"def" = "ghi";} `
+		  -myString "hello" `
+		  -myInt 42 `
+		  -myBool $true `
+		  -mySecureString (ConvertTo-SecureString -String "glabble" -AsPlainText -Force)
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $actualAllOutput = $deployment.Outputs["all"].Value.ToString() | ConvertFrom-Json
+        Assert-AreEqual ($expectedAllOutput | ConvertTo-Json) ($actualAllOutput | ConvertTo-Json)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests New operation on deployment stacks at the RG scope.
 #>
 function Test-NewResourceGroupDeploymentStack

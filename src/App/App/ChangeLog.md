@@ -19,6 +19,29 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Upgraded nuget package to signed package.
+
+## Version 2.0.0
+* The parameters of the `New-AzContainerApp`, `New-AzContainerAppJob`, `Update-AzContainerApp`, `Update-AzContainerAppJob` commands have changed.
+  * `IdentityType` has been removed. `EnableSystemAssignedIdentity` is used to enable/disable system-assigned identities.
+  * The type of `UserAssignedIdentity` is simplified to an array of strings that is used to specify the user's assigned identity.
+
+## Version 1.1.0
+* Added breaking change messages:
+  * `New-AzContainerApp`
+  * `New-AzContainerAppJob`
+  * `Update-AzContainerApp`
+  * `Update-AzContainerAppJob`
+* Fixed an issue that caused Get/New-Az* cmdlets with returned objects to incorrectly expose the parameter [-PassThru].
+  * `Get-AzContainerApp`
+  * `Get-AzContainerAppAuthToken`
+  * `Get-AzContainerAppDiagnosticRoot`
+  * `New-AzContainerAppManagedCert`
+
+## Version 1.0.1
+* Fixed secrets exposure in example documentation.
+
 ## Version 1.0.0
 * General availability for module Az.App.
 * Upgraded api version to 2023-05-01.

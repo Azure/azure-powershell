@@ -329,6 +329,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string NetworkFeatures { get; set; }
 
         /// <summary>
+        /// Gets or sets effectiveNetworkFeatures
+        /// </summary>
+        /// <value>
+        /// The effective value of the network features type available to the volume,
+        /// or current effective state of update. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// </value>
+        public string EffectiveNetworkFeatures { get; set; }
+
+        /// <summary>
         /// Gets or sets NetworkSiblingSetId
         /// </summary>
         /// <value>

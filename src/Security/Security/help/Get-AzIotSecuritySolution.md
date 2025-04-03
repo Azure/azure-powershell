@@ -14,26 +14,26 @@ Get IoT security solution
 
 ### SubscriptionScope (Default)
 ```
-Get-AzIotSecuritySolution [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzIotSecuritySolution [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
 Get-AzIotSecuritySolution -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
 Get-AzIotSecuritySolution -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Get-AzIotSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,21 +118,6 @@ Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

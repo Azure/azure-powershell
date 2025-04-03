@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         {
             get { return JsonConvert.SerializeObject(ApplyOnNetworkIntentPolicyBasedServices, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+        public string NetworkGroupAddressSpaceAggregationOption { get; set; }
 
         public string DeleteExistingNSGs { get; set; }
     }

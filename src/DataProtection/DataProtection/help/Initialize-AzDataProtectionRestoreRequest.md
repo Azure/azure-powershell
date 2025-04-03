@@ -17,27 +17,24 @@ Initializes Restore Request object for triggering restore on a protected backup 
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
- [<CommonParameters>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
- [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ItemLevelRecovery]
- [-ContainersList <String[]>] [-PrefixMatch <Hashtable>]
- [<CommonParameters>]
+ [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ [-PrefixMatch <Hashtable>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
  [<CommonParameters>]
 ```
 
@@ -45,11 +42,10 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery] [-ContainersList <String[]>]
- -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
- [<CommonParameters>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery]
+ [-ContainersList <String[]>] -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>]
+ [-ToPrefixPattern <String[]>] [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -188,6 +184,34 @@ Third command is used to fetch recovery points from secondary region for cross r
 Last command constructs the cross region restore request object for restore as files for datasourcetype AzureDatabaseForPostgreSQL.
 Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore.
 Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.
+
+### Example 7: Get restore request object for alternate location vaulted restore for AzureKubernetesService
+```powershell
+$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "resourceGroupName"
+$vaultName = "vaultName"
+$location = "eastasia"
+$snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG"
+$stagingStorageAccount = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/stagingRG/providers/Microsoft.Storage/storageAccounts/snapshotsa"
+$targetAKSClusterARMId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.ContainerService/managedClusters/targetKubernetesCluster"
+
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "aks-cluster-name" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+ $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -StagingResourceGroupId $snapshotResourceGroupId -StagingStorageAccountId $stagingStorageAccount -IncludedNamespace "hrweb" -NamespaceMapping @{"hrweb"="hrwebrestore"}
+
+$aksALRRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -TargetResourceId $targetAKSClusterARMId
+```
+
+First, we initialize the necessary variables that will be used in the restore script.
+Then, we fetch the backup instance and recovery point for the instance.
+Next, we initialize the Restore Configuration client object, which is used to set up the restore request client object.
+Note that for vaulted restore for AzureKubernetesService, we have passed the StagingResourceGroupId and StagingStorageAccountId parameters.
+
+We then initialize the restore request object for an Azure Kubernetes Service (AKS) alternate location restore.
+Note that the $aksRestoreCriteria object contains the necessary parameters for Vaulted/operations tier restore accordingly.
+The RestoreConfiguration object is passed to the Initialize-AzDataProtectionRestoreRequest cmdlet to create the restore request object.
+The restore request object is then used to trigger the restore operation.
 
 ## PARAMETERS
 
@@ -366,10 +390,9 @@ Accept wildcard characters: False
 ### -RestoreConfiguration
 Restore configuration for restore.
 Use this parameter to restore with AzureKubernetesService.
-To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria
+Type: System.Management.Automation.PSObject
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 

@@ -19,7 +19,7 @@ Creates or updates a data connection.
 .Description
 Creates or updates a data connection.
 .Example
-$dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.EventHubDataConnection -Property @{Location="East US"; Kind="EventHub"; EventHubResourceId="/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub"; DataFormat="JSON"; ConsumerGroup='Default'; Compression= "None"; TableName = "Events"; MappingRuleName = "EventsMapping"}
+$dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.EventHubDataConnection -Property @{Location="East US"; Kind="EventHub"; EventHubResourceId="/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub"; DataFormat="JSON"; ConsumerGroup='Default'; Compression= "None"; TableName = "Events"; MappingRuleName = "EventsMapping"}
 New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection" -Parameter $dataConnectionProperties
 
 Kind     Location Name                                               Type
@@ -30,7 +30,7 @@ EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Micr
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpandedEventHub', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -272,7 +272,7 @@ function New-AzKustoDataConnection {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.EventHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.EventHubDataConnection]::new()
                 
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -313,7 +313,7 @@ function New-AzKustoDataConnection {
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.EventGridDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.EventGridDataConnection]::new()
             
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -357,7 +357,7 @@ function New-AzKustoDataConnection {
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'IotHub') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IotHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IotHubDataConnection]::new()
 
                 $Parameter.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')
@@ -391,7 +391,7 @@ function New-AzKustoDataConnection {
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'CosmosDb') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CosmosDbDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.CosmosDbDataConnection]::new()
 
                 $Parameter.TableName = $PSBoundParameters['TableName']
                 $null = $PSBoundParameters.Remove('TableName')

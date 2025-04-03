@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureBlobFSWriteSettings class.
         /// </summary>
 
+        /// <param name="additionalProperties">Connector write settings.
+        /// </param>
+
         /// <param name="maxConcurrentConnections">The maximum concurrent connection count for the source data store. Type:
         /// integer (or Expression with resultType integer).
         /// </param>
@@ -43,9 +46,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="blockSizeInMb">Indicates the block size(MB) when writing data to blob. Type: integer (or
         /// Expression with resultType integer).
         /// </param>
-        public AzureBlobFSWriteSettings(object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object blockSizeInMb = default(object))
+        public AzureBlobFSWriteSettings(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object blockSizeInMb = default(object))
 
-        : base(maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
+        : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
         {
             this.BlockSizeInMb = blockSizeInMb;
             CustomInit();

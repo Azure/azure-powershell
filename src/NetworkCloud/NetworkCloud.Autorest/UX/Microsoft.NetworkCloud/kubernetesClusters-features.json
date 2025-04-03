@@ -1,0 +1,95 @@
+{
+  "resourceType": "kubernetesClusters/features",
+  "apiVersion": "2024-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.networkcloud"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkCloudKubernetesClusterFeature",
+      "description": "Get properties of the provided the Kubernetes cluster feature.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkcloud/get-aznetworkcloudkubernetesclusterfeature"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FeatureName <String>",
+              "-KubernetesClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of the provided the Kubernetes cluster feature.",
+          "parameters": [
+            {
+              "name": "-FeatureName",
+              "value": "[Path.featureName]"
+            },
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkCloudKubernetesClusterFeature",
+      "description": "Delete the provided Kubernetes cluster feature.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkcloud/remove-aznetworkcloudkubernetesclusterfeature"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FeatureName <String>",
+              "-KubernetesClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the provided Kubernetes cluster feature.",
+          "parameters": [
+            {
+              "name": "-FeatureName",
+              "value": "[Path.featureName]"
+            },
+            {
+              "name": "-KubernetesClusterName",
+              "value": "[Path.kubernetesClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -59,10 +59,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">The license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
+
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
 
         /// <param name="performAutoResync">A value indicating whether auto resync is to be done.
         /// </param>
@@ -75,7 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetNicTags">The tags for the target NICs.
         /// </param>
-        public VMwareCbtUpdateMigrationItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), System.Collections.Generic.IList<VMwareCbtUpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<VMwareCbtUpdateDiskInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public VMwareCbtUpdateMigrationItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), System.Collections.Generic.IList<VMwareCbtUpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<VMwareCbtUpdateDiskInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
             this.TargetVMName = targetVMName;
@@ -91,6 +97,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.VMDisks = vmDisks;
             this.LicenseType = licenseType;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
+            this.UserSelectedOSName = userSelectedOSName;
             this.PerformAutoResync = performAutoResync;
             this.TargetVMTags = targetVMTags;
             this.TargetDiskTags = targetDiskTags;
@@ -181,6 +189,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
         public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether auto resync is to be done.

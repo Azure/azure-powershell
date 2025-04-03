@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -81,9 +84,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="enableServerCertificateValidation">If true, validate the HTTPS server SSL certificate. Default value is true.
         /// Type: boolean (or Expression with resultType boolean).
         /// </param>
-        public HttpLinkedService(object url, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), object authHeaders = default(object), object embeddedCertData = default(object), object certThumbprint = default(object), string encryptedCredential = default(string), object enableServerCertificateValidation = default(object))
+        public HttpLinkedService(object url, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), object authHeaders = default(object), object embeddedCertData = default(object), object certThumbprint = default(object), string encryptedCredential = default(string), object enableServerCertificateValidation = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Url = url;
             this.AuthenticationType = authenticationType;

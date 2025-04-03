@@ -37,12 +37,12 @@ This takes as input the ClientId and ClientSecret of the Facebook app.
 ### Example 2: Configures adB2C as an identity Provider for Developer Portal Logins
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-New-AzApiManagementIdentityProvider -Context $context -Type AadB2C -ClientId 6b1fc750-9e68-450c-97d2-ba6acd0fbc20 -ClientSecret "foobar" -AllowedTenants 'samirtestbc.onmicrosoft.com' -SignupPolicyName B2C_1_signup-policy
+New-AzApiManagementIdentityProvider -Context $context -Type AadB2C -ClientId 00001111-aaaa-2222-bbbb-3333cccc4444 -ClientSecret "foobar" -AllowedTenants 'samirtestbc.onmicrosoft.com' -SignupPolicyName B2C_1_signup-policy
 ```
 
 ```output
 Type                     : AadB2C
-ClientId                 : 6b1fc750-9e68-450c-97d2-ba6acd0fbc20
+ClientId                 : 00001111-aaaa-2222-bbbb-3333cccc4444
 ClientSecret             : foobar
 AllowedTenants           : {samirtestbc.onmicrosoft.com}
 Authority                : login.microsoftonline.com

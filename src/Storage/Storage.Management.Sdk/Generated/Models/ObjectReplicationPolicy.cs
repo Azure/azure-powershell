@@ -53,7 +53,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="rules">The storage account object replication rules.
         /// </param>
-        public ObjectReplicationPolicy(string id = default(string), string name = default(string), string type = default(string), string policyId = default(string), System.DateTime? enabledTime = default(System.DateTime?), string sourceAccount = default(string), string destinationAccount = default(string), System.Collections.Generic.IList<ObjectReplicationPolicyRule> rules = default(System.Collections.Generic.IList<ObjectReplicationPolicyRule>))
+
+        /// <param name="metrics">Optional. The object replication policy metrics feature options.
+        /// </param>
+        public ObjectReplicationPolicy(string id = default(string), string name = default(string), string type = default(string), string policyId = default(string), System.DateTime? enabledTime = default(System.DateTime?), string sourceAccount = default(string), string destinationAccount = default(string), System.Collections.Generic.IList<ObjectReplicationPolicyRule> rules = default(System.Collections.Generic.IList<ObjectReplicationPolicyRule>), ObjectReplicationPolicyPropertiesMetrics metrics = default(ObjectReplicationPolicyPropertiesMetrics))
 
         : base(id, name, type)
         {
@@ -62,6 +65,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.SourceAccount = sourceAccount;
             this.DestinationAccount = destinationAccount;
             this.Rules = rules;
+            this.Metrics = metrics;
             CustomInit();
         }
 
@@ -102,5 +106,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rules")]
         public System.Collections.Generic.IList<ObjectReplicationPolicyRule> Rules {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. The object replication policy metrics feature
+        /// options.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.metrics")]
+        public ObjectReplicationPolicyPropertiesMetrics Metrics {get; set; }
     }
 }

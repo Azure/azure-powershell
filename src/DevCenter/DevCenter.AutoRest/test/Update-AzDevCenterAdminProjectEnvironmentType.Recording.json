@@ -1,8 +1,8 @@
 {
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"creatorRoleAssignment\": {\r\n      \"roles\": {\r\n        \"b24988ac-6180-42a0-ab88-20f7382dd24c\": {\r\n        }\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"userRoleAssignments\": {\r\n      \"957f8e6c-d217-4285-a756-deac3e51375e\": {\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"creatorRoleAssignment\": {\r\n      \"roles\": {\r\n        \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\": {\r\n        }\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"userRoleAssignments\": {\r\n      \"957f8e6c-d217-4285-a756-deac3e51375e\": {\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourcegroups/pwshRggm9tz2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshMsilo1utm\": {\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -79,10 +79,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+2": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"creatorRoleAssignment\": {\r\n      \"roles\": {\r\n        \"b24988ac-6180-42a0-ab88-20f7382dd24c\": {\r\n        }\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"userRoleAssignments\": {\r\n      \"957f8e6c-d217-4285-a756-deac3e51375e\": {\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -161,10 +161,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+1": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentity+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview+2": {
+  "Update-AzDevCenterAdminProjectEnvironmentType+[NoContext]+UpdateViaIdentity+$PATCH+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/environmentTypes/bucn8l?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"creatorRoleAssignment\": {\r\n      \"roles\": {\r\n        \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\": {\r\n        }\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"userRoleAssignments\": {\r\n      \"957f8e6c-d217-4285-a756-deac3e51375e\": {\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourcegroups/pwshRggm9tz2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshMsilo1utm\": {\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

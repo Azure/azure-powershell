@@ -542,8 +542,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -551,10 +551,10 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, identity, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, serverId, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -875,8 +875,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -899,12 +899,16 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
 
             if (resourceGroupName == null)
             {
@@ -936,11 +940,6 @@ namespace Microsoft.Azure.Management.StorageSync
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "serverId");
             }
 
-            RegisteredServerUpdateParameters parameters = new RegisteredServerUpdateParameters();
-            if(identity != null)
-            {
-                parameters.Identity = identity;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

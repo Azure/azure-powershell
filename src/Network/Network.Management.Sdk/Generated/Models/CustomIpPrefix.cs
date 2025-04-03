@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;ME&#39;, &#39;OCEANIA&#39;, &#39;AQ&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the custom IP prefix resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="asn">The ASN for CIDR advertising. Should be an integer as string.
         /// </param>
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Geo {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

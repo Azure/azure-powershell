@@ -1,8 +1,8 @@
 {
-  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview+1": {
+  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"name\": \"pwshDchw2yeu\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview+2": {
+  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"name\": \"pwshDchw2yeu11\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -77,10 +77,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+Execute+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview+1": {
+  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+Execute+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"name\": \"pwshDchw2yeu\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -116,10 +116,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+Execute+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview+2": {
+  "Invoke-AzDevCenterAdminExecuteCheckNameAvailability+[NoContext]+Execute+$POST+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/providers/Microsoft.DevCenter/checkNameAvailability?api-version=2024-05-01-preview",
       "Content": "{\r\n  \"name\": \"pwshDchw2yeu11\",\r\n  \"type\": \"Microsoft.devcenter/devcenters\"\r\n}",
       "isContentBase64": false,
       "Headers": {

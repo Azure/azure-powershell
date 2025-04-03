@@ -16,7 +16,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Storage.Blob;
-    using Microsoft.Azure.Storage.File;
     using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -41,7 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
-                typeof(T) == typeof(SharedAccessFilePolicy) ||
                 typeof(T) == typeof(SharedAccessBlobPolicy)))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
@@ -117,10 +115,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePermissions.None;
                 }
-                else if (typeof(T) == typeof(SharedAccessFilePolicy))
-                {
-                    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePermissions.None;
-                }
                 else if (typeof(T) == typeof(SharedAccessBlobPolicy))
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPermissions.None;
@@ -140,10 +134,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     string convertedPermission = permission.Replace('q', 'r');
                     ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePolicy.PermissionsFromString(convertedPermission);
                 }
-                else if (typeof(T) == typeof(SharedAccessFilePolicy))
-                {
-                    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
-                }
                 else if (typeof(T) == typeof(SharedAccessBlobPolicy))
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPolicy.PermissionsFromString(permission);
@@ -162,8 +152,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal static PSObject ConstructPolicyOutputPSObject<T>(IDictionary<string, T> sharedAccessPolicies, string policyName)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
-               typeof(T) == typeof(SharedAccessBlobPolicy) ||
-               (typeof(T) == typeof(SharedAccessFilePolicy))))
+               typeof(T) == typeof(SharedAccessBlobPolicy)))
+               //||
+               //(typeof(T) == typeof(SharedAccessFilePolicy))))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }

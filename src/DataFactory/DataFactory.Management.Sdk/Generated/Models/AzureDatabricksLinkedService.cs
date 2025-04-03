@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -128,9 +131,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="credential">The credential reference containing authentication information.
         /// </param>
-        public AzureDatabricksLinkedService(object domain, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), SecretBase accessToken = default(SecretBase), object authentication = default(object), object workspaceResourceId = default(object), object existingClusterId = default(object), object instancePoolId = default(object), object newClusterVersion = default(object), object newClusterNumOfWorker = default(object), object newClusterNodeType = default(object), System.Collections.Generic.IDictionary<string, object> newClusterSparkConf = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterSparkEnvVars = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterCustomTags = default(System.Collections.Generic.IDictionary<string, object>), object newClusterLogDestination = default(object), object newClusterDriverNodeType = default(object), object newClusterInitScripts = default(object), object newClusterEnableElasticDisk = default(object), string encryptedCredential = default(string), object policyId = default(object), CredentialReference credential = default(CredentialReference))
+        public AzureDatabricksLinkedService(object domain, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), SecretBase accessToken = default(SecretBase), object authentication = default(object), object workspaceResourceId = default(object), object existingClusterId = default(object), object instancePoolId = default(object), object newClusterVersion = default(object), object newClusterNumOfWorker = default(object), object newClusterNodeType = default(object), System.Collections.Generic.IDictionary<string, object> newClusterSparkConf = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterSparkEnvVars = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterCustomTags = default(System.Collections.Generic.IDictionary<string, object>), object newClusterLogDestination = default(object), object newClusterDriverNodeType = default(object), object newClusterInitScripts = default(object), object newClusterEnableElasticDisk = default(object), string encryptedCredential = default(string), object policyId = default(object), CredentialReference credential = default(CredentialReference))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Domain = domain;
             this.AccessToken = accessToken;

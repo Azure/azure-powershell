@@ -2158,7 +2158,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     i++;
                 }
             }
-            else
+            else if(runbook != null)
             {
                 runbookParameters = runbook.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
 

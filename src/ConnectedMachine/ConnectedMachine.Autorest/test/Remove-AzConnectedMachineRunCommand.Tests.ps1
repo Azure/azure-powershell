@@ -18,8 +18,4 @@ Describe 'Remove-AzConnectedMachineRunCommand' {
     It 'Delete' {
         Remove-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName
     }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

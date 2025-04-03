@@ -45,6 +45,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {tag1}
 RegistrationEnabled     : True
+ResolutionPolicy        : NxDomainRedirect
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
@@ -68,6 +69,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {tag1}
 RegistrationEnabled     : True
+ResolutionPolicy        : Default
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 

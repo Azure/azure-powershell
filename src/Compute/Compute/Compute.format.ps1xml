@@ -414,6 +414,14 @@
                 <PropertyName>SourceResource</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>DetachOption</Label>
+                <PropertyName>DetachOption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ToBeDetached</Label>
+                <PropertyName>ToBeDetached</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>VirtualHardDisk</Label>
                 <ScriptBlock>
                   if ($_.VirtualHardDisk -ne $null)

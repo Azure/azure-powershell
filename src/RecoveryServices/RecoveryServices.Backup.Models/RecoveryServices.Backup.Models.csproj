@@ -14,6 +14,7 @@
   <ItemGroup>
 	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
 	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Backup.Logger\RecoveryServices.Backup.Logger.csproj" />
   </ItemGroup>
 
   <ItemGroup>

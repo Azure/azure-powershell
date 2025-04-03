@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Upgraded nuget package to signed package.
+
+## Version 2.1.0
+* Fixed an issue that caused some commands ending in `Object` to not work properly.
+
 ## Version 2.0.0
 * Updated to use the 2023-06-01-preview API version.
 

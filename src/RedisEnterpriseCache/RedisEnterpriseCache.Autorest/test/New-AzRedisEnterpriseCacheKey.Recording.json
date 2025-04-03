@@ -1,8 +1,8 @@
 {
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+1": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/regenerateKey?api-version=2024-09-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/regenerateKey?api-version=2024-09-01-preview",
       "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,29 +17,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "de3525f0-eaac-4427-ac1c-f40f088d7476" ],
-        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "x-ms-request-id": [ "fe759acc-1527-498e-80d7-89b85abfaa86" ],
+        "x-rp-server-mvid": [ "1524d2a5-4080-43b6-8129-46c2093aeac1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083959Z:0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
-        "Date": [ "Thu, 06 Apr 2023 08:39:58 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=9c316ff9-a7d3-4712-be96-3804ef586c13,objectId=39b3a669-2838-4d72-acd1-f5c0dc8c6fb5/northeurope/934dcdd3-7589-44e2-9c57-020be72ea5ef" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "4e5f76f2-2869-4a29-aac0-37f5946d3c48" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20240919T080542Z:4e5f76f2-2869-4a29-aac0-37f5946d3c48" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F07744F8BD0B48C08B212CF2A0C4365F Ref B: MAA201060516019 Ref C: 2024-09-19T08:05:39Z" ],
+        "Date": [ "Thu, 19 Sep 2024 08:05:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"K8YhQCoRsuekCFRu2lw8T0RevbNxl66q1zFYvwUcoz4=\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"__FAKE_PRIMARY__KEY__\",\r\n  \"secondaryKey\": \"__FAKE_SECONDARY__KEY__\"\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+2": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/regenerateKey?api-version=2024-09-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2a959a08-44f9-4451-bc9b-d9c138a3988b/resourceGroups/ps-redisenterprise-rg-ornqihb4/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-qobi1rj2/databases/default/regenerateKey?api-version=2024-09-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -54,22 +57,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "45604f99-b45c-4e59-917a-24658ea2c253" ],
-        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "x-ms-request-id": [ "82077f48-4adb-4393-be26-ee3de68a710a" ],
+        "x-rp-server-mvid": [ "1524d2a5-4080-43b6-8129-46c2093aeac1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T084000Z:260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
-        "Date": [ "Thu, 06 Apr 2023 08:39:59 GMT" ]
+        "x-ms-operation-identifier": [ "tenantId=9c316ff9-a7d3-4712-be96-3804ef586c13,objectId=39b3a669-2838-4d72-acd1-f5c0dc8c6fb5/northeurope/3919cad8-7d54-4f1a-95f1-29ea2ed777ac" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "4cf83ab8-3464-4479-bfc2-0b2814278f77" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20240919T080543Z:4cf83ab8-3464-4479-bfc2-0b2814278f77" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 60989F8B599B4568B126D6C91E3F3E8F Ref B: MAA201060516019 Ref C: 2024-09-19T08:05:42Z" ],
+        "Date": [ "Thu, 19 Sep 2024 08:05:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"vp1WL+n2Fm/W+BNRN7GV+JBiVOncdKG/xY92vPxUqOw=\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"__FAKE_PRIMARY__KEY__\",\r\n  \"secondaryKey\": \"__FAKE_SECONDARY__KEY__\"\r\n}",
       "isContentBase64": false
     }
   }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticSan
 
 ## SYNOPSIS
-Update a Elastic San.
+update a Elastic San.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzElasticSan -InputObject <IElasticSanIdentity> [-BaseSizeTiB <Int64>]
 ```
 
 ## DESCRIPTION
-Update a Elastic San.
+update a Elastic San.
 
 ## EXAMPLES
 

@@ -20,10 +20,53 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
+* Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.
+* VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+
+## Version 9.2.0
+* Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
+* Added new parameter `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
+* Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
+* Added breaking change message for `Get-AzVMSize`.
+
+## Version 9.1.0
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVmssDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-VmssConfig`
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-AzVMConfig`
+
+## Version 9.0.1
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+* Compute gallery related cmdlets will now use 2024-03-03 GalleryRP API calls. 
+
+## Version 9.0.0
+* Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
+
+## Version 8.5.0
+* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
+* Updated image aliases to be up-to-date in the azure-powershell\src\Compute\Strategies\ComputeRp\Images.json file.
+* Added `NvmeDisk` argument completer to `DiffDiskPlacement` parameter for `Set-AzVMOSDisk` and `Set-AzVmssStorageProfile` cmdlets, allowing options for disk placement as `CacheDisk`, `ResourceDisk`, or `NvmeDisk`.
+
+## Version 8.4.0
+* Added `SkuProfileVmSize` and `SkuProfileAllocationStrategy` parameters to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` cmdlets for VMSS Instance Mix operations.
+* Added a new optional parameter `-GenerateSshKey-type` to the `New-AzVM` cmdlet, allowing users to specify the type of SSH key to generate (Ed25519 or RSA).
+* Added cx waning to the `New-AzVM` cmdlet, The default value of `publicIpSku` parameter will be changed from Basic to Standard.
+* Added `EnableResilientVMCreate` and `EnableResilientVMDelete` parameters to `Update-AzVmss` and `New-AzVmssConfig` cmdlets for enhanced VM resilience options.
+* Added `IsVMInStandByPool` property to `PSVirtualMachineInstanceView` object. [#25736]
+
+## Version 8.3.0
+* Fixed secrets exposure in example documentation.
+* References are updated to use 2024-07-01 ComputeRP and 2024-03-02 DiskRP REST API calls.
+* Added information on how to find VM Images when using `New-AzVM` with `-Image` parameter.
+* Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
+* Added parameter `-ResourceIdsOnly` to `Get-AzCapacityReservationGroup` cmdlet.
+* Changed the `Set-AzVMOperatingSystem` cmdlet when the `-VM` parameter is used without an OSProfile. Now it will not throw a null reference exception when `-Credential` is not provided.
+* Added parameter `-ForceDetach` to `Remove-AzVMDataDisk` cmdlet.
 
 ## Version 8.2.0
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
-* Added `TimeCreated` read-only field to `PSVirtualMachineScaleSetVMProfile` object.
 
 ## Version 8.1.0
 * Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.

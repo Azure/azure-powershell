@@ -23,7 +23,7 @@ Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
+Update-AzWorkloadsSapVirtualInstance -InputObject <ISapVirtualInstanceIdentity>
  [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -97,10 +97,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of manage identity
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -136,7 +136,7 @@ This setting is currently applicable only to Storage Account.
 Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedResourcesNetworkAccessType
 Parameter Sets: (All)
 Aliases:
 
@@ -195,6 +195,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -224,7 +225,9 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User assigned identities dictionary
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -274,12 +277,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
 
 ## NOTES
+
+ALIASES
+
+Update-AzVIS
 
 ## RELATED LINKS

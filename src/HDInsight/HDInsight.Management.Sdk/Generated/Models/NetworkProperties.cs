@@ -24,16 +24,28 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// Initializes a new instance of the NetworkProperties class.
         /// </summary>
 
+        /// <param name="outboundDependenciesManagedType">A value to describe how the outbound dependencies of a HDInsight cluster
+        /// are managed. &#39;Managed&#39; means that the outbound dependencies are managed by
+        /// the HDInsight service. &#39;External&#39; means that the outbound dependencies are
+        /// managed by a customer specific solution.
+        /// Possible values include: &#39;Managed&#39;, &#39;External&#39;</param>
+
         /// <param name="resourceProviderConnection">The direction for the resource provider connection.
         /// Possible values include: &#39;Inbound&#39;, &#39;Outbound&#39;</param>
 
         /// <param name="privateLink">Indicates whether or not private link is enabled.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public NetworkProperties(string resourceProviderConnection = default(string), string privateLink = default(string))
+
+        /// <param name="publicIPTag">Gets or sets the IP tag for the public IPs created along with the HDInsight
+        /// Clusters.
+        /// </param>
+        public NetworkProperties(string outboundDependenciesManagedType = default(string), string resourceProviderConnection = default(string), string privateLink = default(string), IpTag publicIPTag = default(IpTag))
 
         {
+            this.OutboundDependenciesManagedType = outboundDependenciesManagedType;
             this.ResourceProviderConnection = resourceProviderConnection;
             this.PrivateLink = privateLink;
+            this.PublicIPTag = publicIPTag;
             CustomInit();
         }
 
@@ -42,6 +54,15 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets a value to describe how the outbound dependencies of a
+        /// HDInsight cluster are managed. &#39;Managed&#39; means that the outbound
+        /// dependencies are managed by the HDInsight service. &#39;External&#39; means that
+        /// the outbound dependencies are managed by a customer specific solution. Possible values include: &#39;Managed&#39;, &#39;External&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "outboundDependenciesManagedType")]
+        public string OutboundDependenciesManagedType {get; set; }
 
         /// <summary>
         /// Gets or sets the direction for the resource provider connection. Possible values include: &#39;Inbound&#39;, &#39;Outbound&#39;
@@ -54,5 +75,28 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLink")]
         public string PrivateLink {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the IP tag for the public IPs created along with
+        /// the HDInsight Clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicIpTag")]
+        public IpTag PublicIPTag {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.PublicIPTag != null)
+            {
+                this.PublicIPTag.Validate();
+            }
+        }
     }
 }

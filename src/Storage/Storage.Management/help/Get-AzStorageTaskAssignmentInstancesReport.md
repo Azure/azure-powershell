@@ -44,15 +44,77 @@ Fetch the report summary of a single storage task assignment's instances
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List the reports of a task assignment in an account
+```powershell
 Get-AzStorageTaskAssignmentInstancesReport -AccountName myaccount -ResourceGroupName myresourcegroup -StorageTaskAssignmentName mytaskassignment
 ```
 
-### EXAMPLE 2
+```output
+FinishTime             : 2024-07-02T08:19:51.9238839Z
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/mytaskassignment/reports/instance1
+Name                   : instance1
+ObjectFailedCount      : 0
+ObjectsOperatedOnCount : 0
+ObjectsSucceededCount  : 0
+ObjectsTargetedCount   : 0
+RunResult              : Succeeded
+RunStatusEnum          : Finished
+RunStatusError         : 0x0
+StartTime              : 2024-07-02T08:10:55.0000000Z
+StorageAccountId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
+SummaryReportPath      : https://myaccount.blob.core.windows.net/testc2/mytask/assignment1/2024-07-02T08:11:20/SummaryReport.json
+TaskAssignmentId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/mytaskassignment
+TaskId                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask
+TaskVersion            : 1
+Type                   : Microsoft.Storage/storageAccounts/storageTaskAssignments/reports
 ```
+
+This command lists the reports of task assignment "mytaskassignment".
+
+### Example 2: List the reports of all storage task assignments and instances in an account
+```powershell
 Get-AzStorageTaskAssignmentInstancesReport -AccountName myaccount -ResourceGroupName myresourcegroup
 ```
+
+```output
+FinishTime             : 2024-07-03T08:19:23.1774164Z
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/reports/instance1
+Name                   : instance1
+ObjectFailedCount      : 0
+ObjectsOperatedOnCount : 0
+ObjectsSucceededCount  : 0
+ObjectsTargetedCount   : 0
+RunResult              : Succeeded
+RunStatusEnum          : Finished
+RunStatusError         : 0x0
+StartTime              : 2024-07-03T08:10:11.0000000Z
+StorageAccountId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
+SummaryReportPath      : https://myaccount.blob.core.windows.net/testc2/mytask/mytaskassignment/2024-07-03T08:10:41/SummaryReport.json
+TaskAssignmentId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/mytaskassignment
+TaskId                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask
+TaskVersion            : 1
+Type                   : Microsoft.Storage/storageAccounts/reports
+
+FinishTime             : 2024-07-02T08:19:51.9238839Z
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/reports/instance2
+Name                   : instance2
+ObjectFailedCount      : 0
+ObjectsOperatedOnCount : 0
+ObjectsSucceededCount  : 0
+ObjectsTargetedCount   : 0
+RunResult              : Succeeded
+RunStatusEnum          : Finished
+RunStatusError         : 0x0
+StartTime              : 2024-07-02T08:10:55.0000000Z
+StorageAccountId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
+SummaryReportPath      : https://myaccount.blob.core.windows.net/testc2/mytaskassignment2/assignment1/2024-07-02T08:11:20/SummaryReport.json
+TaskAssignmentId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/mytaskassignment2
+TaskId                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask
+TaskVersion            : 1
+Type                   : Microsoft.Storage/storageAccounts/reports
+```
+
+This command lists the reports of all storage task assignments and instances under storage account "myaccount".
 
 ## PARAMETERS
 
@@ -61,7 +123,7 @@ The name of the storage account within the specified resource group.
 Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -77,7 +139,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -91,10 +153,10 @@ Accept wildcard characters: False
 ### -Filter
 Optional.
 When specified, it can be used to query using reporting properties.
-See \[Constructing Filter Strings\](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
+See [Constructing Filter Strings](https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +171,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -124,13 +186,13 @@ Accept wildcard characters: False
 Optional, specifies the maximum number of storage task assignment instances to be included in the list response.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +201,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -155,7 +217,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -170,7 +232,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: GetViaIdentityStorageAccount
 Aliases:
 
@@ -186,7 +248,7 @@ The name of the storage task assignment within the specified resource group.
 Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, GetViaIdentityStorageAccount
 Aliases:
 
@@ -201,13 +263,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -218,74 +280,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskReportInstance
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
-
-STORAGEACCOUNTINPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignmentinstancesreport](https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignmentinstancesreport)
-

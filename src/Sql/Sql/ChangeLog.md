@@ -19,13 +19,41 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.2
+* Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."
+    - fixed the output to enumerate the results.
+
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+* Updated `New-AzSqlDatabaseExport` with support for Managed Identity
+ 	- Added `ManagedIdentity` to `StorageKeyType` auth list
+   	- Added `ManagedIdentity` to `AuthenticationType` auth list
+* Updated `New-AzSqlDatabaseImport` with support for Managed Identity
+  	- Added `ManagedIdentity` to `StorageKeyType` auth list
+	- Added `ManagedIdentity` to `AuthenticationType` auth list
+
+## Version 6.0.0
+* Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
+* Updated `New-AzSqlInstanceLink` with new input parameters
+	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
+	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
+			  `SourceEndpoint` -> `PartnerEndpoint`
+			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
+	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
+* Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
+
+## Version 5.3.0
+* Fixed secrets exposure in example documentation.
+* Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.
+* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
+
 ## Version 5.2.0
 * Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
 * Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
 * Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.
 * Added new cmdlet `Set-AzSqlDatabaseReplicationLink` for updating replication link type
 * Updated `Get-AzSqlDatabaseReplicationLink` to use the new sdk
-* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
 
 ## Version 5.1.0
 * Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`

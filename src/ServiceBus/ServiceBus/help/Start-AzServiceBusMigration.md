@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzServiceBusMigration
 
 ## SYNOPSIS
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Create Migration configuration and starts migration of entities from Standard to Premium namespace
+create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ## EXAMPLES
 

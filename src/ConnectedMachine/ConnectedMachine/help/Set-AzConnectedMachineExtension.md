@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to create or update the extension.
+The operation to update the extension.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to update the extension.
 
 ## EXAMPLES
 

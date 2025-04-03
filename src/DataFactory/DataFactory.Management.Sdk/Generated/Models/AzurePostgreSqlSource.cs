@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity Azure PostgreSQL source.
+    /// A copy activity Azure Database for PostgreSQL source.
     /// </summary>
     [Newtonsoft.Json.JsonObject("AzurePostgreSqlSource")]
     public partial class AzurePostgreSqlSource : TabularSource
@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Initializes a new instance of the AzurePostgreSqlSource class.
         /// </summary>
+
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
 
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
@@ -52,9 +55,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="query">A query to retrieve data from source. Type: string (or Expression with
         /// resultType string).
         /// </param>
-        public AzurePostgreSqlSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object))
+        public AzurePostgreSqlSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.Query = query;
             CustomInit();

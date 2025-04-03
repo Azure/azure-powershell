@@ -268,7 +268,7 @@ The certificate file, which is specified by `CertficatePath`, should contains bo
 $SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
-Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
+Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $SecurePassword
 ```
 
 ```Output
@@ -317,9 +317,8 @@ Accept wildcard characters: False
 
 ### -AccountId
 
-Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in
-**ManagedService** parameter set. Can be a managed service resource ID, or the associated client ID.
-To use the system assigned identity, leave this field blank.
+Id for Account, associated with your access token.
+In **User** authentication flows, the AccountId is user name / user id; In **AccessToken** flow, it is the AccountId for the access token; In **ManagedService** flow, it is the associated client Id of UserAssigned identity. To use the SystemAssigned identity, leave this field blank.
 
 ```yaml
 Type: System.String

@@ -9,9 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## SYNTAX
 
@@ -24,15 +22,13 @@ Update-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## EXAMPLES
 
@@ -87,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -146,6 +142,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -210,12 +207,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapCentralServerInstance
 
 ## NOTES
+
+ALIASES
+
+Update-AzVISCentralInstance
 
 ## RELATED LINKS

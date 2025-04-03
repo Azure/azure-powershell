@@ -53,6 +53,13 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzMaintenanceConfiguration()
+        {
+            TestRunner.RunTestScript("Test-GetAzMaintenanceConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublicMaintenanceConfiguration()
         {
             TestRunner.RunTestScript("Test-AzMaintenancePublicConfiguration");
@@ -77,6 +84,20 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         public void TestAzApplyUpdateCancelConfiguration()
         {
             TestRunner.RunTestScript("Test-AzApplyUpdateCancelConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithParentResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithoutParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithoutParentResource");
         }
     }
 }

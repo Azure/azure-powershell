@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
     public class WhatIfOperationResultFormatter : WhatIfJsonFormatter
     {
-        private WhatIfOperationResultFormatter(ColoredStringBuilder builder)
+        public WhatIfOperationResultFormatter(ColoredStringBuilder builder)
             : base(builder)
         {
         }
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             formatter.FormatLegend(result.Changes);
             formatter.FormatResourceChanges(result.Changes);
             formatter.FormatStats(result.Changes);
+            formatter.FormatDiagnostics(result.Diagnostics, result.Changes);
 
             return builder.ToString();
         }
@@ -112,6 +113,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder.Append(".");
         }
 
+        public void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes)
+        {
+            if (changes != null)
+            {
+                var unsupportedChanges = changes
+                    .Where(c => c.ChangeType == ChangeType.Unsupported)
+                    .ToList();
+
+                if (diagnostics == null)
+                {
+                    diagnostics = new List<DeploymentDiagnosticsDefinition>();
+                }
+                foreach (var change in unsupportedChanges)
+                {
+                    diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
+                }
+            }
+            
+            if (diagnostics == null || diagnostics.Count == 0)
+            {
+                return;
+            }
+
+            this.Builder.AppendLine().AppendLine();
+
+            this.Builder.Append($"Diagnostics ({diagnostics.Count}): ").AppendLine();
+            
+            diagnostics.ForEach(d =>
+            {
+                using (this.Builder.NewColorScope(DiagnosticExtensions.ToColor(d.Level)))
+                {
+                    this.Builder.Append($"({d.Target})").Append(Symbol.WhiteSpace);
+                    this.Builder.Append(d.Message).Append(Symbol.WhiteSpace);
+                    this.Builder.Append($"({d.Code})");
+                    this.Builder.AppendLine();
+                }
+            });
+        }
+
         private string FormatChangeTypeCount(ChangeType changeType, int count)
         {
             switch (changeType)
@@ -141,7 +181,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             {
                 return;
             }
-
             var psChangeTypeSet = new HashSet<PSChangeType>();
 
             void PopulateChangeTypeSet(IList<PSWhatIfPropertyChange> propertyChanges)

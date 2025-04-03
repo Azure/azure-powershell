@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, bool? disableAccessKeyAuthentication, string subnetId,
-                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities, string updateChannel)
+                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities, string updateChannel, string zonalAllocationPolicy)
         {
             try
             {
@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Capacity = skuCapacity
                 },
                 RedisVersion = redisVersion,
-                UpdateChannel = updateChannel
+                UpdateChannel = updateChannel,
+                ZonalAllocationPolicy = zonalAllocationPolicy
             };
 
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, bool? disableAccessKeyAuthentication,
-                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities, string updateChannel)
+                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities, string updateChannel, string zonalAllocationPolicy)
         {
             try
             {
@@ -181,6 +182,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 parameters.UpdateChannel = updateChannel;
                 parameters.RedisVersion = "latest";
+            }
+
+            if (!string.IsNullOrEmpty(zonalAllocationPolicy))
+            {
+                parameters.ZonalAllocationPolicy = zonalAllocationPolicy;
             }
 
             if (!string.IsNullOrEmpty(redisVersion))

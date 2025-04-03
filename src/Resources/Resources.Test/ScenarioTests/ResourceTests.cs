@@ -147,6 +147,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithExpandPropertiesRGLevel()
+        {
+            TestRunner.RunTestScript("Test-GetResourceExpandPropertiesRGLevel");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceByNameAndType()
         {
             TestRunner.RunTestScript("Test-GetResourceByNameAndType");

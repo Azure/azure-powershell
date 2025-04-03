@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridNamespace
 
 ## SYNOPSIS
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously update a new namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ Update-AzEventGridNamespace -InputObject <IEventGridIdentity>
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously update a new namespace with the specified parameters.
 
 ## EXAMPLES
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

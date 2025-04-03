@@ -89,6 +89,20 @@ directive:
     transform: >-
       $["operationId"] = "KubernetesVersions_Create"
 
+# Fix fields in Get-KubernetesVersion
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.osType
+    transform: >-
+      delete $.readOnly
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.ready
+    transform: >-
+      delete $.readOnly
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.errorMessage
+    transform: >-
+      delete $.readOnly
+
 # Rename Subjects
   - where:
       subject: AgentPool

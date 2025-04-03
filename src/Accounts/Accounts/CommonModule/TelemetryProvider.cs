@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -157,6 +158,18 @@ namespace Microsoft.Azure.Commands.Common
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
             };
+
+
+            if (qosEvent.UserAgent == null)
+            {
+                qosEvent.UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", "0.0.0")).ToString();
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                {
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
+                    qosEvent.UserAgent += string.Format(" {0}", hostEnv);
+                }
+            }
 
             if (invocationInfo != null)
             {

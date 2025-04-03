@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -WithSource
-[Experimental] Publish source code with the module.
+Publish source code with the module.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

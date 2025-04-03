@@ -15,8 +15,7 @@ Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 ### SqlPoolParameterSet (Default)
 ```
 Get-AzSynapseSqlPoolAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String>
- -SqlPoolName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -SqlPoolName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SqlPoolParentObjectParameterSet

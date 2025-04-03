@@ -55,6 +55,7 @@ function setupEnv() {
     $randomstring = RandomString -allChars $false -len 10
     $BackupVaultTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        CreateSubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
         NewVaultName = "new-pstest-vault"
@@ -149,7 +150,8 @@ function setupEnv() {
         SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f"
         ResourceGroupName = "AKS-ps-shasha-test-source"
         VaultName = "ps-vault"
-        NewPolicyName = "pstest-aks-policy"       
+        NewPolicyName = "pstest-aks-policy"
+        NewVaultedPolicyName = "vaulted-aks-pspol"
     }
 
     $AksVariables = @{
@@ -198,6 +200,14 @@ function setupEnv() {
         TargetCrossSubStorageAccId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiagaTestRG/providers/Microsoft.Storage/storageAccounts/hiagatestsa"
         TargetCrossSubStorageAccountName = "hiagatestsa"
         TargetCrossSubStorageAccountRGName = "hiagaTestRG"
+    }
+
+    $UpdateBIWithUAMIVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "hiagarg"
+        VaultName = "psbackupvault"
+        UserIdentityARMId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2"
+        BackupInstanceName = "psDiskBI"
     }
 
     $BackupConfigVariables = @{
@@ -309,6 +319,7 @@ function setupEnv() {
     $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
     $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
+    $env.add("TestUpdateBIWithUAMI", $UpdateBIWithUAMIVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{6941D97B-FA46-4C84-B1D2-EAF2B8E78422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RedisEnterpriseCache", "RedisEnterpriseCache.Autorest\Az.RedisEnterpriseCache.csproj", "{8B4B1DDD-FB2E-4A8B-8BD5-573BC5F84376}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisEnterpriseCache", "RedisEnterpriseCache\RedisEnterpriseCache.csproj", "{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RedisEnterpriseCache", "..\..\generated\RedisEnterpriseCache\RedisEnterpriseCache.Autorest\Az.RedisEnterpriseCache.csproj", "{24E6B14B-0B8F-41BF-A664-4B9EF95F7DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{6941D97B-FA46-4C84-B1D2-EAF2B8E78422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6941D97B-FA46-4C84-B1D2-EAF2B8E78422}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6941D97B-FA46-4C84-B1D2-EAF2B8E78422}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B4B1DDD-FB2E-4A8B-8BD5-573BC5F84376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B4B1DDD-FB2E-4A8B-8BD5-573BC5F84376}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B4B1DDD-FB2E-4A8B-8BD5-573BC5F84376}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B4B1DDD-FB2E-4A8B-8BD5-573BC5F84376}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E6B14B-0B8F-41BF-A664-4B9EF95F7DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E6B14B-0B8F-41BF-A664-4B9EF95F7DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E6B14B-0B8F-41BF-A664-4B9EF95F7DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E6B14B-0B8F-41BF-A664-4B9EF95F7DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{029045B3-6B6B-4EA9-8BF8-B9636F71D76E} = {89B5684C-FEE4-4623-A93F-B302473D9388}

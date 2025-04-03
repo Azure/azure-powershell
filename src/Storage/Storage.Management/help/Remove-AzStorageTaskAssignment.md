@@ -37,10 +37,12 @@ Delete the storage task assignment sub-resource
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Remove a task assignment
+```powershell
 Remove-AzStorageTaskAssignment -AccountName myaccount -ResourceGroupName myresourcegroup -Name mytaskassignment
 ```
+
+This command deletes a task assignment.
 
 ## PARAMETERS
 
@@ -49,7 +51,7 @@ The name of the storage account within the specified resource group.
 Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -64,13 +66,13 @@ Accept wildcard characters: False
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -80,7 +82,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -95,7 +97,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -111,7 +113,7 @@ The name of the storage task assignment within the specified resource group.
 Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityStorageAccount
 Aliases: StorageTaskAssignmentName
 
@@ -126,13 +128,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -141,13 +143,13 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -156,7 +158,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -172,7 +174,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -187,7 +189,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: DeleteViaIdentityStorageAccount
 Aliases:
 
@@ -202,13 +204,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -217,7 +219,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -233,7 +235,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -250,74 +252,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
-
-STORAGEACCOUNTINPUTOBJECT \<IStorageIdentity\>: Identity Parameter
-  \[AccountName \<String\>\]: The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[BlobInventoryPolicyName \<String\>\]: The name of the storage account blob inventory policy.
-It should always be 'default'
-  \[DeletedAccountName \<String\>\]: Name of the deleted storage account.
-  \[EncryptionScopeName \<String\>\]: The name of the encryption scope within the specified storage account.
-Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
-Every dash (-) character must be immediately preceded and followed by a letter or number.
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the deleted storage account.
-  \[ManagementPolicyName \<String\>\]: The name of the Storage Account Management Policy.
-It should always be 'default'
-  \[MigrationName \<String\>\]: The name of the Storage Account Migration.
-It should always be 'default'
-  \[ObjectReplicationPolicyId \<String\>\]: For the destination account, provide the value 'default'.
-Configure the policy on the destination account first.
-For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account.
-The policy is downloaded as a JSON file.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection associated with the Azure resource
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[StorageTaskAssignmentName \<String\>\]: The name of the storage task assignment within the specified resource group.
-Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Username \<String\>\]: The name of local user.
-The username must contain lowercase letters and numbers only.
-It must be unique only within the storage account.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment](https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment)
-

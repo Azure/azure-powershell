@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -121,6 +121,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string CloudServiceNameNullOrEmpty {
             get {
                 return ResourceManager.GetString("CloudServiceNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cluster Recovery Point not available for {0}..
+        /// </summary>
+        internal static string ClusterRecoveryPointNotAvailable {
+            get {
+                return ResourceManager.GetString("ClusterRecoveryPointNotAvailable", resourceCulture);
             }
         }
         
@@ -278,6 +287,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication .
+        /// </summary>
+        internal static string IncorrectParameters {
+            get {
+                return ResourceManager.GetString("IncorrectParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -306,6 +324,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster doesn&apos;t contain protected items..
+        /// </summary>
+        internal static string InvalidClusterInputWithoutProtectedItems {
+            get {
+                return ResourceManager.GetString("InvalidClusterInputWithoutProtectedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid direction for Azure To VMWare.
         /// </summary>
         internal static string InvalidDirectionForAzureToVMWare {
@@ -324,6 +351,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input does not contain information of all nodes that are part of the cluster..
+        /// </summary>
+        internal static string InvalidInputForAllNodesInCluster {
+            get {
+                return ResourceManager.GetString("InvalidInputForAllNodesInCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter valid IP address..
         /// </summary>
         internal static string InvalidIpAddress {
@@ -338,6 +374,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string InvalidNetworkMappingDetails {
             get {
                 return ResourceManager.GetString("InvalidNetworkMappingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node recovery points passed are not correct..
+        /// </summary>
+        internal static string InvalidNodeRecoveryPointPassed {
+            get {
+                return ResourceManager.GetString("InvalidNodeRecoveryPointPassed", resourceCulture);
             }
         }
         
@@ -432,6 +477,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect mapping selected as Input. Replication protection cluster target fabric {0} not matching protection container mapping target Fabric {1}..
+        /// </summary>
+        internal static string InvalidSwitchParamRPCAndProtectionContainerMapping {
+            get {
+                return ResourceManager.GetString("InvalidSwitchParamRPCAndProtectionContainerMapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}..
         /// </summary>
         internal static string InvalidSwitchParamRPIAndProtectionContainerMapping {
@@ -504,6 +558,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed..
+        /// </summary>
+        internal static string NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed {
+            get {
+                return ResourceManager.GetString("NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide both Source Nic and Recovery Target to update.
         /// </summary>
         internal static string NetworkArgumentsMissingForUpdateVmProperties {
@@ -563,6 +626,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string NoProtectableMachinesInSite {
             get {
                 return ResourceManager.GetString("NoProtectableMachinesInSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No recovery points found for {0} which is part of cluster {1}..
+        /// </summary>
+        internal static string NoRecoveryPointsFound {
+            get {
+                return ResourceManager.GetString("NoRecoveryPointsFound", resourceCulture);
             }
         }
         
@@ -644,6 +716,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string ProtectableMachineNotFound {
             get {
                 return ResourceManager.GetString("ProtectableMachineNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Cluster &quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ProtectionClusterNotFound {
+            get {
+                return ResourceManager.GetString("ProtectionClusterNotFound", resourceCulture);
             }
         }
         
@@ -1332,6 +1413,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string WaitingForCompletion {
             get {
                 return ResourceManager.GetString("WaitingForCompletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User input Recovery Point for nodes: {0} is/are already a part of cluster and is not an individual node..
+        /// </summary>
+        internal static string WrongIndividualNodeRecoveryPointPassed {
+            get {
+                return ResourceManager.GetString("WrongIndividualNodeRecoveryPointPassed", resourceCulture);
             }
         }
     }

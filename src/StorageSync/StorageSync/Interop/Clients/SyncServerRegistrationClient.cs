@@ -105,6 +105,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine name</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -123,16 +124,16 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
-            string serverMachineName)
+            string serverMachineName,
+            bool assignIdentity)
         {
 
-            bool isCertificateRegistration = applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
             string syncServerCertificate = default;
 
             int hr;
             bool success;
 
-            //if (isCertificateRegistration)
+            if (!assignIdentity)
             {
                 hr = this.EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                     subscriptionId.ToString(),
@@ -154,6 +155,17 @@ namespace Commands.StorageSync.Interop.Clients
                 if (!success)
                 {
                     throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
+                }
+            }
+            else
+            {
+                hr = this.EcsManagementInteropClient.ResetServerCertificateSettingsRegistry();
+
+                success = hr == 0;
+
+                if (!success)
+                {
+                    throw new ServerRegistrationException(ServerRegistrationErrorCode.ResetServerCertificateSettingsRegistryFailed, hr, ErrorCategory.InvalidResult);
                 }
             }
 
@@ -347,8 +359,6 @@ namespace Commands.StorageSync.Interop.Clients
                 ResourceLocation = registeredServerResource.ResourceLocation
             };
 
-            bool isCertificateRegistration = string.IsNullOrEmpty(registeredServerResource.ApplicationId);
-
             if (registeredServerResource.ServerCertificate != null)
             {
                 registrationInfo.ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes(); // use certificate
@@ -358,7 +368,7 @@ namespace Commands.StorageSync.Interop.Clients
                 registrationInfo.ApplicationId = Guid.Parse(registeredServerResource.ApplicationId); // use Managed Identity ID
             }
  
-            // We try to register monitoring agent but do not gurantee it to succeed.
+            // We try to register monitoring agent but do not guarantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
                JsonConvert.SerializeObject(registrationInfo),
                 monitoringDataPath);

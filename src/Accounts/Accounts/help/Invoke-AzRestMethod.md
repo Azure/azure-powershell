@@ -14,21 +14,26 @@ Construct and perform HTTP request to Azure resource management endpoint only
 
 ### ByPath (Default)
 ```
-Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJob] [-WaitForCompletion]
+ [-PollFrom <String>] [-FinalResultFrom <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameters
 ```
 Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
  [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> [-Method <String>] [-Payload <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByURI
 ```
 Invoke-AzRestMethod [-Uri] <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,6 +161,91 @@ Invoke-AzRestMethod -Method POST -Uri https://graph.microsoft.com/v1.0/servicePr
 
 Call Microsoft Graph API to assign App Role by constructing a hashtable, converting to a JSON string, and passing the payload to `Invoke-AzRestMethod`.
 
+### Example 5
+```powershell
+# This example demonstrates creating or updating a resource with a long-running PUT request.
+Invoke-AzRestMethod -Method PUT -Uri "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/managedHSMs/{hsm-name}?api-version=2023-07-01" `
+  -Payload (@{
+    location = "eastus"; 
+    properties = @{
+      softDeleteRetentionDays = 7;
+      tenantId = "{tenant-id}";
+      initialAdminObjectIds = @("{admin-object-id}")
+    }; 
+    sku = @{
+      name = "Standard_B1";
+      family = "B"
+    } 
+  } | ConvertTo-Json -Depth 10) `
+  -WaitForCompletion
+```
+
+```output
+StatusCode : 200
+Content    : {
+               "sku": {
+                 "family": "B",
+                 "name": "Standard_B1"
+               },
+               "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/managedHSMs/{hsm-name}",
+               "name": "{hsm-name}",
+               "type": "Microsoft.KeyVault/managedHSMs",
+               "location": "{region}",
+               "tags": {},
+               "systemData": {
+                 "createdBy": "{user-email}",
+                 "createdByType": "User",
+                 "createdAt": "2024-10-29T05:05:49.229Z",
+                 "lastModifiedBy": "{user-email}",
+                 "lastModifiedByType": "User",
+                 "lastModifiedAt": "2024-10-29T05:05:49.229Z"
+               },
+               "properties": {
+                 "tenantId": "{tenant-id}",
+                 "hsmUri": "https://{hsm-name}.managedhsm.azure.net/",
+                 "initialAdminObjectIds": [
+                   "{admin-object-id}"
+                 ],
+                 "enableSoftDelete": true,
+                 "softDeleteRetentionInDays": 90,
+                 "enablePurgeProtection": false,
+                 "provisioningState": "Succeeded",
+                 "statusMessage": "The Managed HSM is provisioned and ready to use.",
+                 "networkAcls": {
+                   "bypass": "AzureServices",
+                   "defaultAction": "Allow",
+                   "ipRules": [],
+                   "virtualNetworkRules": []
+                 },
+                 "publicNetworkAccess": "Enabled",
+                 "regions": [],
+                 "securityDomainProperties": {
+                   "activationStatus": "NotActivated",
+                   "activationStatusMessage": "Your HSM has been provisioned, but cannot be used for cryptographic operations until it is activated. To activate the HSM, download the security domain."
+                 }
+               }
+             }
+Headers    : {
+               "Cache-Control": "no-cache",
+               "Pragma": "no-cache",
+               "x-ms-client-request-id": "{client-request-id}",
+               "x-ms-keyvault-service-version": "1.5.1361.0",
+               "x-ms-request-id": "{request-id}",
+               "x-ms-ratelimit-remaining-subscription-reads": "249",
+               "x-ms-ratelimit-remaining-subscription-global-reads": "3749",
+               "x-ms-correlation-request-id": "{correlation-request-id}",
+               "x-ms-routing-request-id": "{routing-request-id}",
+               "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+               "Date": "Tue, 29 Oct 2024 05:18:44 GMT"
+             }
+Method     : GET
+RequestUri : https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/managedHSMs/{hsm-name}?api-version=2023-07-01
+Version    : 1.1
+```
+
+Sends a long-running PUT request to create or update a Managed HSM resource in Azure, polling until completion if the operation requires it.
+This example uses placeholders ({subscription-id}, {resource-group}, {hsm-name}, {tenant-id}, and {admin-object-id}) that the user should replace with their specific values.
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -195,6 +285,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FinalResultFrom
+Specifies the header for final GET result after the long-running operation completes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: FinalStateVia, Location, OriginalUri, Operation-Location
 
 Required: False
 Position: Named
@@ -256,6 +362,22 @@ JSON format payload
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PollFrom
+Specifies the polling header (to fetch from) for long-running operation status.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureAsyncLocation, Location, OriginalUri, Operation-Location
 
 Required: False
 Position: Named
@@ -349,6 +471,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WaitForCompletion
+Waits for the long-running operation to complete before returning the result.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

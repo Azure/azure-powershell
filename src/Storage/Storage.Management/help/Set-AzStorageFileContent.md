@@ -15,28 +15,29 @@ Uploads the contents of a file.
 
 ### ShareName (Default)
 ```
-Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
- [-AsJob] [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-FileMode <String>]
+ [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob] [-DisAllowTrailingDot]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Source] <String>
- [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path] <String>]
+ [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
- [-Source] <String> [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+Set-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Source] <String> [[-Path] <String>]
+ [-FileMode <String>] [-Owner <String>] [-Group <String>] [-PassThru] [-Force] [-AsJob]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +58,7 @@ $CurrentFolder = (Get-Item .).FullName
 $Container = Get-AzStorageShare -Name "ContosoShare06"
 Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
     $path=$_.FullName.Substring($Currentfolder.Length+1).Replace("\","/")
-    Set-AzStorageFileContent -Share $Container -Source $_.FullName -Path $path -Force
+    Set-AzStorageFileContent -ShareClient $Container -Source $_.FullName -Path $path -Force
 }
 ```
 
@@ -76,6 +77,14 @@ Set-AzStorageFileContent -Source $localFilePath -ShareName sample -Path "dir1/fi
 ```
 
 This example uploads a local file to an Azure file, and perserves the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
+
+### Example 4:  Upload a file with FileMode, Owner and Group to a NFS file share
+```powershell
+Set-AzStorageFileContent -ShareName "contososhare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile" -FileMode rw-r--rwt -Owner 1 -Group 1
+```
+
+This command uploads a local file to an Azure file with FileMode rwxrwSrwx, Owner 1 and Group 1. 
+FileMode, Owner, Group only works on NFS file share. 
 
 ## PARAMETERS
 
@@ -161,24 +170,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet uploads the file to the folder that this parameter specifies.
-To obtain a directory, use the New-AzStorageDirectory cmdlet.
-You can also use the Get-AzStorageFile cmdlet to obtain a directory.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileDirectory
-Parameter Sets: Directory
-Aliases: CloudFileDirectory
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -DisAllowTrailingDot
 Disallow trailing dot (.) to suffix directory and file names.
 
@@ -194,11 +185,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileMode
+Only applicable to NFS Files. The mode permissions to be set on the file. Symbolic (rwxrw-rw-) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Indicates that this cmdlet overwrites an existing Azure storage file.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Group
+Only applicable to NFS Files. The owner group identifier (GID) to be set on the file. The default value is 0 (root group).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+Only applicable to NFS Files. The owner user identifier (UID) to be set on the file. The default value is 0 (root).
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -260,21 +296,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServerTimeoutPerRequest
 Specifies the length of the time-out period for the server part of a request.
 
@@ -290,25 +311,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-Specifies a **CloudFileShare** object.
-This cmdlet uploads to a file in the file share this parameter specifies.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
-This object contains the storage context.
-If you specify this parameter, do not specify the *Context* parameter.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
-Parameter Sets: Share
-Aliases: CloudFileShare
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ShareClient
 ShareClient object indicated the share where the file would be uploaded to.
 
@@ -317,23 +319,23 @@ Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ShareDirectoryClient
-CloudFileDirectory object indicated the cloud directory where the file would be uploaded.
+ShareDirectoryClient object indicated the directory where the file would be uploaded.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareDirectoryClient
 Parameter Sets: Directory
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -407,9 +409,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
 
-### Microsoft.Azure.Storage.File.CloudFileDirectory
+### Azure.Storage.Files.Shares.ShareDirectoryClient
 
 ### System.String
 

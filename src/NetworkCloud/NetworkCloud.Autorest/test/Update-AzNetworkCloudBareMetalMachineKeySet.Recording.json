@@ -1,9 +1,9 @@
 {
-  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01+1": {
+  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01",
-      "Content": "{\n  \"properties\": {\n    \"userList\": [\n      {\n        \"sshPublicKey\": {\n          \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD2/9bkrRTw/iUonSaa3HBKTMMrrosdYuNvATGd9skDaCcMnCNFzZL3N7StVf5MLc57vty+voSrD8muFecqwlMCuPtgtMvjuBzHUWfHR26RlEMcjpEFMH2H23/5uAqXcSPvwEbx7fKVvlPLohQQb07rrcSJ+ru952To8EQ5GjRP/zbsLT0iSwtctfW1Ja+WlkY0fHpPE3hwrLemmiIBeK3yGX7PJwWIij/gOPMrS9bCvVF4AeBt92CrQELURv5uN59N4pFGA6RHCQWueJfHuAcSyMNNM4RylNPuw1OGjMcaJv7FTRs2fwmnKnHI60kKSAYxhZUbhCtgrnLB0wMDnVB2F0ZjklHw5phqhVrTv/er61H1j/2OKMfiehP53zKBM9Kvw4VNpKovegdicCI/xG8lMGo/OseFOidCPb6h0ElVRt5lGyQyxAH2rstix+6+X5OvFW+j/+XkTFGJo3Pf+MJB2hL0/CDZNjLWuPjDUXiZBqyJyJrBzlmRRuG77M6m4U= cloudtest@simulator\"\n        },\n        \"azureUserName\": \"userXYZ\",\n        \"description\": \"User XYZ Desc\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01",
+      "Content": "{\n  \"properties\": {\n    \"userList\": [\n      {\n        \"sshPublicKey\": {\n          \"keyData\": \"ssh-rsa REDACTED\"\n        },\n        \"azureUserName\": \"userXYZ\",\n        \"description\": \"User XYZ Desc\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,13 +18,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"46003497-0000-0100-0000-649c82b20000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "1981d0f2-57b1-4d5b-bd4d-5ab5f463667a" ],
         "x-ms-request-id": [ "f884f8d4-01fb-42f5-9b77-77a0f249f5fc" ],
         "x-ms-correlation-request-id": [ "c38b5169-16c9-4f64-a9e0-c2ed8604506b" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01" ],
         "x-ms-routing-request-id": [ "EASTUS:20230628T185754Z:c38b5169-16c9-4f64-a9e0-c2ed8604506b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01+2": {
+  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/451701e0-367b-481b-840f-97fdfa1448f6*F59C1AB678C77E63B702C003DA55DFFFD8930B988A0861A33A8D23577760B7D3?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01+3": {
+  "Update-AzNetworkCloudBareMetalMachineKeySet+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -118,7 +118,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet\",\"name\":\"bmmKeySet\",\"type\":\"microsoft.networkcloud/clusters/baremetalmachinekeysets\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-3a4c8046/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-28T18:57:21.4066851Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-28T18:58:00.019304Z\"},\"properties\":{\"azureGroupId\":\"azGroup\",\"expiration\":\"2023-12-31T23:59:59.008Z\",\"jumpHostsAllowed\":[\"10.23.25.1\"],\"osGroupName\":\"standardAccessGroup\",\"privilegeLevel\":\"Standard\",\"userList\":[{\"azureUserName\":\"userXYZ\",\"description\":\"User XYZ Desc\",\"sshPublicKey\":{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDD2/9bkrRTw/iUonSaa3HBKTMMrrosdYuNvATGd9skDaCcMnCNFzZL3N7StVf5MLc57vty+voSrD8muFecqwlMCuPtgtMvjuBzHUWfHR26RlEMcjpEFMH2H23/5uAqXcSPvwEbx7fKVvlPLohQQb07rrcSJ+ru952To8EQ5GjRP/zbsLT0iSwtctfW1Ja+WlkY0fHpPE3hwrLemmiIBeK3yGX7PJwWIij/gOPMrS9bCvVF4AeBt92CrQELURv5uN59N4pFGA6RHCQWueJfHuAcSyMNNM4RylNPuw1OGjMcaJv7FTRs2fwmnKnHI60kKSAYxhZUbhCtgrnLB0wMDnVB2F0ZjklHw5phqhVrTv/er61H1j/2OKMfiehP53zKBM9Kvw4VNpKovegdicCI/xG8lMGo/OseFOidCPb6h0ElVRt5lGyQyxAH2rstix+6+X5OvFW+j/+XkTFGJo3Pf+MJB2hL0/CDZNjLWuPjDUXiZBqyJyJrBzlmRRuG77M6m4U= cloudtest@simulator\"}}],\"userListStatus\":[{\"azureUserName\":\"userABC\",\"status\":\"Invalid\"},{\"azureUserName\":\"userXYZ\",\"status\":\"Active\"}],\"lastValidation\":\"2023-06-28T18:57:58Z\",\"detailedStatus\":\"AllActive\",\"detailedStatusMessage\":\"Updated users on all the nodes\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/powershell-cli-automation/providers/Microsoft.NetworkCloud/clusters/simulator/bareMetalMachineKeySets/bmmKeySet\",\"name\":\"bmmKeySet\",\"type\":\"microsoft.networkcloud/clusters/baremetalmachinekeysets\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-3a4c8046/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-28T18:57:21.4066851Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-28T18:58:00.019304Z\"},\"properties\":{\"azureGroupId\":\"azGroup\",\"expiration\":\"2023-12-31T23:59:59.008Z\",\"jumpHostsAllowed\":[\"10.23.25.1\"],\"osGroupName\":\"standardAccessGroup\",\"privilegeLevel\":\"Standard\",\"userList\":[{\"azureUserName\":\"userXYZ\",\"description\":\"User XYZ Desc\",\"sshPublicKey\":{\"keyData\":\"ssh-rsa REDACTED\"}}],\"userListStatus\":[{\"azureUserName\":\"userABC\",\"status\":\"Invalid\"},{\"azureUserName\":\"userXYZ\",\"status\":\"Active\"}],\"lastValidation\":\"2023-06-28T18:57:58Z\",\"detailedStatus\":\"AllActive\",\"detailedStatusMessage\":\"Updated users on all the nodes\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

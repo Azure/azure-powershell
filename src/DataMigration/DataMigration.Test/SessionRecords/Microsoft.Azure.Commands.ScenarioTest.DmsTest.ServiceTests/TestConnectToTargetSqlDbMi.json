@@ -1888,8 +1888,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1951,8 +1951,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2014,8 +2014,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4895/providers/Microsoft.DataMigration/services/DmService-PsTestRun3725/projects/DmProject-PsTestRun5977/tasks/DmTask-PsTestRun6820?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjM3MjUvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjU5NzcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjY4MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

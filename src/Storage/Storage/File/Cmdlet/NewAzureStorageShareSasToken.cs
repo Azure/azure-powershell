@@ -15,11 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.File;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -27,7 +23,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Sas;
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
@@ -65,8 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        [ValidateNotNull]
-        public SharedAccessProtocol? Protocol { get; set; }
+        [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
+        public string Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
         [ValidateNotNullOrEmpty]
@@ -107,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && !Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
             }
 
             ShareClient share = Util.GetTrack2ShareReference(this.ShareName,

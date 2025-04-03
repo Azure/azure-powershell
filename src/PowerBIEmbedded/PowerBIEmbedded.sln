@@ -5,37 +5,38 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{65142181-54A9-4908-8624-9951869B4997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{53DC6945-8393-4423-8DA0-695CFCAAD531}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{53DC6945-8393-4423-8DA0-695CFCAAD531}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{66A761BE-AEDF-4725-A510-20D8F4114B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{66A761BE-AEDF-4725-A510-20D8F4114B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{5DCFDE72-BE29-4EE7-A713-BD32CA274FE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{5DCFDE72-BE29-4EE7-A713-BD32CA274FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{ADB8B07E-E657-41E0-8B69-9EA657A016A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{ADB8B07E-E657-41E0-8B69-9EA657A016A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{3644A074-9F7D-4196-94ED-33A947A7D1C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{3644A074-9F7D-4196-94ED-33A947A7D1C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{C1FC9720-3FBD-4F61-BFC0-2D3ED1B8093A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{C1FC9720-3FBD-4F61-BFC0-2D3ED1B8093A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{63A63F4C-005D-46B1-97B2-BA1CF29B6A15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBI.Test", "PowerBI.Test\PowerBI.Test.csproj", "{F7312B0E-ECFC-4C2B-BA34-800F7452866D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBI.Test", "PowerBI.Test\PowerBI.Test.csproj", "{F7312B0E-ECFC-4C2B-BA34-800F7452866D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBI", "PowerBI\PowerBI.csproj", "{7FDA4392-6FB3-408D-A3DD-873AC69C0161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBI", "PowerBI\PowerBI.csproj", "{7FDA4392-6FB3-408D-A3DD-873AC69C0161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBIEmbedded.Test", "PowerBIEmbedded.Test\PowerBIEmbedded.Test.csproj", "{930D677A-D08F-4223-A977-80C7F0E589FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBIEmbedded.Test", "PowerBIEmbedded.Test\PowerBIEmbedded.Test.csproj", "{930D677A-D08F-4223-A977-80C7F0E589FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBIEmbedded", "PowerBIEmbedded\PowerBIEmbedded.csproj", "{49278376-BF51-4280-9050-E925AEBC5B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBIEmbedded", "PowerBIEmbedded\PowerBIEmbedded.csproj", "{49278376-BF51-4280-9050-E925AEBC5B40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{300C47B5-2E1E-4676-8DD4-3E9C3660AED8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{300C47B5-2E1E-4676-8DD4-3E9C3660AED8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBIEmbedded.Management.Sdk", "PowerBIEmbedded.Management.Sdk\PowerBIEmbedded.Management.Sdk.csproj", "{600B336F-4D21-4264-AD1A-1BD8C75ECDE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerBIDedicated.Management.Sdk", "PowerBIDedicated.Management.Sdk\PowerBIDedicated.Management.Sdk.csproj", "{C725AC88-2EFC-4D8D-A3B3-ABA09B58C1B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{53DC6945-8393-4423-8DA0-695CFCAAD531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -82,6 +83,17 @@ Global
 		{300C47B5-2E1E-4676-8DD4-3E9C3660AED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{300C47B5-2E1E-4676-8DD4-3E9C3660AED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{300C47B5-2E1E-4676-8DD4-3E9C3660AED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{600B336F-4D21-4264-AD1A-1BD8C75ECDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{600B336F-4D21-4264-AD1A-1BD8C75ECDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{600B336F-4D21-4264-AD1A-1BD8C75ECDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{600B336F-4D21-4264-AD1A-1BD8C75ECDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C725AC88-2EFC-4D8D-A3B3-ABA09B58C1B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C725AC88-2EFC-4D8D-A3B3-ABA09B58C1B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C725AC88-2EFC-4D8D-A3B3-ABA09B58C1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C725AC88-2EFC-4D8D-A3B3-ABA09B58C1B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{53DC6945-8393-4423-8DA0-695CFCAAD531} = {65142181-54A9-4908-8624-9951869B4997}

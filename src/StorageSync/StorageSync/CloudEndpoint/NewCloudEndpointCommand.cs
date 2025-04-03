@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingServicePrincipalResourceIdErrorMessage);
                 }
-                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
+                StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
@@ -256,17 +256,17 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     // Identity , RoleDef, Scope
                     var scope = StorageAccountResourceId;
-                    var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                         storageSyncService.Identity.PrincipalId.Value,
                         Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
                         scope);
 
                     scope = $"{StorageAccountResourceId}/fileServices/default/fileshares/{AzureFileShareName}";
-                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    (var identityRoleAssignmentForFilsShareScope , bool alreadyExists) = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                        storageSyncService.Identity.PrincipalId.Value,
                        Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                        scope);
-                    shouldSleep = true;
+                    shouldSleep = !alreadyExists;
                 }
 
                     Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);

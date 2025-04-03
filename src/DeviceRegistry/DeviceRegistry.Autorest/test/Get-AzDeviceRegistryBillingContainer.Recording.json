@@ -1,0 +1,136 @@
+{
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "4253e014-94aa-4a69-9c8c-88455e0c4acd" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "eccba0e1-f1f6-478b-a0a5-41240073e2d6" ],
+        "x-ms-correlation-request-id": [ "7f65594a-369e-4411-9bb0-d18eeae5c6fd" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241221T054938Z:7f65594a-369e-4411-9bb0-d18eeae5c6fd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1166EAFAE64C470FBE145AB60B828BC0 Ref B: CO6AA3150218031 Ref C: 2024-12-21T05:49:37Z" ],
+        "Date": [ "Sat, 21 Dec 2024 05:49:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "585" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "7c373b0b-d0f3-4bf6-af5d-61dfb21bd0a5" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00ec86-0000-0500-0000-66e9d6ab0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3bd05f33-9b12-4358-b25a-2ef0929ad9f5" ],
+        "x-ms-correlation-request-id": [ "8a6d53e7-66ec-4441-9b93-1aaccd5f4556" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS:20241221T054939Z:8a6d53e7-66ec-4441-9b93-1aaccd5f4556" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C787BF70670A46F7A52A565327F0BFB1 Ref B: CO6AA3150218031 Ref C: 2024-12-21T05:49:38Z" ],
+        "Date": [ "Sat, 21 Dec 2024 05:49:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2024-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2024-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "58961d89-239f-428e-9137-76599d41a5ec" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00ec86-0000-0500-0000-66e9d6ab0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "70566c43-37b3-4583-aef2-6b9894b6fa52" ],
+        "x-ms-correlation-request-id": [ "1dadd222-7f5e-4657-8da2-149798e79ccc" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS:20241221T054940Z:1dadd222-7f5e-4657-8da2-149798e79ccc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EA7E3E04C97F4E1A86FEF1C371DF3DEC Ref B: CO6AA3150218031 Ref C: 2024-12-21T05:49:39Z" ],
+        "Date": [ "Sat, 21 Dec 2024 05:49:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

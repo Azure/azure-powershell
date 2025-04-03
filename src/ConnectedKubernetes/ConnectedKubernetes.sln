@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{D668ECB4-A954-41F5-806D-449B28BEB81D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedKubernetes", "ConnectedKubernetes.Autorest\Az.ConnectedKubernetes.csproj", "{84690E15-AE46-42D8-84C4-C96A2AE6AD00}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedKubernetes", "ConnectedKubernetes\ConnectedKubernetes.csproj", "{5BCE9349-D102-48DA-A4CA-58A17607C0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedKubernetes", "..\..\generated\ConnectedKubernetes\ConnectedKubernetes.Autorest\Az.ConnectedKubernetes.csproj", "{7FC1D43F-F44E-4264-959C-ACA587A60530}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{D668ECB4-A954-41F5-806D-449B28BEB81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D668ECB4-A954-41F5-806D-449B28BEB81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D668ECB4-A954-41F5-806D-449B28BEB81D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84690E15-AE46-42D8-84C4-C96A2AE6AD00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84690E15-AE46-42D8-84C4-C96A2AE6AD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84690E15-AE46-42D8-84C4-C96A2AE6AD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84690E15-AE46-42D8-84C4-C96A2AE6AD00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BCE9349-D102-48DA-A4CA-58A17607C0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BCE9349-D102-48DA-A4CA-58A17607C0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BCE9349-D102-48DA-A4CA-58A17607C0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BCE9349-D102-48DA-A4CA-58A17607C0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC1D43F-F44E-4264-959C-ACA587A60530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC1D43F-F44E-4264-959C-ACA587A60530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC1D43F-F44E-4264-959C-ACA587A60530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC1D43F-F44E-4264-959C-ACA587A60530}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{55F04735-EF13-45D3-AD65-59AA13B75569} = {097FF7BE-1162-47A2-AF4D-F15D32F731F2}

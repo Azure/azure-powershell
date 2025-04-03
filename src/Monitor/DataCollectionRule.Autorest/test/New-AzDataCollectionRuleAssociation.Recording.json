@@ -18,24 +18,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "743b4dae-df8b-4891-9b52-35790b47f9f1" ],
-        "x-ms-client-request-id": [ "d81f3205-a712-4c26-b1cc-676893d2c920" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064113Z:743b4dae-df8b-4891-9b52-35790b47f9f1" ],
-        "x-ms-request-id": [ "5f2de521-1e9f-4ca7-9f3e-25888a22dc10" ],
-        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "1a65c2c9-8b86-4872-a02b-1ebc22d0130a" ],
+        "x-ms-client-request-id": [ "58efdcc4-7fa7-4b82-85fd-6b1379e84e6b" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20241101T081136Z:1a65c2c9-8b86-4872-a02b-1ebc22d0130a" ],
+        "x-ms-request-id": [ "4af4b44a-0810-4afa-9fc2-8f218fd3a1b6" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11, 2024-03-11" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 09 Nov 2023 06:41:13 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B70A05644D55431C9A9075526708FFBF Ref B: TYO01EDGE2306 Ref C: 2024-11-01T08:11:36Z" ],
+        "Date": [ "Fri, 01 Nov 2024 08:11:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "803" ],
+        "Content-Length": [ "805" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association1\",\"name\":\"testCollectionRule-association1\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"9200ace1-0000-0100-0000-654c7f090000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:41:12.8867004Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:12.8867004Z\"}}",
+      "Content": "{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association1\",\"name\":\"testCollectionRule-association1\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"fa0088e2-0000-0800-0000-67248d380000\\\"\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-01T08:11:36.7223604Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-01T08:11:36.7223604Z\"}}",
       "isContentBase64": false
     }
   }

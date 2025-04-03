@@ -8,9 +8,9 @@
         - Additional information about change #1
     * Overview of change #2
         - Additional information about change #2
-        - Additional information about change #2
-    * Overview of change #3
-    * Overview of change #4
+        - Additional information about change #2	
+    * Overview of change #3	
+    * Overview of change #4	
         - Additional information about change #4
 
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.0
+* Updated Data.Replication to newer API version
+  - Updated Data.Replication to point to stable API version 2024-09-01
+* Rebranded Data.Replication cmdlets
+  - Rebranded Data.Replication cmdlets from Azure Stack HCI to Azure Local
+
+## Version 2.6.0
+* Upgraded nuget package to signed package.
+* Added support for PremiumV2 disk type.
+* Added SBM support.
+
+## Version 2.5.0
+* Validated user login with Microsoft Managed System Identity (MSI) in `Initialize-AzMigrateHCIReplicationInfrastructure`
+* Passed appropriate Hyper-V Generation value based on source VMware firmware type in `New-AzMigrateHCIServerReplication`
+* Added support for LinuxLicenseType in Az.Migrate module.
 
 ## Version 2.4.0
 * Removed "at lease one NIC needs to be user selected" constrain when creating/updating server replication (protected item)

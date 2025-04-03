@@ -214,6 +214,22 @@ Locations         : {West US, East US, North Europe, West Europe…}
 
 This command Gets all the resource providers under "Microsoft.Compute" and "Microsoft.Network".
 
+### Example 4: Get the default API version for a specific resource type
+
+```powershell
+$crp = Get-AzResourceProvider -ProviderNamespace "Microsoft.Compute"
+$crp.ResourceTypes | Where-Object { $_.ResourceTypeName -eq "disks" }
+```
+
+```output
+ResourceTypeName  : disks
+Locations         : {Southeast Asia, East US 2, Central US, West Europe…}
+ApiVersions       : {2024-03-02, 2023-10-02, 2023-04-02, 2023-01-02…}
+DefaultApiVersion : 2022-03-02
+```
+
+To get the default API version for a specific resource type, get the resource provider first then filter the resource type by name.
+
 ## PARAMETERS
 
 ### -ApiVersion

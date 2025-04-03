@@ -51,10 +51,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateObject = TemplateObject,
                 QueryString = QueryString,
                 TemplateParameterObject = GetTemplateParameterObject(),
-                ParameterUri = TemplateParameterUri
+                ParameterUri = TemplateParameterUri,
+                ValidationLevel = ValidationLevel
             };
 
-            WriteObject(NewResourceManagerSdkClient.ValidateDeployment(parameters));
+            var validationInfo = NewResourceManagerSdkClient.ValidateDeployment(parameters);
+
+            WriteOutput(validationInfo);
         }
     }
 }

@@ -130,6 +130,69 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultKey(client.GetKey(keyName, keyVersion).Value, _vaultUriHelper, false);
         }
 
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(string vaultName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeys(client);
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyClient client)
+        {
+            var results = new List<PSKeyVaultKeyIdentityItem>();
+            var allKeys = client.GetPropertiesOfKeys();
+            foreach (var keyProperties in allKeys)
+            {
+                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
+        internal IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetKeyVersions(client, keyName);
+        }
+
+        private IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyClient client, string keyName)
+        {
+            var results = new List<PSKeyVaultKeyIdentityItem>();
+            var allKeys = client.GetPropertiesOfKeyVersions(keyName);
+            foreach (var keyProperties in allKeys)
+            {
+                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
+        internal PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string keyName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetDeletedKey(client, keyName);
+        }
+
+        private PSDeletedKeyVaultKey GetDeletedKey(KeyClient client, string keyName)
+        {
+            return new PSDeletedKeyVaultKey(client.GetDeletedKey(keyName).Value, _vaultUriHelper, false);
+        }
+
+        internal IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(string vaultName)
+        {
+            var client = CreateKeyClient(vaultName);
+            return GetDeletedKeys(client);
+        }
+
+
+        private IEnumerable<PSDeletedKeyVaultKey> GetDeletedKeys(KeyClient client)
+        {
+            List<PSDeletedKeyVaultKey> results = new List<PSDeletedKeyVaultKey>();
+            var allDeletedKeys = client.GetDeletedKeys();
+            foreach (DeletedKey deletedKey in allDeletedKeys)
+            {
+                results.Add(new PSDeletedKeyVaultKey(deletedKey, _vaultUriHelper, false));
+            }
+            return results;
+        }
+
         internal PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, string wrapAlgorithm, byte[] value)
         {
             var key = GetKey(vaultName, keyName, keyVersion);

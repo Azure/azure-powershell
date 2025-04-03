@@ -96,6 +96,9 @@ Lists the metric values for multiple resources.
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specific Azure Monitor workspace
 
+### [Get-AzPipelineGroup](Get-AzPipelineGroup.md)
+Returns the specific pipeline group instance.
+
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Retrieve an scheduled query rule definition.
 
@@ -103,7 +106,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or Create an existing one.
+create a new action group or create an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -175,13 +178,13 @@ Creates or updates an autoscale setting.
 Create an in-memory object for WebhookNotification.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-Create a data collection endpoint.
+create a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
-Create a data collection rule.
+create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-Create an association.
+create an association.
 
 ### [New-AzDataFlowObject](New-AzDataFlowObject.md)
 Create an in-memory object for DataFlow.
@@ -239,6 +242,9 @@ Create or update a workspace
 
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
+
+### [New-AzPipelineGroup](New-AzPipelineGroup.md)
+create a pipeline group instance.
 
 ### [New-AzPlatformTelemetryDataSourceObject](New-AzPlatformTelemetryDataSourceObject.md)
 Create an in-memory object for PlatformTelemetryDataSource.
@@ -312,6 +318,9 @@ Removes a V2 (non-classic) metric alert rule.
 ### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
 Delete a workspace
 
+### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
+Delete a pipeline group instance.
+
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Deletes a scheduled query rule.
 
@@ -322,7 +331,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or Update an existing one.
+update a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -334,19 +343,22 @@ Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-Update part of a data collection endpoint.
+update a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-Update an association.
+update an association.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
 Updates part of a workspace
+
+### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
+update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.

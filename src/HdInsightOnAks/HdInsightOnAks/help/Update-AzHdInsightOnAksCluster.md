@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzHdInsightOnAksCluster
 
 ## SYNOPSIS
-Update an existing Cluster.
+update an existing Cluster.
 
 ## SYNTAX
 
@@ -127,7 +127,7 @@ Update-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -ClusterPa
 ```
 
 ## DESCRIPTION
-Update an existing Cluster.
+update an existing Cluster.
 
 ## EXAMPLES
 

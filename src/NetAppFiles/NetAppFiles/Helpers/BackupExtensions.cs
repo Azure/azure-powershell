@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psBackup = new PSNetAppFilesBackup
             {
-                ResourceGroupName = new ResourceIdentifier(backup.Id).ResourceGroupName,                
+                ResourceGroupName = new ResourceIdentifier(backup.Id).ResourceGroupName,
                 Id = backup.Id,
                 Name = backup.Name,
                 BackupId = backup.BackupId,
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Size = backup.Size,
                 VolumeResourceId = backup.VolumeResourceId,
                 UseExistingSnapshot = backup.UseExistingSnapshot,
+                SnapshotName = backup.SnapshotName,
                 CreationDate = backup.CreationDate
             };
             return psBackup;

@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     TablesToRestore.TableNames[i] = restoreParameters.TablesToRestore[i];
                 }
             }
+
+            if (restoreParameters.RestoreWithTtlDisabled != null)
+            {
+                DisableTtl = restoreParameters.RestoreWithTtlDisabled;
+            }
         }
 
         /// <summary>
@@ -91,13 +96,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public PSTablesToRestore TablesToRestore { get; set; }
 
+		/// <summary>
+        /// Gets or Sets disablement of restoring with Time-To-Live disabled.
+        /// </summary>
+        public bool? DisableTtl { get; set; }
+
         public RestoreParameters ToSDKModel()
         {
             RestoreParameters restoreParameters = new RestoreParameters()
             {
                 RestoreMode = "PointInTime",
                 RestoreSource = RestoreSource,
-                RestoreTimestampInUtc = RestoreTimestampInUtc
+                RestoreTimestampInUtc = RestoreTimestampInUtc,
+                RestoreWithTtlDisabled = DisableTtl
             };
 
             if (DatabasesToRestore != null)

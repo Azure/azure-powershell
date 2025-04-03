@@ -77,8 +77,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             bool? enableAutomaticOSUpgradePolicy = null,
+            SkuProfileVMSize[] skuProfileVmSize = null,
+            string skuProfileAllocationStrategy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string securityPostureId = null,
+            string[] securityPostureExcludeExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -104,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
@@ -176,13 +180,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
                             },
-                            UserData = userData
+                            UserData = userData,
+                            SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
+                            {
+                                Id = securityPostureId,
+                                ExcludeExtensions = securityPostureExcludeExtension
+                            } : null
                         },
                         ProximityPlacementGroup = proximityPlacementGroup(engine),
                         HostGroup = hostGroup(engine),
                         ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                         {
                             Rules = scaleInPolicy
+                        },
+                        SkuProfile = (skuProfileVmSize == null) ? null : new SkuProfile
+                        {
+                            VmSizes = skuProfileVmSize,
+                            AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode
@@ -231,8 +245,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             string securityType = null,
             bool? enableAutomaticOSUpgradePolicy = null,
+            SkuProfileVMSize[] skuProfileVmSize = null,
+            string skuProfileAllocationStrategy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string securityPostureId = null,
+            string[] securityPostureExcludeExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -260,7 +278,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
+                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
@@ -312,13 +330,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
                             {
                                 CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
-                            }
+                            },
+                            SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
+                            {
+                                Id = securityPostureId,
+                                ExcludeExtensions = securityPostureExcludeExtension
+                            } : null
                         },
                         ProximityPlacementGroup = proximityPlacementGroup(engine),
                         HostGroup = hostGroup(engine),
                         ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                         {
                             Rules = scaleInPolicy
+                        },
+                        SkuProfile = (skuProfileVmSize == null) ? null : new SkuProfile
+                        {
+                            VmSizes = skuProfileVmSize,
+                            AllocationStrategy = skuProfileAllocationStrategy
                         },
                         DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode

@@ -15,24 +15,24 @@ Creates or updates an environment.
 ### CreateExpanded (Default)
 ```
 Deploy-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 Deploy-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
 Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCent
 ```
 Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
  [-UserId <String>] -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
- [-Parameter <Hashtable>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -340,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 
 ## NOTES
 

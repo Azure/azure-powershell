@@ -24,6 +24,12 @@ Get-AzCapacityReservationGroup -ResourceId <String> [-InstanceView] [-DefaultPro
  [<CommonParameters>]
 ```
 
+### ResourceIdsOnlyParameterSet
+```
+Get-AzCapacityReservationGroup [-ResourceIdsOnly <String>] [-InstanceView]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzCapacityReservationGroup** cmdlet gets the properties of Capacity Reservation resources from a Capacity Reservation Group
 
@@ -114,6 +120,21 @@ Parameter Sets: ResourceIDParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceIdsOnly
+Resource ID's Only for your capacity reservation group.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdsOnlyParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)

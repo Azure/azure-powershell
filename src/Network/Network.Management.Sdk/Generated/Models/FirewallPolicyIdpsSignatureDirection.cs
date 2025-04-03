@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Management.Network.Models
         [System.Runtime.Serialization.EnumMember(Value = "3")]
         Three,
         [System.Runtime.Serialization.EnumMember(Value = "4")]
-        Four
+        Four,
+        [System.Runtime.Serialization.EnumMember(Value = "5")]
+        Five
     }
     internal static class FirewallPolicyIdpsSignatureDirectionEnumExtension
     {
@@ -45,6 +47,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     return "3";
                 case FirewallPolicyIdpsSignatureDirection.Four:
                     return "4";
+                case FirewallPolicyIdpsSignatureDirection.Five:
+                    return "5";
             }
             return null;
         }
@@ -62,6 +66,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     return FirewallPolicyIdpsSignatureDirection.Three;
                 case "4":
                     return FirewallPolicyIdpsSignatureDirection.Four;
+                case "5":
+                    return FirewallPolicyIdpsSignatureDirection.Five;
             }
             return null;
         }

@@ -48,11 +48,11 @@ Please note some properties can be set only during virtual machine instance crea
 
 ### Example 1: Create Virtual Machine Instances on the given Resource Pool
 ```powershell
-New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileResourcePoolId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/resourcepools/test-rp" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
+New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileResourcePoolId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/resourcepools/test-rp" -MachineId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
 ```output
-ExtendedLocationName                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationName                    : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
 ExtendedLocationType                    : CustomLocation
 HardwareProfileCpuHotAddEnabled         : True
 HardwareProfileCpuHotRemoveEnabled      : False
@@ -60,7 +60,7 @@ HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
 HardwareProfileNumCpUs                  : 1
-Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
+Id                                      : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
 InfrastructureProfileFolderPath         : ArcPrivateClouds-67
@@ -69,8 +69,8 @@ InfrastructureProfileInventoryItemId    :
 InfrastructureProfileMoName             : test-machine
 InfrastructureProfileMoRefId            : vm-1529269
 InfrastructureProfileSmbiosUuid         : 4215b305-5f69-959b-0620-16a5bd8c5fc9
-InfrastructureProfileTemplateId         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
-InfrastructureProfileVCenterId          : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
+InfrastructureProfileTemplateId         : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
+InfrastructureProfileVCenterId          : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
 Name                                    : default
 NetworkProfileNetworkInterface          : {{
                                             "ipSettings": {
@@ -79,7 +79,7 @@ NetworkProfileNetworkInterface          : {{
                                             "name": "nic_1",
                                             "label": "Network adapter 1",
                                             "macAddress": "00:50:56:95:ec:bc",
-                                            "networkId": "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
+                                            "networkId": "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
                                             "nicType": "vmxnet3",
                                             "powerOnBoot": "enabled",
                                             "networkMoRefId": "network-563661",
@@ -98,7 +98,7 @@ OSProfileToolsVersionStatus             : guestToolsUnmanaged
 PlacementProfileClusterId               : 
 PlacementProfileDatastoreId             :
 PlacementProfileHostId                  :
-PlacementProfileResourcePoolId          : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/ResourcePools/test-rp
+PlacementProfileResourcePoolId          : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/ResourcePools/test-rp
 PowerState                              : poweredOn
 ProvisioningState                       : Succeeded
 ResourceGroupName                       : test-rg
@@ -147,11 +147,11 @@ This command create a VM Instances of machine named `test-machine` in a resource
 
 ### Example 2: Create Virtual Machine Instances on the given Cluster
 ```powershell
-New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileClusterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-cluster" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
+New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileClusterId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-cluster" -MachineId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
 ```output
-ExtendedLocationName                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationName                    : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
 ExtendedLocationType                    : CustomLocation
 HardwareProfileCpuHotAddEnabled         : True
 HardwareProfileCpuHotRemoveEnabled      : False
@@ -159,7 +159,7 @@ HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
 HardwareProfileNumCpUs                  : 1
-Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
+Id                                      : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
 InfrastructureProfileFolderPath         : ArcPrivateClouds-67
@@ -168,8 +168,8 @@ InfrastructureProfileInventoryItemId    :
 InfrastructureProfileMoName             : test-machine
 InfrastructureProfileMoRefId            : vm-1529269
 InfrastructureProfileSmbiosUuid         : 4215b305-5f69-959b-0620-16a5bd8c5fc9
-InfrastructureProfileTemplateId         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
-InfrastructureProfileVCenterId          : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
+InfrastructureProfileTemplateId         : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
+InfrastructureProfileVCenterId          : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
 Name                                    : default
 NetworkProfileNetworkInterface          : {{
                                             "ipSettings": {
@@ -178,7 +178,7 @@ NetworkProfileNetworkInterface          : {{
                                             "name": "nic_1",
                                             "label": "Network adapter 1",
                                             "macAddress": "00:50:56:95:ec:bc",
-                                            "networkId": "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
+                                            "networkId": "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
                                             "nicType": "vmxnet3",
                                             "powerOnBoot": "enabled",
                                             "networkMoRefId": "network-563661",
@@ -194,7 +194,7 @@ OSProfileOstype                         : Linux
 OSProfileToolsRunningStatus             : guestToolsNotRunning
 OSProfileToolsVersion                   : 10304
 OSProfileToolsVersionStatus             : guestToolsUnmanaged
-PlacementProfileClusterId               : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/Clusters/test-cluster
+PlacementProfileClusterId               : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/Clusters/test-cluster
 PlacementProfileDatastoreId             :
 PlacementProfileHostId                  :
 PlacementProfileResourcePoolId          :
@@ -246,11 +246,11 @@ This command create a VM Instances of machine named `test-machine` in a resource
 
 ### Example 3: Create Virtual Machine on the given Host
 ```powershell
-New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileHostId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/hosts/test-host" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
+New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileHostId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/hosts/test-host" -MachineId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
 ```output
-ExtendedLocationName                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationName                    : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
 ExtendedLocationType                    : CustomLocation
 HardwareProfileCpuHotAddEnabled         : True
 HardwareProfileCpuHotRemoveEnabled      : False
@@ -258,7 +258,7 @@ HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
 HardwareProfileNumCpUs                  : 1
-Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
+Id                                      : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
 InfrastructureProfileFolderPath         : ArcPrivateClouds-67
@@ -267,8 +267,8 @@ InfrastructureProfileInventoryItemId    :
 InfrastructureProfileMoName             : test-machine
 InfrastructureProfileMoRefId            : vm-1529269
 InfrastructureProfileSmbiosUuid         : 4215b305-5f69-959b-0620-16a5bd8c5fc9
-InfrastructureProfileTemplateId         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
-InfrastructureProfileVCenterId          : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
+InfrastructureProfileTemplateId         : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl
+InfrastructureProfileVCenterId          : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
 Name                                    : default
 NetworkProfileNetworkInterface          : {{
                                             "ipSettings": {
@@ -277,7 +277,7 @@ NetworkProfileNetworkInterface          : {{
                                             "name": "nic_1",
                                             "label": "Network adapter 1",
                                             "macAddress": "00:50:56:95:ec:bc",
-                                            "networkId": "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
+                                            "networkId": "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualNetworks/test-vnet",
                                             "nicType": "vmxnet3",
                                             "powerOnBoot": "enabled",
                                             "networkMoRefId": "network-563661",
@@ -295,7 +295,7 @@ OSProfileToolsVersion                   : 10304
 OSProfileToolsVersionStatus             : guestToolsUnmanaged
 PlacementProfileClusterId               : 
 PlacementProfileDatastoreId             :
-PlacementProfileHostId                  : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/Hosts/test-host
+PlacementProfileHostId                  : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/Hosts/test-host
 PlacementProfileResourcePoolId          :
 PowerState                              : poweredOn
 ProvisioningState                       : Succeeded
@@ -345,11 +345,11 @@ This command create a VM Instances of machine named `test-machine` in a resource
 
 ### Example 4: Create Virtual Machine with a VM Inventory
 ```powershell
-New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileInventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vm-1528583" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine-ps"
+New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileInventoryItemId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vm-1528583" -MachineId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine-ps"
 ```
 
 ```output
-ExtendedLocationName                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationName                    : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
 ExtendedLocationType                    : CustomLocation
 HardwareProfileCpuHotAddEnabled         : False
 HardwareProfileCpuHotRemoveEnabled      : False
@@ -357,17 +357,17 @@ HardwareProfileMemoryHotAddEnabled      : False
 HardwareProfileMemorySizeMb             : 8192
 HardwareProfileNumCoresPerSocket        : 1
 HardwareProfileNumCpUs                  : 4
-Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
+Id                                      : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : 9d8766c2-6e02-4553-8ae2-7c37a19cb45b
 InfrastructureProfileFirmwareType       : bios
 InfrastructureProfileFolderPath         : ArcPrivateClouds-67/test-folder
 InfrastructureProfileInstanceUuid       : 5015d462-e12c-623f-45ad-ddfecc541d51
-InfrastructureProfileInventoryItemId    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vm-1528583
+InfrastructureProfileInventoryItemId    : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/vm-1528583
 InfrastructureProfileMoName             : test-ps-vm
 InfrastructureProfileMoRefId            : vm-1528583
 InfrastructureProfileSmbiosUuid         : 421532ab-22b5-67b4-41fd-829f0e7355b9
 InfrastructureProfileTemplateId         :
-InfrastructureProfileVCenterId          : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc
+InfrastructureProfileVCenterId          : /subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc
 Name                                    : default
 NetworkProfileNetworkInterface          : {{
                                             "ipSettings": {

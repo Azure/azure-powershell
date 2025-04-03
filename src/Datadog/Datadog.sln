@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{1B52B354-D27C-40EC-A1C4-E805DF566892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Datadog", "Datadog.Autorest\Az.Datadog.csproj", "{B0401765-5EFE-4481-BF29-0319A39D270C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datadog", "Datadog\Datadog.csproj", "{8886F5D6-0DC5-4867-B31F-31D94B0E7A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Datadog", "..\..\generated\Datadog\Datadog.Autorest\Az.Datadog.csproj", "{7C966BA3-9767-4167-BCFA-058C02280E73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{1B52B354-D27C-40EC-A1C4-E805DF566892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B52B354-D27C-40EC-A1C4-E805DF566892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B52B354-D27C-40EC-A1C4-E805DF566892}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0401765-5EFE-4481-BF29-0319A39D270C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0401765-5EFE-4481-BF29-0319A39D270C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0401765-5EFE-4481-BF29-0319A39D270C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0401765-5EFE-4481-BF29-0319A39D270C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8886F5D6-0DC5-4867-B31F-31D94B0E7A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8886F5D6-0DC5-4867-B31F-31D94B0E7A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8886F5D6-0DC5-4867-B31F-31D94B0E7A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8886F5D6-0DC5-4867-B31F-31D94B0E7A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C966BA3-9767-4167-BCFA-058C02280E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C966BA3-9767-4167-BCFA-058C02280E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C966BA3-9767-4167-BCFA-058C02280E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C966BA3-9767-4167-BCFA-058C02280E73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9B1B2215-40D9-4B8F-AC71-4D55955F79E5} = {D5CFA6F6-3E61-4D52-AC5C-716CEB63CF76}

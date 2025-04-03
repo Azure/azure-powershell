@@ -38,10 +38,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// downloaded config file on the VM. This is limited to 4096
         /// characters. If not specified, the config file will be named the
         /// Gallery Application name appended with "_config".</param>
-        public UserArtifactSettings(string packageFileName = default(string), string configFileName = default(string))
+        /// <param name="scriptBehaviorAfterReboot">Optional. The action to be
+        /// taken with regards to install/update/remove of the gallery
+        /// application in the event of a reboot. Possible values include:
+        /// 'None', 'Rerun'</param>
+        public UserArtifactSettings(string packageFileName = default(string), string configFileName = default(string), string scriptBehaviorAfterReboot = default(string))
         {
             PackageFileName = packageFileName;
             ConfigFileName = configFileName;
+            ScriptBehaviorAfterReboot = scriptBehaviorAfterReboot;
             CustomInit();
         }
 
@@ -67,6 +72,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "configFileName")]
         public string ConfigFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. The action to be taken with regards to
+        /// install/update/remove of the gallery application in the event of a
+        /// reboot. Possible values include: 'None', 'Rerun'
+        /// </summary>
+        [JsonProperty(PropertyName = "scriptBehaviorAfterReboot")]
+        public string ScriptBehaviorAfterReboot { get; set; }
 
     }
 }

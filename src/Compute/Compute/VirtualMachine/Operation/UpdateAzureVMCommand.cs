@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -194,6 +194,12 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public bool? AlignRegionalDisksToVMZone { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -346,15 +352,20 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.SecurityProfile = new SecurityProfile();
                         }
-                        if (parameters.SecurityProfile.UefiSettings == null)
-                        {
-                            parameters.SecurityProfile.UefiSettings = new UefiSettings();
-                        }
                         parameters.SecurityProfile.SecurityType = this.SecurityType;
+
                         if (parameters.SecurityProfile.SecurityType == "TrustedLaunch" || parameters.SecurityProfile.SecurityType == "ConfidentialVM")
                         {
+                            if (parameters.SecurityProfile.UefiSettings == null)
+                            {
+                                parameters.SecurityProfile.UefiSettings = new UefiSettings();
+                            }
                             parameters.SecurityProfile.UefiSettings.VTpmEnabled = parameters.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                             parameters.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                        }
+                        else
+                        {
+                            parameters.SecurityProfile.UefiSettings = null;
                         }
                     }
 
@@ -422,6 +433,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                         }
                         parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
+                    }
+
+                    if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))
+                    {
+                        if (parameters.StorageProfile == null)
+                        {
+                            parameters.StorageProfile = new StorageProfile();
+                        }
+                        parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
                     }
 
                     if (NoWait.IsPresent)

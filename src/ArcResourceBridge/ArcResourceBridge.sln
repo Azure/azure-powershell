@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{44F6A918-F0AD-4410-93FB-2798D574555B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArcResourceBridge", "ArcResourceBridge.Autorest\Az.ArcResourceBridge.csproj", "{7B3A494F-E865-4B11-B960-128CF5F2FC3C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcResourceBridge", "ArcResourceBridge\ArcResourceBridge.csproj", "{64F3EFD4-35BB-41DE-99B8-5A49501F0B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ArcResourceBridge", "..\..\generated\ArcResourceBridge\ArcResourceBridge.Autorest\Az.ArcResourceBridge.csproj", "{E5706A93-5C3E-4240-AC08-B4E03DD3FE6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{44F6A918-F0AD-4410-93FB-2798D574555B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44F6A918-F0AD-4410-93FB-2798D574555B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44F6A918-F0AD-4410-93FB-2798D574555B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B3A494F-E865-4B11-B960-128CF5F2FC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B3A494F-E865-4B11-B960-128CF5F2FC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B3A494F-E865-4B11-B960-128CF5F2FC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B3A494F-E865-4B11-B960-128CF5F2FC3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64F3EFD4-35BB-41DE-99B8-5A49501F0B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64F3EFD4-35BB-41DE-99B8-5A49501F0B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F3EFD4-35BB-41DE-99B8-5A49501F0B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64F3EFD4-35BB-41DE-99B8-5A49501F0B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5706A93-5C3E-4240-AC08-B4E03DD3FE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5706A93-5C3E-4240-AC08-B4E03DD3FE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5706A93-5C3E-4240-AC08-B4E03DD3FE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5706A93-5C3E-4240-AC08-B4E03DD3FE6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{95720B69-B786-4651-8A4F-A608DEDE86DB} = {01B1CB07-FA0F-4C12-94D3-F4D76A765A79}

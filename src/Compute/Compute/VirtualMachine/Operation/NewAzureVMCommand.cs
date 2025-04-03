@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+ // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -453,6 +453,42 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.")]
+        [ValidateSet("Ed25519", "RSA")]
+        public string SshKeyType { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Any")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+        
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AlignRegionalDisksToVMZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -579,7 +615,9 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 else {
-                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                    // since Az 13.0.0 and Az.Compute 9.0.0, if PublicIpSku is not specified, it should be Standard by default.
+                    // https://aka.ms/ipbasictostandard
+                    publicIpSku = PublicIPAddressStrategy.Sku.Standard;
                 }
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
@@ -597,7 +635,7 @@ namespace Microsoft.Azure.Commands.Compute
                     && _cmdlet.SecurityType != null
                     && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
                 {
-                    _cmdlet.SecurityType = null;
+                    _cmdlet.SecurityType = "Standard";
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -714,8 +752,12 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot,
                         ifMatch: _cmdlet.IfMatch,
-                        ifNoneMatch: _cmdlet.IfNoneMatch
-                        );
+                        ifNoneMatch: _cmdlet.IfNoneMatch,
+                        zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
+                        includeZone: _cmdlet.IncludeZone,
+                        excludeZone: _cmdlet.ExcludeZone,
+                        alignRegionalDisksToVMZone: _cmdlet.AlignRegionalDisksToVMZone
+                    );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
                 {
@@ -769,6 +811,11 @@ namespace Microsoft.Azure.Commands.Compute
             SubnetName = SubnetName ?? Name;
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
+
+            if (this.IsParameterBound(c => c.Image))
+            {
+                WriteInformation(HelpMessages.PSVMImageMessage, new string[] { "PSHOST" });
+            }
 
             // Check TrustedLaunch UEFI values defaulting
             if (this.IsParameterBound(c => c.SecurityType)
@@ -1081,22 +1128,6 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
-                }
-            }
-
-            // Standard security type removing value since API does not support it yet.
-            if (this.VM.SecurityProfile?.SecurityType != null
-                && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
-            {
-                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
-                    && this.VM.SecurityProfile.EncryptionAtHost == null)
-                {
-                    this.VM.SecurityProfile = null;
-                }
-                else
-                {
-                    this.VM.SecurityProfile.SecurityType = null;
                 }
             }
 
@@ -1608,7 +1639,7 @@ namespace Microsoft.Azure.Commands.Compute
                     SshPublicKeyResource sshkey = new SshPublicKeyResource();
                     sshkey.Location = this.Location != null ? this.Location : "eastus";
                     SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
+                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName, this.SshKeyType);
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
                     if (!Directory.Exists(sshFolder))
@@ -1707,6 +1738,22 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.GenerateSshKey.IsPresent)
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+                }
+            }
+
+            if (this.IsParameterBound(c => c.VM))
+            {
+                if (this.ParameterSetName == "DefaultParameterSet")
+                {
+                    if (VM.SecurityProfile != null && VM.SecurityProfile.EncryptionIdentity != null && 
+                        VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId != null)
+                    {
+                        if (VM.Identity == null || VM.Identity.UserAssignedIdentities == null || 
+                            !VM.Identity.UserAssignedIdentities.ContainsKey(VM.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId))
+                        {
+                            throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                        }
+                    }
                 }
             }
         }

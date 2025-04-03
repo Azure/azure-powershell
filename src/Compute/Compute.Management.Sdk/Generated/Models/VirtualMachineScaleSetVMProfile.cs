@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// virtual machines in the scale set when using 'latest' image
         /// version. Minimum api-version: 2022-11-01</param>
         /// <param name="securityPostureReference">Specifies the security
-        /// posture to be used for all virtual machines in the scale set.
-        /// Minimum api-version: 2023-03-01</param>
+        /// posture to be used in the scale set. Minimum api-version:
+        /// 2023-03-01</param>
         /// <param name="timeCreated">Specifies the time in which this VM
-        /// profile for the Virtual Machine Scale Set was created. Minimum API
-        /// version for this property is 2024-03-01. This value will be added
-        /// to VMSS Flex VM tags when creating/updating the VMSS VM Profile
-        /// with minimum api-version 2024-03-01.</param>
+        /// profile for the Virtual Machine Scale Set was created. This value
+        /// will be added to VMSS Flex VM tags when creating/updating the VMSS
+        /// VM Profile. Minimum API version for this property is
+        /// 2023-09-01.</param>
         public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference), System.DateTime? timeCreated = default(System.DateTime?))
         {
             OsProfile = osProfile;
@@ -256,18 +256,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ServiceArtifactReference ServiceArtifactReference { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the security posture to be used for all
-        /// virtual machines in the scale set. Minimum api-version: 2023-03-01
+        /// Gets or sets specifies the security posture to be used in the scale
+        /// set. Minimum api-version: 2023-03-01
         /// </summary>
         [JsonProperty(PropertyName = "securityPostureReference")]
         public SecurityPostureReference SecurityPostureReference { get; set; }
 
         /// <summary>
         /// Gets specifies the time in which this VM profile for the Virtual
-        /// Machine Scale Set was created. Minimum API version for this
-        /// property is 2024-03-01. This value will be added to VMSS Flex VM
-        /// tags when creating/updating the VMSS VM Profile with minimum
-        /// api-version 2024-03-01.
+        /// Machine Scale Set was created. This value will be added to VMSS
+        /// Flex VM tags when creating/updating the VMSS VM Profile. Minimum
+        /// API version for this property is 2023-09-01.
         /// </summary>
         [JsonProperty(PropertyName = "timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }
@@ -283,6 +282,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();
+            }
+            if (SecurityPostureReference != null)
+            {
+                SecurityPostureReference.Validate();
             }
         }
     }

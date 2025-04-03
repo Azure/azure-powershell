@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -81,9 +84,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// using the integration runtime credential manager. It is mutually exclusive
         /// with connectionString property. Type: string.
         /// </param>
-        public Db2LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), object server = default(object), object database = default(object), string authenticationType = default(string), object username = default(object), SecretBase password = default(SecretBase), object packageCollection = default(object), object certificateCommonName = default(object), string encryptedCredential = default(string))
+        public Db2LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), object server = default(object), object database = default(object), string authenticationType = default(string), object username = default(object), SecretBase password = default(SecretBase), object packageCollection = default(object), object certificateCommonName = default(object), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ConnectionString = connectionString;
             this.Server = server;

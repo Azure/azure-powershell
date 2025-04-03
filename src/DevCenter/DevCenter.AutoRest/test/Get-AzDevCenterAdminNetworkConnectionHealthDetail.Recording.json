@@ -1,8 +1,8 @@
 {
-  "Get-AzDevCenterAdminNetworkConnectionHealthDetail+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/amlim-rg/providers/Microsoft.DevCenter/networkConnections/amlim-nc2/healthChecks?api-version=2023-10-01-preview+1": {
+  "Get-AzDevCenterAdminNetworkConnectionHealthDetail+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/amlim-rg/providers/Microsoft.DevCenter/networkConnections/amlim-nc2/healthChecks?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/amlim-rg/providers/Microsoft.DevCenter/networkConnections/amlim-nc2/healthChecks?api-version=2023-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/amlim-rg/providers/Microsoft.DevCenter/networkConnections/amlim-nc2/healthChecks?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

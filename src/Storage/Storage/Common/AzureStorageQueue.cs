@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using global::Azure.Storage.Queues;
     using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using Microsoft.WindowsAzure.Commands.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System;
 
     /// <summary>

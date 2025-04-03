@@ -1,9 +1,9 @@
 {
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2023-07-01+1": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2023-07-01",
-      "Content": "{\n  \"properties\": {\n    \"sshPublicKey\": {\n      \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"\n    },\n    \"expiration\": \"2023-07-02T01:27:03.0080000Z\"\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01",
+      "Content": "{\n  \"properties\": {\n    \"sshPublicKey\": {\n      \"keyData\": \"ssh-rsa REDACTED\"\n    },\n    \"expiration\": \"2023-07-02T01:27:03.0080000Z\"\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,13 +18,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"7e0007b2-0000-0100-0000-649cc0a00000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2023-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "4c0e8533-ced6-4157-9470-ed09eb465464" ],
         "x-ms-request-id": [ "702a298c-7d76-4753-ab29-495762b72da9" ],
         "x-ms-correlation-request-id": [ "d9a824bc-cbac-4277-a0cb-5adc56e22e48" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2023-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01" ],
         "x-ms-routing-request-id": [ "EASTUS:20230628T232208Z:d9a824bc-cbac-4277-a0cb-5adc56e22e48" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2023-07-01+2": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/18b213fa-1b71-461c-80db-2bf690b89326*08CD47F79C4EE4D92D041BE0585B8DDA1187A40E76E834B5CF08F9858E1FBC8B?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2023-07-01+3": {
+  "Update-AzNetworkCloudConsole+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2023-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -118,7 +118,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default\",\"name\":\"default\",\"type\":\"microsoft.networkcloud/virtualmachines/consoles\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/sim-clustermgr-mrg-gbvt37cblipqw/providers/microsoft.extendedlocation/customlocations/sim-cluster-mgr-gbvt37cblipqw-cl\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-28T23:21:36.684587Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-28T23:22:16.1773234Z\"},\"properties\":{\"sshPublicKey\":{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"},\"enabled\":\"ConsoleEnabled.True\",\"expiration\":\"2023-07-02T01:27:03.008Z\",\"privateLinkServiceId\":\"sim-clustermgr-mrg-gbvt37cblipqw/providers/Microsoft.Network/privateLinkServices/console-pls\",\"virtualMachineAccessId\":\"74595827-6238-5a6a-a2c9-cb95438d1218\",\"detailedStatus\":\"Error\",\"detailedStatusMessage\":\"Console access is disabled\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-3A4C8046/providers/Microsoft.NetworkCloud/virtualMachines/testvmconsole/consoles/default\",\"name\":\"default\",\"type\":\"microsoft.networkcloud/virtualmachines/consoles\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/sim-clustermgr-mrg-gbvt37cblipqw/providers/microsoft.extendedlocation/customlocations/sim-cluster-mgr-gbvt37cblipqw-cl\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-28T23:21:36.684587Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-06-28T23:22:16.1773234Z\"},\"properties\":{\"sshPublicKey\":{\"keyData\":\"ssh-rsa REDACTED\"},\"enabled\":\"ConsoleEnabled.True\",\"expiration\":\"2023-07-02T01:27:03.008Z\",\"privateLinkServiceId\":\"sim-clustermgr-mrg-gbvt37cblipqw/providers/Microsoft.Network/privateLinkServices/console-pls\",\"virtualMachineAccessId\":\"74595827-6238-5a6a-a2c9-cb95438d1218\",\"detailedStatus\":\"Error\",\"detailedStatusMessage\":\"Console access is disabled\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -17,6 +17,7 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Win32;
 using System;
@@ -91,6 +92,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// Gets the Server Type from the the StorageSync registry path. Default to <see cref="LocalServerType.HybridServer"/>
+        /// Not using ServerManagedIdentityProvider.GetServerType because it does not necessarily do a direct registry key read. 
+        /// </summary>
+        /// <returns>The server type</returns>
+        public LocalServerType GetServerTypeFromRegistry()
+        {
+            if (RegistryUtility.TryGetValue(
+                    StorageSyncConstants.ServerTypeRegistryKeyName,
+                    StorageSyncConstants.AfsRegistryKey,
+                    out string serverTypeFromRegistryString,
+                    RegistryValueKind.String,
+                    RegistryValueOptions.None))
+            {
+                if (Enum.TryParse(serverTypeFromRegistryString, out LocalServerType serverTypeFromRegistry))
+                {
+                    return serverTypeFromRegistry;
+                }
+            }
+
+            return LocalServerType.HybridServer;
         }
 
         /// <summary>

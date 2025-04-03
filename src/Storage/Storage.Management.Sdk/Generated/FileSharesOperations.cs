@@ -377,10 +377,7 @@ namespace Microsoft.Azure.Management.Storage
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "fileShare");
             }
-            if (fileShare != null)
-            {
-                fileShare.Validate();
-            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");

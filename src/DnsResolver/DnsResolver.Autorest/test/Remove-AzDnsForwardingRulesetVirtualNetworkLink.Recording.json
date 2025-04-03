@@ -1,9 +1,9 @@
 {
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2022-07-01+1": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2023-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2022-07-01",
-      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2023-07-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,10 +17,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2023-07-01-preview" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "a26d9715-f6fb-4e49-95f3-1a97a498c68c" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2023-07-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11994" ],
         "x-ms-request-id": [ "a00d7440-c329-4bd7-bffe-5c425b79167a" ],
         "x-ms-correlation-request-id": [ "a00d7440-c329-4bd7-bffe-5c425b79167a" ],
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2022-07-01+2": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2023-07-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -79,14 +79,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9\",\"startTime\":\"2022-02-17T06:35:09.0000000Z\",\"endTime\":\"2022-02-17T06:35:12.0000000Z\",\"status\":\"Succeeded\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zUmVzb2x2ZXIiLCJPcGVyYXRpb25JZCI6Ijg0NjJiYjVjLWQ1YWEtNGNjMS1iMDA3LTdiY2ZjMTQxYmU3OSJ9\",\"startTime\":\"2022-02-17T06:35:09.0000000Z\",\"endTime\":\"2022-02-17T06:35:12.0000000Z\",\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2022-07-01+3": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2023-07-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,15 +122,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"e56ea734-f1fa-4a09-a004-bbe30bb6f44e\"},\"etag\":\"\\\"0400d538-0000-0200-0000-620deca00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44\",\"name\":\"psdnsresolvername44\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:09.6966547Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:09.6966547Z\",\"lastModifiedByType\":\"User\"}}",
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"},\"dnsResolverState\":\"Connected\",\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"e56ea734-f1fa-4a09-a004-bbe30bb6f44e\"},\"etag\":\"\\\"0400d538-0000-0200-0000-620deca00000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44\",\"name\":\"psdnsresolvername44\",\"type\":\"Microsoft.Network/dnsResolvers\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:09.6966547Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:09.6966547Z\",\"lastModifiedByType\":\"User\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2022-07-01+4": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2023-07-01-preview+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2022-07-01",
-      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44/subnets/snet-sim2\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2023-07-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44/subnets/snet-sim2\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -144,10 +144,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "c2b3e73a-ec18-4dc6-8051-c777d1654fd9" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "39ac512f-211f-4a58-8d54-fcaa05a2d805" ],
         "x-ms-correlation-request-id": [ "39ac512f-211f-4a58-8d54-fcaa05a2d805" ],
@@ -167,10 +167,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01+5": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -206,14 +206,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"startTime\":\"2022-02-17T06:35:17.0000000Z\",\"status\":\"InProgress\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"startTime\":\"2022-02-17T06:35:17.0000000Z\",\"status\":\"InProgress\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01+6": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -249,14 +249,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"startTime\":\"2022-02-17T06:35:17.0000000Z\",\"endTime\":\"2022-02-17T06:35:24.0000000Z\",\"status\":\"Succeeded\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0T3V0Ym91bmRFbmRwb2ludCIsIk9wZXJhdGlvbklkIjoiNjc0MWY3ZDctZTRjZi00YmQwLTlmYjEtN2Q1NWU4MWRkMGVlIn0=\",\"startTime\":\"2022-02-17T06:35:17.0000000Z\",\"endTime\":\"2022-02-17T06:35:24.0000000Z\",\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2022-07-01+7": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2023-07-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -292,15 +292,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44/subnets/snet-sim2\"},\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"39e75074-edad-4c43-9f2c-6a6b96456628\"},\"etag\":\"\\\"02004060-0000-0200-0000-620decac0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\",\"name\":\"psoutboundendpointname44\",\"type\":\"Microsoft.Network/dnsResolvers/outboundEndpoints\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:16.9911148Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:16.9911148Z\",\"lastModifiedByType\":\"User\"}}",
+      "Content": "{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44/subnets/snet-sim2\"},\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"39e75074-edad-4c43-9f2c-6a6b96456628\"},\"etag\":\"\\\"02004060-0000-0200-0000-620decac0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\",\"name\":\"psoutboundendpointname44\",\"type\":\"Microsoft.Network/dnsResolvers/outboundEndpoints\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:16.9911148Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:16.9911148Z\",\"lastModifiedByType\":\"User\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2022-07-01+8": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2023-07-01-preview+8": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2022-07-01",
-      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"dnsResolverOutboundEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2023-07-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"dnsResolverOutboundEndpoints\": [\r\n      {\r\n        \"id\": \"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -314,10 +314,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2023-07-01-preview" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "582f8035-f38a-406a-b74e-03af9f7c4021" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2023-07-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "9672f2ea-d1fd-4cb0-b58d-15d79c63a6e3" ],
         "x-ms-correlation-request-id": [ "9672f2ea-d1fd-4cb0-b58d-15d79c63a6e3" ],
@@ -337,10 +337,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2022-07-01+9": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2023-07-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -376,14 +376,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9\",\"startTime\":\"2022-02-17T06:35:54.0000000Z\",\"endTime\":\"2022-02-17T06:35:56.0000000Z\",\"status\":\"Succeeded\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0RG5zRm9yd2FyZGluZ1J1bGVzZXQiLCJPcGVyYXRpb25JZCI6IjQyMDY1MGYwLTI0YjQtNDQ4NS05Y2E4LWQwYTM4M2Q3YTlkMCJ9\",\"startTime\":\"2022-02-17T06:35:54.0000000Z\",\"endTime\":\"2022-02-17T06:35:56.0000000Z\",\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2022-07-01+10": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2023-07-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -419,15 +419,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"dnsResolverOutboundEndpoints\":[{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"bf8a7803-c839-4b9e-b18c-628ab6c8fb0a\"},\"etag\":\"\\\"02001a40-0000-0200-0000-620deccc0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44\",\"name\":\"psdnsforwardingrulesetname44\",\"type\":\"Microsoft.Network/dnsForwardingRulesets\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:54.4821362Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:54.4821362Z\",\"lastModifiedByType\":\"User\"}}",
+      "Content": "{\"properties\":{\"dnsResolverOutboundEndpoints\":[{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsResolvers/psdnsresolvername44/outboundEndpoints/psoutboundendpointname44\"}],\"provisioningState\":\"Succeeded\",\"resourceGuid\":\"bf8a7803-c839-4b9e-b18c-628ab6c8fb0a\"},\"etag\":\"\\\"02001a40-0000-0200-0000-620deccc0000\\\"\",\"location\":\"eastus2\",\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44\",\"name\":\"psdnsforwardingrulesetname44\",\"type\":\"Microsoft.Network/dnsForwardingRulesets\",\"systemData\":{\"createdAt\":\"2022-02-17T06:35:54.4821362Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:35:54.4821362Z\",\"lastModifiedByType\":\"User\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01+11": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$PUT+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview+11": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"virtualNetwork\": {\r\n      \"id\": \"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -441,10 +441,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2023-07-01-preview" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "35893d10-388c-44a9-bd0e-06d4898106d7" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2023-07-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "39d34201-6e6e-44f9-ab4b-137f805fb904" ],
         "x-ms-correlation-request-id": [ "39d34201-6e6e-44f9-ab4b-137f805fb904" ],
@@ -464,10 +464,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2022-07-01+12": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2023-07-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -503,14 +503,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==\",\"startTime\":\"2022-02-17T06:36:00.0000000Z\",\"endTime\":\"2022-02-17T06:36:02.0000000Z\",\"status\":\"Succeeded\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiVXBzZXJ0VmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiJkZTQyMGYzNS05YzgzLTQwMGQtYjZmNS01YTA3OGQ5ZTUwMWIifQ==\",\"startTime\":\"2022-02-17T06:36:00.0000000Z\",\"endTime\":\"2022-02-17T06:36:02.0000000Z\",\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01+13": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -546,14 +546,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"},\"provisioningState\":\"Succeeded\"},\"etag\":\"\\\"02001d40-0000-0200-0000-620decd20000\\\"\",\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44\",\"name\":\"psvirtualnetworklinkname44\",\"type\":\"Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks\",\"systemData\":{\"createdAt\":\"2022-02-17T06:36:00.6848265Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:36:00.6848265Z\",\"lastModifiedByType\":\"User\"}}",
+      "Content": "{\"properties\":{\"virtualNetwork\":{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44\"},\"provisioningState\":\"Succeeded\"},\"etag\":\"\\\"02001d40-0000-0200-0000-620decd20000\\\"\",\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44\",\"name\":\"psvirtualnetworklinkname44\",\"type\":\"Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks\",\"systemData\":{\"createdAt\":\"2022-02-17T06:36:00.6848265Z\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-02-17T06:36:00.6848265Z\",\"lastModifiedByType\":\"User\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$DELETE+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01+14": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$DELETE+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview+14": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -573,10 +573,10 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview" ],
         "Retry-After": [ "5" ],
         "x-ms-activity-id": [ "4825473e-7e89-4206-872c-85e93e252b60" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
         "x-ms-request-id": [ "0320a00d-0d7e-4960-97f6-0eb026bbc05b" ],
         "x-ms-correlation-request-id": [ "0320a00d-0d7e-4960-97f6-0eb026bbc05b" ],
@@ -595,10 +595,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01+15": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -634,14 +634,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==\",\"startTime\":\"2022-02-17T06:36:06.0000000Z\",\"endTime\":\"2022-02-17T06:36:07.0000000Z\",\"status\":\"Succeeded\"}",
+      "Content": "{\"id\":\"/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationStatuses/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==\",\"name\":\"eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==\",\"startTime\":\"2022-02-17T06:36:06.0000000Z\",\"endTime\":\"2022-02-17T06:36:07.0000000Z\",\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01+16": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/locations/eastus2/dnsResolverOperationResults/eyJPcGVyYXRpb25UeXBlIjoiRGVsZXRlVmlydHVhbE5ldHdvcmtMaW5rIiwiT3BlcmF0aW9uSWQiOiIzYmQ2NDgxNy03YzgxLTQ3ZjgtYWRlNi1jMmJkNzEwZjc1YzUifQ==?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -680,10 +680,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01+17": {
+  "Remove-AzDnsForwardingRulesetVirtualNetworkLink+[NoContext]+Delete a virtual network link, expect virtual network link deleted+$GET+https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/providers/Microsoft.Network/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworkLinks/psvirtualnetworklinkname44?api-version=2023-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -719,7 +719,7 @@
         "Content-Type": [ "text/plain; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"Virtual network link not found in database. virtualNetworkLinkResourceId=/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/rg-dev-eastus2-sdk-powershell/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworksLinks/psvirtualnetworklinkname44\",\"target\":\"\",\"details\":{},\"innererror\":{} }}",
+      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"Virtual network link not found in database. virtualNetworkLinkResourceId=/subscriptions/91ab65d2-c73f-4768-89d0-b061815f258b/resourceGroups/rg-dev-eastus2-sdk-powershell/dnsForwardingRulesets/psdnsforwardingrulesetname44/virtualNetworksLinks/psvirtualnetworklinkname44\",\"target\":\"\",\"details\":{},\"innererror\":{} }}",
       "isContentBase64": false
     }
   }

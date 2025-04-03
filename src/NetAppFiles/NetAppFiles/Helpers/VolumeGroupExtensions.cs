@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BaremetalTenantId = volumeGroupVolumeProperties.BaremetalTenantId,
                 SubnetId = volumeGroupVolumeProperties.SubnetId,
                 NetworkFeatures = volumeGroupVolumeProperties.NetworkFeatures,
+                EffectiveNetworkFeatures = volumeGroupVolumeProperties.EffectiveNetworkFeatures,
                 NetworkSiblingSetId = volumeGroupVolumeProperties.NetworkSiblingSetId,
                 StorageToNetworkProximity = volumeGroupVolumeProperties.StorageToNetworkProximity,
                 MountTargets = volumeGroupVolumeProperties.MountTargets,

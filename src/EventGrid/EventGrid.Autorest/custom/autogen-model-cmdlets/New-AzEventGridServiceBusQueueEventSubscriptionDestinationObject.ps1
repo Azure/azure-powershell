@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ServiceBusQueueEventSubscrip
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridservicebusqueueeventsubscriptiondestinationobject
 #>
 function New-AzEventGridServiceBusQueueEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ServiceBusQueueEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -1,0 +1,6 @@
+{
+    "location": "eastus",
+    "properties": {
+      "publicNetworkAccess": "Disabled"
+    }
+}

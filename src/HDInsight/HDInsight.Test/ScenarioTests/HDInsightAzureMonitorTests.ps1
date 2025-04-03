@@ -21,7 +21,7 @@ function Test-AzureMonitorRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "Japan East"
+		$location = "East US"
 		# prepare parameter for creating parameter
 		$params= Prepare-ClusterCreateParameter -location $location
 
@@ -29,8 +29,8 @@ function Test-AzureMonitorRelatedCommands{
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version 5.1 `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 		Assert-NotNull $cluster
 
 		$workspaceName = Generate-Name("workspace-ps-test")
@@ -43,6 +43,7 @@ function Test-AzureMonitorRelatedCommands{
 		#get workspace's primaryKey
 		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
 		Assert-NotNull $keys
+
 		#test Get-AzHDInsightAzureMonitor
 		$result = Get-AzHDInsightAzureMonitor -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-Null $result.WorkspaceId
@@ -68,7 +69,58 @@ function Test-AzureMonitorRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+function Test-AzureMonitorAgentRelatedCommands{
+
+	# Create some resources that will be used throughout test 
+	try
+	{
+		$location = "East US"
+		# prepare parameter for creating parameter
+		# $params= Prepare-ClusterCreateParameter -location $location
+
+		# create cluster that will be used throughout test
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
+		Assert-NotNull $cluster
+
+		$workspaceName = "ps-la"
+		$resourceGroupName = $cluster.ResourceGroup
+
+		#create a new Log Analytics Workspace
+		$workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName 
+
+		#get workspace's primaryKey
+		$keys = Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $resourceGroupName -Name $workspace.Name
+		Assert-NotNull $keys
+
+		#test Enable-HDInsightAzureMonitorAgent
+		$workspaceId = $workspace.CustomerId
+		$primaryKey = $keys.PrimarySharedKey
+
+		Assert-NotNull $workspaceId
+		Assert-NotNull $primaryKey
+		Enable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroup $cluster.ResourceGroup -WorkspaceId $workspaceId -Primary  $primaryKey
+		
+		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
+		Assert-True {$result.ClusterMonitoringEnabled}
+		Assert-AreEqual $result.WorkspaceId $workspaceId
+		
+		#test Get-HDInsightAzureMonitorAgent
+		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
+		Assert-NotNull $result.WorkspaceId
+
+		#test Disable-HDInsightAzureMonitorAgent
+		Disable-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
+		$result = Get-AzHDInsightAzureMonitorAgent -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
+		Assert-False {$result.ClusterMonitoringEnabled}
+		Assert-Null $result.WorkspaceId
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

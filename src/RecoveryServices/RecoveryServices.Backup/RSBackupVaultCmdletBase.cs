@@ -112,10 +112,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         var jobStatusResponse =
                             (OperationStatusJobExtendedInfo)operationStatus.Properties;
-                        WriteObject(GetJobObject(
+
+                        try
+                        {
+                            WriteObject(GetJobObject(
                             jobStatusResponse.JobId,
                             vaultName: vaultName,
                             resourceGroupName: resourceGroupName));
+                        }
+                        catch (Exception e)
+                        {
+                            WriteDebug("Caught exception while fetching Jobresource: " + e.Message);
+                            WriteDebug("Job resource could not be fetched"); // resx: Resources.FailedToFetchJob
+                        }
                     }
                 }
 

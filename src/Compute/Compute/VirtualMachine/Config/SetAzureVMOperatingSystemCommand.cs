@@ -306,11 +306,12 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.VM.OSProfile == null)
             {
+
                 this.VM.OSProfile = new OSProfile
                 {
-                    ComputerName = this.ComputerName,
-                    AdminUsername = this.Credential.UserName,
-                    AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
+                    ComputerName = string.IsNullOrWhiteSpace(this.ComputerName) ? null : this.ComputerName,
+                    AdminUsername = this.Credential?.UserName == null ? null : this.Credential.UserName,
+                    AdminPassword = this.Credential?.Password == null ? null : ConversionUtilities.SecureStringToString(this.Credential?.Password),
                     CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
                 };
             }

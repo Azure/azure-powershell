@@ -1009,6 +1009,14 @@ function Get-DefaultManagedInstanceParametersV2()
 	}
 }
 
+function Get-DefaultManagedInstanceNameAndRgForAADAdmin()
+{
+	return @{
+		rg = "CustomerExperienceTeam_RG";
+		name = "brka0190";
+	}
+}
+
 function Get-DefaultManagedInstanceParametersHermesTesting()
 {
 	return @{

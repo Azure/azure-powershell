@@ -15,7 +15,7 @@ Validates a deployment.
 ### ByTemplateFileWithNoParameters (Default)
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -23,62 +23,62 @@ Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -T
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsObject
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParams
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -86,14 +86,14 @@ Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -T
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
@@ -107,28 +107,28 @@ Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -T
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -365,6 +365,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ValidationLevel
+Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).
+
+```yaml
+Type: Microsoft.Azure.Management.Resources.Models.ValidationLevel
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None(Provider)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

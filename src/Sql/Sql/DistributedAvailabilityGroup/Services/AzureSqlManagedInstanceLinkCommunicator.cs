@@ -95,6 +95,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
+        /// Failovers managed instance link
+        /// </summary>
+        public Management.Sql.Models.DistributedAvailabilityGroup Failover(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroupsFailoverRequest parameters)
+        {
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.Failover(resourceGroupName, instanceName, distributedAvailabilityGroupName, parameters);
+        }
+
+        /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>

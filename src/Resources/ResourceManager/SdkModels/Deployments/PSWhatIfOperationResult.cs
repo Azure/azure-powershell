@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
     using System.Collections.Generic;
     using System.Linq;
     using Management.Resources.Models;
+    using Newtonsoft.Json.Linq;
 
     public class PSWhatIfOperationResult
     {
@@ -25,11 +26,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
 
         private readonly Lazy<IList<PSWhatIfChange>> changes;
 
+        private readonly Lazy<IList<DeploymentDiagnosticsDefinition>> diagnostics;
+
         public PSWhatIfOperationResult(WhatIfOperationResult whatIfOperationResult)
         {
             this.whatIfOperationResult = whatIfOperationResult;
             this.changes = new Lazy<IList<PSWhatIfChange>>(() =>
                 whatIfOperationResult.Changes?.Select(c => new PSWhatIfChange(c)).ToList());
+            this.diagnostics = new Lazy<IList<DeploymentDiagnosticsDefinition>>(() =>
+                whatIfOperationResult.Diagnostics);
         }
 
         public string Status => this.whatIfOperationResult.Status;
@@ -37,5 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public ErrorResponse Error => this.whatIfOperationResult.Error;
 
         public IList<PSWhatIfChange> Changes => this.changes.Value;
+
+        public IList<DeploymentDiagnosticsDefinition> Diagnostics => this.diagnostics.Value;
     }
 }

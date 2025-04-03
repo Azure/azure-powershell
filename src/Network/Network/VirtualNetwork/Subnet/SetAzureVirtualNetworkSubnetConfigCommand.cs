@@ -71,6 +71,11 @@ namespace Microsoft.Azure.Commands.Network
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                subnet.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
+
             if (this.IpAllocation != null)
             {
                 foreach (var allocation in this.IpAllocation)
@@ -128,6 +133,11 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 subnet.Delegations = null;
+            }
+
+            if (this.DefaultOutboundAccess != null)
+            {
+                subnet.DefaultOutboundAccess = this.DefaultOutboundAccess;
             }
 
             if (!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))

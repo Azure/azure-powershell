@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Create a GlobalReachConnection
+create a GlobalReachConnection
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-Authorization
 ```
 
 ## DESCRIPTION
-Create a GlobalReachConnection
+create a GlobalReachConnection
 
 ## EXAMPLES
 

@@ -31,11 +31,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="restoreTimestampInUtc">Time to which the account has to be restored (ISO-8601 format).
         /// </param>
-        public RestoreParametersBase(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?))
+
+        /// <param name="restoreWithTtlDisabled">Specifies whether the restored account will have Time-To-Live disabled upon
+        /// the successful restore.
+        /// </param>
+        public RestoreParametersBase(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), bool? restoreWithTtlDisabled = default(bool?))
 
         {
             this.RestoreSource = restoreSource;
             this.RestoreTimestampInUtc = restoreTimestampInUtc;
+            this.RestoreWithTtlDisabled = restoreWithTtlDisabled;
             CustomInit();
         }
 
@@ -59,5 +64,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restoreTimestampInUtc")]
         public System.DateTime? RestoreTimestampInUtc {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the restored account will have Time-To-Live
+        /// disabled upon the successful restore.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "restoreWithTtlDisabled")]
+        public bool? RestoreWithTtlDisabled {get; set; }
     }
 }

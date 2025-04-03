@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected const string DefaultParameterSetName = "DefaultParameter",
                                ResourceIdParameterSet = "ResourceIdParameter",
                                ObjectParameterSet = "ObjectParameter";
-        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
+        private VmssVMInstanceViewTypes UserDataExpand = VmssVMInstanceViewTypes.UserData;
 
         public override void ExecuteCmdlet()
         {

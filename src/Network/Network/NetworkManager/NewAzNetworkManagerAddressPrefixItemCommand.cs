@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.")]
-        [ValidateSet("IPPrefix", "ServiceTag", IgnoreCase = true)]
+           HelpMessage = "AddressPrefix Type. Valid values include 'IPPrefix', 'NetworkGroup' and 'ServiceTag'.")]
+        [ValidateSet("IPPrefix", "ServiceTag", "NetworkGroup", IgnoreCase = true)]
         public string AddressPrefixType { get; set; }
 
         public override void Execute()

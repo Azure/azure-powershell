@@ -107,7 +107,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="provisionError">Error related to resource provisioning.
         /// </param>
-        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), CassandraError provisionError = default(CassandraError))
+
+        /// <param name="azureConnectionMethod">How to connect to the azure services needed for running the cluster
+        /// Possible values include: &#39;None&#39;, &#39;VPN&#39;</param>
+
+        /// <param name="privateLinkResourceId">If the Connection Method is VPN, this is the Id of the private link
+        /// resource that the datacenters need to connect to.
+        /// </param>
+        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), CassandraError provisionError = default(CassandraError), string azureConnectionMethod = default(string), string privateLinkResourceId = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -128,6 +135,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.Deallocated = deallocated;
             this.CassandraAuditLoggingEnabled = cassandraAuditLoggingEnabled;
             this.ProvisionError = provisionError;
+            this.AzureConnectionMethod = azureConnectionMethod;
+            this.PrivateLinkResourceId = privateLinkResourceId;
             CustomInit();
         }
 
@@ -279,5 +288,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisionError")]
         public CassandraError ProvisionError {get; set; }
+
+        /// <summary>
+        /// Gets or sets how to connect to the azure services needed for running the
+        /// cluster Possible values include: &#39;None&#39;, &#39;VPN&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "azureConnectionMethod")]
+        public string AzureConnectionMethod {get; set; }
+
+        /// <summary>
+        /// Gets if the Connection Method is VPN, this is the Id of the private link
+        /// resource that the datacenters need to connect to.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkResourceId")]
+        public string PrivateLinkResourceId {get; private set; }
     }
 }

@@ -20,6 +20,22 @@
 
 ## Upcoming Release
 
+## Version 3.2.0
+* Supported copyComputeScale and pipelineExternalComputeScale in `Set-AzSynapseIntegrationRuntime` Command
+
+## Version 3.1.2
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.21.
+
+## Version 3.1.1
+* Removed "Microsoft.Azure.Management.Synapse" Version "2.6.0-preview" package reference 
+
+## Version 3.1.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 3.0.10
+* Fixed secrets exposure in example documentation.
+
 ## Version 3.0.9
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.

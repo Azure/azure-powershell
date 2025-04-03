@@ -13,7 +13,8 @@ Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 ## SYNTAX
 
 ```
-New-AzContainerAppProbeHeaderObject -Name <String> -Value <String> [<CommonParameters>]
+New-AzContainerAppProbeHeaderObject -Name <String> -Value <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

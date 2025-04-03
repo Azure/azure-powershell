@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.4.0
 * Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
 * Supported Uploaded Limit Schedule

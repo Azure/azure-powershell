@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the route resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="addressPrefix">The destination CIDR to which the route applies.
         /// </param>
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the route resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the route resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -122,10 +123,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string NextHopIPAddress {get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this route overrides overlapping
-        /// BGP routes regardless of LPM.
+        /// Gets a value indicating whether this route overrides overlapping BGP routes
+        /// regardless of LPM.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hasBgpOverride")]
-        public bool? HasBgpOverride {get; set; }
+        public bool? HasBgpOverride {get; private set; }
     }
 }

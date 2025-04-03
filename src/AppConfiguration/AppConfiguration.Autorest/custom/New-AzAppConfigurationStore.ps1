@@ -37,6 +37,8 @@ https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfi
 #>
 function New-AzAppConfigurationStore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
+[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.GenericBreakingChangeAttribute("IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.", "14.0.0", "2.0.0", "2025/05/19")]
+[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore", "14.0.0", "2.0.0", "2025/05/19", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IConfigurationStore", DeprecatedOutputProperties = ("PrivateEndpointConnection Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference"), NewOutputProperties = ("PrivateEndpointConnection System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateEndpointConnectionReference]"))]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

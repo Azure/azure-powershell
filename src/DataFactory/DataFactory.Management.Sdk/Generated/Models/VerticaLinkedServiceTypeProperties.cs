@@ -28,16 +28,32 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// AzureKeyVaultSecretReference.
         /// </param>
 
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="uid">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
         /// <param name="pwd">The Azure key vault secret reference of password in connection string.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public VerticaLinkedServiceTypeProperties(object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public VerticaLinkedServiceTypeProperties(object connectionString = default(object), object server = default(object), object port = default(object), object uid = default(object), object database = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         {
             this.ConnectionString = connectionString;
+            this.Server = server;
+            this.Port = port;
+            this.Uid = uid;
+            this.Database = database;
             this.Pwd = pwd;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -55,6 +71,30 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "uid")]
+        public object Uid {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "database")]
+        public object Database {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -78,6 +118,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
+
+
 
             if (this.Pwd != null)
             {

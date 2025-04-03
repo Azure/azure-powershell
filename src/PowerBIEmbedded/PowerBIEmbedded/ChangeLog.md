@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+* Removed "Microsoft.Azure.Management.PowerBIEmbedded" Version "1.1.1-preview" PackageReference
+* Removed "Microsoft.Azure.Management.PowerBIDedicated" Version "0.11.0-preview" PackageReference
+
 ## Version 2.0.0
 * Removed deprecated workspace collection cmdlets
 

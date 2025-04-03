@@ -15,8 +15,9 @@ Creates or updates a policy exemption.
 ```
 New-AzPolicyExemption -Name <String> -ExemptionCategory <String> -PolicyAssignment <PSObject> [-Scope <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-DisplayName <String>]
- [-Description <String>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,12 +62,23 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ```powershell
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $VM.Id -ExemptionCategory Waiver
 ```
 
 The first command gets a VM named SpecialVM by using the Get-AzVM cmdlet and stores it in the $VM variable.
 The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
 The final command exempts the resource identified by the **Id** property of $VM from the policy assignment in $Assignment.
+
+### Example 5: Policy exemption with resource selector
+```powershell
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
+```
+
+The first command gets the policy assignment named VirtualMachineAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The second command creates a resource selector object that will be used to specify the exemption should only apply to resources located in East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command creates a policy exemption for the assignment $Assignment with the resource selector specified by $ResourceSelector.
 
 ## PARAMETERS
 
@@ -234,6 +246,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

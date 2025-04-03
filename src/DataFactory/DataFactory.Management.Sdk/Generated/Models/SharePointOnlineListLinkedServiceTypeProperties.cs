@@ -43,16 +43,35 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Type: string (or Expression with resultType string).
         /// </param>
 
+        /// <param name="servicePrincipalCredentialType">The service principal credential type to use in Server-To-Server
+        /// authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCert">Specify the base64 encoded certificate of your application registered in
+        /// Azure Active Directory. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCertPassword">Specify the password of your certificate if your certificate has a password
+        /// and you are using AadServicePrincipal authentication. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SharePointOnlineListLinkedServiceTypeProperties(object siteUrl, object tenantId, object servicePrincipalId, SecretBase servicePrincipalKey, string encryptedCredential = default(string))
+        public SharePointOnlineListLinkedServiceTypeProperties(object siteUrl, object tenantId, object servicePrincipalId, SecretBase servicePrincipalKey = default(SecretBase), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalEmbeddedCert = default(SecretBase), SecretBase servicePrincipalEmbeddedCertPassword = default(SecretBase), string encryptedCredential = default(string))
 
         {
             this.SiteUrl = siteUrl;
             this.TenantId = tenantId;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
+            this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
+            this.ServicePrincipalEmbeddedCert = servicePrincipalEmbeddedCert;
+            this.ServicePrincipalEmbeddedCertPassword = servicePrincipalEmbeddedCertPassword;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -95,6 +114,31 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase ServicePrincipalKey {get; set; }
 
         /// <summary>
+        /// Gets or sets the service principal credential type to use in
+        /// Server-To-Server authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalCredentialType")]
+        public object ServicePrincipalCredentialType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the base64 encoded certificate of your application
+        /// registered in Azure Active Directory. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalEmbeddedCert")]
+        public SecretBase ServicePrincipalEmbeddedCert {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the password of your certificate if your certificate
+        /// has a password and you are using AadServicePrincipal authentication. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "servicePrincipalEmbeddedCertPassword")]
+        public SecretBase ServicePrincipalEmbeddedCertPassword {get; set; }
+
+        /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
         /// are encrypted using the integration runtime credential manager. Type:
         /// string.
@@ -121,10 +165,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServicePrincipalId");
             }
-            if (this.ServicePrincipalKey == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServicePrincipalKey");
-            }
+
+
+
 
 
 

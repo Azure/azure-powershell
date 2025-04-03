@@ -105,7 +105,6 @@ Gets or sets the private ip allocation method.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: dynamic, static
 
 Required: False
 Position: Named

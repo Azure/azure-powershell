@@ -84,7 +84,7 @@ $VNet=Get-AzVirtualNetwork -ResourceGroupName {rgName} -Name {vnetName}
 
 + private link service connection (object in memory)
 ```
-$PLSConnection = New-AzPrivateLinkServiceConnection -Name {plsConnectionName} -PrivateLinkServiceId $TopLevelResource.Id -GroupId $TopLevelResource.GroupId
+$PLSConnection = New-AzPrivateLinkServiceConnection -Name {plsConnectionName} -PrivateLinkServiceId $TopLevelResource.Id -GroupId $PrivateLinkResource.GroupId
 ```
 
 + endpoint

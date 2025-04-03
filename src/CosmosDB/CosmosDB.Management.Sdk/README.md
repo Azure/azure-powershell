@@ -26,8 +26,9 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: 99139d0fae73a2a4a884c0ef307dc6eb8d290457
-apiversion: "2023-11-15"
+commit: 2afa5b356adf6cf51209d2cf28d38644c69d9832
+apiversion: "2024-11-15"
+previewapiversion: "2024-12-01-preview"
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/cosmos-db.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/managedCassandra.json
@@ -38,6 +39,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/rbac.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/restorable.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(previewapiversion)/tablerbac.json
 
 output-folder: Generated
 

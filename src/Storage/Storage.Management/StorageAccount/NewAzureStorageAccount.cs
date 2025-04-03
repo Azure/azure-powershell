@@ -76,6 +76,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.SkuName.PremiumZRS,
             StorageModels.SkuName.StandardGzrs,
             StorageModels.SkuName.StandardRagzrs,
+            StorageModels.SkuName.StandardV2LRS,
+            StorageModels.SkuName.StandardV2ZRS,
+            StorageModels.SkuName.StandardV2Gzrs,
+            StorageModels.SkuName.StandardV2GRS,
+            StorageModels.SkuName.PremiumV2LRS,
+            StorageModels.SkuName.PremiumV2ZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -116,6 +122,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Access Tier.")]
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
+            AccountAccessTier.Cold,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -246,6 +253,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? enableLocalUser = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables extended group support with local users feature, if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableExtendedGroup
+        {
+            get
+            {
+                return enableExtendedGroup != null ? enableExtendedGroup.Value : false;
+            }
+            set
+            {
+                enableExtendedGroup = value;
+            }
+        }
+        private bool? enableExtendedGroup = null;
 
         [Parameter(
             Mandatory = false,
@@ -915,6 +939,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.IsLocalUserEnabled = this.enableLocalUser;
             }
+            if (this.enableExtendedGroup != null)
+            {
+                createParameters.EnableExtendedGroups = this.enableExtendedGroup;
+            }
             if (this.AllowedCopyScope != null)
             {
                 createParameters.AllowedCopyScope = this.AllowedCopyScope;
@@ -931,7 +959,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-            this.WriteStorageAccount(storageAccount);
+            this.WriteStorageAccount(storageAccount, DefaultContext);
         }
     }
 }

@@ -88,7 +88,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="provisionError">Error related to resource provisioning.
         /// </param>
-        public DataCenterResourceProperties(string provisioningState = default(string), string dataCenterLocation = default(string), string delegatedSubnetId = default(string), int? nodeCount = default(int?), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), string base64EncodedCassandraYamlFragment = default(string), string managedDiskCustomerKeyUri = default(string), string backupStorageCustomerKeyUri = default(string), string sku = default(string), string diskSku = default(string), int? diskCapacity = default(int?), bool? availabilityZone = default(bool?), AuthenticationMethodLdapProperties authenticationMethodLdapProperties = default(AuthenticationMethodLdapProperties), bool? deallocated = default(bool?), CassandraError provisionError = default(CassandraError))
+
+        /// <param name="privateEndpointIPAddress">Ip of the VPN Endpoint for this data center.
+        /// </param>
+        public DataCenterResourceProperties(string provisioningState = default(string), string dataCenterLocation = default(string), string delegatedSubnetId = default(string), int? nodeCount = default(int?), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), string base64EncodedCassandraYamlFragment = default(string), string managedDiskCustomerKeyUri = default(string), string backupStorageCustomerKeyUri = default(string), string sku = default(string), string diskSku = default(string), int? diskCapacity = default(int?), bool? availabilityZone = default(bool?), AuthenticationMethodLdapProperties authenticationMethodLdapProperties = default(AuthenticationMethodLdapProperties), bool? deallocated = default(bool?), CassandraError provisionError = default(CassandraError), string privateEndpointIPAddress = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -106,6 +109,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.AuthenticationMethodLdapProperties = authenticationMethodLdapProperties;
             this.Deallocated = deallocated;
             this.ProvisionError = provisionError;
+            this.PrivateEndpointIPAddress = privateEndpointIPAddress;
             CustomInit();
         }
 
@@ -227,5 +231,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisionError")]
         public CassandraError ProvisionError {get; set; }
+
+        /// <summary>
+        /// Gets or sets ip of the VPN Endpoint for this data center.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpointIpAddress")]
+        public string PrivateEndpointIPAddress {get; set; }
     }
 }

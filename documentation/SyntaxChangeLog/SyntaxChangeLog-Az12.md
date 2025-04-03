@@ -1,3 +1,148 @@
+## 12.5.0 - October 2024
+#### Az.Compute 8.5.0 
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-SecurityPostureId`, `-SecurityPostureExcludeExtension`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-SecurityPostureId`, `-SecurityPostureExcludeExtension`
+#### Az.DataProtection 2.5.0 
+* Modified cmdlet `Initialize-AzDataProtectionRestoreRequest`
+   - Changed the type of parameter `-RestoreConfiguration` from `KubernetesClusterRestoreCriteria` to `PSObject`
+* Modified cmdlet `New-AzDataProtectionRestoreConfigurationClientObject`
+   - Added parameters `-ResourceModifierReference`, `-StagingResourceGroupId`, `-StagingStorageAccountId`
+* Modified cmdlet `Start-AzDataProtectionBackupInstanceRestore`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Stop-AzDataProtectionBackupInstanceProtection`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Suspend-AzDataProtectionBackupInstanceBackup`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Unlock-AzDataProtectionResourceGuardOperation`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupInstance`
+   - Added parameters `-ResourceGuardOperationRequest`, `-Token`, `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupInstanceAssociatedPolicy`
+   - Added parameters `-ResourceGuardOperationRequest`, `-Token`, `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupVault`
+   - Added parameter `-SecureToken`
+#### Az.EventGrid 2.1.0 
+* Removed cmdlet `New-AzEventGridAdvancedFilterObject`, `New-AzEventGridDeliveryAttributeMappingObject`, `New-AzEventGridFilterObject`
+* Added cmdlet `New-AzEventGridBoolEqualsAdvancedFilterObject`, `New-AzEventGridBoolEqualsFilterObject`, `New-AzEventGridDynamicDeliveryAttributeMappingObject`, `New-AzEventGridEventSubscriptionFilterObject`, `New-AzEventGridIsNotNullAdvancedFilterObject`, `New-AzEventGridIsNotNullFilterObject`, `New-AzEventGridIsNullOrUndefinedAdvancedFilterObject`, `New-AzEventGridIsNullOrUndefinedFilterObject`, `New-AzEventGridNumberGreaterThanAdvancedFilterObject`, `New-AzEventGridNumberGreaterThanFilterObject`, `New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject`, `New-AzEventGridNumberGreaterThanOrEqualsFilterObject`, `New-AzEventGridNumberInAdvancedFilterObject`, `New-AzEventGridNumberInFilterObject`, `New-AzEventGridNumberInRangeAdvancedFilterObject`, `New-AzEventGridNumberInRangeFilterObject`, `New-AzEventGridNumberLessThanAdvancedFilterObject`, `New-AzEventGridNumberLessThanFilterObject`, `New-AzEventGridNumberLessThanOrEqualsAdvancedFilterObject`, `New-AzEventGridNumberLessThanOrEqualsFilterObject`, `New-AzEventGridNumberNotInAdvancedFilterObject`, `New-AzEventGridNumberNotInFilterObject`, `New-AzEventGridNumberNotInRangeAdvancedFilterObject`, `New-AzEventGridNumberNotInRangeFilterObject`, `New-AzEventGridStaticDeliveryAttributeMappingObject`, `New-AzEventGridStringBeginsWithAdvancedFilterObject`, `New-AzEventGridStringBeginsWithFilterObject`, `New-AzEventGridStringContainsAdvancedFilterObject`, `New-AzEventGridStringContainsFilterObject`, `New-AzEventGridStringEndsWithAdvancedFilterObject`, `New-AzEventGridStringEndsWithFilterObject`, `New-AzEventGridStringInAdvancedFilterObject`, `New-AzEventGridStringInFilterObject`, `New-AzEventGridStringNotBeginsWithAdvancedFilterObject`, `New-AzEventGridStringNotBeginsWithFilterObject`, `New-AzEventGridStringNotContainsAdvancedFilterObject`, `New-AzEventGridStringNotContainsFilterObject`, `New-AzEventGridStringNotEndsWithAdvancedFilterObject`, `New-AzEventGridStringNotEndsWithFilterObject`, `New-AzEventGridStringNotInAdvancedFilterObject`, `New-AzEventGridStringNotInFilterObject`
+#### Az.Migrate 2.5.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-LinuxLicenseType`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-LinuxLicenseType`
+#### Az.Monitor 5.3.0 
+* Added cmdlet `Get-AzPipelineGroup`, `New-AzPipelineGroup`, `Remove-AzPipelineGroup`, `Update-AzPipelineGroup`
+#### Az.PrivateDns 1.1.0 
+* Modified cmdlet `New-AzPrivateDnsVirtualNetworkLink`
+   - Added parameter `-ResolutionPolicy`
+* Modified cmdlet `Set-AzPrivateDnsVirtualNetworkLink`
+   - Added parameter `-ResolutionPolicy`
+#### Az.Resources 7.6.0 
+* Modified cmdlet `Update-AzADAppFederatedCredential`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Modified cmdlet `Update-AzADGroup`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Modified cmdlet `Update-AzADServicePrincipalAppRoleAssignment`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Added cmdlet `Get-AzDataBoundaryScope`, `Get-AzDataBoundaryTenant`, `Set-AzDataBoundary`
+
+## 12.4.0 - October 2024
+#### Az.App 1.1.0 
+* Modified cmdlet `Get-AzContainerApp`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `Get-AzContainerAppAuthToken`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `Get-AzContainerAppDiagnosticRoot`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `New-AzContainerAppManagedCert`
+   - Removed parameter `-PassThru`
+#### Az.Billing 2.1.0 
+* Removed cmdlet `Get-UsageAggregates`
+* Added cmdlet `Get-AzUsageAggregate`
+#### Az.Compute 8.4.0 
+* Modified cmdlet `New-AzSshKey`
+   - Added parameter `-SshKeyType`
+* Modified cmdlet `New-AzVM`
+   - Added parameter `-SshKeyType`
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`, `-EnableResilientVMCreate`, `-EnableResilientVMDelete`
+* Modified cmdlet `Update-AzVmss`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`, `-EnableResilientVMCreate`, `-EnableResilientVMDelete`
+#### Az.CosmosDB 1.15.0 
+* Modified cmdlet `Restore-AzCosmosDBAccount`
+   - Added parameter `-DisableTtl`
+#### Az.ElasticSan 1.1.0 
+* Modified cmdlet `New-AzElasticSanVolumeGroup`
+   - Added parameter `-EnforceDataIntegrityCheckForIscsi`
+* Modified cmdlet `Update-AzElasticSanVolumeGroup`
+   - Added parameter `-EnforceDataIntegrityCheckForIscsi`
+#### Az.Network 7.9.0 
+* Modified cmdlet `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+   - Added parameter `-Sensitivity`
+* Modified cmdlet `New-AzNetworkWatcherFlowLog`
+   - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
+* Modified cmdlet `New-AzPrivateLinkService`
+   - Added parameter `-DestinationIPAddress`
+* Modified cmdlet `Set-AzNetworkWatcherFlowLog`
+   - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
+* Added cmdlet `Get-AzBastionShareableLink`, `New-AzBastionShareableLink`, `Remove-AzBastionShareableLink`
+#### Az.Resources 7.5.0 
+* Modified cmdlet `New-AzPolicyAssignment`
+   - Added parameters `-Override`, `-ResourceSelector`
+* Modified cmdlet `New-AzPolicyExemption`
+   - Added parameter `-ResourceSelector`
+* Modified cmdlet `Update-AzPolicyAssignment`
+   - Added parameters `-Override`, `-ResourceSelector`
+* Modified cmdlet `Update-AzPolicyExemption`
+   - Added parameter `-ResourceSelector`
+
+## 12.3.0 - September 2024
+#### Az.Compute 8.3.0 
+* Modified cmdlet `Get-AzCapacityReservationGroup`
+   - Added parameter `-ResourceIdsOnly`
+* Modified cmdlet `Remove-AzVMDataDisk`
+   - Added parameter `-ForceDetach`
+#### Az.Databricks 1.9.0 
+* Modified cmdlet `New-AzDatabricksWorkspace`
+   - Added parameters `-DefaultCatalogInitialType`, `-ManagedDiskKeySource`, `-ManagedServiceKeySource`
+* Modified cmdlet `Update-AzDatabricksWorkspace`
+   - Added parameters `-DefaultCatalogInitialType`, `-ManagedDiskKeySource`, `-ManagedServiceKeySource`
+#### Az.DevCenter 1.2.0 
+* Modified cmdlet `New-AzDevCenterAdminCatalog`
+   - Added parameters `-SyncType`, `-Tag`
+* Modified cmdlet `New-AzDevCenterAdminDevCenter`
+   - Added parameters `-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus`, `-NetworkSettingMicrosoftHostedNetworkEnableStatus`, `-PlanId`, `-ProjectCatalogSettingCatalogItemSyncEnableStatus`
+* Modified cmdlet `New-AzDevCenterAdminPool`
+   - Added parameters `-StopOnDisconnectGracePeriodMinute`, `-StopOnDisconnectStatus`
+* Modified cmdlet `New-AzDevCenterAdminProject`
+   - Added parameters `-CatalogSettingCatalogItemSyncType`, `-IdentityType`, `-IdentityUserAssignedIdentity`
+* Modified cmdlet `New-AzDevCenterAdminProjectEnvironmentType`
+   - Added parameter `-DisplayName`
+* Modified cmdlet `Update-AzDevCenterAdminDevCenter`
+   - Added parameters `-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus`, `-NetworkSettingMicrosoftHostedNetworkEnableStatus`, `-PlanId`, `-ProjectCatalogSettingCatalogItemSyncEnableStatus`
+* Modified cmdlet `Update-AzDevCenterAdminProject`
+   - Added parameters `-CatalogSettingCatalogItemSyncType`, `-IdentityType`, `-IdentityUserAssignedIdentity`
+* Modified cmdlet `Update-AzDevCenterAdminProjectEnvironmentType`
+   - Added parameter `-DisplayName`
+* Added cmdlet `Connect-AzDevCenterAdminCatalog`, `Connect-AzDevCenterAdminProjectCatalog`, `Get-AzDevCenterAdminCustomizationTask`, `Get-AzDevCenterAdminCustomizationTaskErrorDetail`, `Get-AzDevCenterAdminPlan`, `Get-AzDevCenterAdminPlanMember`, `Get-AzDevCenterAdminProjectCatalog`, `Get-AzDevCenterAdminProjectCatalogSyncErrorDetail`, `Get-AzDevCenterAdminProjectEnvironmentDefinition`, `Get-AzDevCenterAdminProjectEnvironmentDefinitionErrorDetail`, `Get-AzDevCenterAdminProjectInheritedSetting`, `Invoke-AzDevCenterAdminExecuteCheckScopedNameAvailability`, `New-AzDevCenterAdminPlan`, `New-AzDevCenterAdminPlanMember`, `New-AzDevCenterAdminProjectCatalog`, `Remove-AzDevCenterAdminPlan`, `Remove-AzDevCenterAdminPlanMember`, `Remove-AzDevCenterAdminProjectCatalog`, `Sync-AzDevCenterAdminProjectCatalog`, `Update-AzDevCenterAdminPlan`, `Update-AzDevCenterAdminPlanMember`, `Update-AzDevCenterAdminProjectCatalog`
+#### Az.HDInsight 6.2.0 
+* Modified cmdlet `New-AzHDInsightCluster`
+   - Added parameters `-PublicIpTagType`, `-PublicIpTag`, `-OutboundDependenciesManagedType`
+* Added cmdlet `Disable-AzHDInsightAzureMonitorAgent`, `Enable-AzHDInsightAzureMonitorAgent`, `Get-AzHDInsightAzureMonitorAgent`, `Update-AzHDInsightCluster`
+#### Az.Resources 7.4.0 
+* Modified cmdlet `Remove-AzResourceGroup`
+   - Added parameter `-ForceDeletionType`
+#### Az.Security 1.7.0 
+* Added cmdlet `Get-AzSecurityDefenderForStorage`, `Update-AzSecurityDefenderForStorage`
+#### Az.Sql 5.3.0 
+* Modified cmdlet `New-AzSqlInstance`
+   - Added parameter `-AuthenticationMetadata`
+* Modified cmdlet `Set-AzSqlInstance`
+   - Added parameter `-AuthenticationMetadata`
+
 ## 12.2.0 - August 2024
 #### Az.Compute 8.2.0 
 * Modified cmdlet `New-AzRestorePointCollection`
@@ -931,6 +1076,9 @@
    - Changed the type of parameter `-Status` from `Status` to `String`
    - Output type changed from ``PSSupportTicket`` to ``ISupportTicketDetails``
 * Added cmdlet `Get-AzSupportChatTranscript`, `Get-AzSupportChatTranscriptsNoSubscription`, `Get-AzSupportCommunication`, `Get-AzSupportCommunicationsNoSubscription`, `Get-AzSupportFile`, `Get-AzSupportFilesNoSubscription`, `Get-AzSupportFileWorkspace`, `Get-AzSupportFileWorkspacesNoSubscription`, `Get-AzSupportOperation`, `Get-AzSupportTicketsNoSubscription`, `New-AzSupportCommunication`, `New-AzSupportCommunicationsNoSubscription`, `New-AzSupportFileAndUpload`, `New-AzSupportFileAndUploadNoSubscription`, `New-AzSupportFileWorkspace`, `New-AzSupportFileWorkspacesNoSubscription`, `New-AzSupportTicketsNoSubscription`, `Test-AzSupportCommunicationNameAvailability`, `Test-AzSupportCommunicationsNoSubscriptionNameAvailability`, `Test-AzSupportTicketNameAvailability`, `Test-AzSupportTicketsNoSubscriptionNameAvailability`, `Update-AzSupportTicketsNoSubscription`
+
+
+
 
 
 

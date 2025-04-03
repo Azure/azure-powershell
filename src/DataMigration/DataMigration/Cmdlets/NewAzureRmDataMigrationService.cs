@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             DataMigrationService response = null;
             try
             {
-                response = DataMigrationClient.Services.CreateOrUpdate(serviceParams, ResourceGroupName, Name);
+                response = DataMigrationClient.Services.CreateOrUpdate(ResourceGroupName, Name, serviceParams);
             }
             catch (ApiErrorException ex)
             {

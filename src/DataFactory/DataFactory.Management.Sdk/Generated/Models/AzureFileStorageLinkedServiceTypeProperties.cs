@@ -61,7 +61,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public AzureFileStorageLinkedServiceTypeProperties(object host = default(object), object userId = default(object), SecretBase password = default(SecretBase), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), object fileShare = default(object), object snapshot = default(object), string encryptedCredential = default(string))
+
+        /// <param name="serviceEndpoint">File service endpoint of the Azure File Storage resource. It is mutually
+        /// exclusive with connectionString, sasUri property.
+        /// </param>
+
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public AzureFileStorageLinkedServiceTypeProperties(object host = default(object), object userId = default(object), SecretBase password = default(SecretBase), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), object fileShare = default(object), object snapshot = default(object), string encryptedCredential = default(string), object serviceEndpoint = default(object), CredentialReference credential = default(CredentialReference))
 
         {
             this.Host = host;
@@ -74,6 +81,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.FileShare = fileShare;
             this.Snapshot = snapshot;
             this.EncryptedCredential = encryptedCredential;
+            this.ServiceEndpoint = serviceEndpoint;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -152,6 +161,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets file service endpoint of the Azure File Storage resource. It
+        /// is mutually exclusive with connectionString, sasUri property.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceEndpoint")]
+        public object ServiceEndpoint {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -176,6 +199,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }

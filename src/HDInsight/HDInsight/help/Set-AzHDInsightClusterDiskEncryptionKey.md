@@ -17,7 +17,8 @@ Rotates the disk encryption key of the specified HDInsight cluster.
 ```
 Set-AzHDInsightClusterDiskEncryptionKey [-ResourceGroupName] <String> [-Name] <String>
  -EncryptionKeyName <String> -EncryptionKeyVersion <String> -EncryptionVaultUri <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -41,7 +42,7 @@ Rotate the disk encryption key of the specified HDInsight cluster. For this oper
 
 ### Example 1
 ```powershell
-        # Cluster configuration info
+# Cluster configuration info
         $clusterResourceGroupName = "Group"
         $clusterName = "your-cmk-cluster"
 
@@ -55,7 +56,7 @@ Set-AzHDInsightClusterDiskEncryptionKey `
 
 ### Example 2
 ```powershell
-        # Cluster configuration info
+# Cluster configuration info
         $clusterName = "your-cmk-cluster"
 
 $cluster= Get-AzHDInsightCluster -ClusterName $clusterName 

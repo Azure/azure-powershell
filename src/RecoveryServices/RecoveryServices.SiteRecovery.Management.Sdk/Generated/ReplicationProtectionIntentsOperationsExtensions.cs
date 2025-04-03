@@ -18,15 +18,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='skipToken'>
         /// The pagination token.
         /// </param>
         /// <param name='takeToken'>
         /// The page size.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ReplicationProtectionIntent> List(this IReplicationProtectionIntentsOperations operations, string skipToken = default(string), string takeToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<ReplicationProtectionIntent> List(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string skipToken = default(string), string takeToken = default(string))
         {
-                return ((IReplicationProtectionIntentsOperations)operations).ListAsync(skipToken, takeToken).GetAwaiter().GetResult();
+                return ((IReplicationProtectionIntentsOperations)operations).ListAsync(resourceGroupName, resourceName, skipToken, takeToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,6 +42,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='skipToken'>
         /// The pagination token.
         /// </param>
@@ -44,9 +58,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationProtectionIntent>> ListAsync(this IReplicationProtectionIntentsOperations operations, string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationProtectionIntent>> ListAsync(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string skipToken = default(string), string takeToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, skipToken, takeToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -57,12 +71,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='intentObjectName'>
         /// Replication protection intent name.
         /// </param>
-        public static ReplicationProtectionIntent Get(this IReplicationProtectionIntentsOperations operations, string intentObjectName)
+        public static ReplicationProtectionIntent Get(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string intentObjectName)
         {
-                return ((IReplicationProtectionIntentsOperations)operations).GetAsync(intentObjectName).GetAwaiter().GetResult();
+                return ((IReplicationProtectionIntentsOperations)operations).GetAsync(resourceGroupName, resourceName, intentObjectName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -71,15 +92,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='intentObjectName'>
         /// Replication protection intent name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ReplicationProtectionIntent> GetAsync(this IReplicationProtectionIntentsOperations operations, string intentObjectName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionIntent> GetAsync(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string intentObjectName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(intentObjectName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, intentObjectName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -90,12 +118,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='intentObjectName'>
         /// A name for the replication protection item.
         /// </param>
-        public static ReplicationProtectionIntent Create(this IReplicationProtectionIntentsOperations operations, string intentObjectName, CreateProtectionIntentProperties properties = default(CreateProtectionIntentProperties))
+        public static ReplicationProtectionIntent Create(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string intentObjectName, CreateProtectionIntentProperties properties = default(CreateProtectionIntentProperties))
         {
-                return ((IReplicationProtectionIntentsOperations)operations).CreateAsync(intentObjectName, properties).GetAwaiter().GetResult();
+                return ((IReplicationProtectionIntentsOperations)operations).CreateAsync(resourceGroupName, resourceName, intentObjectName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -104,15 +139,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='intentObjectName'>
         /// A name for the replication protection item.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ReplicationProtectionIntent> CreateAsync(this IReplicationProtectionIntentsOperations operations, string intentObjectName, CreateProtectionIntentProperties properties = default(CreateProtectionIntentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionIntent> CreateAsync(this IReplicationProtectionIntentsOperations operations, string resourceGroupName, string resourceName, string intentObjectName, CreateProtectionIntentProperties properties = default(CreateProtectionIntentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(intentObjectName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, intentObjectName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

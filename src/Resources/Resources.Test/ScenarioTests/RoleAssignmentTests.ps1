@@ -553,6 +553,31 @@ function Test-RaGetByScope
 
 <#
 .SYNOPSIS
+Tests verifies get of RoleAssignment With AtScope
+#>
+function Test-RaGetWithAtScope
+{
+    # Setup
+    $subscription = $(Get-AzContext).Subscription
+    $resourceGroups = Get-AzResourceGroup | Select-Object -Last 9 -Wait
+    $scope1 = '/subscriptions/'+ $subscription[0].Id
+    $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    
+    $ras_scope_list = @()
+    $ras_atscope_list = @()
+    
+    $ras_scope = Get-AzRoleAssignment -Scope $scope1
+    $ras_scope | Select-Object -ExpandProperty Scope -Unique | ForEach-Object { $ras_scope_list += $_ }
+
+    $ras_atscope = Get-AzRoleAssignment -Scope $scope1 -AtScope
+    $ras_atscope | Select-Object -ExpandProperty Scope -Unique | ForEach-Object { $ras_atscope_list += $_ }
+
+    Assert-True { $ras_scope_list -contains $scope2 }
+    Assert-False { $ras_Atscope_list -contains $scope2 }
+}
+
+<#
+.SYNOPSIS
 Tests verifies get of RoleAssignment using only the role definition name
 #>
 function Test-RaGetOnlyByRoleDefinitionName

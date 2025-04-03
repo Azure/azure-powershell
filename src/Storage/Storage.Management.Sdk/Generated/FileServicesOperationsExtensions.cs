@@ -151,5 +151,140 @@ namespace Microsoft.Azure.Management.Storage
                 return _result.Body;
             }
         }
+        /// <summary>
+        /// Gets the usages of file service in storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='maxpagesize'>
+        /// Optional, specifies the maximum number of file service usages to be
+        /// included in the list response.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<FileServiceUsage> ListServiceUsages(this IFileServicesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?))
+        {
+                return ((IFileServicesOperations)operations).ListServiceUsagesAsync(resourceGroupName, accountName, maxpagesize).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the usages of file service in storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='maxpagesize'>
+        /// Optional, specifies the maximum number of file service usages to be
+        /// included in the list response.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FileServiceUsage>> ListServiceUsagesAsync(this IFileServicesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListServiceUsagesWithHttpMessagesAsync(resourceGroupName, accountName, maxpagesize, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the usage of file service in storage account including account limits,
+        /// file share limits and constants used in recommendations and bursting
+        /// formula.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        public static FileServiceUsage GetServiceUsage(this IFileServicesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IFileServicesOperations)operations).GetServiceUsageAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the usage of file service in storage account including account limits,
+        /// file share limits and constants used in recommendations and bursting
+        /// formula.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FileServiceUsage> GetServiceUsageAsync(this IFileServicesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetServiceUsageWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the usages of file service in storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<FileServiceUsage> ListServiceUsagesNext(this IFileServicesOperations operations, string nextPageLink)
+        {
+                return ((IFileServicesOperations)operations).ListServiceUsagesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the usages of file service in storage account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FileServiceUsage>> ListServiceUsagesNextAsync(this IFileServicesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListServiceUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
     }
 }

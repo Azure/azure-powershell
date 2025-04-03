@@ -28,14 +28,14 @@ Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Strin
 
 ### StartViaIdentityExpanded
 ```
-Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-StartVM]
+Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-StartVM]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
-Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> -Body <IStartRequest>
+Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -145,7 +145,7 @@ Start SAP instance(s) request body.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
 Parameter Sets: Start, StartViaIdentity
 Aliases:
 
@@ -177,7 +177,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StartViaIdentityExpanded, StartViaIdentity
 Aliases:
 
@@ -266,6 +266,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -315,14 +316,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
 
 ## NOTES
+
+ALIASES
+
+Start-AzVISApplicationInstance
 
 ## RELATED LINKS

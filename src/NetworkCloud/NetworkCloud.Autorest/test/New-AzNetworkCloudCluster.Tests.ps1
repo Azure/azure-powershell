@@ -20,27 +20,23 @@ Describe 'New-AzNetworkCloudCluster' {
             $tagHash = @{
                 tag1 = $clusterconfig.tags
             }
-            $password = ConvertTo-SecureString "bmcPassword" -AsPlainText
-            $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
+            $password = ConvertTo-SecureString "********" -AsPlainText -Force
+            $bmmConfigurationData1 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress1 -BootMacAddress $clusterconfig.bootMacAddress1 -RackSlot 1 -SerialNumber  $clusterconfig.serialNumber1 -MachineDetail "machineDetail" -MachineName "lab00r750wkr1"
             $bmmConfigurationData2 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress2 -BootMacAddress $clusterconfig.bootMacAddress2 -RackSlot 2 -SerialNumber $clusterconfig.serialNumber2 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr1"
             $bmmConfigurationData3 = New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername $clusterconfig.bmcCredsUsername -BmcMacAddress $clusterconfig.bmcMacAddress3 -BootMacAddress $clusterconfig.bootMacAddress3 -RackSlot 3 -SerialNumber $clusterconfig.serialNumber3 -MachineDetail "machineDetailmgr" -MachineName "lab00r750mgr2"
             $bareMetalMachineConfigurationData = @($bmmConfigurationData1, $bmmConfigurationData2, $bmmConfigurationData3)
-            $saConfigurationData = New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber $clusterconfig.serialNumber1 -StorageApplianceName "storageApplianceName"
 
-            $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.networkRackId -RackSerialNumber $clusterconfig.rackSerialNumber -RackSkuId $clusterconfig.rackSkuId -AvailabilityZone "1" -RackLocation $clusterconfig.rackDefinitionRackLocation  -StorageApplianceConfigurationData $saConfigurationData -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
-            $storageapplianceconfigurationdata = @($saConfigurationData)
+            $computerackdefinition = New-AzNetworkCloudRackDefinitionObject -NetworkRackId $clusterconfig.aggregatorRack.networkRackId -RackSerialNumber $clusterconfig.computeRack.serialNumber -RackSkuId $clusterconfig.computeRack.rackSkuId -AvailabilityZone "1" -RackLocation $clusterconfig.rackDefinitionRackLocation  -BareMetalMachineConfigurationData $bareMetalMachineConfigurationData
             $baremetalmachineconfigurationdata = @($bmmconfigurationdata1)
 
-            $securePassword = ConvertTo-SecureString $clusterconfig.clusterServicePrincipalPassword -asplaintext -force
+            $securePassword = ConvertTo-SecureString $clusterconfig.clusterServicePrincipalPassword -AsPlainText -Force
 
             New-AzNetworkCloudCluster -ResourceGroupName $clusterconfig.clusterRg -Name $clusterconfig.clusterName `
-                -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.networkRackId `
-                -AggregatorOrSingleRackDefinitionRackSerialNumber $clusterconfig.rackSerialNumber `
-                -AggregatorOrSingleRackDefinitionRackSkuId $clusterconfig.rackSkuId `
-                -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.rackDefinitionAvailabilityZone `
-                -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata `
-                -AggregatorOrSingleRackDefinitionRackLocation $clusterconfig.rackDefinitionRackLocation `
-                -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata `
+                -AggregatorOrSingleRackDefinitionNetworkRackId $clusterconfig.aggregatorRack.networkRackId `
+                -AggregatorOrSingleRackDefinitionRackSerialNumber $clusterconfig.aggregatorRack.serialNumber `
+                -AggregatorOrSingleRackDefinitionRackSkuId $clusterconfig.aggregatorRack.rackSkuId `
+                -AggregatorOrSingleRackDefinitionAvailabilityZone $clusterconfig.aggregatorRack.availabilityZone`
+                -AggregatorOrSingleRackDefinitionRackLocation "Foo Datacenter, Floor 3, Aisle 9, Rack 2" `
                 -ClusterType $clusterconfig.clusterType -ClusterVersion $clusterconfig.clusterVersion `
                 -ExtendedLocationName $clusterconfig.extendedLocation -ExtendedLocationType $common.customLocationType `
                 -Location $common.location `

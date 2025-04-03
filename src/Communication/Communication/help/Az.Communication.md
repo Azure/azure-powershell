@@ -17,6 +17,9 @@ Get the CommunicationService and its properties.
 ### [Get-AzCommunicationServiceKey](Get-AzCommunicationServiceKey.md)
 Get the access keys of the CommunicationService resource.
 
+### [Get-AzCommunicationServiceSmtpUsername](Get-AzCommunicationServiceSmtpUsername.md)
+Get a SmtpUsernameResource.
+
 ### [Get-AzEmailService](Get-AzEmailService.md)
 Get the EmailService and its properties.
 
@@ -39,17 +42,23 @@ Create a new CommunicationService or update an existing CommunicationService.
 Regenerate CommunicationService access key.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
+### [New-AzCommunicationServiceSmtpUsername](New-AzCommunicationServiceSmtpUsername.md)
+create an SmtpUsernameResource.
+
 ### [New-AzEmailService](New-AzEmailService.md)
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 
 ### [New-AzEmailServiceDomain](New-AzEmailServiceDomain.md)
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 
 ### [New-AzEmailServiceSenderUsername](New-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.
 
 ### [Remove-AzCommunicationService](Remove-AzCommunicationService.md)
 Operation to delete a CommunicationService.
+
+### [Remove-AzCommunicationServiceSmtpUsername](Remove-AzCommunicationServiceSmtpUsername.md)
+Operation to delete a single SmtpUsername resource.
 
 ### [Remove-AzEmailService](Remove-AzEmailService.md)
 Operation to delete a EmailService.
@@ -74,6 +83,9 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ### [Update-AzCommunicationService](Update-AzCommunicationService.md)
 Operation to update an existing CommunicationService.
+
+### [Update-AzCommunicationServiceSmtpUsername](Update-AzCommunicationServiceSmtpUsername.md)
+update an SmtpUsernameResource.
 
 ### [Update-AzEmailService](Update-AzEmailService.md)
 Operation to update an existing EmailService.

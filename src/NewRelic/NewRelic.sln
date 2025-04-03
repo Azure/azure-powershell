@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{54F870E9-4F50-4ABD-9218-DA58067BE673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NewRelic", "NewRelic.Autorest\Az.NewRelic.csproj", "{BA1B5857-8E9E-45B2-A4A8-A6A3C255BD8C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewRelic", "NewRelic\NewRelic.csproj", "{2240B369-C9C0-46F2-86F4-5786C4F0A767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NewRelic", "..\..\generated\NewRelic\NewRelic.Autorest\Az.NewRelic.csproj", "{EE6A32C0-9550-405D-8A00-7750E6719FD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,14 +54,14 @@ Global
 		{54F870E9-4F50-4ABD-9218-DA58067BE673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F870E9-4F50-4ABD-9218-DA58067BE673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F870E9-4F50-4ABD-9218-DA58067BE673}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA1B5857-8E9E-45B2-A4A8-A6A3C255BD8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA1B5857-8E9E-45B2-A4A8-A6A3C255BD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA1B5857-8E9E-45B2-A4A8-A6A3C255BD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA1B5857-8E9E-45B2-A4A8-A6A3C255BD8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2240B369-C9C0-46F2-86F4-5786C4F0A767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2240B369-C9C0-46F2-86F4-5786C4F0A767}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2240B369-C9C0-46F2-86F4-5786C4F0A767}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2240B369-C9C0-46F2-86F4-5786C4F0A767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE6A32C0-9550-405D-8A00-7750E6719FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE6A32C0-9550-405D-8A00-7750E6719FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE6A32C0-9550-405D-8A00-7750E6719FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE6A32C0-9550-405D-8A00-7750E6719FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{946ADE92-4AE9-4EAB-A5CB-6963C2DCABB5} = {E9EEBAF1-7151-4C72-9B0A-5E992B3769E1}

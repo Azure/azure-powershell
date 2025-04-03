@@ -29,8 +29,7 @@ Get-AzSynapseLinkConnectionLinkTableStatus -WorkspaceObject <PSSynapseWorkspace>
 ### GetByInputObject
 ```
 Get-AzSynapseLinkConnectionLinkTableStatus -MaxSegmentCount <Int32> -InputObject <PSLinkConnectionResource>
- [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.HDInsight
             this.ScriptExecutionHistory = new ScriptExecutionHistoryOperations(this);
             this.VirtualMachines = new VirtualMachinesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-15-preview";
+            this.ApiVersion = "2024-08-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

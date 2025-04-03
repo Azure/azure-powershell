@@ -11,11 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AnalysisServices.Dataplane\AnalysisServices.Dataplane.csproj" />
+    <ProjectReference Include="..\AnalysisServices.Management.Sdk\AnalysisServices.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

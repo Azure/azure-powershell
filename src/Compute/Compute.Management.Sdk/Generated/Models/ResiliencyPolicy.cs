@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes an resiliency policy - resilientVMCreationPolicy and/or
-    /// resilientVMDeletionPolicy.
+    /// Describes an resiliency policy - AutomaticZoneRebalancingPolicy,
+    /// ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
     /// </summary>
     public partial class ResiliencyPolicy
     {
@@ -34,10 +34,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// parameters used while performing resilient VM creation.</param>
         /// <param name="resilientVMDeletionPolicy">The configuration
         /// parameters used while performing resilient VM deletion.</param>
-        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy))
+        /// <param name="automaticZoneRebalancingPolicy">The configuration
+        /// parameters used while performing automatic AZ balancing.</param>
+        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy))
         {
             ResilientVMCreationPolicy = resilientVMCreationPolicy;
             ResilientVMDeletionPolicy = resilientVMDeletionPolicy;
+            AutomaticZoneRebalancingPolicy = automaticZoneRebalancingPolicy;
             CustomInit();
         }
 
@@ -59,6 +62,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "resilientVMDeletionPolicy")]
         public ResilientVMDeletionPolicy ResilientVMDeletionPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration parameters used while performing
+        /// automatic AZ balancing.
+        /// </summary>
+        [JsonProperty(PropertyName = "automaticZoneRebalancingPolicy")]
+        public AutomaticZoneRebalancingPolicy AutomaticZoneRebalancingPolicy { get; set; }
 
     }
 }

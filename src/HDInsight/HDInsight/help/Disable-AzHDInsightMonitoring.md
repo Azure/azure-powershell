@@ -14,7 +14,8 @@ Disables the Classic Azure Monitor logs integration on an HDInsight cluster and 
 
 ```
 Disable-AzHDInsightMonitoring [-Name] <String> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

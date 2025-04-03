@@ -7,6 +7,7 @@
     using System.Linq;
     using Commands.Common.Authentication.Abstractions;
     using Management.Resources.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
@@ -33,7 +34,8 @@
             Hashtable templateObject = null,
             Hashtable templateParametersObject = null,
             WhatIfResultFormat resultFormat = WhatIfResultFormat.FullResourcePayloads,
-            string[] excludeChangeTypes = null)
+            string[] excludeChangeTypes = null,
+            string validationLevel = null)
         {
             this.DeploymentName = deploymentName ?? this.GenerateDeployName();
             this.ScopeType = scopeType;
@@ -52,6 +54,7 @@
                 .Select(changeType => changeType.ToLowerInvariant())
                 .Distinct()
                 .Select(changeType => (ChangeType)Enum.Parse(typeof(ChangeType), changeType, true));
+            this.ValidationLevel = validationLevel;
         }
 
         public string DeploymentName
@@ -85,6 +88,8 @@
         public WhatIfResultFormat ResultFormat { get; set; }
 
         public IEnumerable<ChangeType> ExcludeChangeTypes { get; }
+
+        public string ValidationLevel { get; set; }
 
         public DeploymentWhatIf ToDeploymentWhatIf()
         {
@@ -129,8 +134,13 @@
                     ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
                 properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
+                    ? parametersContent.FromJson<Dictionary<string, DeploymentParameter>>()
                     : null;
+            }
+
+            if (!string.IsNullOrEmpty(this.ValidationLevel))
+            {
+                properties.ValidationLevel = this.ValidationLevel;
             }
 
             return new DeploymentWhatIf(properties, this.Location);

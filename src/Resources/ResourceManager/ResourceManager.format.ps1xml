@@ -586,6 +586,10 @@
                 <Label>ApiVersions</Label>
                 <PropertyName>ApiVersions</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>DefaultApiVersion</Label>
+                <PropertyName>DefaultApiVersion</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

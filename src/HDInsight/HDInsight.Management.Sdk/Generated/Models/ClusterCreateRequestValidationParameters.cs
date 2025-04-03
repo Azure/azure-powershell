@@ -90,5 +90,18 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "fetchAaddsResource")]
         public bool? FetchAaddsResource {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+
+
+        }
     }
 }

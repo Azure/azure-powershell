@@ -43,7 +43,7 @@ Change directory (tenant) of `ReservationOrder` and all `Reservation` under it t
 
 ### Example 1: Move reservation order from one tenant to another
 ```powershell
-Move-AzReservationDirectory -ReservationOrderId "7c31a9e8-8490-4002-88cd-3a16b71362a9" -DestinationTenantId "f65fbe9a-14b0-44c6-8c0d-2ef2c4543040"
+Move-AzReservationDirectory -ReservationOrderId "00001111-aaaa-2222-bbbb-3333cccc4444" -DestinationTenantId "f65fbe9a-14b0-44c6-8c0d-2ef2c4543040"
 ```
 
 ```output
@@ -61,7 +61,7 @@ Reservation                 : {{
                                 "isSucceeded": true
                               }}
 ReservationOrderError       : 
-ReservationOrderId          : 7c31a9e8-8490-4002-88cd-3a16b71362a9
+ReservationOrderId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 ReservationOrderIsSucceeded : True
 ReservationOrderName        : VM_RI_05-26-2022_16-53
 ```

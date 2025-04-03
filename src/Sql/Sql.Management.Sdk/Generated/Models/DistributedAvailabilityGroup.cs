@@ -34,50 +34,56 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="type">Resource type.
         /// </param>
 
-        /// <param name="replicationMode">The replication mode of a distributed availability group. Parameter will be
-        /// ignored during link creation.
+        /// <param name="distributedAvailabilityGroupName">Name of the distributed availability group
+        /// </param>
+
+        /// <param name="distributedAvailabilityGroupId">ID of the distributed availability group
+        /// </param>
+
+        /// <param name="replicationMode">Replication mode of the link
         /// Possible values include: &#39;Async&#39;, &#39;Sync&#39;</param>
 
-        /// <param name="targetDatabase">The name of the target database
+        /// <param name="partnerLinkRole">SQL server side link role
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
+
+        /// <param name="partnerAvailabilityGroupName">SQL server side availability group name
         /// </param>
 
-        /// <param name="sourceEndpoint">The source endpoint
+        /// <param name="partnerEndpoint">SQL server side endpoint - IP or DNS resolvable name
         /// </param>
 
-        /// <param name="primaryAvailabilityGroupName">The primary availability group name
+        /// <param name="instanceLinkRole">Managed instance side link role
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
+
+        /// <param name="instanceAvailabilityGroupName">Managed instance side availability group name
         /// </param>
 
-        /// <param name="secondaryAvailabilityGroupName">The secondary availability group name
-        /// </param>
+        /// <param name="failoverMode">The link failover mode - can be Manual if intended to be used for two-way
+        /// failover with a supported SQL Server, or None for one-way failover to
+        /// Azure.
+        /// Possible values include: &#39;None&#39;, &#39;Manual&#39;</param>
 
-        /// <param name="distributedAvailabilityGroupId">The distributed availability group id
-        /// </param>
+        /// <param name="seedingMode">Database seeding mode – can be Automatic (default), or Manual for supported
+        /// scenarios.
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
-        /// <param name="sourceReplicaId">The source replica id
+        /// <param name="databases">Databases in the distributed availability group
         /// </param>
-
-        /// <param name="targetReplicaId">The target replica id
-        /// </param>
-
-        /// <param name="linkState">The link state
-        /// </param>
-
-        /// <param name="lastHardenedLsn">The last hardened lsn
-        /// </param>
-        public DistributedAvailabilityGroup(string id = default(string), string name = default(string), string type = default(string), string replicationMode = default(string), string targetDatabase = default(string), string sourceEndpoint = default(string), string primaryAvailabilityGroupName = default(string), string secondaryAvailabilityGroupName = default(string), System.Guid? distributedAvailabilityGroupId = default(System.Guid?), System.Guid? sourceReplicaId = default(System.Guid?), System.Guid? targetReplicaId = default(System.Guid?), string linkState = default(string), string lastHardenedLsn = default(string))
+        public DistributedAvailabilityGroup(string id = default(string), string name = default(string), string type = default(string), string distributedAvailabilityGroupName = default(string), System.Guid? distributedAvailabilityGroupId = default(System.Guid?), string replicationMode = default(string), string partnerLinkRole = default(string), string partnerAvailabilityGroupName = default(string), string partnerEndpoint = default(string), string instanceLinkRole = default(string), string instanceAvailabilityGroupName = default(string), string failoverMode = default(string), string seedingMode = default(string), System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase> databases = default(System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase>))
 
         : base(id, name, type)
         {
-            this.ReplicationMode = replicationMode;
-            this.TargetDatabase = targetDatabase;
-            this.SourceEndpoint = sourceEndpoint;
-            this.PrimaryAvailabilityGroupName = primaryAvailabilityGroupName;
-            this.SecondaryAvailabilityGroupName = secondaryAvailabilityGroupName;
+            this.DistributedAvailabilityGroupName = distributedAvailabilityGroupName;
             this.DistributedAvailabilityGroupId = distributedAvailabilityGroupId;
-            this.SourceReplicaId = sourceReplicaId;
-            this.TargetReplicaId = targetReplicaId;
-            this.LinkState = linkState;
-            this.LastHardenedLsn = lastHardenedLsn;
+            this.ReplicationMode = replicationMode;
+            this.PartnerLinkRole = partnerLinkRole;
+            this.PartnerAvailabilityGroupName = partnerAvailabilityGroupName;
+            this.PartnerEndpoint = partnerEndpoint;
+            this.InstanceLinkRole = instanceLinkRole;
+            this.InstanceAvailabilityGroupName = instanceAvailabilityGroupName;
+            this.FailoverMode = failoverMode;
+            this.SeedingMode = seedingMode;
+            this.Databases = databases;
             CustomInit();
         }
 
@@ -88,64 +94,72 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets or sets the replication mode of a distributed availability group.
-        /// Parameter will be ignored during link creation. Possible values include: &#39;Async&#39;, &#39;Sync&#39;
+        /// Gets name of the distributed availability group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.replicationMode")]
-        public string ReplicationMode {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.distributedAvailabilityGroupName")]
+        public string DistributedAvailabilityGroupName {get; private set; }
 
         /// <summary>
-        /// Gets or sets the name of the target database
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetDatabase")]
-        public string TargetDatabase {get; set; }
-
-        /// <summary>
-        /// Gets or sets the source endpoint
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sourceEndpoint")]
-        public string SourceEndpoint {get; set; }
-
-        /// <summary>
-        /// Gets or sets the primary availability group name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.primaryAvailabilityGroupName")]
-        public string PrimaryAvailabilityGroupName {get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary availability group name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.secondaryAvailabilityGroupName")]
-        public string SecondaryAvailabilityGroupName {get; set; }
-
-        /// <summary>
-        /// Gets the distributed availability group id
+        /// Gets iD of the distributed availability group
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.distributedAvailabilityGroupId")]
         public System.Guid? DistributedAvailabilityGroupId {get; private set; }
 
         /// <summary>
-        /// Gets the source replica id
+        /// Gets or sets replication mode of the link Possible values include: &#39;Async&#39;, &#39;Sync&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sourceReplicaId")]
-        public System.Guid? SourceReplicaId {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.replicationMode")]
+        public string ReplicationMode {get; set; }
 
         /// <summary>
-        /// Gets the target replica id
+        /// Gets sQL server side link role Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetReplicaId")]
-        public System.Guid? TargetReplicaId {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerLinkRole")]
+        public string PartnerLinkRole {get; private set; }
 
         /// <summary>
-        /// Gets the link state
+        /// Gets or sets sQL server side availability group name
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.linkState")]
-        public string LinkState {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerAvailabilityGroupName")]
+        public string PartnerAvailabilityGroupName {get; set; }
 
         /// <summary>
-        /// Gets the last hardened lsn
+        /// Gets or sets sQL server side endpoint - IP or DNS resolvable name
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastHardenedLsn")]
-        public string LastHardenedLsn {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerEndpoint")]
+        public string PartnerEndpoint {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed instance side link role Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instanceLinkRole")]
+        public string InstanceLinkRole {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed instance side availability group name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instanceAvailabilityGroupName")]
+        public string InstanceAvailabilityGroupName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the link failover mode - can be Manual if intended to be used
+        /// for two-way failover with a supported SQL Server, or None for one-way
+        /// failover to Azure. Possible values include: &#39;None&#39;, &#39;Manual&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.failoverMode")]
+        public string FailoverMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets database seeding mode – can be Automatic (default), or Manual
+        /// for supported scenarios. Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.seedingMode")]
+        public string SeedingMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets databases in the distributed availability group
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databases")]
+        public System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase> Databases {get; set; }
     }
 }

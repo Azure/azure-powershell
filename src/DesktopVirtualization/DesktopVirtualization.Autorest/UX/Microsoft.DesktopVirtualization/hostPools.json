@@ -1,51 +1,13 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2023-09-05",
+  "apiVersion": "2024-04-03",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
-      "name": "Expand-AzWvdMsixImage",
-      "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-HostPoolName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
-          "parameters": [
-            {
-              "name": "-HostPoolName",
-              "value": "[Path.hostPoolName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Get-AzWvdHostPoolRegistrationToken",
-      "description": "Registration token of the host pool.",
+      "description": "Operation to list the RegistrationTokens associated with the HostPool",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       "help": {
         "learnMore": {

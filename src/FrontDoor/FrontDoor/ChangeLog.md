@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.12.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.11.1
 * Fixed a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
 

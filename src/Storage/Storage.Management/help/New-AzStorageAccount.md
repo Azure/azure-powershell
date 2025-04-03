@@ -20,9 +20,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
- [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
+ [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
@@ -40,18 +40,18 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
- [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
- -EnableAzureActiveDirectoryKerberosForFile <Boolean> [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
- [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
- [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
+ [-PublishInternetEndpoint <Boolean>] -EnableAzureActiveDirectoryKerberosForFile <Boolean>
+ [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AsJob]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
+ [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -61,21 +61,21 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
- [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
- [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
- [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
- [-ActiveDirectoryAccountType <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
- [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
- [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableExtendedGroup <Boolean>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
+ [-PublishInternetEndpoint <Boolean>] [-EnableActiveDirectoryDomainServicesForFile <Boolean>]
+ [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
+ [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
+ [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
+ [-ActiveDirectorySamAccountName <String>] [-ActiveDirectoryAccountType <String>] [-AsJob]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
+ [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -410,7 +410,7 @@ the *AccessTier* parameter.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool
+Accepted values: Hot, Cool, Cold
 
 Required: False
 Position: Named
@@ -776,6 +776,21 @@ Parameter Sets: AzureActiveDirectoryKerberosForFile
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableExtendedGroup
+Enables extended group support with local users feature, if set to true.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1268,12 +1283,18 @@ The acceptable values for this parameter are:
 - Premium_ZRS. Premium zone-redundant storage.
 - Standard_GZRS - Geo-redundant zone-redundant storage.
 - Standard_RAGZRS - Read access geo-redundant zone-redundant storage.
+- StandardV2_LRS - Locally-redundant storage for File Provision v2.
+- StandardV2_GRS - Geo-redundant storage for File Provision v2.
+- StandardV2_ZRS - Zone-redundant storage for File Provision v2.
+- StandardV2_GZRS - Geo-redundant zone-redundant storage for File Provision v2.
+- PremiumV2_LRS - Premium locally-redundant storage for File Provision v2.
+- PremiumV2_ZRS - Premium zone-redundant storage for File Provision v2.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS, Standard_GZRS, Standard_RAGZRS, StandardV2_LRS, StandardV2_ZRS, StandardV2_GZRS, StandardV2_GRS, PremiumV2_LRS, PremiumV2_ZRS
 
 Required: True
 Position: 2

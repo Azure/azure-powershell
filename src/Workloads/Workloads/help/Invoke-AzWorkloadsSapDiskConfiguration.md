@@ -12,7 +12,7 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
 ## SYNTAX
 
-### SapExpanded (Default)
+### InvokeExpanded (Default)
 ```
 Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
@@ -20,11 +20,25 @@ Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SapViaIdentityExpanded
+### Invoke
 ```
-Invoke-AzWorkloadsSapDiskConfiguration -InputObject <IWorkloadsIdentity> -AppLocation <String>
+Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <String>]
+ -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
+```
+Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity>
+ -Body <ISapDiskConfigurationsRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +88,7 @@ The geo-location where the SAP resources will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -84,13 +98,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Body
+The SAP request to get list of disk configurations.
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsRequest
+Parameter Sets: Invoke, InvokeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseType
 The database type.
 Eg: HANA, DB2, etc
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDatabaseType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -105,7 +135,7 @@ The VM SKU for database instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,8 +166,8 @@ The deployment type.
 Eg: SingleServer/ThreeTier
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapDeploymentType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDeploymentType
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -151,8 +181,8 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -167,8 +197,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
-Parameter Sets: SapViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -179,11 +209,11 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of Azure region.
+The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeExpanded, Invoke
 Aliases:
 
 Required: True
@@ -197,8 +227,8 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
+Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -210,10 +240,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SapExpanded
+Parameter Sets: InvokeExpanded, Invoke
 Aliases:
 
 Required: False
@@ -259,12 +290,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapDiskConfigurationsResultVolumeConfigurations
 
 ## NOTES
+
+ALIASES
+
+Invoke-AzVISDiskConfiguration
 
 ## RELATED LINKS

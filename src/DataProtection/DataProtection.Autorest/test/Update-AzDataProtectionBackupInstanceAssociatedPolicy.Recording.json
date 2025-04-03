@@ -1,0 +1,498 @@
+{
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "69803936-9da8-4397-b1a1-34f020cde66e" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "9fcd6ca1-d8c2-4a86-b699-6a716bc90831" ],
+        "x-ms-correlation-request-id": [ "9fcd6ca1-d8c2-4a86-b699-6a716bc90831" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T063953Z:9fcd6ca1-d8c2-4a86-b699-6a716bc90831" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2B3DDF228B504F3DA6FE23FBEDD639B3 Ref B: MAA201060516025 Ref C: 2024-12-13T06:39:53Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:39:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2138" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "89bf0aea-0ab6-4834-8701-13fd370b9260" ],
+        "CommandName": [ "Az.DataProtection\\Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "621b1fe2-843e-45d2-983d-98e59f9f315c" ],
+        "x-ms-correlation-request-id": [ "621b1fe2-843e-45d2-983d-98e59f9f315c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T063954Z:621b1fe2-843e-45d2-983d-98e59f9f315c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 32B50C71CAF441E89587D38390E56026 Ref B: MAA201060516025 Ref C: 2024-12-13T06:39:54Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:39:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2126" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"friendlyName\": \"psDiskBI\",\r\n    \"dataSourceInfo\": {\r\n      \"resourceProperties\": {\r\n        \"objectType\": \"DefaultResourceProperties\"\r\n      },\r\n      \"datasourceType\": \"Microsoft.Compute/disks\",\r\n      \"objectType\": \"Datasource\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\r\n      \"resourceLocation\": \"eastasia\",\r\n      \"resourceName\": \"psDiskBI\",\r\n      \"resourceType\": \"Microsoft.Compute/disks\",\r\n      \"resourceUri\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\"\r\n    },\r\n    \"dataSourceSetInfo\": {\r\n      \"resourceProperties\": {\r\n        \"objectType\": \"DefaultResourceProperties\"\r\n      },\r\n      \"datasourceType\": \"Microsoft.Compute/disks\",\r\n      \"objectType\": \"DatasourceSet\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\r\n      \"resourceLocation\": \"eastasia\",\r\n      \"resourceName\": \"psDiskBI\",\r\n      \"resourceType\": \"Microsoft.Compute/disks\",\r\n      \"resourceUri\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\"\r\n    },\r\n    \"policyInfo\": {\r\n      \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\r\n      \"policyParameters\": {\r\n        \"dataStoreParametersList\": [\r\n          {\r\n            \"objectType\": \"AzureOperationalStoreParameters\",\r\n            \"dataStoreType\": \"OperationalStore\",\r\n            \"resourceGroupId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"validationType\": \"DeepValidation\",\r\n    \"identityDetails\": {\r\n      \"useSystemAssignedIdentity\": false,\r\n      \"userAssignedIdentityArmUrl\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"\r\n    },\r\n    \"objectType\": \"BackupInstance\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2194" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b89980e2-6a6b-4e7d-952e-3168addb8555" ],
+        "x-ms-correlation-request-id": [ "b89980e2-6a6b-4e7d-952e-3168addb8555" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T063956Z:b89980e2-6a6b-4e7d-952e-3168addb8555" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E979405DB8194DBF949869427B583AFD Ref B: MAA201060516025 Ref C: 2024-12-13T06:39:55Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:39:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2126" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "336a1bb0-456c-407c-b16e-c69173148a28" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupInstance_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1998" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e6fc84cd-df61-407d-a115-6691798c892b" ],
+        "x-ms-correlation-request-id": [ "e6fc84cd-df61-407d-a115-6691798c892b" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064027Z:e6fc84cd-df61-407d-a115-6691798c892b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A1717C8C3E704C55B2E72CFC692F5C0F Ref B: MAA201060516025 Ref C: 2024-12-13T06:40:26Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:40:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2126" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "336a1bb0-456c-407c-b16e-c69173148a28" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupInstance_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0e9493bb-fa83-480a-bed6-fb8e134f5198" ],
+        "x-ms-correlation-request-id": [ "0e9493bb-fa83-480a-bed6-fb8e134f5198" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064028Z:0e9493bb-fa83-480a-bed6-fb8e134f5198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3843C94E27654F9C8750B7D634703520 Ref B: MAA201060516025 Ref C: 2024-12-13T06:40:27Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:40:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2126" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "25428eb4-2002-44c9-81b3-28f8a4f20623" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1998" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a7589d10-841c-4da0-b250-badccbab890d" ],
+        "x-ms-correlation-request-id": [ "a7589d10-841c-4da0-b250-badccbab890d" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064110Z:a7589d10-841c-4da0-b250-badccbab890d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0CA81F1288474FEE98EB7CB67C44AE9E Ref B: MAA201060516025 Ref C: 2024-12-13T06:41:08Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:41:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2138" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "cb1235b9-1d90-49b7-af6d-d758e418ef41" ],
+        "CommandName": [ "Az.DataProtection\\Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "8a45ef7b-448e-4752-b47f-18cdecbd643e" ],
+        "x-ms-correlation-request-id": [ "8a45ef7b-448e-4752-b47f-18cdecbd643e" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064111Z:8a45ef7b-448e-4752-b47f-18cdecbd643e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CDBB26AD741A41D894B67D082D6FD6CC Ref B: MAA201060516025 Ref C: 2024-12-13T06:41:10Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:41:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2126" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":false,\"userAssignedIdentityArmUrl\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hiagaDiskUami2\"},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+8": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"friendlyName\": \"psDiskBI\",\r\n    \"dataSourceInfo\": {\r\n      \"resourceProperties\": {\r\n        \"objectType\": \"DefaultResourceProperties\"\r\n      },\r\n      \"datasourceType\": \"Microsoft.Compute/disks\",\r\n      \"objectType\": \"Datasource\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\r\n      \"resourceLocation\": \"eastasia\",\r\n      \"resourceName\": \"psDiskBI\",\r\n      \"resourceType\": \"Microsoft.Compute/disks\",\r\n      \"resourceUri\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\"\r\n    },\r\n    \"dataSourceSetInfo\": {\r\n      \"resourceProperties\": {\r\n        \"objectType\": \"DefaultResourceProperties\"\r\n      },\r\n      \"datasourceType\": \"Microsoft.Compute/disks\",\r\n      \"objectType\": \"DatasourceSet\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\r\n      \"resourceLocation\": \"eastasia\",\r\n      \"resourceName\": \"psDiskBI\",\r\n      \"resourceType\": \"Microsoft.Compute/disks\",\r\n      \"resourceUri\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\"\r\n    },\r\n    \"policyInfo\": {\r\n      \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\r\n      \"policyParameters\": {\r\n        \"dataStoreParametersList\": [\r\n          {\r\n            \"objectType\": \"AzureOperationalStoreParameters\",\r\n            \"dataStoreType\": \"OperationalStore\",\r\n            \"resourceGroupId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"validationType\": \"DeepValidation\",\r\n    \"identityDetails\": {\r\n      \"useSystemAssignedIdentity\": true\r\n    },\r\n    \"objectType\": \"BackupInstance\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2004" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027/operationResults/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731416745\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jQK_6YM37-_5zpmJO1cpMH2wQCen0fjx2pOQEiVVL-2Ns9rVUQkwvRad2ld9RYMuluBYyC23BMqvotf8xzpmrohwona8Z2JBOeQQ2OaI-grZYnqaS72aeU81jMa7AJs3fy9D7y8W9oNt7d1JbrIRwlP8Z0qJRR0uZyYXcHyOsIRKpZEzeYMzoAhzE_SCQVUQSg4MCC_9tUroigcN-iuUvl1eEKZO5S68x5dMrE5ZYtPnkGIk6EHXw-dZ7Ad_M03LFu7R1NYa1hmazHSUiG719dJeJeo7rp90eqF5EgfllaVwElVAP7uzHAG_xqh2mlj7RVlnlssc_Vlyj0UNWjKDqA\u0026h=_g-Ea0Px31xolIzfZOvL1fhFPW7NyzV9jyPPtmBtK9U" ],
+        "Retry-After": [ "15" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731260512\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jn_TB5g_5VvdfptcX1ZGuEtbg-xjD7SzImAPpRfGvos3OU1uemL1oinoudoioy3556sityS0SGNKppWMi63pgixQXcverIeDzKH_eYMoGyezB-Osdu5bConwb7rpfDduHRDH7gRJL05Cvow1dpTXMQDgWQEc_FesQoagotfha30cc949qceKjh7ZUNvFKSrOwCD4VD06GIJLFwHJzXr89CyJx05bc8myUBpL8Rr90KAg0mRXTQodKmzDThPRb4-1P0xe3Ba5FU5_dkMRKeg19MXF2BonfvwyfOtM2HIj5ODn-mh0Um8rtsluTkXLwVUG_890zfr1a_2nqOGe8tAstg\u0026h=qTo9RKzrIBfDVm523cj_L5iQL4gL9iO1G_RDhLoSAgk" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-request-id": [ "e1d52f33-0936-4858-a393-05dece1584dc" ],
+        "x-ms-correlation-request-id": [ "e1d52f33-0936-4858-a393-05dece1584dc" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064113Z:e1d52f33-0936-4858-a393-05dece1584dc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7E3967426AC84FD99303D8A1A4B1A8E5 Ref B: MAA201060516025 Ref C: 2024-12-13T06:41:11Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:41:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731260512\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jn_TB5g_5VvdfptcX1ZGuEtbg-xjD7SzImAPpRfGvos3OU1uemL1oinoudoioy3556sityS0SGNKppWMi63pgixQXcverIeDzKH_eYMoGyezB-Osdu5bConwb7rpfDduHRDH7gRJL05Cvow1dpTXMQDgWQEc_FesQoagotfha30cc949qceKjh7ZUNvFKSrOwCD4VD06GIJLFwHJzXr89CyJx05bc8myUBpL8Rr90KAg0mRXTQodKmzDThPRb4-1P0xe3Ba5FU5_dkMRKeg19MXF2BonfvwyfOtM2HIj5ODn-mh0Um8rtsluTkXLwVUG_890zfr1a_2nqOGe8tAstg\u0026h=qTo9RKzrIBfDVm523cj_L5iQL4gL9iO1G_RDhLoSAgk+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731260512\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jn_TB5g_5VvdfptcX1ZGuEtbg-xjD7SzImAPpRfGvos3OU1uemL1oinoudoioy3556sityS0SGNKppWMi63pgixQXcverIeDzKH_eYMoGyezB-Osdu5bConwb7rpfDduHRDH7gRJL05Cvow1dpTXMQDgWQEc_FesQoagotfha30cc949qceKjh7ZUNvFKSrOwCD4VD06GIJLFwHJzXr89CyJx05bc8myUBpL8Rr90KAg0mRXTQodKmzDThPRb4-1P0xe3Ba5FU5_dkMRKeg19MXF2BonfvwyfOtM2HIj5ODn-mh0Um8rtsluTkXLwVUG_890zfr1a_2nqOGe8tAstg\u0026h=qTo9RKzrIBfDVm523cj_L5iQL4gL9iO1G_RDhLoSAgk",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "970fd8bc-ed80-42fb-9d7a-09175e316fd0" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupInstance_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "779989e0-42f5-42e5-8385-09ca84484db5" ],
+        "x-ms-correlation-request-id": [ "779989e0-42f5-42e5-8385-09ca84484db5" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064129Z:779989e0-42f5-42e5-8385-09ca84484db5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2F47EDB26C644F55B28AC2506B3E1CCE Ref B: MAA201060516025 Ref C: 2024-12-13T06:41:28Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:41:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "470" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==\",\"name\":\"Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==\",\"status\":\"Inprogress\",\"startTime\":\"2024-12-13T06:41:12.9575375Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731260512\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jn_TB5g_5VvdfptcX1ZGuEtbg-xjD7SzImAPpRfGvos3OU1uemL1oinoudoioy3556sityS0SGNKppWMi63pgixQXcverIeDzKH_eYMoGyezB-Osdu5bConwb7rpfDduHRDH7gRJL05Cvow1dpTXMQDgWQEc_FesQoagotfha30cc949qceKjh7ZUNvFKSrOwCD4VD06GIJLFwHJzXr89CyJx05bc8myUBpL8Rr90KAg0mRXTQodKmzDThPRb4-1P0xe3Ba5FU5_dkMRKeg19MXF2BonfvwyfOtM2HIj5ODn-mh0Um8rtsluTkXLwVUG_890zfr1a_2nqOGe8tAstg\u0026h=qTo9RKzrIBfDVm523cj_L5iQL4gL9iO1G_RDhLoSAgk+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==?api-version=2024-04-01\u0026t=638696688731260512\u0026c=MIIHhzCCBm-gAwIBAgITHgVsohlR2527oAb3YwAABWyiGTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwOTIyMTIzNzU1WhcNMjUwMzIxMTIzNzU1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhrLEJmsmtpzYzyjkwosX72drFxelF_0kAmuW7jzqQUwb3Vbkmt3AMdawBA7iPG-j-_iaEVRdn5iaEuJE6hSge15_CbeDkRt-qHgospNLcjh6GjynbLyFCQH_IkKY4Mc0yIlKxilQSCf2V6ah2w7S1CyC5zwZroBYavu5w0ZL02jRKMTNVzB03DnGhQGJ7gJbtKJ9AbjVcFwFTpT0Z0Yo-sLpwoVvADWng0JznFSekROEXCF_U3gHMssCctipkbrivaRFNKL3OjHjvuPxD8gsBo2BR_swq3Eyj-68_1B2-zYVD0d811pP8URR-43YYAMXO2Us1Uw6dn-b351XnW8JECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBTLk-Eh1Xfk5Jotz1gl5hr4G-tKhTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAG22HO9nSE7AYf9OZGmPXw_SpE0CIxcQiahWc3LG3zRYLxmiKsYYlN9_r_6fPeEmIs7P7xm7g_xAAHLymI5BQDzGsW5GzAzYVOwolJBj3EcX1bxxIqeEgLvHNmYOr4D5MZFv14TGMHziu0TzPAbbVe9-DmMbrqs1mszrnuUiHTsmKE2oNmv4gjZMYSJAdsUzkjxQEa8t1t7FUEvbDkWkYSdqK0-OoTDVLsRVwRNk9XJ04coDgWql1-iv6bYNXyhC0L_-bdTOs_Gnzu-tFEA2we7Zkew_fhDuJwGTDnhaqvhush0SPJuFmoYBvmEzEJsc_Bjay2DrOHiLTopNoBJVrt8\u0026s=jn_TB5g_5VvdfptcX1ZGuEtbg-xjD7SzImAPpRfGvos3OU1uemL1oinoudoioy3556sityS0SGNKppWMi63pgixQXcverIeDzKH_eYMoGyezB-Osdu5bConwb7rpfDduHRDH7gRJL05Cvow1dpTXMQDgWQEc_FesQoagotfha30cc949qceKjh7ZUNvFKSrOwCD4VD06GIJLFwHJzXr89CyJx05bc8myUBpL8Rr90KAg0mRXTQodKmzDThPRb4-1P0xe3Ba5FU5_dkMRKeg19MXF2BonfvwyfOtM2HIj5ODn-mh0Um8rtsluTkXLwVUG_890zfr1a_2nqOGe8tAstg\u0026h=qTo9RKzrIBfDVm523cj_L5iQL4gL9iO1G_RDhLoSAgk",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "970fd8bc-ed80-42fb-9d7a-09175e316fd0" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupInstance_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "710f69b3-1ff6-4a2d-876c-4df89bc0327c" ],
+        "x-ms-correlation-request-id": [ "710f69b3-1ff6-4a2d-876c-4df89bc0327c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064200Z:710f69b3-1ff6-4a2d-876c-4df89bc0327c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 737E1D6B85BC4199BA8398B139C99546 Ref B: MAA201060516025 Ref C: 2024-12-13T06:41:59Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:41:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "469" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/operationStatus/Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==\",\"name\":\"Mzc5Y2UyZjgtODU3NS00ZjRjLWFhMzEtYjI4YzczNzlmNzliO2RhMWY5NDE5LTgxNjQtNGYxNy05ZDdjLWI0MjdiZTc2MTNiYw==\",\"status\":\"Succeeded\",\"startTime\":\"2024-12-13T06:41:12.9575375Z\",\"endTime\":\"2024-12-13T06:41:55Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "970fd8bc-ed80-42fb-9d7a-09175e316fd0" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupInstance_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "04ae9fe5-2e73-45f8-97a8-317c4581a5bb" ],
+        "x-ms-correlation-request-id": [ "04ae9fe5-2e73-45f8-97a8-317c4581a5bb" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064201Z:04ae9fe5-2e73-45f8-97a8-317c4581a5bb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 065AE0B3E8C4414FBBD5D2F3917A2D5E Ref B: MAA201060516025 Ref C: 2024-12-13T06:42:00Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:42:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1941" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"UpdatingProtection\"},\"currentProtectionState\":\"UpdatingProtection\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":true},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataProtectionBackupInstanceAssociatedPolicy+[NoContext]+UpdateMSI+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "45e5f9cb-60ab-40ae-b42f-386825372947" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "2d1a6d23-f124-4602-97a4-f4700db20b0a" ],
+        "x-ms-correlation-request-id": [ "2d1a6d23-f124-4602-97a4-f4700db20b0a" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241213T064212Z:2d1a6d23-f124-4602-97a4-f4700db20b0a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6E58B59ED10B4BDC93AFD85E3FF437C4 Ref B: MAA201060516025 Ref C: 2024-12-13T06:42:11Z" ],
+        "Date": [ "Fri, 13 Dec 2024 06:42:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1953" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"friendlyName\":\"psDiskBI\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/psDiskBI\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"psDiskBI\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"eastasia\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupPolicies/diskpol\",\"policyVersion\":\"\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg\"}]}},\"protectionStatus\":{\"status\":\"UpdatingProtection\"},\"currentProtectionState\":\"UpdatingProtection\",\"provisioningState\":\"Succeeded\",\"identityDetails\":{\"useSystemAssignedIdentity\":true},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/psbackupvault/backupInstances/psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"name\":\"psDiskBI-psDiskBI-81201419-6171-4c66-ada3-ec1fc4d5b027\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

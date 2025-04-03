@@ -1,10 +1,48 @@
 {
   "resourceType": "projects",
-  "apiVersion": "2023-10-01-preview",
+  "apiVersion": "2024-05-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
   },
   "commands": [
+    {
+      "name": "Get-AzDevCenterAdminProjectInheritedSetting",
+      "description": "Gets applicable inherited settings for this project.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/getInheritedSettings",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminprojectinheritedsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets applicable inherited settings for this project.",
+          "parameters": [
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzDevCenterAdminProject",
       "description": "Gets a specific project.",

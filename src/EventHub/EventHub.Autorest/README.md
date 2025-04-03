@@ -28,7 +28,7 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 49946abc47b5ea9402d7763ae61b183ca4741855
+commit: bb87821da87100719c7dc8a3ef6b89781813ed0a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -44,7 +44,7 @@ input-file:
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2023-01-01-preview/disasterRecoveryConfigs.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2023-01-01-preview/operations.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2023-01-01-preview/SchemaRegistry.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2023-01-01-preview/eventhubs.json
+  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/eventhubs.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2023-01-01-preview/ApplicationGroups.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
@@ -391,6 +391,30 @@ directive:
       property-name: RetentionDescriptionTombstoneRetentionTimeInHour
     set:
       property-name: TombstoneRetentionTimeInHour
+      
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: MessageTimestampDescriptionTimestampType
+    set:
+      parameter-name: TimestampType
+  - where:
+      model-name: EventHub
+      property-name: MessageTimestampDescriptionTimestampType
+    set:
+      property-name: TimestampType
+
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: RetentionDescriptionMinCompactionLagInMin
+    set:
+      parameter-name: MinCompactionLagInMin
+  - where:
+      model-name: EventHub
+      property-name: RetentionDescriptionMinCompactionLagInMin
+    set:
+      property-name: MinCompactionLagInMin
 
 # Cluster
   - where:
@@ -457,3 +481,4 @@ directive:
   - model-cmdlet:
     - model-name: KeyVaultProperties
       cmdlet-name: New-AzEventHubKeyVaultPropertiesObject
+```

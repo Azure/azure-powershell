@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             // https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
             // https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin#elevate-access-for-a-global-administrator-1
             // scope is path variable in REST API. When scope is '/', query '$filter=atScope()' is required, or else it will throw BadRequest.
-            Boolean isRootScope = "/".Equals(options.Scope);
+            Boolean needsAtScope = "/".Equals(options.Scope) || options.AtScope;
             Boolean needsFilterPrincipalId = false;
             if (options.ADObjectFilter?.HasFilter ?? false)
             {
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
 
                     principalId = adObject.Id.ToString();
-                    if (isRootScope)
+                    if (needsAtScope)
                     {
                         odataQuery = new ODataQuery<RoleAssignmentFilter>(f => (f.AtScope() && f.AssignedTo(principalId)));
                     }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 else
                 {
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
-                    if (isRootScope)
+                    if (needsAtScope)
                     {
                         /* $filter = principalId + eq + '{objectId}' Lists role assignments for a specified user, group, or service principal.
                          * If you use atScope() and principalId+eq + '{objectId}' together, it will throw exception because the API doesn't allow it.
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
                 }
             }
-            else if (isRootScope)
+            else if (needsAtScope)
             {
                 odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
             }

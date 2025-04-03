@@ -174,5 +174,40 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkConfigurations")]
         public System.Collections.Generic.IList<PrivateLinkConfiguration> PrivateLinkConfigurations {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+
+
+
+
+            if (this.NetworkProperties != null)
+            {
+                this.NetworkProperties.Validate();
+            }
+
+            if (this.PrivateLinkConfigurations != null)
+            {
+                foreach (var element in this.PrivateLinkConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }

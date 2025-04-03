@@ -19,62 +19,58 @@
 function Test-ManagedInstanceActiveDirectoryAdministrator
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
+	$params = Get-DefaultManagedInstanceNameAndRgForAADAdmin
 
-	# Setup VNET 
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-        
 	# If there is a need to re-record this test, these values must be changed to correspond to existing group and user from Azure Active Directory related to current subscription.
-	$activeDirectoryGroup1 = "aadadmin"
-	$activeDirectoryGroup1ObjectId = "52b6d571-5ff9-4b8f-92de-4a5b1bcdbbef"
-	$activeDirectoryUser1 = "CL AAD Test User"
-	$activeDirectoryUser1ObjectId = "034bb7d9-ca26-4c6f-abe0-4aff74fdca50"
+	$activeDirectoryGroup = "testSqlAADPowershellGroup"
+	$activeDirectoryGroupObjectId = "a461269d-f0e1-4214-a0bd-85b4df11a2c3"
+	$activeDirectoryUser = "Test User 1"
+	$activeDirectoryUserMail = "testuser_1@microsoft.com"
+	$activeDirectoryUserObjectId = "c803e62a-3720-4b88-9bc5-ba910dcf229e"
+	$activeDirectoryServicePrincipal = "testSqlAADPowershellServicePrincipal"
+	$activeDirectoryServicePrincipalObjectId = "5541c08c-3845-44a9-a485-ea6b7e785a87"
 
-	try
-	{
-		# Verify there is no Active Directory Administrator set
-		$activeDirectoryAdmin = Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+	# Set an Active Directory Administrator Group on Managed Instance
+	# This command uses the Graph API to check if there is a user/group for provided DisplayName and ObjectId. Graph authentication blocks test passes, so if you need to record this test again, you must provide real token in 
+	# MockTokenAuthenticationFactory constructor and change SetAuthenticationFactory in EnvironmentSetupHelper.
+	$activeDirectoryAdmin1 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name -DisplayName $activeDirectoryGroup -ObjectId $activeDirectoryGroupObjectId
 
-		Assert-Null $activeDirectoryAdmin
+	Assert-NotNull $activeDirectoryAdmin1
 
-		# Set an Active Directory Administrator Group on Managed Instance
-		# This command uses the Graph API to check if there is a user/group for provided DisplayName and ObjectId. Graph authentication blocks test passes, so if you need to record this test again, you must provide real token in 
-		# MockTokenAuthenticationFactory constructor and change SetAuthenticationFactory in EnvironmentSetupHelper.
-		$activeDirectoryAdmin1 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DisplayName $activeDirectoryGroup1 -ObjectId $activeDirectoryGroup1ObjectId
+	# Verify the correct Active Directory Administrator is set
+	Assert-AreEqual $activeDirectoryAdmin1.DisplayName $activeDirectoryGroup
+	Assert-AreEqual $activeDirectoryAdmin1.ObjectId $activeDirectoryGroupObjectId
 
-		Assert-NotNull $activeDirectoryAdmin1
+	# Get an Active Directory Administrator
+	$activeDirectoryAdmin2 = Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name
 
-		# Verify the correct Active Directory Administrator is set
-		Assert-AreEqual $activeDirectoryAdmin1.DisplayName $activeDirectoryGroup1
-		Assert-AreEqual $activeDirectoryAdmin1.ObjectId $activeDirectoryGroup1ObjectId
+	Assert-AreEqual $activeDirectoryAdmin2.DisplayName $activeDirectoryGroup
+	Assert-AreEqual $activeDirectoryAdmin2.ObjectId $activeDirectoryGroupObjectId
 
-		# Get an Active Directory Administrator
-		$activeDirectoryAdmin2 = Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+	# Set an Active Directory Administrator User on Managed Instance
+	$activeDirectoryAdmin3 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name -DisplayName $activeDirectoryUser -ObjectId $activeDirectoryUserObjectId
 
-		Assert-AreEqual $activeDirectoryAdmin2.DisplayName $activeDirectoryGroup1
-		Assert-AreEqual $activeDirectoryAdmin2.ObjectId $activeDirectoryGroup1ObjectId
+	# We expect that email is returned since the API expects email to be sent as the display name
+	Assert-AreEqual $activeDirectoryAdmin3.DisplayName $activeDirectoryUserMail
+	Assert-AreEqual $activeDirectoryAdmin3.ObjectId $activeDirectoryUserObjectId
 
-		# Set an Active Directory Administrator User on Managed Instance
-		$activeDirectoryAdmin3 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DisplayName $activeDirectoryUser1 -ObjectId $activeDirectoryUser1ObjectId
+	# Set an Active Directory Administrator Service principal on Managed Instance
+	$activeDirectoryAdmin4 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name -DisplayName $activeDirectoryServicePrincipal -ObjectId $activeDirectoryServicePrincipalObjectId
 
-		Assert-AreEqual $activeDirectoryAdmin3.DisplayName $activeDirectoryUser1
-		Assert-AreEqual $activeDirectoryAdmin3.ObjectId $activeDirectoryUser1ObjectId
+	Assert-AreEqual $activeDirectoryAdmin4.DisplayName $activeDirectoryServicePrincipal
+	Assert-AreEqual $activeDirectoryAdmin4.ObjectId $activeDirectoryServicePrincipalObjectId
 
-		# Remove an Active Directory Administrator User from Managed Instance
-		$activeDirectoryAdmin4 = Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Force
+	# Set an Active Directory Administrator User (mail) on Managed Instance
+	$activeDirectoryAdmin5 = Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name -DisplayName $activeDirectoryUserMail -ObjectId $activeDirectoryUserObjectId
 
-		# Verify that Active Directory Administrator was deleted
-		$activeDirectoryAdmin5 = Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+	Assert-AreEqual $activeDirectoryAdmin5.DisplayName $activeDirectoryUserMail
+	Assert-AreEqual $activeDirectoryAdmin5.ObjectId $activeDirectoryUserObjectId
 
-		Assert-Null $activeDirectoryAdmin5
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
+	# Remove an Active Directory Administrator User from Managed Instance
+	Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name -Force
+
+	# Verify that Active Directory Administrator was deleted
+	$activeDirectoryAdmin6 = Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName $params.rg -InstanceName $params.name
+
+	Assert-Null $activeDirectoryAdmin6
 }

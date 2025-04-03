@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.Network.Models
     {
         public const string IPPrefix = "IPPrefix";
         public const string ServiceTag = "ServiceTag";
+        public const string NetworkGroup = "NetworkGroup";
     }
 }

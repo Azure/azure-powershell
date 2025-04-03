@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Update a GlobalReachConnection
+update a GlobalReachConnection
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-Authorizat
 ```
 
 ## DESCRIPTION
-Update a GlobalReachConnection
+update a GlobalReachConnection
 
 ## EXAMPLES
 

@@ -262,7 +262,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $keyVaultName = "kv" + $rgname;
     $keyName = "k" + $rgname;
     $desName = "des" + $rgname;
-    $cvmAgent = Get-AzADServicePrincipal -ApplicationId "bf7b6499-ff71-4aa2-97a4-f372087be7f0";
+    $cvmAgent = Get-AzADServicePrincipal -ApplicationId "00001111-aaaa-2222-bbbb-3333cccc4444";
     $kv = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $rgName -Location $loc -Sku "Premium" -EnablePurgeProtection -SoftDeleteRetentionInDays 7;
     Set-AzKeyVaultAccessPolicy -ObjectId $cvmAgent.Id -VaultName $keyVaultName -ResourceGroupName $rgName -PermissionsToKeys "get","release";
     Start-BitsTransfer -Source https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json -Destination ".\skr-policy.json";

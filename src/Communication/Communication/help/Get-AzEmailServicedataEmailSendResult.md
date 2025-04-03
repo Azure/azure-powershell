@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-The communication resource, for example https://my-resource.communication.azure.com
+The communication resource, for example `https://my-resource.communication.azure.com`
 
 ```yaml
 Type: System.String

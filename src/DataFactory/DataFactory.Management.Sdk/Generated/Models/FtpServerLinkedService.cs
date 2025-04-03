@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -73,9 +76,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// channel. Default value is true. Type: boolean (or Expression with
         /// resultType boolean).
         /// </param>
-        public FtpServerLinkedService(object host, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), object enableSsl = default(object), object enableServerCertificateValidation = default(object))
+        public FtpServerLinkedService(object host, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), object enableSsl = default(object), object enableServerCertificateValidation = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Host = host;
             this.Port = port;

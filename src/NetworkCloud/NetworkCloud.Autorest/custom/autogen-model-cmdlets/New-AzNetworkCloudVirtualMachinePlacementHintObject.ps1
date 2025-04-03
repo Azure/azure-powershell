@@ -21,12 +21,12 @@ Create an in-memory object for VirtualMachinePlacementHint.
 Create an in-memory object for VirtualMachinePlacementHint.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePlacementHint
 .Link
 https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudVirtualMachinePlacementHintObject
 #>
 function New-AzNetworkCloudVirtualMachinePlacementHintObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePlacementHint')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +48,7 @@ function New-AzNetworkCloudVirtualMachinePlacementHintObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.VirtualMachinePlacementHint]::New()
 
         if ($PSBoundParameters.ContainsKey('HintType')) {
             $Object.HintType = $HintType

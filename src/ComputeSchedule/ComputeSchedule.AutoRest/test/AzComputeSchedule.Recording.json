@@ -1,0 +1,380 @@
+{
+  "AzComputeSchedule+[NoContext]+InvokeSubmitDeallocate+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitDeallocate?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitDeallocate?api-version=2024-10-01",
+      "Content": "{\r\n  \"schedule\": {\r\n    \"deadline\": \"2024-12-25T23:00:00.0000000\",\r\n    \"timezone\": \"UTC\",\r\n    \"deadlineType\": \"InitiateAt\"\r\n  },\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 20\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall43850\" ]\r\n  },\r\n  \"correlationid\": \"167e3846-ba7a-4106-931d-a0041716ffc0\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "508" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":32385\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "157b8ddd-7b89-4841-9bb7-07b329656e30" ],
+        "x-ms-correlation-request-id": [ "bccce9f9-66a9-410d-a3be-fe949699e7e1" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061343Z:bccce9f9-66a9-410d-a3be-fe949699e7e1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CE067B2370E3436582DA98E1985C3D86 Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:42Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "844" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Deallocate Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall43850\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"c196fa1d-8cbb-4f0e-b04f-f937876c5afc\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall43850\",\"opType\":\"Deallocate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-25T23:00:00+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":20}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+InvokeSubmitStart+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitStart?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitStart?api-version=2024-10-01",
+      "Content": "{\r\n  \"schedule\": {\r\n    \"deadline\": \"2024-12-25T23:00:00.0000000\",\r\n    \"timezone\": \"UTC\",\r\n    \"deadlineType\": \"InitiateAt\"\r\n  },\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 20\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall52070\" ]\r\n  },\r\n  \"correlationid\": \"aba78587-198c-4dc8-ae7b-2886502f30ee\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "508" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30834\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "f4820b5f-3620-4a69-9dc7-79ed6b145491" ],
+        "x-ms-correlation-request-id": [ "6b320180-29aa-48ad-b486-b6e64640cffa" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061343Z:6b320180-29aa-48ad-b486-b6e64640cffa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D05DFD208BDE4A6F83407E1C8681EBEB Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:43Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "834" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Start Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall52070\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"334bba5b-c38b-4f11-b459-1f4eda888075\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall52070\",\"opType\":\"Start\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-25T23:00:00+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":20}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+InvokeSubmitHibernate+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitHibernate?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesSubmitHibernate?api-version=2024-10-01",
+      "Content": "{\r\n  \"schedule\": {\r\n    \"deadline\": \"2024-12-25T23:00:00.0000000\",\r\n    \"timezone\": \"UTC\",\r\n    \"deadlineType\": \"InitiateAt\"\r\n  },\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 20\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall51590\" ]\r\n  },\r\n  \"correlationid\": \"300b7069-7e91-4622-87b1-b8cf3589567e\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "508" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30835\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "78c27e51-1681-492c-a2c4-dad9194be925" ],
+        "x-ms-correlation-request-id": [ "26f5a6f3-7ad6-4998-8af7-cda7be98f448" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061343Z:26f5a6f3-7ad6-4998-8af7-cda7be98f448" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 15A7BEC3C7A14FA4B241648803CED838 Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:43Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "842" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Hibernate Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall51590\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"ee608124-0c04-4c47-be24-75f2aec625f1\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall51590\",\"opType\":\"Hibernate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-25T23:00:00+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":20}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+InvokeExecuteDeallocate+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteDeallocate?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteDeallocate?api-version=2024-10-01",
+      "Content": "{\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 50\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30610\" ]\r\n  },\r\n  \"correlationid\": \"b3ff8d0f-af40-49dc-8a9d-21c5cb047b5c\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "377" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30834\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "036d7127-d361-46f3-83e7-9c35ea328468" ],
+        "x-ms-correlation-request-id": [ "624ca0c4-0582-4de4-ad54-58b0c5eb72a9" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061344Z:624ca0c4-0582-4de4-ad54-58b0c5eb72a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE33BE43699943F892308F8230775A40 Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:43Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "848" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Deallocate Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30610\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"4b0f7035-6ad3-46b8-a626-2585470bdd76\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30610\",\"opType\":\"Deallocate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-18T06:13:44.1155612+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":50}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+InvokeExecuteHibernate+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteHibernate?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteHibernate?api-version=2024-10-01",
+      "Content": "{\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 50\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30440\" ]\r\n  },\r\n  \"correlationid\": \"04ae98e2-3f13-43a1-a50f-b0cc6f3fe14c\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "377" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30835\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "2a21ba90-04a7-4fae-8811-1d8f0a63491e" ],
+        "x-ms-correlation-request-id": [ "31e49069-b6bd-45f5-8e7f-3f9d4dc978d8" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061344Z:31e49069-b6bd-45f5-8e7f-3f9d4dc978d8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 065B2159B1D94146AC5E55F37E251387 Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:44Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "846" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Hibernate Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30440\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"2c12f819-dcf9-483e-8798-cbf484573b3f\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib30440\",\"opType\":\"Hibernate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-18T06:13:44.5111437+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":50}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+InvokeExecuteStart+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteStart?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesExecuteStart?api-version=2024-10-01",
+      "Content": "{\r\n  \"executionParameters\": {\r\n    \"retryPolicy\": {\r\n      \"retryCount\": 3,\r\n      \"retryWindowInMinutes\": 50\r\n    }\r\n  },\r\n  \"resources\": {\r\n    \"ids\": [ \"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall66250\" ]\r\n  },\r\n  \"correlationid\": \"f1a69065-a748-4507-81a5-583466007b81\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "379" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":32385\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "6dcc2275-1f98-40ce-9cd6-b596e28a1a7a" ],
+        "x-ms-correlation-request-id": [ "d63d01d2-26b5-4678-bcf6-a3dbd21cb752" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061344Z:d63d01d2-26b5-4678-bcf6-a3dbd21cb752" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8FC156EA48FA49A88EB1CE946F2E8B4C Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:44Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "842" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"description\":\"Start Resource request\",\"type\":\"VirtualMachine\",\"location\":\"eastus2euap\",\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall66250\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"1f99a623-b935-48ba-8dbb-b56b2db5d7dc\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeDeall66250\",\"opType\":\"Start\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-18T06:13:44.7995933+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"PendingScheduling\",\"timeZone\":\"UTC\",\"resourceOperationError\":null,\"completedAt\":null,\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":50}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+GetOperationStatus+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesGetOperationStatus?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesGetOperationStatus?api-version=2024-10-01",
+      "Content": "{\r\n  \"operationIds\": [ \"1d3b8290-431b-42d4-bfb3-40845020c98b\", \"7737b23a-8fad-4d06-bfc4-09ea995af642\" ],\r\n  \"correlationid\": \"a6d54c2e-b183-4339-8678-93ca3599fcc5\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "166" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30194\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "793d9047-c0c8-48b5-b221-1b4d77be480e" ],
+        "x-ms-correlation-request-id": [ "2730e11e-3e02-4b89-b563-b10742ef7803" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061345Z:2730e11e-3e02-4b89-b563-b10742ef7803" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45B60C99DD094719A62E0C1B4AF9756D Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:44Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1530" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exesta83600\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"1d3b8290-431b-42d4-bfb3-40845020c98b\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exesta83600\",\"opType\":\"Start\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-18T05:08:36.342875+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"Succeeded\",\"timeZone\":\"\",\"resourceOperationError\":null,\"completedAt\":\"2024-12-18T05:09:20.8720447+00:00\",\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":30}}},{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib80440\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"7737b23a-8fad-4d06-bfc4-09ea995af642\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/exeHib80440\",\"opType\":\"Hibernate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-18T05:03:15.0346599+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"Succeeded\",\"timeZone\":\"\",\"resourceOperationError\":null,\"completedAt\":\"2024-12-18T05:04:18.3843998+00:00\",\"retryPolicy\":{\"retryCount\":3,\"retryWindowInMinutes\":30}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+GetOperationErrors+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesGetOperationErrors?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesGetOperationErrors?api-version=2024-10-01",
+      "Content": "{\r\n  \"operationIds\": [ \"1d3b8290-431b-42d4-bfb3-40845020c98b\", \"7737b23a-8fad-4d06-bfc4-09ea995af642\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "106" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":30194\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "4a19a74d-7c5f-4108-af07-e91bc1024536" ],
+        "x-ms-correlation-request-id": [ "89a9c805-b6aa-4383-8bac-b706c790ee34" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061345Z:89a9c805-b6aa-4383-8bac-b706c790ee34" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 24B5B487038543218D3F27BF76995A1B Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:45Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "574" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"results\":[{\"operationId\":\"1d3b8290-431b-42d4-bfb3-40845020c98b\",\"creationTime\":\"2024-12-18T05:08:36.3453689+00:00\",\"activationTime\":\"2024-12-18T05:08:36.342875+00:00\",\"completedAt\":\"2024-12-18T05:09:20.8720447+00:00\",\"operationErrors\":[],\"requestErrorCode\":null,\"requestErrorDetails\":null},{\"operationId\":\"7737b23a-8fad-4d06-bfc4-09ea995af642\",\"creationTime\":\"2024-12-18T05:03:15.0369345+00:00\",\"activationTime\":\"2024-12-18T05:03:15.0346599+00:00\",\"completedAt\":\"2024-12-18T05:04:18.3843998+00:00\",\"operationErrors\":[],\"requestErrorCode\":null,\"requestErrorDetails\":null}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzComputeSchedule+[NoContext]+StopOperation+$POST+https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesCancelOperations?api-version=2024-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/providers/Microsoft.ComputeSchedule/locations/eastus2euap/virtualMachinesCancelOperations?api-version=2024-10-01",
+      "Content": "{\r\n  \"operationIds\": [ \"9d048d1c-1a63-4d11-b460-73a7099957c4\" ],\r\n  \"correlationid\": \"e83212d6-6acc-4c2f-a0d3-d2d47e586473\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "126" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Alt-Svc": [ "h3=\":31887\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "1.0, 2.0, 2024-06-01-preview, 2024-08-15-preview, 2024-10-01" ],
+        "x-ms-request-id": [ "6287faec-d4ad-43c3-8315-ab99d5c34f5f" ],
+        "x-ms-correlation-request-id": [ "06f1fc92-b1f4-4a2d-a456-ee9a797d8ed4" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241218T061345Z:06f1fc92-b1f4-4a2d-a456-ee9a797d8ed4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A56CAE1E7D0E4B7E866AAFB398DDB8C1 Ref B: MNZ221060608049 Ref C: 2024-12-18T06:13:45Z" ],
+        "Date": [ "Wed, 18 Dec 2024 06:13:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "894" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"results\":[{\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/subhib31560\",\"errorCode\":null,\"errorDetails\":null,\"operation\":{\"operationId\":\"9d048d1c-1a63-4d11-b460-73a7099957c4\",\"resourceId\":\"/subscriptions/d4d56520-234b-4f88-b067-b64abe09a843/resourceGroups/rg-nneka-computeschedule-rg/providers/Microsoft.Compute/virtualMachines/subhib31560\",\"opType\":\"Hibernate\",\"subscriptionId\":\"d4d56520-234b-4f88-b067-b64abe09a843\",\"deadline\":\"2024-12-25T23:00:00+00:00\",\"deadlineType\":\"InitiateAt\",\"state\":\"Cancelled\",\"timeZone\":\"\",\"resourceOperationError\":{\"errorCode\":\"OperationCancelledByUser\",\"errorDetails\":\"Operation: 9d048d1c-1a63-4d11-b460-73a7099957c4 was cancelled by the user.\"},\"completedAt\":\"2024-12-18T06:13:45.7894718+00:00\",\"retryPolicy\":{\"retryCount\":2,\"retryWindowInMinutes\":30}}}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -13,9 +13,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ProvisioningState
     {
+        public const string Failed = "Failed";
         public const string Succeeded = "Succeeded";
+        public const string Canceled = "Canceled";
+        public const string Creating = "Creating";
         public const string Updating = "Updating";
         public const string Deleting = "Deleting";
-        public const string Failed = "Failed";
     }
 }

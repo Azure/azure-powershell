@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos.Table;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using XTable = Microsoft.Azure.Cosmos.Table;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
 {

@@ -26,6 +26,8 @@ function Test-RouteServerCRUD
     $skuType = "Standard"
     $tier = "Regional"
     $hubRoutingPreference = "VpnGateway"
+    $minCapacity = 6
+    $defaultCapacity = 2
 
     try
     {
@@ -42,6 +44,9 @@ function Test-RouteServerCRUD
       $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
       $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
 
+      # Create the autoscale configuration
+      $autoscaleConfiguration = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity $minCapacity 
+
       # Create route server
       $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference $hubRoutingPreference -AllowBranchToBranchTraffic
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
@@ -50,9 +55,10 @@ function Test-RouteServerCRUD
       Assert-AreEqual $expectedvr.Location $actualvr.Location
       Assert-AreEqual $expectedvr.HubRoutingPreference $actualvr.HubRoutingPreference
       Assert-AreEqual $expectedvr.AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
+      Assert-AreEqual $defaultCapacity $actualvr.VirtualRouterAutoScaleConfiguration.MinCapacity
 
       # Update route server
-      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath"
+      $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath" -VirtualRouterAutoScaleConfiguration $autoscaleConfiguration
 
       # List route servers
       $list = Get-AzRouteServer -ResourceGroupName $rgname
@@ -62,6 +68,8 @@ function Test-RouteServerCRUD
       Assert-AreEqual $list[0].Location $actualvr.Location
       Assert-AreEqual $list[0].HubRoutingPreference $actualvr.HubRoutingPreference
       Assert-AreEqual $list[0].AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
+      Assert-AreEqual $list[0].VirtualRouterAutoScaleConfiguration.MinCapacity $actualvr.VirtualRouterAutoScaleConfiguration.MinCapacity
+      Assert-AreEqual $list[0].VirtualRouterAutoScaleConfiguration.MinCapacity $minCapacity
         
       # Delete VR
       $deletevr = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force

@@ -1,15 +1,15 @@
 {
-  "New-AzConnectedPrivateLinkScope+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope?api-version=2024-03-31-preview+1": {
+  "New-AzConnectedPrivateLinkScope+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-31-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope?api-version=2024-03-31-preview",
-      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-31-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "98" ]
+        "Content-Length": [ "91" ]
       }
     },
     "Response": {
@@ -17,23 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1fb16994-3a28-4229-85b8-2e1734a4125b" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "e13c357b-a7a5-42b0-8fda-d5d3d0cc4391" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240515T225929Z:e13c357b-a7a5-42b0-8fda-d5d3d0cc4391" ],
+        "x-ms-request-id": [ "b775156a-3075-4715-baf6-1ec4b57881bc" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "6ed01687-1e1a-4b34-b1ea-ffc6d98814a2" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241105T223644Z:6ed01687-1e1a-4b34-b1ea-ffc6d98814a2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F7F05F99F3AB4DA7A4B19C0FB88791CD Ref B: MNZ221060609039 Ref C: 2024-05-15T22:59:28Z" ],
-        "Date": [ "Wed, 15 May 2024 22:59:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C6E75AB62A464FF9B13E44019F616155 Ref B: MNZ221060609031 Ref C: 2024-11-05T22:36:41Z" ],
+        "Date": [ "Tue, 05 Nov 2024 22:36:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "411" ],
+        "Content-Length": [ "406" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope\",\"name\":\"myScope\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"centraluseuap\",\"properties\":{\"privateLinkScopeId\":\"b448b43c-82e3-4b30-9e7c-ceb83eee7b94\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"name\":\"myScope3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus\",\"properties\":{\"privateLinkScopeId\":\"760fa1c3-da05-4a3b-8d18-c47d6781f1eb\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
       "isContentBase64": false
     }
   }

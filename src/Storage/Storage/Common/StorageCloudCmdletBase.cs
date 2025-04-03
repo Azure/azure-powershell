@@ -18,9 +18,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Storage;
@@ -276,10 +275,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true, bool isDestContext = false)
         {
             var context = inContext as AzureStorageContext;
-            if (context == null && inContext != null)
+
+            // if TableStorageAccount == null and not using Oauth, need create the TableStorageAccount (from CosmosDB table SDK) object for table cmdlets.
+            if ((context == null && inContext != null) || (context != null && context.TableStorageAccount == null && (context.StorageAccount != null && context.StorageAccount.Credentials != null && !context.StorageAccount.Credentials.IsToken)))
             {
                 context = new AzureStorageContext(inContext.GetCloudStorageAccount(), null, DefaultContext, WriteDebug);
             }
@@ -303,8 +304,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                        if (isDestContext)
+                        {
+                            throw new InvalidOperationException("Could not get the destination storage context. Please pass in a storage context with \"-DestContext\" parameter (can be created with New-AzStorageContext cmdlet).");
+                        } 
+                        else
+                        {
+                            throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
                             "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+                        }
                     }
                 }
                 catch (Exception e)

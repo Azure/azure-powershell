@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
@@ -37,6 +37,7 @@
   <ItemGroup>
     <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Update="StartupScripts\InitializeAssemblyResolver.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="StartupScripts\InitializePSStyle.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PostImportScripts\LoadAuthenticators.ps1" CopyToOutputDirectory="PreserveNewest" />

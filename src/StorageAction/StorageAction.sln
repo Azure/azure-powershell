@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageAction", "StorageAction\StorageAction.csproj", "{03F4F24D-3A93-442A-AD20-EB731FA44F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageAction", "StorageAction.Autorest\Az.StorageAction.csproj", "{5C126C5A-E2BD-400A-95A9-5BFFB55EB666}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StorageAction", "..\..\generated\StorageAction\StorageAction.Autorest\Az.StorageAction.csproj", "{1A677FE6-0AE1-4745-97C3-974905AEF0E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{03F4F24D-3A93-442A-AD20-EB731FA44F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03F4F24D-3A93-442A-AD20-EB731FA44F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03F4F24D-3A93-442A-AD20-EB731FA44F9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C126C5A-E2BD-400A-95A9-5BFFB55EB666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C126C5A-E2BD-400A-95A9-5BFFB55EB666}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C126C5A-E2BD-400A-95A9-5BFFB55EB666}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C126C5A-E2BD-400A-95A9-5BFFB55EB666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A677FE6-0AE1-4745-97C3-974905AEF0E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A677FE6-0AE1-4745-97C3-974905AEF0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A677FE6-0AE1-4745-97C3-974905AEF0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A677FE6-0AE1-4745-97C3-974905AEF0E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A9C313F-BBB4-41D5-ACAA-CA457070E0F6} = {3311551B-F955-4474-BA2B-35D62C807B7D}

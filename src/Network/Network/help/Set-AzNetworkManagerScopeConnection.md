@@ -30,7 +30,7 @@ Set-AzNetworkManagerScopeConnection -InputObject $scopeConnection
 ```
 
 ```output
-TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
 ConnectionState   : Pending
 DisplayName       :
