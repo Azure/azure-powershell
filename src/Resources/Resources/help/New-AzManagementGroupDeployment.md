@@ -18,7 +18,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
@@ -27,7 +27,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -97,7 +97,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -107,7 +107,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -127,7 +127,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -137,7 +137,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -147,7 +147,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -157,7 +157,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -166,7 +166,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
@@ -175,7 +175,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -566,6 +566,21 @@ Aliases: wi
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidationLevel
+Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).
+
+```yaml
+Type: Microsoft.Azure.Management.Resources.Models.ValidationLevel
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None(Provider)
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
