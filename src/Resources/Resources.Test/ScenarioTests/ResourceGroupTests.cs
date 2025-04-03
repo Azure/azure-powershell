@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportResourceGroupBicep()
+        {
+            TestRunner.RunTestScript("Test-ExportResourceGroupBicep");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportResourceGroupAsyncRoute()
         {
             TestRunner.RunTestScript("Test-ExportResourceGroup-AsyncRoute");
