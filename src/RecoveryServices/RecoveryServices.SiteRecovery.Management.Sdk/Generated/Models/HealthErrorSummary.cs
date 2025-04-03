@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="category">The category of the health error.
-        /// Possible values include: 'None', 'Replication', 'TestFailover',
-        /// 'Configuration', 'FabricInfrastructure', 'VersionExpiry',
-        /// 'AgentAutoUpdateInfra', 'AgentAutoUpdateArtifactDeleted',
-        /// 'AgentAutoUpdateRunAsAccount', 'AgentAutoUpdateRunAsAccountExpiry',
-        /// 'AgentAutoUpdateRunAsAccountExpired'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Replication&#39;, &#39;TestFailover&#39;,
+        /// &#39;Configuration&#39;, &#39;FabricInfrastructure&#39;, &#39;VersionExpiry&#39;,
+        /// &#39;AgentAutoUpdateInfra&#39;, &#39;AgentAutoUpdateArtifactDeleted&#39;,
+        /// &#39;AgentAutoUpdateRunAsAccount&#39;, &#39;AgentAutoUpdateRunAsAccountExpiry&#39;,
+        /// &#39;AgentAutoUpdateRunAsAccountExpired&#39;</param>
 
         /// <param name="severity">Severity of error.
-        /// Possible values include: 'NONE', 'Warning', 'Error', 'Info'</param>
+        /// Possible values include: &#39;NONE&#39;, &#39;Warning&#39;, &#39;Error&#39;, &#39;Info&#39;</param>
 
         /// <param name="summaryMessage">The summary message of the health error.
         /// </param>

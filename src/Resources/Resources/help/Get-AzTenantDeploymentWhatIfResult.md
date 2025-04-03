@@ -16,14 +16,14 @@ Gets a template What-If result for a deployment at tenant scope.
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterObject <Hashtable> -TemplateSpecId <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> -TemplateSpecId <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -87,14 +87,14 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateUri <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateParameterUri <String> -TemplateSpecId <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>]
  [<CommonParameters>]
 ```
 
@@ -126,21 +126,21 @@ Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultF
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
 ```
 Get-AzTenantDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ValidationLevel <ValidationLevel>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -402,6 +402,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ValidationLevel
+Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).
+
+```yaml
+Type: Microsoft.Azure.Management.Resources.Models.ValidationLevel
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None(Provider)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

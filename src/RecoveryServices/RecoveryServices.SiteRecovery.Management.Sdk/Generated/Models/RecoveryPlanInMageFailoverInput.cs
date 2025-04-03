@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'LatestTime', 'LatestTag', 'Custom'</param>
+        /// Possible values include: &#39;LatestTime&#39;, &#39;LatestTag&#39;, &#39;Custom&#39;</param>
         public RecoveryPlanInMageFailoverInput(string recoveryPointType)
 
         {

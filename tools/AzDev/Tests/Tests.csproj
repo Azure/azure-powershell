@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="TestableIO.System.IO.Abstractions.TestingHelpers" Version="21.0.22" />
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="TestableIO.System.IO.Abstractions.TestingHelpers" Version="22.0.11" />
   </ItemGroup>
 
   <ItemGroup>

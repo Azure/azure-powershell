@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksnodeprofileobject
 #>
 function New-AzHdInsightOnAksNodeProfileObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

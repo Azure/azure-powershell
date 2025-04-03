@@ -20,7 +20,8 @@ Update-AzCosmosDBSqlContainer -ResourceGroupName <String> -AccountName <String> 
  [-AutoscaleMaxThroughput <Int32>] [-TtlInSeconds <Int32>] [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>]
  [-ConflictResolutionPolicyMode <String>] [-ConflictResolutionPolicyPath <String>]
  [-ConflictResolutionPolicyProcedure <String>] [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>]
- [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>] 
+ [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +34,7 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
  [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] -ParentObject <PSSqlDatabaseGetResults>
  [-AnalyticalStorageTtl <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -44,7 +45,8 @@ Update-AzCosmosDBSqlContainer [-Name <String>] [-IndexingPolicy <PSSqlIndexingPo
  [-UniqueKeyPolicy <PSSqlUniqueKeyPolicy>] [-ConflictResolutionPolicyMode <String>]
  [-ConflictResolutionPolicyPath <String>] [-ConflictResolutionPolicyProcedure <String>]
  [-ConflictResolutionPolicy <PSSqlConflictResolutionPolicy>] [-AnalyticalStorageTtl <Int32>]
- -InputObject <PSSqlContainerGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <PSSqlContainerGetResults> [-DefaultProfile <IAzureContextContainer>] 
+ [-VectorEmbeddingPolicy <PSSqlVectorEmbeddingPolicy>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -211,6 +213,21 @@ Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPo
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlIndexingPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VectorEmbeddingPolicy
+VectorEmbedding Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlVectorEmbeddingPolicy.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -420,6 +437,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 
 ## OUTPUTS
 

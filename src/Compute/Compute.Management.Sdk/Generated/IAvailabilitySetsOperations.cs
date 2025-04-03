@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         /// <param name='expand'>
         /// The expand expression to apply to the operation. Allowed values are
-        /// 'instanceView'.
+        /// 'virtualMachines/$ref'.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -197,6 +197,142 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<VirtualMachineSize>>> ListAvailableSizesWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Start migration operation on an Availability Set to move its
+        /// Virtual Machines to a Virtual Machine Scale Set. This should be
+        /// followed by a migrate operation on each Virtual Machine that
+        /// triggers a downtime on the Virtual Machine.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='availabilitySetName'>
+        /// The name of the availability set.
+        /// </param>
+        /// <param name='virtualMachineScaleSetFlexible'>
+        /// Specifies information about the Virtual Machine Scale Set that the
+        /// Availability Set should be migrated to. Minimum api‐version:
+        /// 2024‐11‐01.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StartMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Cancel the migration operation on an Availability Set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='availabilitySetName'>
+        /// The name of the availability set.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> CancelMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Validates that the Virtual Machines in the Availability Set can be
+        /// migrated to the provided Virtual Machine Scale Set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='availabilitySetName'>
+        /// The name of the availability set.
+        /// </param>
+        /// <param name='virtualMachineScaleSetFlexible'>
+        /// Specifies information about the Virtual Machine Scale Set that the
+        /// Availability Set should be migrated to. Minimum api‐version:
+        /// 2024‐11‐01.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> ValidateMigrationToVirtualMachineScaleSetWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, SubResource virtualMachineScaleSetFlexible, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create a new Flexible Virtual Machine Scale Set and migrate all the
+        /// Virtual Machines in the Availability Set. This does not trigger a
+        /// downtime on the Virtual Machines.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='availabilitySetName'>
+        /// The name of the availability set.
+        /// </param>
+        /// <param name='virtualMachineScaleSetName'>
+        /// Specifies information about the Virtual Machine Scale Set that the
+        /// Availability Set should be converted to.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> ConvertToVirtualMachineScaleSetWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create a new Flexible Virtual Machine Scale Set and migrate all the
+        /// Virtual Machines in the Availability Set. This does not trigger a
+        /// downtime on the Virtual Machines.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='availabilitySetName'>
+        /// The name of the availability set.
+        /// </param>
+        /// <param name='virtualMachineScaleSetName'>
+        /// Specifies information about the Virtual Machine Scale Set that the
+        /// Availability Set should be converted to.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginConvertToVirtualMachineScaleSetWithHttpMessagesAsync(string resourceGroupName, string availabilitySetName, string virtualMachineScaleSetName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all availability sets in a subscription.
         /// </summary>
