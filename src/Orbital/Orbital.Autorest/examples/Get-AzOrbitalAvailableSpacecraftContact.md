@@ -3,7 +3,7 @@
 $dateS = Get-Date -Day 9 -Month 5 -AsUTC
 $dateE = Get-Date -Day 10 -Month 5 -AsUTC
 
-Get-AzOrbitalAvailableSpacecraftContact -Name SwedenAQUASpacecraft -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName Microsoft_Gavle -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile
+Get-AzOrbitalAvailableSpacecraftContact -Name SwedenAQUASpacecraft -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName Microsoft_Gavle -ContactProfileId /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile
 ```
 
 ```output
