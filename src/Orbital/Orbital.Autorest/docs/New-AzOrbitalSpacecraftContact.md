@@ -20,6 +20,14 @@ New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -Space
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentitySpacecraftExpanded
+```
+New-AzOrbitalSpacecraftContact -Name <String> -SpacecraftInputObject <IOrbitalIdentity>
+ -ContactProfileId <String> -GroundStationName <String> -ReservationEndTime <DateTime>
+ -ReservationStartTime <DateTime> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### CreateViaJsonFilePath
 ```
 New-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
@@ -77,7 +85,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpacecraftExpanded
 Aliases:
 
 Required: True
@@ -108,7 +116,7 @@ Azure Ground Station name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpacecraftExpanded
 Aliases:
 
 Required: True
@@ -183,7 +191,7 @@ Reservation end time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpacecraftExpanded
 Aliases:
 
 Required: True
@@ -198,7 +206,7 @@ Reservation start time of a contact (ISO 8601 UTC standard).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpacecraftExpanded
 Aliases:
 
 Required: True
@@ -214,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -224,12 +232,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpacecraftInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
+Parameter Sets: CreateViaIdentitySpacecraftExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SpacecraftName
 Spacecraft ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -244,7 +267,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -289,6 +312,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 
 ## OUTPUTS
 
