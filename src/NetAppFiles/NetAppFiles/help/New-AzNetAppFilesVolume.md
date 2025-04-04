@@ -21,15 +21,15 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
  [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess]
- [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>] [-UnixPermission <String>]
- [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
+ [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>] [-CoolAccessTieringPolicy <String>]
+ [-UnixPermission <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -40,15 +40,15 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
  [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess] [-CoolnessPeriod <Int32>]
- [-CoolAccessRetrievalPolicy <String>] [-UnixPermission <String>] [-AvsDataStore <String>]
- [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>]
- [-NetworkFeature <String>] [-CapacityPoolResourceId <String>] [-ProximityPlacementGroup <String>]
- [-VolumeSpecName <String>]
+ [-CoolAccessRetrievalPolicy <String>] [-CoolAccessTieringPolicy <String>] [-UnixPermission <String>]
+ [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
+ [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
+ [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -175,6 +175,23 @@ CoolAccessRetrievalPolicy determines the data retrieval behavior from the cool t
  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
  Never - No client-driven data is pulled from cool tier to standard storage.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoolAccessTieringPolicy
+CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: 
+ Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.
+ SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
 
 ```yaml
 Type: System.String
@@ -485,6 +502,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

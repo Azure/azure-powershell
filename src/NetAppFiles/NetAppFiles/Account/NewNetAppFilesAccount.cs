@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Tags = tagPairs,
                 Encryption = Encryption?.ConvertFromPs()
             };
-            if (IdentityType != null)
+            if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {
                 var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
                 userAssingedIdentitiesDict.Add(UserAssignedIdentity, new Management.NetApp.Models.UserAssignedIdentity());
@@ -175,6 +175,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 {
                     Type = IdentityType,
                     UserAssignedIdentities = userAssingedIdentitiesDict
+                };
+            }
+            else if (IdentityType == "SystemAssigned")
+            {
+                netAppAccountBody.Identity = new ManagedServiceIdentity()
+                {
+                    Type = IdentityType
                 };
             }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

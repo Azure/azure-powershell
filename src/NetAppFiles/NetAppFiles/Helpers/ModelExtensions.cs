@@ -518,7 +518,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 IsLargeVolume = volume.IsLargeVolume,
                 ActualThroughputMibps = volume.ActualThroughputMibps,
                 OriginatingResourceId = volume.OriginatingResourceId,
-                CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy
+                CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy,
+                CoolAccessTieringPolicy = volume.CoolAccessTieringPolicy
             };
         }
 

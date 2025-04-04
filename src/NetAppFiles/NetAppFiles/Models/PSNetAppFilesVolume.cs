@@ -270,6 +270,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string CoolAccessRetrievalPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets CoolAccessTieringPolicy
+        /// </summary>
+        /// <value>
+        /// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. 
+        /// The possible values for this field are: Auto - Moves cold user data blocks in both 
+        /// the Snapshot copies and the active file system to the cool tier tier. This policy 
+        /// is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies 
+        /// that are not associated with the active file system to the cool tier.
+        /// Possible values include: 'Auto', 'SnapshotOnly'
+        /// </value>
+        public string CoolAccessTieringPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets UnixPermission
         /// </summary>
         /// <value>
