@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
     - `New-AzVirtualNetworkGatewayMigrationParameter`
     - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
