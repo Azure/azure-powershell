@@ -69,6 +69,8 @@ jobs:
       pwsh: true
       script:
         Write-Host "POC pipeline triggered successfully!"
+        
+  - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: build-${{ variables.TestFramework }}
 
