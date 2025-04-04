@@ -34,3 +34,4 @@ jobs:
               }
             }' \
             "https://dev.azure.com/azclitools/public/_apis/pipelines/160/runs?api-version=7.1-preview.1"
+            
