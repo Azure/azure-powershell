@@ -5479,6 +5479,82 @@ function Test-VirtualMachineScaleSetSkuProfile
 
 <#
 .SYNOPSIS
+Test Virtual Machine Scale Set with SkuProfile with prioritized allocation type
+#>
+function Test-VirtualMachineScaleSetSkuProfilePrioritized
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2";
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vs' + $rgname;
+
+        $domainNameLabel1 = "d1" + $rgname;
+        $enable = $true;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        $stnd = "Standard";
+        $ipName = Get-ComputeTestResourceName
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuName "Mix" `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
+            -ImageReferencePublisher $imgRef.PublisherName  `
+            | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3";
+        Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 1;
+
+        # creating new-azvmss using New-VmssConfig
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+
+        Assert-AreEqual $vmssResult.Sku.Name "Mix";
+        Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "Prioritized";
+        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
+        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
+
+        # update vmss
+        # $vmssUpdate = $vmssResult | Update-AzVmss -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
+
+        # $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        # Assert-AreEqual $vmssGet.Sku.Name "Mix";
+        # Assert-AreEqual $vmssGet.SkuProfile.AllocationStrategy "CapacityOptimized";
+        # Assert-AreEqual $vmssGet.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
+        # Assert-AreEqual $vmssGet.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
     Create a VMSS using New-Azvmssconfig
     Update the Resiliency policies of VMSS using Update-Azvmss
     Test ResilientVMCreationPolicy and ResilientVMDeletionPolicy
