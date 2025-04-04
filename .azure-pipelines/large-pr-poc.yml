@@ -1,26 +1,5 @@
 variables:
-  WindowsName: windows
-  WindowsAgentPoolName: pool-windows-2019
-  WindowsAgentPoolVMImage: ''
-  LinuxName: linux
-  LinuxAgentPoolName: pool-ubuntu-2004
-  LinuxAgentPoolVMImage: ''
-  MacOSName: macOS
-  MacOSAgentPoolName: 'Azure Pipelines'
-  MacOSAgentPoolVMImage: macOS-latest
-  TestFramework: net8.0
-  TestTarget: Test
-  Configuration: Debug
-  DebugLocalBuildTasks: true
-  IsGenerateBased: $[startsWith(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
-  AnalysisTimeoutInMinutes: 120
-  TestTimeoutInMinutes: 180
-  BuildAzPredictor: false
-  EnableTestCoverage: true
-  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
-  PowerShellPlatform: PowerShell Core
-  AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 trigger: none
 
@@ -36,7 +15,8 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool:
+    vmImage: 'windows-2019'
   steps:
   - checkout: self
   - task: UseDotNet@2
@@ -69,7 +49,7 @@ jobs:
       pwsh: true
       script:
         Write-Host "POC pipeline triggered successfully!"
-        
+
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: build-${{ variables.TestFramework }}
