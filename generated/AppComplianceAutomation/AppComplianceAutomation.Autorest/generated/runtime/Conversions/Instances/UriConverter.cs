@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Jso
 
         internal override Uri FromJson(JsonNode node) => (Uri)node;
     }
-}
+}# this is comment

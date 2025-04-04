@@ -54,4 +54,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support
             }
         }
     }
-}
+}# this is comment
+# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin> Plugin { get; set; }
 
     }
-}
+}# this is comment

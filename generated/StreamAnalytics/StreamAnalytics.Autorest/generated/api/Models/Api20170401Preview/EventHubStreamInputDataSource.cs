@@ -192,4 +192,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string SharedAccessPolicyName { get; set; }
 
     }
-}
+}# this is comment

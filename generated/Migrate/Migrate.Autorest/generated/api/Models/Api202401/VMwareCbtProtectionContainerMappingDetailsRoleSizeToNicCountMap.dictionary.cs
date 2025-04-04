@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,int>(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtProtectionContainerMappingDetailsRoleSizeToNicCountMap source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

@@ -27,4 +27,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.Json
             return Enum.Parse(type, node.ToString(), ignoreCase: true);
         }
     }
-}
+}# this is comment

@@ -147,4 +147,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PrivateEndpointConnectionStatus? RemotePrivateLinkServiceConnectionStateStatus { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

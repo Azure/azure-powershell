@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequestTags Tag { get; set; }
 
     }
-}
+}# this is comment

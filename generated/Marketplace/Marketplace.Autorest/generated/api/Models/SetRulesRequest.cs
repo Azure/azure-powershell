@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRule> Value { get; set; }
 
     }
-}
+}# this is comment

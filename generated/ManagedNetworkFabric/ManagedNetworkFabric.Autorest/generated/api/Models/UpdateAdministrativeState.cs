@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string State { get; set; }
 
     }
-}
+}# this is comment

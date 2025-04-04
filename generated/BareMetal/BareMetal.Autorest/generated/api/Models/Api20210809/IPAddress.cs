@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         string IPAddress1 { get; set; }
 
     }
-}
+}# this is comment

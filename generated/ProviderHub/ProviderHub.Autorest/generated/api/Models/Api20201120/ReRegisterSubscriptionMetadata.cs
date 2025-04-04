@@ -58,4 +58,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         bool Enabled { get; set; }
 
     }
-}
+}# this is comment

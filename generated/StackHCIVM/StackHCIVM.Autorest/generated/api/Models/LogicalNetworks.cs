@@ -346,4 +346,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string VMSwitchName { get; set; }
 
     }
-}
+}# this is comment

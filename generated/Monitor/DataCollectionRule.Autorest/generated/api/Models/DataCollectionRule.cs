@@ -630,4 +630,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations StreamDeclaration { get; set; }
 
     }
-}
+}# this is comment

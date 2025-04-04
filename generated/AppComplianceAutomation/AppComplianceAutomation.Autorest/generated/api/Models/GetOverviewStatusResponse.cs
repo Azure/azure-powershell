@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IStatusItem> StatusList { get; set; }
 
     }
-}
+}# this is comment

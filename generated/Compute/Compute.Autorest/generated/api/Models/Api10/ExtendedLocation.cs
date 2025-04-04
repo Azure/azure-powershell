@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ExtendedLocationTypes? Type { get; set; }
 
     }
-}
+}# this is comment

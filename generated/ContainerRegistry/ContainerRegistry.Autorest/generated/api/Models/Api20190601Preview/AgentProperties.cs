@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api2019060
         int? Cpu { get; set; }
 
     }
-}
+}# this is comment

@@ -97,4 +97,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api2022080
         Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType? Type { get; set; }
 
     }
-}
+}# this is comment

@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IEndpointDependency[] Endpoint { get; set; }
 
     }
-}
+}# this is comment

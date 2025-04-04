@@ -79,4 +79,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Security.SecureString SecureValue { get; set; }
 
     }
-}
+}# this is comment

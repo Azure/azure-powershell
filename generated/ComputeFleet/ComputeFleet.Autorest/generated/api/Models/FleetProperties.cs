@@ -1226,4 +1226,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile> VMSizesProfile { get; set; }
 
     }
-}
+}# this is comment

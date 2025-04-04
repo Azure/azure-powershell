@@ -20,4 +20,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json
             return text;
         }
     }
-}
+}# this is comment

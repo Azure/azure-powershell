@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.TagsResourceTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

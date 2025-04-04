@@ -101,4 +101,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

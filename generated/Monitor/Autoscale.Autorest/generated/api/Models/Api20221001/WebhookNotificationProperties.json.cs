@@ -106,4 +106,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
             AfterFromJson(json);
         }
     }
-}
+}# this is comment
+# this is comment

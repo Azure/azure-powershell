@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IStorageEditionCapability[] SupportedStorageEdition { get; set; }
 
     }
-}
+}# this is comment

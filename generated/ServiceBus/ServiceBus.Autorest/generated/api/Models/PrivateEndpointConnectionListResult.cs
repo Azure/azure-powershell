@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }
-}
+}# this is comment

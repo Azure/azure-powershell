@@ -114,4 +114,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation[] FailoverType { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

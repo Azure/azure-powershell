@@ -1068,4 +1068,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VmotionNetwork { get; set; }
 
     }
-}
+}# this is comment

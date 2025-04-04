@@ -58,4 +58,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview
         Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate[] Value { get; set; }
 
     }
-}
+}# this is comment

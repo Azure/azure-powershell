@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget ExtensionTarget { get; set; }
 
     }
-}
+}# this is comment

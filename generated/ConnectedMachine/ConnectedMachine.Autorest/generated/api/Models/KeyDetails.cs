@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         global::System.DateTime? RenewAfter { get; set; }
 
     }
-}
+}# this is comment

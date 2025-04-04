@@ -151,4 +151,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
         Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.ConnectionPropertiesProvisioningState? ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

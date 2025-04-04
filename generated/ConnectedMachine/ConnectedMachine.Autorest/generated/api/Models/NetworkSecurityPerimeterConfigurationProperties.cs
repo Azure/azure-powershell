@@ -329,4 +329,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ResourceAssociationName { get; set; }
 
     }
-}
+}# this is comment

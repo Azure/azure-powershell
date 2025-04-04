@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
 
         internal override DateTimeOffset FromJson(JsonNode node) => (DateTimeOffset)node;
     }
-}
+}# this is comment

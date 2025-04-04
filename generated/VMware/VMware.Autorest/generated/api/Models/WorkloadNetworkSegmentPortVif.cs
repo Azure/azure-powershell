@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string PortName { get; set; }
 
     }
-}
+}# this is comment

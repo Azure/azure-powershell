@@ -68,4 +68,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy[] Value { get; set; }
 
     }
-}
+}# this is comment

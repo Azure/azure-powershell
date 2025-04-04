@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models
         string ErrorDetail { get; set; }
 
     }
-}
+}# this is comment

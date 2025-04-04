@@ -75,4 +75,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResourcePatchParametersTags Tag { get; set; }
 
     }
-}
+}# this is comment

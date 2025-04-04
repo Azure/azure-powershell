@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IManagementPolicyRule> PolicyRule { get; set; }
 
     }
-}
+}# this is comment

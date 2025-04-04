@@ -349,4 +349,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201P
         string RegistrationDefinitionType { get; set; }
 
     }
-}
+}# this is comment

@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
         public const string Warning = nameof(Warning);
     }
 
-}
+}# this is comment

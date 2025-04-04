@@ -24,4 +24,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment
+# this is comment

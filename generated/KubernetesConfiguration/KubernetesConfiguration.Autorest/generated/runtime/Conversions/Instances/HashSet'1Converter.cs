@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Jso
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

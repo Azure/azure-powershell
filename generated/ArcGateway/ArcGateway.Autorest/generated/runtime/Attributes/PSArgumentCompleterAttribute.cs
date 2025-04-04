@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway
             return scriptBlock;
         }
     }
-}
+}# this is comment

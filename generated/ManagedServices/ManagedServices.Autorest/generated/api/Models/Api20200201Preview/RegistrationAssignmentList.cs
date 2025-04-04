@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201P
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment[] Value { get; set; }
 
     }
-}
+}# this is comment

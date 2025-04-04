@@ -36,4 +36,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
             tokenizer.Dispose();
         }
     }
-}
+}# this is comment

@@ -217,4 +217,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         global::System.DateTime? TimeCollected { get; set; }
 
     }
-}
+}# this is comment

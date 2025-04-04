@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         string EventTypeInfoKind { get; set; }
 
     }
-}
+}# this is comment

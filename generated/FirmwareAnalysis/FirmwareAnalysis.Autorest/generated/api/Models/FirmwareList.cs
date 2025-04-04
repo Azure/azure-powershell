@@ -74,4 +74,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware> Value { get; set; }
 
     }
-}
+}# this is comment

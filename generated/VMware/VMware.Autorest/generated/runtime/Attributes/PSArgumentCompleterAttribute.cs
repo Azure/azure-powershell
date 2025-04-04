@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             return scriptBlock;
         }
     }
-}
+}# this is comment

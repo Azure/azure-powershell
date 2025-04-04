@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

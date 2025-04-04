@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Json
             throw new Exception($"TypeCode '{code}' does not have a fast converter");
         }
     }
-}
+}# this is comment
+# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionWarmUpRequestBodyParameters Parameter { get; set; }
 
     }
-}
+}# this is comment

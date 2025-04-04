@@ -861,4 +861,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
         bool? WorkloadIdentityEnabled { get; set; }
 
     }
-}
+}# this is comment

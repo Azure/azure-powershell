@@ -460,4 +460,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string ResourceShmSize { get; set; }
 
     }
-}
+}# this is comment

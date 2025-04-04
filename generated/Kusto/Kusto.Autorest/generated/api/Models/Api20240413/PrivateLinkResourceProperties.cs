@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string[] RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

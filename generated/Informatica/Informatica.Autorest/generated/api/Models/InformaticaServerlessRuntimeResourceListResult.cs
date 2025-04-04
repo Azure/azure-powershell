@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInformaticaServerlessRuntimeResource> Value { get; set; }
 
     }
-}
+}# this is comment

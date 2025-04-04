@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         bool? ServerlessComputeNoPublicIP { get; set; }
 
     }
-}
+}# this is comment

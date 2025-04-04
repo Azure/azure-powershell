@@ -345,4 +345,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IReverseShippingDetails ReverseShippingDetail { get; set; }
 
     }
-}
+}# this is comment

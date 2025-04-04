@@ -233,4 +233,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WorkbookSharedTypeKind? Kind { get; set; }
 
     }
-}
+}# this is comment

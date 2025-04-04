@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Jso
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment

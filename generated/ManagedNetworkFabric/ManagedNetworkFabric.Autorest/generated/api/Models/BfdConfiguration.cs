@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         int? Multiplier { get; set; }
 
     }
-}
+}# this is comment

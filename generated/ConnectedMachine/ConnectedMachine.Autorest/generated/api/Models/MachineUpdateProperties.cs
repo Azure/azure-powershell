@@ -354,4 +354,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string PrivateLinkScopeResourceId { get; set; }
 
     }
-}
+}# this is comment

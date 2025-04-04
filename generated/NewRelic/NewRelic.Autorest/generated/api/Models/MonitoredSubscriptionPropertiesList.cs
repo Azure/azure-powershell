@@ -67,4 +67,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> Value { get; set; }
 
     }
-}
+}# this is comment

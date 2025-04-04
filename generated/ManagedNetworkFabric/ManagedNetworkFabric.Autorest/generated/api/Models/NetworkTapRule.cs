@@ -344,4 +344,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string TapRulesUrl { get; set; }
 
     }
-}
+}# this is comment

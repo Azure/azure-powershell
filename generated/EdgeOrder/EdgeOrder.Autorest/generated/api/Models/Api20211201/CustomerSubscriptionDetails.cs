@@ -87,4 +87,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ICustomerSubscriptionRegisteredFeatures[] RegisteredFeature { get; set; }
 
     }
-}
+}# this is comment

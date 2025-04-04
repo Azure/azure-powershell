@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Value { get; set; }
 
     }
-}
+}# this is comment

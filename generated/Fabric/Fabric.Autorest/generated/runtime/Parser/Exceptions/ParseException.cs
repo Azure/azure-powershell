@@ -21,4 +21,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Runtime.Json
 
         internal SourceLocation Location { get; }
     }
-}
+}# this is comment

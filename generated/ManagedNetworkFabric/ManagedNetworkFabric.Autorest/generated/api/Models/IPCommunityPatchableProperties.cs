@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityRule> IPCommunityRule { get; set; }
 
     }
-}
+}# this is comment

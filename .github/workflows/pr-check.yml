@@ -1,0 +1,37 @@
+name: PR Trigger Test
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+
+      - name: Print success messagess
+        run: echo "GitHub Action triggered successfully!"
+
+      - name: Trigger Azure DevOps Pipeline via REST API
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.BIG_PR_POC }}
+          BRANCH_NAME: ${{ github.head_ref }}
+        run: |
+          curl -u :$AZURE_DEVOPS_PAT \
+            -X POST \
+            -H "Content-Type: application/json" \
+            --data '{
+              "resources": {
+                "repositories": {
+                  "self": {
+                    "refName": "refs/heads/'"${BRANCH_NAME}"'"
+                  }
+                }
+              }
+            }' \
+            "https://dev.azure.com/azclitools/public/_apis/pipelines/160/runs?api-version=7.1-preview.1"
+            

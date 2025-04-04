@@ -167,4 +167,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401
         double? TimezoneOffset { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

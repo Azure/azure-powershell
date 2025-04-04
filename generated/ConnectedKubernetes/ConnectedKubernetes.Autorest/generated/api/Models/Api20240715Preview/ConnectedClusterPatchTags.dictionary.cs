@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ConnectedClusterPatchTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

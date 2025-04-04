@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Json
             return this.ToString();
         }
     }
-}
+}# this is comment

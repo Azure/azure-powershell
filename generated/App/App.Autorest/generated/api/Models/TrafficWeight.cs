@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         int? Weight { get; set; }
 
     }
-}
+}# this is comment

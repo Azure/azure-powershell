@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string ResourceId { get; set; }
 
     }
-}
+}# this is comment

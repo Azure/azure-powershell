@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

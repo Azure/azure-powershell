@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.OperationProperties source) => source.__additionalProperties;
     }
-}
+}# this is comment

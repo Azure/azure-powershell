@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ManagedServiceIdentityType? Type { get; set; }
 
     }
-}
+}# this is comment

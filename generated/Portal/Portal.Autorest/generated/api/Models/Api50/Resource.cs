@@ -205,4 +205,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50
         string Type { get; set; }
 
     }
-}
+}# this is comment

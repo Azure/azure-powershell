@@ -12,4 +12,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Json
 
         internal override Guid FromJson(JsonNode node) => (Guid)node;
     }
-}
+}# this is comment

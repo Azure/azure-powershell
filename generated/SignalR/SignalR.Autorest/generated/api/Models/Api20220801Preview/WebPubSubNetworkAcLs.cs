@@ -117,4 +117,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview
         Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[] PublicNetworkDeny { get; set; }
 
     }
-}
+}# this is comment

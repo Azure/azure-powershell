@@ -41,4 +41,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Json
             }
         }
     }
-}
+}# this is comment

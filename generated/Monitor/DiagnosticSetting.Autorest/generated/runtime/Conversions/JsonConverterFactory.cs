@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
             type.JsonConverter = converter;
         }
     }
-}
+}# this is comment

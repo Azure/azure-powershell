@@ -260,4 +260,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         int? TraceSpanChannelCapacity { get; set; }
 
     }
-}
+}# this is comment

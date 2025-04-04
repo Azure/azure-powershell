@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdl
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IContext context);
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetworksPatchTags Tag { get; set; }
 
     }
-}
+}# this is comment

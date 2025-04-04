@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         int? SizeGb { get; set; }
 
     }
-}
+}# this is comment

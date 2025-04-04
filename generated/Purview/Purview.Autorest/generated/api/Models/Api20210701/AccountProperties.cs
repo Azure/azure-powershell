@@ -362,4 +362,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701
         Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
 
     }
-}
+}# this is comment

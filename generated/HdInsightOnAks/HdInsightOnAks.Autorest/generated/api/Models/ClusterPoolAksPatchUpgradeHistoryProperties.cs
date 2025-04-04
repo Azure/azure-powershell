@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? UpgradeClusterPool { get; set; }
 
     }
-}
+}# this is comment

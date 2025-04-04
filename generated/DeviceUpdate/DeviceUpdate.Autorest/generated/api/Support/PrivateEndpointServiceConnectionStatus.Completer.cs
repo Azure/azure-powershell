@@ -40,4 +40,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Support
             }
         }
     }
-}
+}# this is comment

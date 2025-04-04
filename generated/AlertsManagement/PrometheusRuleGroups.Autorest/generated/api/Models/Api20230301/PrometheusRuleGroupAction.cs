@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api2023
         Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties ActionProperty { get; set; }
 
     }
-}
+}# this is comment

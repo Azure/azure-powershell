@@ -74,4 +74,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode ScaleMode { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

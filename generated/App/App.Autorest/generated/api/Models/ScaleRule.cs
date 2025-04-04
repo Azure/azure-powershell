@@ -279,4 +279,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITcpScaleRuleMetadata TcpMetadata { get; set; }
 
     }
-}
+}# this is comment

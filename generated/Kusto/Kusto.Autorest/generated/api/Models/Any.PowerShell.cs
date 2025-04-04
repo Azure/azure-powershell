@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
     {
 
     }
-}
+}# this is comment

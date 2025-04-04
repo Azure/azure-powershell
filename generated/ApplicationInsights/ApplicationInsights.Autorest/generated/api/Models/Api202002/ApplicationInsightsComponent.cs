@@ -593,4 +593,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200
         string WorkspaceResourceId { get; set; }
 
     }
-}
+}# this is comment

@@ -216,4 +216,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         string TenantName { get; set; }
 
     }
-}
+}# this is comment

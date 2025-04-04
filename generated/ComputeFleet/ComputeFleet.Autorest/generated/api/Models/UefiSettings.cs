@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         bool? VTpmEnabled { get; set; }
 
     }
-}
+}# this is comment

@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         bool? IsSecondaryIPEnabled { get; set; }
 
     }
-}
+}# this is comment

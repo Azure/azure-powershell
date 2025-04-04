@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api2024
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType KeyType { get; set; }
 
     }
-}
+}# this is comment

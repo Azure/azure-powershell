@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string AddressPrefix { get; set; }
 
     }
-}
+}# this is comment

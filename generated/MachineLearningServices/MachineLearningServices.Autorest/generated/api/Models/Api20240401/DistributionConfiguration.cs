@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType DistributionType { get; set; }
 
     }
-}
+}# this is comment

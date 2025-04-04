@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         global::System.DateTime Timestamp { get; set; }
 
     }
-}
+}# this is comment

@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> ResourceId { get; set; }
 
     }
-}
+}# this is comment

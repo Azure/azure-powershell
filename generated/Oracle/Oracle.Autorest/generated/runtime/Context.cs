@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Oracle Client { get; }
     }
 }
+# this is comment

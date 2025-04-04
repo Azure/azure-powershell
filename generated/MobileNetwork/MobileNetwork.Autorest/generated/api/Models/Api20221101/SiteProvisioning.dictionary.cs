@@ -72,4 +72,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SiteProvisioningState>(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteProvisioning source) => source.__additionalProperties;
     }
-}
+}# this is comment
+# this is comment

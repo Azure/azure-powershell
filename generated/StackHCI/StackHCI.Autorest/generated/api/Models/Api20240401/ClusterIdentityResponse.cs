@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IClusterIdentityResponseProperties Property { get; set; }
 
     }
-}
+}# this is comment

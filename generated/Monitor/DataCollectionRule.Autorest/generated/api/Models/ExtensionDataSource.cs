@@ -161,4 +161,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         System.Collections.Generic.List<string> Stream { get; set; }
 
     }
-}
+}# this is comment

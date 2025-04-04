@@ -58,4 +58,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview
         Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxPublicIPAddress[] PublicIPAddress { get; set; }
 
     }
-}
+}# this is comment

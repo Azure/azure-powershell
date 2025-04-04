@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.Models
         System.Collections.Generic.List<string> ResourceType { get; set; }
 
     }
-}
+}# this is comment

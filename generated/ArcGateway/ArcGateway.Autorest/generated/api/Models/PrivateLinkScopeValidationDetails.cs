@@ -103,4 +103,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string PublicNetworkAccess { get; set; }
 
     }
-}
+}# this is comment

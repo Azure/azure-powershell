@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         bool? ToBeExportedForShoebox { get; set; }
 
     }
-}
+}# this is comment

@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.MyWorkbookResourceEtag source) => source.__additionalProperties;
     }
-}
+}# this is comment

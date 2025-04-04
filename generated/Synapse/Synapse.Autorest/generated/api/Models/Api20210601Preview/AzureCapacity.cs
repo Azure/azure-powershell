@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.AzureScaleType ScaleType { get; set; }
 
     }
-}
+}# this is comment

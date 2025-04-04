@@ -105,4 +105,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

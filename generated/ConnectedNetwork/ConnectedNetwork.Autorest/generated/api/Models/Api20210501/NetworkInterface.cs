@@ -99,4 +99,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType? VMSwitchType { get; set; }
 
     }
-}
+}# this is comment

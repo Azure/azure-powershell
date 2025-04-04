@@ -21,4 +21,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Js
 
         internal SourceLocation Location { get; }
     }
-}
+}# this is comment
+# this is comment

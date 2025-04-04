@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

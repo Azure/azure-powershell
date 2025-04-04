@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         float? Size { get; set; }
 
     }
-}
+}# this is comment

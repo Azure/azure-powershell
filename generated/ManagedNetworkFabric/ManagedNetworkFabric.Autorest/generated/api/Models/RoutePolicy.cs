@@ -299,4 +299,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties> Statement { get; set; }
 
     }
-}
+}# this is comment

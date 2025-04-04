@@ -78,3 +78,5 @@ directive:
       preview-announcement:
         preview-message: This is a preview version of Azure Extended Zones.
 ```
+
+# this is readme comment

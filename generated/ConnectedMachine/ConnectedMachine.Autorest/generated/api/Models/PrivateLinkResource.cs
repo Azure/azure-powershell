@@ -184,4 +184,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

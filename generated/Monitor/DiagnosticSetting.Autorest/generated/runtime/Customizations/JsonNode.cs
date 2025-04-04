@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.J
             return this.ToString();
         }
     }
-}
+}# this is comment

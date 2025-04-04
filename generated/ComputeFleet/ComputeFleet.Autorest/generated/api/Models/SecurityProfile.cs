@@ -330,4 +330,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         bool? UefiSettingVTpmEnabled { get; set; }
 
     }
-}
+}# this is comment

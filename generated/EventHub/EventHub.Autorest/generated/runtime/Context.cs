@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.EventHub Client { get; }
     }
 }
+# this is comment

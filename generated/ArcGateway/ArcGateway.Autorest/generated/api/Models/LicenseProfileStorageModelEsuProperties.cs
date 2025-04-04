@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IEsuKey> EsuKey { get; set; }
 
     }
-}
+}# this is comment

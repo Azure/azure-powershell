@@ -412,4 +412,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string ResourceRuntimeVersion { get; set; }
 
     }
-}
+}# this is comment

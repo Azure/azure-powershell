@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview
         Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile[] Value { get; set; }
 
     }
-}
+}# this is comment

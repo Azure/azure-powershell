@@ -343,4 +343,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaceStatusProvisioningStatus StatusProvisioningStatus { get; set; }
 
     }
-}
+}# this is comment

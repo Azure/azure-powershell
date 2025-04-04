@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuZoneDetail[] ZoneDetail { get; set; }
 
     }
-}
+}# this is comment

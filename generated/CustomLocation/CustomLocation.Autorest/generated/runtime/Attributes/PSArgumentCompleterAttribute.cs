@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             return scriptBlock;
         }
     }
-}
+}# this is comment

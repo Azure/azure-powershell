@@ -294,4 +294,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models
         string RegistrationState { get; set; }
 
     }
-}
+}# this is comment

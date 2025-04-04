@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
             return scriptBlock;
         }
     }
-}
+}# this is comment

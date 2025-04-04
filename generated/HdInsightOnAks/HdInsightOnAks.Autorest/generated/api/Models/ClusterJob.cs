@@ -144,4 +144,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobProperties Property { get; set; }
 
     }
-}
+}# this is comment

@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProperties> Value { get; set; }
 
     }
-}
+}# this is comment

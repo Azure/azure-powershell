@@ -76,4 +76,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IOperation[] Value { get; set; }
 
     }
-}
+}# this is comment

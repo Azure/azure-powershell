@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             return scriptBlock;
         }
     }
-}
+}# this is comment

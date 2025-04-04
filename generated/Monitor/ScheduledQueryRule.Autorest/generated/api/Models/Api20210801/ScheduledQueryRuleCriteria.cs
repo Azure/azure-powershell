@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.ICondition[] AllOf { get; set; }
 
     }
-}
+}# this is comment

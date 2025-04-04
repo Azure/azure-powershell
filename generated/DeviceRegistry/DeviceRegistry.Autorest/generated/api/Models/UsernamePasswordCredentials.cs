@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string UsernameSecretName { get; set; }
 
     }
-}
+}# this is comment

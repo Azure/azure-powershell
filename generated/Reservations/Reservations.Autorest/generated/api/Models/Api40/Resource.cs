@@ -205,4 +205,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api40
         string Type { get; set; }
 
     }
-}
+}# this is comment

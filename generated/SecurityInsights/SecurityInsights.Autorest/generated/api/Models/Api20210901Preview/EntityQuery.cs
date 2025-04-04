@@ -129,4 +129,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901
         Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind Kind { get; set; }
 
     }
-}
+}# this is comment

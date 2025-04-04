@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10
         string[] RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

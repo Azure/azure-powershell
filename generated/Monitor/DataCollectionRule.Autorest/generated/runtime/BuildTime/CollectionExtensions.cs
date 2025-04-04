@@ -18,3 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
             collection.GroupBy(selector).Select(group => group.First());
     }
 }
+# this is comment

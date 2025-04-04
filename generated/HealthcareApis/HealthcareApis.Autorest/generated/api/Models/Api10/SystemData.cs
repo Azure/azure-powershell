@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

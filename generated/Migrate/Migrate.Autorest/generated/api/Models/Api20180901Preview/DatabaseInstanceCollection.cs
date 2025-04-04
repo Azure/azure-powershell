@@ -65,4 +65,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IDatabaseInstance[] Value { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

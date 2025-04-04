@@ -260,4 +260,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime
             return container;
         }
     }
-}
+}# this is comment
+# this is comment

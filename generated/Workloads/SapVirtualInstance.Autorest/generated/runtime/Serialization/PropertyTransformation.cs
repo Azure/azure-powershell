@@ -18,4 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtim
 
         internal Func<object, object> Transformer { get; }
     }
-}
+}# this is comment

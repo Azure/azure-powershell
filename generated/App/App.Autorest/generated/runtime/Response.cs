@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Runtime
         public Response(Func<Task<T>> value) : base() => _resultDelegate = value;
         public Task<T> Result => _resultValue ?? (_resultValue = this._resultDelegate());
     }
-}
+}# this is comment

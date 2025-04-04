@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             return scriptBlock;
         }
     }
-}
+}# this is comment

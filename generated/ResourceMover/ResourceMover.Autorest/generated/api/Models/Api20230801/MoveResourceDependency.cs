@@ -184,4 +184,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801
         Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType? ResolutionType { get; set; }
 
     }
-}
+}# this is comment

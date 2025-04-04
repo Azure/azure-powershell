@@ -106,4 +106,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api201906
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

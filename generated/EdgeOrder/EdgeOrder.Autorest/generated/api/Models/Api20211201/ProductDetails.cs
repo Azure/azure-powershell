@@ -154,4 +154,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.DoubleEncryptionStatus? ProductDoubleEncryptionStatus { get; set; }
 
     }
-}
+}# this is comment

@@ -253,4 +253,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment

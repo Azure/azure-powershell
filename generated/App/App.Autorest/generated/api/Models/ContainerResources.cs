@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string Memory { get; set; }
 
     }
-}
+}# this is comment

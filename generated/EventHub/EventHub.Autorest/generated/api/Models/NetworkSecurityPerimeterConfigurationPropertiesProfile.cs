@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string Name { get; set; }
 
     }
-}
+}# this is comment

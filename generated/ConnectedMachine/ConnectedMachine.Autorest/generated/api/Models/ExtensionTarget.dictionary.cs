@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTargetProperties>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionTarget source) => source.__additionalProperties;
     }
-}
+}# this is comment

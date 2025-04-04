@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240
         bool? Enabled { get; set; }
 
     }
-}
+}# this is comment

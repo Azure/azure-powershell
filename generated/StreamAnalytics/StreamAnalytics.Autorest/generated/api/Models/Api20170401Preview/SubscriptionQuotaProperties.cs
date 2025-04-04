@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         int? MaxCount { get; set; }
 
     }
-}
+}# this is comment

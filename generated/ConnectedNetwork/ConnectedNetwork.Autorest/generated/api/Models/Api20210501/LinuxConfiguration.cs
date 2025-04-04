@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[] SshPublicKey { get; set; }
 
     }
-}
+}# this is comment

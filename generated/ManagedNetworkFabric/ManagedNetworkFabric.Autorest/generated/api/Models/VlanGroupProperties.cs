@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> Vlan { get; set; }
 
     }
-}
+}# this is comment

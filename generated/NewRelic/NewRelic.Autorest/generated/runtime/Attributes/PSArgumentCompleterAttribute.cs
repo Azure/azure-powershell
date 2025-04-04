@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             return scriptBlock;
         }
     }
-}
+}# this is comment

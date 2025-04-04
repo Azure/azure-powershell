@@ -47,4 +47,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent? SoftwareAssuranceIntent { get; set; }
 
     }
-}
+}# this is comment

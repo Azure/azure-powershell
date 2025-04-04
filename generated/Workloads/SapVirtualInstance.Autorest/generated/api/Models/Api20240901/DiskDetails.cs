@@ -163,4 +163,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName? SkuName { get; set; }
 
     }
-}
+}# this is comment

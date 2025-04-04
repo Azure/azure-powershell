@@ -114,4 +114,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime
             public void Dispose() => System.Threading.SynchronizationContext.SetSynchronizationContext(original);
         }
     }
-}
+}# this is comment
+# this is comment

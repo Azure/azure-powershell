@@ -94,4 +94,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? DebugSuspend { get; set; }
 
     }
-}
+}# this is comment

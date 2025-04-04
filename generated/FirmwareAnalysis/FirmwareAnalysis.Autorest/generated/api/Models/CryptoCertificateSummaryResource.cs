@@ -201,4 +201,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         long? WeakSignature { get; set; }
 
     }
-}
+}# this is comment

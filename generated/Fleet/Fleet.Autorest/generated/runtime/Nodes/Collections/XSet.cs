@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json
 
         internal HashSet<T> AsHashSet() => values;
     }
-}
+}# this is comment

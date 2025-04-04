@@ -199,4 +199,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
     }
-}
+}# this is comment

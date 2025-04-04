@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models
         System.Collections.Generic.List<string> RequiredZoneName { get; set; }
 
     }
-}
+}# this is comment

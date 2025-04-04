@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         bool? ScalingPlanEnabled { get; set; }
 
     }
-}
+}# this is comment

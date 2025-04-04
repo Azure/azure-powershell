@@ -156,4 +156,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<string> SuggestedResourceId { get; set; }
 
     }
-}
+}# this is comment

@@ -502,4 +502,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
             }
         }
     }
-}
+}# this is comment

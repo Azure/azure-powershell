@@ -110,4 +110,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api10.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.Json
             reader.Dispose();
         }
     }
-}
+}# this is comment

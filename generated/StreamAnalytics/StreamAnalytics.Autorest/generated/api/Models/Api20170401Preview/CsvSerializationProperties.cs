@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         string FieldDelimiter { get; set; }
 
     }
-}
+}# this is comment

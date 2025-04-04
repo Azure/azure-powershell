@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Previe
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.BotPropertiesAllSettings source) => source.__additionalProperties;
     }
-}
+}# this is comment

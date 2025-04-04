@@ -53,4 +53,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
         global::System.DateTime? SuspensionStartDate { get; set; }
 
     }
-}
+}# this is comment

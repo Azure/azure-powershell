@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ClusterUpdateTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

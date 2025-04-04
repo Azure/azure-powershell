@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130
         Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IEndpointDependency[] Endpoint { get; set; }
 
     }
-}
+}# this is comment

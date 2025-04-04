@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string TrustedCaCertificateConfigMapRef { get; set; }
 
     }
-}
+}# this is comment

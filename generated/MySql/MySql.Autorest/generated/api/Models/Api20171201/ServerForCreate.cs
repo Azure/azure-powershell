@@ -388,4 +388,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion? Version { get; set; }
 
     }
-}
+}# this is comment

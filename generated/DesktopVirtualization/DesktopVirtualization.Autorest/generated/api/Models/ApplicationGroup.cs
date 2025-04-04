@@ -397,4 +397,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string WorkspaceArmPath { get; set; }
 
     }
-}
+}# this is comment

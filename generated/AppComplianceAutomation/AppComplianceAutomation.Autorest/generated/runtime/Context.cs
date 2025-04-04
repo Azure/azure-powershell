@@ -31,3 +31,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime
         Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.AppComplianceAutomation Client { get; }
     }
 }
+# this is comment

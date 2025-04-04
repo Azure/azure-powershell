@@ -226,4 +226,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Ap
         string WorkspaceId { get; set; }
 
     }
-}
+}# this is comment

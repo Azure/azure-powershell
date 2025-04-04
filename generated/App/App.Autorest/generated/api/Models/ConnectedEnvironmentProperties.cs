@@ -291,4 +291,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string StaticIP { get; set; }
 
     }
-}
+}# this is comment

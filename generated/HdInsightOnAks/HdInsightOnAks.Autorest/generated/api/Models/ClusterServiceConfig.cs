@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile> File { get; set; }
 
     }
-}
+}# this is comment

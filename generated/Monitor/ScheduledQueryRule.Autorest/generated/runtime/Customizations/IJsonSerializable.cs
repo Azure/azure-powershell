@@ -260,4 +260,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime
             return container;
         }
     }
-}
+}# this is comment

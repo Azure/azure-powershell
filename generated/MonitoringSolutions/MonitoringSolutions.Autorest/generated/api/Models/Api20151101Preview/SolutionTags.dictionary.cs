@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.SolutionTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

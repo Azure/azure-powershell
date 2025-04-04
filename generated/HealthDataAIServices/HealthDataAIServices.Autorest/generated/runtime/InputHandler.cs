@@ -19,4 +19,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.Cmdlet
 
         public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IContext context);
     }
-}
+}# this is comment

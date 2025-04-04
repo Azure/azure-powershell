@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         int? NumberOfCore { get; set; }
 
     }
-}
+}# this is comment

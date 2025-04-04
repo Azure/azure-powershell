@@ -101,4 +101,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         string EventHubStream { get; set; }
 
     }
-}
+}# this is comment

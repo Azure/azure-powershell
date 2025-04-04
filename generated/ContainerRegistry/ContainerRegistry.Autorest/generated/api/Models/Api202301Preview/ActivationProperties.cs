@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActivationStatus? Status { get; set; }
 
     }
-}
+}# this is comment

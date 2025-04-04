@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api2024
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName Name { get; set; }
 
     }
-}
+}# this is comment

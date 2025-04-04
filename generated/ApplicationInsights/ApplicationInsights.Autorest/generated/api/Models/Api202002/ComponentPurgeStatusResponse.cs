@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PurgeState Status { get; set; }
 
     }
-}
+}# this is comment

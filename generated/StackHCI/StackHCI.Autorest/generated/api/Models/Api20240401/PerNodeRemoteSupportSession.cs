@@ -131,4 +131,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         global::System.DateTime? SessionStartTime { get; set; }
 
     }
-}
+}# this is comment

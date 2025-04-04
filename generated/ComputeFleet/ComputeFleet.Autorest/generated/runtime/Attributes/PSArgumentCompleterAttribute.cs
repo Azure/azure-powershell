@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
             return scriptBlock;
         }
     }
-}
+}# this is comment

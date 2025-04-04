@@ -96,4 +96,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Support.PrivateEndpointServiceConnectionStatus? Status { get; set; }
 
     }
-}
+}# this is comment

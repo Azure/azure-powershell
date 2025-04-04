@@ -18,3 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerSh
             collection.GroupBy(selector).Select(group => group.First());
     }
 }
+# this is comment

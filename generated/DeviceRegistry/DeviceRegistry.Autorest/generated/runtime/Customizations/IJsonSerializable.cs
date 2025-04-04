@@ -260,4 +260,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime
             return container;
         }
     }
-}
+}# this is comment

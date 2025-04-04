@@ -56,4 +56,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         bool? SoftwareAssuranceCustomer { get; set; }
 
     }
-}
+}# this is comment

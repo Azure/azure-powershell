@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         global::System.DateTime? MaxPatchPublishDate { get; set; }
 
     }
-}
+}# this is comment

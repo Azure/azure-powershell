@@ -30,4 +30,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime
             }
         }
     }
-}
+}# this is comment

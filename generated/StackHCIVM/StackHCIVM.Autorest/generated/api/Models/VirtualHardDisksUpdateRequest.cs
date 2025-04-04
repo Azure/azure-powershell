@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksUpdateRequestTags Tag { get; set; }
 
     }
-}
+}# this is comment

@@ -145,4 +145,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

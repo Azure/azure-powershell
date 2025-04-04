@@ -114,4 +114,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime
             public void Dispose() => System.Threading.SynchronizationContext.SetSynchronizationContext(original);
         }
     }
-}
+}# this is comment

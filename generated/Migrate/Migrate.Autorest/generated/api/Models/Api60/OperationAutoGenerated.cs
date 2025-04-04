@@ -253,4 +253,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Origin? Origin { get; set; }
 
     }
-}
+}# this is comment
+# this is comment

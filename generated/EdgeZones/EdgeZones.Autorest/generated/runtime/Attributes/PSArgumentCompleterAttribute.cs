@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones
             return scriptBlock;
         }
     }
-}
+}# this is comment

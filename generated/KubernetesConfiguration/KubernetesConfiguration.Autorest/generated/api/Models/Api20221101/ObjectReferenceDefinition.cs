@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         string Namespace { get; set; }
 
     }
-}
+}# this is comment

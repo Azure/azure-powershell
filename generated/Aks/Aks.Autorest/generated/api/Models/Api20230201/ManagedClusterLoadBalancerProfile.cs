@@ -227,4 +227,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IResourceReference[] OutboundIPPublicIP { get; set; }
 
     }
-}
+}# this is comment

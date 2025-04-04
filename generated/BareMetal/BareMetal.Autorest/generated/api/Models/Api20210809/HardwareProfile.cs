@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809
         Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum? HardwareType { get; set; }
 
     }
-}
+}# this is comment

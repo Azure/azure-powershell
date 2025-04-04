@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku? RequestsGpuSku { get; set; }
 
     }
-}
+}# this is comment

@@ -281,4 +281,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string Origin { get; set; }
 
     }
-}
+}# this is comment

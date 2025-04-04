@@ -49,4 +49,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             return scriptBlock;
         }
     }
-}
+}# this is comment
+# this is comment

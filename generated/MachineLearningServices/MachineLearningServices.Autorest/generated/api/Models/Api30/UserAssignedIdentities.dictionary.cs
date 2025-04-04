@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api3
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.UserAssignedIdentities source) => source.__additionalProperties;
     }
-}
+}# this is comment

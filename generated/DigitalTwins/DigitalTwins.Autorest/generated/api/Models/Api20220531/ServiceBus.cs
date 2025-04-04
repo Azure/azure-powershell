@@ -172,4 +172,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
         string SecondaryConnectionString { get; set; }
 
     }
-}
+}# this is comment

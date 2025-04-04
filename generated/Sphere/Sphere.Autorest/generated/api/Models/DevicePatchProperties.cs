@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models
         string DeviceGroupId { get; set; }
 
     }
-}
+}# this is comment

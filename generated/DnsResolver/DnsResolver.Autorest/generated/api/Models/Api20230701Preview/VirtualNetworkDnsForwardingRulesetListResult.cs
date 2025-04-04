@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Previ
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkDnsForwardingRuleset[] Value { get; set; }
 
     }
-}
+}# this is comment

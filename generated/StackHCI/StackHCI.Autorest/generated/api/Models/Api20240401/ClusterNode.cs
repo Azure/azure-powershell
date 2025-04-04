@@ -331,4 +331,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription? WindowsServerSubscription { get; set; }
 
     }
-}
+}# this is comment

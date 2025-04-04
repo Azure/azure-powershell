@@ -176,4 +176,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Previ
         string Resource { get; set; }
 
     }
-}
+}# this is comment

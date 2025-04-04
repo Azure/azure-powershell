@@ -143,4 +143,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api30.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

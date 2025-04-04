@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         long? MinReadyCapacity { get; set; }
 
     }
-}
+}# this is comment

@@ -242,4 +242,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy? ZoneRedundancy { get; set; }
 
     }
-}
+}# this is comment

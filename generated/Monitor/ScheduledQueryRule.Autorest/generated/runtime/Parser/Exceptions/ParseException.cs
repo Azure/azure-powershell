@@ -21,4 +21,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.
 
         internal SourceLocation Location { get; }
     }
-}
+}# this is comment

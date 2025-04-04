@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api10.ITrackedResourceTags Tag { get; set; }
 
     }
-}
+}# this is comment

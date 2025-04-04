@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

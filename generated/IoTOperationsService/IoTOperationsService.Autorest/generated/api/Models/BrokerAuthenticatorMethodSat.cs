@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         System.Collections.Generic.List<string> Audience { get; set; }
 
     }
-}
+}# this is comment

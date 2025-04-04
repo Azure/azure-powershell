@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json
             return new HashSet<T>(collection.Cast<T>());
         }
     }
-}
+}# this is comment

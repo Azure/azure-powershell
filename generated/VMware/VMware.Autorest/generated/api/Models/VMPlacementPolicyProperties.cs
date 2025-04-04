@@ -112,4 +112,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> VMMember { get; set; }
 
     }
-}
+}# this is comment

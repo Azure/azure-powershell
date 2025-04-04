@@ -77,4 +77,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string PrivateSshEndpoint { get; set; }
 
     }
-}
+}# this is comment

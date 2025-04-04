@@ -84,4 +84,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api2024
         string UserAssignedIdentityResourceId { get; set; }
 
     }
-}
+}# this is comment

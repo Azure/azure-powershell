@@ -112,4 +112,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IScopeMap> ScopeMap { get; set; }
 
     }
-}
+}# this is comment

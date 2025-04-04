@@ -111,4 +111,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531
         string Resource { get; set; }
 
     }
-}
+}# this is comment

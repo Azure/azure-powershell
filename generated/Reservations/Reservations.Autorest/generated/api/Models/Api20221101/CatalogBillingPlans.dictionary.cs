@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan[]>(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.CatalogBillingPlans source) => source.__additionalProperties;
     }
-}
+}# this is comment

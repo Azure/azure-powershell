@@ -101,4 +101,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support
             return e2.Equals(e1);
         }
     }
-}
+}# this is comment

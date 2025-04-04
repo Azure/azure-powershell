@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         long? Revision { get; set; }
 
     }
-}
+}# this is comment

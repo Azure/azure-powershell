@@ -243,4 +243,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         bool? WdacEnforced { get; set; }
 
     }
-}
+}# this is comment

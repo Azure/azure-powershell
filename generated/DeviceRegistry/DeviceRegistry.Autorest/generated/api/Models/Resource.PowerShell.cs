@@ -235,4 +235,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
     {
 
     }
-}
+}# this is comment

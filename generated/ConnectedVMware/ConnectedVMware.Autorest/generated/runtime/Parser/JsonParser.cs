@@ -177,4 +177,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Json
 
         #endregion
     }
-}
+}# this is comment

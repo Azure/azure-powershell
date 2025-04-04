@@ -73,4 +73,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         int? Revision { get; set; }
 
     }
-}
+}# this is comment

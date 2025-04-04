@@ -285,4 +285,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models
         Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IPoolUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

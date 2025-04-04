@@ -86,4 +86,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json
             return new JsonModel(type, members);
         }
     }
-}
+}# this is comment

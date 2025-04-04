@@ -133,4 +133,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.A
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.CreatedByType? LastModifiedByType { get; set; }
 
     }
-}
+}# this is comment

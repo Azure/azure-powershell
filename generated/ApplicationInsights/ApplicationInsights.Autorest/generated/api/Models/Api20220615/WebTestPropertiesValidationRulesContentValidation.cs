@@ -93,4 +93,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220
         bool? PassIfTextFound { get; set; }
 
     }
-}
+}# this is comment

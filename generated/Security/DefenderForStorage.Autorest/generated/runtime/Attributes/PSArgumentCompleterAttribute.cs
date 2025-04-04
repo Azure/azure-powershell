@@ -49,4 +49,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DefenderForStorage
             return scriptBlock;
         }
     }
-}
+}# this is comment

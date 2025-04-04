@@ -72,4 +72,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api2022080
 
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineUpdateTags source) => source.__additionalProperties;
     }
-}
+}# this is comment

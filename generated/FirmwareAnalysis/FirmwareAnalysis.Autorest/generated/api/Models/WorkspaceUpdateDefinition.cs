@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         string ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

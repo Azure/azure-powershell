@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         string ClientId { get; set; }
 
     }
-}
+}# this is comment

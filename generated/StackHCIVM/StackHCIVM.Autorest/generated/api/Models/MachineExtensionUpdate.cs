@@ -228,4 +228,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         string TypeHandlerVersion { get; set; }
 
     }
-}
+}# this is comment

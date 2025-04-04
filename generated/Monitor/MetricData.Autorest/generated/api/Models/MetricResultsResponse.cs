@@ -51,4 +51,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricResultsResponseValuesItem> Value { get; set; }
 
     }
-}
+}# this is comment

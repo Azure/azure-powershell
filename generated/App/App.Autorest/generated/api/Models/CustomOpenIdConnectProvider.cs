@@ -279,4 +279,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IOpenIdConnectConfig RegistrationOpenIdConnectConfiguration { get; set; }
 
     }
-}
+}# this is comment

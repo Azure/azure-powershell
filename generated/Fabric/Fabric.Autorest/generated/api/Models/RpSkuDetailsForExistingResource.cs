@@ -100,4 +100,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         string SkuTier { get; set; }
 
     }
-}
+}# this is comment

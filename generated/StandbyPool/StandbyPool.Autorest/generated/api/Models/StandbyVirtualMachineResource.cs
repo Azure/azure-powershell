@@ -164,4 +164,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         string VirtualMachineResourceId { get; set; }
 
     }
-}
+}# this is comment

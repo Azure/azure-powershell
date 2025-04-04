@@ -98,4 +98,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         int? TargetMemoryBuffer { get; set; }
 
     }
-}
+}# this is comment

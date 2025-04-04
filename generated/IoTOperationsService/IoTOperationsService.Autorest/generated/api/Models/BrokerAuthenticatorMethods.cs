@@ -237,4 +237,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         string X509SettingTrustedClientCaCert { get; set; }
 
     }
-}
+}# this is comment

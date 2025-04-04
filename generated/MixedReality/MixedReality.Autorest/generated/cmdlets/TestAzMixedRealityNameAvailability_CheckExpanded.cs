@@ -447,4 +447,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Cmdlets
             }
         }
     }
-}
+}# this is comment
+# this is comment

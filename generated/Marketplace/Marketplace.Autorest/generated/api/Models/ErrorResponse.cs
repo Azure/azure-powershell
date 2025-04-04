@@ -88,4 +88,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         string Message { get; set; }
 
     }
-}
+}# this is comment

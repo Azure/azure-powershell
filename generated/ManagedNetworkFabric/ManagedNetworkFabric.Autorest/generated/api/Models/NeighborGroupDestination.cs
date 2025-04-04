@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> Ipv6Address { get; set; }
 
     }
-}
+}# this is comment

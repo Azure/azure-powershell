@@ -379,4 +379,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string TriggerType { get; set; }
 
     }
-}
+}# this is comment

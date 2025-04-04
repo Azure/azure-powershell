@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801
         Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType? Type { get; set; }
 
     }
-}
+}# this is comment

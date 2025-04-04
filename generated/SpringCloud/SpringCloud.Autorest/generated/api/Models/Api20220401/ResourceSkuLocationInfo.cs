@@ -82,4 +82,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401
         Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceSkuZoneDetails[] ZoneDetail { get; set; }
 
     }
-}
+}# this is comment

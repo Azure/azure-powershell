@@ -146,4 +146,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301P
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.ClusterProvisioningState? ProvisioningState { get; set; }
 
     }
-}
+}# this is comment

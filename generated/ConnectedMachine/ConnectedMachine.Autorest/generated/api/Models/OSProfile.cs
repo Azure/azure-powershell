@@ -480,4 +480,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus { get; set; }
 
     }
-}
+}# this is comment

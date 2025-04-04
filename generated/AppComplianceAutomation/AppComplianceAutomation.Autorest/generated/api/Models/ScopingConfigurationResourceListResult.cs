@@ -71,4 +71,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IScopingConfigurationResource> Value { get; set; }
 
     }
-}
+}# this is comment

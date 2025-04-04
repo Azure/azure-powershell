@@ -353,4 +353,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150
         bool? WorkItemIntegration { get; set; }
 
     }
-}
+}# this is comment

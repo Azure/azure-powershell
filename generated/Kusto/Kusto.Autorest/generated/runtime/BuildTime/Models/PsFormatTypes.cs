@@ -136,3 +136,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell
         public string PropertyName { get; set; }
     }
 }
+# this is comment

@@ -14,4 +14,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Json
         internal ConversionException(JsonNode node, Type targetType)
             : base($"Cannot convert '{node.Type}' to a {targetType.Name}") { }
     }
-}
+}# this is comment

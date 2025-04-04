@@ -174,4 +174,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string Type { get; set; }
 
     }
-}
+}# this is comment

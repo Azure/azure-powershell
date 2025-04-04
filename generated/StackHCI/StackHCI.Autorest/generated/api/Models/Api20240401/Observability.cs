@@ -91,4 +91,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401
         bool? StreamingDataClient { get; set; }
 
     }
-}
+}# this is comment

@@ -48,4 +48,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType Type { get; set; }
 
     }
-}
+}# this is comment

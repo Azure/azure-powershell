@@ -152,4 +152,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701
         string ScriptUriManagedIdentityObjectId { get; set; }
 
     }
-}
+}# this is comment

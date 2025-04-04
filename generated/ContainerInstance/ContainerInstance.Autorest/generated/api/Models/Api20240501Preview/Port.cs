@@ -65,4 +65,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2024050
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupNetworkProtocol? Protocol { get; set; }
 
     }
-}
+}# this is comment

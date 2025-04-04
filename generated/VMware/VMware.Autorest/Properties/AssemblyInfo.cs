@@ -16,6 +16,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
+// this is comment
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]

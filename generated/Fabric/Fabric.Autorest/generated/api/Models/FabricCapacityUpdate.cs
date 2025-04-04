@@ -134,4 +134,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.Fabric.Models.IFabricCapacityUpdateTags Tag { get; set; }
 
     }
-}
+}# this is comment

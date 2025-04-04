@@ -104,4 +104,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             AfterFromJson(json);
         }
     }
-}
+}# this is comment

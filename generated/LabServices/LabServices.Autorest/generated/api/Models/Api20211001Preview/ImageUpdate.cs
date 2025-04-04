@@ -57,4 +57,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Previ
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImageUpdateProperties Property { get; set; }
 
     }
-}
+}# this is comment

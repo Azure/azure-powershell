@@ -24,4 +24,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
         public const string Polling = nameof(Polling);
 
     }
-}
+}# this is comment

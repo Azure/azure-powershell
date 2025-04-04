@@ -389,4 +389,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeTriggerType? TriggerType { get; set; }
 
     }
-}
+}# this is comment

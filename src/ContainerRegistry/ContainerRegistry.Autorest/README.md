@@ -324,3 +324,5 @@ directive:
   set:
     preview-announcement:
       preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.
+
+# this is readme comment

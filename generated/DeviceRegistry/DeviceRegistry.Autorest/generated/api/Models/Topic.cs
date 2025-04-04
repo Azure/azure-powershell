@@ -79,4 +79,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string Retain { get; set; }
 
     }
-}
+}# this is comment
