@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareIscsiPath
 
 ## SYNOPSIS
-Create a IscsiPath
+create a IscsiPath
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ New-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-NetworkBlock <String>] [-
 ```
 
 ## DESCRIPTION
-Create a IscsiPath
+create a IscsiPath
 
 ## EXAMPLES
 

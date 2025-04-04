@@ -135,8 +135,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter DisableLocalAuth { get => _domainInfoBody.DisableLocalAuth ?? default(global::System.Management.Automation.SwitchParameter); set => _domainInfoBody.DisableLocalAuth = value; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _domainInfoBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>

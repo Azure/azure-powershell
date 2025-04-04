@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 2.5.0
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+* Added RoleAssignmentExists check
+* Added AssignIdentity to Set-AzStorageSyncServer
+* Added a default behavior of system assigned identity to StorageSyncService provisioning
+
 ## Version 2.4.1
 * Removed "Microsoft.Azure.Management.Authorization" Version "2.13.0-preview" package reference
 
