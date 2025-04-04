@@ -3,7 +3,7 @@ name: PR Trigger Test
 on:
   pull_request:
     types:
-      - opene
+      - opened
       - synchronize
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
       - name: Trigger Azure DevOps Pipeline via REST API
         env:
           AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
-          BRANCH_NAME: ${{ github.ref_name }}
+          BRANCH_NAME: ${{ github.head_ref }}
         run: |
           curl -u :$AZURE_DEVOPS_PAT \
             -X POST \
