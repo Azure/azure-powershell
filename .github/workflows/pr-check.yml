@@ -15,3 +15,19 @@ jobs:
 
       - name: Print success messagess
         run: echo "GitHub Action triggered successfully!"
+
+      - name: Trigger Azure DevOps Pipeline via REST API
+        run: |
+          curl -u :${{ secrets.AZURE_DEVOPS_PAT }} \
+            -X POST \
+            -H "Content-Type: application/json" \
+            --data '{
+              "resources": {
+                "repositories": {
+                  "self": {
+                    "refName": "refs/heads/main"
+                  }
+                }
+              }
+            }' \
+            "https://dev.azure.com/Bernard-test/bernard-test/_apis/pipelines/definitionId=1/runs?api-version=7.1-preview.1"

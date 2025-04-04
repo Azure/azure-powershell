@@ -15,8 +15,7 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool:
-    vmImage: 'windows-2019'
+  pool: pool-windows-2019
   steps:
   - checkout: self
   - task: UseDotNet@2
