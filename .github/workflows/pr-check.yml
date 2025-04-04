@@ -30,4 +30,4 @@ jobs:
                 }
               }
             }' \
-            "https://dev.azure.com/Bernard-test/bernard-test/_apis/pipelines/definitionId=1/runs?api-version=7.1-preview.1"
+            "https://dev.azure.com/Bernard-test/bernard-test/_apis/pipelines/1/runs?api-version=7.1-preview.1"
