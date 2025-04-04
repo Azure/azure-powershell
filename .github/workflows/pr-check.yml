@@ -17,15 +17,18 @@ jobs:
         run: echo "GitHub Action triggered successfully!"
 
       - name: Trigger Azure DevOps Pipeline via REST API
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+          BRANCH_NAME: ${{ github.ref_name }}
         run: |
-          curl -u :${{ secrets.AZURE_DEVOPS_PAT }} \
+          curl -u :$AZURE_DEVOPS_PAT \
             -X POST \
             -H "Content-Type: application/json" \
             --data '{
               "resources": {
                 "repositories": {
                   "self": {
-                    "refName": "refs/heads/main"
+                    "refName": "refs/heads/'"${BRANCH_NAME}"'"
                   }
                 }
               }
