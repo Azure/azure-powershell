@@ -17,6 +17,13 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
 using Xunit.Abstractions;
+using Azure.Identity;
+using Azure.Core;
+using System;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
@@ -57,18 +64,47 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithManagementClients(context =>
-                    {
-                        AdlsClientFactory.IsTest = true;
-                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
-                        AdlsClientFactory.CustomDelegatingHAndler = context.AddHandlers(creds, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = creds;
-                        return new object();
-                    }
-                )
+                {
+                    AdlsClientFactory.IsTest = true;
+                    var creds = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
+                    // https://learn.microsoft.com/en-us/answers/questions/1304758/azure-identity-authenticationfailedexception).
+
+
+                    // Testing - Retrieve an access token for logging
+                    var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+                    var accessToken = creds.GetToken(tokenRequestContext, default);
+
+                    // Testing - Log the credentials and access token
+                    Console.WriteLine("Credentials: " + creds.GetType().Name);
+                    Console.WriteLine("Access Token: " + accessToken.Token);
+                    Console.WriteLine("Access Token Expires On: " + accessToken.ExpiresOn);
+
+                    var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
+                    AdlsClientFactory.CustomDelegatingHAndler = handlers;
+                    AdlsClientFactory.MockCredentials = creds;
+                    return new object();
+                })
                 .WithCleanupAction(
                     () => AdlsClientFactory.IsTest = false
                 )
                 .Build();
+        }
+    }
+
+    public class TokenCredentialAdapter : Microsoft.Rest.ServiceClientCredentials
+    {
+        private readonly TokenCredential _tokenCredential;
+
+        public TokenCredentialAdapter(TokenCredential tokenCredential)
+        {
+            _tokenCredential = tokenCredential;
+        }
+
+        public override async Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
+            var accessToken = await _tokenCredential.GetTokenAsync(tokenRequestContext, cancellationToken).ConfigureAwait(false);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.Token);
         }
     }
 }
