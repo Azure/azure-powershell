@@ -13,5 +13,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4 
 
-      - name: Print success message
+      - name: Print success messagess
         run: echo "GitHub Action triggered successfully!"
