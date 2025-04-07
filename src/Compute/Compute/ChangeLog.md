@@ -23,6 +23,7 @@
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
 * Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.
 * VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+* Added new command `Add-AzVmssSkuProfileVMSize` and `Remove-AzVmssSkuProfileVMSize` to add and remove VM sizes to and from the VMSS SkuProfile.
 
 ## Version 9.2.0
 * Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
