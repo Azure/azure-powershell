@@ -1,41 +1,55 @@
 ---
 external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
-online version: https://learn.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraft
+online version: https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraftcontact
 schema: 2.0.0
 ---
 
-# Remove-AzOrbitalSpacecraft
+# Update-AzOrbitalSpacecraftContact
 
 ## SYNOPSIS
-Deletes a specified spacecraft resource.
+update a contact.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzOrbitalSpacecraftContact -Name <String> -ResourceGroupName <String> -SpacecraftName <String>
+ [-SubscriptionId <String>] [-ContactProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentitySpacecraftExpanded
 ```
-Remove-AzOrbitalSpacecraft -InputObject <IOrbitalIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzOrbitalSpacecraftContact -Name <String> -SpacecraftInputObject <IOrbitalIdentity>
+ [-ContactProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzOrbitalSpacecraftContact -InputObject <IOrbitalIdentity> [-ContactProfileId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a specified spacecraft resource.
+update a contact.
 
 ## EXAMPLES
 
-### Example 1: Deletes a specified spacecraft resource.
+### Example 1: Updates a contact.
 ```powershell
-Remove-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
+Update-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft -ContactProfileId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile"
 ```
 
-Deletes a specified spacecraft resource.
+```output
+Name                 GroundStationName Status    ReservationStartTime ReservationEndTime   ResourceGroupName
+----                 ----------------- ------    -------------------- ------------------   -----------------
+azps-orbital-contact Microsoft_Gavle   scheduled 5/10/2023 3:06:07 AM 5/10/2023 3:16:21 AM azpstest-gp
+```
+
+This command updates a contact.
 
 ## PARAMETERS
 
@@ -44,6 +58,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactProfileId
+Resource ID.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +104,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -86,12 +115,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Spacecraft ID.
+Contact name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: SpacecraftName
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpacecraftExpanded
+Aliases: ContactName
 
 Required: True
 Position: Named
@@ -115,28 +144,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpacecraftInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
+Parameter Sets: UpdateViaIdentitySpacecraftExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SpacecraftName
+Spacecraft ID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -151,7 +195,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -201,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContact
 
 ## NOTES
 
