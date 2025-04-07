@@ -902,8 +902,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // If user not set action, and the account not already has the action value, Set the default action to Log to be aligned as before PSH release.
                         if (SasExpirationAction == null)
                         {
-                            SasExpirationAction = this.OriginStorageAccountProperties.SasPolicy != null || this.OriginStorageAccountProperties.SasPolicy.ExpirationAction != null ?
-                                                    this.OriginStorageAccountProperties.SasPolicy.ExpirationAction : ExpirationAction.Log;
+                            SasExpirationAction = (this.OriginStorageAccountProperties.SasPolicy != null && this.OriginStorageAccountProperties.SasPolicy.ExpirationAction != null) 
+                                ? this.OriginStorageAccountProperties.SasPolicy.ExpirationAction 
+                                : ExpirationAction.Log;
                         }
                         else
                         {
