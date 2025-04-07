@@ -86,7 +86,7 @@ directive:
     remove: true
   - where:
       subject: Service$
-      variant: ^CreateViaIdentity.*$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Rename parameter name
   - where:
