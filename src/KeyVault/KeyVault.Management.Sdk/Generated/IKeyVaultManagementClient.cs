@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.KeyVault
     /// </summary>
     public partial interface IKeyVaultManagementClient :  System.IDisposable
     {
-        /// <summary>
+        /// <summary> fake edit for comments
         /// The base URI of the service.
         /// </summary>
         System.Uri BaseUri { get; set; }
