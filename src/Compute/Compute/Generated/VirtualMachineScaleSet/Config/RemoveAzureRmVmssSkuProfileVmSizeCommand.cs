@@ -61,7 +61,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.VmSize))
             {
-                this.VirtualMachineScaleSet.SkuProfile.VmSizes.ToList().RemoveAll(vmSize => vmSize.Name.Equals(this.VmSize, StringComparison.OrdinalIgnoreCase));
+                List<SkuProfileVMSize> toRemove = new List<SkuProfileVMSize>();
+                foreach (SkuProfileVMSize vmSize in this.VirtualMachineScaleSet.SkuProfile.VmSizes)
+                {
+                    if (vmSize.Name.Equals(this.VmSize, StringComparison.OrdinalIgnoreCase))
+                    {
+                        toRemove.Add(vmSize);
+                    }
+                }
+
+                foreach (SkuProfileVMSize vmSize in toRemove)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.VmSizes.Remove(vmSize);
+                }
             }
 
             WriteObject(this.VirtualMachineScaleSet);

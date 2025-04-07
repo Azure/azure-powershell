@@ -5525,8 +5525,18 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName  `
-            | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3";
+            | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3" -AllocationStrategy "Prioritized";
         Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 1;
+
+        try 
+        {
+            Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 2;
+            Assert-false "Should have failed when trying to add vm size that was already added";
+        }
+        catch 
+        {
+            Assert-True { $_ -like "*'Standard_D4s_v4' is already present in the SkuProfile*" }
+        }
 
         # creating new-azvmss using New-VmssConfig
         $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
@@ -5534,17 +5544,24 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
         Assert-AreEqual $vmssResult.Sku.Name "Mix";
         Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "Prioritized";
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
+        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[0].Rank $null;
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
+        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Rank 1;
 
         # update vmss
-        # $vmssUpdate = $vmssResult | Update-AzVmss -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
+        $vmssResult = $vmssResult 
+        | Remove-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3"
+        | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D2s_v3" -Rank 0
+        | Update-AzVmss;
 
-        # $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-        # Assert-AreEqual $vmssGet.Sku.Name "Mix";
-        # Assert-AreEqual $vmssGet.SkuProfile.AllocationStrategy "CapacityOptimized";
-        # Assert-AreEqual $vmssGet.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
-        # Assert-AreEqual $vmssGet.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
+        Assert-AreEqual $vmssGet.Sku.Name "Mix";
+        Assert-AreEqual $vmssGet.SkuProfile.AllocationStrategy "Prioritized";
+        Assert-AreEqual $vmssGet.SkuProfile.VMSizes[0].Name "Standard_D4s_v4";
+        Assert-AreEqual $vmssGet.SkuProfile.VMSizes[0].Rank 1;
+        Assert-AreEqual $vmssGet.SkuProfile.VMSizes[1].Name "Standard_D2s_v3";
+        Assert-AreEqual $vmssGet.SkuProfile.VMSizes[1].Rank 0;
     }
     finally
     {
