@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ConnectivityConfigurationPropertiesConnectivityCapabilities class.
         /// </summary>
 
-        /// <param name="connectedGroupPrivateEndpointScale">Option indicating the scale of private endpoints allowed in the connected
+        /// <param name="connectedGroupPrivateEndpointsScale">Option indicating the scale of private endpoints allowed in the connected
         /// group of the connectivity configuration.
         /// Possible values include: &#39;Standard&#39;, &#39;HighScale&#39;</param>
 
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="peeringEnforcement">Option indicating enforcement of peerings created by the connectivity
         /// configuration.
         /// Possible values include: &#39;Unenforced&#39;, &#39;Enforced&#39;</param>
-        public ConnectivityConfigurationPropertiesConnectivityCapabilities(string connectedGroupPrivateEndpointScale, string connectedGroupAddressOverlap, string peeringEnforcement)
+        public ConnectivityConfigurationPropertiesConnectivityCapabilities(string connectedGroupPrivateEndpointsScale, string connectedGroupAddressOverlap, string peeringEnforcement)
 
         {
-            this.ConnectedGroupPrivateEndpointScale = connectedGroupPrivateEndpointScale;
+            this.ConnectedGroupPrivateEndpointsScale = connectedGroupPrivateEndpointsScale;
             this.ConnectedGroupAddressOverlap = connectedGroupAddressOverlap;
             this.PeeringEnforcement = peeringEnforcement;
             CustomInit();
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets option indicating the scale of private endpoints allowed in
         /// the connected group of the connectivity configuration. Possible values include: &#39;Standard&#39;, &#39;HighScale&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "connectedGroupPrivateEndpointScale")]
-        public string ConnectedGroupPrivateEndpointScale {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectedGroupPrivateEndpointsScale")]
+        public string ConnectedGroupPrivateEndpointsScale {get; set; }
 
         /// <summary>
         /// Gets or sets behavior to handle overlapped IP address space among members
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.ConnectedGroupPrivateEndpointScale == null)
+            if (this.ConnectedGroupPrivateEndpointsScale == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectedGroupPrivateEndpointScale");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectedGroupPrivateEndpointsScale");
             }
             if (this.ConnectedGroupAddressOverlap == null)
             {

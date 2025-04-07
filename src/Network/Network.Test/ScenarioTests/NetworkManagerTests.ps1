@@ -205,10 +205,10 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
-    $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
-    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $hubId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $rglocation = "eastus2euap"
+    $subscriptionId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd"
+    $vnetId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/f70df20d-7c49-465b-a4a1-e2a682ca1ffd/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
     
@@ -242,8 +242,14 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
 
         $hub = New-AzNetworkManagerHub -ResourceId $hubId -ResourceType "Microsoft.Network/virtualNetworks" 
         $hubList = @($hub) 
+        
+        $caps = [PSCustomObject]@{
+            ConnectedGroupPrivateEndpointsScale = "Standard"
+            ConnectedGroupAddressOverlap = "Disallowed"
+            PeeringEnforcement = "Unenforced"
+        }
 
-        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapabilities $caps
 
         $connConfig = Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName 
         Assert-NotNull $connConfig;
@@ -257,12 +263,24 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "Microsoft.Network/virtualNetworks" $connConfig.Hubs[0].ResourceType;
         Assert-AreEqual "False"  $connConfig.IsGlobal;
         Assert-AreEqual "True"  $connConfig.DeleteExistingPeering;
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapabilities.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Disallowed" $connConfig.ConnectivityCapabilities.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapabilities.PeeringEnforcement;
 
-        $connConfig.Description = "A different description.";
+        $connConfig.Description = "A different description.";       
+        $connConfig.ConnectivityCapabilities = [PSCustomObject]@{
+            ConnectedGroupPrivateEndpointsScale = "Standard"
+            ConnectedGroupAddressOverlap = "Allowed"
+            PeeringEnforcement = "Unenforced"
+        }
+
         $newConnConfig = Set-AzNetworkManagerConnectivityConfiguration -InputObject $connConfig
         Assert-NotNull $newConnConfig;
         Assert-AreEqual "A different description." $newConnConfig.Description;
         Assert-AreEqual $connectivityConfigurationName $newConnConfig.Name;
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapabilities.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Allowed" $connConfig.ConnectivityCapabilities.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapabilities.PeeringEnforcement;    
 
 
         $configids  = @($newConnConfig.Id)
@@ -270,7 +288,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
 
         # Uncomment during Record to allow time for commit
-        # Start-TestSleep -Seconds 60
+        Start-TestSleep -Seconds 60
 
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;

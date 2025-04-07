@@ -93,6 +93,12 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter IsGlobal { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Topology-specific settings to refine connectivity. Accepts an object with: ConnectedGroupPrivateEndpointScale ('Standard', 'HighScale'), ConnectedGroupAddressOverlap ('Allowed', 'Disallowed'), PeeringEnforcement ('Unenforced', 'Enforced').")]
+        public PSNetworkManagerConnectivityCapabilities ConnectivityCapabilities { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -158,6 +164,10 @@ namespace Microsoft.Azure.Commands.Network
                 mncc.Description = this.Description;
             }
 
+            if (this.ConnectivityCapabilities != null)
+            {
+                mncc.ConnectivityCapabilities = this.ConnectivityCapabilities;
+            }
 
             mncc.AppliesToGroups = this.AppliesToGroup.ToList();
 
