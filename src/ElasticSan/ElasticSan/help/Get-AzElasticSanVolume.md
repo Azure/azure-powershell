@@ -15,7 +15,7 @@ Get either a list of all volumes from a volume group or get a single volume from
 ### List (Default)
 ```
 Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -VolumeGroupName <String> [-AccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -23,25 +23,25 @@ Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> [-Su
 ```
 Get-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -VolumeGroupName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityVolumegroup
 ```
 Get-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityElasticSan
 ```
 Get-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,22 @@ This command gets a specific volume.
 
 ## PARAMETERS
 
+### -AccessSoftDeletedResource
+Optional, returns only soft deleted volumes if set to true.
+If set to false or if not specified, returns only active volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -199,21 +215,6 @@ Parameter Sets: Get, GetViaIdentityVolumegroup, GetViaIdentityElasticSan
 Aliases: VolumeName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

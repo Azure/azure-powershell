@@ -15,7 +15,8 @@ Update an VolumeGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-SubscriptionId <String>] [-DeleteRetentionPolicyRetentionPeriodDay <Int32>]
+ [-DeleteRetentionPolicyState <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
@@ -25,6 +26,7 @@ Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -Resource
 ### UpdateViaIdentityElasticSanExpanded
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
  [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
@@ -34,12 +36,13 @@ Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Nam
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,6 +252,36 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyRetentionPeriodDay
+The number of days to retain the resources after deletion.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyState
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -18,7 +18,7 @@ Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-AutoScalePolicyEnforcement <String>] [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>]
  [-ExtendedCapacitySizeTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
  [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +26,7 @@ Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 Update-AzElasticSan -InputObject <IElasticSanIdentity> [-AutoScalePolicyEnforcement <String>]
  [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
  [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -221,21 +221,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

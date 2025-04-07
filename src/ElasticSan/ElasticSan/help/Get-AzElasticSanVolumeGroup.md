@@ -15,26 +15,27 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 ### List (Default)
 ```
 Get-AzElasticSanVolumeGroup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityElasticSan
 ```
 Get-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,22 @@ This command gets a specific volume group.
 
 ## PARAMETERS
 
+### -AccessSoftDeletedResource
+Optional, returns only soft deleted volume groups if set to true.
+If set to false or if not specified, returns only active volume groups.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -178,21 +195,6 @@ Parameter Sets: Get, GetViaIdentityElasticSan
 Aliases: VolumeGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,31 +15,34 @@ Update an VolumeGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
+ [-SubscriptionId <String>] [-DeleteRetentionPolicyRetentionPeriodDay <Int32>]
+ [-DeleteRetentionPolicyState <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
  [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityElasticSanExpanded
 ```
 Update-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
  [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
  [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -257,6 +260,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteRetentionPolicyRetentionPeriodDay
+The number of days to retain the resources after deletion.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyState
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ElasticSanInputObject
 Identity Parameter
 To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
@@ -463,21 +496,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

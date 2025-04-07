@@ -15,7 +15,7 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 ### List (Default)
 ```
 Get-AzElasticSanVolumeGroup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -106,6 +106,22 @@ Type                          : Microsoft.ElasticSan/ElasticSans
 This command gets a specific volume group.
 
 ## PARAMETERS
+
+### -AccessSoftDeletedResource
+Optional, returns only soft deleted volume groups if set to true.
+If set to false or if not specified, returns only active volume groups.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
