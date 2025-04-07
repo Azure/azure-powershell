@@ -60,7 +60,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewStorageSyncServiceWithIdentity()
         {
-            //TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
+            TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
         }
 
         /// <summary>

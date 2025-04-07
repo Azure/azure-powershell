@@ -17,7 +17,7 @@ Lists directories and files for a path.
 ```
 Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-ExcludeExtendedInfo] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzStorageFile [-ShareName] <String> [[-Path] <String>] [-ExcludeExtendedInfo
 ```
 Get-AzStorageFile [-ShareClient] <ShareClient> [[-Path] <String>] [-ExcludeExtendedInfo]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Get-AzStorageFile [-ShareClient] <ShareClient> [[-Path] <String>] [-ExcludeExten
 ```
 Get-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [[-Path] <String>] [-ExcludeExtendedInfo]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -60,6 +60,14 @@ Get-AzStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get
 
 This command lists the files and folders in the directory ContosoWorkingFolder under the share ContosoShare06.
 It first gets the directory instance, and then pipelines it to the **Get-AzStorageFile** cmdlet to list the directory.
+
+### Example 3: List files and directories in a share, and exclude extended info
+```powershell
+Get-AzStorageFile -ShareName "ContosoShare06" -ExcludeExtendedInfo 
+```
+
+This command lists the files and folders in under the share ContosoShare06, and exclude extended file info like timestamps, ETag, attributes, permissionKey in list file and Directory.
+Currently, **-ExcludeExtendedInfo** will be needed to list files and directories from NFS file share or from a directory in NFS file share.
 
 ## PARAMETERS
 
@@ -172,21 +180,6 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

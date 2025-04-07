@@ -14,7 +14,7 @@ Gets all the Dynatrace environments that a user can link a azure resource to
 
 ```
 Get-AzDynatraceMonitorLinkableEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Region <String>] [-TenantId <String>] [-UserPrincipal <String>] [-DefaultProfile <PSObject>]
+ -Region <String> -TenantId <String> -UserPrincipal <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,7 +117,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ILinkableEnvironmentResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.ILinkableEnvironmentResponse
 
 ## NOTES
 

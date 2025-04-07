@@ -18,8 +18,8 @@ Starts to copy a source file.
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
  [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ContainerInstance
@@ -27,7 +27,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestSh
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFilePath
@@ -35,7 +35,7 @@ Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer>
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFileInstance
@@ -43,40 +43,46 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePa
 Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareName
 ```
 Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
- [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ShareInstance
 ```
 Start-AzStorageFileCopy -SrcFilePath <String> -SrcShare <ShareClient> -DestShareName <String>
- -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DestFilePath <String> [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>]
+ [-Group <String>] [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
 ```
 Start-AzStorageFileCopy -SrcFile <ShareFileClient> -DestShareName <String> -DestFilePath <String>
- [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
+ [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFileInstance
 ```
 Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareFileClient>]
- [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-DestContext <IStorageContext>] [-FileMode <String>] [-Owner <String>] [-Group <String>]
+ [-OwnerCopyMode <String>] [-FileModeCopyMode <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFilePath
@@ -84,7 +90,7 @@ Start-AzStorageFileCopy -SrcFile <ShareFileClient> [-DestShareFileClient <ShareF
 Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFileInstance
@@ -92,7 +98,7 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFileP
 Start-AzStorageFileCopy -AbsoluteUri <String> [-DestShareFileClient <ShareFileClient>]
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +122,16 @@ Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "Con
 
 This command starts a copy operation from blob to file.
 The command specifies container name and blob name
+
+### Example 3: Start copy operation from file to file with specific FileMode, Owner, Group on destination file
+```powershell
+Start-AzStorageFileCopy -SrcShareName "contososhare01" -SrcFilePath "FilePath01" -DestShareName "contososhare02" -DestFilePath "FilePath02" -FileMode rw-rwx-wT -Owner 1 -Group 1 -FileModeCopyMode Override -OwnerCopyMode Override
+```
+
+This command starts a copy operation from file to file, with specific FileMode, Owner, Group on destination file.
+If the destination file should have same FileMode, Owner, Group as source file, specify "-FileModeCopyMode Source" and "-OwnerCopyMode Source", the parameters FileMode, Owner, Group should not be specified.
+If all the parameters FileModeCopyMode, OwnerCopyMode, FileMode, Owner, Group are not specified, the destination file will have the default FileMode, Owner, Group.
+FileMode, Owner, Group only works on NFS file share. 
 
 ## PARAMETERS
 
@@ -293,6 +309,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileMode
+The mode permissions to be set on the destination file. Only applicable to NFS Files. Only work together with parameter `-FileModeCopyMode Override`. Symbolic (rwxrw-rw-) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileModeCopyMode
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-FileMode`. If not specified, the desination file will have the default File Mode.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -308,13 +354,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Group
+The owner group identifier (GID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+The owner user identifier (UID) to be set on the destination file. Only applicable to NFS Files. Need specify together with parameter `-OwnerCopyMode Override`.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OwnerCopyMode
+Only applicable to NFS Files. The value "Override" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the desination file will have the default Owner and Group.
+
+```yaml
+Type: System.String
+Parameter Sets: ShareName, ShareInstance, FileInstanceToFilePath, FileInstanceToFileInstance
+Aliases:
 
 Required: False
 Position: Named

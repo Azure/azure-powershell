@@ -1539,8 +1539,8 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
         Assert-AreEqual $false $sto.AllowBlobPublicAccess
         
-        $tlsVersion = "TLS1_1"
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $true ;
+        $tlsVersion = "TLS1_2"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $false ;
         
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -1548,7 +1548,7 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
-        Assert-AreEqual $true $sto.AllowBlobPublicAccess
+        Assert-AreEqual $false $sto.AllowBlobPublicAccess
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

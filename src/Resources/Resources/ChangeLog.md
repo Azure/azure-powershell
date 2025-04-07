@@ -19,6 +19,19 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.10.0
+* Fixed the issue that Get-AzReource not working with `-ExpandProperties`. [#11248]
+* Updated Resources SDK to 2024-11-01.
+* Added breaking change announcement for the following cmdlets due to API version for resource type may change.
+    - `Get-AzResource`
+    - `New-AzResource`
+    - `Set-AzResource`
+    - `Remove-AzResource`
+    - `Invoke-AzResourceAction`
+* Added ValidationLevel Parameter to WhatIf and Validate cmdlets for deployments.
+
+## Version 7.9.0
 * Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
 * Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
 

@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_workspaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("workspaceName"), out var __jsonWorkspaceName) ? (string)__jsonWorkspaceName : (string)WorkspaceName;}
-            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)LocationName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_workspaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("workspaceName"), out var __jsonWorkspaceName) ? (string)__jsonWorkspaceName : (string)_workspaceName;}
+            {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)_locationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -103,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._workspaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._workspaceName.ToString()) : null, "workspaceName" ,container.Add );
             AddIf( null != (((object)this._locationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._locationName.ToString()) : null, "locationName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );

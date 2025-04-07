@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a ExpressRouteAuthorization</summary>
+    /// <summary>update a ExpressRouteAuthorization</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareAuthorization_UpdateViaIdentityPrivateCloudExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a ExpressRouteAuthorization")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"update a ExpressRouteAuthorization")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareAuthorization_UpdateViaIdentityPrivateCloudExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,

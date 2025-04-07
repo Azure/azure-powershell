@@ -367,6 +367,9 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ProtectionConatinerMappingNotFound" xml:space="preserve">
     <value>Protection Container Mapping "{0}" is not associated with Protection Container "{1}"</value>
   </data>
+  <data name="ProtectionClusterNotFound" xml:space="preserve">
+    <value>Protection Cluster "{0}" is not associated with Protection Container "{1}"</value>
+  </data>
   <data name="ProtectableItemNotFound" xml:space="preserve">
     <value>Protectectable Item"{0}" is not associated with Protection Container "{1}"</value>
   </data>
@@ -455,6 +458,9 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="InvalidSwitchParamRPIAndProtectionContainerMapping" xml:space="preserve">
     <value>Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}.</value>
+  </data>
+  <data name="InvalidSwitchParamRPCAndProtectionContainerMapping" xml:space="preserve">
+    <value>Incorrect mapping selected as Input. Replication protection cluster target fabric {0} not matching protection container mapping target Fabric {1}.</value>
   </data>
   <data name="NullorEmptyPrimaryStagingAzureStorageAccountId" xml:space="preserve">
     <value>PrimaryStagingAzureStorageAccountId passed is null or empty.</value>
@@ -548,5 +554,26 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="IncorrectParameters" xml:space="preserve">
     <value>Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication </value>
+  </data>
+  <data name="NeitherClusterRecoveryPointNorLatestProcessRecoveryPointPassed" xml:space="preserve">
+    <value>Cluster Recovery point requires user input else the LatestProcessRecoveryPoint flag should be passed.</value>
+  </data>
+  <data name="WrongIndividualNodeRecoveryPointPassed" xml:space="preserve">
+	<value>User input Recovery Point for nodes: {0} is/are already a part of cluster and is not an individual node.</value>	
+  </data>
+  <data name="ClusterRecoveryPointNotAvailable" xml:space="preserve">
+    <value>Cluster Recovery Point not available for {0}.</value>
+  </data>
+  <data name="InvalidNodeRecoveryPointPassed" xml:space="preserve">
+    <value>Node recovery points passed are not correct.</value>
+  </data>
+  <data name="InvalidInputForAllNodesInCluster" xml:space="preserve">
+    <value>Input does not contain information of all nodes that are part of the cluster.</value>
+  </data>
+  <data name="InvalidClusterInputWithoutProtectedItems" xml:space="preserve">
+    <value>Cluster doesn't contain protected items.</value>
+  </data>
+  <data name="NoRecoveryPointsFound" xml:space="preserve">
+	<value>No recovery points found for {0} which is part of cluster {1}.</value>	
   </data>
 </root>
