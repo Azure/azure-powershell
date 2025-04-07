@@ -197,7 +197,7 @@ try {
             git config --global core.safecrlf false
             git config --global core.autocrlf true
             # Use a single regex to ignore comments in .cs and .psd1 files
-            $diff = git diff ".\Generated"  --ignore-matching-lines="^\s*(//|/\*.*\*/|#)"
+            $diff = git diff --ignore-matching-lines="^\s*(//|/\*.*\*/|#)" ".\Generated"
 
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
