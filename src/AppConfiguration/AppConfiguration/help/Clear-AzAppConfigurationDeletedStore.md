@@ -19,6 +19,13 @@ Clear-AzAppConfigurationDeletedStore -Location <String> -Name <String> [-Subscri
  [-Confirm] [<CommonParameters>]
 ```
 
+### PurgeViaIdentityLocation
+```
+Clear-AzAppConfigurationDeletedStore -Name <String> -LocationInputObject <IAppConfigurationIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### PurgeViaIdentity
 ```
 Clear-AzAppConfigurationDeletedStore -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>]
@@ -72,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
@@ -101,12 +107,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: PurgeViaIdentityLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge
+Parameter Sets: Purge, PurgeViaIdentityLocation
 Aliases:
 
 Required: True
