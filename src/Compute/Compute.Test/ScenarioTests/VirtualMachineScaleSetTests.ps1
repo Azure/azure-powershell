@@ -5525,6 +5525,7 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName  `
+            | Remove-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3" `
             | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3" -AllocationStrategy "Prioritized";
         Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 1;
 

@@ -36,14 +36,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         [Parameter(
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = true,
-            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public string VmSize { get; set; }
 
@@ -51,11 +49,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             if (this.VirtualMachineScaleSet.SkuProfile == null)
             {
+                WriteObject(this.VirtualMachineScaleSet);
                 return;
             }
 
             if (this.VirtualMachineScaleSet.SkuProfile.VmSizes  == null) 
             {
+                WriteObject(this.VirtualMachineScaleSet);
                 return;
             }
 

@@ -36,26 +36,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         [Parameter(
             Mandatory = true,
-            Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = true,
-            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public string VmSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 2,
             ValueFromPipelineByPropertyName = true)]
         public int? Rank { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public string AllocationStrategy { get; set; }
 
@@ -97,17 +93,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.AllocationStrategy))
             {
                 this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = this.AllocationStrategy;
-            }
-            else if (this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy == null)
-            {
-                if (this.IsParameterBound(c => c.Rank))
-                {
-                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = "Prioritized";
-                }
-                else
-                {
-                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = "LowestPrice";
-                }
             }
 
             WriteObject(this.VirtualMachineScaleSet);
