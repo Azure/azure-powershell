@@ -637,6 +637,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you are trying to move to Hyperscale tier with source database having geo links, you could expect moving out of pool in case your source is part of elasticPools, refer to microsft docs for more info.
+        /// </summary>
+        internal static string ForwardMigrationWithGeoDrWarning {
+            get {
+                return ResourceManager.GetString("ForwardMigrationWithGeoDrWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {

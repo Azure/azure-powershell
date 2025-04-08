@@ -763,4 +763,7 @@
     <value>Are you sure you want to remove the private endpoint '{0}' from agent '{1}'?</value>
     <comment>Elastic Jobs</comment>
   </data>
+  <data name="ForwardMigrationWithGeoDrWarning" xml:space="preserve">
+    <value>If you are trying to move to Hyperscale tier with source database having geo links, you could expect moving out of pool in case your source is part of elasticPools, refer to microsft docs for more info</value>
+  </data>
 </root>
