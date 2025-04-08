@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+  * Modified cmdlet `Get-AzAksMaintenanceConfiguration`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
+  * Modified cmdlet `Get-AzAksManagedClusterCommandResult`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
+  * Modified cmdlet `Get-AzAksNodePoolUpgradeProfile`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
+  * Modified cmdlet `Invoke-AzAksAbortAgentPoolLatestOperation`: Added parameter `-ManagedclusterInputObject`. Added parameter set `AbortViaIdentityManagedcluster`.
+  * Modified cmdlet `New-AzAksMaintenanceConfiguration`: Added parameters `-ManagedClusterInputObject`, `-Parameter`, `-JsonFilePath` and `-JsonString`. Added parameter set `CreateViaJsonString`. Added parameter set `CreateViaJsonFilePath`. Added parameter set `CreateExpanded`. Added parameter set `CreateViaIdentityManagedClusterExpanded`. Added parameter set `CreateViaIdentityManagedCluster`.
+  * Modified cmdlet `New-AzAksSnapshot`: Added parameters `-JsonFilePath` and `-JsonString`. Changed the type of parameter `-SnapshotType` from `SnapshotType` to `String`. Added parameter set `CreateExpanded`. Added parameter set `CreateViaJsonFilePath`. Added parameter set `CreateViaJsonString`.
+  * Modified cmdlet `New-AzAksTimeInWeekObject`: Changed the type of parameter `-Day` from `WeekDay` to `String`.
+  * Modified cmdlet `Remove-AzAksMaintenanceConfiguration`: Added parameter `-ManagedClusterInputObject`. Added parameter set `DeleteViaIdentityManagedCluster`.
+  * Modified cmdlet `Start-AzAksManagedClusterCommand`: Added parameters `-JsonFilePath` and `-JsonString`. Added parameter set `RunViaJsonString`. Added parameter set `RunViaJsonFilePath`.
+  * Added cmdlet `Update-AzAksMaintenanceConfiguration`.
 
 ## Version 6.1.1
 * Preannounced breaking change: The default value of `-NodeVmSize` parameter of `New-AzAksCluster` will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
