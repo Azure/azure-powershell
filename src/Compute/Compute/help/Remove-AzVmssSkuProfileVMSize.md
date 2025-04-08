@@ -14,7 +14,7 @@ Remove a VM size from VMSS Sku Profile for VMSS Instance Mix.
 ## SYNTAX
 
 ```
-Remove-AzVmssSkuProfileVMSize [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> -VmSize <String>
+Remove-AzVmssSkuProfileVMSize [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-VmSize] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -126,4 +126,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-Documentation on VMSS Instance Mix: https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/instance-mix-overview
+For documentation on VMSS Instance Mix, see [VMSS Instance Mix](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/instance-mix-overview).

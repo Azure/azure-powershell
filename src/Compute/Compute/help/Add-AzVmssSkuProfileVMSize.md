@@ -14,7 +14,7 @@ Add a VM size into VMSS Sku Profile for VMSS Instance Mix.
 ## SYNTAX
 
 ```
-Add-AzVmssSkuProfileVMSize [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> -VmSize <String>
+Add-AzVmssSkuProfileVMSize [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-VmSize] <String>
  [[-Rank] <Int32>] [[-AllocationStrategy] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -159,4 +159,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-Documentation on VMSS Instance Mix: https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/instance-mix-overview
+For documentation on VMSS Instance Mix, see [VMSS Instance Mix](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/instance-mix-overview).
