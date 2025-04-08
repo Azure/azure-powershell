@@ -293,7 +293,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (context.StorageAccountName.StartsWith("["))
                 {
-                    throw new InvalidOperationException("Please provide '-Context' value as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName', or provide the source blob object get with such storage context.");
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName', or provide the source blob object get with such storage context.");
                 }
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, null);
