@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Az.Aks module is migrated to Autorest PowerShell v4:
   * Modified cmdlet `Get-AzAksMaintenanceConfiguration`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
   * Modified cmdlet `Get-AzAksManagedClusterCommandResult`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
   * Modified cmdlet `Get-AzAksNodePoolUpgradeProfile`: Added parameter `-ManagedClusterInputObject`. Added parameter set `GetViaIdentityManagedCluster`.
