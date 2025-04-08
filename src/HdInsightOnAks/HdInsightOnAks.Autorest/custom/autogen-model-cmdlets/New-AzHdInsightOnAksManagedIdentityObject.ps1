@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksmanagedidentityobject
 #>
 function New-AzHdInsightOnAksManagedIdentityObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpec')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
