@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
                 formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>());
 
-                WriteObject(builder.ToString());
+                WriteWarning(builder.ToString());
             }
             else
             {

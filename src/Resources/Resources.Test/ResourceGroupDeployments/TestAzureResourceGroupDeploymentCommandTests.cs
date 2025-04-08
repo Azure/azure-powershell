@@ -142,10 +142,7 @@ Diagnostics (3):
 {Color.Reset}"
             .Replace("\r\n", Environment.NewLine);
 
-            JToken expectedToken = new JValue(expected);
-            PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteWarning(expected), Times.Once());
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<PSResourceManagerError>>()), Times.Never());
         }
 
