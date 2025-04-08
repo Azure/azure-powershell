@@ -19,13 +19,6 @@ New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <Strin
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
-```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
@@ -33,17 +26,10 @@ New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityManagedClusterExpanded
+### CreateViaJsonString
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
- [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityManagedCluster
-```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
- -Parameter <IMaintenanceConfiguration> [-DefaultProfile <PSObject>]
+New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,14 +41,30 @@ create a maintenance configuration in the specified managed cluster.
 ### Example 1: Creates or updates a maintenance configuration in the specified managed cluster
 ```powershell
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
-$TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
-$MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
+$TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2
+New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
 ```
 
 ```output
-Name
-----
-aks_maintenance_config
+Id                           : /subscriptions/{subId}/resourceGroups/mygroup/providers/Microsoft.ContainerService/managedClusters/myCluster/maintenanceConfigurations/aks_mainten
+                               ance_config
+Name                         : aks_maintenance_config
+NotAllowedTime               : {{
+                                 "start": "2023-03-01T07:56:08.2725383Z",
+                                 "end": "2023-03-02T07:56:08.2727034Z"
+                               }}
+ResourceGroupName            : mygroup
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TimeInWeek                   : {{
+                                 "day": "Sunday",
+                                 "hourSlots": [ 1, 2 ]
+                               }}
+Type                         :
 ```
 
 Create a maintenance configuration "aks_maintenance_config" in a managed cluster "myCluster" with a time in week and a not allowed time span.
@@ -130,27 +132,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: CreateViaIdentityManagedClusterExpanded, CreateViaIdentityManagedCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NotAllowedTime
 Time slots on which upgrade is not allowed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -160,28 +147,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
-Parameter Sets: CreateViaIdentityManagedCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -196,7 +168,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -211,7 +183,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,7 +198,7 @@ If two array entries specify the same day of the week, the applied configuration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -271,10 +243,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
 
 ## OUTPUTS
 

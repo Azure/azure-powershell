@@ -19,20 +19,6 @@ Update-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <St
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityManagedClusterExpanded
-```
-Update-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
- [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityManagedCluster
-```
-Update-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
- -Parameter <IMaintenanceConfiguration> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-NotAllowedTime <ITimeSpan[]>]
@@ -45,27 +31,36 @@ update a maintenance configuration in the specified managed cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a maintenance configuration in the specified managed cluster
 ```powershell
-{{ Add code here }}
+$TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 2) -End (Get-Date -Year 2023 -Month 3 -Day 3)
+$TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 2,3
+Update-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/{subId}/resourceGroups/mygroup/providers/Microsoft.ContainerService/managedClusters/myCluster/maintenanceConfigurations/aks_mainten
+                               ance_config
+Name                         : aks_maintenance_config
+NotAllowedTime               : {{
+                                 "start": "2023-03-02T07:56:08.2725383Z",
+                                 "end": "2023-03-03T07:56:08.2727034Z"
+                               }}
+ResourceGroupName            : mygroup
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TimeInWeek                   : {{
+                                 "day": "Sunday",
+                                 "hourSlots": [ 2, 3 ]
+                               }}
+Type                         :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a maintenance configuration "aks_maintenance_config" in a managed cluster "myCluster" with a time in week and a not allowed time span.
 
 ## PARAMETERS
 
@@ -74,7 +69,7 @@ The name of the maintenance configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityManagedCluster
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -115,48 +110,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedClusterInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityManagedCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NotAllowedTime
 Time slots on which upgrade is not allowed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
-Parameter Sets: UpdateViaIdentityManagedCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -211,7 +176,7 @@ If two array entries specify the same day of the week, the applied configuration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedClusterExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -258,8 +223,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
 
 ## OUTPUTS
 
