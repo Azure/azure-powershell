@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                                                    "or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).")]
         public string ValidationLevel { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "When set, validation diagnostics will not be shown for valid deployments.")]
+        public SwitchParameter SuppressDiagnostics { get; set; }
+
         public override object GetDynamicParameters()
         {
             if (!string.IsNullOrEmpty(QueryString))
@@ -32,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         public void WriteOutput(TemplateValidationInfo validationInfo)
         {
-            if (validationInfo.Errors.Count == 0)
+            if (validationInfo.Errors.Count == 0 && !SuppressDiagnostics.IsPresent)
             {
                 var builder = new ColoredStringBuilder();
 

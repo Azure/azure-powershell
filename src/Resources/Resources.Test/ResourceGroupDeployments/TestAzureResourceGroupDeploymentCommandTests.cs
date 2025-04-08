@@ -151,6 +151,58 @@ Diagnostics (3):
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidatesPSResourceGroupDeploymentWithUserTemplateWithDiagnosticsSuppressed()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateFile
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+
+            List<DeploymentDiagnosticsDefinition> diagnostics = new List<DeploymentDiagnosticsDefinition>()
+            {
+                new DeploymentDiagnosticsDefinition(code: "202", message: "bad input", target: "resource1", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 2", target: "resource2", level: "Warning"),
+                new DeploymentDiagnosticsDefinition(code: "203", message: "bad input 3",  target: "resource3", level: "Error")
+            };
+
+            DeploymentPropertiesExtended deploymentPropertiesExtended = new DeploymentPropertiesExtended(diagnostics: diagnostics);
+
+            DeploymentValidateResult expectedDeploymentValidateResult = new DeploymentValidateResult(properties: deploymentPropertiesExtended);
+            TemplateValidationInfo expectedResults = new(expectedDeploymentValidateResult);
+
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expectedResults)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.TemplateFile = expectedParameters.TemplateFile;
+
+            cmdlet.SuppressDiagnostics = true;
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
+            Assert.NotNull(actualParameters.TemplateParameterObject);
+
+            string expected = $@"
+
+Diagnostics (3): 
+{Color.DarkYellow}(resource1) bad input (202)
+{Color.Reset}{Color.DarkYellow}(resource2) bad input 2 (203)
+{Color.Reset}{Color.Red}(resource3) bad input 3 (203)
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
+
+            JToken expectedToken = new JValue(expected);
+            PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expectedObject, true), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(new List<PSResourceManagerError>()), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatesPSResourceGroupDeploymentWithUserTemplateProviderNoRbac()
         {
             PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
