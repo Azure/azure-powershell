@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Az.AppConfiguration module is migrated to Autorest PowerShell v4:
+  * Modified cmdlet `Clear-AzAppConfigurationDeletedStore`: Added parameter `-LocationInputObject`. Added parameter set `PurgeViaIdentityLocation`.
+  * Modified cmdlet `Get-AzAppConfigurationDeletedStore`: Added parameter `-LocationInputObject`. Added parameter set `GetViaIdentityLocation`.
+  * Modified cmdlet `New-AzAppConfigurationStore`: Removed parameter `-IdentityType`. Added parameters `-InputObject` and `-EnableSystemAssignedIdentity`. Changed the type of parameter `-CreateMode` from `CreateMode` to `String`. Changed the type of parameter `-PublicNetworkAccess` from `PublicNetworkAccess` to `String`. Added parameter set `CreateExpanded`. Added parameter set `CreateViaIdentityExpanded`.
+  * Modified cmdlet `New-AzAppConfigurationStoreKey`: Added parameters `-JsonFilePath` and `-JsonString`. Added parameter set `RegenerateViaJsonString`. Added parameter set `RegenerateViaJsonFilePath`.
+  * Modified cmdlet `Test-AzAppConfigurationStoreNameAvailability`: Added parameters `-JsonFilePath` and `-JsonString`. Added parameter set `CheckExpanded`. Added parameter set `CheckViaJsonFilePath`. Added parameter set `CheckViaJsonString`.
+  * Modified cmdlet `Update-AzAppConfigurationStore`: Removed parameter `-IdentityType`. Added parameters `-EnableSystemAssignedIdentity` and `-SoftDeleteRetentionInDay`. Changed the type of parameter `-PublicNetworkAccess` from `PublicNetworkAccess` to `String`. Parameter set `UpdateExpanded` removed parameter `-IdentityType`. Parameter set `UpdateExpanded` added parameter `-EnableSystemAssignedIdentity`. Parameter set `UpdateExpanded` added parameter `-SoftDeleteRetentionInDay`. Parameter set `UpdateViaIdentityExpanded` removed parameter `-IdentityType`. Parameter set `UpdateViaIdentityExpanded` added parameter `-EnableSystemAssignedIdentity`. Parameter set `UpdateViaIdentityExpanded` added parameter `-SoftDeleteRetentionInDay`.
 
 ## Version 1.4.1
 * The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
