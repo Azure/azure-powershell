@@ -861,10 +861,6 @@
     "alias": "Managed Network Fabric"
   },
   {
-    "module": "CodeSigning",
-    "alias": "Code Signing"
-  },
-  {
     "module": "FirmwareAnalysis",
     "alias": "FirmwareAnalysis"
   },
