@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.
+
+## Version 7.6.0
 * Azure Site Recovery support for shared disk scenario for Azure to Azure provider.
 * Removed warning about ensuring Enhanced Policy for Trusted Launch VMs when configuring protection for Azure VMs.
 * Added warning "Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI" in Enable-AzRecoveryServicesBackupProtection.

@@ -11,7 +11,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with public IP address" -D
     $ipcfgName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
     $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
     $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -IpTag $ipTag
@@ -57,7 +57,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD without public IP address"
     $snetName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
 
     New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0]
@@ -94,7 +94,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     $ipconfig2Name = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
 
     $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
@@ -102,7 +102,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
     $ipconfig2 = New-AzNetworkInterfaceIpConfig -Name $ipconfig2Name -PrivateIpAddressVersion IPv6
 
-    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{ testtag = "testval" }
+    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipconfig1, $ipconfig2 -Tag @{ testtag = "testval" }
 
     $actualNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName
     Assert-AreEqual $rgName $actualNic.ResourceGroupName
@@ -149,7 +149,7 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networkin
     $ipcfgName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
     $ipTag = New-AzPublicIpTag -IpTagType FirstPartyUsage -Tag "/NonProd"
     $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -IpTag $ipTag
@@ -197,10 +197,10 @@ Invoke-LiveTestScenario -Name "Network private link service" -Description "Test 
     $plsIpCfgName = New-LiveTestResourceName
     $plsName = New-LiveTestResourceName
 
-    $feSubnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix 10.0.1.0/24
-    $beSubnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix 10.0.2.0/24
-    $oSubnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix 10.0.3.0/24 -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $feSubnet,$beSubnet,$oSubnet
+    $feSubnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false
+    $beSubnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix 10.0.2.0/24 -DefaultOutboundAccess $false
+    $oSubnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix 10.0.3.0/24 -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $feSubnet, $beSubnet, $oSubnet
 
     $lbIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $lbIpCfgName -PrivateIpAddress 10.0.1.5 -Subnet $vnet.Subnets[0]
     $lbPoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $lbPoolCfgName
@@ -342,8 +342,8 @@ Invoke-LiveTestScenario -Name "Create virtual network" -Description "Test creati
     $beSnetName = New-LiveTestResourceName
     $vnetName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
-    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -DefaultOutboundAccess $false
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -DefaultOutboundAccess $false
     New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet -DnsServer 10.0.1.10, 10.0.1.11
 
     $actual = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
@@ -367,7 +367,7 @@ Invoke-LiveTestScenario -Name "Update virtual network" -Description "Test updati
     $beSnetName = New-LiveTestResourceName
     $vnetName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -DefaultOutboundAccess $false
     New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet
 
     $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
@@ -378,7 +378,7 @@ Invoke-LiveTestScenario -Name "Update virtual network" -Description "Test updati
     Assert-AreEqual "Succeeded" $vnet.ProvisioningState
     Assert-AreEqual 1 $vnet.Subnets.Count
 
-    $vnet | Add-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    $vnet | Add-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -DefaultOutboundAccess $false
     $vnet | Remove-AzVirtualNetworkSubnetConfig -Name $feSnetName
     $vnet | Set-AzVirtualNetwork
 
@@ -402,8 +402,8 @@ Invoke-LiveTestScenario -Name "Remove virtual network" -Description "Test removi
     $beSnetName = New-LiveTestResourceName
     $vnetName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24"
-    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24"
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -DefaultOutboundAccess $false
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -DefaultOutboundAccess $false
     New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet
     Remove-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Force
 
@@ -434,9 +434,9 @@ Invoke-LiveTestScenario -Name "Create private DNS zone group" -Description "Test
     $zoneCfgName = New-LiveTestResourceName
     $zoneGroupName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
     $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
     $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName
@@ -486,9 +486,9 @@ Invoke-LiveTestScenario -Name "Update private DNS zone group" -Description "Test
     $zoneCfgName1 = New-LiveTestResourceName
     $zoneGroupName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
     $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
     $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName
@@ -545,9 +545,9 @@ Invoke-LiveTestScenario -Name "Remove private DNS zone group" -Description "Test
     $zoneCfgName = New-LiveTestResourceName
     $zoneGroupName = New-LiveTestResourceName
 
-    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
-    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled
+    $feSnet = New-AzVirtualNetworkSubnetConfig -Name $feSnetName -AddressPrefix "10.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $beSnet = New-AzVirtualNetworkSubnetConfig -Name $beSnetName -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
+    $oSnet = New-AzVirtualNetworkSubnetConfig -Name $oSnetName -AddressPrefix "10.0.3.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled -PrivateLinkServiceNetworkPoliciesFlag Disabled -DefaultOutboundAccess $false
     $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $feSnet, $beSnet, $oSnet
     $feSnet = $vnet.Subnets | Where-Object Name -eq $feSnetName
     $oSnet = $vnet.Subnets | Where-Object Name -eq $oSnetName

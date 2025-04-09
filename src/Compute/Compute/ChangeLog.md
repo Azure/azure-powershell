@@ -20,6 +20,13 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
+* Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.
+* VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+
+## Version 9.2.0
+* Added new parameter `-ReplicationMode` to `New-AzGalleryImageVersion` cmdlet.
+* Added new parameter `BlockDeletionBeforeEndOfLife` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` cmdlets.
 * Updated `New-AzVM`, `New-AzVmss`, `Update-AzVM`, and `Update-AzVmss` to pass `Standard` as an input of `-SecurityType` parameter.
 * Added breaking change message for `Get-AzVMSize`.
 

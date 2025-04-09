@@ -46,18 +46,21 @@ namespace VersionController.Netcore.Models
                 {
                     string repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
                     findModuleScript = @"
-$secpasswd = ConvertTo-SecureString $Env:DEFAULT_PS_REPOSITORY_PASSWORD -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential ($Env:DEFAULT_PS_REPOSITORY_USER, $secpasswd)
-Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credential $credential -Prerelease";
+$AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force;
+$credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureString);
+Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credential $credentialsObject -Prerelease";
                 }
                 else
                 {
                     string repository = "PSGallery";
                     findModuleScript = $"Find-PSResource -Name {moduleName} -Repository {repository} -Prerelease";
                 }
+
+                System.Console.WriteLine($"Find module script: {findModuleScript}");
                 
                 powershell.AddScript(findModuleScript);
                 var cmdletResult = powershell.Invoke();
+                System.Console.WriteLine($"Cmdlet result count: {cmdletResult.Count}");
                 foreach (var versionInformation in cmdletResult)
                 {
                     System.Console.WriteLine(versionInformation);
