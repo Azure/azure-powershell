@@ -21,8 +21,6 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        git checkout main
-        git pull origin main
         git checkout -b "${{ variables.GenerationBranch }}"
         git push origin "${{ variables.GenerationBranch }}"
 
