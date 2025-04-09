@@ -3,6 +3,7 @@ variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   MaxParallelJobs: 3
+  GenerationBranch: batch-generation/branch-$(Build.BuildId)
 
 trigger: none
 
@@ -14,16 +15,14 @@ jobs:
   - checkout: self
     persistCredentials: true
     clean: true
-    ref: refs/heads/main
 
   - task: PowerShell@2
     displayName: 'Create Batch Generation Branch'
     inputs:
       targetType: inline
       script: |
-        $newBranch = "batch-generation/branch-$(Build.BuildId)"
-        git checkout -b $newBranch
-        git push origin $newBranch
+        git checkout -b "${{ variables.GenerationBranch }}"
+        git push origin "${{ variables.GenerationBranch }}"
 
   - task: PowerShell@2
     name: mtrx
@@ -48,7 +47,6 @@ jobs:
   - checkout: self
     persistCredentials: true
     clean: true
-    ref: "batch-generation/branch-$(Build.BuildId)"
 
   - task: PowerShell@2
     name: build
@@ -56,7 +54,21 @@ jobs:
     inputs:
       targetType: inline
       script: |
+        git fetch origin "${{ variables.GenerationBranch }}"
+        git checkout "${{ variables.GenerationBranch }}"
+
         Write-Host "Building targets: ${Target}"
-        $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
-        & $buildModulesPath -TargetModule $($Target -split ',')
-  
+
+        $modules = $Target -split ','
+
+        foreach ($module in $modules) {
+          $folderPath = Join-Path $(Build.SourcesDirectory) 'src' $module
+          $filePath = Join-Path $folderPath "newfile.txt"
+          "This is a new file in $folder" | Out-File -FilePath $filePath -Encoding UTF8
+          }
+
+        git add .
+        git commit -m "Build ${Target}"
+        git push origin "${{ variables.GenerationBranch }}"
+
+    workingDirectory: $(Build.SourcesDirectory)
