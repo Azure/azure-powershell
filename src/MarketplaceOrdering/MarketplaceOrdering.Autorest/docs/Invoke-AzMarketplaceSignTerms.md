@@ -24,6 +24,18 @@ Invoke-AzMarketplaceSignTerms -InputObject <IMarketplaceOrderingIdentity> [-Defa
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### SignViaIdentityAgreement
+```
+Invoke-AzMarketplaceSignTerms -AgreementInputObject <IMarketplaceOrderingIdentity> -Name <String>
+ -Product <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SignViaIdentityOffer
+```
+Invoke-AzMarketplaceSignTerms -Name <String> -OfferInputObject <IMarketplaceOrderingIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Sign marketplace terms.
 
@@ -56,6 +68,21 @@ windows2016         microsoft-ads
 This command signs marketplace terms by pipeline.
 
 ## PARAMETERS
+
+### -AgreementInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: SignViaIdentityAgreement
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -93,7 +120,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sign
+Parameter Sets: Sign, SignViaIdentityAgreement, SignViaIdentityOffer
 Aliases:
 
 Required: True
@@ -103,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OfferInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: SignViaIdentityOffer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Product
 Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sign
+Parameter Sets: Sign, SignViaIdentityAgreement
 Aliases:
 
 Required: True

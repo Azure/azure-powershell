@@ -47,26 +47,23 @@ directive:
       subject: SignMarketplaceAgreement
     set:
       subject: SignTerms
-  
-  # Hide not mapped variant. 
-  - where:
-      verb: Stop
-      subject: MarketplaceTerms
-      variant: ^CancelViaIdentityAgreement$|^CancelViaIdentityOffer$
-    hide: true
 
-  - where:
-      verb: Invoke
-      subject: SignTerms
-      variant: ^SignViaIdentityAgreement$|^SignViaIdentityOffer$
-    hide: true
-
+  - where: 
+      subject: ^MarketplaceTerms$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  # The type 'SetAzMarketplaceTerms_CreateExpanded' already contains a definition for 'Publisher' and 'Product'
   - where: 
       subject: ^MarketplaceTerms$
       variant: ^CreateExpanded$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
+  # Set cmdlet contains update verb
+  - where:
+      verb: Update
+      subject: MarketplaceTerms
+    remove: true
 
-  # List response not mapp swagger define.
+  # List response not mapped swagger define.
   - where:
       verb: Get
       subject: MarketplaceTerms
@@ -128,7 +125,7 @@ directive:
       parameter-name: Name
 
   - where:
-      verb: Set|Update
+      verb: Set
       subject: MarketplaceTerms
     hide: true
 
