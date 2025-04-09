@@ -57,16 +57,8 @@ subject-prefix: ""
 inlining-threshold: 100
 
 directive:
-    # Remove the unexpanded parameter set
     - where:
-        variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      remove: true
-    # Hide CreateViaIdentity for customization
-    - where:
-        variant: ^CreateViaIdentity$
-      remove: true
-    - where:
-        variant: ^Create$
+        variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
       remove: true
     - where:
         subject: PrometheuRuleGroup

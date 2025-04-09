@@ -12,12 +12,19 @@ create a Prometheus rule group definition.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateViaIdentityExpanded (Default)
+```
+New-AzPrometheusRuleGroup -InputObject <IPrometheusRuleGroupsIdentity> -Location <String>
+ -Rule <IPrometheusRule[]> -Scope <String[]> [-ClusterName <String>] [-Description <String>] [-Enabled]
+ [-Interval <TimeSpan>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
 ```
 New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Rule <IPrometheusRule[]> -Scope <String[]> [-ClusterName <String>] [-Description <String>]
- [-Enabled] [-Interval <TimeSpan>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -27,11 +34,12 @@ New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> [-
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### CreateExpanded
 ```
 New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Location <String> -Rule <IPrometheusRule[]> -Scope <String[]> [-ClusterName <String>] [-Description <String>]
+ [-Enabled] [-Interval <TimeSpan>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +88,7 @@ Apply rule to data from a specific cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -111,7 +119,7 @@ Rule group description.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -126,7 +134,7 @@ Enable/disable rule group.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -136,13 +144,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Interval
 The interval in which to run the Prometheus rule group represented in ISO 8601 duration format.
 Should be between 1 and 15 minutes
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -187,7 +210,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -203,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -218,7 +241,7 @@ Defines the rules in the Prometheus rule group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRule[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -233,7 +256,7 @@ The name of the rule group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: True
@@ -250,7 +273,7 @@ This may change in future.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -265,7 +288,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
 Aliases:
 
 Required: False
@@ -280,7 +303,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -325,6 +348,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity
 
 ## OUTPUTS
 
