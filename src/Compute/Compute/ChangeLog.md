@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 9.3.0
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
 * Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.
 * VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.

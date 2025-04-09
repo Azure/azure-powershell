@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.7.0
 * Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.
 
 ## Version 7.6.0

@@ -1031,12 +1031,6 @@
       "Switch-AzCloudService": {},
       "Update-AzCloudService": {}
     },
-    "Az.CodeSigning": {
-      "Get-AzCodeSigningCustomerEku": {},
-      "Get-AzCodeSigningRootCert": {},
-      "Get-AzCodeSigningCertChain": {},
-      "Invoke-AzCodeSigningCIPolicySigning": {}
-    },
     "Az.CognitiveServices": {
       "Add-AzCognitiveServicesAccountNetworkRule": {},
       "Get-AzCognitiveServicesAccount": {},
@@ -1089,6 +1083,7 @@
     "Az.Communication": {
       "Get-AzCommunicationService": {},
       "Get-AzCommunicationServiceKey": {},
+      "Get-AzCommunicationServiceSmtpUsername": {},
       "Get-AzEmailService": {},
       "Get-AzEmailServicedataEmailSendResult": {},
       "Get-AzEmailServiceDomain": {},
@@ -1096,10 +1091,12 @@
       "Invoke-AzEmailServiceInitiateDomainVerification": {},
       "New-AzCommunicationService": {},
       "New-AzCommunicationServiceKey": {},
+      "New-AzCommunicationServiceSmtpUsername": {},
       "New-AzEmailService": {},
       "New-AzEmailServiceDomain": {},
       "New-AzEmailServiceSenderUsername": {},
       "Remove-AzCommunicationService": {},
+      "Remove-AzCommunicationServiceSmtpUsername": {},
       "Remove-AzEmailService": {},
       "Remove-AzEmailServiceDomain": {},
       "Remove-AzEmailServiceSenderUsername": {},
@@ -1108,6 +1105,7 @@
       "Stop-AzEmailServiceDomainVerification": {},
       "Test-AzCommunicationServiceNameAvailability": {},
       "Update-AzCommunicationService": {},
+      "Update-AzCommunicationServiceSmtpUsername": {},
       "Update-AzEmailService": {},
       "Update-AzEmailServiceDomain": {},
       "Update-AzEmailServiceSenderUsername": {}
@@ -4576,6 +4574,9 @@
       "Get-AzNetAppFilesFilePathAvailability": {},
       "Get-AzNetAppFilesQuotaAvailability": {},
       "Get-AzNetAppFilesNameAvailability": {},
+      "Get-AzNetAppFilesAccountKeyVaultStatus": {},
+      "Invoke-AzNetAppFilesAccountChangeKeyVault": {},
+      "Convert-AzNetAppFilesAccountToCmk": {},
       "Approve-AnfReplication": {},
       "Get-AnfAccount": {},
       "Get-AnfBackup": {},
@@ -4653,7 +4654,10 @@
       "Start-AnfAuthorizeExternalReplication": {},
       "Get-AnfFilePathAvailability": {},
       "Get-AnfQuotaAvailability": {},
-      "Get-AnfNameAvailability": {}
+      "Get-AnfNameAvailability": {},
+      "Get-AnfAccountKeyVaultStatus": {},
+      "Invoke-AnfAccountChangeKeyVault": {},
+      "Convert-AnfFilesAccountToCmk": {}
     },
     "Az.Network": {
       "Add-AzApplicationGatewayAuthenticationCertificate": {},
@@ -5826,7 +5830,8 @@
       "Remove-AzOrbitalSpacecraft": {},
       "Remove-AzOrbitalSpacecraftContact": {},
       "Update-AzOrbitalContactProfile": {},
-      "Update-AzOrbitalSpacecraft": {}
+      "Update-AzOrbitalSpacecraft": {},
+      "Update-AzOrbitalSpacecraftContact": {}
     },
     "Az.PaloAltoNetworks": {
       "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack": {},
@@ -5904,6 +5909,10 @@
       "Test-AzPeeringRegisteredPrefix": {},
       "Test-AzPeeringServiceProviderAvailability": {},
       "Update-AzPeering": {},
+      "Update-AzPeeringAsn": {},
+      "Update-AzPeeringConnectionMonitorTest": {},
+      "Update-AzPeeringRegisteredAsn": {},
+      "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
     "Az.Pinecone": {
