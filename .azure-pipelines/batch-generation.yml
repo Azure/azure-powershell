@@ -10,7 +10,7 @@ trigger: none
 jobs:
 - job: prepare
   displayName: Generate Matrix
-  pool: pool-ubuntu-2004
+  pool: pool-windows-2019
   steps:
   - checkout: self
     persistCredentials: true
@@ -21,6 +21,8 @@ jobs:
     inputs:
       targetType: inline
       script: |
+        git checkout main
+        git pull origin main
         git checkout -b "${{ variables.GenerationBranch }}"
         git push origin "${{ variables.GenerationBranch }}"
 

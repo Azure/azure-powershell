@@ -71,9 +71,8 @@ foreach ($subModules in $devidedSubModules) {
     }
 
     $moduleNames = $subModules | ForEach-Object { $_[0] }
-
-    $MatrixStr="$MatrixStr,'" + $($index + 1) + "-" +  $($subModules.Count) + "':{'Target':$($moduleNames -join ',')}"
-
+    $moduleNamesStr = $moduleNames -join ','
+    $MatrixStr="$MatrixStr,'" + ($index + 1) + "-" +  $subModules.Count + "':{'Target':'$moduleNamesStr'}"
     $index++
 }
 
