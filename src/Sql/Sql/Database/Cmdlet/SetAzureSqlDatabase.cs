@@ -351,12 +351,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             if (database != null && !string.IsNullOrEmpty(database.SkuName))
             {
-                string currentsku = database.SkuName;
+                string currentSku = database.SkuName;
                 string targetSku = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName)
                     ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition)
                     : RequestedServiceObjectiveName;
                 bool isHyperscalePool = ModelAdapter.CheckIfHyperscalePool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
-                bool isForwardMigration = !currentsku.Contains("HS") &&
+                bool isForwardMigration = !currentSku.Contains("HS") &&
                          ((targetSku != null && targetSku.Contains("HS")) || isHyperscalePool);
 
                 // Check if source database has GeoDr Link
