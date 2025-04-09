@@ -14,7 +14,8 @@ Defines an IP configuration for an interface of virtual appliance.
 
 ```
 New-AzVirtualApplianceIpConfiguration -Name <String> -Primary <Boolean>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

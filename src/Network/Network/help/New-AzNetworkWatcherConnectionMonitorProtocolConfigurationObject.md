@@ -23,7 +23,8 @@ New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-TcpProtocol] 
 ```
 New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject [-HttpProtocol] [-Port <UInt16>]
  [-Method <String>] [-Path <String>] [-RequestHeader <Hashtable>] [-ValidStatusCodeRange <String[]>]
- [-PreferHTTPS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PreferHTTPS] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ICMP

@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionMode">The connection mode for this connection.
         /// Possible values include: &#39;Default&#39;, &#39;ResponderOnly&#39;, &#39;InitiatorOnly&#39;</param>
 
-        /// <param name="tunnelProperties">
+        /// <param name="tunnelProperties">Tunnel properties for virtual network gateway connection
         /// </param>
-        
+
         /// <param name="sharedKey">The IPSec shared key.
         /// </param>
 
@@ -219,10 +219,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ConnectionMode {get; set; }
 
         /// <summary>
-        /// Gets or sets
+        /// Gets or sets tunnel properties for virtual network gateway connection
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tunnelProperties")]
-        public System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> TunnelProperties { get; set; }
+        public System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> TunnelProperties {get; set; }
 
         /// <summary>
         /// Gets or sets the IPSec shared key.
@@ -353,6 +353,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.LocalNetworkGateway2.Validate();
             }
+
 
 
 

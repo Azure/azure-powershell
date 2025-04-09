@@ -90,7 +90,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="disableOutboundSnat">Configures SNAT for the VMs in the backend pool to use the publicIP address
         /// specified in the frontend of the load balancing rule.
         /// </param>
-        public LoadBalancingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?))
+
+        /// <param name="enableConnectionTracking">Defines whether connections between 2 communicating endpoints can be
+        /// tracked and associated to the same backend VM over its lifetime when using
+        /// UDP protocol.
+        /// </param>
+        public LoadBalancingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?))
 
         : base(id)
         {
@@ -110,6 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableFloatingIP = enableFloatingIP;
             this.EnableTcpReset = enableTcpReset;
             this.DisableOutboundSnat = disableOutboundSnat;
+            this.EnableConnectionTracking = enableConnectionTracking;
             CustomInit();
         }
 
@@ -232,5 +238,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableOutboundSnat")]
         public bool? DisableOutboundSnat {get; set; }
+
+        /// <summary>
+        /// Gets or sets defines whether connections between 2 communicating endpoints
+        /// can be tracked and associated to the same backend VM over its lifetime when
+        /// using UDP protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableConnectionTracking")]
+        public bool? EnableConnectionTracking {get; set; }
     }
 }

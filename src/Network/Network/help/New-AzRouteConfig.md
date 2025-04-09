@@ -15,8 +15,8 @@ Creates a route for a route table.
 
 ```
 New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,5 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
 [Set-AzRouteConfig](./Set-AzRouteConfig.md)
-
-

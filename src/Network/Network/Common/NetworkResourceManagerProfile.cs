@@ -390,6 +390,47 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.RemoteAddressSpace)
                     );
 
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.PeerCompleteVnets,
+                        opt => opt.MapFrom(src => src.PeerCompleteVnets)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.PeerCompleteVnets,
+                   opt => opt.MapFrom(src => src.PeerCompleteVnets)
+               );
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.LocalSubnetNames,
+                        opt => opt.MapFrom(src => src.LocalSubnetNames)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.LocalSubnetNames,
+                   opt => opt.MapFrom(src => src.LocalSubnetNames)
+               );
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
+                    .ForMember(
+                        dest => dest.RemoteSubnetNames,
+                        opt => opt.MapFrom(src => src.RemoteSubnetNames)
+                    );
+
+                // MMM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>()
+               .ForMember(
+                   dest => dest.RemoteSubnetNames,
+                   opt => opt.MapFrom(src => src.RemoteSubnetNames)
+               );
                 /*
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
@@ -862,6 +903,22 @@ namespace Microsoft.Azure.Commands.Network
                 // InboundNatRulePortMapping
                 // MNM to CNM
                 cfg.CreateMap<MNM.InboundNatRulePortMapping, CNM.PSInboundNatRulePortMapping>();
+
+                // LoadBalancerHealthPerRule
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerHealthPerRule, MNM.LoadBalancerHealthPerRule>();
+
+                // LoadBalancerHealthPerRule
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerHealthPerRule, CNM.PSLoadBalancerHealthPerRule>();
+
+                // LoadBalancerHealthPerRulePerBackendAddress
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSLoadBalancerHealthPerRulePerBackendAddress, MNM.LoadBalancerHealthPerRulePerBackendAddress>();
+
+                // LoadBalancerHealthPerRulePerBackendAddress
+                // MNM to CNM
+                cfg.CreateMap<MNM.LoadBalancerHealthPerRulePerBackendAddress, CNM.PSLoadBalancerHealthPerRulePerBackendAddress>();
 
                 // NatRulePortMapping
                 // CNM to MNM
@@ -2252,6 +2309,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceInternetIngressIpsProperties, MNM.InternetIngressPublicIpsProperties>();
                 cfg.CreateMap<CNM.PSVirtualApplianceNetworkProfile, MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceDelegationProperties, MNM.DelegationProperties>();
+                cfg.CreateMap<CNM.PSNetworkVirtualAppliancePartnerManagedResourceProperties, MNM.PartnerManagedResourceProperties>();
 
                 // MNM to CNM
                 // Where CNM - models from Powershell

@@ -30,7 +30,8 @@ Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-Connec
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
  [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-VpnLinkConnectionMode <String>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnConnectionObject

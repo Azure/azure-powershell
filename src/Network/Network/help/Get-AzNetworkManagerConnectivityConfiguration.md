@@ -15,13 +15,15 @@ Gets a connectivity configuration in a network manager.
 ### NoExpand (Default)
 ```
 Get-AzNetworkManagerConnectivityConfiguration [-Name <String>] -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

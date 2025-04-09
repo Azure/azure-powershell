@@ -19,17 +19,53 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
+* Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - `Add-AzLoadBalancerRuleConfig`
+    - `New-AzLoadBalancerRuleConfig`
+    - `Set-AzLoadBalancerRuleConfig`
+* Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
+    - `New-AzVirtualNetworkGatewayMigrationParameter`
+    - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
+    - `Invoke-AzVirtualNetworkGatewayExecuteMigration`
+    - `Invoke-AzVirtualNetworkGatewayCommitMigration`
+    - `Invoke-AzVirtualNetworkGatewayAbortMigration`
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter crud operations
+    - Cmdlets for NetworkSecurityPerimeter profile crud operations
+    - Cmdlets for NetworkSecurityPerimeter association crud operations
+    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
+    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
 * Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
     - `Get-AzNetworkVirtualApplianceBootDiagnostics`
+* Added etag property to Azure Virtual Network Manager -> IpamPool, VerifierWorkspace data models
 * Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
     - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    
 * Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
-    - New-AzVirtualNetworkGateway
-    - Get-AzVirtualNetworkGateway
-    - Get-AzVirtualNetworkGatewayConnection
+    - `New-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGatewayConnection`
+
+* Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
+    - `Start-AzNetworkWatcherConnectionMonitor`
+    - `Get-AzNetworkWatcherConnectionMonitorReport`
+
+## Version 7.15.1
+* Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+
+## Version 7.15.0
+* Updated cmdlet `AddAzureVirtualNetworkPeering` to add support for subnet peering
 
 ## Version 7.14.0
 * Updated `New-AzRouteServer`, `Get-AzRouteServer`, and `Update-AzRouteServer` to include VirtualRouterAutoScaleConfiguration.
@@ -86,7 +122,7 @@
     - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
     - `New-AzNetworkManagerSecurityUserGroupItem`
 * Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
-
+  
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links

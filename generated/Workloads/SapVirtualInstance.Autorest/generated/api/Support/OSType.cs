@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct OSType :
         System.IEquatable<OSType>
     {
+        /// <summary>Linux OS Type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.OSType Linux = @"Linux";
 
+        /// <summary>Windows OS Type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.OSType Windows = @"Windows";
 
         /// <summary>the value for an instance of the <see cref="OSType" /> Enum.</summary>
