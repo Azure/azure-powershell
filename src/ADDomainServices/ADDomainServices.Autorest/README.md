@@ -64,7 +64,7 @@ directive:
           "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
         }
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # Remove the set-* cmdlet
   - where:

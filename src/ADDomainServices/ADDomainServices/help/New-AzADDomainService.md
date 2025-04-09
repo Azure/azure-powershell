@@ -31,22 +31,21 @@ New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ### CreateViaJsonFilePath
 ```
 New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DomainName <String> [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
- [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
- [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>] [-Etag <String>]
- [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
- [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificateInputFile <String>]
- [-LdapSettingPfxCertificatePassword <SecureString>] [-Location <String>]
- [-NotificationSettingAdditionalRecipient <String[]>] [-NotificationSettingNotifyDcAdmin <String>]
- [-NotificationSettingNotifyGlobalAdmin <String>] [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>]
- [-Sku <String>] [-Tag <Hashtable>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DomainName <String> [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzADDomainService -InputObject <IAdDomainServicesIdentity> -DomainName <String>
+ [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
  [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
  [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>] [-Etag <String>]
  [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
@@ -54,7 +53,7 @@ New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-LdapSettingPfxCertificatePassword <SecureString>] [-Location <String>]
  [-NotificationSettingAdditionalRecipient <String[]>] [-NotificationSettingNotifyDcAdmin <String>]
  [-NotificationSettingNotifyGlobalAdmin <String>] [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>]
- [-Sku <String>] [-Tag <Hashtable>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -135,7 +134,7 @@ Domain Configuration Type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +149,7 @@ The name of the Azure domain that the user would like to deploy Domain Services 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -165,7 +164,7 @@ A flag to determine whether or not NtlmV1 is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -180,7 +179,7 @@ A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +194,7 @@ A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -210,7 +209,7 @@ A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -225,7 +224,7 @@ A flag to determine whether or not TlsV1 is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -240,7 +239,7 @@ Resource etag
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +254,7 @@ Enabled or Disabled flag to turn on Group-based filtered sync
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -270,13 +269,28 @@ List of settings for Resource Forest
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -315,7 +329,7 @@ A flag to determine whether or not Secure LDAP access over the internet is enabl
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -330,7 +344,7 @@ A flag to determine whether or not Secure LDAP is enabled or disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -346,7 +360,7 @@ The parameter passed here should be a base64encoded representation of the certif
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -361,7 +375,7 @@ The password to decrypt the provided Secure LDAP certificate pfx file.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -376,7 +390,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -391,7 +405,7 @@ The name of the domain service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: DomainServiceName
 
 Required: True
@@ -406,7 +420,7 @@ The list of additional recipients
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -421,7 +435,7 @@ Should domain controller admins be notified
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -436,7 +450,7 @@ Should global admins be notified
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -466,7 +480,7 @@ List of ReplicaSets
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -481,7 +495,7 @@ Resource Forest
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -497,7 +511,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -512,7 +526,7 @@ Sku Type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -528,7 +542,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -543,7 +557,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -588,6 +602,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity
 
 ## OUTPUTS
 
