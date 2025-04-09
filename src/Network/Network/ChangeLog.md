@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 * Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
+* Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - `Add-AzLoadBalancerRuleConfig`
+    - `New-AzLoadBalancerRuleConfig`
+    - `Set-AzLoadBalancerRuleConfig`
 * Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
     - `New-AzVirtualNetworkGatewayMigrationParameter`
     - `Invoke-AzVirtualNetworkGatewayPrepareMigration`

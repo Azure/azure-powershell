@@ -5942,6 +5942,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>EnableConnectionTracking</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -5983,6 +5987,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>DisableOutboundSNAT</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableConnectionTracking</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
