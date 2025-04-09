@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     //
                     if(ModelAdapter.CheckIfDatabaseHasGeoDrLink(this.ResourceGroupName, this.ServerName, this.DatabaseName))
                     {
-                        WriteInformation(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ForwardMigrationWithGeoDrWarning));
+                        WriteInformation(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ForwardMigrationWithGeoDRInfo));
                     }
             }
 
