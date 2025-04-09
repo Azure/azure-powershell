@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Implemented code refactoring, no behavior changes expected.
+* Az.AlertsManagement module is migrated to Autorest PowerShell v4:
+  * Modified cmdlet `New-AzPrometheusRuleGroup`: Added parameters `-InputObject`, `-JsonFilePath` and `-JsonString`. Added parameter set `CreateViaJsonString`. Added parameter set `CreateViaJsonFilePath`. Added parameter set `CreateExpanded`. Added parameter set `CreateViaIdentityExpanded`.
+  * Modified cmdlet `Update-AzPrometheusRuleGroup`: Added parameters `-JsonFilePath` and `-JsonString`. Added parameter set `UpdateViaJsonString`. Added parameter set `UpdateViaJsonFilePath`.
 
 ## Version 0.6.3
 * Upgraded nuget package to signed package.
