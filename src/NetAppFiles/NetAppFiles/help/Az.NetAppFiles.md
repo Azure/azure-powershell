@@ -29,11 +29,20 @@ Gets details of an Azure NetApp Files (ANF) Backup Policy.
 ### [Get-AzNetAppFilesBackupVault](Get-AzNetAppFilesBackupVault.md)
 Gets details of an Azure NetApp Files (ANF) BackupVault.
 
+### [Get-AzNetAppFilesFilePathAvailability](Get-AzNetAppFilesFilePathAvailability.md)
+Check file path availability
+
+### [Get-AzNetAppFilesNameAvailability](Get-AzNetAppFilesNameAvailability.md)
+Check resource name availability
+
 ### [Get-AzNetAppFilesNetworkSiblingSet](Get-AzNetAppFilesNetworkSiblingSet.md)
 Get details of a network sibling set
 
 ### [Get-AzNetAppFilesPool](Get-AzNetAppFilesPool.md)
 Gets details of an Azure NetApp Files (ANF) pool.
+
+### [Get-AzNetAppFilesQuotaAvailability](Get-AzNetAppFilesQuotaAvailability.md)
+Check quota availability
 
 ### [Get-AzNetAppFilesQuotaLimit](Get-AzNetAppFilesQuotaLimit.md)
 Get quota limits

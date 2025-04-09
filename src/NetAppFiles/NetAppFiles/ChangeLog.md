@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added new parameter `CoolAccessTieringPolicy` to  `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`,
+* Added new cmdLet`Invoke-AzNetAppFilesAccountChangeKeyVault` to change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account. `Get-AzNetAppFilesAccountKeyVaultInformation` can be used to get information for this command.  
+* Added new cmdLet `Get-AzNetAppFilesAccountKeyVaultInformation`, Gets information that can be used in `Invoke-AzNetAppFilesAccountChangeKeyVault`
+* Added new cmdLet `Convert-AzNetAppFilesAccountToCmk`  Transition volumes encryption from PMK to CMK.
 ## Version 0.20.1
 * Upgraded nuget package to signed package.
 
