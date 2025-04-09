@@ -1,0 +1,47 @@
+{
+  "resourceType": "solutionTypes",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivitySolutionType",
+      "description": "Get a SolutionTypeResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes/{solutionType}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivitysolutiontype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SolutionType <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SolutionTypeResource",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SolutionType",
+              "value": "[Path.solutionType]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
