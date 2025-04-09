@@ -41,7 +41,7 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
-ConnectivityCapabilities : {
+ConnectivityCapability : {
                              "ConnectedGroupPrivateEndpointsScale": "Standard",
                              "ConnectedGroupAddressOverlap": "Disallowed",
                              "PeeringEnforcement": "Unenforced"
@@ -100,7 +100,7 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
-ConnectivityCapabilities : {
+ConnectivityCapability : {
                              "ConnectedGroupPrivateEndpointsScale": "Standard",
                              "ConnectedGroupAddressOverlap": "Disallowed",
                              "PeeringEnforcement": "Unenforced"
@@ -150,7 +150,7 @@ ConnectivityTopology  : Mesh
 Hubs                  : {}
 DeleteExistingPeering : True
 IsGlobal              : False
-ConnectivityCapabilities : {
+ConnectivityCapability : {
                              "ConnectedGroupPrivateEndpointsScale": "Standard",
                              "ConnectedGroupAddressOverlap": "Disallowed",
                              "PeeringEnforcement": "Unenforced"

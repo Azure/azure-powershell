@@ -40,7 +40,7 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
-ConnectivityCapabilities : {
+ConnectivityCapability : {
                              "ConnectedGroupPrivateEndpointScale": "Standard",
                              "ConnectedGroupAddressOverlap": "Disallowed",
                              "PeeringEnforcement": "Unenforced"
@@ -92,7 +92,7 @@ Updates a connectivity configuration's group members.
 ### Example 2
 ```powershell
 $ConnectivityConfiguration = Get-AzNetworkManagerConnectivityConfiguration -Name "psConnectivityConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
-$ConnectivityConfiguration.ConnectivityCapabilities = [PSCustomObject]@{
+$ConnectivityConfiguration.ConnectivityCapability = [PSCustomObject]@{
     ConnectedGroupPrivateEndpointScale = "HighScale"
     ConnectedGroupAddressOverlap = "Allowed"
     PeeringEnforcement = "Enforced"
@@ -105,7 +105,7 @@ ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
 IsGlobal              : False
-ConnectivityCapabilities : {
+ConnectivityCapability : {
                              "ConnectedGroupPrivateEndpointScale": "HighScale",
                              "ConnectedGroupAddressOverlap": "Allowed",
                              "PeeringEnforcement": "Enforced"

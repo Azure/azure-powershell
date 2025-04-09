@@ -96,7 +96,8 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Topology-specific settings to refine connectivity. Accepts an object with: ConnectedGroupPrivateEndpointScale ('Standard', 'HighScale'), ConnectedGroupAddressOverlap ('Allowed', 'Disallowed'), PeeringEnforcement ('Unenforced', 'Enforced').")]
-        public PSNetworkManagerConnectivityCapabilities ConnectivityCapabilities { get; set; }
+        [Alias("ConnectivityCapabilities")]
+        public PSNetworkManagerConnectivityCapabilities ConnectivityCapability { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -164,9 +165,9 @@ namespace Microsoft.Azure.Commands.Network
                 mncc.Description = this.Description;
             }
 
-            if (this.ConnectivityCapabilities != null)
+            if (this.ConnectivityCapability != null)
             {
-                mncc.ConnectivityCapabilities = this.ConnectivityCapabilities;
+                mncc.ConnectivityCapability = this.ConnectivityCapability;
             }
 
             mncc.AppliesToGroups = this.AppliesToGroup.ToList();

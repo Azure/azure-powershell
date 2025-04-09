@@ -249,7 +249,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
             PeeringEnforcement = "Unenforced"
         }
 
-        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapabilities $caps
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -ConnectivityCapability $caps
 
         $connConfig = Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName 
         Assert-NotNull $connConfig;
@@ -263,12 +263,12 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "Microsoft.Network/virtualNetworks" $connConfig.Hubs[0].ResourceType;
         Assert-AreEqual "False"  $connConfig.IsGlobal;
         Assert-AreEqual "True"  $connConfig.DeleteExistingPeering;
-        Assert-AreEqual "Standard" $connConfig.ConnectivityCapabilities.ConnectedGroupPrivateEndpointsScale;
-        Assert-AreEqual "Disallowed" $connConfig.ConnectivityCapabilities.ConnectedGroupAddressOverlap;
-        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapabilities.PeeringEnforcement;
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapability.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Disallowed" $connConfig.ConnectivityCapability.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapability.PeeringEnforcement;
 
         $connConfig.Description = "A different description.";       
-        $connConfig.ConnectivityCapabilities = [PSCustomObject]@{
+        $connConfig.ConnectivityCapability = [PSCustomObject]@{
             ConnectedGroupPrivateEndpointsScale = "Standard"
             ConnectedGroupAddressOverlap = "Allowed"
             PeeringEnforcement = "Unenforced"
@@ -278,9 +278,9 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-NotNull $newConnConfig;
         Assert-AreEqual "A different description." $newConnConfig.Description;
         Assert-AreEqual $connectivityConfigurationName $newConnConfig.Name;
-        Assert-AreEqual "Standard" $connConfig.ConnectivityCapabilities.ConnectedGroupPrivateEndpointsScale;
-        Assert-AreEqual "Allowed" $connConfig.ConnectivityCapabilities.ConnectedGroupAddressOverlap;
-        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapabilities.PeeringEnforcement;    
+        Assert-AreEqual "Standard" $connConfig.ConnectivityCapability.ConnectedGroupPrivateEndpointsScale;
+        Assert-AreEqual "Allowed" $connConfig.ConnectivityCapability.ConnectedGroupAddressOverlap;
+        Assert-AreEqual "Unenforced" $connConfig.ConnectivityCapability.PeeringEnforcement;    
 
 
         $configids  = @($newConnConfig.Id)
