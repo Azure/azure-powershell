@@ -31,9 +31,9 @@ jobs:
     displayName: 'Generate Matrix'
     inputs:
       targetType: inline
+      pwsh: true
       script: |
-        $pathParts = @("$(Build.SourcesDirectory)", ".azure-pipelines", "PipelineSteps", "BatchGeneration", "prepare.ps1")
-        $prepareModulesPath = $pathParts -join '\'
+        $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
         & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelJobs }}"
   
 
