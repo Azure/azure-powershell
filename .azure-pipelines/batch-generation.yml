@@ -32,7 +32,8 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
+        $pathParts = @("$(Build.SourcesDirectory)", ".azure-pipelines", "PipelineSteps", "BatchGeneration", "prepare.ps1")
+        $prepareModulesPath = $pathParts -join '\'
         & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelJobs }}"
   
 
