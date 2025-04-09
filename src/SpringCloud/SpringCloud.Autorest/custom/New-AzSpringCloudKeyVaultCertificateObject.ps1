@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificatePropert
 https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudkeyvaultcertificateobject
 #>
 function New-AzSpringCloudKeyVaultCertificateObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://learn.microsoft.com/en-us/azure/spring-apps/basic-standard/retirement-announcement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
