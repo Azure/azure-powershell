@@ -20,6 +20,13 @@ New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -N
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityCommunicationsGatewayExpanded
+```
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
+ -Name <String> -Location <String> [-PhoneNumber <String>] [-Purpose <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaJsonFilePath
 ```
 New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
@@ -69,12 +76,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommunicationsGatewayInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
+Parameter Sets: CreateViaIdentityCommunicationsGatewayExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CommunicationsGatewayName
 Unique identifier for this deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -135,7 +157,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: True
@@ -180,7 +202,7 @@ The phone number
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -196,7 +218,7 @@ automated or manual testing
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -212,7 +234,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -227,7 +249,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -242,7 +264,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityCommunicationsGatewayExpanded
 Aliases:
 
 Required: False
@@ -287,6 +309,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 
 ## OUTPUTS
 

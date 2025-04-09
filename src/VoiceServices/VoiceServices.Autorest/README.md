@@ -89,7 +89,7 @@ directive:
     remove: true
   - where:
       subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
-      variant: ^CreateViaIdentity.*$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
