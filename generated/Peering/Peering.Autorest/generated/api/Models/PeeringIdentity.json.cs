@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_peerAsnName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peerAsnName"), out var __jsonPeerAsnName) ? (string)__jsonPeerAsnName : (string)PeerAsnName;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_peeringName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peeringName"), out var __jsonPeeringName) ? (string)__jsonPeeringName : (string)PeeringName;}
-            {_registeredAsnName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("registeredAsnName"), out var __jsonRegisteredAsnName) ? (string)__jsonRegisteredAsnName : (string)RegisteredAsnName;}
-            {_registeredPrefixName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("registeredPrefixName"), out var __jsonRegisteredPrefixName) ? (string)__jsonRegisteredPrefixName : (string)RegisteredPrefixName;}
-            {_peeringServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peeringServiceName"), out var __jsonPeeringServiceName) ? (string)__jsonPeeringServiceName : (string)PeeringServiceName;}
-            {_connectionMonitorTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("connectionMonitorTestName"), out var __jsonConnectionMonitorTestName) ? (string)__jsonConnectionMonitorTestName : (string)ConnectionMonitorTestName;}
-            {_prefixName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("prefixName"), out var __jsonPrefixName) ? (string)__jsonPrefixName : (string)PrefixName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_peerAsnName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peerAsnName"), out var __jsonPeerAsnName) ? (string)__jsonPeerAsnName : (string)_peerAsnName;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_peeringName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peeringName"), out var __jsonPeeringName) ? (string)__jsonPeeringName : (string)_peeringName;}
+            {_registeredAsnName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("registeredAsnName"), out var __jsonRegisteredAsnName) ? (string)__jsonRegisteredAsnName : (string)_registeredAsnName;}
+            {_registeredPrefixName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("registeredPrefixName"), out var __jsonRegisteredPrefixName) ? (string)__jsonRegisteredPrefixName : (string)_registeredPrefixName;}
+            {_peeringServiceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("peeringServiceName"), out var __jsonPeeringServiceName) ? (string)__jsonPeeringServiceName : (string)_peeringServiceName;}
+            {_connectionMonitorTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("connectionMonitorTestName"), out var __jsonConnectionMonitorTestName) ? (string)__jsonConnectionMonitorTestName : (string)_connectionMonitorTestName;}
+            {_prefixName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("prefixName"), out var __jsonPrefixName) ? (string)__jsonPrefixName : (string)_prefixName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

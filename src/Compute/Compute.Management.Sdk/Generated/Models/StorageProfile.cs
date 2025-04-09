@@ -55,12 +55,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the VM size in the VM configuration which implicitly deallocates
         /// and reallocates the VM. Minimum api-version: 2022-08-01. Possible
         /// values include: 'SCSI', 'NVMe'</param>
-        public StorageProfile(ImageReference imageReference = default(ImageReference), OSDisk osDisk = default(OSDisk), IList<DataDisk> dataDisks = default(IList<DataDisk>), string diskControllerType = default(string))
+        /// <param name="alignRegionalDisksToVMZone">Specifies whether the
+        /// regional disks should be aligned/moved to the VM zone. This is
+        /// applicable only for VMs with placement property set. Please note
+        /// that this change is irreversible. Minimum api-version:
+        /// 2024-11-01.</param>
+        public StorageProfile(ImageReference imageReference = default(ImageReference), OSDisk osDisk = default(OSDisk), IList<DataDisk> dataDisks = default(IList<DataDisk>), string diskControllerType = default(string), bool? alignRegionalDisksToVMZone = default(bool?))
         {
             ImageReference = imageReference;
             OsDisk = osDisk;
             DataDisks = dataDisks;
             DiskControllerType = diskControllerType;
+            AlignRegionalDisksToVMZone = alignRegionalDisksToVMZone;
             CustomInit();
         }
 
@@ -111,6 +117,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the regional disks should be
+        /// aligned/moved to the VM zone. This is applicable only for VMs with
+        /// placement property set. Please note that this change is
+        /// irreversible. Minimum api-version: 2024-11-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "alignRegionalDisksToVMZone")]
+        public bool? AlignRegionalDisksToVMZone { get; set; }
 
         /// <summary>
         /// Validate the object.

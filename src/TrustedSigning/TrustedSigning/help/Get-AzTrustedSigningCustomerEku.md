@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrustedSigning.dll-Help.xml
 Module Name: Az.TrustedSigning
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.trustedsigning/get-aztrustedsigningcustomereku
 schema: 2.0.0
 ---
 
