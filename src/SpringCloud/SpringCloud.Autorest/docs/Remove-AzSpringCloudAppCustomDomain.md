@@ -25,6 +25,18 @@ Remove-AzSpringCloudAppCustomDomain -InputObject <ISpringCloudIdentity> [-Defaul
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityApp
+```
+Remove-AzSpringCloudAppCustomDomain -AppInputObject <ISpringCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySpring
+```
+Remove-AzSpringCloudAppCustomDomain -AppName <String> -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete the custom domain of one lifecycle application.
 
@@ -46,12 +58,27 @@ Delete the custom domain of one lifecycle application.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: DeleteViaIdentityApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentitySpring
 Aliases:
 
 Required: True
@@ -94,7 +121,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -113,7 +139,7 @@ The name of the custom domain resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityApp, DeleteViaIdentitySpring
 Aliases:
 
 Required: True
@@ -181,6 +207,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: DeleteViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

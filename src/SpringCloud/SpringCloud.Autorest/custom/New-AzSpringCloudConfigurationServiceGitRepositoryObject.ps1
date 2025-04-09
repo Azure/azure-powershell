@@ -21,12 +21,14 @@ Create an in-memory object for ConfigurationServiceGitRepository.
 Create an in-memory object for ConfigurationServiceGitRepository.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigurationServiceGitRepository
 .Link
-https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-AzSpringCloudConfigurationServiceGitRepositoryObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudconfigurationservicegitrepositoryobject
 #>
 function New-AzSpringCloudConfigurationServiceGitRepositoryObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://learn.microsoft.com/en-us/azure/spring-apps/basic-standard/retirement-announcement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigurationServiceGitRepository')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -66,7 +68,7 @@ function New-AzSpringCloudConfigurationServiceGitRepositoryObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigurationServiceGitRepository]::New()
 
         if ($PSBoundParameters.ContainsKey('HostKey')) {
             $Object.HostKey = $HostKey
