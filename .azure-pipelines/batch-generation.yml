@@ -1,0 +1,62 @@
+variables:
+
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
+  MaxParallelJobs: 3
+
+trigger: none
+
+jobs:
+- job: prepare
+  displayName: Generate Matrix
+  pool: pool-ubuntu-2004
+  steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+    ref: refs/heads/main
+
+  - task: PowerShell@2
+    displayName: 'Create Batch Generation Branch'
+    inputs:
+      targetType: inline
+      script: |
+        $newBranch = "batch-generation/branch-$(Build.BuildId)"
+        git checkout -b $newBranch
+        git push origin $newBranch
+
+  - task: PowerShell@2
+    name: mtrx
+    displayName: 'Generate Matrix'
+    inputs:
+      targetType: inline
+      script: |
+        $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
+        & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelJobs }}"
+  
+
+- job: build
+  displayName: "Build:"
+  dependsOn: prepare
+  timeoutInMinutes: 120
+  pool: pool-windows-2019
+  strategy:
+    matrix: $[ dependencies.prepare.outputs['mtrx.Targets'] ]
+    maxParallel: 15
+
+  steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+    ref: "batch-generation/branch-$(Build.BuildId)"
+
+  - task: PowerShell@2
+    name: build
+    displayName: 'Build Targets'
+    inputs:
+      targetType: inline
+      script: |
+        Write-Host "Building targets: ${Target}"
+        $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        & $buildModulesPath -TargetModule $($Target -split ',')
+  
