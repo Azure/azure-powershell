@@ -56,7 +56,7 @@ subject-prefix: $(service-name)
 
 directive:
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       variant: ^CheckViaIdentityExpanded$
