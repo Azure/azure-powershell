@@ -493,9 +493,9 @@ function Save-PackageLocally {
             # We try to download the package from the PSRepositoryUrl as we are likely intending to use the existing version of the module.
             # If the module not found in PSRepositoryUrl, the following command would fail and hence publish to local repo process would fail as well
             if (Test-Path Env:\DEFAULT_PS_REPOSITORY_URL) {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg -TrustRepository -Debug -Confirm:$true
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository $Env:DEFAULT_PS_REPOSITORY_NAME -Credential $credentialsObject -AsNupkg -TrustRepository -Verbose
             } else {
-                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg -TrustRepository -Debug -Confirm:$true
+                Save-PSResource -Name $ModuleName -Version $RequiredVersion -Path $TempRepoPath -Repository PSGallery -AsNupkg -TrustRepository -Verbose
             }
             $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
             $ModulePaths = $env:PSModulePath -split ';'
