@@ -25,9 +25,6 @@
 #### Az.Cdn 3.3.1
 * This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
 
-#### Az.CodeSigning 0.2.2
-* Added support for CI policy signing for OS versions older than Nickel.
-
 #### Az.CognitiveServices 1.16.0
 * Updated SDK via autorest.powershell.
 * Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
