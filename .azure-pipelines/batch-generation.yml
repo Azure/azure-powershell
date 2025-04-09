@@ -71,4 +71,4 @@ jobs:
         git commit -m "Build ${Target}"
         git push origin "${{ variables.GenerationBranch }}"
 
-    workingDirectory: $(Build.SourcesDirectory)
+      workingDirectory: $(Build.SourcesDirectory)
