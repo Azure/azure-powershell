@@ -27,7 +27,7 @@ pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quantum.0.1.2.zip;sourceType=sa]Az.Quantum,0.1.2
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Qumulo.0.1.3.zip;sourceType=sa]Az.Qumulo,0.1.3
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.3.zip;sourceType=sa]Az.Quota,0.1.3
-pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.6.0.zip;sourceType=sa]Az.RecoveryServices,7.6.0
+pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.7.0.zip;sourceType=sa]Az.RecoveryServices,7.7.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.11.0.zip;sourceType=sa]Az.RedisCache,1.11.0
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.4.1.zip;sourceType=sa]Az.RedisEnterpriseCache,1.4.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.1.0.zip;sourceType=sa]Az.Relay,2.1.0
