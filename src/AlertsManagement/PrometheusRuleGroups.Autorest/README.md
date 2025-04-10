@@ -61,6 +61,9 @@ directive:
         variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
       remove: true
     - where:
+        variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      remove: true
+    - where:
         subject: PrometheuRuleGroup
       set: 
         subject: PrometheusRuleGroup
