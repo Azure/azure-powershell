@@ -967,9 +967,5 @@
   {
     "module": "Pinecone",
     "alias": "Pinecone"
-  },
-  {
-    "module": "ADDomainServices",
-    "alias": "ADDomainServices"
   }
 ]
