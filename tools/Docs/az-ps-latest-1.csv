@@ -29,8 +29,8 @@ pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Chaos.0.1.1.zip;sourceType=sa]Az.Chaos,0.1.1
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.2.1.0.zip;sourceType=sa]Az.CloudService,2.1.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.16.0.zip;sourceType=sa]Az.CognitiveServices,1.16.0
-pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.4.2.zip;sourceType=sa]Az.Communication,0.4.2
-pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.9.2.0.zip;sourceType=sa]Az.Compute,9.2.0
+pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.5.0.zip;sourceType=sa]Az.Communication,0.5.0
+pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.9.3.0.zip;sourceType=sa]Az.Compute,9.3.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeFleet.0.1.0.zip;sourceType=sa]Az.ComputeFleet,0.1.0
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ComputeSchedule.0.1.0.zip;sourceType=sa]Az.ComputeSchedule,0.1.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.1.0.zip;sourceType=sa]Az.ConfidentialLedger,1.1.0
@@ -50,11 +50,11 @@ pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBoxEdge.1.2.1.zip;sourceType=sa]Az.DataBoxEdge,1.2.1
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.10.0.zip;sourceType=sa]Az.Databricks,1.10.0
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Datadog.0.1.2.zip;sourceType=sa]Az.Datadog,0.1.2
-pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.19.1.zip;sourceType=sa]Az.DataFactory,1.19.1
+pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.19.2.zip;sourceType=sa]Az.DataFactory,1.19.2
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.4.0.zip;sourceType=sa]Az.DataLakeStore,1.4.0
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.0.14.10.zip;sourceType=sa]Az.DataMigration,0.14.10
-pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.6.1.zip;sourceType=sa]Az.DataProtection,2.6.1
+pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.7.0.zip;sourceType=sa]Az.DataProtection,2.7.0
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.1.zip;sourceType=sa]Az.DataShare,1.1.1
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.3.2.zip;sourceType=sa]Az.DedicatedHsm,0.3.2
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.5.4.1.zip;sourceType=sa]Az.DesktopVirtualization,5.4.1

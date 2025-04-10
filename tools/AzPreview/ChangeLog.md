@@ -1,3 +1,57 @@
+## 13.5.0 - May 2025
+#### Az.Communication 0.5.0
+* First preview release for module Az.CommunicationServiceSmtpUsername
+
+#### Az.Compute 9.3.0
+* Added new parameters 'ZonePlacementPolicy', 'IncludeZone', 'ExcludeZone', and 'AlignRegionalDisksToVMZone' to cmdlets 'New-AzVM' and 'New-AzVmConfig'
+* Added new parameter 'AlignRegionalDisksToVMZone' to cmdlet 'Update-AzVM'.
+* VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+
+#### Az.DataFactory 1.19.2
+* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
+
+#### Az.DataProtection 2.7.0
+* Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
+* Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
+
+#### Az.NetAppFiles 0.21.0
+* Added new parameter 'CoolAccessTieringPolicy' to  'New-AzNetAppFilesVolume' and 'Update-AzNetAppFilesVolume',
+* Added new cmdLet'Invoke-AzNetAppFilesAccountChangeKeyVault' to change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account. 'Get-AzNetAppFilesAccountKeyVaultInformation' can be used to get information for this command.  
+* Added new cmdLet 'Get-AzNetAppFilesAccountKeyVaultInformation', Gets information that can be used in 'Invoke-AzNetAppFilesAccountChangeKeyVault'
+* Added new cmdLet 'Convert-AzNetAppFilesAccountToCmk'  Transition volumes encryption from PMK to CMK.
+
+#### Az.Network 7.16.0
+* Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
+    - 'Add-AzNetworkInterfaceIpConfig'
+    - 'New-AzNetworkInterfaceIpConfig'
+
+#### Az.Orbital 0.2.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Peering 0.5.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Quantum 0.2.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.RecoveryServices 7.7.0
+* Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
+* Deprecated the 'Token' parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter 'SecureToken' going forward.
+
+#### Az.ResourceGraph 1.2.1
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Resources 7.11.0
+* Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
+
+#### Az.TrustedSigning 0.1.1
+* Modified InvokeCiPolicySigning to include ShouldProcess command confirmation
+
+#### Az.WindowsIotServices 0.2.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Removed parameter Location from command Update-AzWindowsIotServicesDevice.
+
 ## 13.4.0 - April 2025
 #### Az.Accounts 4.1.0
 * Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]

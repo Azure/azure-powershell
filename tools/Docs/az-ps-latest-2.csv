@@ -13,9 +13,9 @@ pac11,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac12,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NotificationHubs.1.2.0.zip;sourceType=sa]Az.NotificationHubs,1.2.0
 pac13,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.OperationalInsights.3.3.0.zip;sourceType=sa]Az.OperationalInsights,3.3.0
 pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Oracle.1.1.0.zip;sourceType=sa]Az.Oracle,1.1.0
-pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Orbital.0.1.3.zip;sourceType=sa]Az.Orbital,0.1.3
+pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Orbital.0.2.0.zip;sourceType=sa]Az.Orbital,0.2.0
 pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PaloAltoNetworks.0.3.1.zip;sourceType=sa]Az.PaloAltoNetworks,0.3.1
-pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Peering.0.4.2.zip;sourceType=sa]Az.Peering,0.4.2
+pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Peering.0.5.0.zip;sourceType=sa]Az.Peering,0.5.0
 pac18,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Pinecone.0.1.0.zip;sourceType=sa]Az.Pinecone,0.1.0
 pac19,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PolicyInsights.1.7.1.zip;sourceType=sa]Az.PolicyInsights,1.7.1
 pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Portal.0.3.0.zip;sourceType=sa]Az.Portal,0.3.0
@@ -24,17 +24,17 @@ pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.PrivateDns.1.2.0.zip;sourceType=sa]Az.PrivateDns,1.2.0
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ProviderHub.0.3.1.zip;sourceType=sa]Az.ProviderHub,0.3.1
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Purview.0.2.2.zip;sourceType=sa]Az.Purview,0.2.2
-pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quantum.0.1.2.zip;sourceType=sa]Az.Quantum,0.1.2
+pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quantum.0.2.0.zip;sourceType=sa]Az.Quantum,0.2.0
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Qumulo.0.1.3.zip;sourceType=sa]Az.Qumulo,0.1.3
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.3.zip;sourceType=sa]Az.Quota,0.1.3
-pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.6.0.zip;sourceType=sa]Az.RecoveryServices,7.6.0
+pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.7.0.zip;sourceType=sa]Az.RecoveryServices,7.7.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.11.0.zip;sourceType=sa]Az.RedisCache,1.11.0
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.4.1.zip;sourceType=sa]Az.RedisEnterpriseCache,1.4.1
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.1.0.zip;sourceType=sa]Az.Relay,2.1.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.13.1.zip;sourceType=sa]Az.Reservations,0.13.1
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.2.0.zip;sourceType=sa]Az.ResourceGraph,1.2.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.2.1.zip;sourceType=sa]Az.ResourceGraph,1.2.1
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.3.0.zip;sourceType=sa]Az.ResourceMover,1.3.0
-pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.7.10.0.zip;sourceType=sa]Az.Resources,7.10.0
+pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.7.11.0.zip;sourceType=sa]Az.Resources,7.11.0
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ScVmm.0.1.0.zip;sourceType=sa]Az.ScVmm,0.1.0
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.10.1.zip;sourceType=sa]Az.Search,0.10.1
 pac39,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.8.0.zip;sourceType=sa]Az.Security,1.8.0
@@ -64,11 +64,11 @@ pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Terraform.0.1.2.zip;sourceType=sa]Az.Terraform,0.1.2
 pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TimeSeriesInsights.0.2.3.zip;sourceType=sa]Az.TimeSeriesInsights,0.2.3
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.3.0.zip;sourceType=sa]Az.TrafficManager,1.3.0
-pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrustedSigning.0.1.0.zip;sourceType=sa]Az.TrustedSigning,0.1.0
+pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrustedSigning.0.1.1.zip;sourceType=sa]Az.TrustedSigning,0.1.1
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VMware.0.7.2.zip;sourceType=sa]Az.VMware,0.7.2
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VoiceServices.0.1.3.zip;sourceType=sa]Az.VoiceServices,0.1.3
 pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Websites.3.4.0.zip;sourceType=sa]Az.Websites,3.4.0
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WeightsAndBiases.0.1.0.zip;sourceType=sa]Az.WeightsAndBiases,0.1.0
-pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WindowsIotServices.0.1.2.zip;sourceType=sa]Az.WindowsIotServices,0.1.2
+pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WindowsIotServices.0.2.0.zip;sourceType=sa]Az.WindowsIotServices,0.2.0
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Workloads.1.0.0.zip;sourceType=sa]Az.Workloads,1.0.0
 
