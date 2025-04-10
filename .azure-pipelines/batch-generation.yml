@@ -50,7 +50,7 @@ jobs:
     fetchTags: false
     
   - checkout: azure-powershell-devops
-    path: "azure-powershell-devops
+    path: "azure-powershell-devops"
 
   - template: util/get-github-pat-steps.yml
 
