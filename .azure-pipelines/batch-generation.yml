@@ -49,6 +49,8 @@ jobs:
     persistCredentials: true
     fetchTags: false
 
+  - template: util/get-github-pat-steps.yml
+
   - task: PowerShell@2
     name: build
     displayName: 'Build Targets'
@@ -69,6 +71,10 @@ jobs:
           $filePath = Join-Path $folderPath "newfile.txt"
           "This is a new file in $folder" | Out-File -FilePath $filePath -Encoding UTF8
           }
+        
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+        git config user.name "azure-powershell-bot";
+        git remote set-url origin 'https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git';
 
         git add .
         git commit -m "Build $target"
