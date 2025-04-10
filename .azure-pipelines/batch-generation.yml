@@ -1,9 +1,9 @@
-resources:
-  repositories:
-  - repository: azure-powershell-devops
-    type: git
-    name: azure-powershell-devops
-    
+# resources:
+#   repositories:
+#   - repository: azure-powershell-devops
+#     type: git
+#     name: azure-powershell-devops
+
 variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
@@ -17,17 +17,29 @@ jobs:
   displayName: Generate Matrix
   pool: pool-windows-2019
   steps:
-  - checkout: self
-    persistCredentials: true
-    fetchTags: false
+  # - checkout: self
+  #   persistCredentials: true
+  #   fetchTags: false
+
+  # - task: PowerShell@2
+  #   displayName: 'Create Batch Generation Branch'
+  #   inputs:
+  #     targetType: inline
+  #     script: |
+  #       git checkout -b "${{ variables.GenerationBranch }}"
+  #       git push origin "${{ variables.GenerationBranch }}"
 
   - task: PowerShell@2
     displayName: 'Create Batch Generation Branch'
     inputs:
       targetType: inline
+      pwsh: true
       script: |
-        git checkout -b "${{ variables.GenerationBranch }}"
-        git push origin "${{ variables.GenerationBranch }}"
+        $orgUrl = "$(System.CollectionUri)"
+        $project = "$(System.TeamProject)"
+        $repo = "$(Build.Repository.Name)"
+        $newBranch = "refs/heads/batch-generation"
+        $sourceBranch = "refs/heads/main"
 
   - task: PowerShell@2
     name: mtrx
@@ -54,8 +66,8 @@ jobs:
     persistCredentials: true
     fetchTags: false
     
-  - checkout: azure-powershell-devops
-    path: "azure-powershell-devops"
+  # - checkout: azure-powershell-devops
+  #   path: "azure-powershell-devops"
 
   - template: util/get-github-pat-steps.yml
 
