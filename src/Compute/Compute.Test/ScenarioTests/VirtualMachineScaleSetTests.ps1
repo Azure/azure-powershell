@@ -5519,6 +5519,7 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
         $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
 
+        Write-Verbose ('Creating VMSS config, test Remove-AzVmssSkuProfileVMSize on empty skuprofile, and Add-AzVmssSkuProfileVMSize');
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuName "Mix" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
@@ -5527,10 +5528,11 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
             -ImageReferencePublisher $imgRef.PublisherName  `
             | Remove-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3" `
             | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3" -AllocationStrategy "Prioritized";
-        Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 1;
 
         try 
         {
+            Write-Verbose ('Add the same vm size profile, should fail');
+            Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 1;
             Add-AzVmssSkuProfileVMSize -VirtualMachineScaleSet $vmss -VmSize "Standard_D4s_v4" -Rank 2;
             Assert-false "Should have failed when trying to add vm size that was already added";
         }
@@ -5540,6 +5542,7 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
         }
 
         # creating new-azvmss using New-VmssConfig
+        Write-Verbose ('Creating vmss');
         $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
 
         Assert-AreEqual $vmssResult.Sku.Name "Mix";
@@ -5550,6 +5553,7 @@ function Test-VirtualMachineScaleSetSkuProfilePrioritized
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Rank 1;
 
         # update vmss
+        Write-Verbose ('Update sku profile by removing a vm size and adding a new vm size');
         $vmssResult = $vmssResult 
         | Remove-AzVmssSkuProfileVMSize -VmSize "Standard_D4s_v3"
         | Add-AzVmssSkuProfileVMSize -VmSize "Standard_D2s_v3" -Rank 0
