@@ -1,5 +1,10 @@
+resources:
+  repositories:
+  - repository: azure-powershell-devops
+    type: git
+    name: azure-powershell-devops
+    
 variables:
-
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   MaxParallelJobs: 3
