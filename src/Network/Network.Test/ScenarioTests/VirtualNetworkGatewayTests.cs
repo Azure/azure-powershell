@@ -206,6 +206,13 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestHighBandwidthVpnGatewayCreation()
+        {
+            TestRunner.RunTestScript("Test-HighBandwidthVpnGatewayCreation");
+        }
+
+        [Fact]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
         public void TestVirtualNetworkGatewayMigrationFromBasicIPToSatndardIP()
         {

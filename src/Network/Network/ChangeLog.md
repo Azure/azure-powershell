@@ -49,6 +49,12 @@
     - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
     - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - `New-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGatewayConnection`
+
 * Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
     - `Start-AzNetworkWatcherConnectionMonitor`
     - `Get-AzNetworkWatcherConnectionMonitorReport`
