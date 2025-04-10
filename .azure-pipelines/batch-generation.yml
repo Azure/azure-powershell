@@ -59,9 +59,10 @@ jobs:
         git fetch origin "${{ variables.GenerationBranch }}"
         git checkout "${{ variables.GenerationBranch }}"
 
-        Write-Host "Building targets: $(Target)"
+        $target = "$(Target)"
+        Write-Host "Building targets: $target"
 
-        $modules = $(Target) -split ','
+        $modules = $target -split ','
 
         foreach ($module in $modules) {
           $folderPath = Join-Path $(Build.SourcesDirectory) 'src' $module
@@ -70,7 +71,7 @@ jobs:
           }
 
         git add .
-        git commit -m "Build $(Target)"
+        git commit -m "Build $target"
         git push origin "${{ variables.GenerationBranch }}"
 
       workingDirectory: $(Build.SourcesDirectory)
