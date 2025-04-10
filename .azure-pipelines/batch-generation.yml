@@ -11,6 +11,8 @@ jobs:
   displayName: Generate Matrix
   pool: pool-windows-2019
   steps:
+  - checkout: none
+
   - template: util/get-github-pat-steps.yml
 
   - task: PowerShell@2
@@ -23,7 +25,7 @@ jobs:
         $token = "$(GitHubToken)"
 
         $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
-        & $prepareModulesPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'main' -NewBranch $newBranch -Token $token
+        & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'main' -NewBranch $newBranch -Token $token
 
   - task: PowerShell@2
     name: mtrx
