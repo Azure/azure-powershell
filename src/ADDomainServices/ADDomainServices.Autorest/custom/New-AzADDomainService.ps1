@@ -85,14 +85,7 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity]
-    # Identity Parameter
-    ${InputObject},
-
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter({'FullySynced', 'ResourceTrusting'})]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -100,14 +93,12 @@ param(
     ${DomainConfigurationType},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # The name of the Azure domain that the user would like to deploy Domain Services to.
     ${DomainName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -115,7 +106,6 @@ param(
     ${DomainSecuritySettingNtlmV1},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -123,7 +113,6 @@ param(
     ${DomainSecuritySettingSyncKerberosPassword},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -131,7 +120,6 @@ param(
     ${DomainSecuritySettingSyncNtlmPassword},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -139,7 +127,6 @@ param(
     ${DomainSecuritySettingSyncOnPremPassword},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -147,14 +134,12 @@ param(
     ${DomainSecuritySettingTlsV1},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Resource etag
     ${Etag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -162,7 +147,6 @@ param(
     ${FilteredSync},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]]
@@ -170,7 +154,6 @@ param(
     ${ForestTrust},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -178,7 +161,6 @@ param(
     ${LdapSettingExternalAccess},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -186,7 +168,6 @@ param(
     ${LdapSettingLdaps},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP.
@@ -194,14 +175,12 @@ param(
     ${LdapSettingPfxCertificateInputFile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.Security.SecureString]
     # The password to decrypt the provided Secure LDAP certificate pfx file.
     ${LdapSettingPfxCertificatePassword},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.DefaultInfo(Name='Location Default', Description='Gets the Location from the first element in ReplicaSets.', Script='$ReplicaSet[0].Location')]
     [System.String]
@@ -209,7 +188,6 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String[]]
@@ -217,7 +195,6 @@ param(
     ${NotificationSettingAdditionalRecipient},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -225,7 +202,6 @@ param(
     ${NotificationSettingNotifyDcAdmin},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -233,7 +209,6 @@ param(
     ${NotificationSettingNotifyGlobalAdmin},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]]
@@ -241,14 +216,12 @@ param(
     ${ReplicaSet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
     # Resource Forest
     ${ResourceForest},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter({'Standard', 'Enterprise', 'Premium'})]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
@@ -256,7 +229,6 @@ param(
     ${Sku},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IResourceTags]))]
     [System.Collections.Hashtable]
