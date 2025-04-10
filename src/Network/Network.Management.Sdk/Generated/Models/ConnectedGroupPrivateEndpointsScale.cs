@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ConnectedGroupPrivateEndpointScale.
+    /// Defines values for ConnectedGroupPrivateEndpointsScale.
     /// </summary>
 
 
-    public static class ConnectedGroupPrivateEndpointScale
+    public static class ConnectedGroupPrivateEndpointsScale
     {
         /// <summary>
         /// Default. Allows for up to 2K private endpoints in the connected group.

@@ -2355,7 +2355,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerAddressPrefixItem, MNM.AddressPrefixItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerCommit, MNM.NetworkManagerCommit>();
                 cfg.CreateMap<ANM.PSNetworkManagerConfigurationGroup, MNM.ConfigurationGroup>();
-                cfg.CreateMap<ANM.PSNetworkManagerConnectivityConfiguration, MNM.ConnectivityConfiguration>();
+
+                cfg.CreateMap<ANM.PSNetworkManagerConnectivityConfiguration, MNM.ConnectivityConfiguration>()
+                    .ForMember(dest => dest.ConnectivityCapabilities, opt => opt.MapFrom(src => src.ConnectivityCapability));
+                cfg.CreateMap<MNM.ConnectivityConfiguration, ANM.PSNetworkManagerConnectivityConfiguration>()
+                    .ForMember(dest => dest.ConnectivityCapability, opt => opt.MapFrom(src => src.ConnectivityCapabilities));
+
+                cfg.CreateMap<MNM.ConnectivityConfigurationPropertiesConnectivityCapabilities, ANM.PSNetworkManagerConnectivityCapabilities>();
+                cfg.CreateMap<ANM.PSNetworkManagerConnectivityCapabilities, MNM.ConnectivityConfigurationPropertiesConnectivityCapabilities>();
+
+
                 cfg.CreateMap<ANM.PSNetworkManagerConnectivityGroupItem, MNM.ConnectivityGroupItem>();
                 cfg.CreateMap<ANM.PSNetworkManagerDeploymentStatus, MNM.NetworkManagerDeploymentStatus>();
                 cfg.CreateMap<ANM.PSNetworkManagerDeploymentStatusResult, MNM.NetworkManagerDeploymentStatusListResult>();
