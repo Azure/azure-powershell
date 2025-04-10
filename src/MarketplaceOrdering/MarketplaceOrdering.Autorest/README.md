@@ -48,16 +48,17 @@ directive:
     set:
       subject: SignTerms
 
-  - where: 
-      subject: ^MarketplaceTerms$
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
   # The type 'SetAzMarketplaceTerms_CreateExpanded' already contains a definition for 'Publisher' and 'Product'
+  # Customize create variant
   - where: 
       subject: ^MarketplaceTerms$
-      variant: ^CreateExpanded$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^Create(.*(JsonFilePath|JsonString))
     remove: true
-  # Set cmdlet contains update verb
+  - where: 
+      subject: ^MarketplaceTerms$
+      variant: ^CreateExpanded$
+    remove: true
+  # Set cmdlet contains update verb.
   - where:
       verb: Update
       subject: MarketplaceTerms
