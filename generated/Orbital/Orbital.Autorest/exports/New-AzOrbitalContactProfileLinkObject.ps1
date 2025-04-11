@@ -25,7 +25,7 @@ $linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 
 New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction uplink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,31 +37,30 @@ CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
   EndPointIPAddress <String>: IP Address (IPv4).
   EndPointName <String>: Name of an end point.
   EndPointPort <String>: TCP port to listen on to receive data.
-  EndPointProtocol <Protocol>: Protocol either UDP or TCP.
+  EndPointProtocol <String>: Protocol either UDP or TCP.
   Name <String>: Channel name.
   [DecodingConfiguration <String>]: Currently unused.
   [DemodulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
   [EncodingConfiguration <String>]: Currently unused.
   [ModulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
 .Link
-https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalcontactprofilelinkobject
 #>
 function New-AzOrbitalContactProfileLinkObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]]
     # Contact Profile Link Channel.
-    # To construct, see NOTES section for CHANNEL properties and create a hash table.
     ${Channel},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("Uplink", "Downlink")]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
-    # Direction (uplink or downlink).
+    [System.String]
+    # Direction (Uplink or Downlink).
     ${Direction},
 
     [Parameter(Mandatory)]
@@ -71,23 +70,28 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.PSArgumentCompleterAttribute("RHCP", "LHCP", "linearVertical", "linearHorizontal")]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
-    # polarization.
-    # eg (RHCP, LHCP).
+    [System.String]
+    # Polarization.
+    # e.g.
+    # (RHCP, LHCP).
     ${Polarization},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.Single]
     # Effective Isotropic Radiated Power (EIRP) in dBW.
+    # It is the required EIRP by the customer.
+    # Not used yet.
     ${EirpdBw},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.Single]
-    # Gain To Noise Temperature in db/K.
+    # Gain to noise temperature in db/K.
+    # It is the required G/T by the customer.
+    # Not used yet.
     ${GainOverTemperature}
 )
 
@@ -98,6 +102,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -126,6 +133,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareDatastore
 
 ## SYNOPSIS
-Update a Datastore
+update a Datastore
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName 
 ```
 
 ## DESCRIPTION
-Update a Datastore
+update a Datastore
 
 ## EXAMPLES
 
