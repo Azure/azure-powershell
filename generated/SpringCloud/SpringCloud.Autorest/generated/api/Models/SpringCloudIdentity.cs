@@ -171,6 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the build service agent pool resource.",
         SerializedName = @"agentPoolName",
         PossibleTypes = new [] { typeof(string) })]
@@ -179,6 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the App resource.",
         SerializedName = @"appName",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Binding resource.",
         SerializedName = @"bindingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -195,6 +204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the build resource.",
         SerializedName = @"buildName",
         PossibleTypes = new [] { typeof(string) })]
@@ -203,6 +215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the build result resource.",
         SerializedName = @"buildResultName",
         PossibleTypes = new [] { typeof(string) })]
@@ -211,6 +226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the build service resource.",
         SerializedName = @"buildServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the builder resource.",
         SerializedName = @"builderName",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +248,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Buildpack Binding Name",
         SerializedName = @"buildpackBindingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +259,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the buildpack resource.",
         SerializedName = @"buildpackName",
         PossibleTypes = new [] { typeof(string) })]
@@ -243,6 +270,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the certificate resource.",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -251,6 +281,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Application Configuration Service.",
         SerializedName = @"configurationServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -259,6 +292,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Deployment resource.",
         SerializedName = @"deploymentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -267,6 +303,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the custom domain resource.",
         SerializedName = @"domainName",
         PossibleTypes = new [] { typeof(string) })]
@@ -275,6 +314,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -283,6 +325,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"the region",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -294,6 +339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -302,6 +350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Service resource.",
         SerializedName = @"serviceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -310,6 +361,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Service Registry.",
         SerializedName = @"serviceRegistryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -318,6 +372,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the stack resource.",
         SerializedName = @"stackName",
         PossibleTypes = new [] { typeof(string) })]
@@ -329,6 +386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

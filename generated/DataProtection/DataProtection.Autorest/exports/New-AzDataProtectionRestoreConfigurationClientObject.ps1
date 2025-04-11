@@ -99,7 +99,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteriaNamespaceMappings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.KubernetesClusterRestoreCriteriaNamespaceMappings]
     # Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
     # To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
     ${NamespaceMapping},
@@ -114,14 +114,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource[]]
     # Hook reference to be executed during restore.
     # To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
     ${RestoreHookReference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.NamespacedNameResource]
     # Resource modifier reference to be executed during restore.
     # To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
     ${ResourceModifierReference},

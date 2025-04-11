@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
@@ -164,6 +165,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = encryption.Identity?.ConvertFromPs(),
                 KeyVaultProperties = encryption.KeyVaultProperties?.ConvertFromPs()
             };
+        }
+
+        public static List<KeyVaultPrivateEndpoint> ConvertFromPs(this IList<PSANFKeyVaultPrivateEndpoint> keyVaultPrivateEndpoints)
+        {
+            return keyVaultPrivateEndpoints.Select(e => e.ConvertFromPs()).ToList();
+        }
+
+        public static KeyVaultPrivateEndpoint ConvertFromPs(this PSANFKeyVaultPrivateEndpoint keyVaultPrivateEndpoint)
+        {
+            return new KeyVaultPrivateEndpoint(virtualNetworkId: keyVaultPrivateEndpoint.VirtualNetworkId, privateEndpointId: keyVaultPrivateEndpoint.PrivateEndpointId);
+        }
+
+        public static List<PSANFKeyVaultPrivateEndpoint> ConvertToPs(this IList<KeyVaultPrivateEndpoint> keyVaultPrivateEndpoints)
+        {
+            return keyVaultPrivateEndpoints.Select(e => e.ConvertToPs()).ToList();
+        }
+
+        public static PSANFKeyVaultPrivateEndpoint ConvertToPs(this KeyVaultPrivateEndpoint keyVaultPrivateEndpoint)
+        {
+            return new PSANFKeyVaultPrivateEndpoint() { VirtualNetworkId = keyVaultPrivateEndpoint?.VirtualNetworkId, PrivateEndpointId = keyVaultPrivateEndpoint?.PrivateEndpointId };
         }
     }
 }

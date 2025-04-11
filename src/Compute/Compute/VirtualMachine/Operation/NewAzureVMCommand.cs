@@ -460,6 +460,35 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateSet("Ed25519", "RSA")]
         public string SshKeyType { get; set; }
 
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Any")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+        
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AlignRegionalDisksToVMZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -723,8 +752,12 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot,
                         ifMatch: _cmdlet.IfMatch,
-                        ifNoneMatch: _cmdlet.IfNoneMatch
-                        );
+                        ifNoneMatch: _cmdlet.IfNoneMatch,
+                        zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
+                        includeZone: _cmdlet.IncludeZone,
+                        excludeZone: _cmdlet.ExcludeZone,
+                        alignRegionalDisksToVMZone: _cmdlet.AlignRegionalDisksToVMZone
+                    );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
                 {

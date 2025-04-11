@@ -4,7 +4,7 @@
     <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.AdDomainServicesIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.AdDomainServicesIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.AdDomainServicesIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -36,9 +36,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.CloudErrorBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -70,9 +70,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainSecuritySettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainSecuritySettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainSecuritySettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -116,9 +116,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainService</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainService#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -156,9 +156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainServiceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainServiceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainServiceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainServiceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -178,9 +178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.DomainServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.DomainServiceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -248,9 +248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -288,9 +288,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.HealthAlert</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.HealthAlert</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.HealthAlert</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.HealthAlert#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -340,9 +340,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.HealthMonitor</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.HealthMonitor</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.HealthMonitor</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.HealthMonitor#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -368,9 +368,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.LdapsSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.LdapsSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.LdapsSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.LdapsSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -420,9 +420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.MigrationProgress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProgress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.MigrationProgress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProgress#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -448,9 +448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.MigrationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.MigrationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.MigrationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -476,15 +476,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.NotificationSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.NotificationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.NotificationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.NotificationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AdditionalRecipient</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>NotifyDcAdmin</Label>
           </TableColumnHeader>
@@ -495,9 +492,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdditionalRecipient</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>NotifyDcAdmin</PropertyName>
               </TableColumnItem>
@@ -510,9 +504,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationDisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationDisplayInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationDisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationDisplayInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -550,9 +544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationEntity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +572,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationEntityListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationEntityListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.OperationEntityListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.OperationEntityListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -600,15 +594,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>DomainControllerIPAddress</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ExternalAccessIPAddress</Label>
           </TableColumnHeader>
@@ -631,9 +622,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DomainControllerIPAddress</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ExternalAccessIPAddress</PropertyName>
               </TableColumnItem>
@@ -658,9 +646,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -692,9 +680,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ResourceForestSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceForestSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ResourceForestSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -714,9 +702,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

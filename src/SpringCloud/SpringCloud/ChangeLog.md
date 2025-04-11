@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added retirement message. Please see details [here](https://aka.ms/asaretirement).
 
 ## Version 0.3.2
 * Upgraded nuget package to signed package.

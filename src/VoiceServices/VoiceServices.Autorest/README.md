@@ -42,12 +42,6 @@ try-require:
 subject-prefix: $(service-name)
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -91,7 +85,11 @@ directive:
 
   - where:
       subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -105,5 +103,6 @@ directive:
     set:
       parameter-name: FullContactName
   # - model-cmdlet:
-    # - ServiceRegionProperties
+  #   - model-name: ServiceRegionProperties
+  #     cmdlet-name: New-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 ```

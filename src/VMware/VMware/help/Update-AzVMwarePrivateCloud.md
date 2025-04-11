@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Update a PrivateCloud
+update a PrivateCloud
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DnsZoneType <String
 ```
 
 ## DESCRIPTION
-Update a PrivateCloud
+update a PrivateCloud
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
