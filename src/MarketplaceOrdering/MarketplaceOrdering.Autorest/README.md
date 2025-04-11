@@ -64,11 +64,11 @@ directive:
       subject: MarketplaceTerms
     remove: true
 
-  # List response not mapped swagger define.
+  # List response not mapp swagger define.
   - where:
       verb: Get
       subject: MarketplaceTerms
-      variant: ^List$|^GetViaIdentity1$|^GetViaIdentity$
+      variant: ^(?!Get$|Get1$)
     remove: true
 
   # For map old cmdlet
