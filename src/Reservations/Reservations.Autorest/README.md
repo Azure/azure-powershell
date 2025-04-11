@@ -53,13 +53,6 @@ module-version: 0.1.0
 title: Reservations
 subject-prefix: $(service-name)
 
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   ### Rename Cmdlet names
   - where:
@@ -189,7 +182,13 @@ directive:
       subject-prefix: Reservation
       subject: AvailableScope
 
-  ### Hide cmdlet
+  # Following are common directives which are normally required in all the RPs
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^(Available|Calculate|Change|Post|Purchase|Split|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  ### Hide cmdlet to customize
   - where:
       verb: Split
       subject-prefix: ''
