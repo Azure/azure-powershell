@@ -12,9 +12,24 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
 New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
  -Key <String> -SiteName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -63,12 +78,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Key
 Determines which key is to be regenerated
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -113,7 +158,7 @@ The site name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
