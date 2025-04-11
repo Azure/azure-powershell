@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzBotService
 
 ## SYNOPSIS
-Updates a Bot Service
+update a Bot Service
 
 ## SYNTAX
 
@@ -18,13 +18,12 @@ Update-AzBotService -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-AllSetting <Hashtable>] [-AppPasswordHint <String>] [-CmekKeyVaultUrl <String>] [-Description <String>]
  [-DeveloperAppInsightKey <String>] [-DeveloperAppInsightsApiKey <String>]
  [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth] [-DisplayName <String>] [-Endpoint <String>]
- [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled] [-IsStreamingSupported] [-Kind <Kind>]
- [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>] [-MsaAppId <String>]
- [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>] [-MsaAppType <MsaAppType>] [-OpenWithHint <String>]
- [-Parameter <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-PublishingCredentials <String>]
- [-SchemaTransformationVersion <String>] [-SkuName <SkuName>] [-StorageResourceId <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled] [-IsStreamingSupported] [-Kind <String>]
+ [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>]
+ [-MsaAppMsiResourceId <String>] [-MsaAppType <String>] [-OpenWithHint <String>] [-Parameter <Hashtable>]
+ [-PublicNetworkAccess <String>] [-PublishingCredentials <String>] [-SchemaTransformationVersion <String>]
+ [-SkuName <String>] [-StorageResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,17 +32,15 @@ Update-AzBotService -InputObject <IBotServiceIdentity> [-AllSetting <Hashtable>]
  [-CmekKeyVaultUrl <String>] [-Description <String>] [-DeveloperAppInsightKey <String>]
  [-DeveloperAppInsightsApiKey <String>] [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth]
  [-DisplayName <String>] [-Endpoint <String>] [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled]
- [-IsStreamingSupported] [-Kind <Kind>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>]
- [-ManifestUrl <String>] [-MsaAppId <String>] [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>]
- [-MsaAppType <MsaAppType>] [-OpenWithHint <String>] [-Parameter <Hashtable>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-PublishingCredentials <String>]
- [-SchemaTransformationVersion <String>] [-SkuName <SkuName>] [-StorageResourceId <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IsStreamingSupported] [-Kind <String>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>]
+ [-ManifestUrl <String>] [-MsaAppMsiResourceId <String>] [-MsaAppType <String>] [-OpenWithHint <String>]
+ [-Parameter <Hashtable>] [-PublicNetworkAccess <String>] [-PublishingCredentials <String>]
+ [-SchemaTransformationVersion <String>] [-SkuName <String>] [-StorageResourceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a Bot Service
+update a Bot Service
 
 ## EXAMPLES
 
@@ -275,7 +272,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
@@ -324,7 +320,7 @@ Required.
 Gets or sets the Kind of the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -395,38 +391,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MsaAppId
-Microsoft App Id for the bot
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MsaAppMsiResourceId
 Microsoft App Managed Identity Resource Id for the bot
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MsaAppTenantId
-Microsoft App Tenant Id for the bot
 
 ```yaml
 Type: System.String
@@ -444,7 +410,7 @@ Accept wildcard characters: False
 Microsoft App Type for the bot
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -505,7 +471,7 @@ Accept wildcard characters: False
 Whether the bot is in an isolated network
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -565,7 +531,7 @@ Accept wildcard characters: False
 The sku name
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -621,21 +587,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TenantId
-The Tenant Id for the bot
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -676,7 +627,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot
 
 ## NOTES
 
