@@ -1,6 +1,6 @@
 ---
 Module Name: Az.BillingBenefits
-Module Guid: 8fe814ad-0f9c-4c31-98cd-a19e4f1490ec
+Module Guid: 47dcf19c-a448-4944-8f31-ee2713b075cc
 Download Help Link: https://learn.microsoft.com/powershell/module/az.billingbenefits
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,9 @@ Get a reservation order alias.
 
 ### [Get-AzBillingBenefitsSavingsPlan](Get-AzBillingBenefitsSavingsPlan.md)
 Get savings plan.
+
+### [Get-AzBillingBenefitsSavingsPlanList](Get-AzBillingBenefitsSavingsPlanList.md)
+List savings plans.
 
 ### [Get-AzBillingBenefitsSavingsPlanOrder](Get-AzBillingBenefitsSavingsPlanOrder.md)
 Get a savings plan order.

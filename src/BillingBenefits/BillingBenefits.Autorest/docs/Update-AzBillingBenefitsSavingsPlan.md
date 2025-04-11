@@ -41,6 +41,18 @@ Update-AzBillingBenefitsSavingsPlan -Id <String> -SavingsPlanOrderInputObject <I
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 update savings plan.
 
@@ -66,7 +78,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -81,7 +93,7 @@ Fully-qualified identifier of the management group where the benefit must be app
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -96,7 +108,7 @@ Fully-qualified identifier of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -111,7 +123,7 @@ Fully-qualified identifier of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -126,7 +138,7 @@ Tenant ID where the benefit is applied.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -141,7 +153,7 @@ Type of the Applied Scope.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -172,7 +184,7 @@ Display name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -187,7 +199,7 @@ ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySavingsPlanOrderExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SavingsPlanId
 
 Required: True
@@ -212,12 +224,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OrderId
 Order ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SavingsPlanOrderId
 
 Required: True
@@ -247,7 +289,7 @@ Setting this to true will automatically purchase a new benefit on the expiration
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False
@@ -262,7 +304,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IRenewProperties
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: False

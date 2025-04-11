@@ -55,7 +55,10 @@ subject-prefix: $(service-name)
 
 directive:
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 ## No inline
   - no-inline:
@@ -64,9 +67,11 @@ directive:
   # ### Rename Cmdlet names
   - where:
       verb: Get
-      subject: SavingPlan
+      subject: SavingsPlan
+      variant: List1
     set:
       subject: SavingsPlanList
+      variant: List
   - where:
       verb: Invoke
       subject: ElevateSavingsPlanOrder

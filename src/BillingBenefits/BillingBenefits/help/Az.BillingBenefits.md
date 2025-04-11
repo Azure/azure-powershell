@@ -17,6 +17,9 @@ Get a reservation order alias.
 ### [Get-AzBillingBenefitsSavingsPlan](Get-AzBillingBenefitsSavingsPlan.md)
 Get savings plan.
 
+### [Get-AzBillingBenefitsSavingsPlanList](Get-AzBillingBenefitsSavingsPlanList.md)
+List savings plans.
+
 ### [Get-AzBillingBenefitsSavingsPlanOrder](Get-AzBillingBenefitsSavingsPlanOrder.md)
 Get a savings plan order.
 
