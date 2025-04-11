@@ -44,8 +44,11 @@ directive:
     set:
       subject: $1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^GetViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
       subject-prefix: BareMetal
     remove: true
-
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$
+      subject-prefix: BareMetal
+    remove: true
 ```
