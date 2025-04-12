@@ -1,3 +1,33 @@
+## 13.5.0 - May 2025
+#### Az.Accounts 4.1.0 
+* Modified cmdlet `Remove-AzContext`
+   - Removed parameter `-Name`
+* Modified cmdlet `Rename-AzContext`
+   - Removed parameters `-SourceName`, `-TargetName`
+* Modified cmdlet `Select-AzContext`
+   - Removed parameter `-Name`
+#### Az.Compute 9.3.0 
+* Modified cmdlet `New-AzVM`
+   - Added parameters `-ZonePlacementPolicy`, `-IncludeZone`, `-ExcludeZone`, `-AlignRegionalDisksToVMZone`
+* Modified cmdlet `New-AzVMConfig`
+   - Added parameters `-ZonePlacementPolicy`, `-IncludeZone`, `-ExcludeZone`, `-AlignRegionalDisksToVMZone`
+* Modified cmdlet `Update-AzVM`
+   - Added parameter `-AlignRegionalDisksToVMZone`
+* Added cmdlet `Add-AzVmssSkuProfileVMSize`, `Remove-AzVmssSkuProfileVMSize`
+#### Az.DataProtection 2.7.0 
+* Modified cmdlet `Initialize-AzDataProtectionRestoreRequest`
+   - Added parameters `-UseSystemAssignedIdentity`, `-UserAssignedIdentityArmId`
+* Added cmdlet `Test-AzDataProtectionBackupInstanceUpdate`
+#### Az.Resources 7.11.0 
+* Modified cmdlet `Test-AzDeployment`
+   - Added parameter `-SuppressDiagnostics`
+* Modified cmdlet `Test-AzManagementGroupDeployment`
+   - Added parameter `-SuppressDiagnostics`
+* Modified cmdlet `Test-AzResourceGroupDeployment`
+   - Added parameter `-SuppressDiagnostics`
+* Modified cmdlet `Test-AzTenantDeployment`
+   - Added parameter `-SuppressDiagnostics`
+
 ## 13.4.0 - April 2025
 #### Az.CognitiveServices 1.16.0 
 * Modified cmdlet `New-AzCognitiveServicesAccountDeployment`
@@ -487,6 +517,7 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
 
 
 
