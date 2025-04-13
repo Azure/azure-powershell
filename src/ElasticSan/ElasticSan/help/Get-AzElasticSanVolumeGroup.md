@@ -107,6 +107,46 @@ Type                          : Microsoft.ElasticSan/ElasticSans
 
 This command gets a specific volume group.
 
+### Example 3: Get soft deleted volume groups in an Elastic SAN
+```powershell
+Get-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -AccessSoftDeletedResource true
+```
+
+```output
+DeleteRetentionPolicyRetentionPeriodDay                : 7
+DeleteRetentionPolicyState                             : Enabled
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Deleted
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 4/8/2025 2:31:52 AM
+SystemDataCreatedBy                                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 4/9/2025 3:22:04 AM
+SystemDataLastModifiedBy                               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command gets soft deleted volume groups in the Elastic SAN myelasticsan.
+
 ## PARAMETERS
 
 ### -AccessSoftDeletedResource

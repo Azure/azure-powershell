@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restore-AzElasticSanVolume'))
 }
 
 Describe 'Restore-AzElasticSanVolume' {
-    It 'Restore' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Restore' {
+        $volName = "testvol321" + $env.RandomString
+        $vgName = "testesvg321" + $env.RandomString
+        $vg = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $vgName -DeleteRetentionPolicyRetentionPeriodDay 7 -DeleteRetentionPolicyState Enabled
+        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -Name $volName -SizeGiB 1 
+        $volume.Name | Should -Be $volName 
+        $volume.SizeGiB | Should -Be 1
 
-    It 'RestoreViaIdentityVolumegroup' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -Name $volName
 
-    It 'RestoreViaIdentityElasticSan' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $volumeList = Get-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -AccessSoftDeletedResource true
+        ($volumeList| ? {$_.Name -like "$($volName)*"} ).count | Should -Not -Be 0
+        $volumeToRestore = $volumeList| ? {$_.Name -like "$($volName)*"} | select-object -first 1
 
-    It 'RestoreViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Restore-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -Name $volumeToRestore.Name
+
+        $volumeList = Get-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName
+        $volumeList.Name | Should -Contain $volName
+
+        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -Name $volName
+        $volumeList = Get-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -AccessSoftDeletedResource true
+        ($volumeList| ? {$_.Name -like "$($volName)*"} ).count | Should -Not -Be 0
+        $firstVolume = $volumeList| ? {$_.Name -like "$($volName)*"} | select-object -first 1
+        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -Name $firstVolume.Name -DeleteType permanent
+
+        $volumeList = Get-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $vgName -AccessSoftDeletedResource true
+        $volumeList.Name | Should -Not -Contain $firstVolume.Name
     }
 }

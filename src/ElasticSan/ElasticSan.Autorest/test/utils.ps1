@@ -83,12 +83,14 @@ function setupEnv() {
     $env.ElasticSanTags = @{tag1 = "value1"; tag2 = "value2"}
 
     # Initialize an Elastic SAN
-    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName1 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
-    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName2 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
+    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName1 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags -AvailabilityZone 1
+    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName2 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags -AvailabilityZone 1
     $env.VolumeGroupName = "testvolgroup" + $env.RandomString
     New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -Encryption 'EncryptionAtRestWithPlatformKey' -ProtocolType 'Iscsi'
     $env.VolumeName = "testvol" + $env.RandomString
     New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $env.VolumeName -SizeGiB 100
+
+    $env.diskSnapshotId = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.Compute/snapshots/weidisksnapshot"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

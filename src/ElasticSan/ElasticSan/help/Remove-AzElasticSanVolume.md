@@ -46,12 +46,19 @@ Delete an Volume.
 
 ## EXAMPLES
 
-### Example 1: Remove a volume
+### Example 1: Remove a volume 
 ```powershell
 Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
 ```
 
 This command removes a volume.
+
+### Example 2: Remove a volume permanently
+```powershell
+Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name namefordeletedvolume -DeleteType permanent
+```
+
+This command removes a volume permanently.
 
 ## PARAMETERS
 
