@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.11.0
 * Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
 
 ## Version 7.10.0
