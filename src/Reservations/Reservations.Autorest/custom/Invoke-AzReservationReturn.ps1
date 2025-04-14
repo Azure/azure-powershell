@@ -36,7 +36,7 @@ https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservati
 #>
 function Invoke-AzReservationReturn {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='PostExpanded', Mandatory)]
         [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
@@ -47,7 +47,6 @@ function Invoke-AzReservationReturn {
         # Order Id of the reservation
         ${ReservationOrderId},
 
-        [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
@@ -111,7 +110,8 @@ function Invoke-AzReservationReturn {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

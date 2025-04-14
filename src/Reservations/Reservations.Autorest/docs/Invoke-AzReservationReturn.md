@@ -12,22 +12,11 @@ Return a reservation and get refund information.
 
 ## SYNTAX
 
-### PostViaJsonString (Default)
-```
-Invoke-AzReservationReturn -ReservationOrderId <String> -JsonString <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PostExpanded
+### PostExpanded (Default)
 ```
 Invoke-AzReservationReturn -ReservationOrderId <String> -ReservationToReturnQuantity <Int32>
  -ReservationToReturnReservationId <String> -ReturnReason <String> -Scope <String> -SessionId <String>
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzReservationReturn -InputObject <IReservationsIdentity> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
@@ -40,6 +29,12 @@ Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToRe
 ### PostViaJsonFilePath
 ```
 Invoke-AzReservationReturn -ReservationOrderId <String> -JsonFilePath <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzReservationReturn -ReservationOrderId <String> -JsonString <String> [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -72,7 +67,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded
 Aliases:
 
 Required: True
