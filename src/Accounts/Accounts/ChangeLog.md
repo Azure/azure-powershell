@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fix token in auxiliary authentication header.
+* Collected authentication method for telemetry in end process of cmdlet.
 
 ## Version 4.1.0
 * Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -65,5 +67,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="token">The token based authentication information</param>
         /// <returns></returns>
         bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token);
+
+        /// <summary>
+        /// Get authentication recrod for telemetry
+        /// </summary>
+        AuthTelemetryRecord GetDataForTelemetry();
     }
 }
