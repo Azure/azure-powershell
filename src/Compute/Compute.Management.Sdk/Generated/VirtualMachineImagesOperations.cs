@@ -1345,7 +1345,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string expand = "Properties";
+            string expand = "properties";
             string apiVersion = "2024-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
