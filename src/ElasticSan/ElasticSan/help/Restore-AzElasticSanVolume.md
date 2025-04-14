@@ -76,7 +76,7 @@ Type                           : Microsoft.ElasticSan/elasticSans/volumeGroups/v
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```
 
-This command restores a specific volume. 
+This command restores a specific volume.
 
 ## PARAMETERS
 

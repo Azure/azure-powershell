@@ -84,6 +84,8 @@ ValidationStatus
 Success
 ```
 
+This command validates whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
+
 ## PARAMETERS
 
 ### -AsJob
