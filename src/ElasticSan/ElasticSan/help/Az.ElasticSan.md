@@ -30,7 +30,7 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 Get a Volume Snapshot.
 
 ### [New-AzElasticSan](New-AzElasticSan.md)
-create ElasticSan.
+Create ElasticSan.
 
 ### [New-AzElasticSanVirtualNetworkRuleObject](New-AzElasticSanVirtualNetworkRuleObject.md)
 Create an in-memory object for VirtualNetworkRule.

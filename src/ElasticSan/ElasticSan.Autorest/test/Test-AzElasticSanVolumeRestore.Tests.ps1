@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzElasticSanVolumeRestor
 }
 
 Describe 'Test-AzElasticSanVolumeRestore' {
+    # Test case for this command is in New-AzElasticSan.Tests.ps1
     It 'RestoreExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
