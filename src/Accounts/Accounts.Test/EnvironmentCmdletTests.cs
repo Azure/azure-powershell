@@ -50,10 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.Instance.DataStore = dataStore;
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         private void Cleanup()
