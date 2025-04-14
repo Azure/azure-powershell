@@ -325,10 +325,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             };
             cmdlet.profileClient = new RMProfileClient(profile);
 
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         ~SilentReAuthByTenantCmdletTest()

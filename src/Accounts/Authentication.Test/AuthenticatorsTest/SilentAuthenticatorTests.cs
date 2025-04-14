@@ -54,10 +54,7 @@ namespace Common.Authenticators.Test
         public SilentAuthenticatorTests(ITestOutputHelper output)
         {
             AzureSessionInitializer.InitializeAzureSession();
-            if (!AzureSession.Instance.TryGetComponent(AuthenticationTelemetry.Name, out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             Output = output;
         }
 

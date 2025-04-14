@@ -46,10 +46,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void DoesNotThrowWithNullError()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             var cmdlet = new ResolveError();
             var output = cmdlet.ExecuteCmdletInPipeline<AzureErrorRecord>("Resolve-Error");
             Assert.True(output == null || output.Count == 0);
@@ -175,10 +172,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void LastParameterFindsLastError()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             var mock = new MockCommandRuntime();
             var cmdlet = new ResolveError { CommandRuntime = mock };
             var message = "RuntimeErrorMessage";
