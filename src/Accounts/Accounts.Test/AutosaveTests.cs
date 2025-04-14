@@ -67,10 +67,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             PowerShellTokenCacheProvider tokenProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenProvider, true);
             AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
-            if (!AzureSession.Instance.TryGetComponent(nameof(AuthenticationTelemetry), out AuthenticationTelemetry authenticationTelemetry))
-            {
-                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(nameof(AuthenticationTelemetry), () => new AuthenticationTelemetry());
-            }
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         [Fact]

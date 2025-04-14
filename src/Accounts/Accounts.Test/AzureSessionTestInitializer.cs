@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
             AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
     }

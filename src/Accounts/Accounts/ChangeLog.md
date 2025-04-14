@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix token in auxiliary authentication header.
 * Collected authentication method for telemetry in end process of cmdlet.
 
 ## Version 4.1.0
