@@ -22,7 +22,7 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Name $nsgName -Location $location -SecurityRules $nsgRuleHighRiskPorts
     $nic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
 
-    $vmSize = Get-AzVMSize -Location $location | Sort-Object NumberOfCores, MemoryInMB -Top 1
+    $vmSize = Get-AzVMSize -Location $location | Sort-Object NumberOfCores, MemoryInMB | Select-Object -First 1
     $vmCfg = New-AzVMConfig -VMName $vmName -VMSize $vmSize.Name
     $vmCfg | Set-AzVMSecurityProfile -SecurityType TrustedLaunch
     $vmCfg | Set-AzVMOSDisk -Name $osDiskName -StorageAccountType StandardSSD_LRS -CreateOption FromImage -DeleteOption Delete
