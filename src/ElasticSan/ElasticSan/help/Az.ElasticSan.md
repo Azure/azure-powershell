@@ -36,13 +36,13 @@ Create ElasticSan.
 Create an in-memory object for VirtualNetworkRule.
 
 ### [New-AzElasticSanVolume](New-AzElasticSanVolume.md)
-create a Volume.
+Create a Volume.
 
 ### [New-AzElasticSanVolumeGroup](New-AzElasticSanVolumeGroup.md)
 Create a Volume Group.
 
 ### [New-AzElasticSanVolumeSnapshot](New-AzElasticSanVolumeSnapshot.md)
-create a Volume Snapshot.
+Create a Volume Snapshot.
 
 ### [Remove-AzElasticSan](Remove-AzElasticSan.md)
 Delete a Elastic San.
@@ -70,10 +70,10 @@ Validate whether a disk snapshot backup can be taken for list of volumes.
 Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes.
 
 ### [Update-AzElasticSan](Update-AzElasticSan.md)
-update a Elastic San.
+Update a Elastic San.
 
 ### [Update-AzElasticSanVolume](Update-AzElasticSanVolume.md)
-update an Volume.
+Update an Volume.
 
 ### [Update-AzElasticSanVolumeGroup](Update-AzElasticSanVolumeGroup.md)
 Update an VolumeGroup.
