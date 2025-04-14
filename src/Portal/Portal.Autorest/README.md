@@ -62,12 +62,12 @@ directive:
   - where:
       verb: New
       subject: Dashboard
-      variant: CreateViaIdentity|CreateViaIdentityExpanded
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Update
       subject: Dashboard
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - from: swagger-document 
     where: $.definitions.DashboardPropertiesWithProvisioningState.properties.metadata
