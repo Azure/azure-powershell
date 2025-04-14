@@ -259,12 +259,12 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="endpointResourceIdKey"></param>
         /// <param name="request"></param>
         /// <param name="endpointSuffixKey"></param>
-        /// <param name="extensibleParamters"></param>
+        /// <param name="extensibleParameters"></param>
         /// <param name="tokenAudienceConverter"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken cancellationToken, string endpointResourceIdKey,
-                        string endpointSuffixKey, TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParamters = null)
+                        string endpointSuffixKey, TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParameters = null)
         {
             if (context == null || context.Account == null || context.Environment == null)
             {
