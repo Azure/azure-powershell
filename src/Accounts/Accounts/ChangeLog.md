@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix token error in auxiliary authentication header for cross tenant deployment.
 
 ## Version 4.1.0
 * Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
