@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ElasticSan
-Module Guid: 98a7c29a-7fcb-49c2-a58c-b360831be96f
+Module Guid: af592ab3-f11c-475a-a0f6-aa4dae31e004
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elasticsan
 Help Version: 1.0.0.0
 Locale: en-US
