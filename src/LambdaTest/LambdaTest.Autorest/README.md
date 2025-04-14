@@ -59,7 +59,7 @@ directive:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity.*$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
