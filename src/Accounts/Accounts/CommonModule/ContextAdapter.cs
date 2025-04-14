@@ -280,9 +280,9 @@ namespace Microsoft.Azure.Commands.Common
                     endpointResourceIdKey = tokenAudience ?? endpointResourceIdKey;
                 }
                 var optionalParameters = new Dictionary<string, object>() { { AuthenticationFactory.ResourceIdParameterName, endpointResourceIdKey } };
-                if (extensibleParamters != null && extensibleParamters.ContainsKey(AuthenticationFactory.CmdletContextParameterName))
+                if (extensibleParameters != null && extensibleParameters.ContainsKey(AuthenticationFactory.CmdletContextParameterName))
                 {
-                    optionalParameters.Add(AuthenticationFactory.CmdletContextParameterName, extensibleParamters[AuthenticationFactory.CmdletContextParameterName]);
+                    optionalParameters.Add(AuthenticationFactory.CmdletContextParameterName, extensibleParameters[AuthenticationFactory.CmdletContextParameterName]);
                 }
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, optionalParameters);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
