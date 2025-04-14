@@ -397,8 +397,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     AzureContext,
                     AzureEnvironment.Endpoint.ResourceManager);
 
-            siteRecoveryClient.ResourceGroupName = asrVaultCreds.ResourceGroupName;
-            siteRecoveryClient.ResourceName = asrVaultCreds.ResourceName;
             siteRecoveryClient.SubscriptionId = cloudCredentials.SubscriptionId;
             siteRecoveryClient.BaseUri = endPointUri;
 

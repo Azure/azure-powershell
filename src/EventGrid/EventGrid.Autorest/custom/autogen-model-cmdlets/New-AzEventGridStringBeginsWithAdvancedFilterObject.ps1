@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringBeginsWithAdvancedFilt
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringbeginswithadvancedfilterobject
 #>
 function New-AzEventGridStringBeginsWithAdvancedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringBeginsWithAdvancedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

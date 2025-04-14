@@ -35,15 +35,35 @@ namespace VersionController.Netcore.Models
         /// Get version from PSGallery and merge into one list.
         /// </summary>
         /// <returns>A list of version</returns>
-        internal static List<AzurePSVersion> GetAllVersionsFromGallery(string moduleName, string psRepository)
+        internal static List<AzurePSVersion> GetAllVersionsFromGallery(string moduleName)
         {
             HashSet<AzurePSVersion> galleryVersion = new HashSet<AzurePSVersion>();
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript($"Find-Module -Name {moduleName} -Repository {psRepository} -AllowPrerelease -AllVersions");
+                string findModuleScript;
+                
+                if (!string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_URL")))
+                {
+                    string repository = System.Environment.GetEnvironmentVariable("DEFAULT_PS_REPOSITORY_NAME");
+                    findModuleScript = @"
+$AccessTokenSecureString = $env:SYSTEM_ACCESS_TOKEN | ConvertTo-SecureString -AsPlainText -Force;
+$credentialsObject = [pscredential]::new('ONEBRANCH_TOKEN', $AccessTokenSecureString);
+Find-PSResource -Name " + moduleName + " -Repository " + repository + " -Credential $credentialsObject -Prerelease";
+                }
+                else
+                {
+                    string repository = "PSGallery";
+                    findModuleScript = $"Find-PSResource -Name {moduleName} -Repository {repository} -Prerelease";
+                }
+
+                System.Console.WriteLine($"Find module script: {findModuleScript}");
+                
+                powershell.AddScript(findModuleScript);
                 var cmdletResult = powershell.Invoke();
+                System.Console.WriteLine($"Cmdlet result count: {cmdletResult.Count}");
                 foreach (var versionInformation in cmdletResult)
                 {
+                    System.Console.WriteLine(versionInformation);
                     if (versionInformation.Properties["Version"]?.Value != null)
                     {
                         galleryVersion.Add(new AzurePSVersion(versionInformation.Properties["Version"]?.Value?.ToString()));

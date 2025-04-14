@@ -275,6 +275,9 @@ Creates a directory.
 ### [New-AzStorageEncryptionScope](New-AzStorageEncryptionScope.md)
 Creates an encryption scope for a Storage account.
 
+### [New-AzStorageFileHardLink](New-AzStorageFileHardLink.md)
+Creates a hard link to a file in same share. Only works in NFS file share.
+
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
 

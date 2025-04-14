@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2024-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyNC0wNy0wMQ==",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2024-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyNC0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bf7ba6e8-47ea-4a1e-9972-f9b7366d233b"
+          "a85d63af-8969-4ece-83b4-b18059b6c869"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3324.36610",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1a074fdc-015f-4d28-9f08-70d488023441"
+          "0a524a3d-9c4b-41d5-bd59-466e42edc6ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -42,10 +42,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "5073baf8-a938-47b5-a5a2-7b13e17fb775"
+          "d733667d-2109-4fb8-96c1-93e1760bb6de"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20241022T134734Z:5073baf8-a938-47b5-a5a2-7b13e17fb775"
+          "WESTEUROPE:20250306T111451Z:d733667d-2109-4fb8-96c1-93e1760bb6de"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -54,13 +54,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: A8C485B614F9432A8FA3373B5E3B3C28 Ref B: AMS231032607025 Ref C: 2024-10-22T13:47:33Z"
+          "Ref A: 2FD5313C0537494B83406015432D62DF Ref B: AMS231032609033 Ref C: 2025-03-06T11:14:49Z"
         ],
         "Date": [
-          "Tue, 22 Oct 2024 13:47:33 GMT"
+          "Thu, 06 Mar 2025 11:14:50 GMT"
         ],
         "Content-Length": [
-          "2499"
+          "2801"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,22 +69,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/accountsPerSubscription\",\r\n      \"name\": \"eastus/accountsPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 25,\r\n        \"default\": 10\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/maximumSizeOfCapacityPoolPerSubscription\",\r\n      \"name\": \"eastus/maximumSizeOfCapacityPoolPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 2048,\r\n        \"default\": 2048\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/poolsPerAccount\",\r\n      \"name\": \"eastus/poolsPerAccount\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 25,\r\n        \"default\": 25\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/snapshotsPerVolume\",\r\n      \"name\": \"eastus/snapshotsPerVolume\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 255,\r\n        \"default\": 255\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalBackupEnabledVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalBackupEnabledVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 50,\r\n        \"default\": 50\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalDPVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalDPVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 50,\r\n        \"default\": 50\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription\",\r\n      \"name\": \"eastus/totalTiBsPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 1950,\r\n        \"default\": 25\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/volumesPerPool\",\r\n      \"name\": \"eastus/volumesPerPool\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/accountsPerSubscription\",\r\n      \"name\": \"eastus/accountsPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 25,\r\n        \"default\": 10\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/maximumSizeOfCapacityPoolPerSubscription\",\r\n      \"name\": \"eastus/maximumSizeOfCapacityPoolPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 2048,\r\n        \"default\": 2048\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/poolsPerAccount\",\r\n      \"name\": \"eastus/poolsPerAccount\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 25,\r\n        \"default\": 25\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/snapshotsPerVolume\",\r\n      \"name\": \"eastus/snapshotsPerVolume\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 255,\r\n        \"default\": 255\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalBackupEnabledVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalBackupEnabledVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalCoolAccessVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalCoolAccessVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalDPVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalDPVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 50,\r\n        \"default\": 50\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription\",\r\n      \"name\": \"eastus/totalTiBsPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 1950,\r\n        \"default\": 25\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalVolumesPerSubscription\",\r\n      \"name\": \"eastus/totalVolumesPerSubscription\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/volumesPerPool\",\r\n      \"name\": \"eastus/volumesPerPool\",\r\n      \"type\": \"Microsoft.NetApp/locations/quotaLimits\",\r\n      \"properties\": {\r\n        \"current\": 500,\r\n        \"default\": 500\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2024-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjQtMDctMDE=",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2024-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjQtMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "263cd481-fe43-496f-8e58-0c7de43f08a8"
+          "7d77490b-3a31-484f-a573-f91ea1d6907a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3324.36610",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cc808441-ae5d-4dd1-aed1-e947fdef68a6"
+          "8f0e9637-c17a-4765-9acf-917795b1a1e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,10 +114,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "e01c4758-2c2b-43c8-bf7c-3c9f3d0964d5"
+          "48e400a2-3efa-42d4-85bf-3fe21acae18f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20241022T134735Z:e01c4758-2c2b-43c8-bf7c-3c9f3d0964d5"
+          "WESTEUROPE:20250306T111451Z:48e400a2-3efa-42d4-85bf-3fe21acae18f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -126,10 +126,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5A3E8FE5198B4378BBB22B9224FA416A Ref B: AMS231032608045 Ref C: 2024-10-22T13:47:34Z"
+          "Ref A: DBA16ADDB0224D01816B12CC1EB197DD Ref B: AMS231022012033 Ref C: 2025-03-06T11:14:51Z"
         ],
         "Date": [
-          "Tue, 22 Oct 2024 13:47:34 GMT"
+          "Thu, 06 Mar 2025 11:14:51 GMT"
         ],
         "Content-Length": [
           "273"

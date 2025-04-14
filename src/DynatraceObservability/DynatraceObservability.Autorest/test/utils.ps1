@@ -48,12 +48,12 @@ function setupEnv() {
     $env.dynatraceName02 = 'dyob' + (RandomString -allChars $false -len 6)
     $env.dynatraceName03 = 'dyob' + (RandomString -allChars $false -len 6)
 
-    $env.location = 'eastus2euap'
+    $env.location = 'eastus'
     Write-Host -ForegroundColor Green "start to create test group"
     $env.resourceGroup = 'dyobrg' + (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+    New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'agarwalshiv@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDgmz7xq9ge3py" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 
     New-AzDynatraceMonitorSSOConfig -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 

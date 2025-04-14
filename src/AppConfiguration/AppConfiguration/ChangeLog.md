@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzAppConfigurationStore`
+  * `New-AzAppConfigurationStore`
+  * `Update-AzAppConfigurationStore`
+
 ## Version 1.4.0
 * Upgraded nuget package to signed package.
 
