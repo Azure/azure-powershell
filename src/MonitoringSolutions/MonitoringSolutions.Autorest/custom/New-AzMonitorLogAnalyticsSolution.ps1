@@ -1,7 +1,7 @@
 
 # ----------------------------------------------------------------------------------
 #
-# Copyright Microsoft Corporation
+# Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -19,14 +19,14 @@ Creates a log analytics solution.
 .Description
 Creates a log analytics solution.
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
+Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution
 .Link
 https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 .LINK
 [Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
 #>
 function New-AzMonitorLogAnalyticsSolution {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -58,12 +58,12 @@ function New-AzMonitorLogAnalyticsSolution {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolutionTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolutionTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Body')]
         [System.String]
         # The Azure resource ID for the workspace where the solution will be deployed/enabled.
@@ -74,7 +74,8 @@ function New-AzMonitorLogAnalyticsSolution {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter(DontShow)]
