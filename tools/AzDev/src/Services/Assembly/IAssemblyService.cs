@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AzDev.Models;
-
-namespace AzDev.Services
+namespace AzDev.Services.Assembly
 {
-    internal interface IContextProvider
+    interface IAssemblyService
     {
-        string ContextPath { get; }
-        DevContext LoadContext();
-        void SaveContext(DevContext context);
+        void UpdateAssembly(string manifestFilePath, string downloadPath, string runtimeMetadataPath, string cgManifestPath);
     }
 }

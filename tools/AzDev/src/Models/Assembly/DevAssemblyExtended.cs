@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AzDev.Models;
+using System;
 
-namespace AzDev.Services
+namespace AzDev.Models.Assembly
 {
-    internal interface IContextProvider
+    /// <summary>
+    /// Represents an inspected assembly with its path and assembly version.
+    /// </summary>
+    internal class DevAssemblyExtended
     {
-        string ContextPath { get; }
-        DevContext LoadContext();
-        void SaveContext(DevContext context);
+        public DevAssembly DevAssembly { get; set; }
+        public string Path { get; set; }
+        public Version AssemblyVersion { get; set; }
     }
 }

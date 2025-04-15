@@ -39,7 +39,7 @@ namespace AzDev.Services
         public static bool IsExcludedModuleDirectory(string dir)
         {
             var slash = System.IO.Path.DirectorySeparatorChar;
-            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}lib");
+            return dir.EndsWith($"{slash}shared") || dir.EndsWith($"{slash}{FileOrDirNames.Lib}");
         }
 
         internal static bool IsLegacyHelperProject(string path, out string reason)
