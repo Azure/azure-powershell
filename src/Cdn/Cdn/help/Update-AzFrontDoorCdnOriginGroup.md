@@ -18,7 +18,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -56,7 +56,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <
 Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -269,21 +269,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

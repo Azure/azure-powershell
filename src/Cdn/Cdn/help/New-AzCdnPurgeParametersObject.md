@@ -13,7 +13,7 @@ Create an in-memory object for PurgeParameters.
 ## SYNTAX
 
 ```
-New-AzCdnPurgeParametersObject -ContentPath <String[]> [-ProgressAction <ActionPreference>]
+New-AzCdnPurgeParametersObject -ContentPath <String[]>
  [<CommonParameters>]
 ```
 
@@ -48,21 +48,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

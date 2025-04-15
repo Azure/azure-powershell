@@ -16,7 +16,7 @@ Enable https delivery of the custom domain.
 ```
 Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity>
  -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaJsonString
@@ -69,7 +69,7 @@ Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointInputObj
 Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>]
  -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -304,8 +304,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: System.Management.Automation.ActionPreference

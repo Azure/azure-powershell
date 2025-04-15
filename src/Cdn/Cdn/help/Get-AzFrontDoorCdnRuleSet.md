@@ -15,7 +15,7 @@ Gets an existing AzureFrontDoor rule set with the specified rule set name under 
 ### List (Default)
 ```
 Get-AzFrontDoorCdnRuleSet -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityProfile
@@ -27,14 +27,14 @@ Get-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-De
 ### Get
 ```
 Get-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzFrontDoorCdnRuleSet -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,21 +154,6 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

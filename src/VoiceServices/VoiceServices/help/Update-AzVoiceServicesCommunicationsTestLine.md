@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-Update a TestLine
+update a TestLine
 
 ## SYNTAX
 
@@ -19,6 +19,27 @@ Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityCommunicationsGatewayExpanded
+```
+Update-AzVoiceServicesCommunicationsTestLine -Name <String>
+ -CommunicationsGatewayInputObject <IVoiceServicesIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzVoiceServicesCommunicationsTestLine -InputObject <IVoiceServicesIdentity> [-Tag <Hashtable>]
@@ -26,7 +47,7 @@ Update-AzVoiceServicesCommunicationsTestLine -InputObject <IVoiceServicesIdentit
 ```
 
 ## DESCRIPTION
-Update a TestLine
+update a TestLine
 
 ## EXAMPLES
 
@@ -58,12 +79,27 @@ Update a testline by pipeline.
 
 ## PARAMETERS
 
+### -CommunicationsGatewayInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
+Parameter Sets: UpdateViaIdentityCommunicationsGatewayExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CommunicationsGatewayName
 Unique identifier for this deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -91,7 +127,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
@@ -105,12 +140,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Unique identifier for this test line
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityCommunicationsGatewayExpanded
 Aliases: TestLineName
 
 Required: True
@@ -126,7 +191,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -141,7 +206,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -156,7 +221,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCommunicationsGatewayExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -206,7 +271,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine
 
 ## NOTES
 

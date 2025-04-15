@@ -16,7 +16,7 @@ patch an existing security policy within a profile.
 ```
 Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaJsonString
@@ -51,7 +51,7 @@ Update-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileInputObject <ICdnIden
 ```
 Update-AzFrontDoorCdnSecurityPolicy -InputObject <ICdnIdentity>
  [-Parameter <ISecurityPolicyPropertiesParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,21 +241,6 @@ Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

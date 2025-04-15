@@ -13,15 +13,9 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleQueryStringConditionObject -ParameterOperator <String> -ParameterTypeName <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
-
-## DESCRIPTION
-Create an in-memory object for DeliveryRuleQueryStringCondition.
-
-## EXAMPLES
 
 ### Example 1: Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition
 ```powershell
@@ -111,9 +105,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: System.Management.Automation.ActionPreference

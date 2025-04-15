@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareCluster
 
 ## SYNOPSIS
-Update a Cluster
+update a Cluster
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzVMwareCluster -InputObject <IVMwareIdentity> [-ClusterSize <Int32>] [-P
 ```
 
 ## DESCRIPTION
-Update a Cluster
+update a Cluster
 
 ## EXAMPLES
 

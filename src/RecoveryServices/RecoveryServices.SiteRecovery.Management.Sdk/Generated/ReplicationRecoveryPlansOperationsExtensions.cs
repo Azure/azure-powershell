@@ -18,9 +18,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecoveryPlan> List(this IReplicationRecoveryPlansOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RecoveryPlan> List(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -29,12 +36,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPlan>> ListAsync(this IReplicationRecoveryPlansOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPlan>> ListAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -45,12 +59,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Name of the recovery plan.
         /// </param>
-        public static RecoveryPlan Get(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan Get(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).GetAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).GetAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -59,15 +80,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Name of the recovery plan.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> GetAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> GetAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -78,12 +106,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan Create(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, CreateRecoveryPlanInputProperties properties)
+        public static RecoveryPlan Create(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).CreateAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).CreateAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -92,15 +127,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> CreateAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> CreateAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -111,12 +153,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static void Delete(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static void Delete(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                ((IReplicationRecoveryPlansOperations)operations).DeleteAsync(recoveryPlanName).GetAwaiter().GetResult();
+                ((IReplicationRecoveryPlansOperations)operations).DeleteAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -125,15 +174,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a recovery plan.
@@ -141,12 +197,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan Update(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties))
+        public static RecoveryPlan Update(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties))
         {
-                return ((IReplicationRecoveryPlansOperations)operations).UpdateAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).UpdateAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -155,15 +218,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> UpdateAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> UpdateAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -174,12 +244,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan FailoverCancel(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan FailoverCancel(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).FailoverCancelAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).FailoverCancelAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -188,15 +265,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> FailoverCancelAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> FailoverCancelAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.FailoverCancelWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.FailoverCancelWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -207,12 +291,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan FailoverCommit(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan FailoverCommit(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).FailoverCommitAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).FailoverCommitAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,15 +312,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> FailoverCommitAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> FailoverCommitAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.FailoverCommitWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.FailoverCommitWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -240,12 +338,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan PlannedFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties)
+        public static RecoveryPlan PlannedFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).PlannedFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).PlannedFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -254,38 +359,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> PlannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> PlannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PlannedFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PlannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to reprotect(reverse replicate) a recovery plan.
+        /// The operation to reprotect(reverse replicate) a recovery plan. This api is
+        /// for deprecated scenarios and no longer works.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan Reprotect(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan Reprotect(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).ReprotectAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).ReprotectAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to reprotect(reverse replicate) a recovery plan.
+        /// The operation to reprotect(reverse replicate) a recovery plan. This api is
+        /// for deprecated scenarios and no longer works.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
@@ -293,9 +421,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> ReprotectAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> ReprotectAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ReprotectWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ReprotectWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -306,12 +434,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan TestFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties)
+        public static RecoveryPlan TestFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).TestFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).TestFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -320,15 +455,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> TestFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> TestFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.TestFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.TestFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -339,12 +481,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan TestFailoverCleanup(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties)
+        public static RecoveryPlan TestFailoverCleanup(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).TestFailoverCleanupAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).TestFailoverCleanupAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -353,15 +502,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> TestFailoverCleanupAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> TestFailoverCleanupAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.TestFailoverCleanupWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.TestFailoverCleanupWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -372,12 +528,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan UnplannedFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties)
+        public static RecoveryPlan UnplannedFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).UnplannedFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).UnplannedFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -386,15 +549,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> UnplannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> UnplannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UnplannedFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UnplannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -405,12 +575,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginCreate(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, CreateRecoveryPlanInputProperties properties)
+        public static RecoveryPlan BeginCreate(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginCreateAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -419,15 +596,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginCreateAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginCreateAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, CreateRecoveryPlanInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -438,12 +622,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static void BeginDelete(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static void BeginDelete(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                ((IReplicationRecoveryPlansOperations)operations).BeginDeleteAsync(recoveryPlanName).GetAwaiter().GetResult();
+                ((IReplicationRecoveryPlansOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -452,15 +643,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The operation to update a recovery plan.
@@ -468,12 +666,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginUpdate(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties))
+        public static RecoveryPlan BeginUpdate(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties))
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginUpdateAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginUpdateAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -482,15 +687,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginUpdateAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginUpdateAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, UpdateRecoveryPlanInputProperties properties = default(UpdateRecoveryPlanInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -501,12 +713,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginFailoverCancel(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan BeginFailoverCancel(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginFailoverCancelAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginFailoverCancelAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -515,15 +734,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginFailoverCancelAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginFailoverCancelAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginFailoverCancelWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginFailoverCancelWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -534,12 +760,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginFailoverCommit(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan BeginFailoverCommit(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginFailoverCommitAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginFailoverCommitAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -548,15 +781,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginFailoverCommitAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginFailoverCommitAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginFailoverCommitWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginFailoverCommitWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -567,12 +807,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginPlannedFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties)
+        public static RecoveryPlan BeginPlannedFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginPlannedFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginPlannedFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -581,38 +828,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginPlannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginPlannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanPlannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginPlannedFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginPlannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to reprotect(reverse replicate) a recovery plan.
+        /// The operation to reprotect(reverse replicate) a recovery plan. This api is
+        /// for deprecated scenarios and no longer works.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginReprotect(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName)
+        public static RecoveryPlan BeginReprotect(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginReprotectAsync(recoveryPlanName).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginReprotectAsync(resourceGroupName, resourceName, recoveryPlanName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to reprotect(reverse replicate) a recovery plan.
+        /// The operation to reprotect(reverse replicate) a recovery plan. This api is
+        /// for deprecated scenarios and no longer works.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
@@ -620,9 +890,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginReprotectAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginReprotectAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginReprotectWithHttpMessagesAsync(recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginReprotectWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -633,12 +903,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginTestFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties)
+        public static RecoveryPlan BeginTestFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginTestFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginTestFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -647,15 +924,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginTestFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginTestFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginTestFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginTestFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -666,12 +950,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginTestFailoverCleanup(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties)
+        public static RecoveryPlan BeginTestFailoverCleanup(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginTestFailoverCleanupAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginTestFailoverCleanupAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -680,15 +971,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginTestFailoverCleanupAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginTestFailoverCleanupAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanTestFailoverCleanupInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginTestFailoverCleanupWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginTestFailoverCleanupWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -699,12 +997,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
-        public static RecoveryPlan BeginUnplannedFailover(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties)
+        public static RecoveryPlan BeginUnplannedFailover(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties)
         {
-                return ((IReplicationRecoveryPlansOperations)operations).BeginUnplannedFailoverAsync(recoveryPlanName, properties).GetAwaiter().GetResult();
+                return ((IReplicationRecoveryPlansOperations)operations).BeginUnplannedFailoverAsync(resourceGroupName, resourceName, recoveryPlanName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -713,15 +1018,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='recoveryPlanName'>
         /// Recovery plan name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginUnplannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPlan> BeginUnplannedFailoverAsync(this IReplicationRecoveryPlansOperations operations, string resourceGroupName, string resourceName, string recoveryPlanName, RecoveryPlanUnplannedFailoverInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUnplannedFailoverWithHttpMessagesAsync(recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUnplannedFailoverWithHttpMessagesAsync(resourceGroupName, resourceName, recoveryPlanName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

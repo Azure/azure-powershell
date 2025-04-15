@@ -13,9 +13,16 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 ## SYNTAX
 
 ```
+<<<<<<< HEAD
 New-AzFrontDoorCdnRuleRequestHeaderConditionObject -ParameterOperator <String> -ParameterTypeName <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>]
  [-ParameterTransform <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+=======
+New-AzFrontDoorCdnRuleRequestHeaderConditionObject -ParameterOperator <RequestHeaderOperator>
+ -Name <MatchVariable> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
+ [-ParameterSelector <String>] [-ParameterTransform <Transform[]>]
+ [<CommonParameters>]
+>>>>>>> main
 ```
 
 ## DESCRIPTION
@@ -126,9 +133,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: System.Management.Automation.ActionPreference

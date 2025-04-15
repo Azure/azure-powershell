@@ -16,7 +16,7 @@ Removes a content from AzureFrontDoor.
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ContentPath <String[]> [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaJsonString
@@ -51,20 +51,20 @@ Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileInputObject <
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Content <IAfdPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentityExpanded
 ```
 Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-Domain <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentity
 ```
 Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -Content <IAfdPurgeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -282,21 +282,6 @@ Parameter Sets: PurgeExpanded, PurgeViaJsonString, PurgeViaJsonFilePath, Purge
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

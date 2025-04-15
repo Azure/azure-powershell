@@ -37,9 +37,6 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
 ```yaml
 Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)

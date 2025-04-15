@@ -21,12 +21,14 @@ Create an in-memory object for ContentCertificateProperties.
 Create an in-memory object for ContentCertificateProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ContentCertificateProperties
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ContentCertificateProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudContentCertificateObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-azspringcloudcontentcertificateobject
 #>
 function New-AzSpringCloudContentCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ContentCertificateProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.CmdletBreakingChange("19.3.0", "0.3.2", "2028/03/31", ChangeDescription = "Azure Spring Apps, including the Standard consumption and dedicated (currently in Public Preview only), Basic, Standard, and Enterprise plans, will be retired, please see details on https://aka.ms/asaretirement.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ContentCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,8 +38,8 @@ function New-AzSpringCloudContentCertificateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ContentCertificateProperties]::New()
-        $Object.Type = 'ContentCertificate'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ContentCertificateProperties]::New()
+
         if ($PSBoundParameters.ContainsKey('Content')) {
             $Object.Content = $Content
         }

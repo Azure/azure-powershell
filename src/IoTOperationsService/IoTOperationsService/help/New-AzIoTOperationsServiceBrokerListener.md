@@ -17,21 +17,21 @@ create a BrokerListenerResource
 New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -ExtendedLocationName <String>
  [-Port <IListenerPort[]>] [-ServiceName <String>] [-ServiceType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzIoTOperationsServiceBrokerListener -BrokerName <String> -InstanceName <String> -ListenerName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,21 +218,6 @@ Ports on which this listener accepts client connections.
 Type: Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IListenerPort[]
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
