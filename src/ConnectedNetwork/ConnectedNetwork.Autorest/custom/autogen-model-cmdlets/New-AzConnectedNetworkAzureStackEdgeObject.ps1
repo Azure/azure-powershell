@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create a in-memory object for AzureStackEdgeFormat
+Create an in-memory object for AzureStackEdgeFormat.
 .Description
-Create a in-memory object for AzureStackEdgeFormat
+Create an in-memory object for AzureStackEdgeFormat.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkazurestackedgeobject
 #>
 function New-AzConnectedNetworkAzureStackEdgeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,10 +37,11 @@ function New-AzConnectedNetworkAzureStackEdgeObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat]::New()
 
-        $Object.AzureStackEdgeId = $AzureStackEdgeId
-        $Object.DeviceType = "AzureStackEdge"
+        if ($PSBoundParameters.ContainsKey('AzureStackEdgeId')) {
+            $Object.AzureStackEdgeId = $AzureStackEdgeId
+        }
         return $Object
     }
 }

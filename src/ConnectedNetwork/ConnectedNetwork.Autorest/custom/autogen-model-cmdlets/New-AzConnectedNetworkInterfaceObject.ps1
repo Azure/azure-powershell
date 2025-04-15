@@ -16,22 +16,23 @@
 
 <#
 .Synopsis
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 .Description
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceobject
 #>
 function New-AzConnectedNetworkInterfaceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="A list of IP configurations of the network interface.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterfaceIPConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterfaceIPConfiguration[]]
         $IPConfiguration,
         [Parameter(HelpMessage="The MAC address of the network interface.")]
         [string]
@@ -40,17 +41,26 @@ function New-AzConnectedNetworkInterfaceObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The type of the VM switch.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Management", "Wan", "Lan")]
+        [string]
         $VMSwitchType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface]::New()
 
-        $Object.IPConfiguration = $IPConfiguration
-        $Object.MacAddress = $MacAddress
-        $Object.Name = $Name
-        $Object.VMSwitchType = $VMSwitchType
+        if ($PSBoundParameters.ContainsKey('IPConfiguration')) {
+            $Object.IPConfiguration = $IPConfiguration
+        }
+        if ($PSBoundParameters.ContainsKey('MacAddress')) {
+            $Object.MacAddress = $MacAddress
+        }
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
+        }
+        if ($PSBoundParameters.ContainsKey('VMSwitchType')) {
+            $Object.VMSwitchType = $VMSwitchType
+        }
         return $Object
     }
 }
