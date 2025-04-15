@@ -37,6 +37,27 @@ Containers(monitoringworkspace-2vob7n) Microsoft.OperationsManagement/solutions 
 
 This command creates a monitor log analytics solution for the log analytics workspace.
 
+Commonly used types are:
+
+| Type | Description |
+| :-----| :----- |
+| SecurityCenterFree |  Azure Security Center - Free Edition |
+| Security | Azure Security Center |
+| Updates | Update Management |
+| ContainerInsights | Azure Monitor for Containers |
+| ServiceMap | Service Map |
+| AzureActivity | Activity log analytics |
+| ChangeTracking | Change tracking and inventory |
+| VMInsights | Azure Monitor for VMs |
+| SecurityInsights | Azure Sentinel |
+| NetworkMonitoring | Network Performance Monitor |
+| SQLVulnerabilityAssessment | SQL Vulnerability Assessment |
+| SQLAdvancedThreatProtection | SQL Advanced Threat Protection |
+| AntiMalware | Antimalware Assessment |
+| AzureAutomation |	Automation Hybrid Worker |
+| LogicAppsManagement | Logic Apps Management |
+| SQLDataClassification | SQL Data Discovery & Classification |
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -185,6 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IMonitoringSolutionsIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution
@@ -192,7 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[]()
-
-[[Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)]([Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace))
