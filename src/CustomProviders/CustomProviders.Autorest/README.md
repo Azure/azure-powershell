@@ -71,28 +71,11 @@ directive:
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
-  # - where: 
-  #     verb: New
-  #     subject: ^CustomProvider.*$
-  #     variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create$
-  #   remove: true
-  
-  # - where:
-  #     verb: Set
-  #     subject: CustomProviderAssociation
-  #     variant: ^Update$|^UpdateViaIdentity$
-  #   remove: true
 
   - where:
       verb: Set
       subject: ^CustomProvider$
     remove: true
-
-  # - where:
-  #     verb: Update
-  #     subject: CustomProvider
-  #     variant: ^Update$|^UpdateViaIdentity$
-  #   remove: true
 
   - where:
        verb: Set
