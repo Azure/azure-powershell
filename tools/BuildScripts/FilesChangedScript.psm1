@@ -5,8 +5,8 @@ function Get-OutdatedSubModule {
         [switch]$ForceRegenerate
     )
     $outdatedSubModule = @()
-    $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
-    if ($subModuleSource -And (Test-Path $subModuleSource)) {
+    if (Test-Path $SourceDirectory) {
+        $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
         foreach ($subModule in $subModuleSource) {
             $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
             $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
