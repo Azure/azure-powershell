@@ -65,6 +65,9 @@ directive:
   - where:
       variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded$
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
