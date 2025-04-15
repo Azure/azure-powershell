@@ -21,6 +21,9 @@ Delete an Volume.
 Delete an Volume.
 .Example
 Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
+.Example
+$deletevolume = Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -AccessSoftDeletedResource true
+Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name $deletevolume[0].Name -DeleteType permanent
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -120,6 +123,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
     ${VolumegroupInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("permanent")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Query')]
+    [System.String]
+    # Optional.
+    # Specifies that the delete operation should be a permanent delete for the soft deleted volume.
+    # The value of deleteType can only be 'permanent'.
+    ${DeleteType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]

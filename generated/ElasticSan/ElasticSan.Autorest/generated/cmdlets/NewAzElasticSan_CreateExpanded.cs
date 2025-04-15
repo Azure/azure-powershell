@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create ElasticSan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2024-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2024-07-01-preview")]
     public partial class NewAzElasticSan_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"Base size of the Elastic San appliance in TiB.",
         SerializedName = @"baseSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
-        public long BaseSizeTiB { get => _parametersBody.BaseSizeTiB; set => _parametersBody.BaseSizeTiB = value; }
+        public long BaseSizeTiB { get => _parametersBody.BaseSizeTiB ?? default(long); set => _parametersBody.BaseSizeTiB = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"Extended size of the Elastic San appliance in TiB.",
         SerializedName = @"extendedCapacitySizeTiB",
         PossibleTypes = new [] { typeof(long) })]
-        public long ExtendedCapacitySizeTiB { get => _parametersBody.ExtendedCapacitySizeTiB; set => _parametersBody.ExtendedCapacitySizeTiB = value; }
+        public long ExtendedCapacitySizeTiB { get => _parametersBody.ExtendedCapacitySizeTiB ?? default(long); set => _parametersBody.ExtendedCapacitySizeTiB = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }

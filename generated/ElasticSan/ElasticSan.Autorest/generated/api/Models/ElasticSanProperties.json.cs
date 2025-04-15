@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {_autoScaleProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("autoScaleProperties"), out var __jsonAutoScaleProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.AutoScaleProperties.FromJson(__jsonAutoScaleProperties) : _autoScaleProperty;}
             {_availabilityZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("availabilityZones"), out var __jsonAvailabilityZones) ? If( __jsonAvailabilityZones as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _availabilityZone;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_baseSizeTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("baseSizeTiB"), out var __jsonBaseSizeTiB) ? (long)__jsonBaseSizeTiB : _baseSizeTiB;}
-            {_extendedCapacitySizeTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("extendedCapacitySizeTiB"), out var __jsonExtendedCapacitySizeTiB) ? (long)__jsonExtendedCapacitySizeTiB : _extendedCapacitySizeTiB;}
+            {_baseSizeTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("baseSizeTiB"), out var __jsonBaseSizeTiB) ? (long?)__jsonBaseSizeTiB : _baseSizeTiB;}
+            {_extendedCapacitySizeTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("extendedCapacitySizeTiB"), out var __jsonExtendedCapacitySizeTiB) ? (long?)__jsonExtendedCapacitySizeTiB : _extendedCapacitySizeTiB;}
             {_totalVolumeSizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("totalVolumeSizeGiB"), out var __jsonTotalVolumeSizeGiB) ? (long?)__jsonTotalVolumeSizeGiB : _totalVolumeSizeGiB;}
             {_volumeGroupCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("volumeGroupCount"), out var __jsonVolumeGroupCount) ? (long?)__jsonVolumeGroupCount : _volumeGroupCount;}
             {_totalIops = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("totalIops"), out var __jsonTotalIops) ? (long?)__jsonTotalIops : _totalIops;}
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber(this._baseSizeTiB), "baseSizeTiB" ,container.Add );
+                AddIf( null != this._baseSizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._baseSizeTiB) : null, "baseSizeTiB" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeCreate))
             {
-                AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber(this._extendedCapacitySizeTiB), "extendedCapacitySizeTiB" ,container.Add );
+                AddIf( null != this._extendedCapacitySizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._extendedCapacitySizeTiB) : null, "extendedCapacitySizeTiB" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {

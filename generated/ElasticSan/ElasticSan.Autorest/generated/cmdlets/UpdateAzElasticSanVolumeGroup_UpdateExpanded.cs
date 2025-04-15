@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"update an VolumeGroup.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2024-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2024-07-01-preview")]
     public partial class UpdateAzElasticSanVolumeGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -78,6 +78,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of days to retain the resources after deletion.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of days to retain the resources after deletion.",
+        SerializedName = @"retentionPeriodDays",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DeleteRetentionPolicyRetentionPeriodDay { get => _parametersBody.DeleteRetentionPolicyRetentionPeriodDay ?? default(int); set => _parametersBody.DeleteRetentionPolicyRetentionPeriodDay = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"policyState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string DeleteRetentionPolicyState { get => _parametersBody.DeleteRetentionPolicyState ?? null; set => _parametersBody.DeleteRetentionPolicyState = value; }
 
         /// <summary>Backing field for <see cref="ElasticSanName" /> property.</summary>
         private string _elasticSanName;
