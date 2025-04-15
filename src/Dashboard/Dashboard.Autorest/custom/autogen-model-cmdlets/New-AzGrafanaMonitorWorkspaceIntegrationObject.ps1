@@ -21,12 +21,13 @@ Create an in-memory object for AzureMonitorWorkspaceIntegration.
 Create an in-memory object for AzureMonitorWorkspaceIntegration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration
+Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.AzureMonitorWorkspaceIntegration
 .Link
-https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
+https://learn.microsoft.com/powershell/module/Az.Dashboard/new-azgrafanamonitorworkspaceintegrationobject
 #>
 function New-AzGrafanaMonitorWorkspaceIntegrationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.AzureMonitorWorkspaceIntegration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +37,7 @@ function New-AzGrafanaMonitorWorkspaceIntegrationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.AzureMonitorWorkspaceIntegration]::New()
 
         if ($PSBoundParameters.ContainsKey('AzureMonitorWorkspaceResourceId')) {
             $Object.AzureMonitorWorkspaceResourceId = $AzureMonitorWorkspaceResourceId
