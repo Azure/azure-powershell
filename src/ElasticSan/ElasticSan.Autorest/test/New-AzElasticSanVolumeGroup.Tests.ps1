@@ -44,7 +44,7 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.ProtocolType | Should -Be "iSCSI"
 
         $volGroupName4 = 'testvolgroup4' + $env.RandomString
-        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName4 -EnforceDataIntegrityCheckForIscsi $true 
+        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName4 -EnforceDataIntegrityCheckForIscsi $true
         $volGroup.Name | Should -Be $volGroupName4
         $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
 
@@ -59,5 +59,10 @@ Describe 'New-AzElasticSanVolumeGroup' {
 
         $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -EnforceDataIntegrityCheckForIscsi $true
         $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
+
+        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -DeleteRetentionPolicyRetentionPeriodDay 7 -DeleteRetentionPolicyState Enabled
+        $volGroup.Name | Should -Be $volGroupName3
+        $volGroup.DeleteRetentionPolicyRetentionPeriodDay | Should -Be 7
+        $volGroup.DeleteRetentionPolicyState | Should -Be "Enabled"
     }
 }

@@ -15,26 +15,27 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 ### List (Default)
 ```
 Get-AzElasticSanVolumeGroup -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityElasticSan
 ```
 Get-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +107,63 @@ Type                          : Microsoft.ElasticSan/ElasticSans
 
 This command gets a specific volume group.
 
+### Example 3: Get soft deleted volume groups in an Elastic SAN
+```powershell
+Get-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -AccessSoftDeletedResource true
+```
+
+```output
+DeleteRetentionPolicyRetentionPeriodDay                : 7
+DeleteRetentionPolicyState                             : Enabled
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Deleted
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 4/8/2025 2:31:52 AM
+SystemDataCreatedBy                                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 4/9/2025 3:22:04 AM
+SystemDataLastModifiedBy                               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command gets soft deleted volume groups in the Elastic SAN myelasticsan.
+
 ## PARAMETERS
+
+### -AccessSoftDeletedResource
+Optional, returns only soft deleted volume groups if set to true.
+If set to false or if not specified, returns only active volume groups.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -178,21 +235,6 @@ Parameter Sets: Get, GetViaIdentityElasticSan
 Aliases: VolumeGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

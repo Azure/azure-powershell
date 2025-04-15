@@ -15,7 +15,8 @@ Create a Volume Group.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-SubscriptionId <String>] [-DeleteRetentionPolicyRetentionPeriodDay <Int32>]
+ [-DeleteRetentionPolicyState <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
@@ -24,22 +25,24 @@ New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGro
 
 ### CreateViaIdentityElasticSanExpanded
 ```
-New-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity>
+ [-DeleteRetentionPolicyRetentionPeriodDay <Int32>] [-DeleteRetentionPolicyState <String>]
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,6 +224,46 @@ Type                                                   : Microsoft.ElasticSan/el
 
 This command creates a volume group with EnforceDataIntegrityCheckForIscsi disabled.
 
+### Example 6: Create a volume group with soft delete enabled.
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -DeleteRetentionPolicyRetentionPeriodDay 7 -DeleteRetentionPolicyState Enabled
+```
+
+```output
+DeleteRetentionPolicyRetentionPeriodDay                : 7
+DeleteRetentionPolicyState                             : Enabled
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 4/8/2025 2:31:52 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 4/14/2025 2:16:51 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command creates a volume group with soft delete enabled.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -246,6 +289,36 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyRetentionPeriodDay
+The number of days to retain the resources after deletion.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteRetentionPolicyState
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

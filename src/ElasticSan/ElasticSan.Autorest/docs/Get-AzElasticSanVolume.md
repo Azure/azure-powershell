@@ -15,7 +15,8 @@ Get either a list of all volumes from a volume group or get a single volume from
 ### List (Default)
 ```
 Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-AccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -124,7 +125,53 @@ VolumeId                       : abababab-abab-abab-abab-abababababab
 
 This command gets a specific volume.
 
+### Example 3: List soft deleted volumes in a volume group
+```powershell
+Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -AccessSoftDeletedResource true
+```
+
+```output
+CreationDataCreateSource       : 
+CreationDataSourceUri          : 
+Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup/volumes/namefordeletedvolume
+ManagedByResourceId            : None
+Name                           : namefordeletedvolume
+SizeGiB                        : 100
+StorageTargetIqn               : iqn.2022-09.net.windows.core.blob.ElasticSan.es-3ibot5m2r3y0:myvolume
+StorageTargetPortalHostname    : es-3ibot5m2r3y0.z1.blob.storage.azure.net
+StorageTargetPortalPort        : 3260
+StorageTargetProvisioningState : Succeeded
+StorageTargetStatus            : Running
+SystemDataCreatedAt            : 9/19/2022 2:39:28 AM
+SystemDataCreatedBy            : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType        : Application
+SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
+SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType   : Application
+Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Type                           : Microsoft.ElasticSan/ElasticSans
+VolumeId                       : abababab-abab-abab-abab-abababababab
+```
+
+This command gets soft deleted volumes in a volume group.
+
 ## PARAMETERS
+
+### -AccessSoftDeletedResource
+Optional, returns only soft deleted volumes if set to true.
+If set to false or if not specified, returns only active volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

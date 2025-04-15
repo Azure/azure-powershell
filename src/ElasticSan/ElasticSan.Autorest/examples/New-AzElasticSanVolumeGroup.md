@@ -171,3 +171,43 @@ Type                                                   : Microsoft.ElasticSan/el
 ```
 
 This command creates a volume group with EnforceDataIntegrityCheckForIscsi disabled.
+
+### Example 6: Create a volume group with soft delete enabled.
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -DeleteRetentionPolicyRetentionPeriodDay 7 -DeleteRetentionPolicyState Enabled
+```
+
+```output
+DeleteRetentionPolicyRetentionPeriodDay                : 7
+DeleteRetentionPolicyState                             : Enabled
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 4/8/2025 2:31:52 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 4/14/2025 2:16:51 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command creates a volume group with soft delete enabled.

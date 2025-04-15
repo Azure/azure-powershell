@@ -97,6 +97,19 @@ function New-AzElasticSanVolumeGroup {
         # Identity Parameter
         # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
         ${ElasticSanInputObject},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Int32]
+        # The number of days to retain the resources after deletion.
+        ${DeleteRetentionPolicyRetentionPeriodDay},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.String]
+        # .
+        ${DeleteRetentionPolicyState},
     
         [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]

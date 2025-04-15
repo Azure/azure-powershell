@@ -28,11 +28,11 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 3ca7edabc2edf1117b7d912ba34f2694721e3ff3
+commit: 3db6867b8e524ea6d1bc7a3bbb989fe50dd2f184
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2024-06-01-preview/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2024-07-01-preview/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
@@ -109,6 +109,22 @@ directive:
       subject: VolumeSnapshot
       verb: Update
     remove: true
+  - where:
+      verb: Backup
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeBackup
+  - where:
+      verb: Restore
+      subject: VolumePre
+    set:
+      verb: Test
+      subject: VolumeRestore
+  - where:
+      parameter-name: ^XmsAccessSoftDeletedResource$
+    set:
+      parameter-name: AccessSoftDeletedResource
   - where:
       parameter-name: EncryptionIdentityEncryptionUserAssignedIdentity
     set:

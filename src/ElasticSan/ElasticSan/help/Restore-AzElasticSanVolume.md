@@ -1,76 +1,82 @@
 ---
 external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/restore-azelasticsanvolume
 schema: 2.0.0
 ---
 
-# Update-AzElasticSanVolume
+# Restore-AzElasticSanVolume
 
 ## SYNOPSIS
-update an Volume.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Restore (Default)
 ```
-Update-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityVolumegroupExpanded
+### RestoreViaIdentityVolumegroup
 ```
-Update-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> [-SizeGiB <Int64>]
+Restore-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityElasticSanExpanded
+### RestoreViaIdentityElasticSan
 ```
-Update-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Restore-AzElasticSanVolume -Name <String> -VolumeGroupName <String>
+ -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### RestoreViaIdentity
 ```
-Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-SizeGiB <Int64>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update an Volume.
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ## EXAMPLES
 
-### Example 1: Update an Elastic SAN volume
+### Example 1: Restore a soft deleted volume
 ```powershell
-$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
+$deletevolume = Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -AccessSoftDeletedResource true
+Restore-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -VolumeName $deletevolume[0].Name
 ```
 
 ```output
-CreationDataCreateSource       : 
-CreationDataSourceUri          : 
+CreationDataCreateSource       : None
+CreationDataSourceId           :
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup/volumes/myvolume
+ManagedByResourceId            : None
 Name                           : myvolume
-SizeGiB                        : 120
-StorageTargetIqn               : iqn.2022-09.net.windows.core.blob.ElasticSan.es-3ibot5m2r3y0:myvolume
-StorageTargetPortalHostname    : es-3ibot5m2r3y0.z1.blob.storage.azure.net
+ProvisioningState              : Succeeded
+ResourceGroupName              : myresourcegroup
+SizeGiB                        : 12
+StorageTargetIqn               : iqn.2025-04.net.azure.storage.blob.z29.es-ddmmw4sqemc1:es-cb1d1bizlds0:myvolume
+StorageTargetPortalHostname    : es-cb1d1bizlds0.z1.blob.storage.azure.net
 StorageTargetPortalPort        : 3260
 StorageTargetProvisioningState : Succeeded
 StorageTargetStatus            : Running
-SystemDataCreatedAt            : 9/19/2022 2:39:28 AM
+SystemDataCreatedAt            : 4/8/2025 7:53:46 AM
 SystemDataCreatedBy            : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType        : Application
-SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
+SystemDataCreatedByType        : User
+SystemDataLastModifiedAt       : 4/8/2025 7:53:46 AM
 SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType   : Application
-Type                           : Microsoft.ElasticSan/ElasticSans
+SystemDataLastModifiedByType   : User
+Type                           : Microsoft.ElasticSan/elasticSans/volumeGroups/volumes
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```
 
-This command updates the SizeGib and Tag properties of a volume.
+This command restores a specific volume.
 
 ## PARAMETERS
 
@@ -110,7 +116,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: UpdateViaIdentityElasticSanExpanded
+Parameter Sets: RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -125,7 +131,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Restore
 Aliases:
 
 Required: True
@@ -140,7 +146,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: RestoreViaIdentity
 Aliases:
 
 Required: True
@@ -155,7 +161,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityVolumegroupExpanded, UpdateViaIdentityElasticSanExpanded
+Parameter Sets: Restore, RestoreViaIdentityVolumegroup, RestoreViaIdentityElasticSan
 Aliases: VolumeName
 
 Required: True
@@ -186,25 +192,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Restore
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SizeGiB
-Volume size.
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +207,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Restore
 Aliases:
 
 Required: False
@@ -231,7 +222,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: UpdateViaIdentityVolumegroupExpanded
+Parameter Sets: RestoreViaIdentityVolumegroup
 Aliases:
 
 Required: True
@@ -246,7 +237,7 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityElasticSanExpanded
+Parameter Sets: Restore, RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
