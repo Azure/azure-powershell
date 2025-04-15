@@ -68,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Internal Acessors for StorageTargetProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState = value; }
 
+        /// <summary>Internal Acessors for StorageTargetStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status = value; }
+
         /// <summary>Internal Acessors for VolumeId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.VolumeId { get => this._volumeId; set { {_volumeId = value;} } }
 
@@ -112,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
         /// <summary>Operational status of the iSCSI Target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public string StorageTargetStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status = value ?? null; }
+        public string StorageTargetStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status; }
 
         /// <summary>Backing field for <see cref="VolumeId" /> property.</summary>
         private string _volumeId;
@@ -179,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
         /// <summary>Volume size.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -237,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string StorageTargetProvisioningState { get;  }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -284,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         string ManagedByResourceId { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
         /// <summary>Volume size.</summary>
         long SizeGiB { get; set; }
@@ -299,7 +302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>iSCSI Target Portal Port</summary>
         int? StorageTargetPortalPort { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string StorageTargetProvisioningState { get; set; }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Unknown", "Healthy", "Unhealthy", "Updating", "Running", "Stopped", "Stopped (deallocated)")]

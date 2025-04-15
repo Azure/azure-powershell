@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Delete an Volume.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2024-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2024-07-01-preview")]
     public partial class RemoveAzElasticSanVolume_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -91,6 +91,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Header)]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]
         public string DeleteSnapshot { get => this._deleteSnapshot; set => this._deleteSnapshot = value; }
+
+        /// <summary>Backing field for <see cref="DeleteType" /> property.</summary>
+        private string _deleteType;
+
+        /// <summary>
+        /// Optional. Specifies that the delete operation should be a permanent delete for the soft deleted volume. The value of deleteType
+        /// can only be 'permanent'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional. Specifies that the delete operation should be a permanent delete for the soft deleted volume. The value of deleteType can only be 'permanent'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optional. Specifies that the delete operation should be a permanent delete for the soft deleted volume. The value of deleteType can only be 'permanent'.",
+        SerializedName = @"deleteType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Query)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("permanent")]
+        public string DeleteType { get => this._deleteType; set => this._deleteType = value; }
 
         /// <summary>Backing field for <see cref="ElasticSanName" /> property.</summary>
         private string _elasticSanName;
@@ -321,6 +339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
             clone.Name = this.Name;
             clone.DeleteSnapshot = this.DeleteSnapshot;
             clone.ForceDelete = this.ForceDelete;
+            clone.DeleteType = this.DeleteType;
             return clone;
         }
 
@@ -537,12 +556,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VolumesDelete(SubscriptionId, ResourceGroupName, ElasticSanName, VolumeGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("DeleteSnapshot") ? DeleteSnapshot : null, this.InvocationInformation.BoundParameters.ContainsKey("ForceDelete") ? ForceDelete : null, onOk, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.VolumesDelete(SubscriptionId, ResourceGroupName, ElasticSanName, VolumeGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("DeleteSnapshot") ? DeleteSnapshot : null, this.InvocationInformation.BoundParameters.ContainsKey("ForceDelete") ? ForceDelete : null, this.InvocationInformation.BoundParameters.ContainsKey("DeleteType") ? DeleteType : null, onOk, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ElasticSanName=ElasticSanName,VolumeGroupName=VolumeGroupName,Name=Name,DeleteSnapshot=this.InvocationInformation.BoundParameters.ContainsKey("DeleteSnapshot") ? DeleteSnapshot : null,ForceDelete=this.InvocationInformation.BoundParameters.ContainsKey("ForceDelete") ? ForceDelete : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ElasticSanName=ElasticSanName,VolumeGroupName=VolumeGroupName,Name=Name,DeleteSnapshot=this.InvocationInformation.BoundParameters.ContainsKey("DeleteSnapshot") ? DeleteSnapshot : null,ForceDelete=this.InvocationInformation.BoundParameters.ContainsKey("ForceDelete") ? ForceDelete : null,DeleteType=this.InvocationInformation.BoundParameters.ContainsKey("DeleteType") ? DeleteType : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

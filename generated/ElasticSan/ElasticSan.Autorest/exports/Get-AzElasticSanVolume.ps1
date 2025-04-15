@@ -23,6 +23,8 @@ Get either a list of all volumes from a volume group or get a single volume from
 Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup
 .Example
 Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
+.Example
+Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -AccessSoftDeletedResource true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -126,6 +128,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
     ${VolumegroupInputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Header')]
+    [System.String]
+    # Optional, returns only soft deleted volumes if set to true.
+    # If set to false or if not specified, returns only active volumes.
+    ${AccessSoftDeletedResource},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

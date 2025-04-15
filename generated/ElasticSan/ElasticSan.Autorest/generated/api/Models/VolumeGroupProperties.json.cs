@@ -89,6 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 AddIf( null != this._networkAcls ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._networkAcls.ToJson(null,serializationMode) : null, "networkAcls" ,container.Add );
             }
+            AddIf( null != this._deleteRetentionPolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._deleteRetentionPolicy.ToJson(null,serializationMode) : null, "deleteRetentionPolicy" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -126,6 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             {_encryptionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("encryptionProperties"), out var __jsonEncryptionProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties.FromJson(__jsonEncryptionProperties) : _encryptionProperty;}
             {_networkAcls = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("networkAcls"), out var __jsonNetworkAcls) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.NetworkRuleSet.FromJson(__jsonNetworkAcls) : _networkAcls;}
+            {_deleteRetentionPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("deleteRetentionPolicy"), out var __jsonDeleteRetentionPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy.FromJson(__jsonDeleteRetentionPolicy) : _deleteRetentionPolicy;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_protocolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("protocolType"), out var __jsonProtocolType) ? (string)__jsonProtocolType : (string)_protocolType;}
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)_encryption;}

@@ -14,6 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal
     {
 
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public int? DeleteRetentionPolicyRetentionPeriodDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicyRetentionPeriodDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicyRetentionPeriodDay = value ?? default(int); }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string DeleteRetentionPolicyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicyState = value ?? null; }
+
         /// <summary>Type of encryption</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public string Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).Encryption = value ?? null; }
@@ -81,6 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public global::System.DateTime? KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).KeyVaultPropertyLastKeyRotationTimestamp; }
 
+        /// <summary>Internal Acessors for DeleteRetentionPolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal.DeleteRetentionPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).DeleteRetentionPolicy = value; }
+
         /// <summary>Internal Acessors for EncryptionProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdateInternal.EncryptionProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).EncryptionProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdatePropertiesInternal)Property).EncryptionProperty = value; }
 
@@ -139,6 +149,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface IVolumeGroupUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The number of days to retain the resources after deletion.",
+        SerializedName = @"retentionPeriodDays",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DeleteRetentionPolicyRetentionPeriodDay { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"policyState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DeleteRetentionPolicyState { get; set; }
         /// <summary>Type of encryption</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -321,6 +354,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface IVolumeGroupUpdateInternal
 
     {
+        /// <summary>
+        /// The retention policy for the soft deleted volume group and its associated resources
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        int? DeleteRetentionPolicyRetentionPeriodDay { get; set; }
+
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DeleteRetentionPolicyState { get; set; }
         /// <summary>Type of encryption</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
         string Encryption { get; set; }
