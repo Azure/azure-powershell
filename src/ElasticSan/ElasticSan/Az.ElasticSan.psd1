@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.1'
+ModuleVersion = '1.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.1.0'; })
 RequiredAssemblies = 'ElasticSan.Autorest/bin/Az.ElasticSan.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'ElasticSan.Autorest/Az.ElasticSan.format.ps1xml'
@@ -106,7 +106,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ElasticSan'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','ElasticSan'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -118,10 +118,18 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded nuget package to signed package.'
+        ReleaseNotes = '* Added support for soft delete on volume group and volumes
+    - ''New-AzElasticSanVolumeGroup''
+    - ''Get-AzElasticSanVolumeGroup''
+    - ''Get-AzElasticSanVolume''
+    - ''Remove-AzElasticSanVolume''
+    - ''Restore-AzElasticSanVolume''
+* Added support for whether disk snapshot backup can be taken for volumes.
+    - ''Test-AzElasticSanVolumeBackup''
+    - ''Test-AzElasticSanVolumeRestore'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -131,7 +139,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

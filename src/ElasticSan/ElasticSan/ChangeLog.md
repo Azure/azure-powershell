@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Added support for soft delete on volume group and volumes
     - `New-AzElasticSanVolumeGroup`
     - `Get-AzElasticSanVolumeGroup`
