@@ -38,6 +38,34 @@ title: Maps
 subject-prefix: $(service-name)
 
 directive:
+  # creator was retired from 2024-09-23
+  - where:
+      verb: New
+      subject: Creator
+    set:
+      breaking-change:
+        deprecated-by-version: 0.9.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/05/19
+
+  - where:
+      verb: Get
+      subject: Creator
+    set:
+      breaking-change:
+        deprecated-by-version: 0.9.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2025/09/30
+
+  - where:
+      verb: Update
+      subject: Creator
+    set:
+      breaking-change:
+        deprecated-by-version: 0.9.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2025/09/30
+
   # remove cmdlet
   - where:
       verb: Set
