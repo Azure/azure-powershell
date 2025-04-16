@@ -18,12 +18,6 @@ Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation [-Benefit <ISavingsPlanOrd
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Validate
-```
-Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body <ISavingsPlanPurchaseValidateRequest>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ValidateViaJsonFilePath
 ```
 Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -JsonFilePath <String> [-DefaultProfile <PSObject>]
@@ -67,19 +61,6 @@ True
 
 Validate savings plan purchase(expended).
 
-### Example 2: Validate savings plan purchase.
-```powershell
-Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
-```
-
-```output
-Valid ReasonCode Reason
------ ---------- ------
-True
-```
-
-Validate savings plan purchase.
-
 ## PARAMETERS
 
 ### -Benefit
@@ -94,21 +75,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanPurchaseValidateRequest
-Parameter Sets: Validate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -193,8 +159,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanPurchaseValidateRequest
 
 ## OUTPUTS
 

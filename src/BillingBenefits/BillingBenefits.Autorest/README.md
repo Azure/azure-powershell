@@ -55,10 +55,10 @@ subject-prefix: $(service-name)
 
 directive:
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update|Validate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^ValidateViaIdentitySavingsPlanOrder$|^ValidateViaIdentitySavingsPlanOrderExpanded$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^ValidateViaIdentitySavingsPlanOrderExpanded$|^ElevateViaIdentity$
     remove: true
 ## No inline
   - no-inline:
