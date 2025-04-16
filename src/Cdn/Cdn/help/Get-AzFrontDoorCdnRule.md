@@ -22,13 +22,13 @@ Get-AzFrontDoorCdnRule -ProfileName <String> -ResourceGroupName <String> -SetNam
 ### GetViaIdentityRuleSet
 ```
 Get-AzFrontDoorCdnRule -Name <String> -RuleSetInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnRule -Name <String> -SetName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

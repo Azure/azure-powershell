@@ -17,7 +17,7 @@ New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGro
  -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
  -CertificateSourceParameterTypeName <String> -CertificateSourceParameterVaultName <String>
  -CertificateSource <String> -ProtocolType <String> [-CertificateSourceParameterSecretVersion <String>]
- [-MinimumTlsVersion <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

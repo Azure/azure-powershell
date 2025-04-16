@@ -21,7 +21,7 @@ Get-AzFrontDoorCdnRuleSet -ProfileName <String> -ResourceGroupName <String> [-Su
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get

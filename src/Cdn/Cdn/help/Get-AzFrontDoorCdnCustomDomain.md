@@ -21,7 +21,7 @@ Get-AzFrontDoorCdnCustomDomain -ProfileName <String> -ResourceGroupName <String>
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

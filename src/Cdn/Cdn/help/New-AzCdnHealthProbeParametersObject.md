@@ -14,7 +14,7 @@ Create an in-memory object for HealthProbeParameters.
 
 ```
 New-AzCdnHealthProbeParametersObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
- [-ProbeProtocol <String>] [-ProbeRequestType <String>] [-ProgressAction <ActionPreference>]
+ [-ProbeProtocol <String>] [-ProbeRequestType <String>]
  [<CommonParameters>]
 ```
 

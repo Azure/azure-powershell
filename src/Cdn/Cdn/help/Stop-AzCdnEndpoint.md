@@ -22,7 +22,7 @@ Stop-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Stri
 ### StopViaIdentityProfile
 ```
 Stop-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentity

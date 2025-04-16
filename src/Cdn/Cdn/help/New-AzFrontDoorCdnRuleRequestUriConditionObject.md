@@ -15,7 +15,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 ```
 New-AzFrontDoorCdnRuleRequestUriConditionObject -ParameterOperator <String> -Name <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

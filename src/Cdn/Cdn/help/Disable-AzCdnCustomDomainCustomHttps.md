@@ -23,13 +23,13 @@ Disable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <S
 ```
 Disable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String>
  -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableViaIdentityEndpoint
 ```
 Disable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

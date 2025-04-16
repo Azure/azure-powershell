@@ -21,7 +21,7 @@ Get-AzFrontDoorCdnEndpoint -ProfileName <String> -ResourceGroupName <String> [-S
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

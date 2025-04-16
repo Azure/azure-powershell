@@ -14,7 +14,7 @@ Create an in-memory object for ProfileLogScrubbing.
 
 ```
 New-AzFrontDoorCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>] [-State <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

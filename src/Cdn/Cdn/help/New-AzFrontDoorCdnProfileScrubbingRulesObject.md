@@ -14,7 +14,7 @@ Create an in-memory object for ProfileScrubbingRules.
 
 ```
 New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <String> [-Selector <String>] [-State <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

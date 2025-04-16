@@ -25,21 +25,21 @@ Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
  [-OriginHostHeader <String>] [-OriginPath <String>] [-ProbePath <String>]
  [-QueryStringCachingBehavior <String>] [-Tag <Hashtable>] [-UrlSigningKey <IUrlSigningKey[]>]
  [-WebApplicationFirewallPolicyLinkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfileExpanded
@@ -50,14 +50,14 @@ Update-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-Content
  [-OptimizationType <String>] [-OriginHostHeader <String>] [-OriginPath <String>] [-ProbePath <String>]
  [-QueryStringCachingBehavior <String>] [-Tag <Hashtable>] [-UrlSigningKey <IUrlSigningKey[]>]
  [-WebApplicationFirewallPolicyLinkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
 ```
 Update-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity>
  -EndpointUpdateProperty <IEndpointUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -68,7 +68,7 @@ Update-AzCdnEndpoint -InputObject <ICdnIdentity> [-ContentTypesToCompress <Strin
  [-OptimizationType <String>] [-OriginHostHeader <String>] [-OriginPath <String>] [-ProbePath <String>]
  [-QueryStringCachingBehavior <String>] [-Tag <Hashtable>] [-UrlSigningKey <IUrlSigningKey[]>]
  [-WebApplicationFirewallPolicyLinkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

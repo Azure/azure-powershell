@@ -26,14 +26,14 @@ Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -
 ```
 Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfileExpanded
@@ -42,14 +42,14 @@ Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileInputObject <IC
  [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
  [-PrivateLinkAlias <String>] [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>]
  [-PrivateLinkResourceId <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
 ```
 Update-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
  -OriginUpdateProperty <IOriginUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityEndpointExpanded
@@ -58,14 +58,14 @@ Update-AzCdnOrigin -Name <String> -EndpointInputObject <ICdnIdentity> [-Enabled]
  [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
  [-PrivateLinkAlias <String>] [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>]
  [-PrivateLinkResourceId <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityEndpoint
 ```
 Update-AzCdnOrigin -Name <String> -EndpointInputObject <ICdnIdentity>
  -OriginUpdateProperty <IOriginUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded

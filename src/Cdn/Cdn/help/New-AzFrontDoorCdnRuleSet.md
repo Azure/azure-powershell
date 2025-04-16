@@ -22,7 +22,7 @@ New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupNam
 ### CreateViaIdentityProfile
 ```
 New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -22,7 +22,7 @@ Get-AzFrontDoorCdnOrigin -OriginGroupName <String> -ProfileName <String> -Resour
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -35,7 +35,7 @@ Get-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Profile
 ### GetViaIdentityOriginGroup
 ```
 Get-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

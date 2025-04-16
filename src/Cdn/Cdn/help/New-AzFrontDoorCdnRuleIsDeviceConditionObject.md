@@ -14,7 +14,7 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 ```
 New-AzFrontDoorCdnRuleIsDeviceConditionObject -ParameterTypeName <String> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>] [-ProgressAction <ActionPreference>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
  [<CommonParameters>]
 ```
 
@@ -91,18 +91,6 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

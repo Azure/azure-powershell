@@ -15,7 +15,7 @@ Create an in-memory object for CdnManagedHttpsParameters.
 ```
 New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <String>
  -CertificateSourceParameterTypeName <String> -ProtocolType <String> -CertificateSource <String>
- [-MinimumTlsVersion <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

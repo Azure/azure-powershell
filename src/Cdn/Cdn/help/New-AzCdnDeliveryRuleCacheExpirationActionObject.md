@@ -14,7 +14,7 @@ Create an in-memory object for DeliveryRuleCacheExpirationAction.
 
 ```
 New-AzCdnDeliveryRuleCacheExpirationActionObject -ParameterCacheBehavior <String> -ParameterTypeName <String>
- [-ParameterCacheDuration <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ParameterCacheDuration <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,18 +76,6 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

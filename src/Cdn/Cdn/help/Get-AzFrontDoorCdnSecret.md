@@ -21,7 +21,7 @@ Get-AzFrontDoorCdnSecret -ProfileName <String> -ResourceGroupName <String> [-Sub
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get

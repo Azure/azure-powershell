@@ -22,7 +22,7 @@ Get-AzCdnOriginGroup -EndpointName <String> -ProfileName <String> -ResourceGroup
 ### GetViaIdentityProfile
 ```
 Get-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -35,7 +35,7 @@ Get-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <String>
 ### GetViaIdentityEndpoint
 ```
 Get-AzCdnOriginGroup -Name <String> -EndpointInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

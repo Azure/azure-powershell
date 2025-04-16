@@ -22,7 +22,7 @@ Get-AzCdnCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGrou
 ### GetViaIdentityProfile
 ```
 Get-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -35,7 +35,7 @@ Get-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileName <String
 ### GetViaIdentityEndpoint
 ```
 Get-AzCdnCustomDomain -Name <String> -EndpointInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

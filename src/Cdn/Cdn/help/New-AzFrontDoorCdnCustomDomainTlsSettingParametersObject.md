@@ -14,7 +14,7 @@ Create an in-memory object for AfdDomainHttpsParameters.
 
 ```
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
- [-MinimumTlsVersion <String>] [-Secret <IResourceReference>] [-ProgressAction <ActionPreference>]
+ [-MinimumTlsVersion <String>] [-Secret <IResourceReference>]
  [<CommonParameters>]
 ```
 

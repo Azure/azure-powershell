@@ -22,7 +22,7 @@ Remove-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <Strin
 ### DeleteViaIdentityProfile
 ```
 Remove-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 

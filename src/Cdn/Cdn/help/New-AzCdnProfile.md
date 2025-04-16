@@ -15,7 +15,7 @@ Creates an CDN profile with the specified profile name under the specified subsc
 ```
 New-AzCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-OriginResponseTimeoutSecond <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

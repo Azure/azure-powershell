@@ -16,7 +16,7 @@ Create an in-memory object for UrlRedirectAction.
 New-AzFrontDoorCdnRuleUrlRedirectActionObject -ParameterRedirectType <String> -ParameterTypeName <String>
  [-ParameterCustomFragment <String>] [-ParameterCustomHostname <String>] [-ParameterCustomPath <String>]
  [-ParameterCustomQueryString <String>] [-ParameterDestinationProtocol <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,18 +146,6 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

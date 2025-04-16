@@ -22,7 +22,7 @@ Remove-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
 ### DeleteViaIdentityProfile
 ```
 Remove-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

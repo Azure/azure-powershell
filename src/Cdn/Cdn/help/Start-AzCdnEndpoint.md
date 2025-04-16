@@ -22,7 +22,7 @@ Start-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Str
 ### StartViaIdentityProfile
 ```
 Start-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity

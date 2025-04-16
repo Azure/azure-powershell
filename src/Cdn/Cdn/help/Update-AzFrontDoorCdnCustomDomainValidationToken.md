@@ -22,7 +22,7 @@ Update-AzFrontDoorCdnCustomDomainValidationToken -CustomDomainName <String> -Pro
 ### RefreshViaIdentityProfile
 ```
 Update-AzFrontDoorCdnCustomDomainValidationToken -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 

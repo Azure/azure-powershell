@@ -22,7 +22,7 @@ Remove-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroup
 ### DeleteViaIdentityProfile
 ```
 Remove-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

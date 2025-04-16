@@ -17,7 +17,7 @@ New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <String>
  [-CacheConfigurationCacheBehavior <String>] [-CacheConfigurationCacheDuration <String>]
  [-CacheConfigurationIsCompressionEnabled <String>] [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <String>] [-OriginGroupId <String>]
- [-OriginGroupOverrideForwardingProtocol <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-OriginGroupOverrideForwardingProtocol <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

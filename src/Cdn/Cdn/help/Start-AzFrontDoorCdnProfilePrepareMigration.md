@@ -20,7 +20,7 @@ Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-Subscr
  -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

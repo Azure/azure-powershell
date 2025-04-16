@@ -22,7 +22,7 @@ Remove-AzFrontDoorCdnSecret -Name <String> -ProfileName <String> -ResourceGroupN
 ### DeleteViaIdentityProfile
 ```
 Remove-AzFrontDoorCdnSecret -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

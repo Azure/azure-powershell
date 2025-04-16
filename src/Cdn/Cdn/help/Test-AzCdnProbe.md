@@ -23,13 +23,13 @@ Test-AzCdnProbe [-SubscriptionId <String>] -ProbeUrl <String> [-DefaultProfile <
 ### ValidateViaJsonFilePath
 ```
 Test-AzCdnProbe [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaJsonString
 ```
 Test-AzCdnProbe [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

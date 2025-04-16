@@ -21,7 +21,7 @@ Get-AzCdnEndpoint -ProfileName <String> -ResourceGroupName <String> [-Subscripti
 ### GetViaIdentityProfile
 ```
 Get-AzCdnEndpoint -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get

@@ -15,7 +15,7 @@ Create an in-memory object for CustomerCertificateParameters.
 ```
 New-AzFrontDoorCdnSecretCustomerCertificateParametersObject [-SecretSourceId <String>]
  [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>] [-Type <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

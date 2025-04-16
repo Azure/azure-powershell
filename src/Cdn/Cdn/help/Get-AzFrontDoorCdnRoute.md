@@ -22,7 +22,7 @@ Get-AzFrontDoorCdnRoute -EndpointName <String> -ProfileName <String> -ResourceGr
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -35,7 +35,7 @@ Get-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <Stri
 ### GetViaIdentityAfdEndpoint
 ```
 Get-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

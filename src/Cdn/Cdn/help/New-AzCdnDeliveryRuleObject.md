@@ -14,7 +14,7 @@ Create an in-memory object for DeliveryRule.
 
 ```
 New-AzCdnDeliveryRuleObject -Action <IDeliveryRuleAction[]> -Order <Int32>
- [-Condition <IDeliveryRuleCondition[]>] [-Name <String>] [-ProgressAction <ActionPreference>]
+ [-Condition <IDeliveryRuleCondition[]>] [-Name <String>]
  [<CommonParameters>]
 ```
 

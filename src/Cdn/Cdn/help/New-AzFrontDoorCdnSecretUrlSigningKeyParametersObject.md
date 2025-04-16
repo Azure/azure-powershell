@@ -14,7 +14,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 
 ```
 New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId <String> [-SecretSourceId <String>]
- [-SecretVersion <String>] [-Type <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SecretVersion <String>] [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

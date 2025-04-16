@@ -14,7 +14,7 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ```
 New-AzCdnDeliveryRuleResponseHeaderActionObject -ParameterHeaderAction <String> -ParameterHeaderName <String>
- -ParameterTypeName <String> [-ParameterValue <String>] [-ProgressAction <ActionPreference>]
+ -ParameterTypeName <String> [-ParameterValue <String>]
  [<CommonParameters>]
 ```
 

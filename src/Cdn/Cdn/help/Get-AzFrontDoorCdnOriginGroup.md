@@ -21,7 +21,7 @@ Get-AzFrontDoorCdnOriginGroup -ProfileName <String> -ResourceGroupName <String> 
 ### GetViaIdentityProfile
 ```
 Get-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

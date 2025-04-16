@@ -23,20 +23,20 @@ Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <Str
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaJsonFilePath
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityProfileExpanded
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- -HostName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -HostName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileInputObje
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileInputObject <ICdnIdentity>
  -CustomDomainProperty <IValidateCustomDomainInput> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded

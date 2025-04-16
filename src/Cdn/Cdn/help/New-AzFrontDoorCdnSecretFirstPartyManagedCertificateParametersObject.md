@@ -14,7 +14,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject [-SubjectAlternativeName <String[]>]
- [-Type <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

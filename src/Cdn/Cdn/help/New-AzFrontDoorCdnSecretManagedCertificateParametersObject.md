@@ -14,7 +14,7 @@ Create an in-memory object for ManagedCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretManagedCertificateParametersObject [-Type <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

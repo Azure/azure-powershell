@@ -18,20 +18,20 @@ Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-Subscr
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-LogScrubbingRule <IProfileScrubbingRules[]>] [-LogScrubbingState <String>]
  [-OriginResponseTimeoutSecond <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-Subscr
 Update-AzFrontDoorCdnProfile -InputObject <ICdnIdentity> [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-LogScrubbingRule <IProfileScrubbingRules[]>]
  [-LogScrubbingState <String>] [-OriginResponseTimeoutSecond <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

@@ -15,7 +15,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 ```
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject [-HttpErrorRange <IHttpErrorRangeParameters[]>]
  [-ResponseBasedDetectedErrorType <String>] [-ResponseBasedFailoverThresholdPercentage <Int32>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

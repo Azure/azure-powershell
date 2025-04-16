@@ -23,20 +23,20 @@ New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileName <String
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- [-HostName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-HostName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,13 +44,13 @@ New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileInputObject 
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
  -CustomDomainProperty <ICustomDomainParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEndpointExpanded
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointInputObject <ICdnIdentity> [-HostName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ New-AzCdnCustomDomain -Name <String> -EndpointInputObject <ICdnIdentity> [-HostN
 ```
 New-AzCdnCustomDomain -Name <String> -EndpointInputObject <ICdnIdentity>
  -CustomDomainProperty <ICustomDomainParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
