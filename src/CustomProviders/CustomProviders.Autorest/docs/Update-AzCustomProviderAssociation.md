@@ -1,44 +1,38 @@
 ---
 external help file:
 Module Name: Az.CustomProviders
-online version: https://learn.microsoft.com/powershell/module/az.customproviders/new-azcustomproviderassociation
+online version: https://learn.microsoft.com/powershell/module/az.customproviders/update-azcustomproviderassociation
 schema: 2.0.0
 ---
 
-# New-AzCustomProviderAssociation
+# Update-AzCustomProviderAssociation
 
 ## SYNOPSIS
-create an association.
+update an association.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzCustomProviderAssociation -Name <String> -Scope <String> [-TargetResourceId <String>]
+Update-AzCustomProviderAssociation -Name <String> -Scope <String> [-TargetResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzCustomProviderAssociation -Name <String> -Scope <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzCustomProviderAssociation -Name <String> -Scope <String> -JsonString <String>
+Update-AzCustomProviderAssociation -InputObject <ICustomProvidersIdentity> [-TargetResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create an association.
+update an association.
 
 ## EXAMPLES
 
-### Example 1: Create a custom provider association
+### Example 1: Update a custom provider association
 ```powershell
 $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
-New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
+Update-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
 ```
 
 ```output
@@ -47,7 +41,7 @@ Location  Name     Type
 East US 2 MyAssoc  Microsoft.CustomProviders/associations
 ```
 
-Create a custom provider association, the associated target provioder must be properly configured with a route for "associations"
+Update a custom provider association, the associated target provioder must be properly configured with a route for "associations"
 
 ## PARAMETERS
 
@@ -82,33 +76,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -117,7 +96,7 @@ The name of the association.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: AssociationName
 
 Required: True
@@ -149,7 +128,7 @@ For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-grou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -164,7 +143,7 @@ The REST resource instance of the target resource for this association.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,6 +188,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity
 
 ## OUTPUTS
 
