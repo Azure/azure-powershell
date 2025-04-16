@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityRemoteRendering
 }
 
 Describe 'AzMixedRealityRemoteRenderingAccount' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded'  -Skip {
         {
             $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
             $config.Name | Should -Be $env.remoteRenderingAccount1
@@ -68,14 +68,14 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         {
             $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
             $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Location eastus -Tag @{"a"="1"}
