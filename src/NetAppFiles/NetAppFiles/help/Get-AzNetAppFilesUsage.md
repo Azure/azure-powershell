@@ -1,33 +1,40 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesfilepathavailability
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesusage
 schema: 2.0.0
 ---
 
-# Get-AzNetAppFilesFilePathAvailability
+# Get-AzNetAppFilesUsage
 
 ## SYNOPSIS
-Check file path availability
+Get usages
 
 ## SYNTAX
 
 ```
-Get-AzNetAppFilesFilePathAvailability -Location <String> -SubnetId <String> -Name <String> [-Zone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzNetAppFilesUsage -Location <String> [-UsageType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Check if a file path is available
+Get current subscription usages
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesFilePathAvailability -Location westus2 -Name filename -SubnetId "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
+Get-AzNetAppFilesUsages -Location "westus" -UsageType "totalTibsPerSubscription"
 ```
 
-Checks if a file path filename is available in subnet "/subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworks/MyVnetName/subnets/MySubNetName"
+Gets `totalTibsPerSubscription` usage infomation on "westus" region
+
+### Example 2
+```powershell
+Get-AzNetAppFilesUsages -Location "westus" 
+```
+
+Lists of usage infomation for all usage types on "westus" region
 
 ## PARAMETERS
 
@@ -61,21 +68,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-File path to verify.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
 
@@ -91,25 +83,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-The Azure Resource URI for a delegated subnet.
-Must have the delegation Microsoft.NetApp/volumes.
-Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Zone
-Logical availability zone
+### -UsageType
+The type of usage
 
 ```yaml
 Type: System.String

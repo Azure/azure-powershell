@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added `FederatedClientId` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
-* Added `Get-AzNetAppFilesUsages`
+* Added `Get-AzNetAppFilesUsage`
 
 ## Version 0.21.0
 * Added new parameter `CoolAccessTieringPolicy` to  `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`,

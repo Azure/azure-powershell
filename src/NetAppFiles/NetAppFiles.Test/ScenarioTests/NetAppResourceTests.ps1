@@ -157,9 +157,9 @@ function Test-CheckNameAvailability
 
 <#
 .SYNOPSIS
-Test GetUsages
+Test GetUsage
 #>
-function Test-GetUsages
+function Test-GetUsage
 {
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
     try
@@ -181,7 +181,7 @@ function Test-GetUsages
         Assert-AreEqual $usageType $usageResult.Name.Value       
 
         # List usages                
-        $usageResult = Get-AzNetAppFilesUsages -ResourceGroupName $resourceGroup -Location $resourceLocation 
+        $usageResult = Get-AzNetAppFilesUsage -ResourceGroupName $resourceGroup -Location $resourceLocation 
         Assert-NotNull $nameAvailability        
     }
     finally

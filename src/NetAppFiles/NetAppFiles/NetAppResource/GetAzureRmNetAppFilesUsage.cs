@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
 {
     [Cmdlet(
     "Get",
-    ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesUsages",
+    ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesUsage",
     DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSRegionInfo))]
-    [Alias("Get-AnfUsages")]
-    public class GetAzureRmNetAppFileUsages: AzureNetAppFilesCmdletBase
+    [Alias("Get-AnfUsage")]
+    public class GetAzureRmNetAppFileUsage: AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
