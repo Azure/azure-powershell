@@ -37,18 +37,6 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters
 
 ## PARAMETERS
 
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubjectAlternativeName
 The list of SANs.
 
