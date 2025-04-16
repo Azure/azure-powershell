@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <NetFxAssemblies Include="$(RepoSrc)lib\netfx\*.dll" />
     <Net45Assemblies Include="$(RepoSrc)lib\net45\*.dll" />
     <Net46Assemblies Include="$(RepoSrc)lib\net46\*.dll" />
     <Net461Assemblies Include="$(RepoSrc)lib\net461\*.dll" />
