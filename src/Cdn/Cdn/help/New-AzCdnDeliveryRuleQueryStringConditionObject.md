@@ -16,6 +16,8 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
+## DESCRIPTION
+Create an in-memory object for DeliveryRuleQueryStringCondition.
 
 ### Example 1: Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition
 ```powershell
