@@ -529,13 +529,7 @@ Potential changes: 1 to create.
 Diagnostics (2): 
 [38;5;136m(resource1) Nested Deployment Skipped. (Code)
 [0m[38;5;136m(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
-[0m";
-
-            string expectedDiagnostics = $@"Diagnostics (2): 
-{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
-{Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
-{Color.Reset}"
-            .Replace("\r\n", Environment.NewLine);
+[0m".Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
