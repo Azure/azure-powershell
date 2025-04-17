@@ -402,9 +402,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection[]",
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IUserAssignedIdentities",
@@ -992,9 +992,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
               "AccessPolicyName": "System.String",
@@ -1513,12 +1513,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
+              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
               "AccessKeysAuthentication": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
               "ClusteringPolicy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]",
@@ -1822,9 +1822,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -2121,9 +2121,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IOperationStatus, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IOperationStatus, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[]",
@@ -2868,9 +2868,9 @@
         {
           "Name": "Parameter",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String[]"
             }
@@ -3259,9 +3259,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String[]"
                   }
@@ -3667,9 +3667,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String[]"
                   }
@@ -4083,11 +4083,11 @@
         {
           "Name": "Parameter",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
+              "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
               "GroupNickname": "System.String"
             }
           },
@@ -4105,10 +4105,10 @@
         {
           "Name": "LinkedDatabase",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4283,10 +4283,10 @@
               "ParameterMetadata": {
                 "Name": "LinkedDatabase",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4505,11 +4505,11 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
+                    "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
                     "GroupNickname": "System.String"
                   }
                 },
@@ -4711,10 +4711,10 @@
               "ParameterMetadata": {
                 "Name": "LinkedDatabase",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4899,11 +4899,11 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
+                    "LinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
                     "GroupNickname": "System.String"
                   }
                 },
@@ -5277,9 +5277,9 @@
         {
           "Name": "Parameter",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String[]"
             }
@@ -5668,9 +5668,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String[]"
                   }
@@ -6076,9 +6076,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String[]"
                   }
@@ -6423,9 +6423,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection[]",
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IUserAssignedIdentities",
@@ -6547,10 +6547,10 @@
         {
           "Name": "Module",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6593,10 +6593,10 @@
         {
           "Name": "LinkedDatabase",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7194,10 +7194,10 @@
               "ParameterMetadata": {
                 "Name": "Module",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7270,10 +7270,10 @@
               "ParameterMetadata": {
                 "Name": "LinkedDatabase",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8160,9 +8160,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
               "AccessPolicyName": "System.String",
@@ -8243,9 +8243,9 @@
         {
           "Name": "Parameter",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
               "AccessPolicyName": "System.String",
@@ -8694,9 +8694,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
                     "AccessPolicyName": "System.String",
@@ -9088,9 +9088,9 @@
               "ParameterMetadata": {
                 "Name": "Parameter",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessPolicyAssignment, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
                     "AccessPolicyName": "System.String",
@@ -9407,12 +9407,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
+              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
               "AccessKeysAuthentication": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
               "ClusteringPolicy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]",
@@ -9468,10 +9468,10 @@
         {
           "Name": "Module",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9514,10 +9514,10 @@
         {
           "Name": "LinkedDatabase",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9719,10 +9719,10 @@
               "ParameterMetadata": {
                 "Name": "Module",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9795,10 +9795,10 @@
               "ParameterMetadata": {
                 "Name": "LinkedDatabase",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10054,9 +10054,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -12658,9 +12658,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection[]",
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IUserAssignedIdentities",
@@ -13917,12 +13917,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
+              "GeoReplicationLinkedDatabase": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+              "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
               "AccessKeysAuthentication": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
               "ClusteringPolicy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]",
@@ -16330,16 +16330,16 @@
       "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "ElementType": "System.String"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase"
+    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.LinkState]",
         "Id": "System.String"
@@ -16418,16 +16418,16 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule"
+    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[], Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule, Az.RedisEnterpriseCache.private, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Arg": "System.String",
         "Name": "System.String",

@@ -26,13 +26,13 @@ PrimaryKey                                   SecondaryKey
 primary-key                                  secondary-key
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 #>
 function Get-AzRedisEnterpriseCacheKey {
     [Alias('Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IAccessKeys])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
