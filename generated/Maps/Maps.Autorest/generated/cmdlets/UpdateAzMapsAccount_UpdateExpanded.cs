@@ -6,21 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Updates a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
+    /// update a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMapsAccount_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Description(@"Updates a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Description(@"update a Maps Account. Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}", ApiVersion = "2021-02-01")]
     public partial class UpdateAzMapsAccount_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -36,13 +39,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>Parameters used to update an existing Maps Account.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountUpdateParameters _mapsAccountUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.MapsAccountUpdateParameters();
+        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParameters _mapsAccountUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.MapsAccountUpdateParameters();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Maps.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Maps.Maps Client => Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.ClientAPI;
@@ -71,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter DisableLocalAuth { get => _mapsAccountUpdateParametersBody.DisableLocalAuth ?? default(global::System.Management.Automation.SwitchParameter); set => _mapsAccountUpdateParametersBody.DisableLocalAuth = value; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -94,9 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         ReadOnly = false,
         Description = @"Get or Set Kind property.",
         SerializedName = @"kind",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind Kind { get => _mapsAccountUpdateParametersBody.Kind ?? ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind)""); set => _mapsAccountUpdateParametersBody.Kind = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.PSArgumentCompleterAttribute("Gen1", "Gen2")]
+        public string Kind { get => _mapsAccountUpdateParametersBody.Kind ?? null; set => _mapsAccountUpdateParametersBody.Kind = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -124,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -164,9 +185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         ReadOnly = false,
         Description = @"The name of the SKU, in standard format (such as S0).",
         SerializedName = @"name",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name SkuName { get => _mapsAccountUpdateParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name)""); set => _mapsAccountUpdateParametersBody.SkuName = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.PSArgumentCompleterAttribute("S0", "S1", "G2")]
+        public string SkuName { get => _mapsAccountUpdateParametersBody.SkuName ?? null; set => _mapsAccountUpdateParametersBody.SkuName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -182,7 +203,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Maps.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -199,32 +221,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountUpdateParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountUpdateParametersTags Tag { get => _mapsAccountUpdateParametersBody.Tag ?? null /* object */; set => _mapsAccountUpdateParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountUpdateParametersTags Tag { get => _mapsAccountUpdateParametersBody.Tag ?? null /* object */; set => _mapsAccountUpdateParametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -247,6 +269,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -311,8 +338,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -368,7 +420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -381,12 +433,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AccountsUpdate(SubscriptionId, ResourceGroupName, Name, _mapsAccountUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AccountsUpdate(SubscriptionId, ResourceGroupName, Name, _mapsAccountUpdateParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_mapsAccountUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -406,7 +458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzMapsAccount_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzMapsAccount_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzMapsAccount_UpdateExpanded()
         {
@@ -432,12 +484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -454,15 +506,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_mapsAccountUpdateParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_mapsAccountUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -472,12 +524,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount> response)
         {
             using( NoSynchronizationContext )
             {
@@ -489,8 +541,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }
