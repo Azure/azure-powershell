@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 40923289b489ac3f2a96d274ca5fbf0e4457e5d4
+commit: 11ca9a0f133d5047d4ee822ac81b6ef1d0ca397c
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2025-05-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -212,10 +212,6 @@ directive:
     hide: true
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
-    hide: true
-  - where:
-      verb: Get
-      subject: Sku
     hide: true
 
   # DatabaseName parameter to have value 'default'
