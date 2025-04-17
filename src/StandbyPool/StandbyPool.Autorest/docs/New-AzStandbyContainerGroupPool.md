@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Create a StandbyContainerGroupPoolResource
 New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>]
  [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -35,11 +35,11 @@ New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: Create a standby container group pool
+### Example 1: Create a standby container pool
 ```powershell
 New-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -77,7 +77,7 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-The above command created a standby container group pool.
+The above command created a standby container pool.
 
 ## PARAMETERS
 
@@ -299,6 +299,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies zones of standby container group pools.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

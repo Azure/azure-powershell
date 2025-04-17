@@ -1,7 +1,7 @@
 @{
   GUID = 'bb1182ed-2a39-47be-8b39-46b13e973cea'
   RootModule = './Az.StandbyPool.psm1'
-  ModuleVersion = '0.2.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
