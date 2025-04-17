@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
+using AzDev.Models.Assembly;
 
-namespace AzDev.Models {
-    internal static class Constants
+namespace AzDev.Services.Assembly
+{
+    /// <summary>
+    /// Service to parse assembly metadata.
+    /// </summary>
+    internal interface IAssemblyMetadataService
     {
-        public const string DevContextFileName = "DevContext.json";
-        public static string DevContextFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AzPSDev", DevContextFileName);
+        RuntimeAssembly ParseAssemblyMetadata(string path);
     }
 }
