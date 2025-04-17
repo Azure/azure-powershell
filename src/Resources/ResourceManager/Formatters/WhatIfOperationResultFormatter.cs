@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var formatter = new WhatIfOperationResultFormatter(builder);
 
             formatter.FormatNoiseNotice();
-            formatter.FormatLegend(result.Changes);
+            formatter.FormatLegend(result.Changes, result.PotentialChanges);
             formatter.FormatResourceChanges(result.Changes, true);
             formatter.FormatStats(result.Changes, true);
             formatter.FormatResourceChanges(result.PotentialChanges, false);
@@ -204,8 +204,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
         }
 
-        private void FormatLegend(IList<PSWhatIfChange> resourceChanges)
+        private void FormatLegend(IList<PSWhatIfChange> changes, IList<PSWhatIfChange> potentialChanges)
         {
+            var resourceChanges = changes ?? new List<PSWhatIfChange>();
+
+            if (potentialChanges != null && potentialChanges.Count > 0)
+            {
+                resourceChanges = resourceChanges.Concat(potentialChanges).ToList();
+            }
+
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
                 return;
