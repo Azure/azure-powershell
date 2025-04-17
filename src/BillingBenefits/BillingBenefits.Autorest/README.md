@@ -58,7 +58,7 @@ directive:
       variant: ^(Create|Update|Validate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^ValidateViaIdentitySavingsPlanOrderExpanded$|^ElevateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 ## No inline
   - no-inline:

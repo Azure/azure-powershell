@@ -12,9 +12,16 @@ Elevate as owner on savings plan order based on billing permissions.
 
 ## SYNTAX
 
+### Elevate (Default)
 ```
 Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ElevateViaIdentity
+```
+Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject <IBillingBenefitsIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +38,22 @@ Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId "e0b1f446-568
 Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope
 ----                                 -----------                          ----------------                                                                        -----
 5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
+```
+
+Elevate savings plan order
+
+### Example 2: Elevate savings plan order via identiy	
+```powershell
+$identity = @{	
+            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"	
+}	
+$response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identity	
+```
+
+```output
+Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope	
+----                                 -----------                          ----------------                                                                        -----	
+5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b	
 ```
 
 Elevate savings plan order
@@ -53,12 +76,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+Parameter Sets: ElevateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SavingsPlanOrderId
 Order ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Elevate
 Aliases:
 
 Required: True
@@ -103,6 +141,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 
 ## OUTPUTS
 

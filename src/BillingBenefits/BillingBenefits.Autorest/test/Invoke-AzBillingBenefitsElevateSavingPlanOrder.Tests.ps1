@@ -28,7 +28,7 @@ Describe 'Invoke-AzBillingBenefitsElevateSavingPlanOrder' {
         ExecuteTestCases($response)
     }
 
-    It 'ElevateViaIdentity' -Skip {
+    It 'ElevateViaIdentity' {
         $identity = @{
             SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"
         }

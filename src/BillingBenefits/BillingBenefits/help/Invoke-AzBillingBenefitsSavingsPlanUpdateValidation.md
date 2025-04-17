@@ -33,6 +33,13 @@ Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -Sav
  [<CommonParameters>]
 ```
 
+### ValidateViaIdentitySavingsPlanOrderExpanded
+```
+Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String>
+ -SavingsPlanOrderInputObject <IBillingBenefitsIdentity> [-Benefit <ISavingsPlanUpdateRequestProperties[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ValidateViaIdentityExpanded
 ```
 Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject <IBillingBenefitsIdentity>
@@ -72,7 +79,7 @@ Validate savings plan patch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanUpdateRequestProperties[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentitySavingsPlanOrderExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +155,7 @@ ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, ValidateViaIdentitySavingsPlanOrderExpanded
 Aliases:
 
 Required: True
@@ -170,6 +177,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SavingsPlanOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+Parameter Sets: ValidateViaIdentitySavingsPlanOrderExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
