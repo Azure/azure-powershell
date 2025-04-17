@@ -318,6 +318,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "MV3";
                 return sku;
             }
+            else if (string.Equals("PremiumV4", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "V4";
+                return sku;
+            }
+            else if (string.Equals("PremiumMV4", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "MV4";
+                return sku;
+            }
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "PC" + workerSize + 1;
