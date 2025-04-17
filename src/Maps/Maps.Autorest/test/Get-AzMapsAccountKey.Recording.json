@@ -39,7 +39,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"primaryKey\": \"7TRsmWktSTrYdV65NyhWQNsLIBECmNMaoqyDjm8SkFRaKLfQMk6CJQQJ99BDACrJL3JoTCpDAAAgAZMP3Bl4\",\n  \"secondaryKey\": \"9bqJw5ZIQlWGygIpWppcEv3cdNP8oAnzIXOrn7EN2MaKjkSqx0WOJQQJ99BDACrJL3JoTCpDAAAgAZMP1hxh\",\n  \"primaryKeyLastUpdated\": \"2025-04-16T02:01:47.0865805Z\",\n  \"secondaryKeyLastUpdated\": \"2025-04-16T02:01:47.0866587Z\"\n}",
+      "Content": "{\n  \"primaryKey\": \"*****\",\n  \"secondaryKey\": \"*****\",\n  \"primaryKeyLastUpdated\": \"2025-04-16T02:01:47.0865805Z\",\n  \"secondaryKeyLastUpdated\": \"2025-04-16T02:01:47.0866587Z\"\n}",
       "isContentBase64": false
     }
   }
