@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityRemoteRendering
 Describe 'AzMixedRealityRemoteRenderingAccount' {
     It 'CreateExpanded'  -Skip {
         {
-            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
+            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -EnableSystemAssignedIdentity
             $config.Name | Should -Be $env.remoteRenderingAccount1
 
-            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount2 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
+            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount2 -ResourceGroupName $env.resourceGroup -Location eastus -EnableSystemAssignedIdentity
             $config.Name | Should -Be $env.remoteRenderingAccount2
         } | Should -Not -Throw
     }
@@ -70,7 +70,7 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
 
     It 'UpdateExpanded' -Skip {
         {
-            $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount1
         } | Should -Not -Throw
     }
@@ -78,7 +78,7 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
     It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
-            $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount2
         } | Should -Not -Throw
     }
