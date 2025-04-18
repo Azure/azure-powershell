@@ -1,3 +1,5 @@
+#Added T to the start of the file name the Stop(cancellation) tests has to run before the Remove(deletion) tests.
+#The tests are executed in alphabetical order.
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
