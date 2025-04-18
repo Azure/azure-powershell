@@ -1,5 +1,5 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 schema: 2.0.0
@@ -13,9 +13,9 @@ Exports a database file from target database.
 ## SYNTAX
 
 ```
-Export-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -SasUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,3 +200,4 @@ ALIASES
 Export-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
+

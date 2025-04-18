@@ -1,5 +1,5 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 schema: 2.0.0
@@ -13,13 +13,12 @@ Creates a database for a Redis Enterprise cache.
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Module <IModule[]>] [-ClientProtocol <Protocol>] [-Port <Int32>] [-EvictionPolicy <EvictionPolicy>]
- [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-ClusteringPolicy <ClusteringPolicy>]
- [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <RdbFrequency>] [-AccessKeysAuthentication <AccessKeysAuthentication>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
+ [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
+ [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +35,7 @@ New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
 ```
 
 This command creates a database named default for a Redis Enterprise cache named MyCache.
@@ -49,6 +49,7 @@ New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup"
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
 This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2.
@@ -220,7 +221,7 @@ To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and 
 To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +237,7 @@ Optional set of redis modules to enable in this database - modules can only be a
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IModule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -380,8 +381,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaselinktoreplicationgroup
 schema: 2.0.0
@@ -13,34 +13,33 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 
 ## SYNTAX
 
-### ForceViaIdentity (Default)
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceExpanded
+### ForceExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -GroupNickname <String>
- -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-GeoReplicationGroupNickname <String>]
+ [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Force
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Parameter <IForceLinkParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ -ResourceGroupName <String> -Parameter <IForceLinkParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ForceViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ForceViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-GeoReplicationGroupNickname <String>] [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,10 +74,13 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, Force
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: True
@@ -93,7 +95,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, Force
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: True
@@ -119,7 +121,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupNickname
+### -GeoReplicationGroupNickname
 The name of the group of linked database resources.
 This should match the existing replication group name.
 
@@ -128,7 +130,24 @@ Type: System.String
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoReplicationLinkedDatabase
+The resource IDs of the databases that are expected to be linked and included in the replication group.
+This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
+To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,23 +167,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -LinkedDatabase
-The resource IDs of the databases that are expected to be linked and included in the replication group.
-This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
-To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,8 +190,8 @@ Parameters for reconfiguring active geo-replication, of an existing database tha
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters
-Parameter Sets: ForceViaIdentity, Force
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
+Parameter Sets: Force, ForceViaIdentity
 Aliases:
 
 Required: True
@@ -205,7 +207,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, Force
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: True
@@ -220,7 +222,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, Force
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: False
@@ -266,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IForceLinkParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
@@ -277,3 +279,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

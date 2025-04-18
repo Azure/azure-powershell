@@ -1,5 +1,5 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 schema: 2.0.0
@@ -15,19 +15,19 @@ Updates an existing Redis Enterprise database
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-ClientProtocol <Protocol>]
- [-EvictionPolicy <EvictionPolicy>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
  [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
- [-AccessKeysAuthentication <AccessKeysAuthentication>] [-ClientProtocol <Protocol>]
- [-EvictionPolicy <EvictionPolicy>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
+ [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
  [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +44,7 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
 This command updates the client protocol of the database for the Redis Enterprise cache named MyCache.
@@ -57,6 +58,7 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
+
 ```
 
 This command updates the client protocol and eviction policy of the database for the Redis Enterprise cache named MyCache.
@@ -324,8 +326,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IDatabase
 
 ## NOTES
 
 ## RELATED LINKS
+
