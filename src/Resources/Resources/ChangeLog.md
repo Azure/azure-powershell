@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
+* Added PotentialChanges to WhatIf result.
 
 ## Version 7.10.0
 * Fixed the issue that Get-AzReource not working with `-ExpandProperties`. [#11248]
