@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
                 var formatter = new WhatIfOperationResultFormatter(builder);
 
-                formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>());
+                formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>(), new List<PSWhatIfChange>());
 
                 WriteWarning(builder.ToString());
             }
