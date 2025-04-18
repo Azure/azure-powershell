@@ -1,64 +1,52 @@
 ---
-external help file:
+external help file: Az.Datadog-help.xml
 Module Name: Az.Datadog
-online version: https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogtagrule
+online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogtagrule
 schema: 2.0.0
 ---
 
-# New-AzDatadogTagRule
+# Update-AzDatadogTagRule
 
 ## SYNOPSIS
-create a tag rule set for a given monitor resource.
+update a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
+Update-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
  [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentityMonitorExpanded
 ```
-New-AzDatadogTagRule -InputObject <IDatadogIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
- [-LogRuleSendAadLog] [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog]
- [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityMonitorExpanded
-```
-New-AzDatadogTagRule -MonitorInputObject <IDatadogIdentity> -Name <String>
+Update-AzDatadogTagRule -Name <String> -MonitorInputObject <IDatadogIdentity>
  [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendResourceLog]
  [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDatadogTagRule -InputObject <IDatadogIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
+ [-LogRuleSendAadLog] [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog]
+ [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a tag rule set for a given monitor resource.
+update a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Create or update a tag rule set for a given monitor resource
+### Example 1: Update a tag rule set for a given monitor resource
 ```powershell
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-New-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'test' -LogRuleFilteringTag $ftobjArray
+Update-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'test' -LogRuleFilteringTag $ftobjArray
 ```
 
 ```output
@@ -67,14 +55,14 @@ Name    Type
 default microsoft.Datadog/monitors/tagrules
 ```
 
-This command creates or updates a tag rule set for a given monitor resource.
+This command updates a tag rule set for a given monitor resource.
 
-### Example 2: Create or update a tag rule set for a given monitor resource by pipeline
+### Example 2: Update a tag rule set for a given monitor resource by pipeline
 ```powershell
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | New-AzDatadogTagRule -LogRuleFilteringTag $ftobjArray
+Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | Update-AzDatadogTagRule -LogRuleFilteringTag $ftobjArray
 ```
 
 ```output
@@ -83,7 +71,7 @@ Name    Type
 default microsoft.Datadog/monitors/tagrules
 ```
 
-This command creates or updates a tag rule set for a given monitor resource by pipeline.
+This command updates a tag rule set for a given monitor resource by pipeline.
 
 ## PARAMETERS
 
@@ -108,43 +96,13 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,7 +115,7 @@ If Include actions are specified, the rules will only include resources with the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -172,7 +130,7 @@ Flag specifying if AAD logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,7 +145,7 @@ Flag specifying if Azure resource logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,7 +160,7 @@ Flag specifying if Azure subscription logs should be sent for the Monitor resour
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,7 +178,7 @@ If Include actions are specified, the rules will only include resources with the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,7 +193,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
-Parameter Sets: CreateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -250,7 +208,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -265,7 +223,7 @@ Rule set name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -281,7 +239,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -296,7 +254,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -351,4 +309,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

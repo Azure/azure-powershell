@@ -1,74 +1,68 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
+online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogsinglesignonconfiguration
 schema: 2.0.0
 ---
 
-# Update-AzDatadogMonitor
+# Update-AzDatadogSingleSignOnConfiguration
 
 ## SYNOPSIS
-update a monitor resource.
+Configures single-sign-on for this resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MonitoringStatus <String>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDatadogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatadogMonitor -InputObject <IDatadogIdentity> [-MonitoringStatus <String>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzDatadogSingleSignOnConfiguration -InputObject <IDatadogIdentity> [-EnterpriseAppId <String>]
+ [-SingleSignOnState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### UpdateViaIdentityMonitorExpanded
 ```
-Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDatadogSingleSignOnConfiguration -MonitorInputObject <IDatadogIdentity> -Name <String>
+ [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a monitor resource.
+Configures single-sign-on for this resource.
 
 ## EXAMPLES
 
-### Example 1: Update a monitor resource
+### Example 1: Configures single-sign-on for Data monitor resource
 ```powershell
-Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
+Update-AzDatadogSingleSignOnConfiguration -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' -SingleSignOnState Enable -EnterpriseAppId 00000000-0000-0000-0000-000000000000
 ```
 
 ```output
-Location    Name         Type
---------    ----         ----
-eastus2euap Datadog microsoft.Datadog/monitors
+Name    Type
+----    ----
+default microsoft.Datadog/monitors/singlesignonconfigurations
 ```
 
-This command updates a monitor resource.
+This command configures single-sign-on for Data monitor resource.
 
-### Example 2: Update a monitor resource by pipeline
+### Example 2: Configures single-sign-on for Data monitor resource by pipeline
 ```powershell
-Get-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog | Update-AzDatadogMonitor -Tag @{'key1'='value1'; 'key2'='value2'}
+Get-AzDatadogSingleSignOnConfiguration -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | Update-AzDatadogSingleSignOnConfiguration -SingleSignOnState Disable -EnterpriseAppId 00000000-0000-0000-0000-000000000000
 ```
 
 ```output
-Location    Name         Type
---------    ----         ----
-eastus2euap Datadog microsoft.Datadog/monitors
+Name    Type
+----    ----
+default microsoft.Datadog/monitors/singlesignonconfigurations
 ```
 
-This command updates a monitor resource by pipeline.
+This command configures single-sign-on for Data monitor resource by pipeline.
 
 ## PARAMETERS
 
@@ -103,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnterpriseAppId
+The Id of the Enterprise App used for Single sign-on.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -118,45 +127,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -MonitorInputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Update operation
+### -MonitorName
+Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MonitoringStatus
-Flag specifying if the resource monitoring is enabled or disabled.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,12 +158,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Monitor resource name
+Configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: MonitorName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -199,7 +193,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -209,12 +203,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
-Name of the SKU.
+### -SingleSignOnState
+Various states of the SSO resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,27 +223,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-The new tags of the monitor resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -294,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogSingleSignOnResource
 
 ## NOTES
 
