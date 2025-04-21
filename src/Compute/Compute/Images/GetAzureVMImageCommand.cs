@@ -97,6 +97,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string OrderBy { get; set; }
 
+        [PSArgumentCompleter("properties", "properties/imageDeprecationStatus")]
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = false,
+            HelpMessage = "The expand expression to apply on the operation.",
+            ValueFromPipelineByPropertyName = true)]
+        public string Expand { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -113,6 +120,7 @@ namespace Microsoft.Azure.Commands.Compute
                             this.PublisherName,
                             this.Offer,
                             this.Skus,
+                            expand: this.Expand,
                             top: this.Top,
                             orderby: this.OrderBy
                             ).GetAwaiter().GetResult();
@@ -168,11 +176,13 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
-                    var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                    
+                    var result = this.VirtualMachineImageClient.ListWithPropertiesWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
+                        this.Expand != null ? this.Expand : "properties",
                         top: this.Top,
                         orderby: this.OrderBy
                         ).GetAwaiter().GetResult();
@@ -187,7 +197,10 @@ namespace Microsoft.Azure.Commands.Compute
                                      Version = r.Name,
                                      PublisherName = this.PublisherName,
                                      Offer = this.Offer,
-                                     Skus = this.Skus
+                                     Skus = this.Skus,
+                                     Architecture = r.Architecture,
+                                     HyperVGeneration = r.HyperVGeneration,
+                                     ImageDeprecationStatus = r.ImageDeprecationStatus
                                  };
 
                     WriteObject(SubResourceWildcardFilter(Version, images), true);
