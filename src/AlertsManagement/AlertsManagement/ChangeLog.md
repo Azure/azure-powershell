@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.6.4
-* bugfix of default pageCount from 0 to 25.
+* Bugfix of default pageCount from 0 to 25.
 
 ## Version 0.6.3
 * Upgraded nuget package to signed package.
