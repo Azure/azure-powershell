@@ -124,12 +124,6 @@ function Set-AzConnectedKubernetes {
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.Nullable[System.Boolean]]
-        # Determines whether to enable a system-assigned identity for the resource.
-        ${EnableSystemAssignedIdentity},
-
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
@@ -486,8 +480,8 @@ function Set-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('CustomLocationsOid')) {
             $Null = $PSBoundParameters.Remove('CustomLocationsOid')
         }
-        $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
-        $PSBoundParameters.Add('IdentityType', $IdentityType)
+
+        $PSBoundParameters.Add('EnableSystemAssignedIdentity', $true)
 
         #Region check helm install
         Confirm-HelmVersion `

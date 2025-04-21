@@ -1,0 +1,5 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Dashboard","Update-AzGrafana","1","1","Unassigned_Parameter","5013","1","Update-AzGrafana -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$true","Assign value for the parameter -EnableSystemAssignedIdentity."
+"Az.Dashboard","Update-AzGrafana","2","1","Unassigned_Parameter","5013","1","Update-AzGrafana -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$true","Assign value for the parameter -EnableSystemAssignedIdentity."
+"Az.Dashboard","Update-AzGrafana","1","1","Unassigned_Parameter","5013","1","Update-AzGrafana -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$true","Assign value for the parameter -EnableSystemAssignedIdentity."
+"Az.Dashboard","Update-AzGrafana","2","1","Unassigned_Parameter","5013","1","Update-AzGrafana -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$true","Assign value for the parameter -EnableSystemAssignedIdentity."

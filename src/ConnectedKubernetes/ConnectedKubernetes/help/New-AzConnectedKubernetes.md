@@ -19,12 +19,11 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
  [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
  [-ArcAgentProfileSystemComponent <ISystemComponent[]>] [-KubeConfig <String>] [-KubeContext <String>]
- [-AzureHybridBenefit <String>] [-Distribution <String>] [-DistributionVersion <String>]
- [-EnableSystemAssignedIdentity] [-GatewayEnabled] [-Infrastructure <String>] [-Kind <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <String>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled]
- [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled] [-AcceptEULA]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ConfigurationSetting <Hashtable>]
+ [-AzureHybridBenefit <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
+ [-Infrastructure <String>] [-Kind <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-CustomLocationsOid <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
+ [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ConfigurationSetting <Hashtable>]
  [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -407,21 +406,6 @@ The Kubernetes distribution version on this connected cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
