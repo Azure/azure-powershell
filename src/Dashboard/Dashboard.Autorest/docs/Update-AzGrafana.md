@@ -41,7 +41,7 @@ This API is idempotent, so user can either update a new grafana or update an exi
 
 ### Example 1: Update a workspace for Grafana resource.
 ```powershell
-Update-AzGrafana -GrafanaName azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
+Update-AzGrafana -GrafanaName azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity $true -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
 ```
 
 ```output
@@ -54,7 +54,7 @@ Update a workspace for Grafana resource.
 
 ### Example 2: Update a workspace for Grafana resource.
 ```powershell
-Get-AzGrafana -ResourceGroupName azpstest-gp -GrafanaName azpstest-grafana | Update-AzGrafana -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
+Get-AzGrafana -ResourceGroupName azpstest-gp -GrafanaName azpstest-grafana | Update-AzGrafana -ApiKey Enabled -DeterministicOutboundIP 'Enabled' -EnableSystemAssignedIdentity $true -PublicNetworkAccess 'Enabled' -ZoneRedundancy 'Enabled' -Tag @{"Environment"="Dev"}
 ```
 
 ```output
