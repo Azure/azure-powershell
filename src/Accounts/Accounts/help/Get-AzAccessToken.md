@@ -59,7 +59,7 @@ Get access token of Microsoft Graph endpoint for current account
 
 ### -AsSecureString
 Specifiy to convert output token as a secure string.
-Please always use the parameter for security purpose and to avoid the upcoming breaking chang and refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq) for how to convert from `SecureString` to plain text.
+Please always use the parameter for security purpose and to avoid the upcoming breaking change and refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq) for how to convert from `SecureString` to plain text.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

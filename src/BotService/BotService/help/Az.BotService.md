@@ -36,5 +36,5 @@ Returns a BotService specified by the parameters.
 Deletes a Bot Service from the resource group.
 
 ### [Update-AzBotService](Update-AzBotService.md)
-Updates a Bot Service
+update a Bot Service
 
