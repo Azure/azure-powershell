@@ -25,12 +25,12 @@ Lists all the available HealthBot operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IOperationDetail
+Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IOperationDetail
 .Link
 https://learn.microsoft.com/powershell/module/az.healthbot/get-azhealthbotoperation
 #>
 function Get-AzHealthBotOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IOperationDetail])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IOperationDetail])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.HealthBot.private\Get-AzHealthBotOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
