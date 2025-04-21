@@ -66,18 +66,14 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithManagementClients(context =>
                 {
                     AdlsClientFactory.IsTest = true;
-                    var creds = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
-                    // https://learn.microsoft.com/en-us/answers/questions/1304758/azure-identity-authenticationfailedexception).
-
-
-                    // Testing - Retrieve an access token for logging
-                    var tokenRequestContext = new TokenRequestContext(new[] { "https://management.azure.com/.default" });
-                    var accessToken = creds.GetToken(tokenRequestContext, default);
-
-                    // Testing - Log the credentials and access token
-                    Console.WriteLine("Credentials: " + creds.GetType().Name);
-                    Console.WriteLine("Access Token: " + accessToken.Token);
-                    Console.WriteLine("Access Token Expires On: " + accessToken.ExpiresOn);
+                    var creds = new DefaultAzureCredential(new DefaultAzureCredentialOptions { 
+                        ExcludeSharedTokenCacheCredential = true,
+                        ExcludeVisualStudioCredential = true,
+                        ExcludeVisualStudioCodeCredential = true,
+                        ExcludeAzureCliCredential = true,
+                        ExcludeEnvironmentCredential = true,
+                        ExcludeManagedIdentityCredential = true
+                    });
 
                     var handlers = context.AddHandlers(new TokenCredentialAdapter(creds), new AdlMockDelegatingHandler());
                     AdlsClientFactory.CustomDelegatingHAndler = handlers;
