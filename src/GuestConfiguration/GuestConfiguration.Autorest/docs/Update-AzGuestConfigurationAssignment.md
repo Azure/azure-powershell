@@ -1,75 +1,46 @@
 ---
-external help file: Az.GuestConfiguration-help.xml
+external help file:
 Module Name: Az.GuestConfiguration
-online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
+online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/update-azguestconfigurationassignment
 schema: 2.0.0
 ---
 
-# New-AzGuestConfigurationAssignment
+# Update-AzGuestConfigurationAssignment
 
 ## SYNOPSIS
-create an association between a VM and guest configuration
+update an association between a ARC machine and guest configuration
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VMName <String> -GuestConfigurationContentHash <String>
- -GuestConfigurationContentUri <String> -GuestConfigurationName <String> -GuestConfigurationVersion <String>
- [-Context <String>] [-GuestConfigurationAssignmentType <String>] [-GuestConfigurationKind <String>]
- [-GuestConfigurationParameter <IConfigurationParameter[]>]
- [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VMName <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -MachineName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Context <String>]
+ [-GuestConfigurationAssignmentType <String>] [-GuestConfigurationContentHash <String>]
+ [-GuestConfigurationContentUri <String>] [-GuestConfigurationKind <String>]
+ [-GuestConfigurationName <String>] [-GuestConfigurationParameter <IConfigurationParameter[]>]
+ [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-GuestConfigurationVersion <String>]
+ [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VMName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString1
-```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -MachineName <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath1
-```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -MachineName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -MachineName <String> -GuestConfigurationContentHash <String>
- -GuestConfigurationContentUri <String> -GuestConfigurationName <String> -GuestConfigurationVersion <String>
- [-Context <String>] [-GuestConfigurationAssignmentType <String>] [-GuestConfigurationKind <String>]
- [-GuestConfigurationParameter <IConfigurationParameter[]>]
- [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzGuestConfigurationAssignment -InputObject <IGuestConfigurationIdentity> [-Context <String>]
+ [-GuestConfigurationAssignmentType <String>] [-GuestConfigurationContentHash <String>]
+ [-GuestConfigurationContentUri <String>] [-GuestConfigurationKind <String>]
+ [-GuestConfigurationName <String>] [-GuestConfigurationParameter <IConfigurationParameter[]>]
+ [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-GuestConfigurationVersion <String>]
+ [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create an association between a VM and guest configuration
+update an association between a ARC machine and guest configuration
 
 ## EXAMPLES
 
-### Example 1: Create an association between a VM and guest configuration
+### Example 1: Update an association between a ARC machine and guest configuration
 ```powershell
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -VMName test-vm -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
+Update-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
 ```
 
 ```output
@@ -78,20 +49,7 @@ Location      Name     ResourceGroupName
 westcentralus test-assignment test-rg
 ```
 
-Create an association between a VM and guest configuration
-
-### Example 2: Create an association between a ARC machine and guest configuration
-```powershell
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName test-assignment -ResourceGroupName test-rg -MachineName test-machine -GuestConfigurationName test-config -GuestConfigurationVersion "1.0.0.3" -GuestConfigurationContentUri "https://thisisfake/package" -GuestConfigurationContentHash "123contenthash"
-```
-
-```output
-Location      Name     ResourceGroupName
---------      ----     -----------------
-westcentralus test-assignment test-rg
-```
-
-Create an association between a ARC machine and guest configuration
+This command updates an association between a ARC machine and guest configuration.
 
 ## PARAMETERS
 
@@ -101,7 +59,7 @@ Ex: Azure Policy
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +90,7 @@ Name of the guest configuration assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -148,7 +106,7 @@ Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAn
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -163,10 +121,10 @@ Combined hash of the guest configuration package and configuration parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,10 +136,10 @@ Uri of the storage where guest configuration package is uploaded.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +152,7 @@ For example:DSC
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,10 +167,10 @@ Name of the guest configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +182,7 @@ The configuration parameters for the guest configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -239,7 +197,7 @@ The protected configuration parameters for the guest configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,43 +212,28 @@ Version of the guest configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
+Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonString1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -299,7 +242,7 @@ Region where the VM is located.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,7 +257,7 @@ The name of the ARC machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString1, CreateViaJsonFilePath1, CreateExpanded1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -329,7 +272,7 @@ Name of the guest configuration assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -344,7 +287,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -360,27 +303,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMName
-The name of the virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -421,6 +349,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
@@ -428,3 +358,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
