@@ -199,12 +199,6 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Determines whether to enable a system-assigned identity for the resource.
-    ${EnableSystemAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
     # Indicates whether the gateway for arc router connectivity is enabled.
     ${GatewayEnabled},
 
