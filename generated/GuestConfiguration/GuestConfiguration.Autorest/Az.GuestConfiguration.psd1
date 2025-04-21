@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.GuestConfiguration.private.dll'
   FormatsToProcess = './Az.GuestConfiguration.format.ps1xml'
-  FunctionsToExport = 'Get-AzGuestConfigurationAssignment', 'Get-AzGuestConfigurationAssignmentReport', 'New-AzGuestConfigurationAssignment', 'Remove-AzGuestConfigurationAssignment', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzGuestConfigurationAssignment', 'Get-AzGuestConfigurationAssignmentReport', 'New-AzGuestConfigurationAssignment', 'Remove-AzGuestConfigurationAssignment', 'Update-AzGuestConfigurationAssignment'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'GuestConfiguration'
