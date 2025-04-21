@@ -44,7 +44,7 @@ directive:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$
+      variant: ^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateViaIdentityGuestConfigurationAssignmentExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
