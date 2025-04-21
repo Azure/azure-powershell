@@ -14,8 +14,7 @@ Get a StandbyContainerGroupPoolResource
 
 ### List (Default)
 ```
-Get-AzStandbyContainerGroupPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyContainerGroupPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

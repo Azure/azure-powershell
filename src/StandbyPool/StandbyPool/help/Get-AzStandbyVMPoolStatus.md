@@ -26,8 +26,7 @@ Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### GetViaIdentity
 ```
-Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityStandbyVirtualMachinePool
