@@ -114,7 +114,7 @@ jobs:
         $patchPath = "$patchDir/changed.patch"
         git diff --cached > $patchPath
 
-        Get-Content -Path $patchPath
+        # Get-Content -Path $patchPath
 
       workingDirectory: $(Build.SourcesDirectory)
 
