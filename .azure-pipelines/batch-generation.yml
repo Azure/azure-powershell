@@ -240,7 +240,7 @@ jobs:
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Analyze Targets: $(Target)"
 
-- job: test-windows
+- job: test_windows
   displayName: "Test Windows:"
   dependsOn: filter
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
@@ -262,7 +262,7 @@ jobs:
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Test windows: $(Target)"
 
-- job: test-linux
+- job: test_linux
   displayName: "Test Linux:"
   dependsOn: filter
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
@@ -284,7 +284,7 @@ jobs:
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Test Linux: $(Target)"
 
-- job: test-mac
+- job: test_mac
   displayName: "Test Mac:"
   dependsOn: filter
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
