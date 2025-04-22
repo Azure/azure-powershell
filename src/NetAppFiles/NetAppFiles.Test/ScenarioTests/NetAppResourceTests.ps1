@@ -176,7 +176,7 @@ function Test-GetUsage
         #New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # check Get Usages
-        $usageResult = Get-AzNetAppFilesUsages -Location $resourceLocation -UsageType $usageType
+        $usageResult = Get-AzNetAppFilesUsage -Location $resourceLocation -UsageType $usageType
         Assert-NotNull $usageResult
         Assert-AreEqual $usageType $usageResult.Name.Value       
 
