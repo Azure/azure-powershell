@@ -1,19 +1,26 @@
 variables:
+  IntermediateStepTimeoutInMinutes: 30
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
   MaxParalleBuildJobs: 3
+  MaxParalleAnalyzeJobs: 4
+  MaxParalleTestWindowsJobs: 1
+  MaxParalleTestLinuxJobs: 2
+  MaxParalleTestMacJobs: 3
+  WindowsAgentPoolName: pool-windows-2019
+  LinuxAgentPoolName: pool-ubuntu-2004
+  MacOSAgentPoolName: 'Azure Pipelines'
+  MacOSAgentPoolVMImage: macOS-latest
   GenerationBranch: batch-generation/branch-$(Build.BuildId)
-  MaxParalleAnalyzeJobs: 3
-  MaxParalleWindowsTestJobs: 3
-  MaxParalleLinuxTestJobs: 3
-  MaxParalleMacTestJobs: 3
 
 trigger: none
 
 jobs:
 - job: prepare
   displayName: Generate Build Targets Matrix
-  pool: pool-windows-2019
+  timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
   steps:
 
   # TODO: (Bernard) Uncomment the no checkout step after automatically install repo into agnets 
@@ -47,8 +54,8 @@ jobs:
 - job: build
   displayName: "Build:"
   dependsOn: prepare
-  timeoutInMinutes: 120
-  pool: pool-windows-2019
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
     matrix: $[ dependencies.prepare.outputs['mtrx.buildTargets'] ]
     maxParallel: ${{ variables.MaxParalleBuildJobs }}
@@ -121,6 +128,8 @@ jobs:
 - job: filter
   displayName: 'Filter Changed Modules'
   dependsOn: build 
+  timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
   steps:
   - checkout: self
     persistCredentials: true
@@ -179,7 +188,7 @@ jobs:
         git checkout $sourceBranchName
 
         $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
-        & $filterModulesPath -MaxParallelJobs "${{ variables.MaxParalleAnalyzeJobs }}" -ChangedFiles $changedFiles
+        & $filterModulesPath -MaxParalleAnalyzeJobs "${{ variables.MaxParalleAnalyzeJobs }}" -MaxParalleTestWindowsJobs "${{ variables.MaxParalleTestWindowsJobs }}" -MaxParalleTestLinuxJobs "${{ variables.MaxParalleTestLinuxJobs }}" -MaxParalleTestMacJobs "${{ variables.MaxParalleTestMacJobs }}" -ChangedFiles $changedFiles
 
   # - checkout: none
 
@@ -212,10 +221,10 @@ jobs:
 - job: analyze
   displayName: "Analyze:"
   dependsOn: filter
-  timeoutInMinutes: 120
-  pool: pool-windows-2019
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
-    matrix: $[ dependencies.filter.outputs['mtrx.analyzeTargets'] ]
+    matrix: $[ dependencies.filter.outputs['mtrx.AnalyzeTargets'] ]
     maxParallel: ${{ variables.MaxParalleAnalyzeJobs }}
 
   steps:
@@ -230,3 +239,71 @@ jobs:
       script: |
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Analyze Targets: $(Target)"
+
+- job: test-windows
+  displayName: "Test Windows:"
+  dependsOn: filter
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
+  strategy:
+    matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
+    maxParallel: ${{ variables.MaxParalleTestWindowsJobs }}
+
+  steps:
+  - checkout: none
+  
+  - task: PowerShell@2
+    name: test
+    displayName: 'Test Windows'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        Write-Host "Matrix Key: $(MatrixKey)"
+        Write-Host "Test windows: $(Target)"
+
+- job: test-linux
+  displayName: "Test Linux:"
+  dependsOn: filter
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+  pool: ${{ variables.LinuxAgentPoolName }}
+  strategy:
+    matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
+    maxParallel: ${{ variables.MaxParalleTestLinuxJobs }}
+
+  steps:
+  - checkout: none
+  
+  - task: PowerShell@2
+    name: test
+    displayName: 'Test Linux'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        Write-Host "Matrix Key: $(MatrixKey)"
+        Write-Host "Test Linux: $(Target)"
+
+- job: test-mac
+  displayName: "Test Mac:"
+  dependsOn: filter
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+  pool:
+    name: ${{ variables.MacOSAgentPoolName }}
+    vmImage: ${{ variables.MacOSAgentPoolVMImage }}
+  strategy:
+    matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
+    maxParallel: ${{ variables.MaxParalleTestMacJobs }}
+
+  steps:
+  - checkout: none
+  
+  - task: PowerShell@2
+    name: test
+    displayName: 'Test Mac'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        Write-Host "Matrix Key: $(MatrixKey)"
+        Write-Host "Test Mac: $(Target)"
