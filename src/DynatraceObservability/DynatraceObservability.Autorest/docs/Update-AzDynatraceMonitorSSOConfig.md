@@ -1,55 +1,47 @@
 ---
-external help file: Az.DynatraceObservability-help.xml
+external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitorssoconfig
 schema: 2.0.0
 ---
 
-# New-AzDynatraceMonitorSSOConfig
+# Update-AzDynatraceMonitorSSOConfig
 
 ## SYNOPSIS
-create a DynatraceSingleSignOnResource
+update a DynatraceSingleSignOnResource
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>]
+ [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityMonitorExpanded
-```
-New-AzDynatraceMonitorSSOConfig -MonitorInputObject <IDynatraceObservabilityIdentity> [-AadDomain <String[]>]
+Update-AzDynatraceMonitorSSOConfig -InputObject <IDynatraceObservabilityIdentity> [-AadDomain <String[]>]
  [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMonitorExpanded
+```
+Update-AzDynatraceMonitorSSOConfig -MonitorInputObject <IDynatraceObservabilityIdentity>
+ [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a DynatraceSingleSignOnResource
+update a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
-### Example 1: Create a dynatrace SingleSignOn resource
+### Example 1: Update a dynatrace SingleSignOn resource
 ```powershell
-New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 ```
 
 ```output
@@ -58,7 +50,7 @@ Name    ProvisioningState SingleSignOnState SingleSignOnUrl
 default Succeeded         Initial
 ```
 
-This command create a dynatrace SingleSignOn resource.
+This command update a dynatrace SingleSignOn resource.
 
 ## PARAMETERS
 
@@ -67,7 +59,7 @@ array of Aad(azure active directory) domains
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,7 +105,7 @@ Version of the Dynatrace agent installed on the VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -123,33 +115,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -158,7 +135,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: CreateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -173,7 +150,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -204,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -219,7 +196,7 @@ State of Single Sign On
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -234,7 +211,7 @@ The login URL specific to this Dynatrace Environment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -249,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -304,3 +281,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

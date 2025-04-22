@@ -1,58 +1,53 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitortagrule
 schema: 2.0.0
 ---
 
-# New-AzDynatraceMonitorTagRule
+# Update-AzDynatraceMonitorTagRule
 
 ## SYNOPSIS
-create a TagRule
+update a TagRule
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>]
  [-LogRuleSendSubscriptionLog <String>] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-MetricRuleSendingMetric <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityMonitorExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzDynatraceMonitorTagRule -MonitorInputObject <IDynatraceObservabilityIdentity>
+Update-AzDynatraceMonitorTagRule -InputObject <IDynatraceObservabilityIdentity>
  [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>]
  [-LogRuleSendSubscriptionLog <String>] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-MetricRuleSendingMetric <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityMonitorExpanded
 ```
-New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzDynatraceMonitorTagRule -MonitorInputObject <IDynatraceObservabilityIdentity>
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>]
+ [-LogRuleSendSubscriptionLog <String>] [-MetricRuleFilteringTag <IFilteringTag[]>]
+ [-MetricRuleSendingMetric <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a TagRule
+update a TagRule
 
 ## EXAMPLES
 
-### Example 1: Create a tag rule for the dynatrace monitor
+### Example 1: Update a tag rule for the dynatrace monitor
 ```powershell
 $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
-New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
+Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
@@ -61,7 +56,7 @@ Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
 default dyobrg            Succeeded         Disabled
 ```
 
-This command create a tag rule for the dynatrace monitor.
+This command update a tag rule for the dynatrace monitor.
 
 ## PARAMETERS
 
@@ -96,33 +91,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -134,7 +114,7 @@ If Include actions are specified, the rules will only include resources with the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +129,7 @@ Flag specifying if AAD logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -164,7 +144,7 @@ Flag specifying if activity logs from Azure resources should be sent for the Mon
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,7 +159,7 @@ Flag specifying if subscription logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +177,7 @@ If Include actions are specified, the rules will only include resources with the
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +192,7 @@ Flag specifying if metrics from Azure resources should be sent for the Monitor r
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +207,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: CreateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -242,7 +222,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -273,7 +253,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -288,7 +268,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

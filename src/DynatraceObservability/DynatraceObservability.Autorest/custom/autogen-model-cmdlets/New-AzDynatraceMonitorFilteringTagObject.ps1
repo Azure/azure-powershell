@@ -21,16 +21,19 @@ Create an in-memory object for FilteringTag.
 Create an in-memory object for FilteringTag.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.FilteringTag
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag
+.Link
+https://learn.microsoft.com/powershell/module/Az.DynatraceObservability/new-azdynatracemonitorfilteringtagobject
 #>
 function New-AzDynatraceMonitorFilteringTagObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.FilteringTag')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Valid actions for a filtering tag. Exclusion takes priority over inclusion.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Include", "Exclude")]
+        [string]
         $Action,
         [Parameter(HelpMessage="The name (also known as the key) of the tag.")]
         [string]
@@ -41,7 +44,7 @@ function New-AzDynatraceMonitorFilteringTagObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20230427.FilteringTag]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
