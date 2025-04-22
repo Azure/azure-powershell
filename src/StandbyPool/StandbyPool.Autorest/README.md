@@ -129,13 +129,6 @@ directive:
     set:
       parameter-name: Version
 
-  - where:
-      verb: New|Update
-      subject: StandbyContainerGroupPool
-      parameter-name: Zone
-    set:
-      parameter-name: Zones
-
   # Rename standby virtual machine pool parameters
   - where:
       verb: New|Update

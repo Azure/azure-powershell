@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/update-azstandbycontainergrouppool
 schema: 2.0.0
@@ -15,28 +15,28 @@ update a StandbyContainerGroupPoolResource
 ### UpdateExpanded (Default)
 ```
 Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>]
- [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
+ [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-ContainerProfileId <String>]
  [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>]
- [-Tag <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +75,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zones                             : {1} 
 ```
 
 The above command updated a standby container pool's max ready capacity to 5.
@@ -177,7 +178,7 @@ Name of the standby container group pool
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: StandbyContainerGroupPoolName
 
 Required: True
@@ -223,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -254,7 +255,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -279,7 +280,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 Specifies zones of standby container group pools.
 
 ```yaml
@@ -339,3 +340,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

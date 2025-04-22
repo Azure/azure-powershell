@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/new-azstandbycontainergrouppool
 schema: 2.0.0
@@ -14,23 +14,24 @@ create a StandbyContainerGroupPoolResource
 
 ### CreateExpanded (Default)
 ```
-New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
- [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zones <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>]
+ [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +51,7 @@ New-AzStandbyContainerGroupPool `
 -ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
 -ProfileRevision 1 `
 -SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
+-Zones @("1", "2", "3") `
 ```
 
 ```output
@@ -74,6 +76,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zones                             : {1, 2, 3}
 ```
 
 The above command created a standby container pool.
@@ -308,7 +311,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 Specifies zones of standby container group pools.
 
 ```yaml
@@ -366,3 +369,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

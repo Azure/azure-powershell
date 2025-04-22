@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStandbyContainerPool'))
 Describe 'AzStandbyContainerPool' {
     It 'CreateExpanded' {
         {
-            $standbycgpool = New-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName standbypool-powershell-sdk -SubscriptionId $env.SubscriptionId -Location centralindia -MaxReadyCapacity 3 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -Zones @("1", "2", "3")
+            $standbycgpool = New-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName standbypool-powershell-sdk -SubscriptionId $env.SubscriptionId -Location centralindia -MaxReadyCapacity 3 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/standbypool-powershell-sdk/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -Zone @("1", "2", "3")
             $standbycgpool.Name | Should -Be testCGPool
         } | Should -Not -Throw
     }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Create a StandbyContainerGroupPoolResource
 New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>]
  [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>]
- [-Zones <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -35,7 +35,7 @@ New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
@@ -51,7 +51,7 @@ New-AzStandbyContainerGroupPool `
 -ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
 -ProfileRevision 1 `
 -SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
--Zones @("1", "2", "3") `
+-Zone @("1", "2", "3") `
 ```
 
 ```output
@@ -76,7 +76,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
-Zones                             : {1, 2, 3}
+Zone                              : {1, 2, 3}
 ```
 
 The above command created a standby container pool.
@@ -311,7 +311,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 Specifies zones of standby container group pools.
 
 ```yaml

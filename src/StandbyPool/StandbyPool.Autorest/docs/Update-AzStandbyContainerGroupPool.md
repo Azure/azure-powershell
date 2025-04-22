@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
-Update a StandbyContainerGroupPoolResource
+update a StandbyContainerGroupPoolResource
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Update a StandbyContainerGroupPoolResource
 ```
 Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
- [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zones <String[]>]
+ [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-
 ```
 Update-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-ContainerProfileId <String>]
  [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>]
- [-Tag <Hashtable>] [-Zones <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -40,7 +40,7 @@ Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-Update a StandbyContainerGroupPoolResource
+update a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
@@ -75,7 +75,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
-Zones                             : {1} 
+Zone                              : {1} 
 ```
 
 The above command updated a standby container pool's max ready capacity to 5.
@@ -280,7 +280,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 Specifies zones of standby container group pools.
 
 ```yaml

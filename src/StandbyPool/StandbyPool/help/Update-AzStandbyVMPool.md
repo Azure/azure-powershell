@@ -1,5 +1,5 @@
 ---
-external help file: Az.StandbyPool-help.xml
+external help file:
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/update-azstandbyvmpool
 schema: 2.0.0
@@ -16,26 +16,26 @@ update a StandbyVirtualMachinePoolResource
 ```
 Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
- [-VMState <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VMState <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-MaxReadyCapacity <Int64>]
  [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>] [-VMState <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,7 +174,7 @@ Name of the standby virtual machine pool
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: StandbyVirtualMachinePoolName
 
 Required: True
@@ -190,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -306,3 +306,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
