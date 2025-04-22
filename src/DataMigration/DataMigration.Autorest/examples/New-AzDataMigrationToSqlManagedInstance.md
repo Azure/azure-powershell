@@ -13,4 +13,44 @@ MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded   
 
 This command starts a Database Migration from the Source Sql Server to target Managed Instance. This example is for online migration. To make it offline add -Offline to the parameters.
 
+### Example 2: Start a Database Migration from Azure Blob to target Managed Instance using target's SystemAssigned Managed Identity
 
+```powershell
+TODO
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance. This example is for online migration. To make it offline add -Offline to the parameters.
+
+### Example 3: Start a Database Migration from Azure Blob to target Managed Instance using a User Assigned Managed Identity
+
+```powershell
+TODO
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance. This example is for online migration. To make it offline add -Offline to the parameters.
+
+### Example 4: Start a Database Migration from Azure Blob to target Managed Instance using the Storage Account Key
+
+```powershell
+TODO
+```
+
+```output
+Name               Type                                       Kind  ProvisioningState MigrationStatus
+----               ----                                       ----  ----------------- ---------------
+MyDb               Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         InProgress
+```
+
+This command starts a Database Migration from the Azure Blob to target Managed Instance. This example is for online migration. To make it offline add -Offline to the parameters.

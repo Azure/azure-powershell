@@ -15,15 +15,16 @@ Create a new database migration to a given SQL Managed Instance.
 ```
 New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
- [-AzureBlobContainerName <String>] [-AzureBlobStorageAccountResourceId <String>]
- [-FileSharePassword <SecureString>] [-FileSharePath <String>] [-FileShareUsername <String>]
- [-Kind <ResourceType>] [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>]
- [-Scope <String>] [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
- [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
- [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
- [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>]
- [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AzureBlobAuthType <AuthType>] [-AzureBlobContainerName <String>]
+ [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
+ [-FileShareUsername <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <ResourceType>] [-MigrationService <String>] [-Offline]
+ [-OfflineConfigurationLastBackupName <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+ [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
+ [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
+ [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
+ [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +71,21 @@ Storage Account Key.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobAuthType
+Authentication type used for accessing Azure Blob Storage.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.AuthType
 Parameter Sets: (All)
 Aliases:
 
@@ -161,6 +177,38 @@ Username to access the file share location for backups.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
