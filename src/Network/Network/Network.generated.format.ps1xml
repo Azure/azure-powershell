@@ -6260,9 +6260,13 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
+		  <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Sku Name</Label>
+          </TableColumnHeader>
+		  <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SourceVirtualNetwork</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -6288,9 +6292,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
+			  <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+				  <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+				  <PropertyName>SourceVirtualNetworkText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -8801,6 +8809,10 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Sku</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8836,6 +8848,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SkuText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -8885,6 +8901,14 @@
             <Alignment>Left</Alignment>
             <Label>Location</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Sku</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -8900,6 +8924,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IPPrefix</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SkuText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -10293,6 +10325,10 @@
             <Alignment>Left</Alignment>
             <Label>EnableDdosProtection</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DefaultPublicNatGateway</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -10316,6 +10352,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableDdosProtection</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DefaultPublicNatGatewayText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -10463,7 +10503,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.NatGateway.Name</ScriptBlock>
+                <PropertyName>NatGatewayText</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
