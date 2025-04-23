@@ -50,7 +50,6 @@ jobs:
         $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
         & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParalleBuildJobs }}"
   
-
 - job: build
   displayName: "Build:"
   dependsOn: prepare
@@ -80,49 +79,16 @@ jobs:
         git fetch origin "${{ variables.GenerationBranch }}"
         git checkout "${{ variables.GenerationBranch }}"
 
-        $target = "$(Target)"
-        Write-Host "Building targets: $target"
-
-        $patchDir = "$(Build.ArtifactStagingDirectory)/$(MatrixKey)"
-        New-Item -ItemType Directory -Force -Path $patchDir | Out-Null
-
-        $modules = $target -split ','
-
-        foreach ($module in $modules) {
-          $modulePath = Join-Path $(Build.SourcesDirectory) 'src' $module
-          $subModulePath = Get-ChildItem -Path $modulePath -Directory |
-            Where-Object { $_.Name -like '*.autorest' }
-          foreach ($subModule in $subModulePath) {
-            $filePath = Join-Path $subModule "newfile.txt"
-            "This is a new file in $folder" | Out-File -FilePath $filePath -Encoding UTF8
-          }         
-        }
-        
-        # git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-        # git config user.name "azure-powershell-bot";
-        # git remote set-url origin 'https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git';
-
-        $random = Get-Random -Minimum 10 -Maximum 121
-        Write-Host "Sleeping for $random seconds..."
-        Start-Sleep -Seconds $random
-
-        git add .
-        # git commit -m "Build $target"
-        # git push origin "${{ variables.GenerationBranch }}"
-        
-
-        $patchPath = "$patchDir/changed.patch"
-        git diff --cached > $patchPath
-
-        # Get-Content -Path $patchPath
+        $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
+        & $batchGenerateModulesPath 
 
       workingDirectory: $(Build.SourcesDirectory)
 
   - task: PublishPipelineArtifact@1
     displayName: 'Save patch'
     inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)/$(MatrixKey)'
-      artifact: 'patch-$(MatrixKey)'
+      targetPath: '$(Build.ArtifactStagingDirectory)'
+      artifact: 'build-$(MatrixKey)'
     condition: always()
 
 - job: filter
@@ -261,6 +227,8 @@ jobs:
       script: |
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Test windows: $(Target)"
+        $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+        & $testModulesPath -TestEnvName 'Windows'
 
 - job: test_linux
   displayName: "Test Linux:"
@@ -283,6 +251,8 @@ jobs:
       script: |
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Test Linux: $(Target)"
+        $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+        & $testModulesPath -TestEnvName 'Linux'
 
 - job: test_mac
   displayName: "Test Mac:"
@@ -307,3 +277,5 @@ jobs:
       script: |
         Write-Host "Matrix Key: $(MatrixKey)"
         Write-Host "Test Mac: $(Target)"
+        $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+        & $testModulesPath -TestEnvName 'Mac'

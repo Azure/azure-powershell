@@ -28,8 +28,8 @@ $subModules = @(
     @("Astro", "Astro.Autorest"),
     
     # V4 Multi sub-modules
-    @("Communication","EmailService.Autorest"),
-    @("Communication", "EmailServicedata.Autorest")
+    @("Communication","EmailService.Autorest")
+    # @("Communication", "EmailServicedata.Autorest")
 )
 
 Write-Host "Total matched sub modules: $($subModules.Count)"
