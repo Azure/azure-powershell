@@ -1,9 +1,10 @@
 param (
+    [string]$MatrixKey,
+    [string]$Target,
     [string]$TestEnvName
 )
 
-$target = "$(Target)"
-$modules = $target -split ','
+$modules = $Target -split ','
 $results = @()  
 
 

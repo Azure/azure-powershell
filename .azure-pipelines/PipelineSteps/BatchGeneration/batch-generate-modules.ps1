@@ -1,8 +1,12 @@
-$target = "$(Target)"
-Write-Host "Building targets: $target"
+param (
+    [string]$MatrixKey,
+    [string]$Target
+)
+
+Write-Host "Building targets: $Target"
 
 $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
-$modules = $target -split ','
+$modules = $Target -split ','
 $results = @()
 
 foreach ($module in $modules) {
