@@ -38,7 +38,8 @@ jobs:
         $token = "$(GitHubToken)"
 
         $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
-        & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'main' -NewBranch $newBranch -Token $token
+        # TODO: (Bernard) Change BaseBranch to main after test
+        & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'bernard-pipeline-generation' -NewBranch $newBranch -Token $token
 
   - task: PowerShell@2
     name: mtrx
