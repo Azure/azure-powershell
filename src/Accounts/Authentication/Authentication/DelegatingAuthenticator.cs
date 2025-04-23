@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (options != null)
             {
                 telemetry.SetProperty(AuthTelemetryRecord.TokenCacheEnabled, CheckTokenCachePersistanceEnabled().ToString());
+                telemetry.SetProperty(nameof(TokenCredentialOptions), options.GetType()?.Name);
             }
         }
 
