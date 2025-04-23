@@ -1,50 +1,75 @@
 ---
 external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitor
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitorssoconfig
 schema: 2.0.0
 ---
 
-# Remove-AzDynatraceMonitor
+# Update-AzDynatraceMonitorSSOConfig
 
 ## SYNOPSIS
-Delete a MonitorResource
+update a DynatraceSingleSignOnResource
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzDynatraceMonitor -InputObject <IDynatraceObservabilityIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDynatraceMonitorSSOConfig -InputObject <IDynatraceObservabilityIdentity> [-AadDomain <String[]>]
+ [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityMonitorExpanded
+```
+Update-AzDynatraceMonitorSSOConfig -MonitorInputObject <IDynatraceObservabilityIdentity>
+ [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <String>] [-SingleSignOnUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a MonitorResource
+update a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
-### Example 1: Remove a dynatrace monitor
+### Example 1: Update a dynatrace SingleSignOn resource
 ```powershell
-Remove-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02
+Update-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 ```
 
-This command removes a dynatrace monitor.
-
-### Example 2: Remove a dynatrace monitor by pipeline
-```powershell
-Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Remove-AzDynatraceMonitor
+```output
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ---------------
+default Succeeded         Initial
 ```
 
-This command removes a dynatrace monitor by pipeline.
+This command update a dynatrace SingleSignOn resource.
 
 ## PARAMETERS
+
+### -AadDomain
+array of Aad(azure active directory) domains
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -77,12 +102,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnterpriseAppId
+Version of the Dynatrace agent installed on the VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -92,13 +132,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceObservabilityIdentity
+Parameter Sets: UpdateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MonitorName
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -122,11 +177,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SingleSignOnState
+State of Single Sign On
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,16 +208,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -SingleSignOnUrl
+The login URL specific to this Dynatrace Environment
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,7 +228,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -208,7 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
 
 ## NOTES
 
