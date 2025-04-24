@@ -1,12 +1,16 @@
 param (
     [string]$MatrixKey,
     [string]$Target,
-    [string]$TestEnvName
+    [string]$TestEnvName,
+    [string]$RepoRoot,
+    [string]$ArtifactRoot
 )
+
+Write-Host "Matrix Key: $(MatrixKey)"
+Write-Host "Test $(TestEnvName): $(Target)"
 
 $modules = $Target -split ','
 $results = @()  
-
 
 foreach ($module in $modules) {
     $startTime = Get-Date
@@ -19,7 +23,7 @@ foreach ($module in $modules) {
 
     try {
         Write-Host "Testing module: $module"
-        $subModulePath = Join-Path "$(Build.SourcesDirectory)" 'src' $module
+        $subModulePath = Join-Path $RepoRoot 'src' $module
         # TODO(Bernard) Remove log after test
         Write-Host "Sub module path: $subModulePath"
         Set-Location -Path $subModulePath
@@ -37,5 +41,5 @@ foreach ($module in $modules) {
     }
 }
 
-$reportPath = Join-Path "$(Build.ArtifactStagingDirectory)" "Test$(TestEnvName)Report-$(MatrixKey).json"
+$reportPath = Join-Path $ArtifactRoot "Test$(TestEnvName)Report-$(MatrixKey).json"
 $results | ConvertTo-Json -Depth 3 | Out-File -FilePath $reportPath -Encoding utf8

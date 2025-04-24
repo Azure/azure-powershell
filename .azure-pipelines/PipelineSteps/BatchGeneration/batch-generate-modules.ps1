@@ -1,11 +1,14 @@
 param (
     [string]$MatrixKey,
-    [string]$Target
+    [string]$Target,
+    [string]$RepoRoot,
+    [string]$ArtifactRoot
 )
 
+Write-Host "Matrix Key: $(MatrixKey)"
 Write-Host "Building targets: $Target"
 
-$buildModulesPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+$buildModulesPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
 $modules = $Target -split ','
 $results = @()
 
@@ -32,10 +35,10 @@ foreach ($module in $modules) {
 }
 
 git add .
-$patchPath = "$(Build.ArtifactStagingDirectory)/changed.patch"
+$patchPath = Join-Path $ArtifactRoot "changed.patch"
 git diff --cached > $patchPath
 
-$reportPath = Join-Path "$(Build.ArtifactStagingDirectory)" "BuildReport-$(MatrixKey).json"
+$reportPath = Join-Path $ArtifactRoot "BuildReport-$(MatrixKey).json"
 $results | ConvertTo-Json -Depth 3 | Out-File -FilePath $reportPath -Encoding utf8
 
 Write-Host "Build report written to $reportPath"

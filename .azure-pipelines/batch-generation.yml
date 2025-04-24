@@ -81,7 +81,7 @@ jobs:
         git checkout "${{ variables.GenerationBranch }}"
 
         $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-        & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)"
+        & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
       workingDirectory: $(Build.SourcesDirectory)
 
@@ -95,6 +95,7 @@ jobs:
 - job: filter
   displayName: 'Filter Changed Modules'
   dependsOn: build 
+  condition: always()
   timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   steps:
@@ -226,10 +227,9 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        Write-Host "Matrix Key: $(MatrixKey)"
-        Write-Host "Test windows: $(Target)"
         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows'
+        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+
 
 - job: test_linux
   displayName: "Test Linux:"
@@ -250,10 +250,8 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        Write-Host "Matrix Key: $(MatrixKey)"
-        Write-Host "Test Linux: $(Target)"
         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux'
+        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
 - job: test_mac
   displayName: "Test Mac:"
@@ -276,7 +274,6 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        Write-Host "Matrix Key: $(MatrixKey)"
-        Write-Host "Test Mac: $(Target)"
         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac'
+        & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+
