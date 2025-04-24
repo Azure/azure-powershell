@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StandbyPool-help.xml
 Module Name: Az.StandbyPool
 online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolstatus
 schema: 2.0.0
@@ -18,21 +18,20 @@ Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
-Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityStandbyVirtualMachinePool
 ```
 Get-AzStandbyVMPoolStatus -StandbyVirtualMachinePoolInputObject <IStandbyPoolIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -216,4 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
