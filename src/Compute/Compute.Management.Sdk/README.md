@@ -46,8 +46,6 @@ directive:
   - from: ComputeRP.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}"].get.parameters[?(@.name === "$expand")]["x-ms-enum"].name
     transform: return "VmssVMInstanceViewTypes"
-```
-<!--
   - from: swagger-document
     where: $.securityDefinitions.azure_auth
     transform: >
@@ -56,6 +54,8 @@ directive:
     where: $
     transform: >
       $.tags = [];
+```
+<!--
   - from: swagger-document
     where: $
     transform: >
