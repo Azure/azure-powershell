@@ -19,20 +19,6 @@ Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
  [<CommonParameters>]
 ```
 
-### UpgradeViaJsonString
-```
-Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeViaJsonFilePath
-```
-Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpgradeExpanded
 ```
 Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
@@ -112,7 +98,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade, UpgradeViaIdentity
+Parameter Sets: UpgradeExpanded, Upgrade, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -173,7 +159,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpgradeViaJsonFilePath, UpdateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -188,7 +174,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpgradeViaJsonString, UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -203,7 +189,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: MonitorName
 
 Required: True
@@ -218,7 +204,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade, UpgradeViaIdentity
+Parameter Sets: UpgradeExpanded, Upgrade, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -234,7 +220,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -250,7 +236,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpgradeExpanded, Upgrade, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False

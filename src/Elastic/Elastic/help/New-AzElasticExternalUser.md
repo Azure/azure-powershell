@@ -33,24 +33,11 @@ New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-Su
  [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IExternalUserInfo> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticExternalUser -InputObject <IElasticIdentity> [-EmailId <String>] [-FullName <String>]
  [-Password <String>] [-Role <String[]>] [-UserName <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzElasticExternalUser -InputObject <IElasticIdentity> -Body <IExternalUserInfo>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,21 +53,6 @@ New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elas
 This command Creates an User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## PARAMETERS
-
-### -Body
-The properties of the request required for creating user on elastic side
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -133,7 +105,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -178,7 +150,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -209,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -240,7 +212,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -302,8 +274,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo
 
 ## OUTPUTS
 

@@ -19,29 +19,10 @@ Update-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -Resource
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
- -Body <IOpenAiIntegrationRpmodel> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzElasticOpenAi -InputObject <IElasticIdentity> -Body <IOpenAiIntegrationRpmodel>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiResourceEndpoint <String>]
  [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityMonitor
-```
-Update-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity>
- -Body <IOpenAiIntegrationRpmodel> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMonitorExpanded
@@ -71,21 +52,6 @@ This command updates a OpenAI integration rule for a given monitor resource.
 
 ## PARAMETERS
 
-### -Body
-Capture properties of Open AI resource Integration.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityMonitor
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -107,7 +73,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -122,7 +88,7 @@ OpenAI Integration name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -137,7 +103,7 @@ Value of API key for Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -152,7 +118,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateViaIdentityMonitor, UpdateViaIdentityMonitorExpanded
+Parameter Sets: UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -167,7 +133,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -182,7 +148,7 @@ The API endpoint for Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +163,7 @@ The resource name of Open AI resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMonitorExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -213,7 +179,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -229,7 +195,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -276,8 +242,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel
 
 ## OUTPUTS
 
