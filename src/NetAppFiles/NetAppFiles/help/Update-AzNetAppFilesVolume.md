@@ -22,7 +22,7 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
  [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -34,7 +34,7 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
  [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
  [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
  [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
  [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -334,21 +334,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
