@@ -21,32 +21,31 @@ Create an in-memory object for Preferences.
 Create an in-memory object for Preferences.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderpreferencesobject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 #>
 function New-AzEdgeOrderPreferencesObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Preferences related to the Encryption.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEncryptionPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IEncryptionPreferences]
         $EncryptionPreference,
         [Parameter(HelpMessage="Preferences related to the Management resource.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IManagementResourcePreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IManagementResourcePreferences]
         $ManagementResourcePreference,
         [Parameter(HelpMessage="Notification preferences.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.INotificationPreference[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.INotificationPreference[]]
         $NotificationPreference,
         [Parameter(HelpMessage="Preferences related to the shipment logistics of the order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITransportPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ITransportPreferences]
         $TransportPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences]::New()
 
         if ($PSBoundParameters.ContainsKey('EncryptionPreference')) {
             $Object.EncryptionPreference = $EncryptionPreference

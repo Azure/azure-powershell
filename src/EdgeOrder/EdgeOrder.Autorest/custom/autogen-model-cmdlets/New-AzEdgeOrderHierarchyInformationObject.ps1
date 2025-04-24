@@ -21,13 +21,12 @@ Create an in-memory object for HierarchyInformation.
 Create an in-memory object for HierarchyInformation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderhierarchyinformationobject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
 #>
 function New-AzEdgeOrderHierarchyInformationObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +45,7 @@ function New-AzEdgeOrderHierarchyInformationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation]::New()
 
         if ($PSBoundParameters.ContainsKey('ConfigurationName')) {
             $Object.ConfigurationName = $ConfigurationName

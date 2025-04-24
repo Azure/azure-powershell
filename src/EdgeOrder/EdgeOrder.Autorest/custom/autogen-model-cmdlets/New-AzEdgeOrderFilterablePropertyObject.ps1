@@ -21,13 +21,12 @@ Create an in-memory object for FilterableProperty.
 Create an in-memory object for FilterableProperty.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderfilterablepropertyobject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 #>
 function New-AzEdgeOrderFilterablePropertyObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,13 +34,13 @@ function New-AzEdgeOrderFilterablePropertyObject {
         [string[]]
         $SupportedValue,
         [Parameter(Mandatory, HelpMessage="Type of product filter.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PSArgumentCompleterAttribute("ShipToCountries", "DoubleEncryptionStatus")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes])]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty]::New()
 
         if ($PSBoundParameters.ContainsKey('SupportedValue')) {
             $Object.SupportedValue = $SupportedValue

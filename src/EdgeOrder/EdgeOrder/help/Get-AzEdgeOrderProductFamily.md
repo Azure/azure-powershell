@@ -12,21 +12,8 @@ This method provides the list of product families for the given subscription.
 
 ## SYNTAX
 
-### ListExpanded (Default)
 ```
 Get-AzEdgeOrderProductFamily [-SubscriptionId <String[]>] [-Expand <String>] -FilterableProperty <Hashtable>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ListViaJsonFilePath
-```
-Get-AzEdgeOrderProductFamily [-SubscriptionId <String[]>] [-Expand <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ListViaJsonString
-```
-Get-AzEdgeOrderProductFamily [-SubscriptionId <String[]>] [-Expand <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,37 +78,7 @@ Dictionary of filterable properties on product family.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ListExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the List operation
-
-```yaml
-Type: System.String
-Parameter Sets: ListViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the List operation
-
-```yaml
-Type: System.String
-Parameter Sets: ListViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -184,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductFamily
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamily
 
 ## NOTES
 

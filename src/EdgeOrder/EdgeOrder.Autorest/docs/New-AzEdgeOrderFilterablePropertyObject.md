@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderfilterablepropertyobject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for FilterableProperty.
 ## SYNTAX
 
 ```
-New-AzEdgeOrderFilterablePropertyObject -SupportedValue <String[]> -Type <String> [<CommonParameters>]
+New-AzEdgeOrderFilterablePropertyObject -SupportedValue <String[]> -Type <SupportedFilterTypes>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,7 @@ Accept wildcard characters: False
 Type of product filter.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
 
 ## NOTES
 

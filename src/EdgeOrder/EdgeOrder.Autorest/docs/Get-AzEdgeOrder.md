@@ -23,12 +23,6 @@ Get-AzEdgeOrder -Location <String> -Name <String> -ResourceGroupName <String> [-
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityOrder
-```
-Get-AzEdgeOrder -Location <String> -OrderInputObject <IEdgeOrderIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzEdgeOrder -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
@@ -84,7 +78,7 @@ The name of Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityOrder
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -109,21 +103,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrderInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
-Parameter Sets: GetViaIdentityOrder
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -145,7 +124,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,11 +139,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderResource
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeordercontactdetailsobject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
 schema: 2.0.0
 ---
 
@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 
 ## NOTES
 

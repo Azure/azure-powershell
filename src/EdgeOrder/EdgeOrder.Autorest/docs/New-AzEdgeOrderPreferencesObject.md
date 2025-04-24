@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderpreferencesobject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 schema: 2.0.0
 ---
 
@@ -35,9 +35,10 @@ Creates a in-memory preference object to set transport, encryption and managemen
 
 ### -EncryptionPreference
 Preferences related to the Encryption.
+To construct, see NOTES section for ENCRYPTIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEncryptionPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IEncryptionPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -50,9 +51,10 @@ Accept wildcard characters: False
 
 ### -ManagementResourcePreference
 Preferences related to the Management resource.
+To construct, see NOTES section for MANAGEMENTRESOURCEPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IManagementResourcePreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IManagementResourcePreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -65,9 +67,10 @@ Accept wildcard characters: False
 
 ### -NotificationPreference
 Notification preferences.
+To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.INotificationPreference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -80,9 +83,10 @@ Accept wildcard characters: False
 
 ### -TransportPreference
 Preferences related to the shipment logistics of the order.
+To construct, see NOTES section for TRANSPORTPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ITransportPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ITransportPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Preferences
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences
 
 ## NOTES
 

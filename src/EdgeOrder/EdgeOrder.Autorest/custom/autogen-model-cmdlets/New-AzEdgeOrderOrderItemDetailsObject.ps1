@@ -21,13 +21,12 @@ Create an in-memory object for OrderItemDetails.
 Create an in-memory object for OrderItemDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderorderitemdetailsobject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
 #>
 function New-AzEdgeOrderOrderItemDetailsObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,19 +34,19 @@ function New-AzEdgeOrderOrderItemDetailsObject {
         [string[]]
         $NotificationEmailList,
         [Parameter(Mandatory, HelpMessage="Order item type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PSArgumentCompleterAttribute("Purchase", "Rental")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType]
         $OrderItemType,
         [Parameter(HelpMessage="Customer notification Preferences.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences]
         $Preference,
         [Parameter(Mandatory, HelpMessage="Unique identifier for configuration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductDetails]
         $ProductDetail
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('NotificationEmailList')) {
             $Object.NotificationEmailList = $NotificationEmailList

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeorderorderitemdetailsobject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for OrderItemDetails.
 ## SYNTAX
 
 ```
-New-AzEdgeOrderOrderItemDetailsObject -OrderItemType <String> -ProductDetail <IProductDetails>
+New-AzEdgeOrderOrderItemDetailsObject -OrderItemType <OrderItemType> -ProductDetail <IProductDetails>
  [-NotificationEmailList <String[]>] [-Preference <IPreferences>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Order item type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType
 Parameter Sets: (All)
 Aliases:
 
@@ -64,9 +64,10 @@ Accept wildcard characters: False
 
 ### -Preference
 Customer notification Preferences.
+To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -79,9 +80,10 @@ Accept wildcard characters: False
 
 ### -ProductDetail
 Unique identifier for configuration.
+To construct, see NOTES section for PRODUCTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
 
 ## NOTES
 

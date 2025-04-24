@@ -21,19 +21,18 @@ Create an in-memory object for ShippingAddress.
 Create an in-memory object for ShippingAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
 .Link
-https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-azedgeordershippingaddressobject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 #>
 function New-AzEdgeOrderShippingAddressObject {
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Type of address.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.PSArgumentCompleterAttribute("None", "Residential", "Commercial")]
-        [string]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.AddressType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.AddressType]
         $AddressType,
         [Parameter(HelpMessage="Name of the City.")]
         [string]
@@ -65,7 +64,7 @@ function New-AzEdgeOrderShippingAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('AddressType')) {
             $Object.AddressType = $AddressType
