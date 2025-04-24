@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticExternalUser
 
 ## SYNOPSIS
-Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## SYNTAX
 
@@ -17,6 +17,20 @@ Create User inside elastic deployment which are used by customers to perform ope
 Update-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EmailId <String>] [-FullName <String>] [-Password <String>] [-Role <String[]>] [-UserName <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -40,7 +54,7 @@ Update-AzElasticExternalUser -InputObject <IElasticIdentity> -Body <IExternalUse
 ```
 
 ## DESCRIPTION
-Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## EXAMPLES
 
@@ -55,10 +69,9 @@ This command will Create User inside elastic deployment which are used by custom
 
 ### -Body
 The properties of the request required for creating user on elastic side
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IExternalUserInfo
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -117,7 +130,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -131,12 +143,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -167,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -198,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: False
@@ -259,13 +301,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IExternalUserInfo
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserInfo
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse
 
 ## NOTES
 

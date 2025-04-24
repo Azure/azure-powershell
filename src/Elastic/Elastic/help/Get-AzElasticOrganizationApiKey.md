@@ -24,16 +24,16 @@ Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -Body <IUserEmailId
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentityExpanded
+### GetViaJsonFilePath
 ```
-Get-AzElasticOrganizationApiKey -InputObject <IElasticIdentity> [-EmailId <String>]
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaJsonString
 ```
-Get-AzElasticOrganizationApiKey -InputObject <IElasticIdentity> -Body <IUserEmailId>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,11 +52,10 @@ This command will Fetch User API Key from internal database, if it was generated
 
 ### -Body
 Email Id of the User Organization, of which the API Key must be returned
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId
-Parameter Sets: Get, GetViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -87,7 +86,7 @@ The User email Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
@@ -97,19 +96,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Get operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Type: System.String
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -119,7 +132,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,13 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId
-
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserApiKeyResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse
 
 ## NOTES
 
