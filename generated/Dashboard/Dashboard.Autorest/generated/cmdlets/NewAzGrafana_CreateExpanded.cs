@@ -6,23 +6,26 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Create or update a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or
-    /// update an existing grafana.
+    /// create a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or create an
+    /// existing grafana.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzGrafana_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"Create or update a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or update an existing grafana.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"create a workspace for Grafana resource. This API is idempotent, so user can either create a new grafana or create an existing grafana.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}", ApiVersion = "2022-08-01")]
     public partial class NewAzGrafana_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -38,8 +41,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>The grafana resource type.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana _requestBodyParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.ManagedGrafana();
+        private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana _requestBodyParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafana();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>The api key setting of the Grafana instance.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The api key setting of the Grafana instance.")]
@@ -49,9 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"The api key setting of the Grafana instance.",
         SerializedName = @"apiKey",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey ApiKey { get => _requestBodyParametersBody.ApiKey ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey)""); set => _requestBodyParametersBody.ApiKey = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string ApiKey { get => _requestBodyParametersBody.ApiKey ?? null; set => _requestBodyParametersBody.ApiKey = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -66,14 +81,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"Scope for dns deterministic name hash calculation.",
         SerializedName = @"autoGeneratedDomainNameLabelScope",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.AutoGeneratedDomainNameLabelScope) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.AutoGeneratedDomainNameLabelScope))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.AutoGeneratedDomainNameLabelScope AutoGeneratedDomainNameLabelScope { get => _requestBodyParametersBody.AutoGeneratedDomainNameLabelScope ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.AutoGeneratedDomainNameLabelScope)""); set => _requestBodyParametersBody.AutoGeneratedDomainNameLabelScope = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("TenantReuse")]
+        public string AutoGeneratedDomainNameLabelScope { get => _requestBodyParametersBody.AutoGeneratedDomainNameLabelScope ?? null; set => _requestBodyParametersBody.AutoGeneratedDomainNameLabelScope = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Dashboard Client => Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.ClientAPI;
@@ -96,9 +114,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"Whether a Grafana instance uses deterministic outbound IPs.",
         SerializedName = @"deterministicOutboundIP",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP DeterministicOutboundIP { get => _requestBodyParametersBody.DeterministicOutboundIP ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP)""); set => _requestBodyParametersBody.DeterministicOutboundIP = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string DeterministicOutboundIP { get => _requestBodyParametersBody.DeterministicOutboundIP ?? null; set => _requestBodyParametersBody.DeterministicOutboundIP = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _requestBodyParametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -111,36 +136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType IdentityType { get => _requestBodyParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ManagedServiceIdentityType)""); set => _requestBodyParametersBody.IdentityType = value; }
-
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _requestBodyParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _requestBodyParametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -173,8 +168,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
         SerializedName = @"azureMonitorWorkspaceIntegrations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] MonitorWorkspaceIntegration { get => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration ?? null /* arrayOf */; set => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration[] MonitorWorkspaceIntegration { get => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration?.ToArray() ?? null /* fixedArrayOf */; set => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration>(value) : null); }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -202,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -228,9 +223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"Indicate the state for enable or disable traffic over the public interface.",
         SerializedName = @"publicNetworkAccess",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess PublicNetworkAccess { get => _requestBodyParametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess)""); set => _requestBodyParametersBody.PublicNetworkAccess = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _requestBodyParametersBody.PublicNetworkAccess ?? null; set => _requestBodyParametersBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -271,7 +266,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -284,8 +280,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"The tags for grafana resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaTags Tag { get => _requestBodyParametersBody.Tag ?? null /* object */; set => _requestBodyParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags Tag { get => _requestBodyParametersBody.Tag ?? null /* object */; set => _requestBodyParametersBody.Tag = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>The zone redundancy setting of the Grafana instance.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The zone redundancy setting of the Grafana instance.")]
@@ -295,33 +299,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         ReadOnly = false,
         Description = @"The zone redundancy setting of the Grafana instance.",
         SerializedName = @"zoneRedundancy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy ZoneRedundancy { get => _requestBodyParametersBody.ZoneRedundancy ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy)""); set => _requestBodyParametersBody.ZoneRedundancy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string ZoneRedundancy { get => _requestBodyParametersBody.ZoneRedundancy ?? null; set => _requestBodyParametersBody.ZoneRedundancy = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -368,6 +372,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -432,11 +441,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -448,10 +482,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -461,11 +511,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzGrafana_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzGrafana_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzGrafana_CreateExpanded()
         {
 
+        }
+
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _requestBodyParametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _requestBodyParametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_requestBodyParametersBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _requestBodyParametersBody.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _requestBodyParametersBody.IdentityType = "UserAssigned";
+                }
+            }
         }
 
         /// <summary>Performs execution of the command.</summary>
@@ -527,7 +602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -540,12 +615,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GrafanaCreate(SubscriptionId, ResourceGroupName, Name, _requestBodyParametersBody, onOk, onDefault, this, Pipeline);
+                    this.PreProcessManagedIdentityParameters();
+                    await this.Client.GrafanaCreate(SubscriptionId, ResourceGroupName, Name, _requestBodyParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_requestBodyParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -583,12 +659,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -605,15 +681,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_requestBodyParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_requestBodyParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -623,12 +699,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana">Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana> response)
         {
             using( NoSynchronizationContext )
             {
@@ -640,8 +716,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

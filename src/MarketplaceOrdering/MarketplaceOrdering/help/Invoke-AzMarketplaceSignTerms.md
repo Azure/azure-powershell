@@ -15,13 +15,26 @@ Sign marketplace terms.
 ### Sign (Default)
 ```
 Invoke-AzMarketplaceSignTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SignViaIdentityOffer
+```
+Invoke-AzMarketplaceSignTerms -Name <String> -OfferInputObject <IMarketplaceOrderingIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SignViaIdentityAgreement
+```
+Invoke-AzMarketplaceSignTerms -Name <String> -Product <String>
+ -AgreementInputObject <IMarketplaceOrderingIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SignViaIdentity
 ```
 Invoke-AzMarketplaceSignTerms -InputObject <IMarketplaceOrderingIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +70,21 @@ This command signs marketplace terms by pipeline.
 
 ## PARAMETERS
 
+### -AgreementInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: SignViaIdentityAgreement
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,7 +103,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
@@ -94,7 +121,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sign
+Parameter Sets: Sign, SignViaIdentityOffer, SignViaIdentityAgreement
 Aliases:
 
 Required: True
@@ -104,15 +131,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OfferInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
+Parameter Sets: SignViaIdentityOffer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Product
 Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sign
+Parameter Sets: Sign, SignViaIdentityAgreement
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms
 
 ## NOTES
 
