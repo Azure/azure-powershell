@@ -25,7 +25,7 @@ payload-flattening-threshold: 1
 
 directive:
     # dynamically add a DummyOrchestrationServiceName value to the enum 
-  - from: virtualMachineScaleSet.json
+  - from: ComputeRP.json
     where: $..enum
     transform: >-
       if( $.length === 1 && $[0] === "AutomaticRepairs") { 
@@ -40,12 +40,14 @@ directive:
       return $.
         replace(/.*public const string DummyOrchestrationServiceName.*/g,'').
         replace(/, 'DummyOrchestrationServiceName'/g,'');
-  - from: gallery.json
+  - from: GalleryRP.json
     where: $.definitions.GalleryTargetExtendedLocation.properties.storageAccountType["x-ms-enum"].name
     transform: return "EdgeZoneStorageAccountType"
-  - from: virtualMachineScaleSet.json
+  - from: ComputeRP.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}"].get.parameters[?(@.name === "$expand")]["x-ms-enum"].name
     transform: return "VmssVMInstanceViewTypes"
+```
+<!--
   - from: swagger-document
     where: $.securityDefinitions.azure_auth
     transform: >
@@ -55,11 +57,51 @@ directive:
     transform: >
       $.tags = [];
   - from: swagger-document
+    where: $
+    transform: >
+      const fixDescriptionConflicts = (obj, path) => {
+        if (!obj || typeof obj !== 'object') return;
+        
+        // Handle description at current level
+        if ('description' in obj && obj.description) {
+          if (typeof obj.description === 'object') {
+            obj.description = Array.isArray(obj.description) ? 
+              obj.description[0] : 
+              Object.values(obj.description)[0];
+          }
+        }
+        
+        // Process child objects
+        for (const key in obj) {
+          if (obj[key] && typeof obj[key] === 'object') {
+            fixDescriptionConflicts(obj[key], path + '.' + key);
+          }
+        }
+      };
+      
+      fixDescriptionConflicts($, '$');
+      return $;
+  - from: swagger-document
+    where: $.definitions.Operation.properties.display.properties.description
+    transform: >
+      if (typeof $ === 'string') {
+        return { "type": "string", "description": $ };
+      }
+      return $;
+  
+  - from: swagger-document
+    where: $.definitions.RunCommandDocumentBase.properties.description
+    transform: >
+      if (typeof $ === 'string') {
+        return { "type": "string", "description": $ };
+      }
+      return $;
+
+
+  - from: swagger-document
     where: $.definitions.HyperVGeneration
     transform: >
       $.description = "The hypervisor generation of the Virtual Machine. [V1, V2]"
-```
-<!--
   - from: swagger-document
     where: $.definitions
     transform: >
