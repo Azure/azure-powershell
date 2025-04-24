@@ -6,8 +6,8 @@ param (
     [string]$ArtifactRoot
 )
 
-Write-Host "Matrix Key: $(MatrixKey)"
-Write-Host "Test $(TestEnvName): $(Target)"
+Write-Host "Matrix Key: $MatrixKey"
+Write-Host "Test $($TestEnvName): $Target"
 
 $modules = $Target -split ','
 $results = @()  
@@ -41,5 +41,5 @@ foreach ($module in $modules) {
     }
 }
 
-$reportPath = Join-Path $ArtifactRoot "Test$(TestEnvName)Report-$(MatrixKey).json"
+$reportPath = Join-Path $ArtifactRoot "Test$($TestEnvName)Report-$MatrixKey.json"
 $results | ConvertTo-Json -Depth 3 | Out-File -FilePath $reportPath -Encoding utf8

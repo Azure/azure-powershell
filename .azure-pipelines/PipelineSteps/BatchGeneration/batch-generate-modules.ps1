@@ -5,7 +5,7 @@ param (
     [string]$ArtifactRoot
 )
 
-Write-Host "Matrix Key: $(MatrixKey)"
+Write-Host "Matrix Key: $MatrixKey"
 Write-Host "Building targets: $Target"
 
 $buildModulesPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
@@ -38,7 +38,7 @@ git add .
 $patchPath = Join-Path $ArtifactRoot "changed.patch"
 git diff --cached > $patchPath
 
-$reportPath = Join-Path $ArtifactRoot "BuildReport-$(MatrixKey).json"
+$reportPath = Join-Path $ArtifactRoot "BuildReport-$MatrixKey.json"
 $results | ConvertTo-Json -Depth 3 | Out-File -FilePath $reportPath -Encoding utf8
 
 Write-Host "Build report written to $reportPath"
