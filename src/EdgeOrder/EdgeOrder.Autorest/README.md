@@ -51,10 +51,10 @@ directive:
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   #^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update|Cance|Return)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$|^CancelViaIdentity$|^Cancel$|^Return$|^ReturnViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$
     remove: true
   # Remove the set-* cmdlet
   - where:
