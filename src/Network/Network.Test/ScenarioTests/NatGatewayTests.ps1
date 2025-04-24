@@ -281,3 +281,154 @@ function Test-NatGatewayCRUDAllParameters
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test creating new NatGateway with IPv4 and IPv6 Public IP Addresses and a VirtualNetwork
+#>
+function Test-NatGatewayWithPIPsAndSourceVnet
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+	$vnetName = Get-ResourceName;
+    $subnetName = Get-ResourceName;
+    $publicIpName = Get-ResourceName;
+    $publicIpNameV6 = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2 EUAP";
+	$sku = "StandardV2";
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create IPv4 PublicIP
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku $sku
+
+        # Create IPv6 PublicIP
+        $publicipv6 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpNameV6 -location $location -AllocationMethod Static -Sku $sku -IpAddressVersion "IPv6"
+
+        # Create Vnet
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        # Create NatGateway
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -sku $sku -PublicIpAddress $publicip -PublicIPAddressV6 $publicipv6 -SourceVirtualNetwork $vnet;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual $rname $vNatGateway.Name;
+        Assert-AreEqual $vNatGateway.PublicIpAddresses.Count 1;
+        Assert-AreEqual $vNatGateway.PublicIpAddressesV6.Count 1;
+        Assert-AreEqual $vNatGateway.SourceVirtualNetwork.Id $vnet.Id;
+
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $vNatGateway.Id @($vnet.DefaultPublicNatGateway.Id)
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating new NatGateway with IPv4 and IPv6 Public IP Prefixes and a VirtualNetwork
+#>
+function Test-NatGatewayWithPrefixesAndSourceVnet
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+	$vnetName = Get-ResourceName;
+    $subnetName = Get-ResourceName;
+    $publicIpName = Get-ResourceName;
+    $publicIpNameV6 = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2 EUAP";
+	$sku = "StandardV2";
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create IPv4 PublicIP
+        $publicip = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $publicIpName -location $location  -Sku $sku -PrefixLength 28
+
+        # Create IPv6 PublicIP
+        $publicipv6 = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $publicIpNameV6 -location $location -Sku $sku -IpAddressVersion "IPv6" -PrefixLength 124
+
+        # Create Vnet
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        # Create NatGateway
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -sku $sku -PublicIpPrefix $publicip -PublicIpPrefixV6 $publicipv6 -SourceVirtualNetwork $vnet;
+        Assert-NotNull $vNatGateway;
+        Assert-AreEqual $rname $vNatGateway.Name;
+        Assert-AreEqual $vNatGateway.PublicIpPrefixes.Count 1;
+        Assert-AreEqual $vNatGateway.PublicIpPrefixesV6.Count 1;
+        Assert-AreEqual $vNatGateway.SourceVirtualNetwork.Id $vnet.Id;
+
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $vNatGateway.Id @($vnet.DefaultPublicNatGateway.Id)
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating new NatGateway with IPv4 and IPv6 Public IP Prefixes and a VirtualNetwork
+#>
+function Test-VirtualNetworkSubnetConfigWithNatGateway
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rname = Get-ResourceName;
+	$vnetName = Get-ResourceName;
+    $subnetName = Get-ResourceName;
+    $publicIpName = Get-ResourceName;
+    $publicIpNameV6 = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2 EUAP";
+	$sku = "StandardV2";
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
+
+        # Create NatGateway
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -sku $sku;
+        Assert-NotNull $vNatGateway;
+
+        # Create Subnet Config
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+
+        # Create Vnet
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        # Set Subnet Config with NatGateway
+        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -NatGateway $vNatGateway -AddressPrefix 10.0.0.0/16
+        $vnet | Set-AzVirtualNetwork
+
+        Assert-AreEqual $vnet.Subnets[0].NatGateway.Id $vNatGateway.Id
+
+        $vNatGateway = Set-AzNatGateway -ResourceGroupName $rgname -Name $rname -SourceVirtualNetwork $vnet
+        Assert-AreEqual $vNatGateway.SourceVirtualNetwork.Id $vnet.Id
+
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $vNatGateway.Id @($vnet.DefaultPublicNatGateway.Id)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
