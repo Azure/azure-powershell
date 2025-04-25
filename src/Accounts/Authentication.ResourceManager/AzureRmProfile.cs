@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
-                    RefreshContextsFromCache();
+                    RefreshContextsFromCache(AzureCmdletContext.CmdletNone);
                 }
 
                 IAzureContext result = null;
@@ -812,7 +813,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public void RefreshContextsFromCache()
+        public void RefreshContextsFromCache(ICmdletContext cmdletContext)
         {
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
@@ -901,7 +902,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     List<IAccessToken> tokens = null;
                     try
                     {
-                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
+                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage, cmdletContext);
                     }
                     catch (Exception e)
                     {
