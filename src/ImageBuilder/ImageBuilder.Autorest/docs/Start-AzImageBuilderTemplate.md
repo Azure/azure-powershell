@@ -29,27 +29,19 @@ run artifacts from a existing image template
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create artifacts from a existing image template.
 ```powershell
-{{ Add code here }}
+Start-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Create artifacts from a existing image template.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create artifacts from a existing image template.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Start-AzImageBuilderTemplate
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create artifacts from a existing image template.
 
 ## PARAMETERS
 
