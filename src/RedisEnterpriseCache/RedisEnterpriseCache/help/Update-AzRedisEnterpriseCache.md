@@ -1,5 +1,5 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
 schema: 2.0.0
@@ -19,8 +19,8 @@ Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> 
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,8 +30,8 @@ Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Cap
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +48,7 @@ Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Mini
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
+
 ```
 
 This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
@@ -88,6 +89,9 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
@@ -367,8 +371,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
 
 ## NOTES
 
 ## RELATED LINKS
+

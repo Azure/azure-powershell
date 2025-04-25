@@ -24,25 +24,17 @@ Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup"
 ```
 
 ```output
-{{ Add output here }}
+SizeInGb                       Name
+----------					------------
+size                         sku-name
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command provides all the SKUs and their memory sizes that a Redis Enterprise cluster can be scaled to.
 
 ## PARAMETERS
 

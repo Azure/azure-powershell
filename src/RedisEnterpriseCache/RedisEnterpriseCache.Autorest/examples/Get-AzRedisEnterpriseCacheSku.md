@@ -4,9 +4,9 @@ Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup
 ```
 
 ```output
-CustomerFacingSizeInGb                       Name
-----------                                   ------------
-customer-facing-size                         sku-name
+SizeInGb                       Name
+----------					------------
+size                         sku-name
 
 ```
 
