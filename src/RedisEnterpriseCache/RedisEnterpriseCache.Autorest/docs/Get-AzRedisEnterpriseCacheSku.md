@@ -22,7 +22,7 @@ Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get available SKUs for scaling the Redis Enterprise cluster
 ```powershell
 Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup"
 ```
