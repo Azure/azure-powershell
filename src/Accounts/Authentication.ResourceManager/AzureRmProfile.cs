@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         bool SafeDeserializeObject<T>(string serialization, out T result, JsonConverter converter = null)
         {
-            result = default;
+            result = default(T);
             bool success = false;
             try
             {
@@ -207,7 +207,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     EnvironmentTable[environment.Key] = environment.Value;
                 }
 
-                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
+                AzKeyStore keystore = null;
+                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
 
                 foreach (var context in profile.Contexts)
                 {
@@ -248,7 +249,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRmProfile RefillCredentialsFromKeyStore()
         {
-            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
+            AzKeyStore keystore = null;
+            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
             AzureRmProfile ret = this.DeepCopy();
             if (keystore != null)
             {

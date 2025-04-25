@@ -17,7 +17,6 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
@@ -518,7 +517,8 @@ namespace Microsoft.Azure.Commands.Profile
                     return;
                 }
 
-                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory httpClientFactory);
+                IHttpOperationsFactory httpClientFactory = null;
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                 {
