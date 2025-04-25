@@ -71,6 +71,7 @@ directive:
       verb: Set
     remove: true
   - remove-operation:
+    - Organizations_GetPostgresVersions
     - Projects_Update
     - Branches_Update
     - Computes_List
