@@ -14,6 +14,9 @@ while(-not $mockingPath) {
 Describe 'Stop-AzImageBuilderTemplate' {
     It 'Cancel' {
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
+        Write-Host -ForegroundColor Green "Starting the image builder template..."
+        Start-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg -NoWait
+        Start-TestSleep -Seconds 25
         Stop-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Canceling'

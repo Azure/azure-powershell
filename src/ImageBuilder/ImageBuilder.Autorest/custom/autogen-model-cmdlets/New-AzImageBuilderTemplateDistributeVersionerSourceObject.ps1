@@ -16,32 +16,26 @@
 
 <#
 .Synopsis
-Create an in-memory object for DistributeVersionerLatest.
+Create an in-memory object for DistributeVersionerSource.
 .Description
-Create an in-memory object for DistributeVersionerLatest.
+Create an in-memory object for DistributeVersionerSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionerlatestobject
+https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionersourceobject
 #>
-function New-AzImageBuilderTemplateDistributeVersionerLatestObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest')]
+function New-AzImageBuilderTemplateDistributeVersionerSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Major version for the generated version number. Determine what is `"latest`" based on versions with this value as the major version. -1 is equivalent to leaving it unset.")]
-        [int]
-        $Major
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerSource]::New()
 
-        if ($PSBoundParameters.ContainsKey('Major')) {
-            $Object.Major = $Major
-        }
-        $Object.Scheme = "Latest"
         return $Object
     }
 }

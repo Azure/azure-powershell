@@ -14,20 +14,20 @@ Create an in-memory object for ImageTemplateSource.
 
 ### PlatformImageSource (Default)
 ```
-New-AzImageBuilderTemplateSourceObject [-PlatformImageSource] [-Offer <String>] [-PlanInfoPlanName <String>]
+New-AzImageBuilderTemplateSourceObject [-Offer <String>] [-PlanInfoPlanName <String>]
  [-PlanInfoPlanProduct <String>] [-PlanInfoPlanPublisher <String>] [-Publisher <String>] [-Sku <String>]
  [-Version <String>] [<CommonParameters>]
 ```
 
 ### ManagedImageSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageId <String> [-ManagedImageSource]
+New-AzImageBuilderTemplateSourceObject -ImageId <String>
  [<CommonParameters>]
 ```
 
 ### SharedImageVersionSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> [-SharedImageVersionSource]
+New-AzImageBuilderTemplateSourceObject -ImageVersionId <String>
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Create an in-memory object for ImageTemplateSource.
 
 ### Example 1: Create a managed image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -ManagedImageSource -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
+New-AzImageBuilderTemplateSourceObject -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
 ```
 
 ```output
@@ -51,7 +51,7 @@ This command creates a managed image source.
 
 ### Example 2: Create a shared image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -SharedImageVersionSource -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0"
+New-AzImageBuilderTemplateSourceObject -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0"
 ```
 
 ```output
@@ -64,7 +64,7 @@ This command creates a shared image source.
 
 ### Example 3: Create a platfrom image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
+New-AzImageBuilderTemplateSourceObject -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
 ```
 
 ```output
@@ -99,22 +99,6 @@ When image version name is 'latest', the version is evaluated when the image bui
 ```yaml
 Type: System.String
 Parameter Sets: SharedImageVersionSource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedImageSource
-Describes an image source that is a managed image in customer subscription.
-This image must reside in the same subscription and region as the Image Builder template.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManagedImageSource
 Aliases:
 
 Required: True
@@ -184,21 +168,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlatformImageSource
-Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PlatformImageSource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Publisher
 Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 
@@ -208,21 +177,6 @@ Parameter Sets: PlatformImageSource
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SharedImageVersionSource
-Describes an image source that is an image version in a shared image gallery.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SharedImageVersionSource
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,11 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePlatformImageSource
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePlatformImageSource
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource
 
 ## NOTES
 

@@ -29,19 +29,27 @@ Delete a virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: Delete a virtual machine image template.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder
+{{ Add code here }}
 ```
 
-Delete a virtual machine image template.
-
-### Example 2: Delete a virtual machine image template.
-```powershell
-Get-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder | Remove-AzImageBuilderTemplate
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete a virtual machine image template.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -78,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity

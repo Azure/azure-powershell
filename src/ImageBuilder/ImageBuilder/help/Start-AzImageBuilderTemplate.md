@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzImageBuilderTemplate
 
 ## SYNOPSIS
-Create artifacts from a existing image template
+run artifacts from a existing image template
 
 ## SYNTAX
 
@@ -26,23 +26,31 @@ Start-AzImageBuilderTemplate -InputObject <IImageBuilderIdentity> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-Create artifacts from a existing image template
+run artifacts from a existing image template
 
 ## EXAMPLES
 
-### Example 1: Create artifacts from a existing image template.
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
+{{ Add code here }}
 ```
 
-Create artifacts from a existing image template.
-
-### Example 2: Create artifacts from a existing image template.
-```powershell
-Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Start-AzImageBuilderTemplate
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create artifacts from a existing image template.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -79,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
