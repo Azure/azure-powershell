@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
-    /// <summary>Details of the elasticity profile.</summary>
-    [System.ComponentModel.TypeConverter(typeof(StandbyVirtualMachinePoolElasticityProfileUpdateTypeConverter))]
-    public partial class StandbyVirtualMachinePoolElasticityProfileUpdate
+    /// <summary>Displays the forecast information of the standby pool.</summary>
+    [System.ComponentModel.TypeConverter(typeof(StandbyContainerGroupPoolForecastValuesTypeConverter))]
+    public partial class StandbyContainerGroupPoolForecastValues
     {
 
         /// <summary>
@@ -63,49 +63,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new StandbyVirtualMachinePoolElasticityProfileUpdate(content);
+            return new StandbyContainerGroupPoolForecastValues(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new StandbyVirtualMachinePoolElasticityProfileUpdate(content);
+            return new StandbyContainerGroupPoolForecastValues(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate" />, deserializing the content from
-        /// a json string.
+        /// Creates a new instance of <see cref="StandbyContainerGroupPoolForecastValues" />, deserializing the content from a json
+        /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>
-        /// an instance of the <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate" /> model class.
+        /// an instance of the <see cref="StandbyContainerGroupPoolForecastValues" /> model class.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal StandbyVirtualMachinePoolElasticityProfileUpdate(global::System.Collections.IDictionary content)
+        internal StandbyContainerGroupPoolForecastValues(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -114,23 +114,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MaxReadyCapacity"))
+            if (content.Contains("InstancesRequestedCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MaxReadyCapacity = (long?) content.GetValueForProperty("MaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("MinReadyCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MinReadyCapacity = (long?) content.GetValueForProperty("MinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)this).InstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("InstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)this).InstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal StandbyVirtualMachinePoolElasticityProfileUpdate(global::System.Management.Automation.PSObject content)
+        internal StandbyContainerGroupPoolForecastValues(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -139,13 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MaxReadyCapacity"))
+            if (content.Contains("InstancesRequestedCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MaxReadyCapacity = (long?) content.GetValueForProperty("MaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("MinReadyCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MinReadyCapacity = (long?) content.GetValueForProperty("MinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)this).MinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)this).InstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("InstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)this).InstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializePSObject(content);
         }
@@ -167,9 +159,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             return ToJsonString();
         }
     }
-    /// Details of the elasticity profile.
-    [System.ComponentModel.TypeConverter(typeof(StandbyVirtualMachinePoolElasticityProfileUpdateTypeConverter))]
-    public partial interface IStandbyVirtualMachinePoolElasticityProfileUpdate
+    /// Displays the forecast information of the standby pool.
+    [System.ComponentModel.TypeConverter(typeof(StandbyContainerGroupPoolForecastValuesTypeConverter))]
+    public partial interface IStandbyContainerGroupPoolForecastValues
 
     {
 

@@ -8,10 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="PoolStatus" />
     /// </summary>
-    public partial class StandbyVirtualMachinePoolElasticityProfileUpdateTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class PoolStatusTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,14 +26,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate"/>
-        /// type.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="PoolStatus"/> type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="PoolStatus"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate" /> type,
-        /// otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="PoolStatus" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -97,35 +94,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate" />, or <c>null</c> if there is no suitable
-        /// conversion.
+        /// an instance of <see cref="PoolStatus" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate"
-        /// />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="PoolStatus" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="PoolStatus" />.</param>
         /// <returns>
-        /// an instance of <see cref="StandbyVirtualMachinePoolElasticityProfileUpdate" />, or <c>null</c> if there is no suitable
-        /// conversion.
+        /// an instance of <see cref="PoolStatus" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return StandbyVirtualMachinePoolElasticityProfileUpdate.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return PoolStatus.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -133,11 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return StandbyVirtualMachinePoolElasticityProfileUpdate.DeserializeFromPSObject(sourceValue);
+                return PoolStatus.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return StandbyVirtualMachinePoolElasticityProfileUpdate.DeserializeFromDictionary(sourceValue);
+                return PoolStatus.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

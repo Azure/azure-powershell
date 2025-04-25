@@ -9,7 +9,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 
     /// <summary>
     /// Contains the counts of VMs in each power state in a given zone, fault domain, as known by the StandbyPool resource provider.
-    /// Note: any updates to pool resources outside of StandbyPoolRP (i.e deleting a VM through portal) are not reflected here.
     /// Note: any resources in the Running state may still be installing extensions / not fully provisioned.
     /// </summary>
     public partial class VirtualMachineInstanceCountSummary
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             {_zone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("zone"), out var __jsonZone) ? (long?)__jsonZone : _zone;}
-            {_instanceCountsByState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("instanceCountsByState"), out var __jsonInstanceCountsByState) ? If( __jsonInstanceCountsByState as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount) (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount.FromJson(__u) )) ))() : null : _instanceCountsByState;}
+            {_instanceCountsByState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("instanceCountsByState"), out var __jsonInstanceCountsByState) ? If( __jsonInstanceCountsByState as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount) (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolVirtualMachineStateCount.FromJson(__u) )) ))() : null : _instanceCountsByState;}
             AfterFromJson(json);
         }
     }
