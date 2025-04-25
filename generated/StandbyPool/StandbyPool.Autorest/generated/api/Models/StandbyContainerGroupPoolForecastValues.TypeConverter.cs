@@ -8,10 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate"
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="StandbyContainerGroupPoolForecastValues"
     /// />
     /// </summary>
-    public partial class StandbyContainerGroupPoolElasticityProfileUpdateTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class StandbyContainerGroupPoolForecastValuesTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="StandbyContainerGroupPoolElasticityProfileUpdate"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="StandbyContainerGroupPoolForecastValues"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="StandbyContainerGroupPoolForecastValues"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="StandbyContainerGroupPoolElasticityProfileUpdate" /> type,
-        /// otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="StandbyContainerGroupPoolForecastValues" /> type, otherwise
+        /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -97,35 +97,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate" />, or <c>null</c> if there is no suitable
-        /// conversion.
+        /// an instance of <see cref="StandbyContainerGroupPoolForecastValues" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="StandbyContainerGroupPoolForecastValues"
         /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="StandbyContainerGroupPoolForecastValues"
         /// />.</param>
         /// <returns>
-        /// an instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate" />, or <c>null</c> if there is no suitable
-        /// conversion.
+        /// an instance of <see cref="StandbyContainerGroupPoolForecastValues" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return StandbyContainerGroupPoolElasticityProfileUpdate.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return StandbyContainerGroupPoolForecastValues.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -133,11 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return StandbyContainerGroupPoolElasticityProfileUpdate.DeserializeFromPSObject(sourceValue);
+                return StandbyContainerGroupPoolForecastValues.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return StandbyContainerGroupPoolElasticityProfileUpdate.DeserializeFromDictionary(sourceValue);
+                return StandbyContainerGroupPoolForecastValues.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

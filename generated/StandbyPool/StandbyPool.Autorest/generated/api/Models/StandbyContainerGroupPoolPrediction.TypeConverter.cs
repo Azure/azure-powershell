@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="PoolResourceStateCount" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="StandbyContainerGroupPoolPrediction" />
     /// </summary>
-    public partial class PoolResourceStateCountTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class StandbyContainerGroupPoolPredictionTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="PoolResourceStateCount"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="StandbyContainerGroupPoolPrediction"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="PoolResourceStateCount"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="StandbyContainerGroupPoolPrediction"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="PoolResourceStateCount" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="StandbyContainerGroupPoolPrediction" /> type, otherwise
+        /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +96,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="PoolResourceStateCount" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="StandbyContainerGroupPoolPrediction" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="PoolResourceStateCount" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="StandbyContainerGroupPoolPrediction"
+        /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="PoolResourceStateCount" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="StandbyContainerGroupPoolPrediction" />.</param>
         /// <returns>
-        /// an instance of <see cref="PoolResourceStateCount" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="StandbyContainerGroupPoolPrediction" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPrediction ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPrediction).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return PoolResourceStateCount.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return StandbyContainerGroupPoolPrediction.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return PoolResourceStateCount.DeserializeFromPSObject(sourceValue);
+                return StandbyContainerGroupPoolPrediction.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return PoolResourceStateCount.DeserializeFromDictionary(sourceValue);
+                return StandbyContainerGroupPoolPrediction.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }
