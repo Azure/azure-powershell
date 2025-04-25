@@ -1,8 +1,8 @@
 {
-  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$PUT+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg?api-version=2022-06-01+1": {
+  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$PUT+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2?api-version=2022-06-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2?api-version=2022-06-01",
       "Content": "{\r\n  \"location\": \"westus2\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,40 +18,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
-        "ETag": [ "\"92015e5a-0000-0800-0000-6809fec90000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japanwest/49b9238b-3d87-425e-83a4-750eb88e615d" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "19998" ],
+        "ETag": [ "\"e0011420-0000-0800-0000-680b01130000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/7492815b-69b2-4da1-97c9-334e4b987d46" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-correlation-id": [ "405d97ce-783d-4a4e-a74b-71852426132e" ],
-        "x-ms-client-request-id": [ "4300a971-ddc0-4354-82cf-dfd04373a531" ],
-        "x-ms-correlation-request-id": [ "405d97ce-783d-4a4e-a74b-71852426132e" ],
-        "x-envoy-upstream-service-time": [ "29" ],
-        "x-envoy-decorator-operation": [ "frsprod-southcentralus-003-echo.default.svc.cluster.local:80/*" ],
+        "x-correlation-id": [ "fa816118-889d-4ba0-acae-fa422c033b27" ],
+        "x-ms-client-request-id": [ "db3c36f3-54e7-4b60-a051-b4247e0d0bb5" ],
+        "x-ms-correlation-request-id": [ "fa816118-889d-4ba0-acae-fa422c033b27" ],
+        "x-envoy-upstream-service-time": [ "22" ],
+        "x-envoy-decorator-operation": [ "frsprod-eastus-001-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
-        "x-azure-ref": [ "20250424T090511Z-15d6c4d9988v877dhC1YVR43tw0000000sgg00000000f3ms" ],
+        "x-azure-ref": [ "20250425T032712Z-15d6c4d9988l8z2phC1YVRhdd00000000uk000000000qu6e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "87f59245-8034-4afc-988c-0c85b3ada2a5" ],
+        "x-ms-request-id": [ "2bc2e71c-812a-41f6-8446-b7a9083a74e9" ],
         "X-Powered-By": [ "Express" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20250424T090513Z:1127b3f0-9140-4ac4-8273-cbfb091ce545" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032715Z:a76a4adc-df6d-419a-913c-e9cc725ed6e8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-MSEdge-Ref": [ "Ref A: E5C2295BA9804F8397A42FFCCF92243D Ref B: TYO201151002023 Ref C: 2025-04-24T09:05:09Z" ],
-        "Date": [ "Thu, 24 Apr 2025 09:05:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E503CDBB9F574D94BB9F289A01B9953F Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:11Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "766" ],
+        "Content-Length": [ "768" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg\",\"name\":\"fluidrelayserverk3rg\",\"type\":\"microsoft.fluidrelay/fluidrelayservers\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-24T09:05:11.305401Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-24T09:05:11.305401Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"frsTenantId\":\"3938e8d4-8a91-418a-82fa-8477b6e600ba\",\"fluidRelayEndpoints\":{\"ordererEndpoints\":[],\"storageEndpoints\":[],\"serviceEndpoints\":[\"https://us.fluidrelay.azure.com\"]},\"storagesku\":\"standard\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2\",\"name\":\"fluidrelayserverdfv2\",\"type\":\"microsoft.fluidrelay/fluidrelayservers\",\"location\":\"westus2\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-25T03:27:12.4909357Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-25T03:27:12.4909357Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"frsTenantId\":\"d2d2d7a5-7340-4b69-8614-8f493c66d554\",\"fluidRelayEndpoints\":{\"ordererEndpoints\":[],\"storageEndpoints\":[],\"serviceEndpoints\":[\"https://us.fluidrelay.azure.com\"]},\"storagesku\":\"standard\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg/regenerateKey?api-version=2022-06-01+2": {
+  "AzFluidRelayServerKey+[NoContext]+RegenerateExpanded+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/regenerateKey?api-version=2022-06-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg/regenerateKey?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/regenerateKey?api-version=2022-06-01",
       "Content": "{\r\n  \"keyName\": \"key1\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -67,45 +67,45 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
-        "ETag": [ "W/\"bd-4/pKLcL5K/lsyqKMX3gzJii46hA\"" ],
-        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japanwest/9ce6f255-7927-45bb-b465-54bb7a02b2ec" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "19998" ],
+        "ETag": [ "W/\"bd-PuA3JTGB9lPmLgG+WMOggDfaPvM\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/c4ab22b3-fd53-48e5-a5fd-2d4075180ab9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-correlation-id": [ "fd521d6b-cde5-4ffe-9e02-d6109d7833c1" ],
-        "x-ms-client-request-id": [ "0e285fb5-4d05-4ab8-846b-fcb0022d569e" ],
-        "x-ms-correlation-request-id": [ "fd521d6b-cde5-4ffe-9e02-d6109d7833c1" ],
-        "x-envoy-upstream-service-time": [ "605" ],
-        "x-envoy-decorator-operation": [ "frsprod-southcentralus-003-echo.default.svc.cluster.local:80/*" ],
+        "x-correlation-id": [ "7b5f3b3b-6dbb-4e67-834f-ba6311e2d327" ],
+        "x-ms-client-request-id": [ "ba28005c-4516-4e61-aaef-48f5fd13bd47" ],
+        "x-ms-correlation-request-id": [ "7b5f3b3b-6dbb-4e67-834f-ba6311e2d327" ],
+        "x-envoy-upstream-service-time": [ "866" ],
+        "x-envoy-decorator-operation": [ "frsprod-eastus-001-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
-        "x-azure-ref": [ "20250424T090513Z-1674887b77bl74gthC1CO10t580000000b800000000056sp" ],
+        "x-azure-ref": [ "20250425T032715Z-r1fdc4c8d84cfq85hC1CO1dcxc00000005y0000000000ecr" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "831f3bf5-aff9-4a9a-a3d6-44dbed46c8ee" ],
+        "x-ms-request-id": [ "5df29af5-bc1d-4f1e-aeb2-e1a2bf6a6fd8" ],
         "X-Powered-By": [ "Express" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20250424T090514Z:df71c1ad-333a-46aa-ab39-420d7ffc7391" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032716Z:5e11e62e-a331-4bc0-b134-b8f1ab332e63" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-MSEdge-Ref": [ "Ref A: 2FD3A164A8314E7AAFE8AB0C9293DE69 Ref B: TYO201151002023 Ref C: 2025-04-24T09:05:13Z" ],
-        "Date": [ "Thu, 24 Apr 2025 09:05:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 699798FCC6F14DD1959D913850317243 Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:15Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "189" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"key1\":\"7auK89iZAduPbVCJJXVcFUTCpFHlezY6nlrrzNiRX8OAKarm4U6dJQQJ99BDACRsaBGy71xuAAAAAZFRbRwJ\",\"key2\":\"8pE4IG458OBWNg36JpZZOWcBmqp2BhSmDPtFyNxOuWbmo2uBiGKaJQQJ99BDACU7tdDy71xuAAAAAZFRfTCo\"}",
+      "Content": "{\"key1\":\"2CtKKqQSOSELqtTSweSPlb72BZ6aOG79dhi3sMulroSEHR16NgscJQQJ99BDACjcPUyy71xuAAAAAZFR1IJm\",\"key2\":\"29vYBF6irsRdobtdwwJOb9sKRKFkpTES2pi1Zc4RXRpBgXLUpj91JQQJ99BDACRsaBGy71xuAAAAAZFRz4d8\"}",
       "isContentBase64": false
     }
   },
-  "AzFluidRelayServerKey+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg/listKeys?api-version=2022-06-01+1": {
+  "AzFluidRelayServerKey+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/listKeys?api-version=2022-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgroupdtwx/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverk3rg/listKeys?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/testgrouphy32/providers/Microsoft.FluidRelay/fluidRelayServers/fluidrelayserverdfv2/listKeys?api-version=2022-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "890bbda4-6d0b-43b0-9a20-093232f95a27" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "5feacab6-21dc-43bf-bfd4-f444afb781ca" ],
         "CommandName": [ "Get-AzFluidRelayServerKey" ],
         "FullCommandName": [ "Get-AzFluidRelayServerKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -121,33 +121,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
-        "ETag": [ "W/\"bd-4/pKLcL5K/lsyqKMX3gzJii46hA\"" ],
-        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japanwest/3e900bd1-9322-4927-b9a2-1bf93e2dda4f" ],
+        "ETag": [ "W/\"bd-PuA3JTGB9lPmLgG+WMOggDfaPvM\"" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=80e9b30a-a902-457c-bde2-51f85fcd6eb6/japaneast/4658cbf5-8e9d-4c41-aa07-e3cb56ae2db5" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-correlation-id": [ "84fc2571-30fe-40cf-85d0-e1455adc06c1" ],
-        "x-ms-client-request-id": [ "890bbda4-6d0b-43b0-9a20-093232f95a27" ],
-        "x-ms-correlation-request-id": [ "84fc2571-30fe-40cf-85d0-e1455adc06c1" ],
-        "x-envoy-upstream-service-time": [ "623" ],
+        "x-correlation-id": [ "646d75d0-2fb4-4f2e-83f3-d2d3d3189433" ],
+        "x-ms-client-request-id": [ "5feacab6-21dc-43bf-bfd4-f444afb781ca" ],
+        "x-ms-correlation-request-id": [ "646d75d0-2fb4-4f2e-83f3-d2d3d3189433" ],
+        "x-envoy-upstream-service-time": [ "779" ],
         "x-envoy-decorator-operation": [ "frsprod-southcentralus-003-echo.default.svc.cluster.local:80/*" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Content-Security-Policy": [ "default-src \u0027none\u0027; base-uri \u0027none\u0027; sandbox;" ],
-        "x-azure-ref": [ "20250424T090515Z-15d6c4d9988cwjv7hC1YVR9abc0000000sh0000000006dk5" ],
+        "x-azure-ref": [ "20250425T032717Z-15d6c4d9988jkmdshC1YVRdkkc0000000ung00000000mx45" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "f74b2992-fe13-485c-8d45-723c32daec28" ],
+        "x-ms-request-id": [ "74f0285a-93b9-4c4d-a255-0ced484a4922" ],
         "X-Powered-By": [ "Express" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20250424T090516Z:b5a94b36-4ab4-4430-a4c8-50e2449efaf4" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20250425T032718Z:838aac9a-6e25-4ee9-901a-cac4998b4251" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-MSEdge-Ref": [ "Ref A: A947D66253014404A260AAF208CB9DE2 Ref B: TYO201151002023 Ref C: 2025-04-24T09:05:15Z" ],
-        "Date": [ "Thu, 24 Apr 2025 09:05:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6256DDAF8BF245429CF0CE79C5136C78 Ref B: TYO201100114035 Ref C: 2025-04-25T03:27:17Z" ],
+        "Date": [ "Fri, 25 Apr 2025 03:27:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "189" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"key1\":\"7auK89iZAduPbVCJJXVcFUTCpFHlezY6nlrrzNiRX8OAKarm4U6dJQQJ99BDACRsaBGy71xuAAAAAZFRbRwJ\",\"key2\":\"8pE4IG458OBWNg36JpZZOWcBmqp2BhSmDPtFyNxOuWbmo2uBiGKaJQQJ99BDACU7tdDy71xuAAAAAZFRfTCo\"}",
+      "Content": "{\"key1\":\"2CtKKqQSOSELqtTSweSPlb72BZ6aOG79dhi3sMulroSEHR16NgscJQQJ99BDACjcPUyy71xuAAAAAZFR1IJm\",\"key2\":\"29vYBF6irsRdobtdwwJOb9sKRKFkpTES2pi1Zc4RXRpBgXLUpj91JQQJ99BDACRsaBGy71xuAAAAAZFRz4d8\"}",
       "isContentBase64": false
     }
   }

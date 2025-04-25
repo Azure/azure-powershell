@@ -39,24 +39,48 @@ subject-prefix: $(service-name)
 
 directive:
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"].delete.responses
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"].delete
     transform: >-
       return {
-        "200": {
-          "description": "Request completed Synchronously."
+        "operationId": "FluidRelayServers_Delete",
+        "tags": [
+          "FluidRelayServers"
+        ],
+        "summary": "Delete a Fluid Relay server.",
+        "x-ms-examples": {
+          "Delete a Fluid Relay server": {
+            "$ref": "./examples/FluidRelayServers_Delete.json"
+          }
         },
-        "202": {
-          "description": "Request completed Synchronously."
-        },
-        "204": {
-          "description": "Request completed Synchronously."
-        },
-        "default": {
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1b8d88d20ea46eaaf4b8a5237f206e925b8b1180/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionId"
           },
-          "description": "Error in operation."
-        }
+          {
+            "$ref": "#/parameters/ResourceGroup"
+          },
+          {
+            "$ref": "#/parameters/FluidRelayServerName"
+          },
+          {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1b8d88d20ea46eaaf4b8a5237f206e925b8b1180/specification/common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request completed Synchronously."
+          },
+          "204": {
+            "description": "Request completed Synchronously."
+          },
+          "default": {
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1b8d88d20ea46eaaf4b8a5237f206e925b8b1180/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            },
+            "description": "Error in operation."
+          }
+        },
+        "x-ms-long-running-operation": true
       }
   - where:
       variant: ^(Create|Update|Regenerate)(?!.*?(Expanded|JsonFilePath|JsonString))
