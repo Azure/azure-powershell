@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
-    /// <summary>Specifies the elasticity profile of the standby container group pools.</summary>
-    [System.ComponentModel.TypeConverter(typeof(StandbyContainerGroupPoolElasticityProfileUpdateTypeConverter))]
-    public partial class StandbyContainerGroupPoolElasticityProfileUpdate
+    /// <summary>Displays StandbyPool status.</summary>
+    [System.ComponentModel.TypeConverter(typeof(PoolStatusTypeConverter))]
+    public partial class PoolStatus
     {
 
         /// <summary>
@@ -63,49 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate"
-        /// />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new StandbyContainerGroupPoolElasticityProfileUpdate(content);
+            return new PoolStatus(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate"
-        /// />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new StandbyContainerGroupPoolElasticityProfileUpdate(content);
+            return new PoolStatus(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="StandbyContainerGroupPoolElasticityProfileUpdate" />, deserializing the content from
-        /// a json string.
+        /// Creates a new instance of <see cref="PoolStatus" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>
-        /// an instance of the <see cref="StandbyContainerGroupPoolElasticityProfileUpdate" /> model class.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdate FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="PoolStatus" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatus FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal StandbyContainerGroupPoolElasticityProfileUpdate(global::System.Collections.IDictionary content)
+        internal PoolStatus(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -114,23 +109,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MaxReadyCapacity"))
+            if (content.Contains("Code"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).MaxReadyCapacity = (long?) content.GetValueForProperty("MaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).MaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Code, global::System.Convert.ToString);
             }
-            if (content.Contains("RefillPolicy"))
+            if (content.Contains("Message"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).RefillPolicy = (string) content.GetValueForProperty("RefillPolicy",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).RefillPolicy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Message, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal StandbyContainerGroupPoolElasticityProfileUpdate(global::System.Management.Automation.PSObject content)
+        internal PoolStatus(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -139,13 +134,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("MaxReadyCapacity"))
+            if (content.Contains("Code"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).MaxReadyCapacity = (long?) content.GetValueForProperty("MaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).MaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Code, global::System.Convert.ToString);
             }
-            if (content.Contains("RefillPolicy"))
+            if (content.Contains("Message"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).RefillPolicy = (string) content.GetValueForProperty("RefillPolicy",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileUpdateInternal)this).RefillPolicy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolStatusInternal)this).Message, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -167,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             return ToJsonString();
         }
     }
-    /// Specifies the elasticity profile of the standby container group pools.
-    [System.ComponentModel.TypeConverter(typeof(StandbyContainerGroupPoolElasticityProfileUpdateTypeConverter))]
-    public partial interface IStandbyContainerGroupPoolElasticityProfileUpdate
+    /// Displays StandbyPool status.
+    [System.ComponentModel.TypeConverter(typeof(PoolStatusTypeConverter))]
+    public partial interface IPoolStatus
 
     {
 

@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Extensions;
 
-    /// <summary>Details of the ContainerGroupProfile.</summary>
-    public partial class ContainerGroupProfileUpdate
+    /// <summary>Displays the forecast information of the standby pool.</summary>
+    public partial class StandbyContainerGroupPoolForecastValues
     {
 
         /// <summary>
@@ -54,10 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="ContainerGroupProfileUpdate" />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new StandbyContainerGroupPoolForecastValues(json) : null;
+        }
+
+        /// <summary>
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="StandbyContainerGroupPoolForecastValues" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ContainerGroupProfileUpdate(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
+        internal StandbyContainerGroupPoolForecastValues(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -65,31 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
-            {_revision = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("revision"), out var __jsonRevision) ? (long?)__jsonRevision : _revision;}
+            {_instancesRequestedCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray>("instancesRequestedCount"), out var __jsonInstancesRequestedCount) ? If( __jsonInstancesRequestedCount as Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<long>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(long) (__u is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber __t ? (long)__t : default(long))) ))() : null : _instancesRequestedCount;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new ContainerGroupProfileUpdate(json) : null;
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="ContainerGroupProfileUpdate" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="StandbyContainerGroupPoolForecastValues" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ContainerGroupProfileUpdate" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="StandbyContainerGroupPoolForecastValues" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"
+        /// />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode)
         {
@@ -101,8 +102,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
-            AddIf( null != this._revision ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber((long)this._revision) : null, "revision" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._instancesRequestedCount)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._instancesRequestedCount )
+                    {
+                        AddIf((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(__x) ,__w.Add);
+                    }
+                    container.Add("instancesRequestedCount",__w);
+                }
+            }
             AfterToJson(ref container);
             return container;
         }
