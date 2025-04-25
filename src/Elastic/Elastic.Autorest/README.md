@@ -112,6 +112,9 @@ directive:
       subject: Monitor|VMCollection|TagRule
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpgradeViaIdentityExpanded$|^UpgradeViaJsonFilePath$|^UpgradeViaJsonString$
     remove: true
+  - where:
+      variant: ^GetViaJsonFilePath$|^GetViaJsonString$
+    remove: true
 
   - where:
       verb: Invoke

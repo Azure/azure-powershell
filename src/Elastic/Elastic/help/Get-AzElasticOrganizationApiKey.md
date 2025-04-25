@@ -24,18 +24,6 @@ Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -Body <IUserEmailId
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaJsonFilePath
-```
-Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaJsonString
-```
-Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 
@@ -90,36 +78,6 @@ Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Get operation
-
-```yaml
-Type: System.String
-Parameter Sets: GetViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Get operation
-
-```yaml
-Type: System.String
-Parameter Sets: GetViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
