@@ -7,11 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
-    /// <summary>
-    /// Displays the counts of pooled resources in each state, as known by the StandbyPool resource provider.
-    /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(PoolResourceStateCountTypeConverter))]
-    public partial class PoolResourceStateCount
+    /// <summary>Displays the forecast information of the standby pool.</summary>
+    [System.ComponentModel.TypeConverter(typeof(StandbyVirtualMachinePoolForecastValuesTypeConverter))]
+    public partial class StandbyVirtualMachinePoolForecastValues
     {
 
         /// <summary>
@@ -65,44 +63,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValues"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValues DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new PoolResourceStateCount(content);
+            return new StandbyVirtualMachinePoolForecastValues(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValues"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValues DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new PoolResourceStateCount(content);
+            return new StandbyVirtualMachinePoolForecastValues(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="PoolResourceStateCount" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="StandbyVirtualMachinePoolForecastValues" />, deserializing the content from a json
+        /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="PoolResourceStateCount" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>
+        /// an instance of the <see cref="StandbyVirtualMachinePoolForecastValues" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValues FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal PoolResourceStateCount(global::System.Collections.IDictionary content)
+        internal StandbyVirtualMachinePoolForecastValues(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -111,23 +114,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("State"))
+            if (content.Contains("InstancesRequestedCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).State, global::System.Convert.ToString);
-            }
-            if (content.Contains("Count"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).Count = (long) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).Count, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValuesInternal)this).InstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("InstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValuesInternal)this).InstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolForecastValues"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal PoolResourceStateCount(global::System.Management.Automation.PSObject content)
+        internal StandbyVirtualMachinePoolForecastValues(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -136,13 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("State"))
+            if (content.Contains("InstancesRequestedCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).State, global::System.Convert.ToString);
-            }
-            if (content.Contains("Count"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).Count = (long) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCountInternal)this).Count, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValuesInternal)this).InstancesRequestedCount = (System.Collections.Generic.List<long>) content.GetValueForProperty("InstancesRequestedCount",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolForecastValuesInternal)this).InstancesRequestedCount, __y => TypeConverterExtensions.SelectToList<long>(__y, (__w)=> (long) global::System.Convert.ChangeType(__w, typeof(long))));
             }
             AfterDeserializePSObject(content);
         }
@@ -164,9 +159,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             return ToJsonString();
         }
     }
-    /// Displays the counts of pooled resources in each state, as known by the StandbyPool resource provider.
-    [System.ComponentModel.TypeConverter(typeof(PoolResourceStateCountTypeConverter))]
-    public partial interface IPoolResourceStateCount
+    /// Displays the forecast information of the standby pool.
+    [System.ComponentModel.TypeConverter(typeof(StandbyVirtualMachinePoolForecastValuesTypeConverter))]
+    public partial interface IStandbyVirtualMachinePoolForecastValues
 
     {
 

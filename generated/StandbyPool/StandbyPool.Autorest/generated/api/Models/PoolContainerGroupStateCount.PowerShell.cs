@@ -7,9 +7,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.PowerShell;
 
-    /// <summary>Details of the ContainerGroupProfile.</summary>
-    [System.ComponentModel.TypeConverter(typeof(ContainerGroupProfileUpdateTypeConverter))]
-    public partial class ContainerGroupProfileUpdate
+    /// <summary>
+    /// Displays the counts of pooled container groups in each state, as known by the StandbyPool resource provider.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(PoolContainerGroupStateCountTypeConverter))]
+    public partial class PoolContainerGroupStateCount
     {
 
         /// <summary>
@@ -63,11 +65,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ContainerGroupProfileUpdate(global::System.Collections.IDictionary content)
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new PoolContainerGroupStateCount(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new PoolContainerGroupStateCount(content);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="PoolContainerGroupStateCount" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>an instance of the <see cref="PoolContainerGroupStateCount" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCount FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal PoolContainerGroupStateCount(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -76,23 +111,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Id"))
+            if (content.Contains("State"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).State, global::System.Convert.ToString);
             }
-            if (content.Contains("Revision"))
+            if (content.Contains("Count"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Revision = (long?) content.GetValueForProperty("Revision",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Revision, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).Count = (long) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).Count, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ContainerGroupProfileUpdate(global::System.Management.Automation.PSObject content)
+        internal PoolContainerGroupStateCount(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -101,49 +136,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Id"))
+            if (content.Contains("State"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).State, global::System.Convert.ToString);
             }
-            if (content.Contains("Revision"))
+            if (content.Contains("Count"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Revision = (long?) content.GetValueForProperty("Revision",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdateInternal)this).Revision, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).Count = (long) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolContainerGroupStateCountInternal)this).Count, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new ContainerGroupProfileUpdate(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new ContainerGroupProfileUpdate(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="ContainerGroupProfileUpdate" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="ContainerGroupProfileUpdate" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfileUpdate FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -162,9 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             return ToJsonString();
         }
     }
-    /// Details of the ContainerGroupProfile.
-    [System.ComponentModel.TypeConverter(typeof(ContainerGroupProfileUpdateTypeConverter))]
-    public partial interface IContainerGroupProfileUpdate
+    /// Displays the counts of pooled container groups in each state, as known by the StandbyPool resource provider.
+    [System.ComponentModel.TypeConverter(typeof(PoolContainerGroupStateCountTypeConverter))]
+    public partial interface IPoolContainerGroupStateCount
 
     {
 

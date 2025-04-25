@@ -7,10 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Extensions;
 
-    /// <summary>
-    /// Displays the counts of pooled resources in each state, as known by the StandbyPool resource provider.
-    /// </summary>
-    public partial class PoolResourceStateCount
+    /// <summary>Displays prediction information of the standby pool.</summary>
+    public partial class StandbyVirtualMachinePoolPrediction
     {
 
         /// <summary>
@@ -56,22 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolPrediction.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolPrediction.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolPrediction FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new PoolResourceStateCount(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new StandbyVirtualMachinePoolPrediction(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="PoolResourceStateCount" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="StandbyVirtualMachinePoolPrediction" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal PoolResourceStateCount(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
+        internal StandbyVirtualMachinePoolPrediction(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -79,19 +77,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
-            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)_state;}
-            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (long)__jsonCount : _count;}
+            {_forecastValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("forecastValues"), out var __jsonForecastValues) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolForecastValues.FromJson(__jsonForecastValues) : _forecastValue;}
+            {_forecastStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("forecastStartTime"), out var __jsonForecastStartTime) ? global::System.DateTime.TryParse((string)__jsonForecastStartTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonForecastStartTimeValue) ? __jsonForecastStartTimeValue : _forecastStartTime : _forecastStartTime;}
+            {_forecastInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("forecastInfo"), out var __jsonForecastInfo) ? (string)__jsonForecastInfo : (string)_forecastInfo;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="PoolResourceStateCount" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="StandbyVirtualMachinePoolPrediction" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="PoolResourceStateCount" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="StandbyVirtualMachinePoolPrediction" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode)
         {
@@ -103,8 +103,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._state)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._state.ToString()) : null, "state" ,container.Add );
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(this._count), "count" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._forecastValue ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._forecastValue.ToJson(null,serializationMode) : null, "forecastValues" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._forecastStartTime ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._forecastStartTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "forecastStartTime" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._forecastInfo)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._forecastInfo.ToString()) : null, "forecastInfo" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }
