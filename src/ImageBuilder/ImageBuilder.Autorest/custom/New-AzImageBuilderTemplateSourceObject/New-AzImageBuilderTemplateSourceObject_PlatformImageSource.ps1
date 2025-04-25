@@ -50,10 +50,7 @@ function New-AzImageBuilderTemplateSourceObject_PlatformImageSource {
         $Sku,
         [Parameter(HelpMessage="Image version from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.")]
         [string]
-        $Version,
-        [Parameter(Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Switch]
-        $PlatformImageSource
+        $Version
     )
 
     process {

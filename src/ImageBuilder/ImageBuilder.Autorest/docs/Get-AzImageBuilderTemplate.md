@@ -40,48 +40,27 @@ Get information about a virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: List information about virtual machine image template by SubscriptionId.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate
+{{ Add code here }}
 ```
 
 ```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   azps-ibt-1 azps_test_group_imagebuilder
-eastus   azps-ibt-2 azps_test_group_imagebuilder
-eastus   azps-ibt-3 azps_test_group_imagebuilder
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List information about virtual machine image template by SubscriptionId.
+{{ Add description here }}
 
-### Example 2: List information about virtual machine image template by ResourceGroupName.
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder
+{{ Add code here }}
 ```
 
 ```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   azps-ibt-1 azps_test_group_imagebuilder
-eastus   azps-ibt-2 azps_test_group_imagebuilder
-eastus   azps-ibt-3 azps_test_group_imagebuilder
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List information about virtual machine image template by ResourceGroupName.
-
-### Example 3: Get information about a virtual machine image template by Name.
-```powershell
-Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder -Name azps-ibt-1
-```
-
-```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   azps-ibt-1 azps_test_group_imagebuilder
-```
-
-Get information about a virtual machine image template by Name.
+{{ Add description here }}
 
 ## PARAMETERS
 

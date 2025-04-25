@@ -19,21 +19,21 @@ Describe 'New-AzImageBuilderTemplateSourceObject' {
         $version = 'latest'
         $planInfoPlanName = 'UbuntuServer'
         {
-            New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher $publisher -Offer $offer -Sku $sku -Version $version
+            New-AzImageBuilderTemplateSourceObject -Publisher $publisher -Offer $offer -Sku $sku -Version $version
         } | Should -Not -Throw 
     }
 
     It 'ManagedImage' {
         $imageId = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/test-linux-image'
         { 
-            New-AzImageBuilderTemplateSourceObject -ManagedImageSource -ImageId $imageId
+            New-AzImageBuilderTemplateSourceObject -ImageId $imageId 
         } | Should -Not -Throw
     }
 
     It 'SharedImageVersion' {
         $imageVersionId = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/lucasimagegallery/images/myimagedefinition/versions/1.0.0'
         { 
-            New-AzImageBuilderTemplateSourceObject -SharedImageVersionSource -ImageVersionId $imageVersionId 
+            New-AzImageBuilderTemplateSourceObject -ImageVersionId $imageVersionId 
         } | Should -Not -Throw
     }
 }

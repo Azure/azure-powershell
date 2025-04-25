@@ -14,19 +14,19 @@ Create an in-memory object for ImageTemplateSource.
 
 ### PlatformImageSource (Default)
 ```
-New-AzImageBuilderTemplateSourceObject -PlatformImageSource [-Offer <String>] [-PlanInfoPlanName <String>]
+New-AzImageBuilderTemplateSourceObject [-Offer <String>] [-PlanInfoPlanName <String>]
  [-PlanInfoPlanProduct <String>] [-PlanInfoPlanPublisher <String>] [-Publisher <String>] [-Sku <String>]
  [-Version <String>] [<CommonParameters>]
 ```
 
 ### ManagedImageSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageId <String> -ManagedImageSource [<CommonParameters>]
+New-AzImageBuilderTemplateSourceObject -ImageId <String> [<CommonParameters>]
 ```
 
 ### SharedImageVersionSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> -SharedImageVersionSource [<CommonParameters>]
+New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Create an in-memory object for ImageTemplateSource.
 
 ### Example 1: Create a managed image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -ManagedImageSource -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
+New-AzImageBuilderTemplateSourceObject -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
 ```
 
 ```output
@@ -106,22 +106,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedImageSource
-Describes an image source that is a managed image in customer subscription.
-This image must reside in the same subscription and region as the Image Builder template.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManagedImageSource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Offer
 Image offer from the [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 
@@ -182,21 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlatformImageSource
-Describes an image source from [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PlatformImageSource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Publisher
 Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 
@@ -206,21 +175,6 @@ Parameter Sets: PlatformImageSource
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SharedImageVersionSource
-Describes an image source that is an image version in a shared image gallery.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SharedImageVersionSource
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
