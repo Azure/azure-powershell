@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachesku
 schema: 2.0.0
@@ -14,7 +14,7 @@ Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ```
 Get-AzRedisEnterpriseCacheSku -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,6 @@ Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup
 SizeInGb                       Name
 ----------					------------
 size                         sku-name
-
 ```
 
 This command provides all the SKUs and their memory sizes that a Redis Enterprise cluster can be scaled to.
@@ -146,4 +145,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

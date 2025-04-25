@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 schema: 2.0.0
@@ -14,28 +14,29 @@ Creates a Redis Enterprise cache.
 
 ### CreateClusterWithDatabase (Default)
 ```
-New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
- [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
- [-AofPersistenceFrequency <AofFrequency>] [-Capacity <Int32>] [-ClientProtocol <Protocol>]
- [-ClusteringPolicy <ClusteringPolicy>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-HighAvailability <HighAvailability>]
+New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -Sku <SkuName> [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Zone <String[]>]
+ [-Tag <Hashtable>] [-Module <IModule[]>] [-ClientProtocol <Protocol>] [-Port <Int32>]
+ [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
+ [-ClusteringPolicy <ClusteringPolicy>] [-AccessKeysAuthentication <AccessKeysAuthentication>]
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-LinkedDatabase <ILinkedDatabase[]>]
- [-MinimumTlsVersion <TlsVersion>] [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <RdbFrequency>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateClusterOnly
 ```
-New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
- -NoDatabase [-SubscriptionId <String>] [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-HighAvailability <HighAvailability>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -Sku <SkuName> [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Zone <String[]>]
+ [-Tag <Hashtable>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-NoDatabase] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +53,6 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
 ```
 
 This command creates a Redis Enterprise cache named MyCache with an associated database named default.
@@ -66,7 +66,6 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 Location Name    Type                            Zone      Database
 -------- ----    ----                            ----      --------
 East US  MyCache Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
-
 ```
 
 This command creates a Redis Enterprise cache named MyCache with an associated database named default, using some optional parameters.
@@ -80,7 +79,6 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 East US  MyCache Microsoft.Cache/redisEnterprise      {}
-
 ```
 
 Warning: This command creates a Redis Enterprise cache cluster named MyCache without any associated database to hold data.
@@ -94,7 +92,6 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 Location Name      Type                            Zone Database
 -------- ----      ----                            ---- --------
 West US  MyCache   Microsoft.Cache/redisEnterprise      {default}
-
 ```
 
 This command creates a cache name MyCache with a georeplicated database named default
@@ -637,4 +634,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

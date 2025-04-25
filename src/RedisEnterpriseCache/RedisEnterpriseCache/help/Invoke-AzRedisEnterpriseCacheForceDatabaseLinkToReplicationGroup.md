@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaselinktoreplicationgroup
 schema: 2.0.0
@@ -18,20 +18,14 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-GeoReplicationGroupNickname <String>]
  [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Force
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> -Parameter <IForceLinkParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ForceViaIdentity
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Parameter <IForceLinkParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +33,15 @@ Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <I
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
  [-GeoReplicationGroupNickname <String>] [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ForceViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +82,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -95,7 +97,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -160,7 +162,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
+Parameter Sets: ForceViaIdentityExpanded, ForceViaIdentity
 Aliases:
 
 Required: True
@@ -207,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -222,7 +224,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: False
@@ -279,4 +281,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

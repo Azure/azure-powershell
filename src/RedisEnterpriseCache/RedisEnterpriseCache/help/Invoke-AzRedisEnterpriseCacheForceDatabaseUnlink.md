@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
 schema: 2.0.0
@@ -15,28 +15,29 @@ Forcibly removes the link to the specified database resource.
 ### ForceExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Id <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Force
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ForceViaIdentity
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForceViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity> -Id <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ForceViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -123,7 +124,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
+Parameter Sets: ForceViaIdentityExpanded, ForceViaIdentity
 Aliases:
 
 Required: True
@@ -185,7 +186,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -200,7 +201,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: False
@@ -257,4 +258,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

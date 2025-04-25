@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
 schema: 2.0.0
@@ -19,8 +19,8 @@ Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> 
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,8 +30,8 @@ Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Cap
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,6 @@ Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Mini
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
 ```
 
 This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
@@ -376,4 +375,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

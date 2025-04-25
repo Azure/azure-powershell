@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecacheaccesspolicyassignment
 schema: 2.0.0
@@ -15,31 +15,31 @@ Creates/Updates a particular access policy assignment for a database
 ### CreateExpanded (Default)
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> -AccessPolicyName <String> -UserObjectId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -AccessPolicyName <String>
+ -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
- -DatabaseName <String> -ResourceGroupName <String> -Parameter <IAccessPolicyAssignment>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ The name of the Redis Enterprise database access policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -116,7 +116,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -131,7 +131,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -163,7 +163,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -225,7 +225,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: False
@@ -297,4 +297,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

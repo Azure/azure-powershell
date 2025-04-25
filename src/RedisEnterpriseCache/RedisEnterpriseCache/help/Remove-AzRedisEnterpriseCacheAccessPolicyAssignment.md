@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheaccesspolicyassignment
 schema: 2.0.0
@@ -14,15 +14,16 @@ Deletes a single access policy assignment.
 
 ### Delete (Default)
 ```
-Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String>
- -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ Deletes a single access policy assignment.
 
 ### Example 1: Remove access policy assignment.
 ```powershell
- Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup" -Name "testAccessPolicyAssignmentName"
+Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup" -Name "testAccessPolicyAssignmentName"
 ```
 
 This command removes an Access Policy Assignment (Redis User) named testAccessPolicyAssignmentName from Redis enterprise cache named MyCache.
@@ -240,4 +241,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

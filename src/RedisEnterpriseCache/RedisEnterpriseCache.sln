@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisEnterpriseCache", "Red
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RedisEnterpriseCache.Autorest", "RedisEnterpriseCache.Autorest", "{3960B840-DF35-E619-E659-D663BA3F33C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RedisEnterpriseCache", "RedisEnterpriseCache.Autorest\Az.RedisEnterpriseCache.csproj", "{2CE72FDF-DE8E-4950-987D-12D43D099071}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RedisEnterpriseCache", "..\..\generated\RedisEnterpriseCache\RedisEnterpriseCache.Autorest\Az.RedisEnterpriseCache.csproj", "{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,18 +117,18 @@ Global
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Release|x64.Build.0 = Release|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF73958B-0DED-4B6B-BB8E-1DD4CDBDF7B6}.Release|x86.Build.0 = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|x64.Build.0 = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Debug|x86.Build.0 = Debug|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|x64.ActiveCfg = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|x64.Build.0 = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|x86.ActiveCfg = Release|Any CPU
-		{2CE72FDF-DE8E-4950-987D-12D43D099071}.Release|x86.Build.0 = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|x64.Build.0 = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Debug|x86.Build.0 = Debug|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|x64.ActiveCfg = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|x64.Build.0 = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|x86.ActiveCfg = Release|Any CPU
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +140,6 @@ Global
 		{E7599C8A-4DE9-4802-9FB3-1AA5FF3CE043} = {89B5684C-FEE4-4623-A93F-B302473D9388}
 		{D0491641-6AF8-44F1-8DDC-DE4845E2585C} = {89B5684C-FEE4-4623-A93F-B302473D9388}
 		{6941D97B-FA46-4C84-B1D2-EAF2B8E78422} = {89B5684C-FEE4-4623-A93F-B302473D9388}
-		{2CE72FDF-DE8E-4950-987D-12D43D099071} = {3960B840-DF35-E619-E659-D663BA3F33C8}
+		{60CBE6F5-0B99-4A96-B359-A9F8FAF642F8} = {3960B840-DF35-E619-E659-D663BA3F33C8}
 	EndGlobalSection
 EndGlobal

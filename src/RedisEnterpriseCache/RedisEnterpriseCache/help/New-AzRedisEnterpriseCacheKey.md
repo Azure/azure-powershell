@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 schema: 2.0.0
@@ -13,9 +13,9 @@ Regenerates an access key for a Redis Enterprise database.
 ## SYNTAX
 
 ```
-New-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> -KeyType <AccessKeyType>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzRedisEnterpriseCacheKey -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -KeyType <AccessKeyType> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyT
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 new-primary-key                              secondary-key
-
 ```
 
 This command regenerates the primary secret access key used for authenticating connections to the database of the Redis Enterprise cache named MyCache.
@@ -46,7 +45,6 @@ New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyT
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 primary-key                                  new-secondary-key
-
 ```
 
 This command regenerates the secondary secret access key used for authenticating connections to the database of the Redis Enterprise cache named MyCache.
@@ -208,4 +206,3 @@ New-AzRedisEnterpriseCacheDatabaseKey
 New-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
-

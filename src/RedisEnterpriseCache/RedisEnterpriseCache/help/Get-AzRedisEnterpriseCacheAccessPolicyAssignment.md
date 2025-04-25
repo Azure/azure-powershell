@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheaccesspolicyassignment
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets information about access policy assignment for database.
 ### List (Default)
 ```
 Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +33,7 @@ Gets information about access policy assignment for database.
 
 ### Example 1: Get access policy assignment information.
 ```powershell
- Get-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName "testAccessPolicyAssignmentName" -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup"
+Get-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName "testAccessPolicyAssignmentName" -ClusterName "MyCache" -DatabaseName "default" -ResourceGroupName "MyGroup"
 ```
 
 ```output
@@ -164,4 +166,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

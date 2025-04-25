@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
 schema: 2.0.0
@@ -13,9 +13,9 @@ Imports a database file to target database.
 ## SYNTAX
 
 ```
-Import-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Import-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -SasUri <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,4 +200,3 @@ ALIASES
 Import-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
-

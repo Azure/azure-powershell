@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachedatabaseflush
 schema: 2.0.0
@@ -16,27 +16,28 @@ Flushes all the keys in this database and also from its linked databases.
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Flush
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IFlushParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### FlushViaIdentity
-```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FlushViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity> [-Id <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### FlushViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: FlushExpanded, Flush
 Aliases:
 
 Required: True
@@ -123,7 +124,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: FlushViaIdentity, FlushViaIdentityExpanded
+Parameter Sets: FlushViaIdentityExpanded, FlushViaIdentity
 Aliases:
 
 Required: True
@@ -185,7 +186,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: FlushExpanded, Flush
 Aliases:
 
 Required: True
@@ -200,7 +201,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush, FlushExpanded
+Parameter Sets: FlushExpanded, Flush
 Aliases:
 
 Required: False
@@ -257,4 +258,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
