@@ -141,7 +141,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '4.1.0'; },
                @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.5.0'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Support'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.Synapse'; RequiredVersion = '3.2.0'; }, 
+               @{ModuleName = 'Az.Synapse'; RequiredVersion = '3.2.1'; }, 
                @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.3.0'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '3.4.0'; }, 
                @{ModuleName = 'Az.Workloads'; RequiredVersion = '1.0.0'; })

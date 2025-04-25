@@ -60,7 +60,7 @@ pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StreamAnalytics.2.1.0.zip;sourceType=sa]Az.StreamAnalytics,2.1.0
 pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Subscription.0.11.2.zip;sourceType=sa]Az.Subscription,0.11.2
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Support.2.1.0.zip;sourceType=sa]Az.Support,2.1.0
-pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Synapse.3.2.0.zip;sourceType=sa]Az.Synapse,3.2.0
+pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Synapse.3.2.1.zip;sourceType=sa]Az.Synapse,3.2.1
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Terraform.0.1.2.zip;sourceType=sa]Az.Terraform,0.1.2
 pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TimeSeriesInsights.0.2.3.zip;sourceType=sa]Az.TimeSeriesInsights,0.2.3
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.3.0.zip;sourceType=sa]Az.TrafficManager,1.3.0
