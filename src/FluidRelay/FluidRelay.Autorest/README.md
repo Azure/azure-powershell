@@ -38,16 +38,18 @@ title: FluidRelay
 subject-prefix: $(service-name)
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"].delete
     transform: >- 
       $["x-ms-long-running-operation"] = true
+
   - where:
       variant: ^(Create|Update|Regenerate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
+
   - where:
       subject: FluidRelayServerKey
       variant: Get
