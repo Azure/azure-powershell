@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Experiment resource.</summary>
+    /// <summary>create a Experiment resource.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzChaosExperiment_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"Create a Experiment resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"create a Experiment resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.NotSuggestDefaultParameterSet]
