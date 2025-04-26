@@ -22,7 +22,11 @@ foreach ($module in $modules) {
     }
     try {
         Write-Host "Building module: $module"
-        & $buildModulesPath -TargetModule $module
+        #TODO(Bernard) Remove log after test
+        if ($module -eq 'Communication') {
+            throw "Module '$module' is not allowed for this operation."
+        }
+        & $buildModulesPath -TargetModule $module -ForceRegenerate -InvokedByPipeline
     } catch {
         Write-Warning "Failed to build module: $module"
         $result.Status = "Failed"

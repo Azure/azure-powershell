@@ -189,6 +189,7 @@ jobs:
 - job: analyze
   displayName: "Analyze:"
   dependsOn: filter
+  condition: and(succeeded(), not(eq(variables['MatrixKey'], null)), ne(variables['MatrixKey'], ''))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -211,6 +212,7 @@ jobs:
 - job: test_windows
   displayName: "Test Windows:"
   dependsOn: filter
+  condition: and(succeeded(), not(eq(variables['MatrixKey'], null)), ne(variables['MatrixKey'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -234,6 +236,7 @@ jobs:
 - job: test_linux
   displayName: "Test Linux:"
   dependsOn: filter
+  condition: and(succeeded(), not(eq(variables['MatrixKey'], null)), ne(variables['MatrixKey'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.LinuxAgentPoolName }}
   strategy:
@@ -256,6 +259,7 @@ jobs:
 - job: test_mac
   displayName: "Test Mac:"
   dependsOn: filter
+  condition: and(succeeded(), not(eq(variables['MatrixKey'], null)), ne(variables['MatrixKey'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool:
     name: ${{ variables.MacOSAgentPoolName }}

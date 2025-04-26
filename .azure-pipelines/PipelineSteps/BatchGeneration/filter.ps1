@@ -71,6 +71,7 @@ function Write-Matrix {
         $MatrixStr = $MatrixStr.Substring(1)
     }
     Write-Host "##vso[task.setVariable variable=$variableName;isOutput=true]{$MatrixStr}"
+    Write-Host "variable=$variableName; value=$MatrixStr"
     }
 
 $groupedAnalyzeModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleAnalyzeJobs
