@@ -83,5 +83,7 @@ Write-Matrix -variableName 'TestWindowsTargets' -groupedSubModules $groupedTestW
 $groupedTestLinuxModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestLinuxJobs
 Write-Matrix -variableName 'TestLinuxTargets' -groupedSubModules $groupedTestLinuxModules
 
-$groupedTestMacModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestMacJobs
-Write-Matrix -variableName 'TestMacTargets' -groupedSubModules $groupedTestMacModules
+# $groupedTestMacModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestMacJobs
+# Write-Matrix -variableName 'TestMacTargets' -groupedSubModules $groupedTestMacModules
+
+Write-Host "##vso[task.setVariable variable=TestMacTargets;isOutput=true]{}"

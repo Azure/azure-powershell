@@ -1,8 +1,10 @@
 variables:
   IntermediateStepTimeoutInMinutes: 30
+  GenerateTimeoutInMinutes: 120
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
+  MaxParalleGenerateJobs: 3
   MaxParalleBuildJobs: 3
   MaxParalleAnalyzeJobs: 4
   MaxParalleTestWindowsJobs: 1
@@ -50,29 +52,25 @@ jobs:
       script: |
         $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
         & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParalleBuildJobs }}"
-  
-- job: build
-  displayName: "Build:"
+
+- job: generate
+  displayName: "Batch Generate: "
   dependsOn: prepare
-  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  condition: and(succeeded(), ne(variables['generateTargets'], ''))
+  timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
-    matrix: $[ dependencies.prepare.outputs['mtrx.buildTargets'] ]
-    maxParallel: ${{ variables.MaxParalleBuildJobs }}
+    matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
+    maxParallel: ${{ variables.MaxParalleGenerateJobs }}
 
   steps:
   - checkout: self
     persistCredentials: true
     fetchTags: false
-    
-  # - checkout: azure-powershell-devops
-  #   path: "azure-powershell-devops"
-
-  # - template: util/get-github-pat-steps.yml
 
   - task: PowerShell@2
-    name: build
-    displayName: 'Build Targets'
+    name: generate
+    displayName: 'Regenerate Modules'
     inputs:
       targetType: inline
       pwsh: true
@@ -92,9 +90,50 @@ jobs:
       artifact: 'build-$(MatrixKey)'
     condition: always()
 
+# - job: build
+#   displayName: "Build:"
+#   dependsOn: prepare
+#   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+#   pool: ${{ variables.WindowsAgentPoolName }}
+#   strategy:
+#     matrix: $[ dependencies.prepare.outputs['mtrx.buildTargets'] ]
+#     maxParallel: ${{ variables.MaxParalleBuildJobs }}
+
+#   steps:
+#   - checkout: self
+#     persistCredentials: true
+#     fetchTags: false
+    
+#   # - checkout: azure-powershell-devops
+#   #   path: "azure-powershell-devops"
+
+#   # - template: util/get-github-pat-steps.yml
+
+#   - task: PowerShell@2
+#     name: build
+#     displayName: 'Build Targets'
+#     inputs:
+#       targetType: inline
+#       pwsh: true
+#       script: |
+#         git fetch origin "${{ variables.GenerationBranch }}"
+#         git checkout "${{ variables.GenerationBranch }}"
+
+#         $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
+#         & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+
+#       workingDirectory: $(Build.SourcesDirectory)
+
+#   - task: PublishPipelineArtifact@1
+#     displayName: 'Save patch'
+#     inputs:
+#       targetPath: '$(Build.ArtifactStagingDirectory)'
+#       artifact: 'build-$(MatrixKey)'
+#     condition: always()
+
 - job: filter
   displayName: 'Filter Changed Modules'
-  dependsOn: build 
+  dependsOn: generate 
   condition: always()
   timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
@@ -189,7 +228,7 @@ jobs:
 - job: analyze
   displayName: "Analyze:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['MatrixKey'], ''))
+  condition: and(succeeded(), ne(variables['AnalyzeTargets'], ''))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -212,7 +251,7 @@ jobs:
 - job: test_windows
   displayName: "Test Windows:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['MatrixKey'], ''))
+  condition: and(succeeded(), ne(variables['TestWindowsTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -236,7 +275,7 @@ jobs:
 - job: test_linux
   displayName: "Test Linux:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['MatrixKey'], ''))
+  condition: and(succeeded(), ne(variables['TestLinuxTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.LinuxAgentPoolName }}
   strategy:
@@ -259,7 +298,7 @@ jobs:
 - job: test_mac
   displayName: "Test Mac:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['MatrixKey'], ''))
+  condition: and(succeeded(), ne(variables['TestMacTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool:
     name: ${{ variables.MacOSAgentPoolName }}
