@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.BareMetal",
-  "ModuleVersion": "0.1.2",
+  "ModuleVersion": "0.2.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -14,23 +14,21 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "StorageProfileOSDisk": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[]",
-              "NetworkProfileNetworkInterface": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress[]",
-              "HardwareProfileHardwareType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum]",
-              "PowerState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum]",
-              "HardwareProfileAzureBareMetalInstanceSize": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum]",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]",
+              "StorageProfileOSDisk": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk]",
+              "NetworkProfileNetworkInterface": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
+              "AzureBareMetalInstanceId": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataCreatedBy": "System.String",
               "StorageProfileNfsIPAddress": "System.String",
               "ProximityPlacementGroup": "System.String",
+              "ProvisioningState": "System.String",
+              "PowerState": "System.String",
               "PartnerNodeId": "System.String",
               "OSProfileVersion": "System.String",
               "OSProfileSshPublicKey": "System.String",
@@ -38,8 +36,10 @@
               "OSProfileComputerName": "System.String",
               "NetworkProfileCircuitId": "System.String",
               "HwRevision": "System.String",
+              "HardwareProfileHardwareType": "System.String",
+              "HardwareProfileAzureBareMetalInstanceSize": "System.String",
               "SystemDataLastModifiedBy": "System.String",
-              "AzureBareMetalInstanceId": "System.String"
+              "SystemDataLastModifiedByType": "System.String"
             }
           },
           "ParameterSets": [
@@ -56,7 +56,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -65,7 +65,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -74,7 +74,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
-            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
@@ -88,7 +88,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -97,7 +97,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -106,7 +106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -116,7 +116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -126,7 +126,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -135,7 +135,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -144,7 +144,19 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -162,7 +174,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -177,7 +189,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -192,7 +204,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -212,7 +224,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -227,7 +239,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -242,7 +254,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -258,7 +270,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -274,7 +286,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -289,7 +301,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -304,7 +316,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -324,7 +354,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -339,7 +369,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -359,7 +389,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -374,7 +404,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -389,7 +419,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -405,7 +435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -421,7 +451,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -436,7 +466,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -451,7 +481,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -471,7 +519,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -491,7 +539,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -506,7 +554,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -521,7 +569,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -537,7 +585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -553,7 +601,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -568,7 +616,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -583,7 +631,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -608,23 +674,21 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IAzureBareMetalInstance, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "StorageProfileOSDisk": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[]",
-              "NetworkProfileNetworkInterface": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress[]",
-              "HardwareProfileHardwareType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum]",
-              "PowerState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum]",
-              "HardwareProfileAzureBareMetalInstanceSize": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum]",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]",
+              "StorageProfileOSDisk": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk]",
+              "NetworkProfileNetworkInterface": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
+              "AzureBareMetalInstanceId": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataCreatedBy": "System.String",
               "StorageProfileNfsIPAddress": "System.String",
               "ProximityPlacementGroup": "System.String",
+              "ProvisioningState": "System.String",
+              "PowerState": "System.String",
               "PartnerNodeId": "System.String",
               "OSProfileVersion": "System.String",
               "OSProfileSshPublicKey": "System.String",
@@ -632,8 +696,10 @@
               "OSProfileComputerName": "System.String",
               "NetworkProfileCircuitId": "System.String",
               "HwRevision": "System.String",
+              "HardwareProfileHardwareType": "System.String",
+              "HardwareProfileAzureBareMetalInstanceSize": "System.String",
               "SystemDataLastModifiedBy": "System.String",
-              "AzureBareMetalInstanceId": "System.String"
+              "SystemDataLastModifiedByType": "System.String"
             }
           },
           "ParameterSets": [
@@ -650,7 +716,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -659,7 +725,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -668,7 +734,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -677,7 +743,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AzureBareMetalInstanceName": "System.String",
               "Id": "System.String",
@@ -692,7 +758,25 @@
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -705,7 +789,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -714,7 +798,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -723,7 +807,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -733,7 +817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -743,7 +827,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -752,7 +836,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -761,14 +845,26 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
         {
-          "Name": "UpdateExpanded",
+          "Name": "UpdateViaJsonString",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -779,7 +875,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -794,7 +890,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -809,7 +905,401 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "AzureBareMetalInstanceName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "AzureBareMetalInstanceName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -824,7 +1314,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -843,7 +1333,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -858,7 +1348,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -873,7 +1363,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -889,7 +1379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -905,7 +1395,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -920,7 +1410,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -935,7 +1425,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -955,7 +1463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IBareMetalIdentity, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AzureBareMetalInstanceName": "System.String",
                     "Id": "System.String",
@@ -976,7 +1484,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -995,7 +1503,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1010,7 +1518,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1025,7 +1533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1041,7 +1549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1057,7 +1565,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1072,7 +1580,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1087,7 +1595,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1103,21 +1629,6 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Tag",
-                "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -1126,7 +1637,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1141,7 +1652,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1156,7 +1667,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1172,7 +1683,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep[], Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1188,7 +1699,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1203,7 +1714,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1218,7 +1729,25 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1275,16 +1804,18 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IDisk, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IDisk, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Lun": "System.Nullable`1[System.Int32]",
         "SizeGb": "System.Nullable`1[System.Int32]",
@@ -1294,412 +1825,31 @@
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.Int32"
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress[], Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IIPAddress, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.IIPAddress, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IPAddress1": "System.String"
       }
     },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalHardwareTypeNamesEnum"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstancePowerStateEnum"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalInstanceSizeNamesEnum"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.AzureBareMetalProvisioningStatesEnum"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Support.CreatedByType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.DateTime"
       ]
@@ -1707,12 +1857,12 @@
     "System.DateTime": {
       "Namespace": "System",
       "Name": "System.DateTime",
-      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep, Az.BareMetal.private, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Runtime.SendAsyncStep, Az.BareMetal.private, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -1846,17 +1996,17 @@
     "System.Object": {
       "Namespace": "System",
       "Name": "System.Object",
-      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.Reflection.MethodInfo": {
       "Namespace": "System.Reflection",
       "Name": "System.Reflection.MethodInfo",
-      "AssemblyQualifiedName": "System.Reflection.MethodInfo, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.Reflection.MethodInfo, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]": {
       "Namespace": "System.Threading.Tasks",
       "Name": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]",
-      "AssemblyQualifiedName": "System.Threading.Tasks.Task`1[[System.Net.Http.HttpResponseMessage, System.Net.Http, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Threading.Tasks.Task`1[[System.Net.Http.HttpResponseMessage, System.Net.Http, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "System.Net.Http.HttpResponseMessage"
       ]
@@ -1864,28 +2014,33 @@
     "System.Net.Http.HttpResponseMessage": {
       "Namespace": "System.Net.Http",
       "Name": "System.Net.Http.HttpResponseMessage",
-      "AssemblyQualifiedName": "System.Net.Http.HttpResponseMessage, System.Net.Http, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+      "AssemblyQualifiedName": "System.Net.Http.HttpResponseMessage, System.Net.Http, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     },
     "System.IAsyncResult": {
       "Namespace": "System",
       "Name": "System.IAsyncResult",
-      "AssemblyQualifiedName": "System.IAsyncResult, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.IAsyncResult, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.Delegate[]": {
       "Namespace": "System",
       "Name": "System.Delegate[]",
-      "AssemblyQualifiedName": "System.Delegate[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Delegate[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "ElementType": "System.Delegate"
     },
     "System.Delegate": {
       "Namespace": "System",
       "Name": "System.Delegate",
-      "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     }
   }
 }
