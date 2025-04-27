@@ -33,7 +33,10 @@ function New-AzImageBuilderTemplateSourceObject_ManagedImageSource {
 
         [Parameter(Mandatory, HelpMessage="ARM resource id of the managed image in customer subscription.")]
         [string]
-        $ImageId
+        $ImageId,
+        [Parameter(Mandatory, HelpMessage="Describes an image source that is a managed image in customer subscription. This image must reside in the same subscription and region as the Image Builder template.")]
+        [Switch]
+        $ManagedImageSource
     )
 
     process {
