@@ -56,7 +56,7 @@ jobs:
 - job: generate
   displayName: "Batch Generate: "
   dependsOn: prepare
-  condition: and(succeeded(), ne(variables['generateTargets'], ''))
+  condition: and(succeeded(), ne(dependencies.prepare.outputs['mtrx.generateTargets'], ''))
   timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -228,7 +228,7 @@ jobs:
 - job: analyze
   displayName: "Analyze:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['AnalyzeTargets'], ''))
+  condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.AnalyzeTargets'], ''))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -251,7 +251,7 @@ jobs:
 - job: test_windows
   displayName: "Test Windows:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['TestWindowsTargets'], ''))
+  condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -271,11 +271,10 @@ jobs:
         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
-
 - job: test_linux
   displayName: "Test Linux:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['TestLinuxTargets'], ''))
+  condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.LinuxAgentPoolName }}
   strategy:
@@ -298,7 +297,7 @@ jobs:
 - job: test_mac
   displayName: "Test Mac:"
   dependsOn: filter
-  condition: and(succeeded(), ne(variables['TestMacTargets'], ''))
+  condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestMacTargets'], ''))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool:
     name: ${{ variables.MacOSAgentPoolName }}
