@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"OpenAI Integration name",
         SerializedName = @"integrationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Monitor resource name",
         SerializedName = @"monitorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Tag Rule Set resource name",
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
