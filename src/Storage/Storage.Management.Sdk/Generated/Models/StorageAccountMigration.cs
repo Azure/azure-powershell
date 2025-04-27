@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="targetSkuName">Target sku name for the account
         /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;,
         /// &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;,
-        /// &#39;Standard_RAGZRS&#39;</param>
+        /// &#39;Standard_RAGZRS&#39;, &#39;StandardV2_LRS&#39;, &#39;StandardV2_GRS&#39;, &#39;StandardV2_ZRS&#39;,
+        /// &#39;StandardV2_GZRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;PremiumV2_ZRS&#39;</param>
 
         /// <param name="migrationFailedReason">Error code for migration failure
         /// </param>
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         public string MigrationStatus {get; private set; }
 
         /// <summary>
-        /// Gets or sets target sku name for the account Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;, &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGZRS&#39;
+        /// Gets or sets target sku name for the account Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;, &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGZRS&#39;, &#39;StandardV2_LRS&#39;, &#39;StandardV2_GRS&#39;, &#39;StandardV2_ZRS&#39;, &#39;StandardV2_GZRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;PremiumV2_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetSkuName")]
         public string TargetSkuName {get; set; }

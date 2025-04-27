@@ -52,6 +52,7 @@ function setupEnv() {
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testaccountmigrationrg"
     $env.AccountName = "testaccountmigration111"
+    $env.FilePV2AccountName = "pshtestaccountpv2"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

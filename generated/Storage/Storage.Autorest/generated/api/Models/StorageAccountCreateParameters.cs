@@ -120,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string DnsEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).DnsEndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).DnsEndpointType = value ?? null; }
 
+        /// <summary>Enables extended group support with local users feature, if set to true</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? EnableExtendedGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).EnableExtendedGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).EnableExtendedGroup = value ?? default(bool); }
+
         /// <summary>
         /// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
         /// </summary>
@@ -295,9 +299,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for SasPolicy</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal.SasPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicy = value; }
 
-        /// <summary>Internal Acessors for SasPolicyExpirationAction</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal.SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction = value; }
-
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountCreateParametersInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku()); set { {_sku = value;} } }
 
@@ -341,7 +342,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParameters Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountPropertiesCreateParameters()); set => this._property = value; }
 
         /// <summary>
-        /// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+        /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
+        /// Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).PublicNetworkAccess = value ?? null; }
@@ -362,9 +364,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string RoutingPreferenceRoutingChoice { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).RoutingPreferenceRoutingChoice; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).RoutingPreferenceRoutingChoice = value ?? null; }
 
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction; }
+        public string SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParametersInternal)Property).SasPolicyExpirationAction = value ?? null; }
 
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -422,7 +428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.",
         SerializedName = @"accessTier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
         string AccessTier { get; set; }
         /// <summary>Specifies the Active Directory account type for Azure Storage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -654,6 +660,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "AzureDnsZone")]
         string DnsEndpointType { get; set; }
+        /// <summary>Enables extended group support with local users feature, if set to true</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enables extended group support with local users feature, if set to true",
+        SerializedName = @"enableExtendedGroups",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnableExtendedGroup { get; set; }
         /// <summary>
         /// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
         /// </summary>
@@ -919,7 +936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3")]
         string MinimumTlsVersion { get; set; }
         /// <summary>
         /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices
@@ -982,7 +999,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get; set; }
         /// <summary>
-        /// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+        /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
+        /// Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -990,10 +1008,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.",
+        Description = @"Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
         /// <summary>
         /// A boolean flag which indicates whether internet routing storage endpoints are to be published
@@ -1033,17 +1051,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("MicrosoftRouting", "InternetRouting")]
         string RoutingPreferenceRoutingChoice { get; set; }
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The SAS expiration action. Can only be Log.",
+        Description = @"The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.",
         SerializedName = @"expirationAction",
         PossibleTypes = new [] { typeof(string) })]
-        string SasPolicyExpirationAction { get;  }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
+        string SasPolicyExpirationAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -1067,7 +1090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string SkuName { get; set; }
         /// <summary>The SKU tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -1107,7 +1130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs
         /// storage account type.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
         string AccessTier { get; set; }
         /// <summary>Specifies the Active Directory account type for Azure Storage.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("User", "Computer")]
@@ -1186,6 +1209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "AzureDnsZone")]
         string DnsEndpointType { get; set; }
+        /// <summary>Enables extended group support with local users feature, if set to true</summary>
+        bool? EnableExtendedGroup { get; set; }
         /// <summary>
         /// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
         /// </summary>
@@ -1282,7 +1307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3")]
         string MinimumTlsVersion { get; set; }
         /// <summary>Network rule set</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSet NetworkRuleSet { get; set; }
@@ -1304,9 +1329,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The parameters used to create the storage account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesCreateParameters Property { get; set; }
         /// <summary>
-        /// Allow or disallow public network access to Storage Account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
+        /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
+        /// Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
         /// <summary>
         /// Maintains information about the network routing choice opted by the user for data transfer
@@ -1325,7 +1351,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string RoutingPreferenceRoutingChoice { get; set; }
         /// <summary>SasPolicy assigned to the storage account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy SasPolicy { get; set; }
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string SasPolicyExpirationAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         string SasPolicySasExpirationPeriod { get; set; }
@@ -1334,7 +1365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>
         /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string SkuName { get; set; }
         /// <summary>The SKU tier. This is based on the SKU name.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard", "Premium")]

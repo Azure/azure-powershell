@@ -18,7 +18,7 @@ Uploads the contents of a file.
 Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
  [-AsJob] [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
@@ -26,7 +26,7 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path] <String>] [-PassThru]
  [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -34,7 +34,7 @@ Set-AzStorageFileContent [-ShareClient] <ShareClient> [-Source] <String> [[-Path
 Set-AzStorageFileContent [-ShareDirectoryClient] <ShareDirectoryClient> [-Source] <String> [[-Path] <String>]
  [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,6 +232,21 @@ Keep the source File SMB properties (File Attributtes, File Creation Time, File 
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

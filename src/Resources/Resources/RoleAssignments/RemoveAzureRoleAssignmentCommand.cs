@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "The app SPN.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SPN")]
+        [Alias("SPN", "ApplicationId")]
         public string ServicePrincipalName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
