@@ -18,9 +18,15 @@ Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] [-EmailId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaJsonFilePath
 ```
-Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -Body <IUserEmailId> [-DefaultProfile <PSObject>]
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,21 +43,6 @@ Get-AzElasticOrganizationApiKey -Body $EmailIdObject
 This command will Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 
 ## PARAMETERS
-
-### -Body
-Email Id of the User Organization, of which the API Key must be returned
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -78,6 +69,36 @@ Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,8 +156,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserEmailId
 
 ## OUTPUTS
 

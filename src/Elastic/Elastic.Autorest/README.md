@@ -113,7 +113,8 @@ directive:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpgradeViaIdentityExpanded$|^UpgradeViaJsonFilePath$|^UpgradeViaJsonString$
     remove: true
   - where:
-      variant: ^GetViaJsonFilePath$|^GetViaJsonString$
+      subject: OrganizationApiKey
+      variant: ^Get$
     remove: true
 
   - where:
