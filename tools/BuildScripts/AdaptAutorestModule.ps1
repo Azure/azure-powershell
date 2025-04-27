@@ -215,7 +215,7 @@ try{
             $indexPath = Join-Path $helpPath "Az.$ModuleRootName.md"
             $content = Get-Content -Path $indexPath
             $content = $content -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleRootName.ToLower())"
-            $content = $content -replace '{{ Please enter version of help manually (X.X.X.X) format }}', '1.0.0.0'
+            $content = $content -replace '{{ Please enter version of help manually \(X.X.X.X\) format }}', '1.0.0.0'
             $content = $content -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleRootName cmdlets"
             $content | Set-Content -Path $indexPath
         }
