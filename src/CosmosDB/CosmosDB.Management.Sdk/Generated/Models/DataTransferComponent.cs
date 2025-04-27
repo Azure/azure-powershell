@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     {
         public const string CosmosDBCassandra = "CosmosDBCassandra";
         public const string CosmosDBMongo = "CosmosDBMongo";
+        public const string CosmosDBMongoVCore = "CosmosDBMongoVCore";
         public const string CosmosDBSql = "CosmosDBSql";
         public const string AzureBlobStorage = "AzureBlobStorage";
     }

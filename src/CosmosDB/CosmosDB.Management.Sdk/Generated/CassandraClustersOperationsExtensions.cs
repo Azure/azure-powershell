@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='commandId'>
         /// Managed Cassandra cluster command id.
         /// </param>
-        public static ListCommands GetCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId)
+        public static CommandPublicResource GetCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId)
         {
                 return ((ICassandraClustersOperations)operations).GetCommandAsyncAsync(resourceGroupName, clusterName, commandId).GetAwaiter().GetResult();
         }
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ListCommands> GetCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommandPublicResource> GetCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, commandId, null, cancellationToken).ConfigureAwait(false))
             {

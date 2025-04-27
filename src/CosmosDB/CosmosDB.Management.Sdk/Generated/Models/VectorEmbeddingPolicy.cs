@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// List of commands for cluster.
+    /// Cosmos DB Vector Embedding Policy
     /// </summary>
-    public partial class ListCommands
+    public partial class VectorEmbeddingPolicy
     {
         /// <summary>
-        /// Initializes a new instance of the ListCommands class.
+        /// Initializes a new instance of the VectorEmbeddingPolicy class.
         /// </summary>
-        public ListCommands()
+        public VectorEmbeddingPolicy()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ListCommands class.
+        /// Initializes a new instance of the VectorEmbeddingPolicy class.
         /// </summary>
 
-        /// <param name="value">Container for array of commands.
+        /// <param name="vectorEmbeddings">List of vector embeddings
         /// </param>
-        public ListCommands(System.Collections.Generic.IList<CommandPublicResource> value = default(System.Collections.Generic.IList<CommandPublicResource>))
+        public VectorEmbeddingPolicy(System.Collections.Generic.IList<VectorEmbedding> vectorEmbeddings = default(System.Collections.Generic.IList<VectorEmbedding>))
 
         {
-            this.Value = value;
+            this.VectorEmbeddings = vectorEmbeddings;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets container for array of commands.
+        /// Gets or sets list of vector embeddings
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public System.Collections.Generic.IList<CommandPublicResource> Value {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vectorEmbeddings")]
+        public System.Collections.Generic.IList<VectorEmbedding> VectorEmbeddings {get; set; }
     }
 }
