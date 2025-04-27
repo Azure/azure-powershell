@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.PolicyInsights" Version "1.0.0" PackageReference
 
 ## Version 1.7.0
 * Upgraded nuget package to signed package.

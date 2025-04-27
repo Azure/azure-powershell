@@ -152,6 +152,9 @@ Lists file handles of a file share, a file directory or a file.
 ### [Get-AzStorageFileServiceProperty](Get-AzStorageFileServiceProperty.md)
 Gets service properties for Azure Storage File services.
 
+### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
+Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
+
 ### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
 Gets a specified local user or lists all local users in a storage account.
 

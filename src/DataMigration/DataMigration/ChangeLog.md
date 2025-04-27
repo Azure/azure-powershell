@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Sql schema migration and version package to new url. 
 
 ## Version 0.14.9
 * Upgraded nuget package to signed package.

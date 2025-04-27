@@ -49,6 +49,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string EncryptionScopeName { get => this._encryptionScopeName; set => this._encryptionScopeName = value; }
 
+        /// <summary>Backing field for <see cref="FileServiceUsagesName" /> property.</summary>
+        private string _fileServiceUsagesName;
+
+        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string FileServiceUsagesName { get => this._fileServiceUsagesName; set => this._fileServiceUsagesName = value; }
+
+        /// <summary>Backing field for <see cref="FileServicesName" /> property.</summary>
+        private string _fileServicesName;
+
+        /// <summary>
+        /// The name of the file Service within the specified storage account. File Service Name must be "default"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string FileServicesName { get => this._fileServicesName; set => this._fileServicesName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -105,6 +121,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ShareName" /> property.</summary>
+        private string _shareName;
+
+        /// <summary>
+        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string ShareName { get => this._shareName; set => this._shareName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -186,6 +213,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"encryptionScopeName",
         PossibleTypes = new [] { typeof(string) })]
         string EncryptionScopeName { get; set; }
+        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the file service usage. File Service Usage Name must be ""default""",
+        SerializedName = @"fileServiceUsagesName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
+        string FileServiceUsagesName { get; set; }
+        /// <summary>
+        /// The name of the file Service within the specified storage account. File Service Name must be "default"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the file Service within the specified storage account. File Service Name must be ""default""",
+        SerializedName = @"FileServicesName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
+        string FileServicesName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -273,6 +326,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>
+        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.",
+        SerializedName = @"shareName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ShareName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -321,6 +389,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// preceded and followed by a letter or number.
         /// </summary>
         string EncryptionScopeName { get; set; }
+        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
+        string FileServiceUsagesName { get; set; }
+        /// <summary>
+        /// The name of the file Service within the specified storage account. File Service Name must be "default"
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
+        string FileServicesName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The location of the deleted storage account.</summary>
@@ -345,6 +421,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// The name of the resource group within the user's subscription. The name is case insensitive.
         /// </summary>
         string ResourceGroupName { get; set; }
+        /// <summary>
+        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        string ShareName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>

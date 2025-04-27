@@ -36,8 +36,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; }
 
+        /// <summary>Indicates whether object replication metrics feature is enabled for the policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? MetricEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).MetricEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).MetricEnabled = value ?? default(bool); }
+
         /// <summary>Internal Acessors for EnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal.EnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).EnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).EnabledTime = value; }
+
+        /// <summary>Internal Acessors for Metric</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal.Metric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).Metric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).Metric = value; }
 
         /// <summary>Internal Acessors for PolicyId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal.PolicyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).PolicyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).PolicyId = value; }
@@ -136,6 +143,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"enabledTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? EnabledTime { get;  }
+        /// <summary>Indicates whether object replication metrics feature is enabled for the policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether object replication metrics feature is enabled for the policy.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? MetricEnabled { get; set; }
         /// <summary>A unique id for object replication policy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -183,6 +201,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         string DestinationAccount { get; set; }
         /// <summary>Indicates when the policy is enabled on the source account.</summary>
         global::System.DateTime? EnabledTime { get; set; }
+        /// <summary>Optional. The object replication policy metrics feature options.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics Metric { get; set; }
+        /// <summary>Indicates whether object replication metrics feature is enabled for the policy.</summary>
+        bool? MetricEnabled { get; set; }
         /// <summary>A unique id for object replication policy.</summary>
         string PolicyId { get; set; }
         /// <summary>Returns the Storage Account Object Replication Policy.</summary>

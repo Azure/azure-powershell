@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public const string Four2 = "4.2";
         public const string Five0 = "5.0";
         public const string Six0 = "6.0";
+        public const string Seven0 = "7.0";
     }
 }

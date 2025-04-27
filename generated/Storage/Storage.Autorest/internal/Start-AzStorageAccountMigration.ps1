@@ -54,6 +54,8 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [FileServiceUsagesName <String>]: The name of the file service usage. File Service Usage Name must be "default"
+  [FileServicesName <String>]: The name of the file Service within the specified storage account. File Service Name must be "default"
   [Id <String>]: Resource identity path
   [Location <String>]: The location of the deleted storage account.
   [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
@@ -61,6 +63,7 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [ObjectReplicationPolicyId <String>]: For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
+  [ShareName <String>]: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Username <String>]: The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
 
@@ -121,7 +124,7 @@ param(
 
     [Parameter(ParameterSetName='StartExpanded', Mandatory)]
     [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # Target sku name for the account
@@ -247,6 +250,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

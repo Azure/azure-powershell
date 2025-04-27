@@ -9,7 +9,11 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Get secure raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
-> **_NOTE:_**  The current default output token type is going to be changed from plain text `String` to `SecureString` for security. Please use `-AsSecureString` to migrate to the secure behaviour before the breaking change takes effects.
+
+> [!NOTE]
+> For security purposes, the default output type will change from a plain text `String` to
+> `SecureString`. To prepare for this change and ensure secure handling, use the **AsSecureString**
+> parameter before the update takes effect.
 
 ## SYNTAX
 

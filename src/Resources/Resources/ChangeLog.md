@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `-ApplicationId` as an alias of `-ServicePrincipalName`.
 * Supported getting role assignments at the exact scope via `-AtScope` for `Get-AzRoleAssignment`. 
 
 ## Version 7.8.1

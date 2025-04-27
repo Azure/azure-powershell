@@ -533,4 +533,121 @@ function Test-AzureStorageShareNFS
     }
 }
 
+<#
+.SYNOPSIS
+Test Azure storage ProvisionV2 Account
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePV2
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'PremiumV2_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -ProvisionedBandwidthMibps 129 -ProvisionedIops 3032 -QuotaGiB 32
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual 129 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3032 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+		Assert-AreNotEqual $null $share.IncludedBurstIops
+		Assert-AreNotEqual $null $share.MaxBurstCreditsForIops
+		Assert-AreNotEqual $null $share.NextAllowedQuotaDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedIopsDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedBandwidthDowngradeTime
+		Assert-AreEqual $null $share.FileSharePaidBursting
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -ProvisionedBandwidthMibps 130 -ProvisionedIops 3033
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual 130 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3033 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage File Share PaidBursting on V1 account
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePaidBursting
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -PaidBurstingEnabled -PaidBurstingMaxBandwidthMibps 129 -PaidBurstingMaxIops 3033
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3033 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 129 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $false
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $false $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $true -PaidBurstingMaxBandwidthMibps 128 -PaidBurstingMaxIops 3032
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3032 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 128 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
