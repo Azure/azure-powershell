@@ -1,6 +1,6 @@
 ### Example 1: Create a managed image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
+New-AzImageBuilderTemplateSourceObject -ManagedImageSource -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image"
 ```
 
 ```output

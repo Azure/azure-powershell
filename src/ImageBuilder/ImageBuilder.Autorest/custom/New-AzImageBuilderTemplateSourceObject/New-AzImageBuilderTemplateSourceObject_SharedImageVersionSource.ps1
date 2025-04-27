@@ -33,7 +33,10 @@ function New-AzImageBuilderTemplateSourceObject_SharedImageVersionSource {
 
         [Parameter(Mandatory, HelpMessage="ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.")]
         [string]
-        $ImageVersionId
+        $ImageVersionId,
+        [Parameter(Mandatory, HelpMessage="Describes an image source that is an image version in a shared image gallery.")]
+        [Switch]
+        $SharedImageVersionSource
     )
 
     process {

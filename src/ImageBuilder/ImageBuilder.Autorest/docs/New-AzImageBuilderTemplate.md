@@ -14,9 +14,9 @@ create a virtual machine image template
 
 ### CreateExpanded (Default)
 ```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-Customize <IImageTemplateCustomizer[]>]
- [-Distribute <IImageTemplateDistributor[]>] [-Source <IImageTemplateSource>] [-StagingResourceGroup <String>]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
+ -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
+ [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>] [-StagingResourceGroup <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ValidateContinueDistributeOnFailure]
  [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>] [-VMBootState <String>]
  [-VMProfileOsdiskSizeGb <Int32>] [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>]
@@ -207,7 +207,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCusto
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,7 +238,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistr
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -343,7 +343,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSourc
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -407,7 +407,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: UserAssignedIdentityId
 
 Required: False
 Position: Named
