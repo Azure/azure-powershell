@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed parameters `BaseSizeTiB` and `ExtendedCapacitySizeTiB` in cmdlet `New-AzElasticSan` to be optional.
+    - `New-AzElasticSan`
 
 ## Version 1.2.1
 * Upgraded nuget package to signed package.
