@@ -16,8 +16,8 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 ### ForceExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-GeoReplicationGroupNickname <String>]
- [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-GroupNickname <String>]
+ [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,9 +32,8 @@ Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <S
 ### ForceViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- [-GeoReplicationGroupNickname <String>] [-GeoReplicationLinkedDatabase <ILinkedDatabase[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForceViaIdentity
@@ -123,29 +122,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GeoReplicationGroupNickname
+### -GroupNickname
 The name of the group of linked database resources.
 This should match the existing replication group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GeoReplicationLinkedDatabase
-The resource IDs of the databases that are expected to be linked and included in the replication group.
-This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
-To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
@@ -169,6 +151,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LinkedDatabase
+The resource IDs of the databases that are expected to be linked and included in the replication group.
+This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
+To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ILinkedDatabase[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

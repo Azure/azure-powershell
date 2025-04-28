@@ -126,6 +126,18 @@ directive:
     set:
       hide: true
   - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GeoReplicationLinkedDatabase
+    set:
+      parameter-name: LinkedDatabase
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GeoReplicationGroupNickname
+    set:
+      parameter-name: GroupNickname
+  - where:
       verb: New
       subject: Database
       parameter-name: GeoReplicationGroupNickname
