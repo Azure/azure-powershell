@@ -103,7 +103,11 @@ foreach ($moduleGroup in $groupedModules) {
     $index++
 }
 
-$generateTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generateTargets.json"
+$generateTargetsOutputDir = Join-Path $RepoRoot "artifacts"
+if (-not (Test-Path -Path $generateTargetsOutputDir)) {
+    New-Item -ItemType Directory -Path $generateTargetsOutputDir
+}
+$generateTargetsOutputFile = Join-Path $generateTargetsOutputDir "generateTargets.json"
 $generateTargets | ConvertTo-Json -Depth 10 | Out-File -FilePath $generateTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
