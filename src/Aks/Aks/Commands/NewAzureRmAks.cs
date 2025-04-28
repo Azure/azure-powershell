@@ -35,7 +35,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
-    [GenericBreakingChangeWithVersion("The default value of -NodeVmSize will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity.", "14.0.0", "7.0.0")]
+    [GenericBreakingChangeWithVersion("The default value of -NodeVmSize will be changing from 'Standard_D2_v2' to being dynamically selected by the AKS resource provider based on quota and capacity.", "14.0.0", "7.0.0")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
