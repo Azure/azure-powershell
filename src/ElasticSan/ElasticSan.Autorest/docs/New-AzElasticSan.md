@@ -14,18 +14,18 @@ create ElasticSan.
 
 ### CreateExpanded (Default)
 ```
-New-AzElasticSan -Name <String> -ResourceGroupName <String> -BaseSizeTiB <Int64>
- -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <String> [-SubscriptionId <String>]
- [-AvailabilityZone <String[]>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+New-AzElasticSan -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ [-SubscriptionId <String>] [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>]
+ [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -ExtendedCapacitySizeTiB <Int64>
- -Location <String> -SkuName <String> [-AvailabilityZone <String[]>] [-PublicNetworkAccess <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName <String>
+ [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
+ [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +105,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +136,7 @@ Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
