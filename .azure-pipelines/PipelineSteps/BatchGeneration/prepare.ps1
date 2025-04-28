@@ -92,7 +92,7 @@ Write-Host "Total module groups: $($groupedModules.Count)"
 
 $index = 0
 foreach ($moduleGroup in $groupedModules) {
-    Write-Host "##vso[task.loggroup name=ModuleGroup_$($index + 1)]"
+    Write-Host "##[group]Prepareing module group $($index + 1)"
     $mergedModules = @{}
     foreach ($moduleObj in $moduleGroup) {
         Write-Host "Module $($moduleObj.ModuleName): $($moduleObj.SubModules -join ',')"
@@ -103,7 +103,8 @@ foreach ($moduleGroup in $groupedModules) {
     $moduleStr = $mergedModules | ConvertTo-Json -Depth 3 -Compress
     $key = ($index + 1).ToString() + "-" + $moduleGroup.Count
     $MatrixStr = "$MatrixStr,'$key':{'Target':'$moduleStr','MatrixKey':'$key'}"
-    Write-Host "##vso[task.loggroup]"
+    Write-Host "##[endgroup]"
+    Write-Host
     $index++
 }
 
