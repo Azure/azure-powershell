@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 
-## Version 1.12.1
-* Add support for Captcha
+## Upcoming Release
+* Added support for Captcha
 
 ## Version 1.12.0
 * Upgraded nuget package to signed package.
