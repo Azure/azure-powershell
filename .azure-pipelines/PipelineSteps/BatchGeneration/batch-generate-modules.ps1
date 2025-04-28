@@ -1,19 +1,19 @@
 param (
     [string]$MatrixKey,
-    [string]$Target,
-    [string]$RepoRoot,
-    [string]$ArtifactRoot
+    [string]$RepoRoot
 )
 
 Write-Host "Matrix Key: $MatrixKey"
-Write-Host "Building targets: $Target"
 
-$moduleGroup = $Target | ConvertFrom-Json
+$generateTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generateTargets.json"
+$generateTargets = Get-Content -Path $generateTargetsOutPutFile -Raw | ConvertFrom-Json
 
-foreach ($moduleName in $moduleGroup.PSObject.Properties.Name) {
+$moduleGroup = $generateTargets.$MatrixKey
+$sortedModuleNames = $moduleGroup.PSObject.Properties.Name | Sort-Object
+
+foreach ($moduleName in $sortedModuleNames) {
     $subModules = $moduleGroup.$moduleName
     Write-Host "Module Name: $moduleName"
-    # Write-Host "SubModules: $($subModules -join ', ')"
     foreach ($subModule in $subModules) {
         Write-Host "  SubModule: $subModule"
     }
@@ -24,10 +24,9 @@ foreach ($moduleName in $moduleGroup.PSObject.Properties.Name) {
 
 # $sourceDirectory = Join-Path $RepoRoot "src"
 # # $buildModulesPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
-# $modules = $Target -split ','
 # $results = @()
 
-# foreach ($module in $modules) {
+# foreach ($module in $moduleGroup) {
 #     $startTime = Get-Date
 #     $result = @{
 #         Module = $module

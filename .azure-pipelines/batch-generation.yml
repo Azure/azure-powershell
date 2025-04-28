@@ -53,6 +53,12 @@ jobs:
         $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
         & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParalleBuildJobs }}"
 
+  - task: PublishPipelineArtifact@1
+    displayName: 'Upload generated targets'
+    inputs:
+      targetPath: artifacts
+      artifact: 'prepare'
+
 - job: generate
   displayName: "Batch Generate: "
   dependsOn: prepare
@@ -67,6 +73,11 @@ jobs:
   - checkout: self
     persistCredentials: true
     fetchTags: false
+  
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifactName: 'prepare'
+      targetPath: artifacts
 
   - task: PowerShell@2
     name: generate
@@ -79,7 +90,7 @@ jobs:
         git checkout "${{ variables.GenerationBranch }}"
 
         $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-        & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+        & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
 
       workingDirectory: $(Build.SourcesDirectory)
 

@@ -38,7 +38,17 @@ function Get-SubModuleWithAutorestV4 {
 
     return $result
 }
-$modules = Get-SubModuleWithAutorestV4 -srcPath $srcPath
+# TODO(Bernard): Use real function after test
+# $modules = Get-SubModuleWithAutorestV4 -srcPath $srcPath
+$modules = @{
+    "DeviceRegistry" = @("DeviceRegistry.Autorest")
+    "ArcGateway" = @("ArcGateway.Autorest")
+    "Chaos" = @("Chaos.Autorest")
+    "Cdn" = @("Cdn.Autorest")
+    "Communication" = @("EmailService.Autorest", "EmailServicedata.Autorest")
+    "Astro" = @("Astro.Autorest")
+    "ImageBuilder" = @("ImageBuilder.Autorest")
+}
 $modules = $modules.GetEnumerator() | ForEach-Object {
     [PSCustomObject]@{
         ModuleName = $_.Key
@@ -46,23 +56,7 @@ $modules = $modules.GetEnumerator() | ForEach-Object {
     }
 } | Sort-Object -Property ModuleName
 
-
-# $subModules = @(
-#     # V3
-#     @("Cdn","Cdn.Autorest"),
-#     @("ImageBuilder", "ImageBuilder.Autorest"),
-
-#     # V4
-#     @("Chaos", "Chaos.Autorest"),
-#     @("DeviceRegistry", "DeviceRegistry.Autorest"),
-#     @("Astro", "Astro.Autorest"),
-    
-#     # V4 Multi sub-modules
-#     @("Communication","EmailService.Autorest")
-#     # @("Communication", "EmailServicedata.Autorest")
-# )
-
-# Write-Host "Total matched sub modules: $($subModules.Count)"
+Write-Host "Total matched modules: $($modules.Count)"
 
 function Group-List {
     param (
@@ -91,6 +85,7 @@ $groupedModules = Group-List -modules $modules -maxParallelJobs $MaxParallelJobs
 Write-Host "Total module groups: $($groupedModules.Count)"
 
 $index = 0
+$generateTargets = @{}
 foreach ($moduleGroup in $groupedModules) {
     Write-Host "##[group]Prepareing module group $($index + 1)"
     $mergedModules = @{}
@@ -100,13 +95,16 @@ foreach ($moduleGroup in $groupedModules) {
         $subIndex++
     }
 
-    $moduleStr = $mergedModules | ConvertTo-Json -Depth 3 -Compress
     $key = ($index + 1).ToString() + "-" + $moduleGroup.Count
-    $MatrixStr = "$MatrixStr,'$key':{'Target':'$moduleStr','MatrixKey':'$key'}"
+    $generateTargets[$key] = $mergedModules
+    $MatrixStr = "$MatrixStr,'$key':{'MatrixKey':'$key'}"
     Write-Host "##[endgroup]"
     Write-Host
     $index++
 }
+
+$generateTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generateTargets.json"
+$generateTargets | ConvertTo-Json -Depth 10 | Out-File -FilePath $generateTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
     $MatrixStr = $MatrixStr.Substring(1)
