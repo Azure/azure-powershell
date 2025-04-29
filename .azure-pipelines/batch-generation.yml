@@ -165,7 +165,7 @@ jobs:
         git checkout $sourceBranchName
 
         $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
-        & $filterModulesPath -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" -ChangedFiles $changedFiles
+        & $filterModulesPath -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" -ChangedFiles $changedFiles -RepoRoot "$(Build.SourcesDirectory)"
 
   - task: PublishPipelineArtifact@1
     displayName: 'Upload filtered targets'
