@@ -1,27 +1,29 @@
 import { z, ZodRawShape, ZodTypeAny } from "zod";
 import { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { toolServices } from "../services/toolServices.js";
+import { parameter, toolSchema } from "../types.js";
 
-export class McpTool<Args extends ZodRawShape> {
-    private _name: string;
-    private _description: string;
-    private _parameters: Args;
-    private _callbackname: string;
-    private _callback: ToolCallback<Args>;
+export class McpTool {
+    private _name: string = undefined;
+    private _description: string = undefined;
+    private _parameters: ZodRawShape = undefined;
+    private _callback: ToolCallback<ZodRawShape> = undefined;
 
-    constructor(name: string, description: string, parameters: Args, callbackname: string) {
-        this._name = name;
-        this._description = description;
-        this._parameters = parameters;
-        const tmp = getCallBack(callbackname, parameters);
+    private constructor() {}
+
+    public createToolFromSchema(schema: toolSchema) {
+        const _tool = new McpTool();
+
+        _tool._name = schema.name;
+        _tool._description = schema.description;
+        
+        const param = schema.parameters as parameter[];
+        
     }
 }
 
-const getCallBack = <Args extends ZodRawShape>(callbackName: string, parameters: Args): ToolCallback<Args> => {
-    const args = Object.keys(parameters).map((key) => {
-        const value = parameters[key as keyof Args];
-        return { key: value };
-    }) as z.objectOutputType<Args, ZodTypeAny>[];
-}
-
-const tool = new McpTool('name', 'description', {workingdirectory: z.string()}, 'callbackname');
+// const getCallBack = <Args extends ZodRawShape>(callbackName: string, parameters: Args): ToolCallback<Args> => {
+//     const args = Object.keys(parameters).map((key) => {
+//         const value = parameters[key as keyof Args];
+//         return { key: value };
+//     }) as z.objectOutputType<Args, ZodTypeAny>[];
+// }

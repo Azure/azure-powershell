@@ -1,0 +1,16 @@
+{
+    "tools": [
+        {
+            "name": "generate-autorest",
+            "description": "Generate code using autorest",
+            "parameters": [
+                {
+                    "name": "workingDirectory",
+                    "description": "absolute path of the README.md where the code will be generated",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "generateAutorest"
+        }
+    ]
+}

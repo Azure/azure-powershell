@@ -2,7 +2,9 @@ import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mc
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { exec } from 'child_process';
 import { z } from "zod";
-import { g, generateByAutorest } from "./services/tools/utils.js";
+import { generateByAutorest } from "./services/toolServices.js";
+import {parameter, toolSchema} from "./types.js";
+import test from './test.json' assert { type: "json" };
 
 // Create server instance
 const server = new McpServer({
