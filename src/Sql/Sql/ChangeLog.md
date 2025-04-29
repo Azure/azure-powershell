@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.3
 * Added Information message to `Set-AzSqlInstance` for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
 
 ## Version 6.0.2
