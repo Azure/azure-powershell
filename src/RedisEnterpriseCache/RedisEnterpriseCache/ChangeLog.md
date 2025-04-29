@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adds support for listing all SKUs a cluster can scale to.
-* Clustering policy has a new enum: NoCluster.
+* Added support for listing all SKUs a cluster can scale to.
+* Added a new enum: NoCluster for Clustering policy.
 
 ## Version 1.4.1
 * Upgraded nuget package to signed package.
