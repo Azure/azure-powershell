@@ -210,7 +210,7 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: 'Save build artifacts'
     inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)'
+      targetPath: artifacts
       artifact: 'build-$(MatrixKey)'
     condition: always()
 
