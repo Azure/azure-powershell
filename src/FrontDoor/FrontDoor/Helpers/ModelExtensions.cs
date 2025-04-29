@@ -609,6 +609,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck),
                 Sku = sdkPolicy.Sku == null ? null : sdkPolicy.Sku.Name,
                 JavascriptChallengeExpirationInMinutes = sdkPolicy.PolicySettings?.JavascriptChallengeExpirationInMinutes,
+                CaptchaExpirationInMinutes = sdkPolicy.PolicySettings?.CaptchaExpirationInMinutes,
                 LogScrubbing = sdkPolicy.PolicySettings.LogScrubbing?.ToPSFrontDoorWafLogScrubbingSetting()
             };
         }
@@ -771,6 +772,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     RedirectUrl = psPolicy.RedirectUrl,
                     RequestBodyCheck = psPolicy.RequestBodyCheck?.ToString(),
                     JavascriptChallengeExpirationInMinutes = psPolicy.JavascriptChallengeExpirationInMinutes,
+                    CaptchaExpirationInMinutes = psPolicy.CaptchaExpirationInMinutes,
                     LogScrubbing = psPolicy.LogScrubbing?.ToSdkLogScrubbingSetting(),
                 },
                 CustomRules = new SdkCustomRuleList()

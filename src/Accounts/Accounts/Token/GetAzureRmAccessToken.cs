@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile
                 UserId = accessToken.UserId,
             };
             result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiresOn ?? result.ExpiresOn;
-            if(result.ExpiresOn == default(DateTimeOffset))
+            if (result.ExpiresOn == default)
             {
                 try
                 {
