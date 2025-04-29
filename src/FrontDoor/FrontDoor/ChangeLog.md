@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.0
 * Added support for Captcha
 
 ## Version 1.12.0
