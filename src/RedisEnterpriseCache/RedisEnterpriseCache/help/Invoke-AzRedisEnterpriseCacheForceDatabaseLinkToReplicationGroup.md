@@ -13,11 +13,18 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 
 ## SYNTAX
 
-### ForceExpanded (Default)
+### ForceViaIdentity (Default)
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ForceExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-GroupNickname <String>]
- [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -GroupNickname <String>
+ -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,14 +39,7 @@ Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <S
 ### ForceViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaIdentity
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -131,7 +131,7 @@ Type: System.String
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +144,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentityExpanded, ForceViaIdentity
+Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,7 +164,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,7 +192,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceLinkParameters
-Parameter Sets: Force, ForceViaIdentity
+Parameter Sets: ForceViaIdentity, Force
 Aliases:
 
 Required: True

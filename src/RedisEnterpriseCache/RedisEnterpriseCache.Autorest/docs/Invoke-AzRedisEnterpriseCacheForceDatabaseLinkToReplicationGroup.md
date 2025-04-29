@@ -13,11 +13,10 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 
 ## SYNTAX
 
-### ForceExpanded (Default)
+### ForceViaIdentity (Default)
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-GroupNickname <String>]
- [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -28,18 +27,19 @@ Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <S
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ForceViaIdentity
+### ForceExpanded
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ForceViaIdentityExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +130,7 @@ Type: System.String
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +163,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501
 Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

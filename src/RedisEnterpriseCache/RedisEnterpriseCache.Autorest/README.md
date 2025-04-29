@@ -144,6 +144,16 @@ directive:
     set:
       parameter-name: GroupNickname
   - where:
+      model-name: ForceLinkParameters
+      property-name: GeoReplicationLinkedDatabase
+    set:
+      property-name: LinkedDatabase
+  - where:
+      model-name: ForceLinkParameters
+      property-name: GeoReplicationGroupNickname
+    set:
+      property-name: GroupNickname
+  - where:
       parameter-name: SkuCapacity
     set:
       parameter-name: Capacity
@@ -241,6 +251,9 @@ directive:
   - from: swagger-document
     where: $.definitions.AccessPolicyAssignmentProperties.properties.user
     transform: $['required'] = ['objectId']
+  - from: swagger-document
+    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    transform: $['required'] = ['linkedDatabases','groupNickname']
 
   # DatabaseName parameter to have value 'default'
   - where:
