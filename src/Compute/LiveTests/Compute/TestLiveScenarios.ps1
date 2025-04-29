@@ -3,21 +3,36 @@ Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test cr
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $name = New-LiveTestResourceName
+    $location = "eastus2"
+    $vmName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
+    $nicName = New-LiveTestResourceName
+    $nsgName = New-LiveTestResourceName
+    $computerName = New-LiveTestResourceName
+    $osDiskName = New-LiveTestResourceName
 
-    $VMLocalAdminUser = New-LiveTestResourceName
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString (New-LiveTestPassword) -AsPlainText -Force
-    $domainNameLabel = New-LiveTestResourceName
-    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword)
-    $text = New-LiveTestResourceName
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($text)
-    $userData = [Convert]::ToBase64String($bytes)
+    $localAdminName = New-LiveTestResourceName
+    $localAdminPassword = ConvertTo-SecureString (New-LiveTestPassword) -AsPlainText -Force
+    $localAdminCred = New-Object System.Management.Automation.PSCredential ($localAdminName, $localAdminPassword)
 
-    $actual = New-AzVM -ResourceGroupName $rgName -Name $name -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -OpenPorts @()
+    $snetCfg = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.10.1.0/24 -DefaultOutboundAccess $false
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.10.0.0/16 -Subnet $snetCfg
+    $nsgRuleHighRiskPorts = New-AzNetworkSecurityRuleConfig -Name "DenyHighRiskPorts" -Direction Inbound -Priority 101 -Protocol Tcp -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 22, 3389 -Access Deny
+    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Name $nsgName -Location $location -SecurityRules $nsgRuleHighRiskPorts
+    $nic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
+
+    $vmSize = Get-AzVMSize -Location $location | Sort-Object NumberOfCores, MemoryInMB | Select-Object -First 1
+    $vmCfg = New-AzVMConfig -VMName $vmName -VMSize $vmSize.Name
+    $vmCfg | Set-AzVMSecurityProfile -SecurityType TrustedLaunch
+    $vmCfg | Set-AzVMOSDisk -Name $osDiskName -StorageAccountType StandardSSD_LRS -CreateOption FromImage -DeleteOption Delete
+    $vmCfg | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $localAdminCred -ProvisionVMAgent -EnableAutoUpdate
+    $vmCfg | Set-AzVMSourceImage -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-datacenter-azure-edition-core" -Version "latest"
+    $vmCfg | Add-AzVMNetworkInterface -Id $nic.Id -DeleteOption Delete
+    $vmCfg | Set-AzVMBootDiagnostic -Disable
+    $actual = New-AzVM -ResourceGroupName $rgName -Location $location -VM $vmCfg -DisableBginfoExtension
 
     Assert-AreEqual $name $actual.Name
-    # Assert-AreEqual "Succeeded" Label $actual.ProvisioningState
-    # Assert-AreEqual $userData $actual.UserData
 }
 
 Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure." -ScenarioScript `
@@ -36,6 +51,18 @@ Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Descriptio
     $userData = [Convert]::ToBase64String($bytes)
 
     New-AzVM -ResourceGroupName $rgName -Name $name -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -OpenPorts @()
+
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $name
+    $nic = Get-AzNetworkInterface -ResourceId $vm.NetworkProfile.NetworkInterfaces[0].Id
+    $snetResourceId = $nic.IpConfigurations[0].Subnet.Id
+    $vnetName = $snetResourceId.Split("/")[8]
+    $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+    foreach ($snet in $vnet.Subnets) {
+        $snet.DefaultOutboundAccess = $false
+        $vnet | Set-AzVirtualNetwork
+    }
+    Restart-AzVM -ResourceGroupName $rgName -Name $name
+
     Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
 
     $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name -ErrorAction SilentlyContinue

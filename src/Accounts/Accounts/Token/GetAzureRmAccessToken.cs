@@ -14,13 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.Json;
@@ -102,6 +105,12 @@ namespace Microsoft.Azure.Commands.Profile
                 TenantId = context.Tenant?.Id;
             }
 
+            var optionalParameters = new Dictionary<string, object>()
+            {
+                {AuthenticationFactory.ResourceIdParameterName, resourceUrlOrId },
+                {AuthenticationFactory.CmdletContextParameterName, _cmdletContext }
+            };
+
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                                 context.Account,
                                 context.Environment,
@@ -109,8 +118,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 null,
                                 ShowDialog.Never,
                                 null,
-                                null,
-                                resourceUrlOrId);
+                                optionalParameters);
 
             var result = new PSAccessToken()
             {
@@ -119,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile
                 UserId = accessToken.UserId,
             };
             result.ExpiresOn = (accessToken as MsalAccessToken)?.ExpiresOn ?? result.ExpiresOn;
-            if(result.ExpiresOn == default(DateTimeOffset))
+            if (result.ExpiresOn == default)
             {
                 try
                 {

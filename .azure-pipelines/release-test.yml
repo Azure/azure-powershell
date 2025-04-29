@@ -3,18 +3,14 @@ parameters:
   displayName: Windows PowerShell Version
   type: string
   default: 5.1.14
-- name: ps7_2
-  displayName: PowerShell 7.2.x Version
-  type: string
-  default: 7.2.8
-- name: ps7_3
-  displayName: PowerShell 7.3.x Version
-  type: string
-  default: 7.3.*
 - name: ps7_4
   displayName: PowerShell 7.4.x Version
   type: string
   default: 7.4.*
+- name: ps7_5
+  displayName: PowerShell 7.5.x Version
+  type: string
+  default: 7.5.*
 - name: latest_ps
   displayName: PowerShell Latest Version
   type: string
@@ -23,28 +19,18 @@ parameters:
   displayName: PowerShell Preview Version
   type: string
   default: preview
-- name: dotnet_sdk_6
-  displayName: .NET SDK 6
-  type: string
-  default: 6.0.x
-- name: dotnet_sdk_7
-  displayName: .NET SDK 7
-  type: string
-  default: 7.0.x
 - name: dotnet_sdk_8
   displayName: .NET SDK 8
   type: string
-  default: 8.0.x
+  default: 8.x
 - name: dotnet_sdk_9
   displayName: .NET SDK 9
   type: string
-  default: 9.0.x
+  default: 9.x
 
 variables:
   winAgentPoolName: pool-windows-2019
-  winAgentPoolVMImage: ''
   linuxAgentPoolName: pool-ubuntu-2004
-  linuxAgentPoolVMImage: ''
   macOsAgentPoolName: Azure Pipelines
   macOsAgentPoolVMImage: macOS-latest
 
@@ -56,39 +42,27 @@ jobs:
   parameters:
     name: 'Win_PS5_1_14_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.win_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'Win_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_2 }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'Win_PS7_3_X_SmokeTest'
-    agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_3 }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_4_X_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_4 }}
     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
+    name: 'Win_PS7_5_X_SmokeTest'
+    agentPoolName: ${{ variables.winAgentPoolName }}
+    psVersion: ${{ parameters.ps7_5 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
+
+- template: util/smoke-test-steps.yml
+  parameters:
     name: 'Win_Latest_PS_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
@@ -96,39 +70,27 @@ jobs:
   parameters:
     name: 'Win_Preview_PS_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.preview_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'Linux_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_2 }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'Linux_PS7_3_X_SmokeTest'
-    agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_3 }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_4_X_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_4 }}
     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
+    name: 'Linux_PS7_5_X_SmokeTest'
+    agentPoolName: ${{ variables.linuxAgentPoolName }}
+    psVersion: ${{ parameters.ps7_5 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
+
+- template: util/smoke-test-steps.yml
+  parameters:
     name: 'Linux_Latest_PS_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
@@ -136,25 +98,8 @@ jobs:
   parameters:
     name: 'Linux_Preview_PS_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.preview_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
-
-# - template: util/smoke-test-steps.yml
-#   parameters:
-#     name: 'MacOS_PS7_2_X_SmokeTest'
-#     agentPoolName: ${{ variables.macOsAgentPoolName }}
-#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-#     psVersion: ${{ parameters.ps7_2 }}
-#     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-# - template: util/smoke-test-steps.yml
-#   parameters:
-#     name: 'MacOS_PS7_3_X_SmokeTest'
-#     agentPoolName: ${{ variables.macOsAgentPoolName }}
-#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-#     psVersion: ${{ parameters.ps7_3 }}
-#     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
 # - template: util/smoke-test-steps.yml
 #   parameters:
@@ -163,6 +108,14 @@ jobs:
 #     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
 #     psVersion: ${{ parameters.ps7_4 }}
 #     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
+
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_PS7_5_X_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.ps7_5 }}
+#     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
 # - template: util/smoke-test-steps.yml
 #   parameters:
@@ -178,4 +131,4 @@ jobs:
 #     agentPoolName: ${{ variables.macOsAgentPoolName }}
 #     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
 #     psVersion: ${{ parameters.preview_ps }}
-#     dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
+#     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}

@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_botName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("botName"), out var __jsonBotName) ? (string)__jsonBotName : (string)BotName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_botName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("botName"), out var __jsonBotName) ? (string)__jsonBotName : (string)_botName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

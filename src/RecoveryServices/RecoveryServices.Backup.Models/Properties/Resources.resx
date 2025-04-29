@@ -839,7 +839,7 @@ Please contact Microsoft for further assistance.</value>
     <value>The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.</value>
   </data>
   <data name="TrustedLaunchDefaultWarning" xml:space="preserve">
-    <value>Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.</value>
+    <value>Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI</value>
   </data>
   <data name="UnbakedSnapshotRecoveryPoint" xml:space="preserve">
     <value>Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point</value>
@@ -885,5 +885,11 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="InvalidSoftDeleteFeatureStateException" xml:space="preserve">
     <value>Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.</value>
+  </data>
+  <data name="BothTokenProvided" xml:space="preserve">
+    <value>Both Token and SecureToken parameters cannot be provided together</value>
+  </data>
+  <data name="TokenParameterDepricate" xml:space="preserve">
+    <value>The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead</value>
   </data>
 </root>

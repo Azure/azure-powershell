@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="sqlServerLicenseType">The SQL Server license type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'PAYG', 'AHUB'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;PAYG&#39;, &#39;AHUB&#39;</param>
 
         /// <param name="vmDisks">The list of disk update properties.
         /// </param>

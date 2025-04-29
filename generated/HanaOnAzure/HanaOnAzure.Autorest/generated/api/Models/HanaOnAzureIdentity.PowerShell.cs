@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.HanaOnAzureIdentity"
         /// />.
         /// </summary>
@@ -130,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
             }
             if (content.Contains("OperationKind"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind?) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind = (string) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -187,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
             }
             if (content.Contains("OperationKind"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind = (Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind?) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind = (string) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentityInternal)this).OperationKind, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -204,6 +212,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(HanaOnAzureIdentityTypeConverter))]
     public partial interface IHanaOnAzureIdentity

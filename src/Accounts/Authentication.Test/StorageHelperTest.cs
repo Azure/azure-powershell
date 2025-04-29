@@ -19,7 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Common.Authenticators.Test
@@ -40,7 +40,7 @@ namespace Common.Authenticators.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void LoadFromStorageTest()
+        public async Task LoadFromStorageTest()
         {
             const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             string actual = null;
@@ -49,8 +49,7 @@ namespace Common.Authenticators.Test
             storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
             keystoreMocker.Setup(f => f.Deserialize(It.IsAny<byte[]>(), It.IsAny<bool>())).Callback(
                 (byte[] s, bool c) => { actual = Encoding.UTF8.GetString(s); });
-            var helper = StorageHelper.GetStorageHelperAsync(true, keyStoreFileName, profilePath
-                , keystoreMocker.Object, storageMocker.Object).GetAwaiter().GetResult();
+            var helper = await StorageHelper.GetStorageHelperAsync(true, keyStoreFileName, profilePath, keystoreMocker.Object, storageMocker.Object);
             helper.LoadFromCachedStorage(keystoreMocker.Object);
             Assert.Equal(EXPECTED, actual);
             storageMocker.Verify();
@@ -60,7 +59,7 @@ namespace Common.Authenticators.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SaveToStorageTest()
+        public async Task SaveToStorageTest()
         {
             const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             List<byte> storageChecker = new List<byte>(), keystoreChecker = new List<byte>();
@@ -70,8 +69,7 @@ namespace Common.Authenticators.Test
                 (byte[] s) => { storageChecker.AddRange(s); });
             keystoreMocker.Setup(f => f.Serialize()).Returns(keystoreChecker.ToArray());
 
-            var helper = StorageHelper.GetStorageHelperAsync(true, keyStoreFileName, profilePath
-                , keystoreMocker.Object, storageMocker.Object).GetAwaiter().GetResult();
+            var helper = await StorageHelper.GetStorageHelperAsync(true, keyStoreFileName, profilePath, keystoreMocker.Object, storageMocker.Object);
             helper.WriteToCachedStorage(keystoreMocker.Object);
 
             string actual = Encoding.UTF8.GetString(storageChecker.ToArray());

@@ -25,12 +25,12 @@ List the operations for the provider
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.portal/get-azportaloperation
 #>
 function Get-AzPortalOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Portal.private\Get-AzPortalOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -126,16 +132,16 @@ end {
 
 <#
 .Synopsis
-Creates or updates a Dashboard.
+update a Dashboard.
 .Description
-Creates or updates a Dashboard.
+update a Dashboard.
 .Example
 Set-AzPortalDashboard -DashboardPath .\resources\dash1-update.json -ResourceGroupName my-rg -DashboardName dashbase03
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -143,7 +149,7 @@ To create the parameters described below, construct a hash table containing the 
 
 LENS <IDashboardLens[]>: The dashboard lenses.
   Order <Int32>: The lens order.
-  Part <IDashboardParts[]>: The dashboard parts.
+  Part <List<IDashboardParts>>: The dashboard parts.
     PositionColSpan <Int32>: The dashboard's part column span.
     PositionRowSpan <Int32>: The dashboard's part row span.
     PositionX <Int32>: The dashboard's part x coordinate.
@@ -152,18 +158,12 @@ LENS <IDashboardLens[]>: The dashboard lenses.
   [Metadata <IAny>]: The dashboard len's metadata.
 
 RESOURCE <IDashboard>: The shared dashboard resource definition.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Lens <IDashboardLens[]>]: The dashboard lenses.
+  [Lens <List<IDashboardLens>>]: The dashboard lenses.
     Order <Int32>: The lens order.
-    Part <IDashboardParts[]>: The dashboard parts.
+    Part <List<IDashboardParts>>: The dashboard parts.
       PositionColSpan <Int32>: The dashboard's part column span.
       PositionRowSpan <Int32>: The dashboard's part row span.
       PositionX <Int32>: The dashboard's part x coordinate.
@@ -176,7 +176,7 @@ RESOURCE <IDashboard>: The shared dashboard resource definition.
 https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 #>
 function Set-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -203,9 +203,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard]
     # The shared dashboard resource definition.
-    # To construct, see NOTES section for RESOURCE properties and create a hash table.
     ${Resource},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -217,24 +216,35 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardLens[]]
     # The dashboard lenses.
-    # To construct, see NOTES section for LENS properties and create a hash table.
     ${Lens},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesWithProvisioningStateMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPropertiesWithProvisioningStateMetadata]))]
     [System.Collections.Hashtable]
     # The dashboard metadata.
     ${Metadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -292,14 +302,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Portal.private\Set-AzPortalDashboard_Update';
             UpdateExpanded = 'Az.Portal.private\Set-AzPortalDashboard_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Portal.private\Set-AzPortalDashboard_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Portal.private\Set-AzPortalDashboard_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -308,6 +321,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

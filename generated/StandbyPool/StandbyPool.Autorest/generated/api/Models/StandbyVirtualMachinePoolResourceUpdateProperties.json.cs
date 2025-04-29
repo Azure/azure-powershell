@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
-            {_elasticityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("elasticityProfile"), out var __jsonElasticityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate.FromJson(__jsonElasticityProfile) : _elasticityProfile;}
+            {_elasticityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("elasticityProfile"), out var __jsonElasticityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfile.FromJson(__jsonElasticityProfile) : _elasticityProfile;}
             {_virtualMachineState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("virtualMachineState"), out var __jsonVirtualMachineState) ? (string)__jsonVirtualMachineState : (string)_virtualMachineState;}
             {_attachedVirtualMachineScaleSetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("attachedVirtualMachineScaleSetId"), out var __jsonAttachedVirtualMachineScaleSetId) ? (string)__jsonAttachedVirtualMachineScaleSetId : (string)_attachedVirtualMachineScaleSetId;}
             AfterFromJson(json);

@@ -2,7 +2,6 @@ parameters:
   name: ''
   psVersion: ''
   agentPoolName: ''
-  agentPoolVMImage: ''
   dotnetVersion: ''
   PowerShellPath: '$(Build.SourcesDirectory)/ps_preview'
 
@@ -11,12 +10,11 @@ jobs:
   timeoutInMinutes: 180
   pool:
     name: ${{ parameters.agentPoolName }}
-    vmImage: ${{ parameters.agentPoolVMImage }}
 
   steps:
   - task: UseDotNet@2
     condition: ne('${{ parameters.dotnetVersion }}', '')
-    displayName: 'Prepare .NET Core ${{ parameters.dotnetVersion }}'
+    displayName: 'Install .NET SDK ${{ parameters.dotnetVersion }}'
     inputs:
       packageType: sdk
       version: ${{ parameters.dotnetVersion }}
@@ -39,7 +37,7 @@ jobs:
       overwriteExistingFiles: true
 
   - task: PowerShell@2
-    displayName: Prepare Powershell ${{ parameters.psVersion }}
+    displayName: Install Powershell ${{ parameters.psVersion }}
     inputs:
       filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
