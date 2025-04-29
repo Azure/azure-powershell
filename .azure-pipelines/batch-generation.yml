@@ -4,12 +4,12 @@ variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
-  MaxParalleGenerateJobs: 3
-  MaxParalleBuildJobs: 3
-  MaxParalleAnalyzeJobs: 4
-  MaxParalleTestWindowsJobs: 1
-  MaxParalleTestLinuxJobs: 2
-  MaxParalleTestMacJobs: 3
+  MaxParallelGenerateJobs: 3
+  MaxParallelBuildJobs: 15
+  MaxParallelAnalyzeJobs: 4
+  MaxParallelTestWindowsJobs: 1
+  MaxParallelTestLinuxJobs: 2
+  MaxParallelTestMacJobs: 3
   WindowsAgentPoolName: pool-windows-2019
   LinuxAgentPoolName: pool-ubuntu-2004
   MacOSAgentPoolName: 'Azure Pipelines'
@@ -51,7 +51,7 @@ jobs:
       pwsh: true
       script: |
         $prepareModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'prepare.ps1'
-        & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParalleBuildJobs }}"
+        & $prepareModulesPath -RepoRoot "$(Build.SourcesDirectory)" -MaxParallelJobs "${{ variables.MaxParallelGenerateJobs }}"
 
   - task: PublishPipelineArtifact@1
     displayName: 'Upload generated targets'
@@ -67,7 +67,7 @@ jobs:
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
     matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
-    maxParallel: ${{ variables.MaxParalleGenerateJobs }}
+    maxParallel: ${{ variables.MaxParallelGenerateJobs }}
 
   steps:
   - checkout: self
@@ -98,49 +98,8 @@ jobs:
     displayName: 'Save patch and generation report'
     inputs:
       targetPath: artifacts
-      artifact: 'build-$(MatrixKey)'
+      artifact: 'generate-$(MatrixKey)'
     condition: always()
-
-# - job: build
-#   displayName: "Build:"
-#   dependsOn: prepare
-#   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-#   pool: ${{ variables.WindowsAgentPoolName }}
-#   strategy:
-#     matrix: $[ dependencies.prepare.outputs['mtrx.buildTargets'] ]
-#     maxParallel: ${{ variables.MaxParalleBuildJobs }}
-
-#   steps:
-#   - checkout: self
-#     persistCredentials: true
-#     fetchTags: false
-    
-#   # - checkout: azure-powershell-devops
-#   #   path: "azure-powershell-devops"
-
-#   # - template: util/get-github-pat-steps.yml
-
-#   - task: PowerShell@2
-#     name: build
-#     displayName: 'Build Targets'
-#     inputs:
-#       targetType: inline
-#       pwsh: true
-#       script: |
-#         git fetch origin "${{ variables.GenerationBranch }}"
-#         git checkout "${{ variables.GenerationBranch }}"
-
-#         $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-#         & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
-
-#       workingDirectory: $(Build.SourcesDirectory)
-
-#   - task: PublishPipelineArtifact@1
-#     displayName: 'Save patch'
-#     inputs:
-#       targetPath: '$(Build.ArtifactStagingDirectory)'
-#       artifact: 'build-$(MatrixKey)'
-#     condition: always()
 
 - job: filter
   displayName: 'Filter Changed Modules'
@@ -164,7 +123,7 @@ jobs:
         git checkout "${{ variables.GenerationBranch }}"
 
   - download: current
-    patterns: '**/changed-*.patch'
+    patterns: 'generate-*/changed-*.patch'
     displayName: 'Download all .patch artifacts'
 
   - task: PowerShell@2
@@ -206,45 +165,66 @@ jobs:
         git checkout $sourceBranchName
 
         $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
-        & $filterModulesPath -MaxParalleAnalyzeJobs "${{ variables.MaxParalleAnalyzeJobs }}" -MaxParalleTestWindowsJobs "${{ variables.MaxParalleTestWindowsJobs }}" -MaxParalleTestLinuxJobs "${{ variables.MaxParalleTestLinuxJobs }}" -MaxParalleTestMacJobs "${{ variables.MaxParalleTestMacJobs }}" -ChangedFiles $changedFiles
+        & $filterModulesPath -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" -ChangedFiles $changedFiles
 
-  # - checkout: none
+  - task: PublishPipelineArtifact@1
+    displayName: 'Upload filtered targets'
+    inputs:
+      targetPath: artifacts
+      artifact: 'filter'
 
-  # - script: |
-  #     git init
-  #     git remote add origin https://github.com/Azure/azure-powershell.git
-  #     git fetch origin main --depth=1
-  #     git checkout FETCH_HEAD -- .azure-pipelines/
-      
-  #   displayName: 'Checkout Pipeline Templates'
+- job: build
+  displayName: "Build:"
+  dependsOn: filter
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: ${{ variables.WindowsAgentPoolName }}
+  strategy:
+    matrix: $[ dependencies.filter.outputs['mtrx.buildTargets'] ]
+    maxParallel: ${{ variables.MaxParallelBuildJobs }}
 
-  # - template: util/get-github-pat-steps.yml
+  steps:
+  - checkout: self
+    persistCredentials: true
+    fetchTags: false
 
-  # - script: |
-  #     $token = "$(GitHubToken)"
-  #     changedModules=$(curl -s -H "Authorization: Bearer $token" \
-  #       https://api.github.com/repos/Azure/azure-powershell/compare/main...${{ variables.GenerationBranch }} \
-  #       | jq -r '.files[].filename' \
-  #       | grep -E '^(src|generated)/[^/]+/[^/]+\.autorest/' \
-  #       | sed -E 's#^(src|generated)/##' \
-  #       | awk -F/ '{print $1 "/" $2}' \
-  #       | sort -u)
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifactName: 'filter'
+      targetPath: artifacts
 
-  #     IFS=$'\n' read -r -d '' -a changedModulePath <<< "$changedModules"
+  - task: PowerShell@2
+    name: build
+    displayName: 'Build Targets'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        git fetch origin "${{ variables.GenerationBranch }}"
+        git checkout "${{ variables.GenerationBranch }}"
 
-  #     for path in "${changedModulePath[@]}"; do
-  #       echo "$path"
-  #     done
+        $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'build-modules.ps1'
+        & $buildModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+
+      workingDirectory: $(Build.SourcesDirectory)
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Save build artifacts'
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)'
+      artifact: 'build-$(MatrixKey)'
+    condition: always()
 
 - job: analyze
   displayName: "Analyze:"
-  dependsOn: filter
+  dependsOn: 
+    - filter
+    - build
   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.AnalyzeTargets'], '{}'))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
     matrix: $[ dependencies.filter.outputs['mtrx.AnalyzeTargets'] ]
-    maxParallel: ${{ variables.MaxParalleAnalyzeJobs }}
+    maxParallel: ${{ variables.MaxParallelAnalyzeJobs }}
 
   steps:
   - checkout: none
@@ -261,13 +241,15 @@ jobs:
 
 - job: test_windows
   displayName: "Test Windows:"
-  dependsOn: filter
+  dependsOn: 
+    - filter
+    - build
   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
     matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
-    maxParallel: ${{ variables.MaxParalleTestWindowsJobs }}
+    maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
   steps:
   - checkout: none
@@ -284,13 +266,15 @@ jobs:
 
 - job: test_linux
   displayName: "Test Linux:"
-  dependsOn: filter
+  dependsOn: 
+    - filter
+    - build
   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], '{}'))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   pool: ${{ variables.LinuxAgentPoolName }}
   strategy:
     matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
-    maxParallel: ${{ variables.MaxParalleTestLinuxJobs }}
+    maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
 
   steps:
   - checkout: none
@@ -315,7 +299,7 @@ jobs:
     vmImage: ${{ variables.MacOSAgentPoolVMImage }}
   strategy:
     matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
-    maxParallel: ${{ variables.MaxParalleTestMacJobs }}
+    maxParallel: ${{ variables.MaxParallelTestMacJobs }}
 
   steps:
   - checkout: none

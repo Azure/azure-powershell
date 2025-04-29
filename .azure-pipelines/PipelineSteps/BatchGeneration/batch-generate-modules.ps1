@@ -16,7 +16,7 @@ New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
 $buildScriptsModulePath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildScripts.psm1'
-Import-Module $buildScriptsModulePath
+Import-Module $buildScriptsModulePath -Force
 
 $results = @()
 
