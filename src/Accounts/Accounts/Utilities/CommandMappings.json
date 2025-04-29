@@ -785,7 +785,8 @@
       "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation": {},
       "New-AzBillingBenefitsReservationOrderAlias": {},
       "New-AzBillingBenefitsSavingsPlanOrderAlias": {},
-      "Update-AzBillingBenefitsSavingsPlan": {}
+      "Update-AzBillingBenefitsSavingsPlan": {},
+      "Update-AzBillingBenefitsSavingsPlanOrderAlias": {}
     },
     "Az.Blueprint": {
       "Export-AzBlueprintWithArtifact": {},
@@ -1031,12 +1032,6 @@
       "Switch-AzCloudService": {},
       "Update-AzCloudService": {}
     },
-    "Az.CodeSigning": {
-      "Get-AzCodeSigningCustomerEku": {},
-      "Get-AzCodeSigningRootCert": {},
-      "Get-AzCodeSigningCertChain": {},
-      "Invoke-AzCodeSigningCIPolicySigning": {}
-    },
     "Az.CognitiveServices": {
       "Add-AzCognitiveServicesAccountNetworkRule": {},
       "Get-AzCognitiveServicesAccount": {},
@@ -1089,6 +1084,7 @@
     "Az.Communication": {
       "Get-AzCommunicationService": {},
       "Get-AzCommunicationServiceKey": {},
+      "Get-AzCommunicationServiceSmtpUsername": {},
       "Get-AzEmailService": {},
       "Get-AzEmailServicedataEmailSendResult": {},
       "Get-AzEmailServiceDomain": {},
@@ -1096,10 +1092,12 @@
       "Invoke-AzEmailServiceInitiateDomainVerification": {},
       "New-AzCommunicationService": {},
       "New-AzCommunicationServiceKey": {},
+      "New-AzCommunicationServiceSmtpUsername": {},
       "New-AzEmailService": {},
       "New-AzEmailServiceDomain": {},
       "New-AzEmailServiceSenderUsername": {},
       "Remove-AzCommunicationService": {},
+      "Remove-AzCommunicationServiceSmtpUsername": {},
       "Remove-AzEmailService": {},
       "Remove-AzEmailServiceDomain": {},
       "Remove-AzEmailServiceSenderUsername": {},
@@ -1108,6 +1106,7 @@
       "Stop-AzEmailServiceDomainVerification": {},
       "Test-AzCommunicationServiceNameAvailability": {},
       "Update-AzCommunicationService": {},
+      "Update-AzCommunicationServiceSmtpUsername": {},
       "Update-AzEmailService": {},
       "Update-AzEmailServiceDomain": {},
       "Update-AzEmailServiceSenderUsername": {}
@@ -1127,6 +1126,8 @@
       "Add-AzVmssGalleryApplication": {},
       "Add-AzVMSshPublicKey": {},
       "Add-AzVmssNetworkInterfaceConfiguration": {},
+      "Add-AzVmssSkuProfileVMSize": {},
+      "Remove-AzVmssSkuProfileVMSize": {},
       "Add-AzVmssRunCommand": {},
       "Add-AzVmssSecret": {},
       "Add-AzVmssSshPublicKey": {},
@@ -1820,7 +1821,8 @@
       "New-AzCustomProviderAssociation": {},
       "Remove-AzCustomProvider": {},
       "Remove-AzCustomProviderAssociation": {},
-      "Update-AzCustomProvider": {}
+      "Update-AzCustomProvider": {},
+      "Update-AzCustomProviderAssociation": {}
     },
     "Az.Dashboard": {
       "Get-AzGrafana": {},
@@ -1922,7 +1924,9 @@
       "Remove-AzDatadogMonitor": {},
       "Set-AzDatadogMonitorDefaultKey": {},
       "Update-AzDatadogMonitor": {},
-      "Update-AzDatadogMonitorSetPasswordLink": {}
+      "Update-AzDatadogMonitorSetPasswordLink": {},
+      "Update-AzDatadogSingleSignOnConfiguration": {},
+      "Update-AzDatadogTagRule": {}
     },
     "Az.DataFactory": {
       "Add-AzDataFactoryV2DataFlowDebugSessionPackage": {},
@@ -2289,6 +2293,7 @@
       "Sync-AzDataProtectionBackupInstance": {},
       "Test-AzDataProtectionBackupInstanceReadiness": {},
       "Test-AzDataProtectionBackupInstanceRestore": {},
+      "Test-AzDataProtectionBackupInstanceUpdate": {},
       "Undo-AzDataProtectionBackupInstanceDeletion": {},
       "Unlock-AzDataProtectionResourceGuardOperation": {},
       "Update-AzDataProtectionBackupInstance": {},
@@ -2719,7 +2724,9 @@
       "New-AzDynatraceMonitorTagRule": {},
       "Remove-AzDynatraceMonitor": {},
       "Remove-AzDynatraceMonitorTagRule": {},
-      "Update-AzDynatraceMonitor": {}
+      "Update-AzDynatraceMonitor": {},
+      "Update-AzDynatraceMonitorSSOConfig": {},
+      "Update-AzDynatraceMonitorTagRule": {}
     },
     "Az.EdgeOrder": {
       "Get-AzEdgeOrder": {},
@@ -2780,6 +2787,8 @@
       "Update-AzElasticDetachTrafficFilter": {},
       "Update-AzElasticExternalUser": {},
       "Update-AzElasticMonitor": {},
+      "Update-AzElasticOpenAi": {},
+      "Update-AzElasticTagRule": {},
       "Update-AzElasticVMCollection": {}
     },
     "Az.ElasticSan": {
@@ -3170,7 +3179,8 @@
       "Get-AzGuestConfigurationAssignment": {},
       "Get-AzGuestConfigurationAssignmentReport": {},
       "New-AzGuestConfigurationAssignment": {},
-      "Remove-AzGuestConfigurationAssignment": {}
+      "Remove-AzGuestConfigurationAssignment": {},
+      "Update-AzGuestConfigurationAssignment": {}
     },
     "Az.HanaOnAzure": {
       "Get-AzSapMonitor": {},
@@ -3179,7 +3189,8 @@
       "New-AzSapMonitorProviderInstance": {},
       "Remove-AzSapMonitor": {},
       "Remove-AzSapMonitorProviderInstance": {},
-      "Update-AzSapMonitor": {}
+      "Update-AzSapMonitor": {},
+      "Update-AzSapMonitorProviderInstance": {}
     },
     "Az.HDInsight": {
       "Add-AzHDInsightClusterIdentity": {},
@@ -3767,6 +3778,12 @@
       "Update-AzLabServicesSchedule": {},
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
+    },
+    "Az.LambdaTest": {
+      "Get-AzLambdaTestOrganization": {},
+      "New-AzLambdaTestOrganization": {},
+      "Remove-AzLambdaTestOrganization": {},
+      "Update-AzLambdaTestOrganization": {}
     },
     "Az.LoadTesting": {
       "Get-AzLoad": {},
@@ -4576,6 +4593,10 @@
       "Get-AzNetAppFilesFilePathAvailability": {},
       "Get-AzNetAppFilesQuotaAvailability": {},
       "Get-AzNetAppFilesNameAvailability": {},
+      "Get-AzNetAppFilesAccountKeyVaultStatus": {},
+      "Invoke-AzNetAppFilesAccountChangeKeyVault": {},
+      "Convert-AzNetAppFilesAccountToCmk": {},
+      "Get-AzNetAppFilesUsage": {},
       "Approve-AnfReplication": {},
       "Get-AnfAccount": {},
       "Get-AnfBackup": {},
@@ -4653,7 +4674,11 @@
       "Start-AnfAuthorizeExternalReplication": {},
       "Get-AnfFilePathAvailability": {},
       "Get-AnfQuotaAvailability": {},
-      "Get-AnfNameAvailability": {}
+      "Get-AnfNameAvailability": {},
+      "Get-AnfAccountKeyVaultStatus": {},
+      "Invoke-AnfAccountChangeKeyVault": {},
+      "Convert-AnfFilesAccountToCmk": {},
+      "Get-AnfUsage": {}
     },
     "Az.Network": {
       "Add-AzApplicationGatewayAuthenticationCertificate": {},
@@ -5826,7 +5851,8 @@
       "Remove-AzOrbitalSpacecraft": {},
       "Remove-AzOrbitalSpacecraftContact": {},
       "Update-AzOrbitalContactProfile": {},
-      "Update-AzOrbitalSpacecraft": {}
+      "Update-AzOrbitalSpacecraft": {},
+      "Update-AzOrbitalSpacecraftContact": {}
     },
     "Az.PaloAltoNetworks": {
       "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack": {},
@@ -5904,6 +5930,10 @@
       "Test-AzPeeringRegisteredPrefix": {},
       "Test-AzPeeringServiceProviderAvailability": {},
       "Update-AzPeering": {},
+      "Update-AzPeeringAsn": {},
+      "Update-AzPeeringConnectionMonitorTest": {},
+      "Update-AzPeeringRegisteredAsn": {},
+      "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
     "Az.Pinecone": {
@@ -7296,6 +7326,7 @@
       "New-AzSpringCloudContentCertificateObject": {},
       "New-AzSpringCloudGitPatternRepositoryObject": {},
       "New-AzSpringCloudKeyVaultCertificateObject": {},
+      "New-AzSpringCloudRegistry": {},
       "New-AzSpringCloudTestKey": {},
       "Remove-AzSpringCloud": {},
       "Remove-AzSpringCloudApp": {},
@@ -7320,7 +7351,12 @@
       "Update-AzSpringCloudAppBinding": {},
       "Update-AzSpringCloudAppCustomDomain": {},
       "Update-AzSpringCloudAppDeployment": {},
+      "Update-AzSpringCloudBuildpackBinding": {},
+      "Update-AzSpringCloudBuildServiceAgentPool": {},
+      "Update-AzSpringCloudBuildServiceBuilder": {},
+      "Update-AzSpringCloudCertificate": {},
       "Update-AzSpringCloudConfigServer": {},
+      "Update-AzSpringCloudConfigurationService": {},
       "Update-AzSpringCloudMonitoringSetting": {}
     },
     "Az.Sql": {
