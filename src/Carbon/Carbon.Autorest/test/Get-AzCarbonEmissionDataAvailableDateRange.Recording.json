@@ -1,0 +1,52 @@
+{
+  "Get-AzCarbonEmissionDataAvailableDateRange+[NoContext]+Get+$POST+https://management.azure.com/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange?api-version=2025-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange?api-version=2025-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "62e87d5f-187f-4943-b5cb-3f662ebb1814" ],
+        "CommandName": [ "Get-AzCarbonEmissionDataAvailableDateRange" ],
+        "FullCommandName": [ "Get-AzCarbonEmissionDataAvailableDateRange_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.0.0", "PSVersion/v7.5.1", "Az.Carbon/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=6a905f1fe3bcb60614bcfaadaf811d67162e7d29decc8056d3ac2662076138f6;Path=/;HttpOnly;Secure;Domain=sustcarbon-webapp-prod-wus.azurewebsites.net", "ARRAffinitySameSite=6a905f1fe3bcb60614bcfaadaf811d67162e7d29decc8056d3ac2662076138f6;Path=/;HttpOnly;SameSite=None;Secure;Domain=sustcarbon-webapp-prod-wus.azurewebsites.net" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "2499" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:1b30ee95-d108-4b28-8df6-b780a66c5364" ],
+        "mise-correlation-id": [ "749c2906-81f8-435d-bed7-aff9489b2871" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20250429T061414Z-r1fdc4c8d8472fxghC1CO1f3mn0000000k3g000000008z4g" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "c54a9feb-8892-4dcb-872c-53f3ae2153f5" ],
+        "x-ms-correlation-request-id": [ "842862fc-f811-498c-a12f-3ed33e6fb2ef" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250429T061414Z:842862fc-f811-498c-a12f-3ed33e6fb2ef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: F6B536A06D004A89A8AAE8F099D33303 Ref B: CO6AA3150218023 Ref C: 2025-04-29T06:14:14Z" ],
+        "Date": [ "Tue, 29 Apr 2025 06:14:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "49" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startDate\":\"2024-03-01\",\"endDate\":\"2025-03-01\"}",
+      "isContentBase64": false
+    }
+  }
+}
