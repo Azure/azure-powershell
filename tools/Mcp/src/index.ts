@@ -3,8 +3,6 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { exec } from 'child_process';
 import { z } from "zod";
 import { generateByAutorest } from "./services/toolServices.js";
-import {parameter, toolSchema} from "./types.js";
-import test from './test.json' assert { type: "json" };
 
 // Create server instance
 const server = new McpServer({

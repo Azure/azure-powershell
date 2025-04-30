@@ -1,4 +1,4 @@
-export type parameter = {
+export type toolParameterSchema = {
     name: string;
     type: string;
     description: string;
@@ -7,6 +7,6 @@ export type parameter = {
 export type toolSchema = {
     name: string;
     description: string;
-    parameters: parameter[];
+    parameters: toolParameterSchema[];
     callbackName: string;
 }
