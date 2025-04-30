@@ -59,7 +59,7 @@ directive:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CheckViaIdentityExpanded$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CheckViaIdentityExpanded$|^PurgeViaIdentityLocation$|^GetViaIdentityLocation$
     remove: true
 
   - where:

@@ -24,12 +24,6 @@ Clear-AzAppConfigurationDeletedStore -InputObject <IAppConfigurationIdentity> [-
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PurgeViaIdentityLocation
-```
-Clear-AzAppConfigurationDeletedStore -LocationInputObject <IAppConfigurationIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Permanently deletes the specified configuration store.
 
@@ -105,27 +99,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: PurgeViaIdentityLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge, PurgeViaIdentityLocation
+Parameter Sets: Purge
 Aliases:
 
 Required: True

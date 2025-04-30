@@ -24,12 +24,6 @@ Get-AzAppConfigurationDeletedStore -Location <String> -Name <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzAppConfigurationDeletedStore -Name <String> -LocationInputObject <IAppConfigurationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzAppConfigurationDeletedStore -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>]
@@ -117,27 +111,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-Parameter Sets: GetViaIdentityLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityLocation
+Parameter Sets: Get
 Aliases:
 
 Required: True
