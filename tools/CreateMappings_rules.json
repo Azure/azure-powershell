@@ -968,4 +968,8 @@
     "module": "Pinecone",
     "alias": "Pinecone"
   },
+  {
+    "alias": "LambdaTest",
+    "module": "LambdaTest"
+  }
 ]

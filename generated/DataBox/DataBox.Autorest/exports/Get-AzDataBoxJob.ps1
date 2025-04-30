@@ -27,12 +27,12 @@ Get-AzDataBoxJob -SubscriptionId "SubscriptionId"
 Get-AzDataBoxJob -ResourceGroupName "resourceGroupName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 .Link
 https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 #>
 function Get-AzDataBoxJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

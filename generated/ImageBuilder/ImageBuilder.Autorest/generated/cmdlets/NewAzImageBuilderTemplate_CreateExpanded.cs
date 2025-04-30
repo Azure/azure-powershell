@@ -6,20 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create or update a virtual machine image template</summary>
+    /// <summary>create a virtual machine image template</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzImageBuilderTemplate_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Description(@"Create or update a virtual machine image template")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Description(@"create a virtual machine image template")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}", ApiVersion = "2022-07-01")]
     public partial class NewAzImageBuilderTemplate_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,10 +38,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>
         /// Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplate();
+        private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplate();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -64,6 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int BuildTimeoutInMinute { get => _parametersBody.BuildTimeoutInMinute ?? default(int); set => _parametersBody.BuildTimeoutInMinute = value; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ImageBuilder Client => Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.ClientAPI;
 
@@ -78,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the properties used to describe the customization steps of the image, like Image source etc",
         SerializedName = @"customize",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[] Customize { get => _parametersBody.Customize ?? null /* arrayOf */; set => _parametersBody.Customize = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer[] Customize { get => _parametersBody.Customize?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Customize = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -100,8 +118,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"The distribution targets where the image output needs to go to.",
         SerializedName = @"distribute",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[] Distribute { get => _parametersBody.Distribute ?? null /* arrayOf */; set => _parametersBody.Distribute = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor[] Distribute { get => _parametersBody.Distribute?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Distribute = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor>(value) : null); }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _parametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -114,20 +139,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity used for the image template. The type 'None' will remove any identities from the image template.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity used for the image template. The type 'None' will remove any identities from the image template.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType)""); set => _parametersBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -177,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -217,8 +228,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the properties used to describe the source image.",
         SerializedName = @"source",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource Source { get => _parametersBody.Source ?? null /* object */; set => _parametersBody.Source = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSource Source { get => _parametersBody.Source ?? null /* object */; set => _parametersBody.Source = value; }
 
         /// <summary>
         /// The staging resource group id in the same subscription as the image template that will be used to build the image. If
@@ -255,7 +266,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -268,24 +280,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api30.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// Enabling this field will improve VM boot time by optimizing the final customized image output.
@@ -297,9 +301,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"Enabling this field will improve VM boot time by optimizing the final customized image output.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState VMBootState { get => _parametersBody.VMBootState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState)""); set => _parametersBody.VMBootState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string VMBootState { get => _parametersBody.VMBootState ?? null; set => _parametersBody.VMBootState = value; }
 
         /// <summary>
         /// Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
@@ -327,7 +331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         Description = @"Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] VMProfileUserAssignedIdentity { get => _parametersBody.VMProfileUserAssignedIdentity ?? null /* arrayOf */; set => _parametersBody.VMProfileUserAssignedIdentity = value; }
+        public string[] VMProfileUserAssignedIdentity { get => _parametersBody.VMProfileUserAssignedIdentity?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.VMProfileUserAssignedIdentity = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default
@@ -382,8 +386,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         ReadOnly = false,
         Description = @"List of validations to be performed.",
         SerializedName = @"inVMValidations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator[] Validator { get => _parametersBody.ValidateInVMValidation ?? null /* arrayOf */; set => _parametersBody.ValidateInVMValidation = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator[] Validator { get => _parametersBody.ValidateInVMValidation?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ValidateInVMValidation = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator>(value) : null); }
 
         /// <summary>
         /// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string
@@ -415,24 +419,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -479,6 +483,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -543,11 +552,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -559,10 +593,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -572,11 +622,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzImageBuilderTemplate_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzImageBuilderTemplate_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzImageBuilderTemplate_CreateExpanded()
         {
 
+        }
+
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _parametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _parametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_parametersBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _parametersBody.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _parametersBody.IdentityType = "UserAssigned";
+                }
+            }
         }
 
         /// <summary>Performs execution of the command.</summary>
@@ -638,7 +713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -651,12 +726,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachineImageTemplatesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onDefault, this, Pipeline);
+                    this.PreProcessManagedIdentityParameters();
+                    await this.Client.VirtualMachineImageTemplatesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -694,12 +770,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -716,15 +792,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -734,12 +810,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate">Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -751,8 +827,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

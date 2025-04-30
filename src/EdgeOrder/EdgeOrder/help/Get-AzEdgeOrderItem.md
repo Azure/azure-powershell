@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
 
 ## NOTES
 

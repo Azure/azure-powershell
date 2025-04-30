@@ -19,6 +19,13 @@ Invoke-AzReservationUnarchiveReservation -ReservationId <String> -ReservationOrd
  [<CommonParameters>]
 ```
 
+### UnarchiveViaIdentityReservationOrder
+```
+Invoke-AzReservationUnarchiveReservation -ReservationId <String>
+ -ReservationOrderInputObject <IReservationsIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UnarchiveViaIdentity
 ```
 Invoke-AzReservationUnarchiveReservation -InputObject <IReservationsIdentity> [-DefaultProfile <PSObject>]
@@ -61,7 +68,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
@@ -95,7 +101,7 @@ Id of the reservation item
 
 ```yaml
 Type: System.String
-Parameter Sets: Unarchive
+Parameter Sets: Unarchive, UnarchiveViaIdentityReservationOrder
 Aliases:
 
 Required: True
@@ -117,6 +123,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+Parameter Sets: UnarchiveViaIdentityReservationOrder
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
