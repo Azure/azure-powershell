@@ -176,6 +176,7 @@ jobs:
 - job: build
   displayName: "Build:"
   dependsOn: filter
+  condition: ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
@@ -219,7 +220,7 @@ jobs:
   dependsOn: 
     - filter
     - build
-  condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.AnalyzeTargets'], '{}'))
+  condition: ne(dependencies.filter.outputs['mtrx.AnalyzeTargets'], '{}')
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: ${{ variables.WindowsAgentPoolName }}
   strategy:
