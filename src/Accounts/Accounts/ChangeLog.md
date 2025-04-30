@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.2.0
 * Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
 * Fixed token in auxiliary authentication header.
 * Collected authentication method for telemetry in end process of cmdlet.
