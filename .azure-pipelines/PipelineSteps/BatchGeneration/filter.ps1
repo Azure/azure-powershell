@@ -9,11 +9,6 @@ param (
     [string]$RepoRoot
 )
 
-$targetsOutputDir = Join-Path $RepoRoot "artifacts"
-if (-not (Test-Path -Path $targetsOutputDir)) {
-    New-Item -ItemType Directory -Path $targetsOutputDir -Force | Out-Null
-}
-
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
 
@@ -32,11 +27,6 @@ for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
 $changedModules = $changedModulesDict.Keys | Sort-Object
 $changedSubModules = $changedSubModulesDict.Keys | Sort-Object
 
-if ($changedModules.Count -eq 0) {
-    Write-Host "No changed modules."
-    exit 0
-}
-
 Write-Host "##[group]Changed modules: $($changedModules.Count)"
 foreach ($module in $changedModules) {
     Write-Host $module
@@ -52,7 +42,7 @@ Write-Host "##[endgroup]"
 Write-Host
 
 $groupedBuildModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelBuildJobs
-Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -TargetsOutputDir $targetsOutputDir
+Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -RepoRoot $RepoRoot
 
 # $groupedAnalyzeModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelAnalyzeJobs
 # Write-Matrix -variableName 'AnalyzeTargets' -groupedSubModules $groupedAnalyzeModules
