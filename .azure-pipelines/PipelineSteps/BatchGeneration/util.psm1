@@ -29,7 +29,7 @@ function Write-Matrix {
     param (
         [array]$GroupedModules,
         [string]$VariableName,
-        [string]$RepoRoot
+        [string]$TargetsOutputDir
     )
 
     Write-Host "Type: $($GroupedModules.GetType().FullName)"
@@ -54,11 +54,6 @@ function Write-Matrix {
     Write-Host "##vso[task.setVariable variable=$VariableName;isOutput=true]{$MatrixStr}"
     Write-Host "variable=$VariableName; value=$MatrixStr"
 
-    $targetsOutputDir = Join-Path $RepoRoot "artifacts"
-    if (-not (Test-Path -Path $targetsOutputDir)) {
-        New-Item -ItemType Directory -Path $targetsOutputDir -Force | Out-Null
-    }
-
-    $targetsOutputFile = Join-Path $targetsOutputDir "$VariableName.json"
+    $targetsOutputFile = Join-Path $TargetsOutputDir "$VariableName.json"
     $targets | ConvertTo-Json -Depth 5 | Out-File -FilePath $targetsOutputFile -Encoding utf8
 }

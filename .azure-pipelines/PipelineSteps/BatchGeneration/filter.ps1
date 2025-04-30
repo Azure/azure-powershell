@@ -9,6 +9,11 @@ param (
     [string]$RepoRoot
 )
 
+$targetsOutputDir = Join-Path $RepoRoot "artifacts"
+if (-not (Test-Path -Path $targetsOutputDir)) {
+    New-Item -ItemType Directory -Path $targetsOutputDir -Force | Out-Null
+}
+
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
 
@@ -47,7 +52,7 @@ Write-Host "##[endgroup]"
 Write-Host
 
 $groupedBuildModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelBuildJobs
-Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -RepoRoot $RepoRoot
+Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -TargetsOutputDir $targetsOutputDir
 
 # $groupedAnalyzeModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelAnalyzeJobs
 # Write-Matrix -variableName 'AnalyzeTargets' -groupedSubModules $groupedAnalyzeModules
