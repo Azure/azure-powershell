@@ -3,9 +3,4 @@
 Invoke-AzCdnAbortProfileToAFDMigration -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 ```
 
-```output
-{
-}
-```
-
 Abort the profile migration to Azure Front Door.
