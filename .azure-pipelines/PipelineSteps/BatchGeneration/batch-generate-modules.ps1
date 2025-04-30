@@ -71,6 +71,7 @@ foreach ($moduleName in $sortedModuleNames) {
 }
 
 $ArtifactOutputDir = Join-Path $RepoRoot "artifacts"
+Set-Location $RepoRoot
 
 git add .
 $patchPath = Join-Path $ArtifactOutputDir "changed-$MatrixKey.patch"

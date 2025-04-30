@@ -241,9 +241,36 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            $collectModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'collect-build-artifacts.ps1'
-            & $collectModulesPath -RepoRoot "$(Build.SourcesDirectory)"
-      
+            $workspace = "$env:PIPELINE_WORKSPACE"
+            $repoRoot = "$(Build.SourcesDirectory)"
+            $artifactsRoot = Join-Path $repoRoot "artifacts" "debug"
+            New-Item -ItemType Directory -Force -Path $artifactsRoot | Out-Null
+
+            $copiedModules = @{}
+
+            Get-ChildItem -Path $workspace -Directory | ForEach-Object {
+                $artifactDebugPath = Join-Path $_.FullName "debug"
+
+                if (Test-Path $artifactDebugPath) {
+                    Get-ChildItem -Path $artifactDebugPath -Directory | ForEach-Object {
+                        $moduleName = $_.Name
+
+                        if (-not $copiedModules.ContainsKey($moduleName)) {
+                            $destPath = Join-Path $artifactsRoot $moduleName
+                            Copy-Item -Path $_.FullName -Destination $destPath -Recurse
+                            $copiedModules[$moduleName] = $true
+                            Write-Host "Copied $moduleName from $artifactDebugPath"
+                        } else {
+                            Write-Host "Skipped $moduleName from $artifactDebugPath (already copied)"
+                        }
+                    }
+                }
+            }
+
+            Get-ChildItem -Path $artifactsRoot -Directory | ForEach-Object {
+                Write-Host " - $($_.Name)"
+            }
+
       - task: PublishPipelineArtifact@1
         displayName: 'Upload collected artifacts'
         inputs:
@@ -262,7 +289,14 @@ stages:
         maxParallel: ${{ variables.MaxParallelAnalyzeJobs }}
 
       steps:
+
       - checkout: none
+
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifact: collect
+          path: $(Build.SourcesDirectory)/artifacts
+        displayName: 'Download collected artifact to artifacts folder'
 
       - task: PowerShell@2
         name: analyze
@@ -272,7 +306,14 @@ stages:
           pwsh: true
           script: |
             Write-Host "Matrix Key: $(MatrixKey)"
-            Write-Host "Analyze Targets: $(Target)"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Analyse Report'
+        inputs:
+          targetPath: artifacts
+          artifact: 'analyse-$(MatrixKey)'
+        condition: always()
+
 
     # - job: test_windows
     #   displayName: "Test Windows:"
