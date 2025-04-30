@@ -27,6 +27,11 @@ for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
 $changedModules = $changedModulesDict.Keys | Sort-Object
 $changedSubModules = $changedSubModulesDict.Keys | Sort-Object
 
+if ($changedModules.Count -eq 0) {
+    Write-Host "No changed modules."
+    exit 0
+}
+
 Write-Host "##[group]Changed modules: $($changedModules.Count)"
 foreach ($module in $changedModules) {
     Write-Host $module
