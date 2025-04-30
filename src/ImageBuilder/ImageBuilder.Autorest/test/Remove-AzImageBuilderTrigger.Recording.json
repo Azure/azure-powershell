@@ -1,13 +1,13 @@
 {
-  "Remove-AzImageBuilderTrigger+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-x9z2ce?api-version=2022-07-01+1": {
+  "Remove-AzImageBuilderTrigger+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-k08ybw/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-sfq64n/triggers/azps-trigger-j68s2g?api-version=2022-07-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-x9z2ce?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-k08ybw/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-sfq64n/triggers/azps-trigger-j68s2g?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "bb311c34-3ca8-4cc0-bf30-e04fa3b6ec78" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "9602b978-5e3c-47b3-8dee-2d9f6355f62b" ],
         "CommandName": [ "Remove-AzImageBuilderTrigger" ],
         "FullCommandName": [ "Remove-AzImageBuilderTrigger_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,17 +22,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=73b5eafe-f507-4fcd-8a90-99327064a949/southeastasia/a230822c-79a2-41a1-bb59-7a111d738fbf" ],
-        "x-ms-correlation-request-id": [ "232c6065-f7e4-455e-92c4-a77d11e7f9eb" ],
-        "x-ms-request-id": [ "ec7d24b1-73b1-4e07-a88d-69a18d0fcd9d" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=73b5eafe-f507-4fcd-8a90-99327064a949/southindia/da138e4b-ffec-49fd-9a45-b2999e512758" ],
+        "x-ms-correlation-request-id": [ "57a4a961-21af-43e2-b83b-d50d8f8bb595" ],
+        "x-ms-request-id": [ "8c63d838-9838-4721-a5a0-a671468ad106" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250425T101728Z:232c6065-f7e4-455e-92c4-a77d11e7f9eb" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250430T054555Z:57a4a961-21af-43e2-b83b-d50d8f8bb595" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9D59185A52B14E9C83BED11A81961602 Ref B: MAA201060515031 Ref C: 2025-04-25T10:17:27Z" ],
-        "Date": [ "Fri, 25 Apr 2025 10:17:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DD49D0A26977424B94769E49CDAA656A Ref B: MAA201060515009 Ref C: 2025-04-30T05:45:53Z" ],
+        "Date": [ "Wed, 30 Apr 2025 05:45:54 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
