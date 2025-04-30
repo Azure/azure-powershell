@@ -61,51 +61,51 @@ stages:
           targetPath: artifacts
           artifact: 'prepare'
 
-      - job: generate
-        displayName: "Batch Generate: "
-        dependsOn: prepare
-        condition: ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
-        timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
-        pool: ${{ variables.WindowsAgentPoolName }}
-        strategy:
-          matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
-          maxParallel: ${{ variables.MaxParallelGenerateJobs }}
+    - job: generate
+      displayName: "Batch Generate: "
+      dependsOn: prepare
+      condition: ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
+      timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      strategy:
+        matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
+        maxParallel: ${{ variables.MaxParallelGenerateJobs }}
 
-        steps:
-        - checkout: self
-          persistCredentials: true
-          fetchTags: false
-        
-        - task: DownloadPipelineArtifact@2
-          inputs:
-            artifactName: 'prepare'
-            targetPath: artifacts
+      steps:
+      - checkout: self
+        persistCredentials: true
+        fetchTags: false
+      
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
 
-        - task: PowerShell@2
-          name: generate
-          displayName: 'Regenerate Modules'
-          inputs:
-            targetType: inline
-            pwsh: true
-            script: |
-              git fetch origin "${{ variables.GenerationBranch }}"
-              git checkout "${{ variables.GenerationBranch }}"
+      - task: PowerShell@2
+        name: generate
+        displayName: 'Regenerate Modules'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            git fetch origin "${{ variables.GenerationBranch }}"
+            git checkout "${{ variables.GenerationBranch }}"
 
-              $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-              & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+            $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
+            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
 
-            workingDirectory: $(Build.SourcesDirectory)
+          workingDirectory: $(Build.SourcesDirectory)
 
-        - task: PublishPipelineArtifact@1
-          displayName: 'Save patch and generation report'
-          inputs:
-            targetPath: artifacts
-            artifact: 'generate-$(MatrixKey)'
-          condition: always()
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save patch and generation report'
+        inputs:
+          targetPath: artifacts
+          artifact: 'generate-$(MatrixKey)'
+        condition: always()
 
   - stage: Build
     condition: always()
-    job:
+    jobs:
     - job: filter
       displayName: 'Filter Changed Modules'
       timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
