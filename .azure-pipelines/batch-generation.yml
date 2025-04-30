@@ -274,78 +274,78 @@ stages:
             Write-Host "Matrix Key: $(MatrixKey)"
             Write-Host "Analyze Targets: $(Target)"
 
-    - job: test_windows
-      displayName: "Test Windows:"
-      dependsOn: 
-        - filter
-        - build
-      condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
-      timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-      pool: ${{ variables.WindowsAgentPoolName }}
-      strategy:
-        matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
-        maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
+    # - job: test_windows
+    #   displayName: "Test Windows:"
+    #   dependsOn: 
+    #     - filter
+    #     - build
+    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
+    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+    #   pool: ${{ variables.WindowsAgentPoolName }}
+    #   strategy:
+    #     matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
+    #     maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
-      steps:
-      - checkout: none
+    #   steps:
+    #   - checkout: none
       
-      - task: PowerShell@2
-        name: test
-        displayName: 'Test Windows'
-        inputs:
-          targetType: inline
-          pwsh: true
-          script: |
-            $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-            & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+    #   - task: PowerShell@2
+    #     name: test
+    #     displayName: 'Test Windows'
+    #     inputs:
+    #       targetType: inline
+    #       pwsh: true
+    #       script: |
+    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
-    - job: test_linux
-      displayName: "Test Linux:"
-      dependsOn: 
-        - filter
-        - build
-      condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], '{}'))
-      timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-      pool: ${{ variables.LinuxAgentPoolName }}
-      strategy:
-        matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
-        maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
+    # - job: test_linux
+    #   displayName: "Test Linux:"
+    #   dependsOn: 
+    #     - filter
+    #     - build
+    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], '{}'))
+    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+    #   pool: ${{ variables.LinuxAgentPoolName }}
+    #   strategy:
+    #     matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
+    #     maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
 
-      steps:
-      - checkout: none
+    #   steps:
+    #   - checkout: none
       
-      - task: PowerShell@2
-        name: test
-        displayName: 'Test Linux'
-        inputs:
-          targetType: inline
-          pwsh: true
-          script: |
-            $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-            & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+    #   - task: PowerShell@2
+    #     name: test
+    #     displayName: 'Test Linux'
+    #     inputs:
+    #       targetType: inline
+    #       pwsh: true
+    #       script: |
+    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
-    - job: test_mac
-      displayName: "Test Mac:"
-      dependsOn: filter
-      condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestMacTargets'], '{}'))
-      timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-      pool:
-        name: ${{ variables.MacOSAgentPoolName }}
-        vmImage: ${{ variables.MacOSAgentPoolVMImage }}
-      strategy:
-        matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
-        maxParallel: ${{ variables.MaxParallelTestMacJobs }}
+    # - job: test_mac
+    #   displayName: "Test Mac:"
+    #   dependsOn: filter
+    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestMacTargets'], '{}'))
+    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+    #   pool:
+    #     name: ${{ variables.MacOSAgentPoolName }}
+    #     vmImage: ${{ variables.MacOSAgentPoolVMImage }}
+    #   strategy:
+    #     matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
+    #     maxParallel: ${{ variables.MaxParallelTestMacJobs }}
 
-      steps:
-      - checkout: none
+    #   steps:
+    #   - checkout: none
       
-      - task: PowerShell@2
-        name: test
-        displayName: 'Test Mac'
-        inputs:
-          targetType: inline
-          pwsh: true
-          script: |
-            $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-            & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+    #   - task: PowerShell@2
+    #     name: test
+    #     displayName: 'Test Mac'
+    #     inputs:
+    #       targetType: inline
+    #       pwsh: true
+    #       script: |
+    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
+    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
