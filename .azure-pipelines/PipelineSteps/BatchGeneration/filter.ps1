@@ -1,89 +1,57 @@
 [CmdletBinding(DefaultParameterSetName="AllSet")]
 param (
-    [int]$MaxParalleAnalyzeJobs = 3,
-    [int]$MaxParalleTestWindowsJobs = 3,
-    [int]$MaxParalleTestLinuxJobs = 3,
-    [int]$MaxParalleTestMacJobs = 3,
-    [string[]]$ChangedFiles
+    [int]$MaxParallelBuildJobs = 3,
+    [int]$MaxParallelAnalyzeJobs = 3,
+    [int]$MaxParallelTestWindowsJobs = 3,
+    [int]$MaxParallelTestLinuxJobs = 3,
+    [int]$MaxParallelTestMacJobs = 3,
+    [string[]]$ChangedFiles,
+    [string]$RepoRoot
 )
 
-$autorestFolders = @{}
+$utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
+Import-Module $utilFilePath -Force
+
+$changedModulesDict = @{}
+$changedSubModulesDict = @{}
 for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
     if ($ChangedFiles[$i] -match '^(src|generated)/([^/]+)/([^/]+\.autorest)/') {
         $parent = $Matches[2]
         $child = $Matches[3]
         $key = "$parent/$child"
-
-        $autorestFolders[$key] = $true
+        
+        $changedModulesDict[$parent] = $true
+        $changedSubModulesDict[$key] = $true
     }
 }
+$changedModules = $changedModulesDict.Keys | Sort-Object
+$changedSubModules = $changedSubModulesDict.Keys | Sort-Object
 
-$changedSubModules = $autorestFolders.Keys
-# TODO(Bernard) Remove test data after test
-# $changedSubModules = @("A", "B", "C", "D", "E", "F", "G")
-Write-Host "Chagned sub modules: "
+Write-Host "##[group]Changed modules: $($changedModules.Count)"
+foreach ($module in $changedModules) {
+    Write-Host $module
+}
+Write-Host "##[endgroup]"
+    Write-Host
+
+Write-Host "##[group]Changed sub modules: $($changedSubModules.Count)"
 foreach ($subModule in $changedSubModules) {
     Write-Host $subModule
 }
+Write-Host "##[endgroup]"
+Write-Host
 
-function Split-List {
-    param (
-        [array]$subModules,
-        [int]$maxParallelJobs
-    )
+$groupedBuildModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelBuildJobs
+Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -RepoRoot $RepoRoot
 
-    $count = $subModules.Count
-    $n = [Math]::Min($count, $maxParallelJobs)
+$groupedAnalyzeModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelAnalyzeJobs
+Write-Matrix -GroupedModules $groupedAnalyzeModules -variableName 'analyzeTargets' -RepoRoot $RepoRoot
 
-    if ($n -eq 0) {
-        return @()
-    }
+# $groupedTestWindowsModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestWindowsJobs
+# Write-Matrix -variableName 'TestWindowsTargets' -groupedSubModules $groupedTestWindowsModules
 
-    $result = @()
+# $groupedTestLinuxModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestLinuxJobs
+# Write-Matrix -variableName 'TestLinuxTargets' -groupedSubModules $groupedTestLinuxModules
 
-    for ($i = 0; $i -lt $n; $i++) {
-        $result += ,@()
-    }
-
-    for ($i = 0; $i -lt $count; $i++) {
-        $groupIndex = $i % $n
-        $result[$groupIndex] += $subModules[$i]
-    }
-
-    return ,$result
-}
-
-function Write-Matrix {
-    param (
-        [string]$variableName,
-        [array]$groupedSubModules
-    )
-
-    $index = 0
-    foreach ($subModules in $groupedSubModules) {
-        $moduleNamesStr = $subModules -join ','
-        $key = ($index + 1).ToString() + "-" + $subModules.Count
-        $MatrixStr = "$MatrixStr,'$key':{'Target':'$moduleNamesStr','MatrixKey':'$key'}"
-        $index++
-    }
-
-    if ($MatrixStr -and $MatrixStr.Length -gt 1) {
-        $MatrixStr = $MatrixStr.Substring(1)
-    }
-    Write-Host "##vso[task.setVariable variable=$variableName;isOutput=true]{$MatrixStr}"
-    Write-Host "variable=$variableName; value=$MatrixStr"
-    }
-
-$groupedAnalyzeModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleAnalyzeJobs
-Write-Matrix -variableName 'AnalyzeTargets' -groupedSubModules $groupedAnalyzeModules
-
-$groupedTestWindowsModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestWindowsJobs
-Write-Matrix -variableName 'TestWindowsTargets' -groupedSubModules $groupedTestWindowsModules
-
-$groupedTestLinuxModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestLinuxJobs
-Write-Matrix -variableName 'TestLinuxTargets' -groupedSubModules $groupedTestLinuxModules
-
-# $groupedTestMacModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParalleTestMacJobs
+# $groupedTestMacModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestMacJobs
 # Write-Matrix -variableName 'TestMacTargets' -groupedSubModules $groupedTestMacModules
-
-Write-Host "##vso[task.setVariable variable=TestMacTargets;isOutput=true]{}"

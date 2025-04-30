@@ -58,7 +58,7 @@ $modules = $modules.GetEnumerator() | ForEach-Object {
 
 Write-Host "Total matched modules: $($modules.Count)"
 
-function Group-List {
+function Group-Modules {
     param (
         [array]$modules,
         [int]$maxParallelJobs
@@ -81,7 +81,7 @@ function Group-List {
     return $result
 }
 
-$groupedModules = Group-List -modules $modules -maxParallelJobs $MaxParallelJobs
+$groupedModules = Group-Modules -modules $modules -maxParallelJobs $MaxParallelJobs
 Write-Host "Total module groups: $($groupedModules.Count)"
 
 $index = 0
@@ -108,7 +108,7 @@ if (-not (Test-Path -Path $generateTargetsOutputDir)) {
     New-Item -ItemType Directory -Path $generateTargetsOutputDir
 }
 $generateTargetsOutputFile = Join-Path $generateTargetsOutputDir "generateTargets.json"
-$generateTargets | ConvertTo-Json -Depth 10 | Out-File -FilePath $generateTargetsOutputFile -Encoding utf8
+$generateTargets | ConvertTo-Json -Depth 5 | Out-File -FilePath $generateTargetsOutputFile -Encoding utf8
 
 if ($MatrixStr -and $MatrixStr.Length -gt 1) {
     $MatrixStr = $MatrixStr.Substring(1)
