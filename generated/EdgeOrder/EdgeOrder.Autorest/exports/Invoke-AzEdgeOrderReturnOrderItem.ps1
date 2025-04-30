@@ -42,7 +42,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
 
 RETURNADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
   ContactName <String>: Contact name of the person.
-  EmailList <String[]>: List of Email-ids to be notified about job progress.
+  EmailList <List<String>>: List of Email-ids to be notified about job progress.
   Phone <String>: Phone number of the contact person.
   [Mobile <String>]: Mobile number of the contact person.
   [PhoneExtension <String>]: Phone extension number of the contact person.
@@ -50,7 +50,7 @@ RETURNADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
 RETURNADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   Country <String>: Name of the Country.
   StreetAddress1 <String>: Street Address line 1.
-  [AddressType <AddressType?>]: Type of address.
+  [AddressType <String>]: Type of address.
   [City <String>]: Name of the City.
   [CompanyName <String>]: Name of the company.
   [PostalCode <String>]: Postal code.
@@ -66,12 +66,16 @@ function Invoke-AzEdgeOrderReturnOrderItem {
 [CmdletBinding(DefaultParameterSetName='ReturnExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ReturnExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReturnViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReturnViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
     # The name of the order item
     ${OrderItemName},
 
     [Parameter(ParameterSetName='ReturnExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReturnViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ReturnViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -79,6 +83,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ReturnExpanded')]
+    [Parameter(ParameterSetName='ReturnViaJsonFilePath')]
+    [Parameter(ParameterSetName='ReturnViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -89,40 +95,54 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ReturnExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ReturnViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
     [System.String]
     # Return Reason.
     ${ReturnReason},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReturnExpanded')]
+    [Parameter(ParameterSetName='ReturnViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails]
     # Contact details for the address
-    # To construct, see NOTES section for RETURNADDRESSCONTACTDETAIL properties and create a hash table.
     ${ReturnAddressContactDetail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReturnExpanded')]
+    [Parameter(ParameterSetName='ReturnViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress]
     # Shipping details for the address
-    # To construct, see NOTES section for RETURNADDRESSSHIPPINGADDRESS properties and create a hash table.
     ${ReturnAddressShippingAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReturnExpanded')]
+    [Parameter(ParameterSetName='ReturnViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
     [System.String]
     # Service tag (located on the bottom-right corner of the device)
     ${ServiceTag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ReturnExpanded')]
+    [Parameter(ParameterSetName='ReturnViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Shipping Box required
     ${ShippingBoxRequired},
+
+    [Parameter(ParameterSetName='ReturnViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Return operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ReturnViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Json string supplied to the Return operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -198,6 +218,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -219,10 +248,10 @@ begin {
         $mapping = @{
             ReturnExpanded = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderReturnOrderItem_ReturnExpanded';
             ReturnViaIdentityExpanded = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderReturnOrderItem_ReturnViaIdentityExpanded';
+            ReturnViaJsonFilePath = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderReturnOrderItem_ReturnViaJsonFilePath';
+            ReturnViaJsonString = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderReturnOrderItem_ReturnViaJsonString';
         }
-        if (('ReturnExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ReturnExpanded', 'ReturnViaJsonFilePath', 'ReturnViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -236,6 +265,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

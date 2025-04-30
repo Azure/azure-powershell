@@ -25,5 +25,6 @@ Create an in-memory object for AzureMonitorWorkspaceIntegration.
 Delete a workspace for Grafana resource.
 
 ### [Update-AzGrafana](Update-AzGrafana.md)
-Update a workspace for Grafana resource.
+update a workspace for Grafana resource.
+This API is idempotent, so user can either update a new grafana or update an existing grafana.
 

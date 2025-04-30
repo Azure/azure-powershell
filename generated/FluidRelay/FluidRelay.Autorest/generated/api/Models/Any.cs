@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

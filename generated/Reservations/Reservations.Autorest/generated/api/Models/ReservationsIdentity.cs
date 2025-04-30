@@ -53,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -61,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Id of the reservation item",
         SerializedName = @"reservationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -69,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Order Id of the reservation",
         SerializedName = @"reservationOrderId",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Id of the subscription",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DedicatedHsm.private.dll'
   FormatsToProcess = './Az.DedicatedHsm.format.ps1xml'
-  FunctionsToExport = 'Get-AzDedicatedHsm', 'Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint', 'New-AzDedicatedHsm', 'Remove-AzDedicatedHsm', 'Update-AzDedicatedHsm', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDedicatedHsm', 'Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint', 'New-AzDedicatedHsm', 'Remove-AzDedicatedHsm', 'Update-AzDedicatedHsm'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DedicatedHsm'

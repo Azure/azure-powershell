@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* When create Storage context, allowed user input StorageAccountName
+    - `New-AzStorageContext`
+* Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
+    - `New-AzStorageBlobSASToken`
+    - `New-AzStorageContainerSASToken`
+    - `New-AzDataLakeGen2SasToken`
 
 ## Version 8.3.0
 * Supported NFS File Share and NFS file and directory properties

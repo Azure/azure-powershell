@@ -99,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
@@ -152,8 +151,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
+
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExportListResult
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/rest/api/costmanagement/](https://docs.microsoft.com/en-us/rest/api/costmanagement/)
