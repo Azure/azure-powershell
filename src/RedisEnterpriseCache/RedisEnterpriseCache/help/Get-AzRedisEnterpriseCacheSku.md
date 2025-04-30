@@ -1,72 +1,47 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabasedbredisversion
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachesku
 schema: 2.0.0
 ---
 
-# Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion
+# Get-AzRedisEnterpriseCacheSku
 
 ## SYNOPSIS
-Upgrades the database Redis version to the latest available.
+Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ## SYNTAX
 
 ```
-Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheSku -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Upgrades the database Redis version to the latest available.
+Lists the available SKUs for scaling the Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: Upgrade database Redis version
+### Example 1: Get available SKUs for scaling the Redis Enterprise cluster
 ```powershell
-Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default"
+Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup"
 ```
 
-Upgrades the database Redis version to the latest available.
+```output
+SizeInGb                       Name
+----------					------------
+size                         sku-name
+```
+
+This command provides all the SKUs and their memory sizes that a Redis Enterprise cluster can be scaled to.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClusterName
 The name of the Redis Enterprise cluster.
 Name must be 1-60 characters long.
 Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
 There can be no leading nor trailing nor consecutive hyphens
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
@@ -96,21 +71,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -131,7 +91,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -180,9 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ISkuDetails
 
 ## NOTES
 
 ## RELATED LINKS
-
