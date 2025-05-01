@@ -31,6 +31,7 @@ stages:
       # - checkout: none
       - checkout: self
         fetchDepth: 1
+        fetchTags: false
 
       - template: util/get-github-pat-steps.yml
 
@@ -191,7 +192,6 @@ stages:
       steps:
       - checkout: self
         fetchDepth: 1
-        # persistCredentials: true
         fetchTags: false
 
       - task: DownloadPipelineArtifact@2
@@ -323,7 +323,7 @@ stages:
             }
 
             $analyseModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'analyse-modules.ps1'
-            & $buildModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+            & $analyseModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
 
 
       - task: PublishPipelineArtifact@1
