@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzChaosCapability
 
 ## SYNOPSIS
-Update a Capability resource that extends a Target resource.
+update a Capability resource that extends a Target resource.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzChaosCapability -Name <String> -TargetInputObject <IChaosIdentity> [-De
 ```
 
 ## DESCRIPTION
-Update a Capability resource that extends a Target resource.
+update a Capability resource that extends a Target resource.
 
 ## EXAMPLES
 

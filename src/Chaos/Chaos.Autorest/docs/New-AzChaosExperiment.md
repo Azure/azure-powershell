@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzChaosExperiment
 
 ## SYNOPSIS
-Create a Experiment resource.
+create a Experiment resource.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzChaosExperiment -Name <String> -ResourceGroupName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-Create a Experiment resource.
+create a Experiment resource.
 
 ## EXAMPLES
 
