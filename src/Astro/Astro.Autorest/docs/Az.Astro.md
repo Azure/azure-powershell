@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Astro
-Module Guid: f1fb5c84-9232-478e-85f9-f1355cc0774d
+Module Guid: d4e477f3-3185-4b32-96cf-9ab37ac6fef9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.astro
 Help Version: 1.0.0.0
 Locale: en-US

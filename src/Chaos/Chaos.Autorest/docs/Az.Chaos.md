@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Chaos
-Module Guid: ca01a43f-b9c7-4e71-a41d-a185e2355c98
+Module Guid: 73b7793f-f28e-4b72-be0a-2e822b503163
 Download Help Link: https://learn.microsoft.com/powershell/module/az.chaos
 Help Version: 1.0.0.0
 Locale: en-US
@@ -39,10 +39,10 @@ Create an in-memory object for Action.
 Create an in-memory object for Branch.
 
 ### [New-AzChaosCapability](New-AzChaosCapability.md)
-Create a Capability resource that extends a Target resource.
+create a Capability resource that extends a Target resource.
 
 ### [New-AzChaosExperiment](New-AzChaosExperiment.md)
-Create a Experiment resource.
+create a Experiment resource.
 
 ### [New-AzChaosSelectorObject](New-AzChaosSelectorObject.md)
 Create an in-memory object for Selector.
@@ -51,7 +51,7 @@ Create an in-memory object for Selector.
 Create an in-memory object for Step.
 
 ### [New-AzChaosTarget](New-AzChaosTarget.md)
-Create a Target resource that extends a tracked regional resource.
+create a Target resource that extends a tracked regional resource.
 
 ### [Remove-AzChaosCapability](Remove-AzChaosCapability.md)
 Delete a Capability that extends a Target resource.
@@ -69,11 +69,11 @@ Start a Experiment resource.
 Cancel a running Experiment resource.
 
 ### [Update-AzChaosCapability](Update-AzChaosCapability.md)
-Update a Capability resource that extends a Target resource.
+update a Capability resource that extends a Target resource.
 
 ### [Update-AzChaosExperiment](Update-AzChaosExperiment.md)
-Update a Experiment resource.
+update a Experiment resource.
 
 ### [Update-AzChaosTarget](Update-AzChaosTarget.md)
-Update a Target resource that extends a tracked regional resource.
+update a Target resource that extends a tracked regional resource.
 
