@@ -62,6 +62,7 @@ foreach ($moduleName in $sortedModuleNames) {
 
         } catch {
             Write-Warning "Failed to regenerate module: $moduleName, sub module: $subModuleName"
+            Write-Warning "Error message: $($_.Exception.Message)"
             $subModuleResult.Status = "Failed"
             $subModuleResult.Error = $_.Exception.Message
         } finally {

@@ -308,6 +308,27 @@ stages:
           path: $(Build.SourcesDirectory)/artifacts
         displayName: 'Download collected artifact to artifacts folder'
 
+      - task: NodeTool@0
+        displayName: Install autorest
+        inputs:
+          versionSpec: '14.17.1'
+          command: custom
+          verbose: false
+          customCommand: install autorest@latest
+
+      - task: PowerShell@2
+        displayName: Setup environment for autorest
+        inputs:
+          targetType: inline
+          script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+          pwsh: true
+          
+      - task: UseDotNet@2
+        displayName: 'Use .NET SDK for Static Analysis'
+        inputs:
+          packageType: sdk
+          version: 8.x
+
       - task: PowerShell@2
         name: analyze
         displayName: 'Analyze modules'
