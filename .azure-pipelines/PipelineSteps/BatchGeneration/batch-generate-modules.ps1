@@ -3,11 +3,16 @@ param (
     [string]$RepoRoot
 )
 
-Write-Host "Matrix Key: $MatrixKey"
-
 $generateTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generateTargets.json"
 $generateTargets = Get-Content -Path $generateTargetsOutPutFile -Raw | ConvertFrom-Json
 $moduleGroup = $generateTargets.$MatrixKey
+Write-Host "##[group]Generating module group $MatrixKey"
+foreach ($key in $moduleGroup.PSObject.Properties.Name | Sort-Object) {
+    $values = $moduleGroup.$key -join ', '
+    Write-Output "$key : $values"
+}
+Write-Host "##[endgroup]"
+Write-Host
 $sortedModuleNames = $moduleGroup.PSObject.Properties.Name | Sort-Object
 
 $AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"

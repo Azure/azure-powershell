@@ -3,11 +3,16 @@ param (
     [string]$RepoRoot
 )
 
-Write-Host "Matrix Key: $MatrixKey"
+$utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
+Import-Module $utilFilePath -Force
 
 $buildTargetsOutputFile = Join-Path $RepoRoot "artifacts" "buildTargets.json"
 $buildTargets = Get-Content -Path $buildTargetsOutputFile -Raw | ConvertFrom-Json
 $moduleGroup = $buildTargets.$MatrixKey
+Write-Host "##[group]Building module group $MatrixKey"
+$moduleGroup | ForEach-Object { Write-Output $_ }
+Write-Host "##[endgroup]"
+Write-Host
 $buildModulesPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
 
 $results = @()  
