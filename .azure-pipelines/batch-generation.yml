@@ -377,13 +377,12 @@ stages:
     - job: test_windows
       displayName: "Test Windows:"
       dependsOn: 
-        - filter
-        - build
-      condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
+        - collect
+      condition: ne(stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'], '{}')
       timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
-        matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
+        matrix: $[ stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'] ]
         maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
       steps:
