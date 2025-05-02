@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountKey"), OutputType(typeof(StorageAccountKey))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountKey"), OutputType(typeof(PSStorageAccountKey))]
     public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -59,7 +62,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                  this.Name,
                  listkeyExpend).Keys;
 
-            WriteObject(storageKeys, true);
+            WriteStorageAccountKeys(storageKeys);
+        }
+        private void WriteStorageAccountKeys(IList<StorageAccountKey> storageKeys)
+        {
+            List<PSStorageAccountKey> output = new List<PSStorageAccountKey>();
+            storageKeys.ForEach(key => { output.Add(new PSStorageAccountKey(key)); });
+            WriteObject(output, true);
         }
     }
 }
