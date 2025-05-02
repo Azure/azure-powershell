@@ -280,7 +280,7 @@ stages:
                     }
                 }
 
-                if (Test-Path $StaticAnalysisSrcDirectory and -not $StaticAnalysisCopied) {
+                if ((Test-Path $StaticAnalysisSrcDirectory) -and (-not $StaticAnalysisCopied)) {
                     $destPath = Join-Path $artifactsRoot 'StaticAnalysis'
                     Copy-Item -Path $StaticAnalysisSrcDirectory -Destination $destPath -Recurse
                     $StaticAnalysisCopied = $true
