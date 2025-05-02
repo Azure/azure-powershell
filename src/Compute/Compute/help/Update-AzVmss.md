@@ -38,6 +38,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
  [-EnableResilientVMDelete <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableAutomaticZoneRebalance <Boolean>] [-AutomaticZoneRebalanceStrategy <String>]
+ [-AutomaticZoneRebalanceBehavior <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

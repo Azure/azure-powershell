@@ -34,7 +34,8 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
- [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>] [-EnableAutomaticZoneRebalance]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
