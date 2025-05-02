@@ -31,7 +31,7 @@ function Stop-AzDataProtectionBackupInstanceProtection
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.')]
+        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
         [System.String]        
         ${Token},
 
@@ -98,7 +98,7 @@ function Stop-AzDataProtectionBackupInstanceProtection
     {
         $parameterSetName = $PsCmdlet.ParameterSetName
         if($parameterSetName -eq "StopViaIdentity"){
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.StopProtectionRequest]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.StopProtectionRequest]::new()
 
             $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
             if($hasResourceGuardOperationRequest){

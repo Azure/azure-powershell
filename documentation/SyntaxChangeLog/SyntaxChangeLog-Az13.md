@@ -1,3 +1,109 @@
+## 13.4.0 - April 2025
+#### Az.CognitiveServices 1.16.0 
+* Modified cmdlet `New-AzCognitiveServicesAccountDeployment`
+   - Added parameter `-Tag`
+* Modified cmdlet `New-AzCognitiveServicesObject`
+   - Added parameter `-AsList`
+* Added cmdlet `Get-AzCognitiveServicesAccountDefenderForAISetting`, `Get-AzCognitiveServicesAccountDeploymentSku`, `Get-AzCognitiveServicesAccountRaiBlocklist`, `Get-AzCognitiveServicesAccountRaiBlocklistItem`, `Get-AzCognitiveServicesAccountRaiPolicy`, `Get-AzCognitiveServicesModelCapacity`, `Get-AzCognitiveServicesRaiContentFilter`, `New-AzCognitiveServicesAccountDefenderForAISetting`, `New-AzCognitiveServicesAccountRaiBlocklist`, `New-AzCognitiveServicesAccountRaiBlocklistItem`, `New-AzCognitiveServicesAccountRaiPolicy`, `Remove-AzCognitiveServicesAccountRaiBlocklist`, `Remove-AzCognitiveServicesAccountRaiBlocklistItem`, `Remove-AzCognitiveServicesAccountRaiPolicy`
+#### Az.Compute 9.2.0 
+* Modified cmdlet `New-AzGalleryImageVersion`
+   - Added parameters `-BlockDeletionBeforeEndOfLife`, `-ReplicationMode`
+* Modified cmdlet `Update-AzGalleryImageVersion`
+   - Added parameter `-BlockDeletionBeforeEndOfLife`
+#### Az.RecoveryServices 7.6.0 
+* Modified cmdlet `New-AzRecoveryServicesAsrReplicationProtectedItem`
+   - Added parameter `-ReplicationProtectionCluster`
+* Added cmdlet `Get-AzRecoveryServicesAsrClusterRecoveryPoint`, `Get-AzRecoveryServicesAsrReplicationProtectionCluster`, `New-AzRecoveryServicesAsrAzureToAzureReplicationProtectedItemConfig`, `New-AzRecoveryServicesAsrReplicationProtectionCluster`, `Remove-AzRecoveryServicesAsrReplicationProtectionCluster`, `Start-AzRecoveryServicesAsrApplyClusterRecoveryPoint`, `Start-AzRecoveryServicesAsrClusterCommitFailoverJob`, `Start-AzRecoveryServicesAsrClusterResynchronizeReplicationJob`, `Start-AzRecoveryServicesAsrClusterTestFailoverCleanupJob`, `Start-AzRecoveryServicesAsrClusterTestFailoverJob`, `Start-AzRecoveryServicesAsrClusterUnplannedFailoverJob`, `Update-AzRecoveryServicesAsrClusterProtectionDirection`
+#### Az.Resources 7.10.0 
+* Modified cmdlet `Get-AzDeploymentWhatIfResult`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Get-AzManagementGroupDeploymentWhatIfResult`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Get-AzResourceGroupDeploymentWhatIfResult`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Get-AzTenantDeploymentWhatIfResult`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `New-AzDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `New-AzManagementGroupDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `New-AzResourceGroupDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `New-AzTenantDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Test-AzDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Test-AzManagementGroupDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Test-AzResourceGroupDeployment`
+   - Added parameter `-ValidationLevel`
+* Modified cmdlet `Test-AzTenantDeployment`
+   - Added parameter `-ValidationLevel`
+#### Az.Storage 8.3.0 
+* Modified cmdlet `New-AzStorageDirectory`
+   - Added parameters `-FileMode`, `-Owner`, `-Group`
+* Modified cmdlet `New-AzStorageShare`
+   - Added parameters `-Protocol`, `-EnableSnapshotVirtualDirectoryAccess`
+* Modified cmdlet `Set-AzStorageFileContent`
+   - Added parameters `-FileMode`, `-Owner`, `-Group`
+* Modified cmdlet `Start-AzStorageFileCopy`
+   - Added parameters `-FileMode`, `-Owner`, `-Group`, `-OwnerCopyMode`, `-FileModeCopyMode`
+* Added cmdlet `New-AzStorageFileHardLink`
+#### Az.StorageSync 2.5.0 
+* Modified cmdlet `Register-AzStorageSyncServer`
+   - Added parameter `-AssignIdentity`
+#### Az.Synapse 3.2.0 
+* Modified cmdlet `Set-AzSynapseIntegrationRuntime`
+   - Added parameters `-ManagedVNetCopyComputeScaleDataIntegrationUnit`, `-ManagedVNetCopyComputeScaleTimeToLive`, `-ManagedVNetPipelineExternalComputeScaleTimeToLive`, `-ManagedVNetNumberOfPipelineNodeCount`, `-ManagedVNetNumberOfExternalNodeCount`, `-SelfContainedInteractiveAuthoringEnabled`
+#### Az.Websites 3.4.0 
+* Modified cmdlet `Publish-AzWebApp`
+   - Added parameters `-ArchiveURL`, `-PullIdentity`
+   - Parameter `-ArchivePath` ValidateNotNullOrEmpty changed from `True` to `False`
+
+## 13.3.0 - March 2025
+#### Az.CosmosDB 1.17.0 
+* Added cmdlet `Get-AzCosmosDBTableRoleAssignment`, `Get-AzCosmosDBTableRoleDefinition`, `New-AzCosmosDBTableRoleAssignment`, `New-AzCosmosDBTableRoleDefinition`, `Remove-AzCosmosDBTableRoleAssignment`, `Remove-AzCosmosDBTableRoleDefinition`, `Update-AzCosmosDBTableRoleAssignment`, `Update-AzCosmosDBTableRoleDefinition`
+#### Az.Migrate 2.7.0 
+* Removed cmdlet `Get-AzMigrateHCIJob`, `Get-AzMigrateHCIReplicationFabric`, `Get-AzMigrateHCIServerReplication`, `Initialize-AzMigrateHCIReplicationInfrastructure`, `New-AzMigrateHCIDiskMappingObject`, `New-AzMigrateHCINicMappingObject`, `New-AzMigrateHCIServerReplication`, `Remove-AzMigrateHCIServerReplication`, `Set-AzMigrateHCIServerReplication`, `Start-AzMigrateHCIServerMigration`
+* Added cmdlet `Get-AzMigrateLocalJob`, `Get-AzMigrateLocalReplicationFabric`, `Get-AzMigrateLocalServerReplication`, `Initialize-AzMigrateLocalReplicationInfrastructure`, `New-AzMigrateLocalDiskMappingObject`, `New-AzMigrateLocalNicMappingObject`, `New-AzMigrateLocalServerReplication`, `Remove-AzMigrateLocalServerReplication`, `Set-AzMigrateLocalServerReplication`, `Start-AzMigrateLocalServerMigration`
+#### Az.Resources 7.9.0 
+* Modified cmdlet `Get-AzRoleAssignment`
+   - Added parameter `-AtScope`
+   - Added parameter alias `ApplicationId` to parameter `-ServicePrincipalName`
+* Modified cmdlet `Remove-AzRoleAssignment`
+   - Added parameter alias `ApplicationId` to parameter `-ServicePrincipalName`
+#### Az.Storage 8.2.0 
+* Modified cmdlet `New-AzRmStorageShare`
+   - Added parameters `-ProvisionedBandwidthMibps`, `-ProvisionedIops`, `-PaidBurstingEnabled`, `-PaidBurstingMaxIops`, `-PaidBurstingMaxBandwidthMibps`
+* Modified cmdlet `Update-AzRmStorageShare`
+   - Added parameters `-ProvisionedBandwidthMibps`, `-ProvisionedIops`, `-PaidBurstingEnabled`, `-PaidBurstingMaxIops`, `-PaidBurstingMaxBandwidthMibps`
+* Added cmdlet `Get-AzStorageFileServiceUsage`
+
+## 13.2.0 - February 2025
+#### Az.Compute 9.1.0 
+* Modified cmdlet `New-AzVMConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVMDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+* Modified cmdlet `Set-AzVmssDiskEncryptionExtension`
+   - Added parameter `-EncryptionIdentity`
+#### Az.EventHub 5.2.0 
+* Modified cmdlet `New-AzEventHub`
+   - Added parameters `-MinCompactionLagInMin`, `-TimestampType`, `-UserMetadata`
+* Modified cmdlet `Set-AzEventHub`
+   - Added parameters `-UserMetadata`, `-MinCompactionLagInMin`, `-TimestampType`
+#### Az.Network 7.14.0 
+* Modified cmdlet `New-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+* Modified cmdlet `Update-AzRouteServer`
+   - Added parameter `-VirtualRouterAutoScaleConfiguration`
+#### Az.RecoveryServices 7.5.0 
+* Modified cmdlet `Set-AzRecoveryServicesVaultProperty`
+   - Added parameter `-SoftDeleteRetentionPeriodInDays`
+* Added cmdlet `Undo-AzRecoveryServicesBackupContainerDeletion`
+
 ## 13.1.0 - January 2025
 #### Az.Databricks 1.10.0 
 * Modified cmdlet `New-AzDatabricksWorkspace`
@@ -381,6 +487,9 @@
    - Added parameter alias `DestFile` to parameter `-DestShareFileClient`
 * Modified cmdlet `Stop-AzStorageFileCopy`
    - Removed parameter `-File`
+
+
+
 
 
 

@@ -286,7 +286,7 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -484,8 +484,8 @@ Accept wildcard characters: False
 ```
 
 ### -Token
-Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Parameter deprecate.
+Please use SecureToken instead.
 
 ```yaml
 Type: System.String
@@ -554,7 +554,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 
 ## NOTES
 

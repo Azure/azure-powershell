@@ -155,5 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         //     api-version: 2022-03-01.
         public DateTime? TimeCreated { get; private set; }
         public string Etag { get; private set; }
+
+        public Placement Placement { get; set; }
     }
 }

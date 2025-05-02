@@ -8,21 +8,35 @@ schema: 2.0.0
 # New-AzPortalDashboard
 
 ## SYNOPSIS
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Lens <Hashtable>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Lens <IDashboardLens[]>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Dashboard <IDashboard> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -Resource <IDashboard> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,7 +48,7 @@ New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ```
 
 ## DESCRIPTION
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## EXAMPLES
 
@@ -52,22 +66,6 @@ eastasia my-dashboard03 Microsoft.Portal/dashboards
 Create a new dashboard using the provided dashboard template file.
 
 ## PARAMETERS
-
-### -Dashboard
-The shared dashboard resource definition.
-To construct, see NOTES section for DASHBOARD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DashboardPath
 The Path to an existing dashboard template.
@@ -101,11 +99,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Lens
 The dashboard lenses.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardLens[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -117,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -161,8 +189,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+The shared dashboard resource definition.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -177,9 +221,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -194,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -244,11 +287,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## NOTES
 

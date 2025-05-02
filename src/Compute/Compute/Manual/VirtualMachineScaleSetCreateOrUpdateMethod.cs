@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
-                this.SecurityType = null;
+                this.SecurityType = "Standard";
             }
 
             //TrustedLaunch value defaulting for UEFI values.

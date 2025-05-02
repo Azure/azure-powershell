@@ -1161,7 +1161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        ///   Looks up a localized string similar to Cannot configure backup for more than 1000 VMs per policy
         /// </summary>
         public static string ProtectedItemsCountExceededException
         {
@@ -2806,6 +2806,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("SnapshotRetentionInDaysInvalidException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UndeleteContainer operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string UndeleteContainerFailureErrorCode
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerFailureErrorCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to undelete the container '{0}'.
+        /// </summary>
+        public static string UndeleteContainerWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undeleting container.
+        /// </summary>
+        public static string UndeleteContainerMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.
+        /// </summary>
+        public static string InvalidSoftDeleteFeatureStateException
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidSoftDeleteFeatureStateException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        public static string BothTokenProvided
+        {
+            get
+            {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        public static string TokenParameterDepricate
+        {
+            get
+            {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
             }
         }
     }

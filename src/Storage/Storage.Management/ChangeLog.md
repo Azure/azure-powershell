@@ -18,6 +18,46 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* When create Storage context, allowed user input StorageAccountName
+    - `New-AzStorageContext`
+* Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
+    - `New-AzStorageBlobSASToken`
+    - `New-AzStorageContainerSASToken`
+    - `New-AzDataLakeGen2SasToken`
+
+## Version 8.3.0
+* Supported NFS File Share and NFS file and directory properties
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+* Supported File share properties: Protocol, EnableSnapshotVirtualDirectoryAccess.
+    - `New-AzStorageShare`
+    - `Get-AzStorageShare`
+* Supported create hard link in NFS File Share 
+    - `New-AzStorageFileHardLink`
+* Added warning message for upcoming breaking change on upload Azure file
+    - `Set-AzStorageFileContent`
+* Added warning messages for an upcoming breaking change when converting the account's redundancy configuration
+    - `Start-AzStorageAccountMigration`
+
+## Version 8.2.0
+* Supported new SkuName when create/update Storage account for Files Provisioned v2 account type:  "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS"
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Get File Service Usage on Files Provisioned v2 account type.
+    - `Get-AzStorageFileServiceUsage`
+* Supported create/update file share on new parameters on Files Provisioned v2 account type with new parameter: "-ProvisionedBandwidthMibps", "-ProvisionedIops""
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported create/update/Get file share on new parameters on Files Provisioned v1 account type with new parameter: "-PaidBurstingEnabled", "-PaidBurstingMaxBandwidthMibps", "-PaidBurstingMaxIops"
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+    - `Get-AzStorageFileServiceUsage`
+* Supported get file share new properties for Files Provisioned v1/v2 account type
+    - `Get-AzStorageFileServiceUsage`
 
 ## Version 8.1.0
 * Upgraded nuget package to signed package.

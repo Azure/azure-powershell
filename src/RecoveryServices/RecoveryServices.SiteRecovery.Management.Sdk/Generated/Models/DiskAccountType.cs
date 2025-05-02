@@ -16,5 +16,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public const string StandardLRS = "Standard_LRS";
         public const string PremiumLRS = "Premium_LRS";
         public const string StandardSSDLRS = "StandardSSD_LRS";
+        public const string PremiumV2LRS = "PremiumV2_LRS";
+        public const string UltraSSDLRS = "UltraSSD_LRS";
+        public const string StandardSSDZRS = "StandardSSD_ZRS";
+        public const string PremiumZRS = "Premium_ZRS";
     }
 }

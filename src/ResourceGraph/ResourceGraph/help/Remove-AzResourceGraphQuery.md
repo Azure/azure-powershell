@@ -65,7 +65,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
@@ -111,6 +110,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -125,7 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription Id.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

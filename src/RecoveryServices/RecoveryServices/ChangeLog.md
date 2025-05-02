@@ -20,6 +20,31 @@
 ## Upcoming Release
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
 
+## Version 7.7.0
+* Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
+* Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.
+
+## Version 7.6.0
+* Azure Site Recovery support for shared disk scenario for Azure to Azure provider.
+* Removed warning about ensuring Enhanced Policy for Trusted Launch VMs when configuring protection for Azure VMs.
+* Added warning "Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI" in Enable-AzRecoveryServicesBackupProtection.
+* Added breaking change announcement for Get-AzRecoveryServicesBackupSchedulePolicyObject that this command will return a Enhanced policy object by default for IaaSVM workload.
+* Added support for PremiumV2_LRS and UltraSSD_LRS target disk types for Azure to Azure replication.
+* Added logs to enable better debugging for Modify protection with MSSQL workload.
+* Added Cross region restore support for new regions - israelnorthwest, southwestus, southcentralus2, southeastus3, southeastus5.
+
+## Version 7.5.1
+* Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.
+* Updated Restore-AzRecoveryServicesBackupItem to block cross zonal restore from snapshot RP.
+
+## Version 7.5.0
+* Added support for updating SoftDeleteRetentionPeriodInDays in Set-AzRecoveryServicesVaultProperty cmdlet.
+* Added new cmdlet Undo-AzRecoveryServicesBackupContainerDeletion for undeleting soft deleted backup container.
+* Resolved bug in Restore-AzRecoveryServicesBackupItem cmdlet.
+* Updated cmdlet Set-AzRecoveryServicesBackupProperty to use vault PATCH API while setting CRR, Redundancy settings.
+* Updated cmdlets Get-AzRecoveryServicesBackupItem and Get-AzRecoveryServicesVaultProperty to expose more properties in the output.
+* Updated the configure backup per policy protection limit for VMs from 100 to 1000.
+
 ## Version 7.4.0
 * Upgraded nuget package to signed package.
 * Updated the policy, protection commands to support AFS Vault Tier.

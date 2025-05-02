@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity source for Microsoft Fabric LakeHouse Table.
+    /// A copy activity source for Microsoft Fabric Lakehouse Table.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseTableSource")]
     public partial class LakeHouseTableSource : CopySource
@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Initializes a new instance of the LakeHouseTableSource class.
         /// </summary>
+
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
 
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
@@ -52,9 +55,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// objects(AdditionalColumns) (or Expression with resultType array of
         /// objects).
         /// </param>
-        public LakeHouseTableSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object timestampAsOf = default(object), object versionAsOf = default(object), object additionalColumns = default(object))
+        public LakeHouseTableSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object timestampAsOf = default(object), object versionAsOf = default(object), object additionalColumns = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.TimestampAsOf = timestampAsOf;
             this.VersionAsOf = versionAsOf;

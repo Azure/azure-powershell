@@ -433,6 +433,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSkuProfilePrioritized()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSkuProfilePrioritized");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResiliencyPolicyVMSS()
         {
             TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
@@ -443,6 +450,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSecurityPostureFeature()
         {
             TestRunner.RunTestScript("Test-SecurityPostureFeature");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddEncryptionIdentityInAzureVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmssConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEncryptionIdentityNotPartOfAzureVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
         }
     }
 }

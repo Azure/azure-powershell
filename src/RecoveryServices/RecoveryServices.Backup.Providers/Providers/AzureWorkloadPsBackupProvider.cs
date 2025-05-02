@@ -929,6 +929,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         keyValueDict, item.Id);
 
                     properties.PolicyId = policy.Id;
+
+                    Logger.Instance.WriteDebug("Successfully parsed Item URI");
                 }
             }
 
@@ -937,6 +939,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            Logger.Instance.WriteDebug("checking for MUA for modify policy");
             // check for MUA
             bool isMUAProtected = false;
             if (isMUAOperation && oldPolicy != null && newPolicy != null)
@@ -947,7 +950,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isMUAProtected = true;
             }
-
+            
+            Logger.Instance.WriteDebug("Entering CreateOrUpdateProtectedItem");
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
@@ -1005,6 +1009,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.AzureWorkloadAlreadyRegisteredException));
             }
+        }
+
+        public void UndeleteContainer()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            string containerName = (string)ProviderData[ContainerParams.Name];
+            string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
+            string workloadType = (string)ProviderData[ContainerParams.ContainerType];           
+
+            AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
+            string[] parseContainer = container.Name.Split(';');
+            string friendlyName = parseContainer[parseContainer.Length - 1];
+
+            ProtectionContainerResource protectionContainerResource = null;         
+
+            protectionContainerResource =
+                    new ProtectionContainerResource(container.Id, container.Name);
+
+            AzureVMAppContainerProtectionContainer azureVMAppContainer = new AzureVMAppContainerProtectionContainer(
+                friendlyName: friendlyName,
+                backupManagementType: backupManagementType,
+                sourceResourceId: container.SourceResourceId,
+                operationType: "Rehydrate");
+
+            protectionContainerResource.Properties = azureVMAppContainer;
+
+            AzureWorkloadProviderHelper.UndeleteContainer(container.Name,
+            protectionContainerResource,
+            vaultName,
+            vaultResourceGroupName);            
         }
 
         public List<PointInTimeBase> GetLogChains()
