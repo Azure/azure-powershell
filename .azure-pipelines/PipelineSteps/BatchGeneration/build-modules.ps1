@@ -3,11 +3,9 @@ param (
     [string]$RepoRoot
 )
 
-Write-Host "Matrix Key: $MatrixKey"
-
-$buildTargetsOutputFile = Join-Path $RepoRoot "artifacts" "buildTargets.json"
-$buildTargets = Get-Content -Path $buildTargetsOutputFile -Raw | ConvertFrom-Json
-$moduleGroup = $buildTargets.$MatrixKey
+$utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
+Import-Module $utilFilePath -Force
+$moduleGroup = Get-Targets -RepoRoot $RepoRoot -TargetsOutputFileName "buildTargets.json" -MatrixKey $MatrixKey
 $buildModulesPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'BuildModules.ps1'
 
 $results = @()  
@@ -27,6 +25,7 @@ foreach ($moduleName in $moduleGroup) {
         & $buildModulesPath -TargetModule $moduleName -InvokedByPipeline
     } catch {
         Write-Warning "Failed to build module: $moduleName"
+        Write-Warning "Error message: $($_.Exception.Message)"
         $result.Status = "Failed"
         $result.Error = $_.Exception.Message
     } finally {
