@@ -235,7 +235,7 @@ stages:
 
       - download: current
         patterns: |
-          **/debug/**
+          **/Debug/**
           **/StaticAnalysis/**
         displayName: 'Download build artifacts'
 
@@ -255,14 +255,14 @@ stages:
             $workspace = "$env:PIPELINE_WORKSPACE"
             $repoRoot = "$(Build.SourcesDirectory)"
             $artifactsRoot = Join-Path $repoRoot "artifacts"
-            $debugArtifactDestPath = Join-Path $artifactsRoot "debug"
+            $debugArtifactDestPath = Join-Path $artifactsRoot "Debug"
             New-Item -ItemType Directory -Force -Path $debugArtifactDestPath | Out-Null
 
             $copiedModules = @{}
             $StaticAnalysisCopied = $false
 
             Get-ChildItem -Path $workspace -Directory | ForEach-Object {
-                $debugArtifactSrcPath = Join-Path $_.FullName "debug"
+                $debugArtifactSrcPath = Join-Path $_.FullName "Debug"
                 $StaticAnalysisSrcDirectory = Join-Path $_.FullName 'StaticAnalysis'
 
                 if (Test-Path $debugArtifactSrcPath) {
@@ -374,30 +374,36 @@ stages:
         condition: always()
 
 
-    # - job: test_windows
-    #   displayName: "Test Windows:"
-    #   dependsOn: 
-    #     - filter
-    #     - build
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
-    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool: ${{ variables.WindowsAgentPoolName }}
-    #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
+    - job: test_windows
+      displayName: "Test Windows:"
+      dependsOn: 
+        - filter
+        - build
+      condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
+      timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      strategy:
+        matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
+        maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
-    #   steps:
-    #   - checkout: none
-      
-    #   - task: PowerShell@2
-    #     name: test
-    #     displayName: 'Test Windows'
-    #     inputs:
-    #       targetType: inline
-    #       pwsh: true
-    #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+      steps:
+      - checkout: none
+
+      - task: UseDotNet@2
+        displayName: 'Use .NET SDK for Test'
+        inputs:
+          packageType: sdk
+          version: 8.x
+          
+      - task: PowerShell@2
+        name: test
+        displayName: 'Test Windows'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
+            & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
 
     # - job: test_linux
     #   displayName: "Test Linux:"
