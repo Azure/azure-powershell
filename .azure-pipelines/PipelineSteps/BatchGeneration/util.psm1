@@ -58,3 +58,20 @@ function Write-Matrix {
     $targetsOutputFile = Join-Path $targetsOutputDir "$VariableName.json"
     $targets | ConvertTo-Json -Depth 5 | Out-File -FilePath $targetsOutputFile -Encoding utf8
 }
+
+function Get-Targets {
+    param (
+        [string]$RepoRoot,
+        [string]$TargetsOutputFileName,
+        [string]$MatrixKey
+    )
+
+    $targetsOutputFile = Join-Path $RepoRoot "artifacts" $TargetsOutputFileName
+    $targetGroups = Get-Content -Path $targetsOutputFile -Raw | ConvertFrom-Json
+    $targetGroup = $targetGroups.$MatrixKey
+    Write-Host "##[group]Target group: $MatrixKey"
+    $targetGroup | ForEach-Object { Write-Host $_ }
+    Write-Host "##[endgroup]"
+    Write-Host
+    return $targetGroup
+}

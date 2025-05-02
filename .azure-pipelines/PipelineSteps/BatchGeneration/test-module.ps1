@@ -31,6 +31,7 @@ foreach ($module in $modules) {
     }
     catch {
         Write-Warning "Failed to test module: $module"
+        Write-Warning "Error message: $($_.Exception.Message)"
         $result.Status = "Failed"
         $result.Error = $_.Exception.Message
     }
