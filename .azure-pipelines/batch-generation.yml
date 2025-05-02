@@ -318,7 +318,6 @@ stages:
       steps:
       - checkout: self
         fetchDepth: 1
-        sparseCheckoutDirectories: tools/ .azure-pipelines/
         fetchTags: false
 
       - task: DownloadPipelineArtifact@2
@@ -388,6 +387,12 @@ stages:
       steps:
       - checkout: none
 
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifact: collect
+          path: $(Build.SourcesDirectory)/artifacts
+        displayName: 'Download collected artifact to artifacts folder'
+
       - task: UseDotNet@2
         displayName: 'Use .NET SDK for Test'
         inputs:
@@ -402,7 +407,7 @@ stages:
           pwsh: true
           script: |
             $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
-            & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+            & $testModulesPath -MatrixKey "$(MatrixKey)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)"
 
     # - job: test_linux
     #   displayName: "Test Linux:"
