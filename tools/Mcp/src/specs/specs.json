@@ -10,7 +10,7 @@
                     "type": "string"
                 }
             ],
-            "callbackName": "generateAutorest"
+            "callbackName": "generateByAutorest"
         }
     ]
 }
