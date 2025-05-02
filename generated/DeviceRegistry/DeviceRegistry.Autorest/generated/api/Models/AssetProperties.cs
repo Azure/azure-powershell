@@ -271,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// data points for this asset. Must provide asset endpoint profile name.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
