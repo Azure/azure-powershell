@@ -806,10 +806,6 @@
     "Test-ResilientVMCreateDelete": [
       "crptestps5726",
       "crptestps3863"
-    ],
-    "Test-AutomaticZoneRebalancingPolicy": [
-      "crptestps5726",
-      "crptestps3863"
     ]
   },
   "Variables": {
