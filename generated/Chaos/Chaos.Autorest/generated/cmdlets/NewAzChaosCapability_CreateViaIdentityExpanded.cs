@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Capability resource that extends a Target resource.</summary>
+    /// <summary>create a Capability resource that extends a Target resource.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzChaosCapability_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"Create a Capability resource that extends a Target resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Description(@"create a Capability resource that extends a Target resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}", ApiVersion = "2024-01-01")]
     public partial class NewAzChaosCapability_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
