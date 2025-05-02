@@ -385,7 +385,10 @@ stages:
         maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
       steps:
-      - checkout: none
+      #TODO(Bernard) check if can skip checkout step after move this to template
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
 
       - task: DownloadPipelineArtifact@2
         inputs:
@@ -408,6 +411,13 @@ stages:
           script: |
             $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
             & $testModulesPath -MatrixKey "$(MatrixKey)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Test Windows Report'
+        inputs:
+          targetPath: artifacts
+          artifact: 'test-windows-$(MatrixKey)'
+        condition: always()
 
     # - job: test_linux
     #   displayName: "Test Linux:"
