@@ -21,9 +21,9 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'CreateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
-
-            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
+            $storageAccountKeySecure = "1234" | ConvertTo-SecureString -AsPlainText
+			
+            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKeySecure $storageAccountKeySecure -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
@@ -45,9 +45,9 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'UpdateExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKeySecure = "1234" | ConvertTo-SecureString -AsPlainText
 
-            $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
+            $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKeySecure $storageAccountKeySecure -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
@@ -55,10 +55,10 @@ Describe 'AzContainerAppManagedEnvStorage' {
     It 'UpdateViaIdentityExpanded' {
         {
             # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
-            $storageAccountKey = "1234"
+            $storageAccountKeySecure = "1234" | ConvertTo-SecureString -AsPlainText
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
 
-            $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
+            $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKeySecure $storageAccountKeySecure -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
