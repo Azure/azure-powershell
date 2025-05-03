@@ -2,7 +2,7 @@
 
 ```powershell
 $queryFilter = New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000001')
->> Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
+Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
 ```
 
 ```output
@@ -20,7 +20,7 @@ SkipToken SubscriptionAccessDecisionList Value
 ### Example 2: Get Carbon Emission Monthly Summary Report
 ```powershell
 $queryFilter = New-AzCarbonMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3')  -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> Get-AzCarbonEmissionReport -QueryParameter $queryFilter | ft -Wrap
+Get-AzCarbonEmissionReport -QueryParameter $queryFilter | ft -Wrap
 ```
 
 ```output
@@ -67,14 +67,14 @@ By default, PowerShell displays only 4 results in the response array. If you nee
 
 ```powershell
 $queryFilter = New-AzCarbonMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3')  -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> $FormatEnumerationLimit = 12
->> Get-AzCarbonEmissionReport -QueryParameter $queryFilter | ft -Wrap | Out-File -FilePath "output.txt"
+$FormatEnumerationLimit = 12
+Get-AzCarbonEmissionReport -QueryParameter $queryFilter | ft -Wrap | Out-File -FilePath "output.txt"
 ```
 
 ### Example 4: Get Carbon Emission Item Details Report
 ```powershell
 $queryFilter = New-AzCarbonItemDetailsQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -OrderBy 'ItemName' -PageSize 10 -SortDirection 'Desc' -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> Get-AzCarbonEmissionReport -QueryParameter $queryFilter | Format-List
+Get-AzCarbonEmissionReport -QueryParameter $queryFilter | Format-List
 ```
 
 ```output
@@ -148,15 +148,15 @@ By default, PowerShell displays only 4 results in the response array. If you nee
 
 ```powershell
 $queryFilter = New-AzCarbonItemDetailsQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -OrderBy 'ItemName' -PageSize 100 -SortDirection 'Desc' -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> $FormatEnumerationLimit = 100
->> Get-AzCarbonEmissionReport -QueryParameter $queryFilter | Format-List | Out-File -FilePath "output.txt"
+$FormatEnumerationLimit = 100
+Get-AzCarbonEmissionReport -QueryParameter $queryFilter | Format-List | Out-File -FilePath "output.txt"
 ```
 
 ### Example 6: Get Carbon Emission Top Items Summary Report
 ```powershell
 $queryFilter =  New-AzCarbonTopitemsSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> $FormatEnumerationLimit = 10
->> Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
+$FormatEnumerationLimit = 10
+Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
 ```
 
 ```output
@@ -227,8 +227,8 @@ SkipToken SubscriptionAccessDecisionList Value
 ### Example 7: Get Carbon Emission Top Items Monthly Summary Report
 ```powershell
 $queryFilter =  New-AzCarbonTopitemsMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
->> $FormatEnumerationLimit = 10
->> Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
+$FormatEnumerationLimit = 10
+Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
 ```
 
 ```output
