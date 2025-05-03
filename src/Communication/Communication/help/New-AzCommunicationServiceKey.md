@@ -16,27 +16,22 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 ### RegenerateExpanded (Default)
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-KeyType <KeyType>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-KeyType <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Regenerate
+### RegenerateViaJsonFilePath
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Parameter <IRegenerateKeyParameters> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RegenerateViaIdentityExpanded
+### RegenerateViaJsonString
 ```
-New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> [-KeyType <KeyType>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> -Parameter <IRegenerateKeyParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +73,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -104,19 +99,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-Parameter Sets: RegenerateViaIdentityExpanded, RegenerateViaIdentity
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,8 +134,8 @@ The keyType to regenerate.
 Must be either 'primary' or 'secondary'(case-insensitive).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType
-Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Type: System.String
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -136,29 +145,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters describes the request to regenerate access keys
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-Parameter Sets: Regenerate, RegenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -174,7 +167,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,13 +213,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 
 ## NOTES
 

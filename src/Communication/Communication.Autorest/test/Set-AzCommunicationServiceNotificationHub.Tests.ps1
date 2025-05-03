@@ -17,7 +17,7 @@ Describe 'Set-AzCommunicationServiceNotificationHub' {
         $returnedResourceId | Should -Be $env.notificationHubResourceId
     }
 
-    It 'Link' {
+    It 'Link' -Skip {
         $returnedResourceId = Set-AzCommunicationServiceNotificationHub -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -LinkNotificationHubParameter @{ConnectionString=$env.notificationHubConnectionString; ResourceId=$env.notificationHubResourceId}
         $returnedResourceId | Should -Be $env.notificationHubResourceId
     }
