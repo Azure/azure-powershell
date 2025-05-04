@@ -88,6 +88,15 @@ function Set-AzEventHubNamespace{
         [System.Management.Automation.SwitchParameter]
         ${EnableAutoInflate},
 
+        [Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        ${MaxReplicationLagDurationInSeconds},
+
+        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
+        ${Replicalocation},
+
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int32]
@@ -186,6 +195,8 @@ function Set-AzEventHubNamespace{
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
+            $hasReplicalocation = $PSBoundParameters.Remove('Replicalocation')
+            $hasMaxReplicationLagDurationInSeconds = $PSBoundParameters.Remove('MaxReplicationLagDurationInSeconds')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -246,7 +257,12 @@ function Set-AzEventHubNamespace{
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
-
+            if ($hasMaxReplicationLagDurationInSeconds) {
+                $eventHubNamespace.MaxReplicationLagDurationInSeconds = $MaxReplicationLagDurationInSeconds
+            }
+            if ($hasReplicalocation) {
+                $eventHubNamespace.Replicalocation = $Replicalocation
+            }
             if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
                 Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
