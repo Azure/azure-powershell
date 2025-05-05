@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzChaosTarget
 
 ## SYNOPSIS
-Create a Target resource that extends a tracked regional resource.
+create a Target resource that extends a tracked regional resource.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzChaosTarget -Name <String> -ParentProviderNamespace <String> -ParentResour
 ```
 
 ## DESCRIPTION
-Create a Target resource that extends a tracked regional resource.
+create a Target resource that extends a tracked regional resource.
 
 ## EXAMPLES
 

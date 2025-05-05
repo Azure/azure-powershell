@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateEndpointConnectionDataModel> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopePropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopePropertiesInternal)Property).PrivateEndpointConnection = value; }
@@ -41,6 +41,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.SystemData()); set { {_systemData = value;} } }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedAt = value; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedBy = value; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedByType = value; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IHybridComputePrivateLinkScopeInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedByType = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPrivateLinkScopesResourceInternal)__privateLinkScopesResource).Id = value; }
@@ -97,27 +115,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inherited)]
