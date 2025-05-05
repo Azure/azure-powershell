@@ -356,14 +356,8 @@ stages:
           script: |
             Write-Host "Matrix Key: $(MatrixKey)"
 
-            Write-Host "Top-level contents of $(Build.SourcesDirectory):"
-            Get-ChildItem -Path "$(Build.SourcesDirectory)" | ForEach-Object {
-              Write-Host $_.FullName
-            }
-
             $analyseModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'analyse-modules.ps1'
             & $analyseModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
-
 
       - task: PublishPipelineArtifact@1
         displayName: 'Save Analyse Report'
@@ -372,100 +366,78 @@ stages:
           artifact: 'analyse-$(MatrixKey)'
         condition: always()
 
-
-    - job: test_windows
-      displayName: "Test Windows:"
-      dependsOn: 
-        - collect
-      condition: ne(stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'], '{}')
-      timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-      pool: ${{ variables.WindowsAgentPoolName }}
-      strategy:
-        matrix: $[ stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'] ]
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_windows'
+        OSName: 'Windows'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
         maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
+        
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_linux'
+        OSName: 'Linux'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
 
-      steps:
-      #TODO(Bernard) check if can skip checkout step after move this to template
-      - checkout: self
-        fetchDepth: 1
-        fetchTags: false
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_mac'
+        OSName: 'MacOS'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
+        maxParallel: ${{ variables.MaxParallelTestMacJobs }}
+    
 
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          artifact: collect
-          path: $(Build.SourcesDirectory)/artifacts
-        displayName: 'Download collected artifact to artifacts folder'
 
-      - task: UseDotNet@2
-        displayName: 'Use .NET SDK for Test'
-        inputs:
-          packageType: sdk
-          version: 8.x
-          
-      - task: PowerShell@2
-        name: test
-        displayName: 'Test Windows'
-        inputs:
-          targetType: inline
-          pwsh: true
-          script: |
-            $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
-            & $testModulesPath -MatrixKey "$(MatrixKey)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)"
 
-      - task: PublishPipelineArtifact@1
-        displayName: 'Save Test Windows Report'
-        inputs:
-          targetPath: artifacts
-          artifact: 'test-windows-$(MatrixKey)'
-        condition: always()
-
-    # - job: test_linux
-    #   displayName: "Test Linux:"
+    # - job: test_windows
+    #   displayName: "Test Windows:"
     #   dependsOn: 
-    #     - filter
-    #     - build
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], '{}'))
+    #     - collect
+    #   condition: ne(stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'], '{}')
     #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool: ${{ variables.LinuxAgentPoolName }}
+    #   pool: ${{ variables.WindowsAgentPoolName }}
     #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
+    #     matrix: $[ stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'] ]
+    #     maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
 
     #   steps:
-    #   - checkout: none
-      
+    #   #TODO(Bernard) check if can skip checkout step after move this to template
+    #   - checkout: self
+    #     fetchDepth: 1
+    #     fetchTags: false
+
+    #   - task: DownloadPipelineArtifact@2
+    #     inputs:
+    #       artifact: collect
+    #       path: $(Build.SourcesDirectory)/artifacts
+    #     displayName: 'Download collected artifact to artifacts folder'
+
+    #   - task: UseDotNet@2
+    #     displayName: 'Use .NET SDK for Test'
+    #     inputs:
+    #       packageType: sdk
+    #       version: 8.x
+          
     #   - task: PowerShell@2
     #     name: test
-    #     displayName: 'Test Linux'
+    #     displayName: 'Test Windows'
     #     inputs:
     #       targetType: inline
     #       pwsh: true
     #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-modules.ps1'
+    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)"
 
-    # - job: test_mac
-    #   displayName: "Test Mac:"
-    #   dependsOn: filter
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestMacTargets'], '{}'))
-    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool:
-    #     name: ${{ variables.MacOSAgentPoolName }}
-    #     vmImage: ${{ variables.MacOSAgentPoolVMImage }}
-    #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestMacJobs }}
-
-    #   steps:
-    #   - checkout: none
-      
-    #   - task: PowerShell@2
-    #     name: test
-    #     displayName: 'Test Mac'
+    #   - task: PublishPipelineArtifact@1
+    #     displayName: 'Save Test Windows Report'
     #     inputs:
-    #       targetType: inline
-    #       pwsh: true
-    #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
+    #       targetPath: artifacts
+    #       artifact: 'test-windows-$(MatrixKey)'
+    #     condition: always()
 
+    
