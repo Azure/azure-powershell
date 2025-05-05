@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             AzureSqlSyncGroupSchemaModel schemaModel = AzureSqlSyncGroupCmdletBase.ConstructSchemaFromJObject(JObject.Parse(schema));
 
             Assert.Equal("masterMember", schemaModel.MasterSyncMemberName);
-            Assert.Equal(1, schemaModel.Tables.Count);
+            Assert.Single(schemaModel.Tables);
             Assert.Equal("testTable", schemaModel.Tables[0].QuotedName);
-            Assert.Equal(1, schemaModel.Tables[0].Columns.Count);
+            Assert.Single(schemaModel.Tables[0].Columns);
             Assert.Equal("testColumn", schemaModel.Tables[0].Columns[0].QuotedName);
         }
     }

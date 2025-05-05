@@ -13,8 +13,8 @@ Lists all of the available peering locations for the specified kind of peering.
 ## SYNTAX
 
 ```
-Get-AzPeeringLocation -Kind <PeeringLocationsKind> [-SubscriptionId <String[]>]
- [-DirectPeeringType <PeeringLocationsDirectPeeringType>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringLocation -Kind <String> [-SubscriptionId <String[]>] [-DirectPeeringType <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The type of direct peering.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.PeeringLocationsDirectPeeringType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The kind of the peering.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.PeeringLocationsKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringLocation
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringLocation
 
 ## NOTES
 

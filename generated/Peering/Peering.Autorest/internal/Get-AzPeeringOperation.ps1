@@ -25,12 +25,12 @@ Lists all of the available API operations for peering resources.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringoperation
 #>
 function Get-AzPeeringOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Peering.private\Get-AzPeeringOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

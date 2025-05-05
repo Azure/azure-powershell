@@ -16,9 +16,9 @@ Creates a new Azure NetApp Files (ANF) account.
 New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
- [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
+ [-FederatedClientId <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +91,21 @@ Accept wildcard characters: False
 
 ### -EncryptionKeySource
 The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+ClientId of the multi-tenant AAD Application. Used to access cross-tenant KeyVaults.
 
 ```yaml
 Type: System.String
@@ -188,6 +203,21 @@ Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

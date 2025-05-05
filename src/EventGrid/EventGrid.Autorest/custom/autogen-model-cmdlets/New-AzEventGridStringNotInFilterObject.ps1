@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotInFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotinfilterobject
 #>
 function New-AzEventGridStringNotInFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotInFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

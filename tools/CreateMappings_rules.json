@@ -943,5 +943,33 @@
   {
     "module": "DeviceRegistry",
     "alias": "DeviceRegistry"
+  },
+  {
+    "module": "IoTOperationsService",
+    "alias": "IoTOperationsService"
+  },
+  {
+    "module": "TrustedSigning",
+    "alias": "TrustedSigning"
+  },
+  {
+    "module": "ScVmm",
+    "alias": "ScVmm"
+  },
+  {
+    "alias": "ArizeAI",
+    "module": "ArizeAI"
+  },
+  {
+    "module": "WeightsAndBiases",
+    "alias": "WeightsAndBiases"
+  },
+  {
+    "module": "Pinecone",
+    "alias": "Pinecone"
+  },
+  {
+    "alias": "LambdaTest",
+    "module": "LambdaTest"
   }
 ]

@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='bigDataPoolName'>
         /// Big Data pool name
         /// </param>
-        public static object Delete(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName)
+        public static BigDataPoolResourceInfo Delete(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName)
         {
                 return ((IBigDataPoolsOperations)operations).DeleteAsync(resourceGroupName, workspaceName, bigDataPoolName).GetAwaiter().GetResult();
         }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> DeleteAsync(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BigDataPoolResourceInfo> DeleteAsync(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, bigDataPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='bigDataPoolName'>
         /// Big Data pool name
         /// </param>
-        public static object BeginDelete(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName)
+        public static BigDataPoolResourceInfo BeginDelete(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName)
         {
                 return ((IBigDataPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, workspaceName, bigDataPoolName).GetAwaiter().GetResult();
         }
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginDeleteAsync(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BigDataPoolResourceInfo> BeginDeleteAsync(this IBigDataPoolsOperations operations, string resourceGroupName, string workspaceName, string bigDataPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, bigDataPoolName, null, cancellationToken).ConfigureAwait(false))
             {

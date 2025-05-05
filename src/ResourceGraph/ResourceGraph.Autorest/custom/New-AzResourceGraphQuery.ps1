@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceGraphIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ PROPERTY <IGraphQueryResource>: Graph Query entity definition.
 https://learn.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery
 #>
 function New-AzResourceGraphQuery {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IGraphQueryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IGraphQueryResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -102,7 +102,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20240401.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},

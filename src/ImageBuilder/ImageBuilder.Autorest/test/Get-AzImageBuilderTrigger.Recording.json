@@ -1,17 +1,17 @@
 {
-  "Get-AzImageBuilderTrigger+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers?api-version=2022-07-01+1": {
+  "Get-AzImageBuilderTrigger+[NoContext]+List+$GET+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers?api-version=2022-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "155ad5d8-f8dc-4ff9-afc4-1d30706ca824" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "3e5bdf5a-ca33-40ac-81b2-c6ce0a044b39" ],
         "CommandName": [ "Get-AzImageBuilderTrigger" ],
         "FullCommandName": [ "Get-AzImageBuilderTrigger_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.4.7", "Az.ImageBuilder/0.4.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "e6cd8897-b981-4fdc-934d-6db8d4c477d7" ],
-        "x-ms-request-id": [ "aabf4581-f031-4efd-8ae4-c8ea915f40b5" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=73b5eafe-f507-4fcd-8a90-99327064a949/southeastasia/59a7b454-c609-482e-bdd2-d7b3c7bb78bc" ],
+        "x-ms-correlation-request-id": [ "3ddc98f9-1ac1-4f7a-a572-9b0c43175c67" ],
+        "x-ms-request-id": [ "ada4981b-6936-4848-9a18-5d30e8036061" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230829T070320Z:e6cd8897-b981-4fdc-934d-6db8d4c477d7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250425T101122Z:3ddc98f9-1ac1-4f7a-a572-9b0c43175c67" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AE524C2769F94A32BB7F365128FF6A92 Ref B: TYO201100115037 Ref C: 2023-08-29T07:03:20Z" ],
-        "Date": [ "Tue, 29 Aug 2023 07:03:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 20B6518943EF49279EF624089A633E13 Ref B: MAA201060515031 Ref C: 2025-04-25T10:11:21Z" ],
+        "Date": [ "Fri, 25 Apr 2025 10:11:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "544" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"value\": [\n  {\n   \"properties\": {\n    \"kind\": \"SourceImage\",\n    \"provisioningState\": \"Succeeded\",\n    \"status\": {\n     \"code\": \"Healthy\",\n     \"message\": \"Trigger is active\",\n     \"time\": \"2023-08-29T07:02:44.595970991Z\"\n    }\n   },\n   \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers/azps-trigger-5shfrm\",\n   \"name\": \"azps-trigger-5shfrm\",\n   \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/triggers\"\n  }\n ]\n}",
+      "Content": "{\n \"value\": [\n  {\n   \"properties\": {\n    \"kind\": \"SourceImage\",\n    \"provisioningState\": \"Succeeded\",\n    \"status\": {\n     \"code\": \"Healthy\",\n     \"message\": \"Trigger is active\",\n     \"time\": \"2025-04-25T10:10:45.663995644Z\"\n    }\n   },\n   \"id\": \"/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourcegroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-ihzw3l\",\n   \"name\": \"azps-trigger-ihzw3l\",\n   \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/triggers\"\n  }\n ]\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzImageBuilderTrigger+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers/azps-trigger-5shfrm?api-version=2022-07-01+1": {
+  "Get-AzImageBuilderTrigger+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-ihzw3l?api-version=2022-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers/azps-trigger-5shfrm?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-ihzw3l?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "5351cdcd-5f78-4b78-9177-4d8014baf85d" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "c59398ef-13df-4b55-a0b8-501112763279" ],
         "CommandName": [ "Get-AzImageBuilderTrigger" ],
         "FullCommandName": [ "Get-AzImageBuilderTrigger_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.4.7", "Az.ImageBuilder/0.4.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,22 +66,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "7fa02825-d2a9-4721-85b7-3baaa6f106a3" ],
-        "x-ms-request-id": [ "7624de80-ff0b-412a-ac44-5a6b2508e07a" ],
+        "x-ms-operation-identifier": [ "tenantId=b5ee6c06-c2c2-4e3c-8606-5f170cee077a,objectId=73b5eafe-f507-4fcd-8a90-99327064a949/southeastasia/bc085c87-7d0b-4c9e-900f-538706ec1cb8" ],
+        "x-ms-correlation-request-id": [ "c2781ad4-5965-4e11-aa6b-08e01e94b5ad" ],
+        "x-ms-request-id": [ "dbde7325-06f5-4575-9e15-cb944ef19e34" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230829T070321Z:7fa02825-d2a9-4721-85b7-3baaa6f106a3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250425T101123Z:c2781ad4-5965-4e11-aa6b-08e01e94b5ad" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 49E6CFC0253D41368EA5D134D75CFF4C Ref B: TYO201100115037 Ref C: 2023-08-29T07:03:20Z" ],
-        "Date": [ "Tue, 29 Aug 2023 07:03:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E1CA1CD47BEF481B96D7291A91299C57 Ref B: MAA201060515031 Ref C: 2025-04-25T10:11:22Z" ],
+        "Date": [ "Fri, 25 Apr 2025 10:11:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "497" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"kind\": \"SourceImage\",\n  \"provisioningState\": \"Succeeded\",\n  \"status\": {\n   \"code\": \"Healthy\",\n   \"message\": \"Trigger is active\",\n   \"time\": \"2023-08-29T07:02:44.595970991Z\"\n  }\n },\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-8vi0xa/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-495alx/triggers/azps-trigger-5shfrm\",\n \"name\": \"azps-trigger-5shfrm\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/triggers\"\n}",
+      "Content": "{\n \"properties\": {\n  \"kind\": \"SourceImage\",\n  \"provisioningState\": \"Succeeded\",\n  \"status\": {\n   \"code\": \"Healthy\",\n   \"message\": \"Trigger is active\",\n   \"time\": \"2025-04-25T10:10:45.663995644Z\"\n  }\n },\n \"id\": \"/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourcegroups/azps-test-40i3ur/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-f2qjb7/triggers/azps-trigger-ihzw3l\",\n \"name\": \"azps-trigger-ihzw3l\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/triggers\"\n}",
       "isContentBase64": false
     }
   }

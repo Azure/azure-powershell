@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Removed unexpanded variant for some cmdlets
+    * Get-AzReservationAvailableScope
+    * Get-AzReservationQuote
+    * Invoke-AzReservationCalculateExchange
+    * Invoke-AzReservationCalculateRefund
+    * Invoke-AzReservationExchange
+    * Invoke-AzReservationReturn
+    * Move-AzReservationDirectory
+    * New-AzReservation
+    * Update-AzReservation
 
 ## Version 0.13.1
 * Upgraded nuget package to signed package.

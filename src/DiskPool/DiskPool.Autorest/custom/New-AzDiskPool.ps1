@@ -30,7 +30,7 @@ Name             Location    Status    ProvisioningState AvailabilityZone
 disk-pool-1      eastus2euap Running   Succeeded         {3}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ DISKID <string[]>: List of Azure Managed Disks to attach to a Disk Pool.
 https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -66,39 +66,39 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # The geo-location where the resource lives.
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku name
     ${SkuName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure Resource ID of a Subnet for the Disk Pool.
     ${SubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of additional capabilities for a Disk Pool.
     ${AdditionalCapability},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # Logical zone for Disk Pool resource; example: ["1"].
     ${AvailabilityZone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
@@ -106,39 +106,52 @@ param(
     # To construct, see NOTES section for DISK properties and create a hash table.
     ${DiskId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Azure resource id.
     # Indicates if this resource is managed by another Azure resource.
     ${ManagedBy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String[]]
     # List of Azure resource ids that manage this resource.
     ${ManagedByExtended},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
     [System.String]
     # Sku tier
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolCreateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -197,7 +210,7 @@ param(
             if ($PSBoundParameters.ContainsKey("DiskId")){
                 $disk = @()
                 for ($i = 0; $i -lt $DiskId.Count; $i++) {
-                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Disk
+                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Disk
                     $diskObject.Id = $DiskId[$i]
                     $disk += $diskObject
                 }

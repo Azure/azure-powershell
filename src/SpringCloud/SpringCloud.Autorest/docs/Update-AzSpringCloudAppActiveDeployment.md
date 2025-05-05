@@ -25,6 +25,27 @@ Update-AzSpringCloudAppActiveDeployment -InputObject <ISpringCloudIdentity> [-De
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### SetViaIdentitySpringExpanded
+```
+Update-AzSpringCloudAppActiveDeployment -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-DeploymentName <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SetViaJsonFilePath
+```
+Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaJsonString
+```
+Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Set existing Deployment under the app as active
 
@@ -96,7 +117,7 @@ Collection of Deployment name.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: SetExpanded, SetViaIdentityExpanded, SetViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -108,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -122,12 +142,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetViaIdentitySpringExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -158,7 +208,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -173,7 +223,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -183,13 +233,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: SetViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: False
@@ -239,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
 

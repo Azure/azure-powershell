@@ -22,43 +22,22 @@ Get Elastic Organization To Azure Subscription Mapping details for the logged-in
 .Example
 Get-AzElasticOrganizationElasticToAzureSubscriptionMapping 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticOrganizationToAzureSubscriptionMappingResponseProperties
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [IntegrationName <String>]: OpenAI Integration name
-  [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RuleSetName <String>]: Tag Rule Set resource name
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticorganizationelastictoazuresubscriptionmapping
 #>
 function Get-AzElasticOrganizationElasticToAzureSubscriptionMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticOrganizationToAzureSubscriptionMappingResponseProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticOrganizationToAzureSubscriptionMappingResponse])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -116,6 +95,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -136,11 +124,8 @@ begin {
 
         $mapping = @{
             Get = 'Az.Elastic.private\Get-AzElasticOrganizationElasticToAzureSubscriptionMapping_Get';
-            GetViaIdentity = 'Az.Elastic.private\Get-AzElasticOrganizationElasticToAzureSubscriptionMapping_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -154,6 +139,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

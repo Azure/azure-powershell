@@ -21,10 +21,16 @@ Gets list of App Services with Dynatrace PaaS OneAgent enabled
 List the resources currently being monitored by the Dynatrace monitor resource.
 
 ### [Get-AzDynatraceMonitorHost](Get-AzDynatraceMonitorHost.md)
-List the compute resources currently being monitored by the Dynatrace resource.
+List the VM/VMSS resources currently being monitored by the Dynatrace resource.
 
 ### [Get-AzDynatraceMonitorLinkableEnv](Get-AzDynatraceMonitorLinkableEnv.md)
 Gets all the Dynatrace environments that a user can link a azure resource to
+
+### [Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail](Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail.md)
+Get Marketplace SaaS resource details of a tenant under a specific subscription
+
+### [Get-AzDynatraceMonitorMetricStatus](Get-AzDynatraceMonitorMetricStatus.md)
+Get metric status
 
 ### [Get-AzDynatraceMonitorSSOConfig](Get-AzDynatraceMonitorSSOConfig.md)
 Get a DynatraceSingleSignOnResource
@@ -39,16 +45,16 @@ Get a TagRule
 Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
 ### [New-AzDynatraceMonitor](New-AzDynatraceMonitor.md)
-Create a MonitorResource
+create a MonitorResource
 
 ### [New-AzDynatraceMonitorFilteringTagObject](New-AzDynatraceMonitorFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzDynatraceMonitorSSOConfig](New-AzDynatraceMonitorSSOConfig.md)
-Create a DynatraceSingleSignOnResource
+create a DynatraceSingleSignOnResource
 
 ### [New-AzDynatraceMonitorTagRule](New-AzDynatraceMonitorTagRule.md)
-Create a TagRule
+create a TagRule
 
 ### [Remove-AzDynatraceMonitor](Remove-AzDynatraceMonitor.md)
 Delete a MonitorResource
@@ -57,8 +63,11 @@ Delete a MonitorResource
 Delete a TagRule
 
 ### [Update-AzDynatraceMonitor](Update-AzDynatraceMonitor.md)
-Update a MonitorResource
+update a MonitorResource
+
+### [Update-AzDynatraceMonitorSSOConfig](Update-AzDynatraceMonitorSSOConfig.md)
+update a DynatraceSingleSignOnResource
 
 ### [Update-AzDynatraceMonitorTagRule](Update-AzDynatraceMonitorTagRule.md)
-Update a TagRule
+update a TagRule
 

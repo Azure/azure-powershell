@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 .Description
-Update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Update an identity in the specified subscription and resource group.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity
+Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The location of the deleted vault.
-  [OperationKind <AccessPolicyUpdateKind?>]: Name of the operation
+  [OperationKind <String>]: Name of the operation
   [ProviderInstanceName <String>]: Name of the provider instance.
   [ResourceGroupName <String>]: Name of the resource group.
   [ResourceName <String>]: The name of the identity resource.
@@ -48,22 +48,28 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.hanaonazure/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [System.String]
     # The name of the Resource Group to which the identity belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [System.String]
     # The name of the identity resource.
     ${ResourceName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -75,21 +81,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentityUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IIdentityUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -147,14 +159,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.HanaOnAzure.private\Update-AzUserAssignedIdentity_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.HanaOnAzure.private\Update-AzUserAssignedIdentity_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.HanaOnAzure.private\Update-AzUserAssignedIdentity_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.HanaOnAzure.private\Update-AzUserAssignedIdentity_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -163,6 +178,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

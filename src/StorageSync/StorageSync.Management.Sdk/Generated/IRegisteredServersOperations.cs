@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the given registered server.
@@ -234,8 +234,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the given registered server.

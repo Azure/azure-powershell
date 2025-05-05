@@ -224,6 +224,7 @@
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [ChangeAnalysis]:             https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
+[CodeSigning]:                https://img.shields.io/powershellgallery/v/Az.CodeSigning.svg?style=flat-square&label=Az.CodeSigning
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
@@ -406,6 +407,7 @@
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [ChangeAnalysisGallery]:             https://www.powershellgallery.com/packages/Az.ChangeAnalysis/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
+[CodeSigningGallery]:                https://www.powershellgallery.com/packages/Az.CodeSigning/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
@@ -586,6 +588,7 @@
 [CdnChangeLog]:                        ../src/Cdn/Cdn/ChangeLog.md
 [ChangeAnalysisChangeLog]:             ../src/ChangeAnalysis/ChangeAnalysis/ChangeLog.md
 [CloudServiceChangeLog]:               ../src/CloudService/CloudService/ChangeLog.md
+[CodeSigningChangeLog]:                ../src/CodeSigning/CodeSigning/ChangeLog.md
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md
 [CommunicationChangeLog]:              ../src/Communication/Communication/ChangeLog.md
 [ComputeChangeLog]:                    ../src/Compute/Compute/ChangeLog.md

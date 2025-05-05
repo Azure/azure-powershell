@@ -15,13 +15,13 @@ Get marketplace terms.
 ### Get1 (Default)
 ```
 Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
- -OfferType <OfferType> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -OfferType <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Publisher identifier string of image being deployed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -111,6 +111,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms
 
 ## NOTES
 

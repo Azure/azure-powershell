@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="testStaticIPAddress">The test static IP address.
         /// </param>
-        public InMageRcmNicInput(string nicId, string isPrimaryNic, string isSelectedForFailover = default(string), string targetSubnetName = default(string), string targetStaticIPAddress = default(string), string testSubnetName = default(string), string testStaticIPAddress = default(string))
+
+        /// <param name="targetNicName">The target NIC name.
+        /// </param>
+        public InMageRcmNicInput(string nicId, string isPrimaryNic, string isSelectedForFailover = default(string), string targetSubnetName = default(string), string targetStaticIPAddress = default(string), string testSubnetName = default(string), string testStaticIPAddress = default(string), string targetNicName = default(string))
 
         {
             this.NicId = nicId;
@@ -54,6 +57,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetStaticIPAddress = targetStaticIPAddress;
             this.TestSubnetName = testSubnetName;
             this.TestStaticIPAddress = testStaticIPAddress;
+            this.TargetNicName = targetNicName;
             CustomInit();
         }
 
@@ -104,6 +108,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "testStaticIPAddress")]
         public string TestStaticIPAddress {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target NIC name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicName")]
+        public string TargetNicName {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -120,6 +130,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "IsPrimaryNic");
             }
+
 
 
 

@@ -23,12 +23,12 @@ Create an in-memory object for Provider.
 New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider
+Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider
 .Link
 https://learn.microsoft.com/powershell/module/Az.Quantum/new-AzQuantumProviderObject
 #>
 function New-AzQuantumProviderObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.Provider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Provider])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -50,9 +50,9 @@ param(
     ${InstanceUri},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.Status])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.PSArgumentCompleterAttribute("Succeeded", "Launching", "Updating", "Deleting", "Deleted", "Failed")]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.Status]
+    [System.String]
     # Provisioning status field.
     ${ProvisioningState},
 
@@ -76,6 +76,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -104,6 +107,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
