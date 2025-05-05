@@ -5708,7 +5708,7 @@ function Test-AutomaticZoneRebalancingPolicy
         # Create the vmss using the config
         $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
 
-        # Assert the AutomaticZoneRebalancingPolicy from the vmssConfig
+        # Assert the AutomaticZoneRebalancingPolicy from the vmssResult
         Assert-True { $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled };
         Assert-AreEqual $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy $rebalanceStrategy
         Assert-AreEqual $vmssResult.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior $rebalanceBehavior
