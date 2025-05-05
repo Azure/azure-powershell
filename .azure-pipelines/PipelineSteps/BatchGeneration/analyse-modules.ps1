@@ -89,5 +89,3 @@ foreach ($moduleName in $moduleGroup) {
 
 $reportPath = Join-Path $RepoRoot "artifacts" "AnalyseReport-$MatrixKey.json"
 $results | ConvertTo-Json -Depth 5 | Out-File -FilePath $reportPath -Encoding utf8
-
-Clean-Artifacts -RepoRoot $RepoRoot

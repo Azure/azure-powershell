@@ -8,8 +8,8 @@ variables:
   MaxParallelBuildJobs: 15
   MaxParallelAnalyzeJobs: 5
   MaxParallelTestWindowsJobs: 5
-  MaxParallelTestLinuxJobs: 5
-  MaxParallelTestMacJobs: 5
+  MaxParallelTestLinuxJobs: 4
+  MaxParallelTestMacJobs: 2
   WindowsAgentPoolName: pool-windows-2019
   LinuxAgentPoolName: pool-ubuntu-2004
   MacOSAgentPoolName: 'Azure Pipelines'

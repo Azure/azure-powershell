@@ -6,8 +6,6 @@ parameters:
   agentPoolVMImage: ''
   maxParallel: 3
 
-
-
 jobs:
 - job: ${{ parameters.jobName }}
   displayName: "Test ${{ parameters.OSName }}:"
@@ -17,7 +15,7 @@ jobs:
   timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
   pool:
     name: ${{ parameters.agentPoolName }}
-    vmImage: $${{ parameters.agentPoolVMImage }}
+    vmImage: ${{ parameters.agentPoolVMImage }}
   strategy:
     matrix: $[ stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'] ]
     maxParallel: ${{ parameters.maxParallel }}
