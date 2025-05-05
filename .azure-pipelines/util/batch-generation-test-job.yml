@@ -15,7 +15,8 @@ jobs:
   timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
   pool:
     name: ${{ parameters.agentPoolName }}
-    vmImage: ${{ parameters.agentPoolVMImage }}
+    ${{ if ne(parameters.agentPoolVMImage, '') }}:
+      vmImage: ${{ parameters.agentPoolVMImage }}
   strategy:
     matrix: $[ stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'] ]
     maxParallel: ${{ parameters.maxParallel }}
