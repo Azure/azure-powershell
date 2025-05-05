@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Compute
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Threading;
     using System.Threading.Tasks;
@@ -23,160 +22,81 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class VirtualMachineScaleSetVMsOperationsExtensions
     {
             /// <summary>
-            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
-            /// scale set.
+            /// Gets a list of all virtual machines in a VM scale sets.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
+            /// <param name='virtualMachineScaleSetName'>
+            /// The name of the VirtualMachineScaleSet
             /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
+            /// <param name='filter'>
+            /// The filter to apply to the operation. Allowed values are
+            /// 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+            /// 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+            /// false'.
             /// </param>
-            /// <param name='vmScaleSetVMReimageInput'>
-            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// <param name='select'>
+            /// The list parameters. Allowed values are 'instanceView',
+            /// 'instanceView/statuses'.
             /// </param>
-            public static void Reimage(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters))
+            /// <param name='expand'>
+            /// The expand expression to apply to the operation. Allowed values are
+            /// 'instanceView'.
+            /// </param>
+            public static IPage<VirtualMachineScaleSetVM> List(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string filter = default(string), string select = default(string), string expand = default(string))
             {
-                operations.ReimageAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName, virtualMachineScaleSetName, filter, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
-            /// scale set.
+            /// Gets a list of all virtual machines in a VM scale sets.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
+            /// <param name='virtualMachineScaleSetName'>
+            /// The name of the VirtualMachineScaleSet
             /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
+            /// <param name='filter'>
+            /// The filter to apply to the operation. Allowed values are
+            /// 'startswith(instanceView/statuses/code, 'PowerState') eq true',
+            /// 'properties/latestModelApplied eq true', 'properties/latestModelApplied eq
+            /// false'.
             /// </param>
-            /// <param name='vmScaleSetVMReimageInput'>
-            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// <param name='select'>
+            /// The list parameters. Allowed values are 'instanceView',
+            /// 'instanceView/statuses'.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply to the operation. Allowed values are
+            /// 'instanceView'.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ReimageAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<VirtualMachineScaleSetVM>> ListAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string filter = default(string), string select = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Allows you to re-image all the disks ( including data disks ) in the a VM
-            /// scale set instance. This operation is only supported for managed disks.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void ReimageAll(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.ReimageAllAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Allows you to re-image all the disks ( including data disks ) in the a VM
-            /// scale set instance. This operation is only supported for managed disks.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ReimageAllAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
-            /// instance.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders ApproveRollingUpgrade(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                return operations.ApproveRollingUpgradeAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
-            /// instance.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders> ApproveRollingUpgradeAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApproveRollingUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, filter, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Headers;
+                    return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
-            /// virtual machine and releases the compute resources it uses. You are not
-            /// billed for the compute resources of this virtual machine once it is
-            /// deallocated.
+            /// Gets a virtual machine from a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -184,35 +104,47 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            public static void Deallocate(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' will
+            /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
+            /// the UserData of the virtual machine. Possible values include:
+            /// 'instanceView', 'userData', 'resiliencyView'
+            /// </param>
+            public static VirtualMachineScaleSetVM Get(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?))
             {
-                operations.DeallocateAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, vmScaleSetName, instanceId, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
-            /// virtual machine and releases the compute resources it uses. You are not
-            /// billed for the compute resources of this virtual machine once it is
-            /// deallocated.
+            /// Gets a virtual machine from a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' will
+            /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
+            /// the UserData of the virtual machine. Possible values include:
+            /// 'instanceView', 'userData', 'resiliencyView'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeallocateAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVM> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -222,11 +154,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
@@ -256,11 +187,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
@@ -296,7 +226,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -308,9 +238,9 @@ namespace Microsoft.Azure.Management.Compute
             /// Optional parameter to force delete a virtual machine from a VM scale set.
             /// (Feature in Preview)
             /// </param>
-            public static void Delete(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?))
+            public static VirtualMachineScaleSetVMsDeleteHeaders Delete(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?))
             {
-                operations.DeleteAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -320,7 +250,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -335,19 +265,23 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsDeleteHeaders> DeleteAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
-            /// Gets a virtual machine from a VM scale set.
+            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
+            /// instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -355,50 +289,141 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' will
-            /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
-            /// the UserData of the virtual machine. 'resiliencyView' will retrieve the
-            /// instance view of the Virtual machine (if applicable) and include
-            /// 'resilientVMDeletionStatus' as part of it. Possible values include:
-            /// 'instanceView', 'userData', 'resiliencyView'
-            /// </param>
-            public static VirtualMachineScaleSetVM Get(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?))
+            public static VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders ApproveRollingUpgrade(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                return operations.GetAsync(resourceGroupName, vmScaleSetName, instanceId, expand).GetAwaiter().GetResult();
+                return operations.ApproveRollingUpgradeAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a virtual machine from a VM scale set.
+            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
+            /// instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' will
-            /// retrieve the instance view of the virtual machine. 'UserData' will retrieve
-            /// the UserData of the virtual machine. 'resiliencyView' will retrieve the
-            /// instance view of the Virtual machine (if applicable) and include
-            /// 'resilientVMDeletionStatus' as part of it. Possible values include:
-            /// 'instanceView', 'userData', 'resiliencyView'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSetVM> GetAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VmssVMInstanceViewTypes? expand = default(VmssVMInstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders> ApproveRollingUpgradeAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ApproveRollingUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on a
+            /// Virtual Machine Scale Sets VM.
+            /// </param>
+            public static StorageProfile AttachDetachDataDisks(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters)
+            {
+                return operations.AttachDetachDataDisksAsync(resourceGroupName, vmScaleSetName, instanceId, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on a
+            /// Virtual Machine Scale Sets VM.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageProfile> AttachDetachDataDisksAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.AttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
+            /// virtual machine and releases the compute resources it uses. You are not
+            /// billed for the compute resources of this virtual machine once it is
+            /// deallocated.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsDeallocateHeaders Deallocate(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.DeallocateAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
+            /// virtual machine and releases the compute resources it uses. You are not
+            /// billed for the compute resources of this virtual machine once it is
+            /// deallocated.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsDeallocateHeaders> DeallocateAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
                 }
             }
 
@@ -409,7 +434,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -429,7 +454,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -449,71 +474,61 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets a list of all virtual machines in a VM scale sets.
+            /// Performs maintenance on a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='virtualMachineScaleSetName'>
+            /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='select'>
-            /// The list parameters. Allowed values are 'instanceView',
-            /// 'instanceView/statuses'.
-            /// </param>
-            public static IPage<VirtualMachineScaleSetVM> List(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string virtualMachineScaleSetName, ODataQuery<VirtualMachineScaleSetVM> odataQuery = default(ODataQuery<VirtualMachineScaleSetVM>), string select = default(string))
+            public static VirtualMachineScaleSetVMsPerformMaintenanceHeaders PerformMaintenance(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                return operations.ListAsync(resourceGroupName, virtualMachineScaleSetName, odataQuery, select).GetAwaiter().GetResult();
+                return operations.PerformMaintenanceAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of all virtual machines in a VM scale sets.
+            /// Performs maintenance on a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
-            /// <param name='virtualMachineScaleSetName'>
+            /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='select'>
-            /// The list parameters. Allowed values are 'instanceView',
-            /// 'instanceView/statuses'.
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualMachineScaleSetVM>> ListAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string virtualMachineScaleSetName, ODataQuery<VirtualMachineScaleSetVM> odataQuery = default(ODataQuery<VirtualMachineScaleSetVM>), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsPerformMaintenanceHeaders> PerformMaintenanceAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualMachineScaleSetName, odataQuery, select, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges. Additionally, this
-            /// operation is not allowed on a virtual machine that is being deallocated or
-            /// already has been deallocated.
+            /// use deallocate to release resources and avoid charges.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -526,23 +541,21 @@ namespace Microsoft.Azure.Management.Compute
             /// indicates non-graceful shutdown whereas false indicates otherwise. Default
             /// value for this flag is false if not specified
             /// </param>
-            public static void PowerOff(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false)
+            public static VirtualMachineScaleSetVMsPowerOffHeaders PowerOff(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = default(bool?))
             {
-                operations.PowerOffAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown).GetAwaiter().GetResult();
+                return operations.PowerOffAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Power off (stop) a virtual machine in a VM scale set. Note that resources
             /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges. Additionally, this
-            /// operation is not allowed on a virtual machine that is being deallocated or
-            /// already has been deallocated.
+            /// use deallocate to release resources and avoid charges.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -558,95 +571,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsPowerOffHeaders> PowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Restarts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void Restart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.RestartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Restarts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task RestartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Starts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void Start(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.StartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Starts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task StartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.StartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -657,7 +587,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -665,9 +595,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            public static void Redeploy(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            public static VirtualMachineScaleSetVMsRedeployHeaders Redeploy(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                operations.RedeployAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                return operations.RedeployAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -678,7 +608,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -689,9 +619,160 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RedeployAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsRedeployHeaders> RedeployAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='vmScaleSetVMReimageInput'>
+            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// </param>
+            public static VirtualMachineScaleSetVMsReimageHeaders Reimage(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters))
+            {
+                return operations.ReimageAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='vmScaleSetVMReimageInput'>
+            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsReimageHeaders> ReimageAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Allows you to re-image all the disks ( including data disks ) in the a VM
+            /// scale set instance. This operation is only supported for managed disks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsReimageAllHeaders ReimageAll(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.ReimageAllAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Allows you to re-image all the disks ( including data disks ) in the a VM
+            /// scale set instance. This operation is only supported for managed disks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsReimageAllHeaders> ReimageAllAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Restarts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsRestartHeaders Restart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.RestartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Restarts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsRestartHeaders> RestartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -702,7 +783,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -728,7 +809,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -753,155 +834,13 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Performs maintenance on a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void PerformMaintenance(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.PerformMaintenanceAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Performs maintenance on a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task PerformMaintenanceAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine in a VM
-            /// scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void SimulateEviction(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.SimulateEvictionAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to simulate the eviction of spot virtual machine in a VM
-            /// scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task SimulateEvictionAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on a
-            /// Virtual Machine Scale Sets VM.
-            /// </param>
-            public static StorageProfile AttachDetachDataDisks(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters)
-            {
-                return operations.AttachDetachDataDisksAsync(resourceGroupName, vmScaleSetName, instanceId, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Attach and detach data disks to/from a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the attach and detach data disks operation on a
-            /// Virtual Machine Scale Sets VM.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<StorageProfile> AttachDetachDataDisksAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.AttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Run command on a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -924,7 +863,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -947,14 +886,14 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// The operation to simulate the eviction of spot virtual machine in a VM
             /// scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -962,71 +901,20 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='vmScaleSetVMReimageInput'>
-            /// Parameters for the Reimaging Virtual machine in ScaleSet.
-            /// </param>
-            public static void BeginReimage(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters))
+            public static void SimulateEviction(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                operations.BeginReimageAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput).GetAwaiter().GetResult();
+                operations.SimulateEvictionAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// The operation to simulate the eviction of spot virtual machine in a VM
             /// scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='vmScaleSetVMReimageInput'>
-            /// Parameters for the Reimaging Virtual machine in ScaleSet.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginReimageAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Allows you to re-image all the disks ( including data disks ) in the a VM
-            /// scale set instance. This operation is only supported for managed disks.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginReimageAll(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginReimageAllAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Allows you to re-image all the disks ( including data disks ) in the a VM
-            /// scale set instance. This operation is only supported for managed disks.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1037,20 +925,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginReimageAllAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task SimulateEvictionAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.SimulateEvictionWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
-            /// instance.
+            /// Starts a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1058,20 +945,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            public static VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders BeginApproveRollingUpgrade(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            public static VirtualMachineScaleSetVMsStartHeaders Start(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                return operations.BeginApproveRollingUpgradeAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                return operations.StartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
-            /// instance.
+            /// Starts a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1082,61 +968,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders> BeginApproveRollingUpgradeAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsStartHeaders> StartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginApproveRollingUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.StartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Headers;
                 }
-            }
-
-            /// <summary>
-            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
-            /// virtual machine and releases the compute resources it uses. You are not
-            /// billed for the compute resources of this virtual machine once it is
-            /// deallocated.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginDeallocate(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginDeallocateAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
-            /// virtual machine and releases the compute resources it uses. You are not
-            /// billed for the compute resources of this virtual machine once it is
-            /// deallocated.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeallocateAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1146,11 +983,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
@@ -1180,11 +1016,10 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set where the extension should be create or
-            /// updated.
+            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
@@ -1220,7 +1055,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1232,9 +1067,9 @@ namespace Microsoft.Azure.Management.Compute
             /// Optional parameter to force delete a virtual machine from a VM scale set.
             /// (Feature in Preview)
             /// </param>
-            public static void BeginDelete(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?))
+            public static VirtualMachineScaleSetVMsDeleteHeaders BeginDelete(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?))
             {
-                operations.BeginDeleteAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1244,7 +1079,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1259,23 +1094,23 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsDeleteHeaders> BeginDeleteAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? forceDeletion = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, forceDeletion, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
-            /// Power off (stop) a virtual machine in a VM scale set. Note that resources
-            /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges. Additionally, this
-            /// operation is not allowed on a virtual machine that is being deallocated or
-            /// already has been deallocated.
+            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
+            /// instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1283,76 +1118,20 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='instanceId'>
             /// The instance ID of the virtual machine.
             /// </param>
-            /// <param name='skipShutdown'>
-            /// The parameter to request non-graceful VM shutdown. True value for this flag
-            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
-            /// value for this flag is false if not specified
-            /// </param>
-            public static void BeginPowerOff(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false)
+            public static VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders BeginApproveRollingUpgrade(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
             {
-                operations.BeginPowerOffAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown).GetAwaiter().GetResult();
+                return operations.BeginApproveRollingUpgradeAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Power off (stop) a virtual machine in a VM scale set. Note that resources
-            /// are still attached and you are getting charged for the resources. Instead,
-            /// use deallocate to release resources and avoid charges. Additionally, this
-            /// operation is not allowed on a virtual machine that is being deallocated or
-            /// already has been deallocated.
+            /// Approve upgrade on deferred rolling upgrade for OS disk on a VM scale set
+            /// instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='skipShutdown'>
-            /// The parameter to request non-graceful VM shutdown. True value for this flag
-            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
-            /// value for this flag is false if not specified
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginPowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = false, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Restarts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginRestart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginRestartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Restarts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1363,140 +1142,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRestartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders> BeginApproveRollingUpgradeAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Starts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginStart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginStartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Starts a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginStartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Shuts down the virtual machine in the virtual machine scale set, moves it
-            /// to a new node, and powers it back on.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginRedeploy(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginRedeployAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Shuts down the virtual machine in the virtual machine scale set, moves it
-            /// to a new node, and powers it back on.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginRedeployAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginRedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Performs maintenance on a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            public static void BeginPerformMaintenance(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
-            {
-                operations.BeginPerformMaintenanceAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Performs maintenance on a virtual machine in a VM scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginPerformMaintenanceAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginApproveRollingUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1506,7 +1157,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1530,7 +1181,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1554,13 +1205,367 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
+            /// virtual machine and releases the compute resources it uses. You are not
+            /// billed for the compute resources of this virtual machine once it is
+            /// deallocated.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsDeallocateHeaders BeginDeallocate(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginDeallocateAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deallocates a specific virtual machine in a VM scale set. Shuts down the
+            /// virtual machine and releases the compute resources it uses. You are not
+            /// billed for the compute resources of this virtual machine once it is
+            /// deallocated.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsDeallocateHeaders> BeginDeallocateAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Performs maintenance on a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsPerformMaintenanceHeaders BeginPerformMaintenance(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginPerformMaintenanceAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Performs maintenance on a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsPerformMaintenanceHeaders> BeginPerformMaintenanceAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Power off (stop) a virtual machine in a VM scale set. Note that resources
+            /// are still attached and you are getting charged for the resources. Instead,
+            /// use deallocate to release resources and avoid charges.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='skipShutdown'>
+            /// The parameter to request non-graceful VM shutdown. True value for this flag
+            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
+            /// value for this flag is false if not specified
+            /// </param>
+            public static VirtualMachineScaleSetVMsPowerOffHeaders BeginPowerOff(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = default(bool?))
+            {
+                return operations.BeginPowerOffAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Power off (stop) a virtual machine in a VM scale set. Note that resources
+            /// are still attached and you are getting charged for the resources. Instead,
+            /// use deallocate to release resources and avoid charges.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='skipShutdown'>
+            /// The parameter to request non-graceful VM shutdown. True value for this flag
+            /// indicates non-graceful shutdown whereas false indicates otherwise. Default
+            /// value for this flag is false if not specified
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsPowerOffHeaders> BeginPowerOffAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, bool? skipShutdown = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, skipShutdown, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Shuts down the virtual machine in the virtual machine scale set, moves it
+            /// to a new node, and powers it back on.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsRedeployHeaders BeginRedeploy(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginRedeployAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Shuts down the virtual machine in the virtual machine scale set, moves it
+            /// to a new node, and powers it back on.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsRedeployHeaders> BeginRedeployAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='vmScaleSetVMReimageInput'>
+            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// </param>
+            public static VirtualMachineScaleSetVMsReimageHeaders BeginReimage(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters))
+            {
+                return operations.BeginReimageAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Reimages (upgrade the operating system) a specific virtual machine in a VM
+            /// scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='vmScaleSetVMReimageInput'>
+            /// Parameters for the Reimaging Virtual machine in ScaleSet.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsReimageHeaders> BeginReimageAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVMReimageParameters vmScaleSetVMReimageInput = default(VirtualMachineScaleSetVMReimageParameters), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, vmScaleSetVMReimageInput, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Allows you to re-image all the disks ( including data disks ) in the a VM
+            /// scale set instance. This operation is only supported for managed disks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsReimageAllHeaders BeginReimageAll(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginReimageAllAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Allows you to re-image all the disks ( including data disks ) in the a VM
+            /// scale set instance. This operation is only supported for managed disks.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsReimageAllHeaders> BeginReimageAllAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Restarts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsRestartHeaders BeginRestart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginRestartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Restarts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsRestartHeaders> BeginRestartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Run command on a virtual machine in a VM scale set.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1583,7 +1588,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='vmScaleSetName'>
             /// The name of the VM scale set.
@@ -1602,6 +1607,52 @@ namespace Microsoft.Azure.Management.Compute
                 using (var _result = await operations.BeginRunCommandWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Starts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            public static VirtualMachineScaleSetVMsStartHeaders BeginStart(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId)
+            {
+                return operations.BeginStartAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Starts a virtual machine in a VM scale set.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// The name of the VM scale set.
+            /// </param>
+            /// <param name='instanceId'>
+            /// The instance ID of the virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMsStartHeaders> BeginStartAsync(this IVirtualMachineScaleSetVMsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
                 }
             }
 

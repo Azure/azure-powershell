@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the public IP Sku. It can only be set with OrchestrationMode
-    /// as Flexible.
-    /// </summary>
     public partial class PublicIPAddressSku
     {
         /// <summary>
@@ -30,10 +26,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PublicIPAddressSku class.
         /// </summary>
-        /// <param name="name">Specify public IP sku name. Possible values
-        /// include: 'Basic', 'Standard'</param>
-        /// <param name="tier">Specify public IP sku tier. Possible values
-        /// include: 'Regional', 'Global'</param>
+        /// <param name="name">Possible values include: 'Basic',
+        /// 'Standard'</param>
+        /// <param name="tier">Possible values include: 'Regional',
+        /// 'Global'</param>
         public PublicIPAddressSku(string name = default(string), string tier = default(string))
         {
             Name = name;
@@ -47,15 +43,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specify public IP sku name. Possible values include:
-        /// 'Basic', 'Standard'
+        /// Gets or sets possible values include: 'Basic', 'Standard'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specify public IP sku tier. Possible values include:
-        /// 'Regional', 'Global'
+        /// Gets or sets possible values include: 'Regional', 'Global'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }

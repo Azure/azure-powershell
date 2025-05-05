@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the Availability Set properties related to migration to
-    /// Flexible Virtual Machine Scale Set.
-    /// </summary>
     public partial class VirtualMachineScaleSetMigrationInfo
     {
         /// <summary>
@@ -32,12 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetMigrationInfo class.
         /// </summary>
-        /// <param name="defaultVirtualMachineScaleSetInfo">Indicates the
-        /// target Virtual Machine ScaleSet properties upon triggering a
-        /// seamless migration without downtime of the VMs via the
-        /// ConvertToVirtualMachineScaleSet API.</param>
-        /// <param name="migrateToVirtualMachineScaleSet">Specifies the Virtual
-        /// Machine Scale Set that the Availability Set is migrated to.</param>
         public VirtualMachineScaleSetMigrationInfo(DefaultVirtualMachineScaleSetInfo defaultVirtualMachineScaleSetInfo = default(DefaultVirtualMachineScaleSetInfo), SubResource migrateToVirtualMachineScaleSet = default(SubResource))
         {
             DefaultVirtualMachineScaleSetInfo = defaultVirtualMachineScaleSetInfo;
@@ -51,16 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets indicates the target Virtual Machine ScaleSet properties upon
-        /// triggering a seamless migration without downtime of the VMs via the
-        /// ConvertToVirtualMachineScaleSet API.
         /// </summary>
         [JsonProperty(PropertyName = "defaultVirtualMachineScaleSetInfo")]
         public DefaultVirtualMachineScaleSetInfo DefaultVirtualMachineScaleSetInfo { get; private set; }
 
         /// <summary>
-        /// Gets specifies the Virtual Machine Scale Set that the Availability
-        /// Set is migrated to.
         /// </summary>
         [JsonProperty(PropertyName = "migrateToVirtualMachineScaleSet")]
         public SubResource MigrateToVirtualMachineScaleSet { get; private set; }

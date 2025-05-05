@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Information about the current running state of the overall upgrade.
-    /// </summary>
     public partial class UpgradeOperationHistoryStatus
     {
         /// <summary>
@@ -31,11 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the UpgradeOperationHistoryStatus
         /// class.
         /// </summary>
-        /// <param name="code">Code indicating the current status of the
-        /// upgrade. Possible values include: 'RollingForward', 'Cancelled',
-        /// 'Completed', 'Faulted'</param>
-        /// <param name="startTime">Start time of the upgrade.</param>
-        /// <param name="endTime">End time of the upgrade.</param>
+        /// <param name="code">Possible values include: 'RollingForward',
+        /// 'Cancelled', 'Completed', 'Faulted'</param>
         public UpgradeOperationHistoryStatus(UpgradeState? code = default(UpgradeState?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?))
         {
             Code = code;
@@ -50,21 +44,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets code indicating the current status of the upgrade. Possible
-        /// values include: 'RollingForward', 'Cancelled', 'Completed',
-        /// 'Faulted'
+        /// Gets possible values include: 'RollingForward', 'Cancelled',
+        /// 'Completed', 'Faulted'
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public UpgradeState? Code { get; private set; }
 
         /// <summary>
-        /// Gets start time of the upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime { get; private set; }
 
         /// <summary>
-        /// Gets end time of the upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "endTime")]
         public System.DateTime? EndTime { get; private set; }

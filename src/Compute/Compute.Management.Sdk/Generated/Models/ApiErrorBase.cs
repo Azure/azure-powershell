@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Api error base.
-    /// </summary>
     public partial class ApiErrorBase
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ApiErrorBase class.
         /// </summary>
-        /// <param name="code">The error code.</param>
-        /// <param name="target">The target of the particular error.</param>
-        /// <param name="message">The error message.</param>
         public ApiErrorBase(string code = default(string), string target = default(string), string message = default(string))
         {
             Code = code;
@@ -46,19 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the target of the particular error.
         /// </summary>
         [JsonProperty(PropertyName = "target")]
         public string Target { get; set; }
 
         /// <summary>
-        /// Gets or sets the error message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

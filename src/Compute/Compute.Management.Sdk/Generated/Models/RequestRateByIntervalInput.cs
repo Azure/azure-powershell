@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Api request input for LogAnalytics getRequestRateByInterval Api.
-    /// </summary>
     public partial class RequestRateByIntervalInput : LogAnalyticsInputBase
     {
         /// <summary>
@@ -29,23 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RequestRateByIntervalInput class.
         /// </summary>
-        /// <param name="blobContainerSasUri">SAS Uri of the logging blob
-        /// container to which LogAnalytics Api writes output logs to.</param>
-        /// <param name="fromTime">From time of the query</param>
-        /// <param name="toTime">To time of the query</param>
-        /// <param name="intervalLength">Interval value in minutes used to
-        /// create LogAnalytics call rate logs. Possible values include:
-        /// 'ThreeMins', 'FiveMins', 'ThirtyMins', 'SixtyMins'</param>
-        /// <param name="groupByThrottlePolicy">Group query result by Throttle
-        /// Policy applied.</param>
-        /// <param name="groupByOperationName">Group query result by Operation
-        /// Name.</param>
-        /// <param name="groupByResourceName">Group query result by Resource
-        /// Name.</param>
-        /// <param name="groupByClientApplicationId">Group query result by
-        /// Client Application ID.</param>
-        /// <param name="groupByUserAgent">Group query result by User
-        /// Agent.</param>
+        /// <param name="intervalLength">Possible values include: 'ThreeMins',
+        /// 'FiveMins', 'ThirtyMins', 'SixtyMins'</param>
         public RequestRateByIntervalInput(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, IntervalInMins intervalLength, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?), bool? groupByClientApplicationId = default(bool?), bool? groupByUserAgent = default(bool?))
             : base(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent)
         {
@@ -59,8 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets interval value in minutes used to create LogAnalytics
-        /// call rate logs. Possible values include: 'ThreeMins', 'FiveMins',
+        /// Gets or sets possible values include: 'ThreeMins', 'FiveMins',
         /// 'ThirtyMins', 'SixtyMins'
         /// </summary>
         [JsonProperty(PropertyName = "intervalLength")]

@@ -13,11 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the service artifact reference id used to set same image
-    /// version for all virtual machines in the scale set when using 'latest'
-    /// image version. Minimum api-version: 2022-11-01
-    /// </summary>
     public partial class ServiceArtifactReference
     {
         /// <summary>
@@ -31,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ServiceArtifactReference class.
         /// </summary>
-        /// <param name="id">The service artifact reference id in the form of
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}</param>
         public ServiceArtifactReference(string id = default(string))
         {
             Id = id;
@@ -45,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the service artifact reference id in the form of
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

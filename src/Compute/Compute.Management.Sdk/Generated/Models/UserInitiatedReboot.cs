@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies Reboot related Scheduled Event related configurations.
-    /// </summary>
     public partial class UserInitiatedReboot
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UserInitiatedReboot class.
         /// </summary>
-        /// <param name="automaticallyApprove">Specifies Reboot Scheduled Event
-        /// related configurations.</param>
         public UserInitiatedReboot(bool? automaticallyApprove = default(bool?))
         {
             AutomaticallyApprove = automaticallyApprove;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies Reboot Scheduled Event related
-        /// configurations.
         /// </summary>
         [JsonProperty(PropertyName = "automaticallyApprove")]
         public bool? AutomaticallyApprove { get; set; }

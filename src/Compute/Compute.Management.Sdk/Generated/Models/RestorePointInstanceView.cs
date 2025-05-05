@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a restore point.
-    /// </summary>
     public partial class RestorePointInstanceView
     {
         /// <summary>
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RestorePointInstanceView class.
         /// </summary>
-        /// <param name="diskRestorePoints">The disk restore points
-        /// information.</param>
-        /// <param name="statuses">The resource status information.</param>
         public RestorePointInstanceView(IList<DiskRestorePointInstanceView> diskRestorePoints = default(IList<DiskRestorePointInstanceView>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             DiskRestorePoints = diskRestorePoints;
@@ -47,13 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the disk restore points information.
         /// </summary>
         [JsonProperty(PropertyName = "diskRestorePoints")]
         public IList<DiskRestorePointInstanceView> DiskRestorePoints { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }

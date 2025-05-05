@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Input for InstallPatches on a Linux VM, as directly received by the API
-    /// </summary>
     public partial class LinuxParameters
     {
         /// <summary>
@@ -31,14 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the LinuxParameters class.
         /// </summary>
-        /// <param name="classificationsToInclude">The update classifications
-        /// to select when installing patches for Linux.</param>
-        /// <param name="packageNameMasksToInclude">packages to include in the
-        /// patch operation. Format: packageName_packageVersion</param>
-        /// <param name="packageNameMasksToExclude">packages to exclude in the
-        /// patch operation. Format: packageName_packageVersion</param>
-        /// <param name="maintenanceRunId">This is used as a maintenance run
-        /// identifier for Auto VM Guest Patching in Linux.</param>
         public LinuxParameters(IList<string> classificationsToInclude = default(IList<string>), IList<string> packageNameMasksToInclude = default(IList<string>), IList<string> packageNameMasksToExclude = default(IList<string>), string maintenanceRunId = default(string))
         {
             ClassificationsToInclude = classificationsToInclude;
@@ -54,29 +43,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the update classifications to select when installing
-        /// patches for Linux.
         /// </summary>
         [JsonProperty(PropertyName = "classificationsToInclude")]
         public IList<string> ClassificationsToInclude { get; set; }
 
         /// <summary>
-        /// Gets or sets packages to include in the patch operation. Format:
-        /// packageName_packageVersion
         /// </summary>
         [JsonProperty(PropertyName = "packageNameMasksToInclude")]
         public IList<string> PackageNameMasksToInclude { get; set; }
 
         /// <summary>
-        /// Gets or sets packages to exclude in the patch operation. Format:
-        /// packageName_packageVersion
         /// </summary>
         [JsonProperty(PropertyName = "packageNameMasksToExclude")]
         public IList<string> PackageNameMasksToExclude { get; set; }
 
         /// <summary>
-        /// Gets or sets this is used as a maintenance run identifier for Auto
-        /// VM Guest Patching in Linux.
         /// </summary>
         [JsonProperty(PropertyName = "maintenanceRunId")]
         public string MaintenanceRunId { get; set; }

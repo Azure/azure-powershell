@@ -13,19 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains clientId or objectId (use only one, not both) of a
-    /// user-assigned managed identity that has access to storage blob used in
-    /// Run Command. Use an empty RunCommandManagedIdentity object in case of
-    /// system-assigned identity. Make sure the Azure storage blob exists in
-    /// case of scriptUri, and managed identity has been given access to blob's
-    /// container with 'Storage Blob Data Reader' role assignment with
-    /// scriptUri blob and 'Storage Blob Data Contributor' for Append
-    /// blobs(outputBlobUri, errorBlobUri). In case of user assigned identity,
-    /// make sure you add it under VM's identity. For more info on managed
-    /// identity and Run Command, refer https://aka.ms/ManagedIdentity and
-    /// https://aka.ms/RunCommandManaged.
-    /// </summary>
     public partial class RunCommandManagedIdentity
     {
         /// <summary>
@@ -39,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RunCommandManagedIdentity class.
         /// </summary>
-        /// <param name="clientId">Client Id (GUID value) of the user-assigned
-        /// managed identity. ObjectId should not be used if this is
-        /// provided.</param>
-        /// <param name="objectId">Object Id (GUID value) of the user-assigned
-        /// managed identity. ClientId should not be used if this is
-        /// provided.</param>
         public RunCommandManagedIdentity(string clientId = default(string), string objectId = default(string))
         {
             ClientId = clientId;
@@ -58,15 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets client Id (GUID value) of the user-assigned managed
-        /// identity. ObjectId should not be used if this is provided.
         /// </summary>
         [JsonProperty(PropertyName = "clientId")]
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Gets or sets object Id (GUID value) of the user-assigned managed
-        /// identity. ClientId should not be used if this is provided.
         /// </summary>
         [JsonProperty(PropertyName = "objectId")]
         public string ObjectId { get; set; }

@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine scale set extension profile.
-    /// </summary>
     public partial class VirtualMachineScaleSetExtensionProfile
     {
         /// <summary>
@@ -33,13 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetExtensionProfile class.
         /// </summary>
-        /// <param name="extensions">The virtual machine scale set child
-        /// extension resources.</param>
-        /// <param name="extensionsTimeBudget">Specifies the time alloted for
-        /// all extensions to start. The time duration should be between 15
-        /// minutes and 120 minutes (inclusive) and should be specified in ISO
-        /// 8601 format. The default value is 90 minutes (PT1H30M). Minimum
-        /// api-version: 2020-06-01.</param>
         public VirtualMachineScaleSetExtensionProfile(IList<VirtualMachineScaleSetExtension> extensions = default(IList<VirtualMachineScaleSetExtension>), string extensionsTimeBudget = default(string))
         {
             Extensions = extensions;
@@ -53,18 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the virtual machine scale set child extension
-        /// resources.
         /// </summary>
         [JsonProperty(PropertyName = "extensions")]
         public IList<VirtualMachineScaleSetExtension> Extensions { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the time alloted for all extensions to
-        /// start. The time duration should be between 15 minutes and 120
-        /// minutes (inclusive) and should be specified in ISO 8601 format. The
-        /// default value is 90 minutes (PT1H30M). Minimum api-version:
-        /// 2020-06-01.
         /// </summary>
         [JsonProperty(PropertyName = "extensionsTimeBudget")]
         public string ExtensionsTimeBudget { get; set; }

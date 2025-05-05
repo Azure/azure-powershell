@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Create or update Restore Point collection parameters.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RestorePointCollection : Resource
+    public partial class RestorePointCollection : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the RestorePointCollection class.
@@ -34,19 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RestorePointCollection class.
         /// </summary>
-        /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// restore point collection.</param>
-        /// <param name="restorePointCollectionId">The unique id of the restore
-        /// point collection.</param>
-        /// <param name="restorePoints">A list containing all restore points
-        /// created under this restore point collection.</param>
-        public RestorePointCollection(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), IList<RestorePoint> restorePoints = default(IList<RestorePoint>))
-            : base(location, id, name, type, tags)
+        public RestorePointCollection(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), IList<RestorePoint> restorePoints = default(IList<RestorePoint>))
+            : base(location, id, name, type, systemData, tags)
         {
             Source = source;
             ProvisioningState = provisioningState;
@@ -66,20 +52,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public RestorePointCollectionSourceProperties Source { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets the unique id of the restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePointCollectionId")]
         public string RestorePointCollectionId { get; private set; }
 
         /// <summary>
-        /// Gets a list containing all restore points created under this
-        /// restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePoints")]
         public IList<RestorePoint> RestorePoints { get; private set; }

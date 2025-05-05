@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the data disk to be detached.
-    /// </summary>
     public partial class DataDisksToDetach
     {
         /// <summary>
@@ -30,10 +27,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DataDisksToDetach class.
         /// </summary>
-        /// <param name="diskId">ID of the managed data disk.</param>
-        /// <param name="detachOption">Supported options available for Detach
-        /// of a disk from a VM. Refer to DetachOption object reference for
-        /// more details. Possible values include: 'ForceDetach'</param>
+        /// <param name="detachOption">Possible values include:
+        /// 'ForceDetach'</param>
         public DataDisksToDetach(string diskId, string detachOption = default(string))
         {
             DiskId = diskId;
@@ -47,15 +42,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ID of the managed data disk.
         /// </summary>
         [JsonProperty(PropertyName = "diskId")]
         public string DiskId { get; set; }
 
         /// <summary>
-        /// Gets or sets supported options available for Detach of a disk from
-        /// a VM. Refer to DetachOption object reference for more details.
-        /// Possible values include: 'ForceDetach'
+        /// Gets or sets possible values include: 'ForceDetach'
         /// </summary>
         [JsonProperty(PropertyName = "detachOption")]
         public string DetachOption { get; set; }

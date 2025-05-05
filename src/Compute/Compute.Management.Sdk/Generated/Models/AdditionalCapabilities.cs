@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Enables or disables a capability on the virtual machine or virtual
-    /// machine scale set.
-    /// </summary>
     public partial class AdditionalCapabilities
     {
         /// <summary>
@@ -30,13 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AdditionalCapabilities class.
         /// </summary>
-        /// <param name="ultraSSDEnabled">The flag that enables or disables a
-        /// capability to have one or more managed data disks with UltraSSD_LRS
-        /// storage account type on the VM or VMSS. Managed disks with storage
-        /// account type UltraSSD_LRS can be added to a virtual machine or
-        /// virtual machine scale set only if this property is enabled.</param>
-        /// <param name="hibernationEnabled">The flag that enables or disables
-        /// hibernation capability on the VM.</param>
         public AdditionalCapabilities(bool? ultraSSDEnabled = default(bool?), bool? hibernationEnabled = default(bool?))
         {
             UltraSSDEnabled = ultraSSDEnabled;
@@ -50,18 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the flag that enables or disables a capability to have
-        /// one or more managed data disks with UltraSSD_LRS storage account
-        /// type on the VM or VMSS. Managed disks with storage account type
-        /// UltraSSD_LRS can be added to a virtual machine or virtual machine
-        /// scale set only if this property is enabled.
         /// </summary>
         [JsonProperty(PropertyName = "ultraSSDEnabled")]
         public bool? UltraSSDEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets the flag that enables or disables hibernation
-        /// capability on the VM.
         /// </summary>
         [JsonProperty(PropertyName = "hibernationEnabled")]
         public bool? HibernationEnabled { get; set; }

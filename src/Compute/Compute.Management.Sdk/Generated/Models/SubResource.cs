@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SubResource class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
         public SubResource(string id = default(string))
         {
             Id = id;
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

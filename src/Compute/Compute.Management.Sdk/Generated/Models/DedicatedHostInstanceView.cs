@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a dedicated host.
-    /// </summary>
     public partial class DedicatedHostInstanceView
     {
         /// <summary>
@@ -31,11 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DedicatedHostInstanceView class.
         /// </summary>
-        /// <param name="assetId">Specifies the unique id of the dedicated
-        /// physical machine on which the dedicated host resides.</param>
-        /// <param name="availableCapacity">Unutilized capacity of the
-        /// dedicated host.</param>
-        /// <param name="statuses">The resource status information.</param>
         public DedicatedHostInstanceView(string assetId = default(string), DedicatedHostAvailableCapacity availableCapacity = default(DedicatedHostAvailableCapacity), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             AssetId = assetId;
@@ -50,20 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the unique id of the dedicated physical machine on
-        /// which the dedicated host resides.
         /// </summary>
         [JsonProperty(PropertyName = "assetId")]
         public string AssetId { get; private set; }
 
         /// <summary>
-        /// Gets or sets unutilized capacity of the dedicated host.
         /// </summary>
         [JsonProperty(PropertyName = "availableCapacity")]
         public DedicatedHostAvailableCapacity AvailableCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }

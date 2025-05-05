@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of a Run Command metadata.
-    /// </summary>
     public partial class RunCommandDocumentBase
     {
         /// <summary>
@@ -30,19 +27,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RunCommandDocumentBase class.
         /// </summary>
-        /// <param name="schema">The VM run command schema.</param>
-        /// <param name="id">The VM run command id.</param>
-        /// <param name="osType">The Operating System type. Possible values
-        /// include: 'Windows', 'Linux'</param>
-        /// <param name="label">The VM run command label.</param>
-        /// <param name="description">The VM run command description.</param>
-        public RunCommandDocumentBase(string schema, string id, OperatingSystemTypes osType, string label, string description)
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        public RunCommandDocumentBase(string schema, string id, OperatingSystemTypes osType, string label)
         {
             Schema = schema;
             Id = id;
             OsType = osType;
             Label = label;
-            Description = description;
             CustomInit();
         }
 
@@ -52,35 +44,25 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the VM run command schema.
         /// </summary>
         [JsonProperty(PropertyName = "$schema")]
         public string Schema { get; set; }
 
         /// <summary>
-        /// Gets or sets the VM run command id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the Operating System type. Possible values include:
-        /// 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets the VM run command label.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; set; }
-
-        /// <summary>
-        /// Gets or sets the VM run command description.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -101,10 +83,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (Label == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Label");
-            }
-            if (Description == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Description");
             }
         }
     }

@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The configuration parameters used while performing automatic AZ
-    /// balancing.
-    /// </summary>
     public partial class AutomaticZoneRebalancingPolicy
     {
         /// <summary>
@@ -32,17 +28,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AutomaticZoneRebalancingPolicy
         /// class.
         /// </summary>
-        /// <param name="enabled">Specifies whether Automatic AZ Balancing
-        /// should be enabled on the virtual machine scale set. The default
-        /// value is false.</param>
-        /// <param name="rebalanceStrategy">Type of rebalance strategy that
-        /// will be used for rebalancing virtual machines in the scale set
-        /// across availability zones. Default and only supported value for now
-        /// is Recreate. Possible values include: 'Recreate'</param>
-        /// <param name="rebalanceBehavior">Type of rebalance behavior that
-        /// will be used for recreating virtual machines in the scale set
-        /// across availability zones. Default and only supported value for now
-        /// is CreateBeforeDelete. Possible values include:
+        /// <param name="rebalanceStrategy">Possible values include:
+        /// 'Recreate'</param>
+        /// <param name="rebalanceBehavior">Possible values include:
         /// 'CreateBeforeDelete'</param>
         public AutomaticZoneRebalancingPolicy(bool? enabled = default(bool?), string rebalanceStrategy = default(string), string rebalanceBehavior = default(string))
         {
@@ -58,27 +46,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies whether Automatic AZ Balancing should be
-        /// enabled on the virtual machine scale set. The default value is
-        /// false.
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Gets or sets type of rebalance strategy that will be used for
-        /// rebalancing virtual machines in the scale set across availability
-        /// zones. Default and only supported value for now is Recreate.
-        /// Possible values include: 'Recreate'
+        /// Gets or sets possible values include: 'Recreate'
         /// </summary>
         [JsonProperty(PropertyName = "rebalanceStrategy")]
         public string RebalanceStrategy { get; set; }
 
         /// <summary>
-        /// Gets or sets type of rebalance behavior that will be used for
-        /// recreating virtual machines in the scale set across availability
-        /// zones. Default and only supported value for now is
-        /// CreateBeforeDelete. Possible values include: 'CreateBeforeDelete'
+        /// Gets or sets possible values include: 'CreateBeforeDelete'
         /// </summary>
         [JsonProperty(PropertyName = "rebalanceBehavior")]
         public string RebalanceBehavior { get; set; }

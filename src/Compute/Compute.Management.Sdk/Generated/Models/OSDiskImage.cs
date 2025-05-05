@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains the os disk image information.
-    /// </summary>
     public partial class OSDiskImage
     {
         /// <summary>
@@ -29,8 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSDiskImage class.
         /// </summary>
-        /// <param name="operatingSystem">The operating system of the
-        /// osDiskImage. Possible values include: 'Windows', 'Linux'</param>
+        /// <param name="operatingSystem">Possible values include: 'Windows',
+        /// 'Linux'</param>
         public OSDiskImage(OperatingSystemTypes operatingSystem)
         {
             OperatingSystem = operatingSystem;
@@ -43,8 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the operating system of the osDiskImage. Possible
-        /// values include: 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "operatingSystem")]
         public OperatingSystemTypes OperatingSystem { get; set; }

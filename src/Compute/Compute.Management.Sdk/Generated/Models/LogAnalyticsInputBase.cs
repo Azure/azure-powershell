@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Api input base class for LogAnalytics Api.
-    /// </summary>
     public partial class LogAnalyticsInputBase
     {
         /// <summary>
@@ -30,20 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the LogAnalyticsInputBase class.
         /// </summary>
-        /// <param name="blobContainerSasUri">SAS Uri of the logging blob
-        /// container to which LogAnalytics Api writes output logs to.</param>
-        /// <param name="fromTime">From time of the query</param>
-        /// <param name="toTime">To time of the query</param>
-        /// <param name="groupByThrottlePolicy">Group query result by Throttle
-        /// Policy applied.</param>
-        /// <param name="groupByOperationName">Group query result by Operation
-        /// Name.</param>
-        /// <param name="groupByResourceName">Group query result by Resource
-        /// Name.</param>
-        /// <param name="groupByClientApplicationId">Group query result by
-        /// Client Application ID.</param>
-        /// <param name="groupByUserAgent">Group query result by User
-        /// Agent.</param>
         public LogAnalyticsInputBase(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?), bool? groupByClientApplicationId = default(bool?), bool? groupByUserAgent = default(bool?))
         {
             BlobContainerSasUri = blobContainerSasUri;
@@ -63,50 +46,41 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets SAS Uri of the logging blob container to which
-        /// LogAnalytics Api writes output logs to.
         /// </summary>
         [JsonProperty(PropertyName = "blobContainerSasUri")]
         public string BlobContainerSasUri { get; set; }
 
         /// <summary>
-        /// Gets or sets from time of the query
         /// </summary>
         [JsonProperty(PropertyName = "fromTime")]
         public System.DateTime FromTime { get; set; }
 
         /// <summary>
-        /// Gets or sets to time of the query
         /// </summary>
         [JsonProperty(PropertyName = "toTime")]
         public System.DateTime ToTime { get; set; }
 
         /// <summary>
-        /// Gets or sets group query result by Throttle Policy applied.
         /// </summary>
         [JsonProperty(PropertyName = "groupByThrottlePolicy")]
         public bool? GroupByThrottlePolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets group query result by Operation Name.
         /// </summary>
         [JsonProperty(PropertyName = "groupByOperationName")]
         public bool? GroupByOperationName { get; set; }
 
         /// <summary>
-        /// Gets or sets group query result by Resource Name.
         /// </summary>
         [JsonProperty(PropertyName = "groupByResourceName")]
         public bool? GroupByResourceName { get; set; }
 
         /// <summary>
-        /// Gets or sets group query result by Client Application ID.
         /// </summary>
         [JsonProperty(PropertyName = "groupByClientApplicationId")]
         public bool? GroupByClientApplicationId { get; set; }
 
         /// <summary>
-        /// Gets or sets group query result by User Agent.
         /// </summary>
         [JsonProperty(PropertyName = "groupByUserAgent")]
         public bool? GroupByUserAgent { get; set; }

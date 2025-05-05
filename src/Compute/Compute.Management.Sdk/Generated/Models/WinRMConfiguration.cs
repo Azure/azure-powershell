@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes Windows Remote Management configuration of the VM
-    /// </summary>
     public partial class WinRMConfiguration
     {
         /// <summary>
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the WinRMConfiguration class.
         /// </summary>
-        /// <param name="listeners">The list of Windows Remote Management
-        /// listeners</param>
         public WinRMConfiguration(IList<WinRMListener> listeners = default(IList<WinRMListener>))
         {
             Listeners = listeners;
@@ -45,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of Windows Remote Management listeners
         /// </summary>
         [JsonProperty(PropertyName = "listeners")]
         public IList<WinRMListener> Listeners { get; set; }

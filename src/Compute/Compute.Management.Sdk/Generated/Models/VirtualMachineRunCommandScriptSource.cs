@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the script sources for run command. Use only one of script,
-    /// scriptUri, commandId.
-    /// </summary>
     public partial class VirtualMachineRunCommandScriptSource
     {
         /// <summary>
@@ -32,22 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineRunCommandScriptSource class.
         /// </summary>
-        /// <param name="script">Specifies the script content to be executed on
-        /// the VM.</param>
-        /// <param name="scriptUri">Specifies the script download location. It
-        /// can be either SAS URI of an Azure storage blob with read access or
-        /// public URI.</param>
-        /// <param name="commandId">Specifies a commandId of predefined
-        /// built-in script.</param>
-        /// <param name="scriptUriManagedIdentity">User-assigned managed
-        /// identity that has access to scriptUri in case of Azure storage
-        /// blob. Use an empty object in case of system-assigned identity. Make
-        /// sure the Azure storage blob exists, and managed identity has been
-        /// given access to blob's container with 'Storage Blob Data Reader'
-        /// role assignment. In case of user-assigned identity, make sure you
-        /// add it under VM's identity. For more info on managed identity and
-        /// Run Command, refer https://aka.ms/ManagedIdentity and
-        /// https://aka.ms/RunCommandManaged.</param>
         public VirtualMachineRunCommandScriptSource(string script = default(string), string scriptUri = default(string), string commandId = default(string), RunCommandManagedIdentity scriptUriManagedIdentity = default(RunCommandManagedIdentity))
         {
             Script = script;
@@ -63,35 +43,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the script content to be executed on the VM.
         /// </summary>
         [JsonProperty(PropertyName = "script")]
         public string Script { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the script download location. It can be
-        /// either SAS URI of an Azure storage blob with read access or public
-        /// URI.
         /// </summary>
         [JsonProperty(PropertyName = "scriptUri")]
         public string ScriptUri { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies a commandId of predefined built-in script.
         /// </summary>
         [JsonProperty(PropertyName = "commandId")]
         public string CommandId { get; set; }
 
         /// <summary>
-        /// Gets or sets user-assigned managed identity that has access to
-        /// scriptUri in case of Azure storage blob. Use an empty object in
-        /// case of system-assigned identity. Make sure the Azure storage blob
-        /// exists, and managed identity has been given access to blob's
-        /// container with 'Storage Blob Data Reader' role assignment. In case
-        /// of user-assigned identity, make sure you add it under VM's
-        /// identity. For more info on managed identity and Run Command, refer
-        /// https://aka.ms/ManagedIdentity and
-        /// https://aka.ms/RunCommandManaged.
         /// </summary>
         [JsonProperty(PropertyName = "scriptUriManagedIdentity")]
         public RunCommandManagedIdentity ScriptUriManagedIdentity { get; set; }

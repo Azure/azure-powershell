@@ -14,7 +14,7 @@ autorest.cmd README.md --version=v2
 
 ``` yaml
 csharp: true
-clear-output-folder: false
+clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
 azure-arm: true
@@ -65,9 +65,6 @@ directive:
     where: $..["$ref"]
     transform: >
       return $.replace('../../../../../../common-types/resource-management/v3/types.json', './common-types/common.json')
-             .replace('../../../common-types/resource-management/v3/types.json', './common-types/common.json')
-             .replace('../../../../common-types/resource-management/v3/types.json', './common-types/common.json')
-             .replace('../../../../../common-types/resource-management/v3/types.json', './common-types/common.json');
 
   # Remove all definitions and parameters from common-types/resource-management/v3/types.json
   - from: common-types/resource-management/v3/types.json
@@ -101,14 +98,6 @@ directive:
         }
       }
       return $;
-
-#  - from: ComputeRP.json
-#    where: $..enum
-#    transform: >-
-#      if( $.length === 1 && $[0] === "AutomaticRepairs") { 
-#        $.push('DummyOrchestrationServiceName');
-#      }
-#      return $;
     
     # remove it from the C# generated code
   - from: source-file-csharp
@@ -131,7 +120,6 @@ directive:
     where: $
     transform: >
       $.tags = [];
-
 
   # Fix for enums missing x-ms-enum name
   - from: swagger-document
@@ -168,6 +156,16 @@ directive:
         $.enum = ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"];
       }
       return $;
+
+  # Sku fixes 
+  - from: swagger-document
+    where: $.definitions.Sku.properties.capacity
+    transform: >
+      if ($ && $.format) {
+        $.format = "int64";
+      }
+      return $;
+
  ```
 <!--
   # Remove one of the duplicate SubscriptionIdParameter definitions
@@ -207,13 +205,7 @@ directive:
     rename-model:
       from: Sku
       to: CloudServiceSku
-  - from: swagger-document
-    where: $.definitions.Sku.properties.capacity
-    transform: >
-      if ($ && $.format) {
-        $.format = "int64";
-      }
-      return $;
+
 
   - from: swagger-document
     where: $.definitions.ResourceModelWithAllowedPropertySet.properties.sku
@@ -332,10 +324,10 @@ commit: f8d5ec7433a099628286e1b912e94ad599510680
 input-file: 
   - ./common-types/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/ComputeRP.json
-#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/DiskRP.json
-#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
-#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
-#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/DiskRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
 
 output-folder: Generated
 

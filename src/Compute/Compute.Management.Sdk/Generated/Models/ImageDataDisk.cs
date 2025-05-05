@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a data disk.
-    /// </summary>
     public partial class ImageDataDisk : ImageDisk
     {
         /// <summary>
@@ -29,29 +26,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageDataDisk class.
         /// </summary>
-        /// <param name="lun">Specifies the logical unit number of the data
-        /// disk. This value is used to identify data disks within the VM and
-        /// therefore must be unique for each data disk attached to a
-        /// VM.</param>
-        /// <param name="snapshot">The snapshot.</param>
-        /// <param name="managedDisk">The managedDisk.</param>
-        /// <param name="blobUri">The Virtual Hard Disk.</param>
-        /// <param name="caching">Specifies the caching requirements. Possible
-        /// values are: **None,** **ReadOnly,** **ReadWrite.** The default
-        /// values are: **None for Standard storage. ReadOnly for Premium
-        /// storage.**. Possible values include: 'None', 'ReadOnly',
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
         /// 'ReadWrite'</param>
-        /// <param name="diskSizeGB">Specifies the size of empty data disks in
-        /// gigabytes. This element can be used to overwrite the name of the
-        /// disk in a virtual machine image. This value cannot be larger than
-        /// 1023 GB.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-        /// disks, it cannot be used with OS Disk. Possible values include:
+        /// <param name="storageAccountType">Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS',
         /// 'Premium_ZRS', 'StandardSSD_ZRS', 'PremiumV2_LRS'</param>
-        /// <param name="diskEncryptionSet">Specifies the customer managed disk
-        /// encryption set resource id for the managed image disk.</param>
         public ImageDataDisk(int lun, SubResource snapshot = default(SubResource), SubResource managedDisk = default(SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters))
             : base(snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet)
         {
@@ -65,9 +44,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the logical unit number of the data disk.
-        /// This value is used to identify data disks within the VM and
-        /// therefore must be unique for each data disk attached to a VM.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int Lun { get; set; }

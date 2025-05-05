@@ -26,13 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSImageNotificationProfile class.
         /// </summary>
-        /// <param name="notBeforeTimeout">Length of time a Virtual Machine
-        /// being reimaged or having its OS upgraded will have to potentially
-        /// approve the OS Image Scheduled Event before the event is auto
-        /// approved (timed out). The configuration is specified in ISO 8601
-        /// format, and the value must be 15 minutes (PT15M)</param>
-        /// <param name="enable">Specifies whether the OS Image Scheduled event
-        /// is enabled or disabled.</param>
         public OSImageNotificationProfile(string notBeforeTimeout = default(string), bool? enable = default(bool?))
         {
             NotBeforeTimeout = notBeforeTimeout;
@@ -46,18 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets length of time a Virtual Machine being reimaged or
-        /// having its OS upgraded will have to potentially approve the OS
-        /// Image Scheduled Event before the event is auto approved (timed
-        /// out). The configuration is specified in ISO 8601 format, and the
-        /// value must be 15 minutes (PT15M)
         /// </summary>
         [JsonProperty(PropertyName = "notBeforeTimeout")]
         public string NotBeforeTimeout { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the OS Image Scheduled event is
-        /// enabled or disabled.
         /// </summary>
         [JsonProperty(PropertyName = "enable")]
         public bool? Enable { get; set; }

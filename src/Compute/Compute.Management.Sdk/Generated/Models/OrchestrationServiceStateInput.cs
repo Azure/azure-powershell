@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The input for OrchestrationServiceState
-    /// </summary>
     public partial class OrchestrationServiceStateInput
     {
         /// <summary>
@@ -32,11 +29,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the OrchestrationServiceStateInput
         /// class.
         /// </summary>
-        /// <param name="serviceName">The name of the service. Possible values
-        /// include: 'AutomaticRepairs',
-        /// 'DummyOrchestrationServiceName'</param>
-        /// <param name="action">The action to be performed. Possible values
-        /// include: 'Resume', 'Suspend'</param>
+        /// <param name="serviceName">Possible values include:
+        /// 'AutomaticRepairs'</param>
+        /// <param name="action">Possible values include: 'Resume',
+        /// 'Suspend'</param>
         public OrchestrationServiceStateInput(string serviceName, string action)
         {
             ServiceName = serviceName;
@@ -50,15 +46,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the service. Possible values include:
-        /// 'AutomaticRepairs'
+        /// Gets or sets possible values include: 'AutomaticRepairs',
+        /// 'DummyOrchestrationServiceName'
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; set; }
 
         /// <summary>
-        /// Gets or sets the action to be performed. Possible values include:
-        /// 'Resume', 'Suspend'
+        /// Gets or sets possible values include: 'Resume', 'Suspend'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }

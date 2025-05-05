@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the storage profile.
-    /// </summary>
     public partial class RestorePointSourceVMStorageProfile
     {
         /// <summary>
@@ -33,13 +30,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// RestorePointSourceVMStorageProfile class.
         /// </summary>
-        /// <param name="osDisk">Gets the OS disk of the VM captured at the
-        /// time of the restore point creation.</param>
-        /// <param name="dataDisks">Gets the data disks of the VM captured at
-        /// the time of the restore point creation.</param>
-        /// <param name="diskControllerType">Gets the disk controller type of
-        /// the VM captured at the time of the restore point creation. Possible
-        /// values include: 'SCSI', 'NVMe'</param>
+        /// <param name="diskControllerType">Possible values include: 'SCSI',
+        /// 'NVMe'</param>
         public RestorePointSourceVMStorageProfile(RestorePointSourceVMOSDisk osDisk = default(RestorePointSourceVMOSDisk), IList<RestorePointSourceVMDataDisk> dataDisks = default(IList<RestorePointSourceVMDataDisk>), string diskControllerType = default(string))
         {
             OsDisk = osDisk;
@@ -54,22 +46,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the OS disk of the VM captured at the time of the restore
-        /// point creation.
         /// </summary>
         [JsonProperty(PropertyName = "osDisk")]
         public RestorePointSourceVMOSDisk OsDisk { get; set; }
 
         /// <summary>
-        /// Gets the data disks of the VM captured at the time of the restore
-        /// point creation.
         /// </summary>
         [JsonProperty(PropertyName = "dataDisks")]
         public IList<RestorePointSourceVMDataDisk> DataDisks { get; set; }
 
         /// <summary>
-        /// Gets the disk controller type of the VM captured at the time of the
-        /// restore point creation. Possible values include: 'SCSI', 'NVMe'
+        /// Gets possible values include: 'SCSI', 'NVMe'
         /// </summary>
         [JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType { get; private set; }

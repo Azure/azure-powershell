@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the boot diagnostic settings state. Minimum api-version:
-    /// 2015-06-15.
-    /// </summary>
     public partial class DiagnosticsProfile
     {
         /// <summary>
@@ -30,13 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiagnosticsProfile class.
         /// </summary>
-        /// <param name="bootDiagnostics">Boot Diagnostics is a debugging
-        /// feature which allows you to view Console Output and Screenshot to
-        /// diagnose VM status. **NOTE**: If storageUri is being specified then
-        /// ensure that the storage account is in the same region and
-        /// subscription as the VM. You can easily view the output of your
-        /// console log. Azure also enables you to see a screenshot of the VM
-        /// from the hypervisor.</param>
         public DiagnosticsProfile(BootDiagnostics bootDiagnostics = default(BootDiagnostics))
         {
             BootDiagnostics = bootDiagnostics;
@@ -49,12 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets boot Diagnostics is a debugging feature which allows
-        /// you to view Console Output and Screenshot to diagnose VM status.
-        /// **NOTE**: If storageUri is being specified then ensure that the
-        /// storage account is in the same region and subscription as the VM.
-        /// You can easily view the output of your console log. Azure also
-        /// enables you to see a screenshot of the VM from the hypervisor.
         /// </summary>
         [JsonProperty(PropertyName = "bootDiagnostics")]
         public BootDiagnostics BootDiagnostics { get; set; }

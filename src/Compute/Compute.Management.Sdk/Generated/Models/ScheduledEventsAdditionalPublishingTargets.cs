@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// ScheduledEventsAdditionalPublishingTargets class.
         /// </summary>
-        /// <param name="eventGridAndResourceGraph">The configuration
-        /// parameters used while creating eventGridAndResourceGraph Scheduled
-        /// Event setting.</param>
         public ScheduledEventsAdditionalPublishingTargets(EventGridAndResourceGraph eventGridAndResourceGraph = default(EventGridAndResourceGraph))
         {
             EventGridAndResourceGraph = eventGridAndResourceGraph;
@@ -43,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while creating
-        /// eventGridAndResourceGraph Scheduled Event setting.
         /// </summary>
         [JsonProperty(PropertyName = "eventGridAndResourceGraph")]
         public EventGridAndResourceGraph EventGridAndResourceGraph { get; set; }

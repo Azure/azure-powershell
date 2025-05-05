@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Contains the list of gallery applications that should be made available
-    /// to the VM/VMSS
-    /// </summary>
     public partial class ApplicationProfile
     {
         /// <summary>
@@ -32,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ApplicationProfile class.
         /// </summary>
-        /// <param name="galleryApplications">Specifies the gallery
-        /// applications that should be made available to the VM/VMSS</param>
         public ApplicationProfile(IList<VMGalleryApplication> galleryApplications = default(IList<VMGalleryApplication>))
         {
             GalleryApplications = galleryApplications;
@@ -46,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the gallery applications that should be made
-        /// available to the VM/VMSS
         /// </summary>
         [JsonProperty(PropertyName = "galleryApplications")]
         public IList<VMGalleryApplication> GalleryApplications { get; set; }

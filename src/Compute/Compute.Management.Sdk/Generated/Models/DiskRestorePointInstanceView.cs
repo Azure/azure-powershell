@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a disk restore point.
-    /// </summary>
     public partial class DiskRestorePointInstanceView
     {
         /// <summary>
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DiskRestorePointInstanceView
         /// class.
         /// </summary>
-        /// <param name="id">Disk restore point Id.</param>
-        /// <param name="replicationStatus">The disk restore point replication
-        /// status information.</param>
         public DiskRestorePointInstanceView(string id = default(string), DiskRestorePointReplicationStatus replicationStatus = default(DiskRestorePointReplicationStatus))
         {
             Id = id;
@@ -47,13 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets disk restore point Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the disk restore point replication status information.
         /// </summary>
         [JsonProperty(PropertyName = "replicationStatus")]
         public DiskRestorePointReplicationStatus ReplicationStatus { get; set; }

@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of a run command parameter.
-    /// </summary>
     public partial class RunCommandInputParameter
     {
         /// <summary>
@@ -30,8 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RunCommandInputParameter class.
         /// </summary>
-        /// <param name="name">The run command parameter name.</param>
-        /// <param name="value">The run command parameter value.</param>
         public RunCommandInputParameter(string name, string value)
         {
             Name = name;
@@ -45,13 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the run command parameter name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the run command parameter value.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies eventGridAndResourceGraph related Scheduled Event related
-    /// configurations.
-    /// </summary>
     public partial class EventGridAndResourceGraph
     {
         /// <summary>
@@ -30,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EventGridAndResourceGraph class.
         /// </summary>
-        /// <param name="enable">Specifies if event grid and resource graph is
-        /// enabled for Scheduled event related configurations.</param>
         public EventGridAndResourceGraph(bool? enable = default(bool?))
         {
             Enable = enable;
@@ -44,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies if event grid and resource graph is enabled
-        /// for Scheduled event related configurations.
         /// </summary>
         [JsonProperty(PropertyName = "enable")]
         public bool? Enable { get; set; }

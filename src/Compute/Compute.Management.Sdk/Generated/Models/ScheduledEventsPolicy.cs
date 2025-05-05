@@ -13,11 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies Redeploy, Reboot and
-    /// ScheduledEventsAdditionalPublishingTargets Scheduled Event related
-    /// configurations.
-    /// </summary>
     public partial class ScheduledEventsPolicy
     {
         /// <summary>
@@ -31,15 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ScheduledEventsPolicy class.
         /// </summary>
-        /// <param name="userInitiatedRedeploy">The configuration parameters
-        /// used while creating userInitiatedRedeploy scheduled event setting
-        /// creation.</param>
-        /// <param name="userInitiatedReboot">The configuration parameters used
-        /// while creating userInitiatedReboot scheduled event setting
-        /// creation.</param>
-        /// <param name="scheduledEventsAdditionalPublishingTargets">The
-        /// configuration parameters used while publishing
-        /// scheduledEventsAdditionalPublishingTargets.</param>
         public ScheduledEventsPolicy(UserInitiatedRedeploy userInitiatedRedeploy = default(UserInitiatedRedeploy), UserInitiatedReboot userInitiatedReboot = default(UserInitiatedReboot), ScheduledEventsAdditionalPublishingTargets scheduledEventsAdditionalPublishingTargets = default(ScheduledEventsAdditionalPublishingTargets))
         {
             UserInitiatedRedeploy = userInitiatedRedeploy;
@@ -54,22 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while creating
-        /// userInitiatedRedeploy scheduled event setting creation.
         /// </summary>
         [JsonProperty(PropertyName = "userInitiatedRedeploy")]
         public UserInitiatedRedeploy UserInitiatedRedeploy { get; set; }
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while creating
-        /// userInitiatedReboot scheduled event setting creation.
         /// </summary>
         [JsonProperty(PropertyName = "userInitiatedReboot")]
         public UserInitiatedReboot UserInitiatedReboot { get; set; }
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while publishing
-        /// scheduledEventsAdditionalPublishingTargets.
         /// </summary>
         [JsonProperty(PropertyName = "scheduledEventsAdditionalPublishingTargets")]
         public ScheduledEventsAdditionalPublishingTargets ScheduledEventsAdditionalPublishingTargets { get; set; }

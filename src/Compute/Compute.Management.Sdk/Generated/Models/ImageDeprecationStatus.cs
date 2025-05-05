@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes image deprecation status properties on the image.
-    /// </summary>
     public partial class ImageDeprecationStatus
     {
         /// <summary>
@@ -29,12 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageDeprecationStatus class.
         /// </summary>
-        /// <param name="imageState">Describes the state of the image. Possible
-        /// values include: 'Active', 'ScheduledForDeprecation',
-        /// 'Deprecated'</param>
-        /// <param name="scheduledDeprecationTime">The time, in future, at
-        /// which this image will be marked as deprecated. This scheduled time
-        /// is chosen by the Publisher.</param>
+        /// <param name="imageState">Possible values include: 'Active',
+        /// 'ScheduledForDeprecation', 'Deprecated'</param>
         public ImageDeprecationStatus(string imageState = default(string), System.DateTime? scheduledDeprecationTime = default(System.DateTime?), AlternativeOption alternativeOption = default(AlternativeOption))
         {
             ImageState = imageState;
@@ -49,16 +42,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets describes the state of the image. Possible values
-        /// include: 'Active', 'ScheduledForDeprecation', 'Deprecated'
+        /// Gets or sets possible values include: 'Active',
+        /// 'ScheduledForDeprecation', 'Deprecated'
         /// </summary>
         [JsonProperty(PropertyName = "imageState")]
         public string ImageState { get; set; }
 
         /// <summary>
-        /// Gets or sets the time, in future, at which this image will be
-        /// marked as deprecated. This scheduled time is chosen by the
-        /// Publisher.
         /// </summary>
         [JsonProperty(PropertyName = "scheduledDeprecationTime")]
         public System.DateTime? ScheduledDeprecationTime { get; set; }

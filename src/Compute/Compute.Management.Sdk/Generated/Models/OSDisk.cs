@@ -14,12 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the operating system disk used by the
-    /// virtual machine. For more information about disks, see [About disks and
-    /// VHDs for Azure virtual
-    /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-    /// </summary>
     public partial class OSDisk
     {
         /// <summary>
@@ -33,51 +27,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSDisk class.
         /// </summary>
-        /// <param name="createOption">Specifies how the virtual machine disk
-        /// should be created. Possible values are **Attach:** This value is
-        /// used when you are using a specialized disk to create the virtual
-        /// machine. **FromImage:** This value is used when you are using an
-        /// image to create the virtual machine. If you are using a platform
-        /// image, you should also use the imageReference element described
-        /// above. If you are using a marketplace image, you should also use
-        /// the plan element previously described. Possible values include:
-        /// 'FromImage', 'Empty', 'Attach', 'Copy', 'Restore'</param>
-        /// <param name="osType">This property allows you to specify the type
-        /// of the OS that is included in the disk if creating a VM from
-        /// user-image or a specialized VHD. Possible values are: **Windows,**
-        /// **Linux.**. Possible values include: 'Windows', 'Linux'</param>
-        /// <param name="encryptionSettings">Specifies the encryption settings
-        /// for the OS Disk. Minimum api-version: 2015-06-15.</param>
-        /// <param name="name">The disk name.</param>
-        /// <param name="vhd">The virtual hard disk.</param>
-        /// <param name="image">The source user image virtual hard disk. The
-        /// virtual hard disk will be copied before being attached to the
-        /// virtual machine. If SourceImage is provided, the destination
-        /// virtual hard drive must not exist.</param>
-        /// <param name="caching">Specifies the caching requirements. Possible
-        /// values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting
-        /// behavior is: **None for Standard storage. ReadOnly for Premium
-        /// storage.**. Possible values include: 'None', 'ReadOnly',
+        /// <param name="createOption">Possible values include: 'FromImage',
+        /// 'Empty', 'Attach', 'Copy', 'Restore'</param>
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
         /// 'ReadWrite'</param>
-        /// <param name="writeAcceleratorEnabled">Specifies whether
-        /// writeAccelerator should be enabled or disabled on the disk.</param>
-        /// <param name="diffDiskSettings">Specifies the ephemeral Disk
-        /// Settings for the operating system disk used by the virtual
-        /// machine.</param>
-        /// <param name="diskSizeGB">Specifies the size of an empty data disk
-        /// in gigabytes. This element can be used to overwrite the size of the
-        /// disk in a virtual machine image. The property 'diskSizeGB' is the
-        /// number of bytes x 1024^3 for the disk and the value cannot be
-        /// larger than 1023.</param>
-        /// <param name="managedDisk">The managed disk parameters.</param>
-        /// <param name="deleteOption">Specifies whether OS Disk should be
-        /// deleted or detached upon VM deletion. Possible values are:
-        /// **Delete.** If this value is used, the OS disk is deleted when VM
-        /// is deleted. **Detach.** If this value is used, the os disk is
-        /// retained after VM is deleted. The default value is set to
-        /// **Detach**. For an ephemeral OS Disk, the default value is set to
-        /// **Delete**. The user cannot change the delete option for an
-        /// ephemeral OS Disk. Possible values include: 'Delete',
+        /// <param name="deleteOption">Possible values include: 'Delete',
         /// 'Detach'</param>
         public OSDisk(string createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), string deleteOption = default(string))
         {
@@ -102,104 +58,67 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the type of the OS
-        /// that is included in the disk if creating a VM from user-image or a
-        /// specialized VHD. Possible values are: **Windows,** **Linux.**.
-        /// Possible values include: 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public OperatingSystemTypes? OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the encryption settings for the OS Disk.
-        /// Minimum api-version: 2015-06-15.
         /// </summary>
         [JsonProperty(PropertyName = "encryptionSettings")]
         public DiskEncryptionSettings EncryptionSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets the disk name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual hard disk.
         /// </summary>
         [JsonProperty(PropertyName = "vhd")]
         public VirtualHardDisk Vhd { get; set; }
 
         /// <summary>
-        /// Gets or sets the source user image virtual hard disk. The virtual
-        /// hard disk will be copied before being attached to the virtual
-        /// machine. If SourceImage is provided, the destination virtual hard
-        /// drive must not exist.
         /// </summary>
         [JsonProperty(PropertyName = "image")]
         public VirtualHardDisk Image { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the caching requirements. Possible values
-        /// are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior
-        /// is: **None for Standard storage. ReadOnly for Premium storage.**.
-        /// Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+        /// Gets or sets possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "caching")]
         public CachingTypes? Caching { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether writeAccelerator should be enabled
-        /// or disabled on the disk.
         /// </summary>
         [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the ephemeral Disk Settings for the
-        /// operating system disk used by the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "diffDiskSettings")]
         public DiffDiskSettings DiffDiskSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies how the virtual machine disk should be
-        /// created. Possible values are **Attach:** This value is used when
-        /// you are using a specialized disk to create the virtual machine.
-        /// **FromImage:** This value is used when you are using an image to
-        /// create the virtual machine. If you are using a platform image, you
-        /// should also use the imageReference element described above. If you
-        /// are using a marketplace image, you should also use the plan element
-        /// previously described. Possible values include: 'FromImage',
-        /// 'Empty', 'Attach', 'Copy', 'Restore'
+        /// Gets or sets possible values include: 'FromImage', 'Empty',
+        /// 'Attach', 'Copy', 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the size of an empty data disk in gigabytes.
-        /// This element can be used to overwrite the size of the disk in a
-        /// virtual machine image. The property 'diskSizeGB' is the number of
-        /// bytes x 1024^3 for the disk and the value cannot be larger than
-        /// 1023.
         /// </summary>
         [JsonProperty(PropertyName = "diskSizeGB")]
         public int? DiskSizeGB { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed disk parameters.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
         public ManagedDiskParameters ManagedDisk { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether OS Disk should be deleted or
-        /// detached upon VM deletion. Possible values are: **Delete.** If this
-        /// value is used, the OS disk is deleted when VM is deleted.
-        /// **Detach.** If this value is used, the os disk is retained after VM
-        /// is deleted. The default value is set to **Detach**. For an
-        /// ephemeral OS Disk, the default value is set to **Delete**. The user
-        /// cannot change the delete option for an ephemeral OS Disk. Possible
-        /// values include: 'Delete', 'Detach'
+        /// Gets or sets possible values include: 'Delete', 'Detach'
         /// </summary>
         [JsonProperty(PropertyName = "deleteOption")]
         public string DeleteOption { get; set; }

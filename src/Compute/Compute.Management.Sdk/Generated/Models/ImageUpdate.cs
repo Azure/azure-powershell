@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The source user image virtual hard disk. Only tags may be updated.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class ImageUpdate : UpdateResource
     {
@@ -34,19 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageUpdate class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="sourceVirtualMachine">The source virtual machine from
-        /// which Image is created.</param>
-        /// <param name="storageProfile">Specifies the storage settings for the
-        /// virtual machine disks.</param>
-        /// <param name="provisioningState">The provisioning state.</param>
-        /// <param name="hyperVGeneration">Specifies the HyperVGenerationType
-        /// of the VirtualMachine created from the image. From API Version
-        /// 2019-03-01 if the image source is a blob, then we need the user to
-        /// specify the value, if the source is managed resource like disk or
-        /// snapshot, we may require the user to specify the property if we
-        /// cannot deduce it from the source managed resource. Possible values
-        /// include: 'V1', 'V2'</param>
+        /// <param name="hyperVGeneration">Possible values include: 'V1',
+        /// 'V2'</param>
         public ImageUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), SubResource sourceVirtualMachine = default(SubResource), ImageStorageProfile storageProfile = default(ImageStorageProfile), string provisioningState = default(string), string hyperVGeneration = default(string))
             : base(tags)
         {
@@ -63,33 +49,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the source virtual machine from which Image is
-        /// created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sourceVirtualMachine")]
         public SubResource SourceVirtualMachine { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the storage settings for the virtual machine
-        /// disks.
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageProfile")]
         public ImageStorageProfile StorageProfile { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets specifies the HyperVGenerationType of the
-        /// VirtualMachine created from the image. From API Version 2019-03-01
-        /// if the image source is a blob, then we need the user to specify the
-        /// value, if the source is managed resource like disk or snapshot, we
-        /// may require the user to specify the property if we cannot deduce it
-        /// from the source managed resource. Possible values include: 'V1',
-        /// 'V2'
+        /// Gets or sets possible values include: 'V1', 'V2'
         /// </summary>
         [JsonProperty(PropertyName = "properties.hyperVGeneration")]
         public string HyperVGeneration { get; set; }

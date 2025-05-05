@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The status of the latest virtual machine scale set rolling upgrade.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RollingUpgradeStatusInfo : Resource
+    public partial class RollingUpgradeStatusInfo : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the RollingUpgradeStatusInfo class.
@@ -34,21 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RollingUpgradeStatusInfo class.
         /// </summary>
-        /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="policy">The rolling upgrade policies applied for this
-        /// upgrade.</param>
-        /// <param name="runningStatus">Information about the current running
-        /// state of the overall upgrade.</param>
-        /// <param name="progress">Information about the number of virtual
-        /// machine instances in each upgrade state.</param>
-        /// <param name="error">Error details for this upgrade, if there are
-        /// any.</param>
-        public RollingUpgradeStatusInfo(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), RollingUpgradePolicy policy = default(RollingUpgradePolicy), RollingUpgradeRunningStatus runningStatus = default(RollingUpgradeRunningStatus), RollingUpgradeProgressInfo progress = default(RollingUpgradeProgressInfo), ApiError error = default(ApiError))
-            : base(location, id, name, type, tags)
+        public RollingUpgradeStatusInfo(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), RollingUpgradePolicy policy = default(RollingUpgradePolicy), RollingUpgradeRunningStatus runningStatus = default(RollingUpgradeRunningStatus), RollingUpgradeProgressInfo progress = default(RollingUpgradeProgressInfo), ApiError error = default(ApiError))
+            : base(location, id, name, type, systemData, tags)
         {
             Policy = policy;
             RunningStatus = runningStatus;
@@ -63,27 +47,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the rolling upgrade policies applied for this upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "properties.policy")]
         public RollingUpgradePolicy Policy { get; private set; }
 
         /// <summary>
-        /// Gets information about the current running state of the overall
-        /// upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "properties.runningStatus")]
         public RollingUpgradeRunningStatus RunningStatus { get; private set; }
 
         /// <summary>
-        /// Gets information about the number of virtual machine instances in
-        /// each upgrade state.
         /// </summary>
         [JsonProperty(PropertyName = "properties.progress")]
         public RollingUpgradeProgressInfo Progress { get; private set; }
 
         /// <summary>
-        /// Gets error details for this upgrade, if there are any.
         /// </summary>
         [JsonProperty(PropertyName = "properties.error")]
         public ApiError Error { get; private set; }

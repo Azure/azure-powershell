@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the security settings like secure boot and vTPM used while
-    /// creating the virtual machine. Minimum api-version: 2020-12-01.
-    /// </summary>
     public partial class UefiSettings
     {
         /// <summary>
@@ -30,11 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UefiSettings class.
         /// </summary>
-        /// <param name="secureBootEnabled">Specifies whether secure boot
-        /// should be enabled on the virtual machine. Minimum api-version:
-        /// 2020-12-01.</param>
-        /// <param name="vTpmEnabled">Specifies whether vTPM should be enabled
-        /// on the virtual machine. Minimum api-version: 2020-12-01.</param>
         public UefiSettings(bool? secureBootEnabled = default(bool?), bool? vTpmEnabled = default(bool?))
         {
             SecureBootEnabled = secureBootEnabled;
@@ -48,15 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies whether secure boot should be enabled on the
-        /// virtual machine. Minimum api-version: 2020-12-01.
         /// </summary>
         [JsonProperty(PropertyName = "secureBootEnabled")]
         public bool? SecureBootEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether vTPM should be enabled on the
-        /// virtual machine. Minimum api-version: 2020-12-01.
         /// </summary>
         [JsonProperty(PropertyName = "vTpmEnabled")]
         public bool? VTpmEnabled { get; set; }

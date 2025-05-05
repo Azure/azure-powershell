@@ -10,13 +10,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the VM Size.
-    /// </summary>
     public partial class SkuProfileVMSize
     {
         /// <summary>
@@ -30,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SkuProfileVMSize class.
         /// </summary>
-        /// <param name="name">Specifies the name of the VM Size.</param>
-        /// <param name="rank">Specifies the rank (a.k.a priority) associated
-        /// with the VM Size.</param>
         public SkuProfileVMSize(string name = default(string), int? rank = default(int?))
         {
             Name = name;
@@ -46,33 +39,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the name of the VM Size.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the rank (a.k.a priority) associated with
-        /// the VM Size.
         /// </summary>
         [JsonProperty(PropertyName = "rank")]
         public int? Rank { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Rank != null)
-            {
-                if (Rank < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "Rank", 0);
-                }
-            }
-        }
     }
 }
