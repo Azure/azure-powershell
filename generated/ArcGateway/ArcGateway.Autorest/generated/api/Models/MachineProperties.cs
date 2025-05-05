@@ -364,6 +364,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.NetworkProfile()); set { {_networkProfile = value;} } }
 
+        /// <summary>Internal Acessors for NetworkProfileNetworkInterface</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value; }
+
         /// <summary>Internal Acessors for OSEdition</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.OSEdition { get => this._oSEdition; set { {_oSEdition = value;} } }
 
@@ -394,6 +397,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfile Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.StorageProfile()); set { {_storageProfile = value;} } }
 
+        /// <summary>Internal Acessors for StorageProfileDisk</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IDisk> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfileInternal)StorageProfile).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfileInternal)StorageProfile).Disk = value; }
+
         /// <summary>Internal Acessors for VMUuid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachinePropertiesInternal.VMUuid { get => this._vMUuid; set { {_vMUuid = value;} } }
 
@@ -413,7 +419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>The list of network interfaces.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkInterface> NetworkProfileNetworkInterface { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.INetworkProfileInternal)NetworkProfile).NetworkInterface; }
 
         /// <summary>Backing field for <see cref="OSEdition" /> property.</summary>
         private string _oSEdition;
@@ -503,7 +509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>The disks on the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IDisk> StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfileInternal)StorageProfile).Disk; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfileInternal)StorageProfile).Disk = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IDisk> StorageProfileDisk { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IStorageProfileInternal)StorageProfile).Disk; }
 
         /// <summary>Backing field for <see cref="VMId" /> property.</summary>
         private string _vMId;

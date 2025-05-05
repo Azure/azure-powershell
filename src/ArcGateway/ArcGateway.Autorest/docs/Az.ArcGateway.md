@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ArcGateway
-Module Guid: 40089cb6-1178-4576-8452-c678f0e34495
+Module Guid: 2c527190-8523-4005-8052-cf8450a4999b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.arcgateway
 Help Version: 1.0.0.0
 Locale: en-US
