@@ -45,13 +45,13 @@ $groupedBuildModules = Group-Modules -Modules $changedModules -MaxParallelJobs $
 Write-Matrix -GroupedModules $groupedBuildModules -VariableName 'buildTargets' -RepoRoot $RepoRoot
 
 $groupedAnalyzeModules = Group-Modules -Modules $changedModules -MaxParallelJobs $MaxParallelAnalyzeJobs
-Write-Matrix -GroupedModules $groupedAnalyzeModules -variableName 'analyzeTargets' -RepoRoot $RepoRoot
+Write-Matrix -GroupedModules $groupedAnalyzeModules -VariableName 'analyzeTargets' -RepoRoot $RepoRoot
 
-# $groupedTestWindowsModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestWindowsJobs
-# Write-Matrix -variableName 'TestWindowsTargets' -groupedSubModules $groupedTestWindowsModules
+$groupedTestWindowsModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestWindowsJobs
+Write-Matrix -GroupedModules $groupedTestWindowsModules -VariableName 'testWindowsTargets' -RepoRoot $RepoRoot
 
-# $groupedTestLinuxModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestLinuxJobs
-# Write-Matrix -variableName 'TestLinuxTargets' -groupedSubModules $groupedTestLinuxModules
+$groupedTestLinuxModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestLinuxJobs
+Write-Matrix -GroupedModules $groupedTestLinuxModules -VariableName 'testLinuxTargets' -RepoRoot $RepoRoot
 
-# $groupedTestMacModules = Split-List -subModules $changedSubModules -maxParallelJobs $MaxParallelTestMacJobs
-# Write-Matrix -variableName 'TestMacTargets' -groupedSubModules $groupedTestMacModules
+$groupedTestMacModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestMacJobs
+Write-Matrix -GroupedModules $groupedTestMacModules -VariableName 'testMacOSTargets' -RepoRoot $RepoRoot

@@ -8,8 +8,8 @@ variables:
   MaxParallelBuildJobs: 15
   MaxParallelAnalyzeJobs: 5
   MaxParallelTestWindowsJobs: 5
-  MaxParallelTestLinuxJobs: 5
-  MaxParallelTestMacJobs: 5
+  MaxParallelTestLinuxJobs: 4
+  MaxParallelTestMacJobs: 2
   WindowsAgentPoolName: pool-windows-2019
   LinuxAgentPoolName: pool-ubuntu-2004
   MacOSAgentPoolName: 'Azure Pipelines'
@@ -67,7 +67,10 @@ stages:
     - job: generate
       displayName: "Batch Generate: "
       dependsOn: prepare
-      condition: ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
+      condition: and(
+        ne(dependencies.prepare.outputs['mtrx.generateTargets'], ''),
+        ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
+        )
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
@@ -182,7 +185,10 @@ stages:
     - job: build
       displayName: "Build:"
       dependsOn: filter
-      condition: ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
+      condition: and(
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], ''),
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
+        )
       timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
@@ -235,7 +241,7 @@ stages:
 
       - download: current
         patterns: |
-          **/debug/**
+          **/Debug/**
           **/StaticAnalysis/**
         displayName: 'Download build artifacts'
 
@@ -255,14 +261,14 @@ stages:
             $workspace = "$env:PIPELINE_WORKSPACE"
             $repoRoot = "$(Build.SourcesDirectory)"
             $artifactsRoot = Join-Path $repoRoot "artifacts"
-            $debugArtifactDestPath = Join-Path $artifactsRoot "debug"
+            $debugArtifactDestPath = Join-Path $artifactsRoot "Debug"
             New-Item -ItemType Directory -Force -Path $debugArtifactDestPath | Out-Null
 
             $copiedModules = @{}
             $StaticAnalysisCopied = $false
 
             Get-ChildItem -Path $workspace -Directory | ForEach-Object {
-                $debugArtifactSrcPath = Join-Path $_.FullName "debug"
+                $debugArtifactSrcPath = Join-Path $_.FullName "Debug"
                 $StaticAnalysisSrcDirectory = Join-Path $_.FullName 'StaticAnalysis'
 
                 if (Test-Path $debugArtifactSrcPath) {
@@ -308,7 +314,10 @@ stages:
       displayName: "Analyze:"
       dependsOn: 
         - collect
-      condition: ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}')
+      condition: and(
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], ''),
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}')
+        )
       timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
@@ -318,7 +327,6 @@ stages:
       steps:
       - checkout: self
         fetchDepth: 1
-        sparseCheckoutDirectories: tools/ .azure-pipelines/
         fetchTags: false
 
       - task: DownloadPipelineArtifact@2
@@ -357,14 +365,8 @@ stages:
           script: |
             Write-Host "Matrix Key: $(MatrixKey)"
 
-            Write-Host "Top-level contents of $(Build.SourcesDirectory):"
-            Get-ChildItem -Path "$(Build.SourcesDirectory)" | ForEach-Object {
-              Write-Host $_.FullName
-            }
-
             $analyseModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'analyse-modules.ps1'
             & $analyseModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
-
 
       - task: PublishPipelineArtifact@1
         displayName: 'Save Analyse Report'
@@ -373,79 +375,28 @@ stages:
           artifact: 'analyse-$(MatrixKey)'
         condition: always()
 
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_windows'
+        OSName: 'Windows'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
+        maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
+        
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_linux'
+        OSName: 'Linux'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
 
-    # - job: test_windows
-    #   displayName: "Test Windows:"
-    #   dependsOn: 
-    #     - filter
-    #     - build
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestWindowsTargets'], '{}'))
-    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool: ${{ variables.WindowsAgentPoolName }}
-    #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestWindowsTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestWindowsJobs }}
-
-    #   steps:
-    #   - checkout: none
-      
-    #   - task: PowerShell@2
-    #     name: test
-    #     displayName: 'Test Windows'
-    #     inputs:
-    #       targetType: inline
-    #       pwsh: true
-    #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Windows' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
-
-    # - job: test_linux
-    #   displayName: "Test Linux:"
-    #   dependsOn: 
-    #     - filter
-    #     - build
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestLinuxTargets'], '{}'))
-    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool: ${{ variables.LinuxAgentPoolName }}
-    #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestLinuxTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestLinuxJobs }}
-
-    #   steps:
-    #   - checkout: none
-      
-    #   - task: PowerShell@2
-    #     name: test
-    #     displayName: 'Test Linux'
-    #     inputs:
-    #       targetType: inline
-    #       pwsh: true
-    #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Linux' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
-
-    # - job: test_mac
-    #   displayName: "Test Mac:"
-    #   dependsOn: filter
-    #   condition: and(succeeded(), ne(dependencies.filter.outputs['mtrx.TestMacTargets'], '{}'))
-    #   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
-    #   pool:
-    #     name: ${{ variables.MacOSAgentPoolName }}
-    #     vmImage: ${{ variables.MacOSAgentPoolVMImage }}
-    #   strategy:
-    #     matrix: $[ dependencies.filter.outputs['mtrx.TestMacTargets'] ]
-    #     maxParallel: ${{ variables.MaxParallelTestMacJobs }}
-
-    #   steps:
-    #   - checkout: none
-      
-    #   - task: PowerShell@2
-    #     name: test
-    #     displayName: 'Test Mac'
-    #     inputs:
-    #       targetType: inline
-    #       pwsh: true
-    #       script: |
-    #         $testModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'test-module.ps1'
-    #         & $testModulesPath -MatrixKey "$(MatrixKey)" -Target "$(Target)" -TestEnvName 'Mac' -RepoRoot "$(Build.SourcesDirectory)" -ArtifactRoot "$(Build.ArtifactStagingDirectory)"
-
+    - template: util/batch-generation-test-job.yml
+      parameters:
+        jobName: 'test_mac'
+        OSName: 'MacOS'
+        timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
+        maxParallel: ${{ variables.MaxParallelTestMacJobs }}
+    
