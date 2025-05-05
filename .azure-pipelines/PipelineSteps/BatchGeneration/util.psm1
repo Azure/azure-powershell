@@ -75,3 +75,22 @@ function Get-Targets {
     Write-Host
     return $targetGroup
 }
+
+function Clean-Artifacts {
+    param (
+        [string]$RepoRoot
+    )
+
+    $artifactsDir = Join-Path $RepoRoot "artifacts"
+    $artifactsFoldersToClean = @(
+        "Debug",
+        "StaticAnalysis"
+    )
+
+    foreach ($folder in $artifactsFoldersToClean) {
+        $folderPath = Join-Path $artifactsDir $folder
+        if (Test-Path -Path $folderPath) {
+            Remove-Item -Path $folderPath -Recurse -Force
+        }
+    }
+}

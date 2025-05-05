@@ -51,3 +51,5 @@ foreach ($subModule in $subModuleGroup) {
 $artifactRoot = Join-Path $RepoRoot 'artifacts'
 $reportPath = Join-Path $artifactRoot "Test$($TestEnvName)Report-$MatrixKey.json"
 $results | ConvertTo-Json -Depth 3 | Out-File -FilePath $reportPath -Encoding utf8
+
+Clean-Artifacts -RepoRoot $RepoRoot
