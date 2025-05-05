@@ -6,43 +6,43 @@
       "value": "southcentralus"
     },
     "namespace_name": {
-      "value": "namespaceName42kzga"
+      "value": "namespaceNamexiad71"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNamexjh32e"
+      "value": "namespaceNameqd7bok"
     },
     "primary_namespace_name": {
-      "value": "namespaceNamem7lfwt"
+      "value": "namespaceNamee5b4l6"
     },
     "secondary_namespace_name": {
-      "value": "namespaceNamean3wzx"
+      "value": "namespaceNameeh6gct"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-rulevc2hn9"
+      "value": "auth-rulemupg9t"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-rulebc97lg"
+      "value": "auth-ruleemqyrl"
     },
     "eventhub_name": {
-      "value": "eventHubkunz3v"
+      "value": "eventHubgwqfbp"
     },
     "schema_group_name": {
-      "value": "schemaGroupsjnof2"
+      "value": "schemaGroupelkpfa"
     },
     "appgroup_name": {
-      "value": "appGrouprc074h"
+      "value": "appGroupy85lta"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.Network/virtualNetworks/eh-ps-b8tfc1-vnet/subnets/default"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ho719g/providers/Microsoft.Network/virtualNetworks/eh-ps-zo49dq-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-2bajxi"
+      "value": "privateEndpoint-p7x62f"
     },
     "peName2": {
-      "value": "privateEndpoint-maliy0"
+      "value": "privateEndpoint-394kpt"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-rci2wp/providers/Microsoft.EventHub/namespaces/namespaceName42kzga"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ho719g/providers/Microsoft.EventHub/namespaces/namespaceNamexiad71"
     },
     "useZoneRedundancy": {
       "value": true

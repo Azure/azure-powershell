@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resource_name_prefix": {
-      "value": "eh-ps-vk9s3f"
+      "value": "eh-ps-zo49dq"
     },
     "useZoneRedundancy": {
       "value": true
