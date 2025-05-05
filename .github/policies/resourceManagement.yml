@@ -3206,8 +3206,8 @@ configuration:
         - mentionUsers:
             mentionees:
             - gopimsft
-            - gimotwanMSFT
-            - avripintoms
+            - azure-firewall
+            - azure-firewall-engineering
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
