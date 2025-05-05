@@ -28,6 +28,8 @@ Get-AzVMSize [-ResourceGroupName] <String> [-AvailabilitySetName] <String>
 ## DESCRIPTION
 The **Get-AzVMSize** cmdlet gets available virtual machine sizes.
 
+For listing available VM sizes by subscription or location, use instead [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku).
+
 ## EXAMPLES
 
 
