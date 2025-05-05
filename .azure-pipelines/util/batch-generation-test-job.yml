@@ -12,7 +12,7 @@ jobs:
   dependsOn: 
     - collect
   condition: and(
-    not(empty(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'])),
+    ne(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'], ''),
     ne(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'], '{}')
     )
   timeoutInMinutes: ${{ parameters.timeoutInMinutes }}

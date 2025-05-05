@@ -68,7 +68,7 @@ stages:
       displayName: "Batch Generate: "
       dependsOn: prepare
       condition: and(
-        not(empty(dependencies.prepare.outputs['mtrx.generateTargets'])),
+        ne(dependencies.prepare.outputs['mtrx.generateTargets'], ''),
         ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
@@ -186,7 +186,7 @@ stages:
       displayName: "Build:"
       dependsOn: filter
       condition: and(
-        not(empty(dependencies.filter.outputs['mtrx.buildTargets'])),
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], ''),
         ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
@@ -315,7 +315,7 @@ stages:
       dependsOn: 
         - collect
       condition: and(
-        not(empty(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'])),
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], ''),
         ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
