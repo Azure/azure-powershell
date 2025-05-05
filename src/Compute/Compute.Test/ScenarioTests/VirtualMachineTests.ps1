@@ -915,12 +915,13 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
-        # Test Sizes
-        $s1 = Get-AzVMSize -Location ($loc -replace ' ');
-        Assert-NotNull $s1;
-        Assert-NotNull $s1.RequestId;
-        Assert-NotNull $s1.StatusCode;
-        Validate-VirtualMachineSize $vmsize $s1;
+        # Test Sizes 
+        # CASE 1: List Virtual Machine Sizes parameter set deprecated 
+        # s1 = Get-AzVMSize -Location ($loc -replace ' ');
+        # Assert-NotNull $s1;
+        # Assert-NotNull $s1.RequestId;
+        # Assert-NotNull $s1.StatusCode;
+        # Validate-VirtualMachineSize $vmsize $s1;
 
         $s2 = Get-AzVMSize -ResourceGroupName $rgname -VMName $vmname;
         Assert-NotNull $s2;
@@ -2166,20 +2167,6 @@ function Test-VMImageEdgeZoneCmdletOutputFormat
     Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
     Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
-}
-
-# Test Get VM Size from All Locations
-function Test-GetVMSizeFromAllLocations
-{
-    $locations = get_all_vm_locations;
-    foreach ($loc in $locations)
-    {
-        $vmsizes = Get-AzVMSize -Location $loc;
-        Assert-True { $vmsizes.Count -gt 0 }
-        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
-
-        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
-    }
 }
 
 function get_all_vm_locations
