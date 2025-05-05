@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Cdn
-Module Guid: c69de80f-ca23-42a2-8f80-6da175b11071
+Module Guid: 38111cce-6c50-4933-ac15-ed906838aedc
 Download Help Link: https://learn.microsoft.com/powershell/module/az.cdn
 Help Version: 1.0.0.0
 Locale: en-US
