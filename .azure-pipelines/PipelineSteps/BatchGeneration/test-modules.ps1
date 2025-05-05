@@ -23,10 +23,10 @@ foreach ($subModule in $subModuleGroup) {
 
     try {
         Write-Host "Testing sub module: $subModule"
-        $subModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "az.$ModuleName" $subModuleName
-        if ($TestEnvName -ne 'Windows') {
-            $subModulePath = $subModulePath -replace '\\', '/'
-        }
+        $subModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.$ModuleName" $subModuleName
+        # if ($TestEnvName -ne 'Windows') {
+        #     $subModulePath = "$RepoRoot/artifacts/Debug/az.$ModuleName/$subModuleName"
+        # }
         Push-Location $subModulePath
 
         & ".\test-module.ps1"  

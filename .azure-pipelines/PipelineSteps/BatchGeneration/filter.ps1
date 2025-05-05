@@ -53,5 +53,5 @@ Write-Matrix -GroupedModules $groupedTestWindowsModules -VariableName 'testWindo
 $groupedTestLinuxModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestLinuxJobs
 Write-Matrix -GroupedModules $groupedTestLinuxModules -VariableName 'testLinuxTargets' -RepoRoot $RepoRoot
 
-# $groupedTestMacModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestMacJobs
-# Write-Matrix -GroupedModules $groupedTestMacModules -VariableName 'testMacTargets' -RepoRoot $RepoRoot
+$groupedTestMacModules = Group-Modules -Modules $changedSubModules -MaxParallelJobs $MaxParallelTestMacJobs
+Write-Matrix -GroupedModules $groupedTestMacModules -VariableName 'testMacOSTargets' -RepoRoot $RepoRoot
