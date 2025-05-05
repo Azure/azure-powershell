@@ -11,7 +11,10 @@ jobs:
   displayName: "Test ${{ parameters.OSName }}:"
   dependsOn: 
     - collect
-  condition: ne(stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'], '{}')
+  condition: and(
+    ne(stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'], '{}'),
+    not(eq(stageDependencies.Build.filter.outputs['mtrx.testWindowsTargets'], null))
+    )
   timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
   pool:
     name: ${{ parameters.agentPoolName }}
