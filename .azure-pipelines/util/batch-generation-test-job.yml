@@ -19,7 +19,7 @@ jobs:
     name: ${{ parameters.agentPoolName }}
     vmImage: $${{ parameters.agentPoolVMImage }}
   strategy:
-    matrix: $[ stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}TTargets'] ]
+    matrix: $[ stageDependencies.Build.filter.outputs['mtrx.test${{ parameters.OSName }}Targets'] ]
     maxParallel: ${{ parameters.maxParallel }}
 
   steps:
