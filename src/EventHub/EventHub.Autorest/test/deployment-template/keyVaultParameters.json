@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resource_name_prefix": {
-      "value": "eh-ps-zo49dq"
+      "value": "eh-ps-dpe9cr"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNameqd7bok"
+      "value": "namespaceNamer7012y"
     }
   }
 }

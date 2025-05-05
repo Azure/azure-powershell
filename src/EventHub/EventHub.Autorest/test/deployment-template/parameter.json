@@ -6,43 +6,43 @@
       "value": "southcentralus"
     },
     "namespace_name": {
-      "value": "namespaceNamexiad71"
+      "value": "namespaceName8hu5se"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNameqd7bok"
+      "value": "namespaceNamer7012y"
     },
     "primary_namespace_name": {
-      "value": "namespaceNamee5b4l6"
+      "value": "namespaceNamefpxvr3"
     },
     "secondary_namespace_name": {
-      "value": "namespaceNameeh6gct"
+      "value": "namespaceNamerc4lm0"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-rulemupg9t"
+      "value": "auth-ruleizquaj"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-ruleemqyrl"
+      "value": "auth-rulevcs3u8"
     },
     "eventhub_name": {
-      "value": "eventHubgwqfbp"
+      "value": "eventHub6kjoy1"
     },
     "schema_group_name": {
-      "value": "schemaGroupelkpfa"
+      "value": "schemaGroup16d8ou"
     },
     "appgroup_name": {
-      "value": "appGroupy85lta"
+      "value": "appGroupho7pzx"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ho719g/providers/Microsoft.Network/virtualNetworks/eh-ps-zo49dq-vnet/subnets/default"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-9rwctz/providers/Microsoft.Network/virtualNetworks/eh-ps-dpe9cr-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-p7x62f"
+      "value": "privateEndpoint-dniew6"
     },
     "peName2": {
-      "value": "privateEndpoint-394kpt"
+      "value": "privateEndpoint-eqwndi"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ho719g/providers/Microsoft.EventHub/namespaces/namespaceNamexiad71"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-9rwctz/providers/Microsoft.EventHub/namespaces/namespaceName8hu5se"
     },
     "useZoneRedundancy": {
       "value": true
