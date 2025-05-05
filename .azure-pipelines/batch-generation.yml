@@ -68,8 +68,8 @@ stages:
       displayName: "Batch Generate: "
       dependsOn: prepare
       condition: and(
-        ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}'),
-        not(eq(dependencies.prepare.outputs['mtrx.generateTargets'], null))
+        not(empty(dependencies.prepare.outputs['mtrx.generateTargets'])),
+        ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
@@ -186,8 +186,8 @@ stages:
       displayName: "Build:"
       dependsOn: filter
       condition: and(
-        ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}'),
-        not(eq(dependencies.filter.outputs['mtrx.buildTargets'], null))
+        not(empty(dependencies.filter.outputs['mtrx.buildTargets'])),
+        ne(dependencies.filter.outputs['mtrx.buildTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
@@ -315,8 +315,8 @@ stages:
       dependsOn: 
         - collect
       condition: and(
-        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}'),
-        not(eq(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], null))
+        not(empty(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'])),
+        ne(stageDependencies.Build.filter.outputs['mtrx.analyzeTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
