@@ -133,6 +133,75 @@
         }
       }
     },
+    "Operation": {
+      "type": "object",
+      "title": "REST API Operation",
+      "description": "Details of a REST API operation, returned from the Resource Provider Operations API",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the operation, as per Resource-Based Access Control (RBAC). Examples: \"Microsoft.Compute/virtualMachines/write\", \"Microsoft.Compute/virtualMachines/capture/action\"",
+          "readOnly": true
+        },
+        "isDataAction": {
+          "type": "boolean",
+          "description": "Whether the operation applies to data-plane. This is \"true\" for data-plane operations and \"false\" for ARM/control-plane operations.",
+          "readOnly": true
+        },
+        "display": {
+          "type": "object",
+          "description": "Localized display information for this particular operation.",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "description": "The localized friendly form of the resource provider name, e.g. \"Microsoft Monitoring Insights\" or \"Microsoft Compute\".",
+              "readOnly": true
+            },
+            "resource": {
+              "type": "string",
+              "description": "The localized friendly name of the resource type related to this operation. E.g. \"Virtual Machines\" or \"Job Schedule Collections\".",
+              "readOnly": true
+            },
+            "operation": {
+              "type": "string",
+              "description": "The concise, localized friendly name for the operation; suitable for dropdowns. E.g. \"Create or Update Virtual Machine\", \"Restart Virtual Machine\".",
+              "readOnly": true
+            },
+            "description": {
+              "type": "string",
+              "description": "The short, localized friendly description of the operation; suitable for tool tips and detailed views.",
+              "readOnly": true
+            }
+          }
+        },
+        "origin": {
+          "type": "string",
+          "description": "The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is \"user,system\"",
+          "enum": [
+            "user",
+            "system",
+            "user,system"
+          ],
+          "x-ms-enum": {
+            "name": "Origin",
+            "modelAsString": true
+          },
+          "readOnly": true
+        },
+        "actionType": {
+          "type": "string",
+          "description": "Enum. Indicates the action type. \"Internal\" refers to actions that are for internal only APIs.",
+          "enum": [
+            "Internal"
+          ],
+          "x-ms-enum": {
+            "name": "ActionType",
+            "modelAsString": true
+          },
+          "readOnly": true
+        }
+      }
+    },
     "OperationListResult": {
       "type": "object",
       "description": "A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of results.",

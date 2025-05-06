@@ -24,6 +24,7 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 directive:
+  # Remove all descriptions from the swagger document
   - from: swagger-document
     where: $.definitions
     transform: >
@@ -59,27 +60,41 @@ directive:
       
       removeDefinitionDescriptions($);
       return $;
+  # Remove all descriptions from parameters in the swagger document
+  - from: swagger-document
+    where: $.parameters
+    transform: >
+      function removeParameterDescriptions(parameters) {
+        if (!parameters || typeof parameters !== 'object') return parameters;
+        
+        for (const paramName in parameters) {
+          if (parameters[paramName] && parameters[paramName].description) {
+            delete parameters[paramName].description;
+          }
+        }
+        
+        return parameters;
+      }
+      
+      return removeParameterDescriptions($);
+
 
   # Replace references to common types with the local file
-  - from: swagger-document
+  - from: Skus.json
     where: $..["$ref"]
     transform: >
-      return $.replace('../../../../../../common-types/resource-management/v3/types.json', './common-types/common.json')
+      return $.replace(/.*common-types\/resource-management\/v3\/types.json.*/, './common-types/common.json')
+  # Replace references to common types with the local file
+  - from: DiskRP.json
+    where: $..["$ref"]
+    transform: >
+      return $.replace(/.*common-types\/resource-management\/v3\/types.json.*/, './common-types/common.json')
 
-  # Remove all definitions and parameters from common-types/resource-management/v3/types.json
+  # Remove all from common-types/resource-management/v3/types.json
   - from: common-types/resource-management/v3/types.json
     where: $
     transform: |
-      // Keep the basic structure but remove definitions and parameters
-      if ($) {
-        if ($.definitions) {
-          $.definitions = {};
-        }
-        if ($.parameters) {
-          $.parameters = {};
-        }
-      }
-      return $;
+      return {};
 
   # dynamically add a DummyOrchestrationServiceName value to the enum 
   - from: ComputeRP.json
@@ -99,7 +114,7 @@ directive:
       }
       return $;
     
-    # remove it from the C# generated code
+  # remove it from the C# generated code
   - from: source-file-csharp
     where: $ 
     transform: >-
@@ -112,6 +127,8 @@ directive:
   - from: ComputeRP.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}"].get.parameters[?(@.name === "$expand")]["x-ms-enum"].name
     transform: return "VmssVMInstanceViewTypes"
+  
+  # Fix inconsistency
   - from: swagger-document
     where: $.securityDefinitions.azure_auth
     transform: >
@@ -121,7 +138,7 @@ directive:
     transform: >
       $.tags = [];
 
-  # Fix for enums missing x-ms-enum name
+  # Fix for enums missing x-ms-enum name. REMOVALBLE?
   - from: swagger-document
     where: $..["x-ms-enum"]
     transform: |
@@ -132,12 +149,12 @@ directive:
       }
       return $;
 
-#  # Fix for ExtendedLocationType enum
-#  - from: swagger-document
-#    where: $.definitions.ExtendedLocationType["x-ms-enum"]
-#    transform: |
-#      $.name = "ExtendedLocationTypes";
-#      return $;
+  # Fix for ExtendedLocationType enum
+  - from: swagger-document
+    where: $.definitions.ExtendedLocationType["x-ms-enum"]
+    transform: |
+      $.name = "ExtendedLocationTypes";
+      return $;
 #
 #  # Fix for duplicate OperatingSystemStateTypes -  rename in GalleryRP.json
 #  - from: GalleryRP.json
@@ -149,10 +166,6 @@ directive:
     where: $..properties.type
     transform: |
       if ($ && $["x-ms-enum"] && $["x-ms-enum"].name === "ResourceIdentityType") {
-        // Update x-ms-enum name
-        //$["x-ms-enum"].name = "ComputeResourceIdentityType";
-        
-        // Set the enum array to match x-ms-enum values
         $.enum = ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"];
       }
       return $;
@@ -165,8 +178,23 @@ directive:
         $.format = "int64";
       }
       return $;
-
  ```
+###
+``` yaml
+commit: f8d5ec7433a099628286e1b912e94ad599510680
+input-file: 
+  - ./common-types/common.json
+#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/ComputeRP.json
+#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/DiskRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
+#  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
+
+output-folder: Generated
+
+namespace: Microsoft.Azure.Management.Compute
+```
+
 <!--
   # Remove one of the duplicate SubscriptionIdParameter definitions
   - from-file: Microsoft.Compute/common-types/v1/common.json
@@ -318,18 +346,3 @@ directive:
 
  -->
 
-###
-``` yaml
-commit: f8d5ec7433a099628286e1b912e94ad599510680
-input-file: 
-  - ./common-types/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-11-01/ComputeRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/DiskRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2024-03-03/GalleryRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
-
-output-folder: Generated
-
-namespace: Microsoft.Azure.Management.Compute
-```
