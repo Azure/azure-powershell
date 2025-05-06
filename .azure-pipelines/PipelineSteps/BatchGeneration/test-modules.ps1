@@ -8,6 +8,11 @@ $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGen
 Import-Module $utilFilePath -Force
 $subModuleGroup = Get-Targets -RepoRoot $RepoRoot -TargetsOutputFileName "test$($TestEnvName)Targets.json" -MatrixKey $MatrixKey
 
+if ($TestEnvName -eq 'Linux') {
+    $accountsModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.Accounts" "Az.Accounts.psd1"
+    Import-Module $accountsModulePath -Force
+}
+
 $results = @()  
 
 foreach ($subModule in $subModuleGroup) {
@@ -24,9 +29,6 @@ foreach ($subModule in $subModuleGroup) {
     try {
         Write-Host "Testing sub module: $subModule"
         $subModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.$ModuleName" $subModuleName
-        # if ($TestEnvName -ne 'Windows') {
-        #     $subModulePath = "$RepoRoot/artifacts/Debug/az.$ModuleName/$subModuleName"
-        # }
         Push-Location $subModulePath
 
         & ".\test-module.ps1"  

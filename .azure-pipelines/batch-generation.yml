@@ -399,4 +399,3 @@ stages:
         agentPoolName: ${{ variables.MacOSAgentPoolName }}
         agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
         maxParallel: ${{ variables.MaxParallelTestMacJobs }}
-    
