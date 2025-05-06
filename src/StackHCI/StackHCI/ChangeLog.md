@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.5.1
+* 22H2 EOL Message
+
 ## Version 2.5.0
 * Upgraded nuget package to signed package.
 
