@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecookiesconditionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleCookiesConditionObject -ParameterOperator <CookiesOperator> -Name <MatchVariable>
+New-AzCdnDeliveryRuleCookiesConditionObject -ParameterOperator <String> -ParameterTypeName <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>]
- [-ParameterTransform <Transform[]>] [<CommonParameters>]
+ [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ Cookies
 Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition
 
 ## PARAMETERS
-
-### -Name
-The name of the condition for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterMatchValue
 The match value for the condition of the delivery rule.
@@ -87,7 +72,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CookiesOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,11 +102,25 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,7 +134,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleCookiesCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCookiesCondition
 
 ## NOTES
 

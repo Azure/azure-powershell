@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.1
 * Fixed an error of not correctly setting the cmdlet context
 
 ## Version 3.2.0

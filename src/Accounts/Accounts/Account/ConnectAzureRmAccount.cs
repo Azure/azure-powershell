@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+                WriteWarning(IsSigningInToPublicCloud() ? Resources.RopcDeprecationPublicCloud : Resources.RopcDeprecationSovereignClouds);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
@@ -596,6 +596,15 @@ namespace Microsoft.Azure.Commands.Profile
 
                 WriteAnnouncementsPeriodically();
             }
+        }
+
+        private bool IsSigningInToPublicCloud()
+        {
+            if (_environment == null)
+            {
+                return true; // Default to public cloud if no environment is specified
+            }
+            return _environment.ActiveDirectoryAuthority.Equals(AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud].ActiveDirectoryAuthority, StringComparison.OrdinalIgnoreCase);
         }
 
         private void WriteAnnouncementsPeriodically()
