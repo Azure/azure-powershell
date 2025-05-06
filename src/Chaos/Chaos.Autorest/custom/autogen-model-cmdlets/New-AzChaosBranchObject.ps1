@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch
 https://learn.microsoft.com/powershell/module/Az.Chaos/new-azchaosbranchobject
 #>
 function New-AzChaosBranchObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Chaos.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
