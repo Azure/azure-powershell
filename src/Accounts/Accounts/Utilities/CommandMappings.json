@@ -4948,6 +4948,7 @@
       "New-AzApplicationGatewayFirewallExclusionConfig": {},
       "New-AzApplicationGatewayFirewallMatchVariable": {},
       "New-AzApplicationGatewayFirewallPolicy": {},
+      "New-AzApplicationGatewayFirewallPolicyException": {},
       "New-AzApplicationGatewayFirewallPolicyExclusion": {},
       "New-AzApplicationGatewayFirewallPolicyExclusionManagedRule": {},
       "New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup": {},

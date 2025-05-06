@@ -875,6 +875,9 @@ Creates a match variable for firewall condition.
 ### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
 Creates a application gateway firewall policy.
 
+### [New-AzApplicationGatewayFirewallPolicyException](New-AzApplicationGatewayFirewallPolicyException.md)
+Creates an exception on the Firewall Policy
+
 ### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
 Creates an exclusion on the Firewall Policy
 
