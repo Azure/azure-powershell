@@ -31,12 +31,6 @@ Get-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-Defau
  [<CommonParameters>]
 ```
 
-### GetViaIdentityUserAssignedIdentity
-```
-Get-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets the federated identity credential.
 
@@ -137,7 +131,7 @@ The name of the federated identity credential resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityUserAssignedIdentity
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -206,21 +200,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentityInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: GetViaIdentityUserAssignedIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

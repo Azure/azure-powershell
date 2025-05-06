@@ -25,13 +25,6 @@ Update-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-Au
  [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityUserAssignedIdentityExpanded
-```
-Update-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- [-Audience <String[]>] [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaJsonFilePath
 ```
 Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
@@ -86,7 +79,7 @@ The list of audiences that can appear in the issued token.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -147,7 +140,7 @@ The URL of the issuer to be trusted.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -192,7 +185,7 @@ The name of the federated identity credential resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityUserAssignedIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -223,7 +216,7 @@ The identifier of the external identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUserAssignedIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -245,21 +238,6 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentityInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: UpdateViaIdentityUserAssignedIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

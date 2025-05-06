@@ -19,13 +19,6 @@ Remove-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -Reso
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityUserAssignedIdentity
-```
-Remove-AzFederatedIdentityCredential -Name <String> -UserAssignedIdentityInputObject <IManagedServiceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
 Remove-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
@@ -104,7 +97,7 @@ The name of the federated identity credential resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityUserAssignedIdentity
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -157,21 +150,6 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentityInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: DeleteViaIdentityUserAssignedIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
