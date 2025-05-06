@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Upgraded autorest version to autorest v4
 * Upgraded Api version to 2024-09-01
 * Added support for migration from classic cdn to afdx
 
