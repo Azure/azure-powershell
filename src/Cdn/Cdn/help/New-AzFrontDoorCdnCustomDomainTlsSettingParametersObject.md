@@ -1,25 +1,25 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdncustomdomaintlssettingparametersobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 
 ## SYNOPSIS
-Create an in-memory object for AFDDomainHttpsParameters.
+Create an in-memory object for AfdDomainHttpsParameters.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <AfdCertificateType>
- [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>]
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
+ [-MinimumTlsVersion <String>] [-Secret <IResourceReference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AFDDomainHttpsParameters.
+Create an in-memory object for AfdDomainHttpsParameters.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Create an in-memory object for AFDDomainHttpsParameters
 Defines the source of the SSL certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,10 +74,9 @@ Accept wildcard characters: False
 Resource reference to the secret.
 ie.
 subs/rg/profile/secret.
-To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters
 
 ## NOTES
 
