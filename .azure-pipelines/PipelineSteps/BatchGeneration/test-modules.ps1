@@ -4,17 +4,12 @@ param (
     [string]$RepoRoot
 )
 
-# Install Az.Accounts module and Pester module
-Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+# Install Az.Accounts module
 Install-Module -Name Az.Accounts -AllowClobber -Force -Repository PSGallery
 
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
 $subModuleGroup = Get-Targets -RepoRoot $RepoRoot -TargetsOutputFileName "test$($TestEnvName)Targets.json" -MatrixKey $MatrixKey
-
-# $modulesPath = Join-Path $RepoRoot 'artifacts' 'Debug' 
-# if ($IsWindows) { $sp = ";" } else { $sp = ":" }
-# $env:PSModulePath = $env:PSModulePath + $sp + $modulesPath
 
 $results = @()  
 
