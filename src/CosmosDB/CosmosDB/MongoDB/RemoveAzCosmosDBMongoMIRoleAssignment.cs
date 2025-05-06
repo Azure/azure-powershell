@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Deleting CosmosDB MongoMI Role Assignment"))
             {
-                CosmosDBManagementClient.MongoMIResources.DeleteMongoMIRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, MongoMIRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult();
+                CosmosDBManagementClient.MongoMiResources.DeleteMongoMIRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, MongoMIRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult();
 
                 if (PassThru)
                 {

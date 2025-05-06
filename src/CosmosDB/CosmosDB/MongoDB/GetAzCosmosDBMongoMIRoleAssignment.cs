@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                MongoMIRoleAssignmentResource mongoMIRoleAssignmentGetResults = CosmosDBManagementClient.MongoMIResources.GetMongoMIRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, MongoMIRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult().Body;
+                MongoMIRoleAssignmentResource mongoMIRoleAssignmentGetResults = CosmosDBManagementClient.MongoMiResources.GetMongoMIRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, MongoMIRoleHelper.ParseToRoleAssignmentId(Id)).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoMIRoleAssignmentGetResults(mongoMIRoleAssignmentGetResults));
             }
             else
             {
-                IEnumerable<MongoMIRoleAssignmentResource> mongoMIRoleAssignments = CosmosDBManagementClient.MongoMIResources.ListMongoMIRoleAssignmentsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                IEnumerable<MongoMIRoleAssignmentResource> mongoMIRoleAssignments = CosmosDBManagementClient.MongoMiResources.ListMongoMIRoleAssignmentsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
 
                 foreach (MongoMIRoleAssignmentResource mongoMIRoleAssignment in mongoMIRoleAssignments)
                 {

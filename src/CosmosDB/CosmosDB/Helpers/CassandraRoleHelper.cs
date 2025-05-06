@@ -21,11 +21,11 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
-    public static class GremlinRoleHelper
+    public static class CassandraRoleHelper
     {
-        private static Regex roleDefinitionPrefix = new Regex("/subscriptions/(?<Subscription>.*)/resourceGroups/(?<ResourceGroup>.*)/providers/Microsoft.DocumentDB/databaseAccounts/(?<DatabaseAccount>.*)/gremlinRoleDefinitions/(?<RoleDefinitionId>.*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex roleDefinitionPrefix = new Regex("/subscriptions/(?<Subscription>.*)/resourceGroups/(?<ResourceGroup>.*)/providers/Microsoft.DocumentDB/databaseAccounts/(?<DatabaseAccount>.*)/cassandraRoleDefinitions/(?<RoleDefinitionId>.*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-        private static Regex roleAssignmentPrefix = new Regex("/subscriptions/(?<Subscription>.*)/resourceGroups/(?<ResourceGroup>.*)/providers/Microsoft.DocumentDB/databaseAccounts/(?<DatabaseAccount>.*)/gremlinRoleAssignments/(?<RoleAssignmentId>.*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex roleAssignmentPrefix = new Regex("/subscriptions/(?<Subscription>.*)/resourceGroups/(?<ResourceGroup>.*)/providers/Microsoft.DocumentDB/databaseAccounts/(?<DatabaseAccount>.*)/cassandraRoleAssignments/(?<RoleAssignmentId>.*)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private static Regex scopePrefix = new Regex("/subscriptions/(?<Subscription>.*)/resourceGroups/(?<ResourceGroup>.*)/providers/Microsoft.DocumentDB/databaseAccounts/(?<DatabaseAccount>.*)/?(?<Scope>.*)?", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             }
             else
             {
-                return $"/subscriptions/{subscription}/resourceGroups/{resourceGroup}/providers/Microsoft.DocumentDB/databaseAccounts/{databaseAccount}/gremlinRoleDefinitions/{id}";
+                return $"/subscriptions/{subscription}/resourceGroups/{resourceGroup}/providers/Microsoft.DocumentDB/databaseAccounts/{databaseAccount}/cassandraRoleDefinitions/{id}";
             }
         }
 
