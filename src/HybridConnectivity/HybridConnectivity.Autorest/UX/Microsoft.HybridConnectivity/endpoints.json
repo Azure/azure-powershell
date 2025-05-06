@@ -1,0 +1,75 @@
+{
+  "resourceType": "endpoints",
+  "apiVersion": "2024-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity"
+  },
+  "commands": [
+    {
+      "name": "Get-AzHybridConnectivityEndpoint",
+      "description": "Gets the endpoint to the resource.",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/get-azhybridconnectivityendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the endpoint to the resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzHybridConnectivityEndpoint",
+      "description": "Deletes the endpoint access to the target resource.",
+      "path": "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.hybridconnectivity/remove-azhybridconnectivityendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the endpoint access to the target resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
