@@ -10,3 +10,7 @@ export type toolSchema = {
     parameters: toolParameterSchema[];
     callbackName: string;
 }
+
+export type autorestDirective = {
+    
+}

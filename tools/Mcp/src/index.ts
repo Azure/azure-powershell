@@ -68,6 +68,8 @@ async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
     console.log(`Codegen MCP Server running on stdio at ${new Date()}`);
+    const yaml = utils.getYamlContentFromReadMe("C:/workspace/azure-powershell/src/Maps/Maps.Autorest/README.md");
+    console.log();
 }
 
 main().catch((error) => {

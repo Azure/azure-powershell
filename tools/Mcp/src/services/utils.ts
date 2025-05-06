@@ -31,6 +31,5 @@ export function generateAndBuild(workingDirectory: string) {
     const startIndex = readmeContent.indexOf(startSign) + startSign.length;
     const endIndex = readmeContent.indexOf(endSign, startIndex);
     const yamlContent = readmeContent.substring(startIndex, endIndex).trim();
-    return yamlContent
     return yaml.load(yamlContent);
 }
