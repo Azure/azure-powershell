@@ -19,7 +19,7 @@
         - Additional information about change #1
 
 -->
-## Version 10.0.0
+## Upcoming Release
 * Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 
 
 ## Version 9.3.0
