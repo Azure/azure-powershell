@@ -400,17 +400,16 @@ stages:
         agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
         maxParallel: ${{ variables.MaxParallelTestMacJobs }}
  
-  - stage: Report
-    condition: always()
-    jobs:
-    - job: report
-      displayName: 'Report'
-      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
-      pool: ${{ variables.WindowsAgentPoolName }}
-      steps:
-      - checkout: none
+  # - stage: Report
+  #   condition: always()
+  #   jobs:
+  #   - job: report
+  #     displayName: 'Report'
+  #     timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+  #     pool: ${{ variables.WindowsAgentPoolName }}
+  #     steps:
+  #     - checkout: none
 
-      - task: PowerShell@2
-        name: report
-        displayName: 'Report Results'
-        
+  #     - task: PowerShell@2
+  #       name: report
+  #       displayName: 'Report Results'
