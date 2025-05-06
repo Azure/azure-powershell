@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzChaosCapability
 
 ## SYNOPSIS
-Create a Capability resource that extends a Target resource.
+create a Capability resource that extends a Target resource.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzChaosCapability -Name <String> -ParentProviderNamespace <String> -ParentRe
 ```
 
 ## DESCRIPTION
-Create a Capability resource that extends a Target resource.
+create a Capability resource that extends a Target resource.
 
 ## EXAMPLES
 
