@@ -3670,7 +3670,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"m3ERSykGY+olRr/3FpMBJperdNWFkdOXqSbsiVWLSo+cczHkJBTgiB+U1S+GWttPoKLPrQt8Wmnq+ASt7WQoWg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -3727,7 +3727,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"m3ERSykGY+olRr/3FpMBJperdNWFkdOXqSbsiVWLSo+cczHkJBTgiB+U1S+GWttPoKLPrQt8Wmnq+ASt7WQoWg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -3784,14 +3784,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"m3ERSykGY+olRr/3FpMBJperdNWFkdOXqSbsiVWLSo+cczHkJBTgiB+U1S+GWttPoKLPrQt8Wmnq+ASt7WQoWg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/audit-cmdlet-test-rgps2574/providers/Microsoft.Sql/servers/audit-cmdlet-serverps2574/auditingSettings/default?api-version=2021-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL2F1ZGl0LWNtZGxldC10ZXN0LXJncHMyNTc0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvYXVkaXQtY21kbGV0LXNlcnZlcnBzMjU3NC9hdWRpdGluZ1NldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "28b35a86-f259-49cf-8504-98bbb4bbb2ee"
@@ -3869,7 +3869,7 @@
       "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/audit-cmdlet-test-rgps2574/providers/Microsoft.Sql/servers/audit-cmdlet-serverps2574/auditingSettings/default?api-version=2021-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL2F1ZGl0LWNtZGxldC10ZXN0LXJncHMyNTc0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvYXVkaXQtY21kbGV0LXNlcnZlcnBzMjU3NC9hdWRpdGluZ1NldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"isAzureMonitorTargetEnabled\": true,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"isAzureMonitorTargetEnabled\": true,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "d791f699-6b6a-475b-a7f1-d0cf744e32ab"
@@ -3947,7 +3947,7 @@
       "RequestUri": "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/audit-cmdlet-test-rgps2574/providers/Microsoft.Sql/servers/audit-cmdlet-serverps2574/auditingSettings/default?api-version=2021-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODMxMzM3MWUtMDg3OS00MjhlLWIxZGEtNjM1MzU3NWE5MTkyL3Jlc291cmNlR3JvdXBzL2F1ZGl0LWNtZGxldC10ZXN0LXJncHMyNTc0L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvYXVkaXQtY21kbGV0LXNlcnZlcnBzMjU3NC9hdWRpdGluZ1NldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"isAzureMonitorTargetEnabled\": true,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"rntvRx4jWazhZ3qSe1g929a3pxgjhg1g5IOV3wMf+7c+ZKVz0jXE9Re4HoxjRrfjoVj4uJl2OPqF+AStQEkpBA==\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"retentionDays\": 8,\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\"\r\n    ],\r\n    \"isStorageSecondaryKeyInUse\": false,\r\n    \"isAzureMonitorTargetEnabled\": true,\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps2574.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"8313371e-0879-428e-b1da-6353575a9192\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "c67b018e-caa3-4209-8841-f961a2986983"

@@ -2473,7 +2473,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"scLWW9dcOm/ohun/rXma6QbuzRyhiX124p2NOKOYApiRTZOVuaW7OUPpbYQxYmMb92AL7BDzX+jo+ASt4djS3g==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"yf5Ui9D8hDlneIphvC2V7vaXviLrpZ4wa9vjo1FImqAwLpCZf+ST4BTte5f6xKpWu3S4JEiMt++i+AStIorSoA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2530,7 +2530,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"scLWW9dcOm/ohun/rXma6QbuzRyhiX124p2NOKOYApiRTZOVuaW7OUPpbYQxYmMb92AL7BDzX+jo+ASt4djS3g==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"yf5Ui9D8hDlneIphvC2V7vaXviLrpZ4wa9vjo1FImqAwLpCZf+ST4BTte5f6xKpWu3S4JEiMt++i+AStIorSoA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"REDACTED\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2557,7 +2557,7 @@
           "326"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps8551.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"scLWW9dcOm/ohun/rXma6QbuzRyhiX124p2NOKOYApiRTZOVuaW7OUPpbYQxYmMb92AL7BDzX+jo+ASt4djS3g==\",\r\n    \"storageAccountSubscriptionId\": \"857355f0-57d5-4754-b91a-0393dbff9afc\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps8551.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"857355f0-57d5-4754-b91a-0393dbff9afc\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -2635,7 +2635,7 @@
           "326"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps8551.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"scLWW9dcOm/ohun/rXma6QbuzRyhiX124p2NOKOYApiRTZOVuaW7OUPpbYQxYmMb92AL7BDzX+jo+ASt4djS3g==\",\r\n    \"storageAccountSubscriptionId\": \"857355f0-57d5-4754-b91a-0393dbff9afc\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://blobauditps8551.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"REDACTED\",\r\n    \"storageAccountSubscriptionId\": \"857355f0-57d5-4754-b91a-0393dbff9afc\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
