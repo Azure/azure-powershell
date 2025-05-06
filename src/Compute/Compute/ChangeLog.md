@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing. 
 
 ## Version 9.3.0
 * Added new cmdlets `Add-AzVmssSkuProfileVMSize` and `Remove-AzVmssSkuProfileVMSize` to add and remove VM sizes to and from the VMSS SkuProfile.

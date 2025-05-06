@@ -803,7 +803,7 @@
     }
   ],
   "Names": {
-    "Test-ResiliencyPolicyVMSS": [
+    "Test-ResilientVMCreateDelete": [
       "crptestps5726",
       "crptestps3863"
     ]
