@@ -101,6 +101,7 @@
       "Start-AzAksCluster": {},
       "Start-AzAksManagedClusterCommand": {},
       "Stop-AzAksCluster": {},
+      "Update-AzAksMaintenanceConfiguration": {},
       "Get-AzAksClusterUpgradeProfile": {}
     },
     "Az.AksArc": {
@@ -845,6 +846,9 @@
       "Get-AzFrontDoorCdnSecret": {},
       "Get-AzFrontDoorCdnSecurityPolicy": {},
       "Import-AzCdnEndpointContent": {},
+      "Invoke-AzCdnAbortProfileToAFDMigration": {},
+      "Invoke-AzCdnCommitProfileToAFDMigration": {},
+      "Move-AzCdnProfileToAFD": {},
       "New-AzCdnCustomDomain": {},
       "New-AzCdnDeliveryRuleCacheExpirationActionObject": {},
       "New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject": {},
@@ -869,6 +873,7 @@
       "New-AzCdnHealthProbeParametersObject": {},
       "New-AzCdnLoadParametersObject": {},
       "New-AzCdnManagedHttpsParametersObject": {},
+      "New-AzCdnMigrationEndpointMappingObject": {},
       "New-AzCdnOrigin": {},
       "New-AzCdnOriginGroup": {},
       "New-AzCdnOriginGroupOverrideActionObject": {},
@@ -954,6 +959,7 @@
       "Test-AzCdnEndpointCustomDomain": {},
       "Test-AzCdnNameAvailability": {},
       "Test-AzCdnProbe": {},
+      "Test-AzCdnProfileMigrationCompatibility": {},
       "Test-AzFrontDoorCdnEndpointCustomDomain": {},
       "Test-AzFrontDoorCdnEndpointNameAvailability": {},
       "Test-AzFrontDoorCdnProfileHostNameAvailability": {},
@@ -971,6 +977,7 @@
       "Update-AzFrontDoorCdnProfileSku": {},
       "Update-AzFrontDoorCdnRoute": {},
       "Update-AzFrontDoorCdnRule": {},
+      "Update-AzFrontDoorCdnSecret": {},
       "Update-AzFrontDoorCdnSecurityPolicy": {}
     },
     "Az.ChangeAnalysis": {
@@ -3355,8 +3362,7 @@
       "Remove-AzImageBuilderTemplate": {},
       "Remove-AzImageBuilderTrigger": {},
       "Start-AzImageBuilderTemplate": {},
-      "Stop-AzImageBuilderTemplate": {},
-      "Update-AzImageBuilderTemplate": {}
+      "Stop-AzImageBuilderTemplate": {}
     },
     "Az.ImportExport": {
       "Get-AzImportExport": {},
@@ -6461,6 +6467,7 @@
       "Get-AzRedisEnterpriseCacheDatabase": {},
       "Get-AzRedisEnterpriseCacheKey": {},
       "Get-AzRedisEnterpriseCacheOperationStatus": {},
+      "Get-AzRedisEnterpriseCacheSku": {},
       "Import-AzRedisEnterpriseCache": {},
       "Invoke-AzRedisEnterpriseCacheDatabaseFlush": {},
       "Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup": {},
