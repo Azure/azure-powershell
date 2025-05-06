@@ -1,48 +1,40 @@
 ---
-external help file: Az.Aks-help.xml
+external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/new-azaksmaintenanceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.aks/update-azaksmaintenanceconfiguration
 schema: 2.0.0
 ---
 
-# New-AzAksMaintenanceConfiguration
+# Update-AzAksMaintenanceConfiguration
 
 ## SYNOPSIS
-create a maintenance configuration in the specified managed cluster.
+update a maintenance configuration in the specified managed cluster.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
+Update-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-NotAllowedTime <ITimeSpan[]>]
+ [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a maintenance configuration in the specified managed cluster.
+update a maintenance configuration in the specified managed cluster.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a maintenance configuration in the specified managed cluster
+### Example 1: Update a maintenance configuration in the specified managed cluster
 ```powershell
-$TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
-$TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2
-New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
+$TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 2) -End (Get-Date -Year 2023 -Month 3 -Day 3)
+$TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 2,3
+Update-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
 ```
 
 ```output
@@ -50,8 +42,8 @@ Id                           : /subscriptions/{subId}/resourceGroups/mygroup/pro
                                ance_config
 Name                         : aks_maintenance_config
 NotAllowedTime               : {{
-                                 "start": "2023-03-01T07:56:08.2725383Z",
-                                 "end": "2023-03-02T07:56:08.2727034Z"
+                                 "start": "2023-03-02T07:56:08.2725383Z",
+                                 "end": "2023-03-03T07:56:08.2727034Z"
                                }}
 ResourceGroupName            : mygroup
 SystemDataCreatedAt          :
@@ -62,12 +54,12 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TimeInWeek                   : {{
                                  "day": "Sunday",
-                                 "hourSlots": [ 1, 2 ]
+                                 "hourSlots": [ 2, 3 ]
                                }}
 Type                         :
 ```
 
-Create a maintenance configuration "aks_maintenance_config" in a managed cluster "myCluster" with a time in week and a not allowed time span.
+Update a maintenance configuration "aks_maintenance_config" in a managed cluster "myCluster" with a time in week and a not allowed time span.
 
 ## PARAMETERS
 
@@ -76,7 +68,7 @@ The name of the maintenance configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -102,33 +94,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -137,7 +114,7 @@ Time slots on which upgrade is not allowed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,7 +130,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +145,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -183,7 +160,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +175,7 @@ If two array entries specify the same day of the week, the applied configuration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,6 +221,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
@@ -251,3 +230,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
