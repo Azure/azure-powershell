@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     public class AdlsTests : DataLakeStoreTestRunner
     {
         private readonly string AccountName = "sss-datalakestore-test-c17";
-        private readonly string ResourceGroupLocation = "westus2";
+        private readonly string ResourceGroupLocation = "westus";
         private readonly string TestFileSystemPermissionResourceGroupLocation = "ukwest";
         private readonly string TestFileSystemResourceGroupLocation = "ukwest";
 
