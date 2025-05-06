@@ -54,7 +54,7 @@ Get all compute resource skus in West US region, filter by name and vCPUs capabi
 
 ### Example 3
 ```powershell
-$vmSizes = Get-AzComputeResourceSku -Location $location | Where-Object {
+$vmSizes = Get-AzComputeResourceSku -Location "WestUS" | Where-Object {
     $_.ResourceType -eq "virtualMachines" -and
     ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
     ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
@@ -66,7 +66,7 @@ $vmSizes.count
 812
 ```
 
-Get all compute resource skus in the specified location, filter by resource type, vCPUs capability, and MaxDataDiskCount capability, and count the number of results.
+Get all compute resource skus in West US region, filter by resource type, vCPUs capability, and MaxDataDiskCount capability, and count the number of results.
 
 ## PARAMETERS
 
