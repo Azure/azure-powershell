@@ -25,6 +25,12 @@ Get-AzDeviceUpdateInstance -AccountName <String> -Name <String> -ResourceGroupNa
  [<CommonParameters>]
 ```
 
+### GetViaIdentityAccount
+```
+Get-AzDeviceUpdateInstance -Name <String> -AccountInputObject <IDeviceUpdateIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDeviceUpdateInstance -InputObject <IDeviceUpdateIdentity> [-DefaultProfile <PSObject>]
@@ -64,6 +70,21 @@ Returns instance details for the given instance and account name.
 
 ## PARAMETERS
 
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
+Parameter Sets: GetViaIdentityAccount
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AccountName
 Account name.
 
@@ -97,7 +118,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
@@ -116,7 +136,7 @@ Instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityAccount
 Aliases: InstanceName
 
 Required: True
@@ -165,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance
 
 ## NOTES
 

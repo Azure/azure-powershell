@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated existing Cmdlets
+  - Get-AzStandbyVMPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.
+  - Get-AzStandbyContainerGroupPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.
+  - New-AzStandbyContainerGroupPool added the new parameter -Zone.
 
 ## Version 0.2.1
 * Upgraded nuget package to signed package.

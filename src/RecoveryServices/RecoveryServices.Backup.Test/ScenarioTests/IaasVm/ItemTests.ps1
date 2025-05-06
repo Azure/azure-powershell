@@ -339,7 +339,7 @@ function Test-AzureVMMUA
 	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
 	$vmFriendlyName = "hiaganewvm2"
 	# $resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvm-pstest-rg/providers/Microsoft.DataProtection/resourceGuards/mua-pstest-rguard"
-	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard"
+	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard" # HiagaPSTest1
 	$lowerRetentionPolicy = "mua-vm-lowerDailyRet"
 	
 	try

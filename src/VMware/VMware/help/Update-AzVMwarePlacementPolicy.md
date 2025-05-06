@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Update a PlacementPolicy
+update a PlacementPolicy
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-AffinityStrength
 ```
 
 ## DESCRIPTION
-Update a PlacementPolicy
+update a PlacementPolicy
 
 ## EXAMPLES
 

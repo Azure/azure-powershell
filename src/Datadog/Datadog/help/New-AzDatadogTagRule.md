@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDatadogTagRule
 
 ## SYNOPSIS
-Create or update a tag rule set for a given monitor resource.
+create a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
@@ -20,6 +20,28 @@ New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <St
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityMonitorExpanded
+```
+New-AzDatadogTagRule -Name <String> -MonitorInputObject <IDatadogIdentity>
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendResourceLog]
+ [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzDatadogTagRule -InputObject <IDatadogIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
@@ -29,7 +51,7 @@ New-AzDatadogTagRule -InputObject <IDatadogIdentity> [-LogRuleFilteringTag <IFil
 ```
 
 ## DESCRIPTION
-Create or update a tag rule set for a given monitor resource.
+create a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
@@ -85,7 +107,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
@@ -99,17 +120,46 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogRuleFilteringTag
 List of filtering tags to be used for capturing logs.
 This only takes effect if SendResourceLogs flag is enabled.
 If empty, all resources will be captured.
 If only Exclude action is specified, the rules will apply to the list of all available resources.
 If Include actions are specified, the rules will only include resources with the associated tags.
-To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IFilteringTag[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -124,7 +174,7 @@ Flag specifying if AAD logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,7 +189,7 @@ Flag specifying if Azure resource logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +204,7 @@ Flag specifying if Azure subscription logs should be sent for the Monitor resour
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,11 +219,10 @@ List of filtering tags to be used for capturing metrics.
 If empty, all resources will be captured.
 If only Exclude action is specified, the rules will apply to the list of all available resources.
 If Include actions are specified, the rules will only include resources with the associated tags.
-To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IFilteringTag[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,12 +232,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+Parameter Sets: CreateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -203,7 +267,7 @@ Rule set name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -219,7 +283,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -234,7 +298,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -284,7 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRules
 
 ## NOTES
 
