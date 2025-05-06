@@ -1163,7 +1163,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeVmSize
-The size of the Virtual Machine. Default value is Standard_D2_v2.
+The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.
 
 ```yaml
 Type: System.String
