@@ -1,7 +1,7 @@
 ---
 external help file: Az.Carbon-help.xml
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemsmonthlysummaryreportqueryfilter
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemsmonthlysummaryreportqueryfilterobject
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
 
 ### Example 1: Create new TopItemsMonthlySummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonTopitemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 ```
 
 ```output

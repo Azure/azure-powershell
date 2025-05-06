@@ -1,7 +1,7 @@
 ---
 external help file: Az.Carbon-help.xml
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonmonthlysummaryreportQueryFilterObject
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonmonthlysummaryreportqueryfilterobject
 schema: 2.0.0
 ---
 

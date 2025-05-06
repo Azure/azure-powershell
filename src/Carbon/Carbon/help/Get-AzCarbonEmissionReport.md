@@ -188,7 +188,7 @@ Get-AzCarbonEmissionReport -QueryParameter $queryFilter | Format-List | Out-File
 
 ### Example 6: Get Carbon Emission Top Items Summary Report
 ```powershell
-$queryFilter =  New-AzCarbonTopitemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+$queryFilter =  New-AzCarbonTopItemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 $FormatEnumerationLimit = 10
 Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
 ```
@@ -260,7 +260,7 @@ SkipToken SubscriptionAccessDecisionList Value
 
 ### Example 7: Get Carbon Emission Top Items Monthly Summary Report
 ```powershell
-$queryFilter =  New-AzCarbonTopitemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+$queryFilter =  New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 $FormatEnumerationLimit = 10
 Get-AzCarbonEmissionReport -queryParameter $queryFilter | ft -Wrap
 ```
