@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallassociationobject
 schema: 2.0.0
 ---
 
@@ -40,10 +40,9 @@ Create an in-memory object for AzureFrontDoor SecurityPolicyWebApplicationFirewa
 
 ### -Domain
 List of domains.
-To construct, see NOTES section for DOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +75,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallAssociation
 
 ## NOTES
 

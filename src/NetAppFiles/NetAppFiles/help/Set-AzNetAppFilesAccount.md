@@ -15,21 +15,21 @@ Updates an Azure NetApp Files (ANF) account with the new data set. Useful for de
 ### ByFieldsParameterSet (Default)
 ```
 Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceActiveDirectory
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Set-AzNetAppFilesAccount -Location <String> -Name <String> [-Tag <Hashtable>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -112,21 +112,6 @@ Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

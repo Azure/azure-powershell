@@ -10,5 +10,3 @@ Cookies
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition
-
-
