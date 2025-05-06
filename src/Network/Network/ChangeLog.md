@@ -22,6 +22,8 @@
 * Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
     - `Add-AzNetworkInterfaceIpConfig`
     - `New-AzNetworkInterfaceIpConfig`
+* Onboarded Application Gateway WAF Exclusions cmdlet.
+    - `New-AzApplicationGatewayFirewallPolicyExclusion`   
 
 ## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.
