@@ -18,9 +18,11 @@
   "description": "",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
+    "js-yaml": "^4.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.14.1",
     "typescript": "^5.8.3"
   }

@@ -1,10 +1,6 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import { z, ZodRawShape } from "zod";
-import { generateByAutorest, toolServices } from "./services/toolServices.js";
 import { CodegenServer } from "./models/CodegenServer.js";
-import specs from "./specs/Specs.json" assert { type: "json" };
-import { toolParameterSchema, toolSchema } from "./types.js";
+import * as utils from "./services/utils.js";
 
 // Create server instance
 // const server = new McpServer({
