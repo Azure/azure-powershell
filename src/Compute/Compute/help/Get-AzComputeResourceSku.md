@@ -31,10 +31,12 @@ List all compute resource skus in West US region
 
 ### Example 2
 ```powershell
-PS> Get-AzComputeResourceSku -Location "westus" | Where-Object {
->>     $_.Name -like 'Standard_A*' -and
->>     ([int]($_.Capabilities | Where-Object { $_.Name -eq 'vCPUs' }).Value) -le 4
->> } | Select-Object -ExpandProperty Name
+Get-AzComputeResourceSku -Location "westus" | Where-Object {
+    $_.Name -like 'Standard_A*' -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq 'vCPUs' }).Value) -le 4
+} | Select-Object -ExpandProperty Name
+```
+```output
 Standard_A0
 Standard_A1
 Standard_A1_v2
@@ -52,12 +54,15 @@ Get all compute resource skus in West US region, filter by name and vCPUs capabi
 
 ### Example 3
 ```powershell
-PS> $vmSizes = Get-AzComputeResourceSku -Location $location | Where-Object {
->>     $_.ResourceType -eq "virtualMachines" -and
->>     ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
->>     ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
->> }
-PS> $vmSizes.count
+$vmSizes = Get-AzComputeResourceSku -Location $location | Where-Object {
+    $_.ResourceType -eq "virtualMachines" -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -ge 4 -and
+    ([int]($_.Capabilities | Where-Object { $_.Name -eq "MaxDataDiskCount" }).Value) -ge 8
+}
+$vmSizes.count
+```
+
+```output
 812
 ```
 
