@@ -87,13 +87,8 @@ directive:
 # Create Model Cmdlets for QueryFilter ChildClasses
   - model-cmdlet:
      - model-name: ItemDetailsQueryFilter
-       cmdlet-name: New-AzCarbonItemDetailsQueryFilter
      - model-name: TopItemsMonthlySummaryReportQueryFilter
-       cmdlet-name: New-AzCarbonTopItemsMonthlySummaryReportQueryFilter
      - model-name: TopItemsSummaryReportQueryFilter
-       cmdlet-name: New-AzCarbonTopItemsSummaryReportQueryFilter 
      - model-name: MonthlySummaryReportQueryFilter
-       cmdlet-name: New-AzCarbonMonthlySummaryReportQueryFilter
      - model-name: OverallSummaryReportQueryFilter
-       cmdlet-name: New-AzCarbonOverallSummaryReportQueryFilter 
 ```

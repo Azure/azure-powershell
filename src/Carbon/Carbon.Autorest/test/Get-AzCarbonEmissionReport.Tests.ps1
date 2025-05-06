@@ -17,31 +17,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCarbonEmissionReport'))
 Describe 'Get-AzCarbonEmissionReport' {
 
     It 'GetCarbonEmissionsOverallSummaryReport' {
-        $queryFilter =  New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
+        $queryFilter =  New-AzCarbonOverallSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
         $response = Get-AzCarbonEmissionReport -QueryParameter $queryFilter
         $response | Should -Not -Be $null
         $response.Value | Should -Not -Be $null
     }
     It 'GetCarbonEmissionsMonthlySummaryReport' {
-        $queryFilter =  New-AzCarbonMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3')  -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
+        $queryFilter =  New-AzCarbonMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3')  -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
         $response = Get-AzCarbonEmissionReport -QueryParameter $queryFilter
         $response | Should -Not -Be $null
         $response.Value | Should -Not -Be $null
     }
     It 'GetCarbonEmissionsTopItemsMonthlySummaryReport' {
-        $queryFilter =  New-AzCarbonTopitemsMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
+        $queryFilter =  New-AzCarbonTopitemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
         $response = Get-AzCarbonEmissionReport -QueryParameter $queryFilter
         $response | Should -Not -Be $null
         $response.Value | Should -Not -Be $null
     }
     It 'GetCarbonEmissionsTopItemsSummaryReport' {
-        $queryFilter =  New-AzCarbonTopitemsSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
+        $queryFilter =  New-AzCarbonTopitemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
         $response = Get-AzCarbonEmissionReport -QueryParameter $queryFilter
         $response | Should -Not -Be $null
         $response.Value | Should -Not -Be $null
     }
     It 'GetCarbonEmissionsItemDetailsReport' {
-        $queryFilter = New-AzCarbonItemDetailsQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -OrderBy 'ItemName' -PageSize 100 -SortDirection 'Desc' -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
+        $queryFilter = New-AzCarbonItemDetailsQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -OrderBy 'ItemName' -PageSize 100 -SortDirection 'Desc' -SubscriptionList ('1fcfa925-ad8b-443e-afc9-73038125cc86')
         $response = Get-AzCarbonEmissionReport -QueryParameter $queryFilter
         $response | Should -Not -Be $null
         $response.Value | Should -Not -Be $null

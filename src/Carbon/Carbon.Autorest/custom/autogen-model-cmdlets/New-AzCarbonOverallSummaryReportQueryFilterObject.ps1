@@ -23,9 +23,9 @@ Create an in-memory object for OverallSummaryReportQueryFilter.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.OverallSummaryReportQueryFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonoverallsummaryreportqueryfilter
+https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonoverallsummaryreportqueryfilterobject
 #>
-function New-AzCarbonOverallSummaryReportQueryFilter {
+function New-AzCarbonOverallSummaryReportQueryFilterObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Carbon.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.OverallSummaryReportQueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]

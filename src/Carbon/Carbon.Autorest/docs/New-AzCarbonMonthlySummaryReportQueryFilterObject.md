@@ -1,32 +1,31 @@
 ---
-external help file: Az.Carbon-help.xml
+external help file:
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonoverallsummaryreportqueryfilter
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonmonthlysummaryreportQueryFilterObject
 schema: 2.0.0
 ---
 
-# New-AzCarbonOverallSummaryReportQueryFilter
+# New-AzCarbonMonthlySummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for OverallSummaryReportQueryFilter.
+Create an in-memory object for MonthlySummaryReportQueryFilterObject.
 
 ## SYNTAX
 
 ```
-New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList <String[]> -DateRangeEnd <DateTime>
+New-AzCarbonMonthlySummaryReportQueryFilterObject -CarbonScopeList <String[]> -DateRangeEnd <DateTime>
  -DateRangeStart <DateTime> -SubscriptionList <String[]> [-LocationList <String[]>]
- [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>]
- [<CommonParameters>]
+ [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for OverallSummaryReportQueryFilter.
+Create an in-memory object for MonthlySummaryReportQueryFilterObject.
 
 ## EXAMPLES
 
-### Example 1: Create new OverallSummaryReportQueryFilter object
+### Example 1: Create new MonthlySummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+ New-AzCarbonMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -34,7 +33,7 @@ CarbonScopeList      : {Scope1, Scope2, Scope3}
 DateRangeEnd         : 3/1/2025 12:00:00 AM
 DateRangeStart       : 3/1/2024 12:00:00 AM
 LocationList         :
-ReportType           : OverallSummaryReport
+ReportType           : MonthlySummaryReport
 ResourceGroupUrlList :
 ResourceTypeList     :
 SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000001}
@@ -168,8 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.OverallSummaryReportQueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilterObject
 
 ## NOTES
 
 ## RELATED LINKS
+

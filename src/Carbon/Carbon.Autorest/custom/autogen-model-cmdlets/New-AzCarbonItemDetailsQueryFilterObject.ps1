@@ -16,21 +16,39 @@
 
 <#
 .Synopsis
-Create an in-memory object for MonthlySummaryReportQueryFilter.
+Create an in-memory object for ItemDetailsQueryFilter.
 .Description
-Create an in-memory object for MonthlySummaryReportQueryFilter.
+Create an in-memory object for ItemDetailsQueryFilter.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonmonthlysummaryreportqueryfilter
+https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonitemdetailsqueryfilterobject
 #>
-function New-AzCarbonMonthlySummaryReportQueryFilter {
+function New-AzCarbonItemDetailsQueryFilterObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Carbon.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilter')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(Mandatory, HelpMessage="Specifies the category type for detailed emissions data, such as Resource, ResourceGroup, ResourceType, Location, or Subscription. See supported types in CategoryTypeEnum.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Subscription", "ResourceGroup", "Location", "Resource", "ResourceType")]
+        [string]
+        $CategoryType,
+        [Parameter(Mandatory, HelpMessage="The column name to order the results by. See supported values in OrderByColumnEnum.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("ItemName", "LatestMonthEmissions", "PreviousMonthEmissions", "MonthOverMonthEmissionsChangeRatio", "MonthlyEmissionsChangeValue", "ResourceGroup")]
+        [string]
+        $OrderBy,
+        [Parameter(Mandatory, HelpMessage="Number of items to return in one request, max value is 5000.")]
+        [int]
+        $PageSize,
+        [Parameter(HelpMessage="Pagination token for fetching the next page of data. This token is nullable and will be returned in the previous response if additional data pages are available.")]
+        [string]
+        $SkipToken,
+        [Parameter(Mandatory, HelpMessage="Direction for sorting results. See supported values in SortDirectionEnum.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Desc", "Asc")]
+        [string]
+        $SortDirection,
         [Parameter(Mandatory, HelpMessage="List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Scope1", "Scope2", "Scope3")]
         [string[]]
@@ -56,8 +74,23 @@ function New-AzCarbonMonthlySummaryReportQueryFilter {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.MonthlySummaryReportQueryFilter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter]::New()
 
+        if ($PSBoundParameters.ContainsKey('CategoryType')) {
+            $Object.CategoryType = $CategoryType
+        }
+        if ($PSBoundParameters.ContainsKey('OrderBy')) {
+            $Object.OrderBy = $OrderBy
+        }
+        if ($PSBoundParameters.ContainsKey('PageSize')) {
+            $Object.PageSize = $PageSize
+        }
+        if ($PSBoundParameters.ContainsKey('SkipToken')) {
+            $Object.SkipToken = $SkipToken
+        }
+        if ($PSBoundParameters.ContainsKey('SortDirection')) {
+            $Object.SortDirection = $SortDirection
+        }
         if ($PSBoundParameters.ContainsKey('CarbonScopeList')) {
             $Object.CarbonScopeList = $CarbonScopeList
         }

@@ -16,26 +16,26 @@
 
 <#
 .Synopsis
-Create an in-memory object for TopItemsSummaryReportQueryFilter.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
 .Description
-Create an in-memory object for TopItemsSummaryReportQueryFilter.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemssummaryreportqueryfilter
+https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemsmonthlysummaryreportqueryfilterobject
 #>
-function New-AzCarbonTopItemsSummaryReportQueryFilter {
+function New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Carbon.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Specifies the category type for which to retrieve top-emitting items. See supported values defined in CategoryTypeEnum.")]
+        [Parameter(Mandatory, HelpMessage="Specifies the category type to retrieve top-emitting items, aggregated by month. See supported types in CategoryTypeEnum.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Subscription", "ResourceGroup", "Location", "Resource", "ResourceType")]
         [string]
         $CategoryType,
-        [Parameter(Mandatory, HelpMessage="The number of top items to return, based on emissions. This value must be between 1 and 10.")]
+        [Parameter(Mandatory, HelpMessage="The number of top items to return, based on emissions. Must be between 1 and 10.")]
         [int]
         $TopItem,
         [Parameter(Mandatory, HelpMessage="List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes.")]
@@ -63,7 +63,7 @@ function New-AzCarbonTopItemsSummaryReportQueryFilter {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter]::New()
 
         if ($PSBoundParameters.ContainsKey('CategoryType')) {
             $Object.CategoryType = $CategoryType

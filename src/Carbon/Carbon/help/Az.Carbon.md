@@ -17,18 +17,18 @@ API for query carbon emission data available date range
 ### [Get-AzCarbonEmissionReport](Get-AzCarbonEmissionReport.md)
 API for Carbon Emissions Reports
 
-### [New-AzCarbonItemDetailsQueryFilter](New-AzCarbonItemDetailsQueryFilter.md)
-Create an in-memory object for ItemDetailsQueryFilter.
+### [New-AzCarbonItemDetailsQueryFilterObject](New-AzCarbonItemDetailsQueryFilterObject.md)
+Create an in-memory object for ItemDetailsQueryFilterObject.
 
-### [New-AzCarbonMonthlySummaryReportQueryFilter](New-AzCarbonMonthlySummaryReportQueryFilter.md)
-Create an in-memory object for MonthlySummaryReportQueryFilter.
+### [New-AzCarbonMonthlySummaryReportQueryFilterObject](New-AzCarbonMonthlySummaryReportQueryFilterObject.md)
+Create an in-memory object for MonthlySummaryReportQueryFilterObject.
 
-### [New-AzCarbonOverallSummaryReportQueryFilter](New-AzCarbonOverallSummaryReportQueryFilter.md)
-Create an in-memory object for OverallSummaryReportQueryFilter.
+### [New-AzCarbonOverallSummaryReportQueryFilterObject](New-AzCarbonOverallSummaryReportQueryFilterObject.md)
+Create an in-memory object for OverallSummaryReportQueryFilterObject.
 
-### [New-AzCarbonTopItemsMonthlySummaryReportQueryFilter](New-AzCarbonTopItemsMonthlySummaryReportQueryFilter.md)
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
+### [New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject](New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject.md)
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
 
-### [New-AzCarbonTopItemsSummaryReportQueryFilter](New-AzCarbonTopItemsSummaryReportQueryFilter.md)
-Create an in-memory object for TopItemsSummaryReportQueryFilter.
+### [New-AzCarbonTopItemsSummaryReportQueryFilterObject](New-AzCarbonTopItemsSummaryReportQueryFilterObject.md)
+Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
 

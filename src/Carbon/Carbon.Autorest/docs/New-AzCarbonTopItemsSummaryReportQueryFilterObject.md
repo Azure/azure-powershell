@@ -1,33 +1,32 @@
 ---
-external help file: Az.Carbon-help.xml
+external help file:
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonitemdetailsqueryfilter
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemssummaryreportqueryfilter
 schema: 2.0.0
 ---
 
-# New-AzCarbonItemDetailsQueryFilter
+# New-AzCarbonTopItemsSummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for ItemDetailsQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
 
 ## SYNTAX
 
 ```
-New-AzCarbonItemDetailsQueryFilter -CategoryType <String> -OrderBy <String> -PageSize <Int32>
- -SortDirection <String> -CarbonScopeList <String[]> -DateRangeEnd <DateTime> -DateRangeStart <DateTime>
- -SubscriptionList <String[]> [-SkipToken <String>] [-LocationList <String[]>]
- [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>]
+New-AzCarbonTopItemsSummaryReportQueryFilterObject -CarbonScopeList <String[]> -CategoryType <String>
+ -DateRangeEnd <DateTime> -DateRangeStart <DateTime> -SubscriptionList <String[]> -TopItem <Int32>
+ [-LocationList <String[]>] [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ItemDetailsQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
 
 ## EXAMPLES
 
-### Example 1: Create new ItemDetailsQueryFilter object
+### Example 1: Create new TopItemsSummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonItemDetailsQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -OrderBy 'ItemName' -PageSize 100 -SortDirection 'Desc' -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+New-AzCarbonTopitemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -36,14 +35,11 @@ CategoryType         : Resource
 DateRangeEnd         : 3/1/2025 12:00:00 AM
 DateRangeStart       : 3/1/2025 12:00:00 AM
 LocationList         :
-OrderBy              : ItemName
-PageSize             : 100
-ReportType           : ItemDetailsReport
+ReportType           : TopItemsSummaryReport
 ResourceGroupUrlList :
 ResourceTypeList     :
-SkipToken            :
-SortDirection        : Desc
 SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000001}
+TopItem              : 5
 ```
 
 ## PARAMETERS
@@ -51,7 +47,7 @@ SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000
 ### -CarbonScopeList
 List of carbon emission scopes.
 Required.
-Accepts one or more values from - Scope1, Scope2, Scope3.
+Accepts one or more values from - Scope1, Scope2, Scope3 in list form.
 The output will include the total emissions for the specified scopes.
 
 ```yaml
@@ -67,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -CategoryType
-Specifies the category type for detailed emissions data.
+Specifies the category type for which to retrieve top-emitting items.
 Accepts values - Resource, ResourceGroup, ResourceType, Location, Subscription.
 
 ```yaml
@@ -131,37 +127,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrderBy
-The column name to order the results by.
-Accepts values - ItemName, LatestMonthEmissions, MonthOverMonthEmissionsChangeRatio, MonthlyEmissionsChangeValue, PreviousMonthEmissions, ResourceGroup
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PageSize
-Number of items to return in one request, max value is 5000.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupUrlList
 List of resource group URLs for carbon emissions data.
 Optional.
@@ -196,38 +161,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkipToken
-Pagination token for fetching the next page of data.
-This token is nullable and will be returned in the previous response if additional data pages are available.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SortDirection
-Direction for sorting results.
-Accepts values - Asc, Desc.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionList
 List of subscription IDs for which carbon emissions data is requested.
 Required.
@@ -246,6 +179,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TopItem
+The number of top items to return, based on emissions.
+This value must be between 1 and 10.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -253,10 +202,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilterObject
 
 ## NOTES
 
 ## RELATED LINKS
 
-## RELATED LINKS

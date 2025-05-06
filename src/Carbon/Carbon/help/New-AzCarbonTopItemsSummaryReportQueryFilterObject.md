@@ -1,32 +1,32 @@
 ---
 external help file: Az.Carbon-help.xml
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemsmonthlysummaryreportqueryfilter
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemssummaryreportqueryfilter
 schema: 2.0.0
 ---
 
-# New-AzCarbonTopItemsMonthlySummaryReportQueryFilter
+# New-AzCarbonTopItemsSummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
 
 ## SYNTAX
 
 ```
-New-AzCarbonTopItemsMonthlySummaryReportQueryFilter -CategoryType <String> -TopItem <Int32>
+New-AzCarbonTopItemsSummaryReportQueryFilterObject -CategoryType <String> -TopItem <Int32>
  -CarbonScopeList <String[]> -DateRangeEnd <DateTime> -DateRangeStart <DateTime> -SubscriptionList <String[]>
  [-LocationList <String[]>] [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilterObject.
 
 ## EXAMPLES
 
-### Example 1: Create new TopItemsMonthlySummaryReportQueryFilter object
+### Example 1: Create new TopItemsSummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonTopitemsMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+New-AzCarbonTopitemsSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -35,7 +35,7 @@ CategoryType         : Resource
 DateRangeEnd         : 3/1/2025 12:00:00 AM
 DateRangeStart       : 3/1/2025 12:00:00 AM
 LocationList         :
-ReportType           : TopItemsMonthlySummaryReport
+ReportType           : TopItemsSummaryReport
 ResourceGroupUrlList :
 ResourceTypeList     :
 SubscriptionList     : {00000000-0000-0000-0000-000000000000, 00000000-0000-0000-0000-000000000001}
@@ -47,7 +47,7 @@ TopItem              : 5
 ### -CarbonScopeList
 List of carbon emission scopes.
 Required.
-Accepts one or more values from -  Scope1, Scope2, Scope3 in list form.
+Accepts one or more values from - Scope1, Scope2, Scope3 in list form.
 The output will include the total emissions for the specified scopes.
 
 ```yaml
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -CategoryType
-Specifies the category type to retrieve top-emitting items, aggregated by month.
+Specifies the category type for which to retrieve top-emitting items.
 Accepts values - Resource, ResourceGroup, ResourceType, Location, Subscription.
 
 ```yaml
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 
 ### -TopItem
 The number of top items to return, based on emissions.
-Must be between 1 and 10.
+This value must be between 1 and 10.
 
 ```yaml
 Type: System.Int32
@@ -202,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilterObject
 
 ## NOTES
 

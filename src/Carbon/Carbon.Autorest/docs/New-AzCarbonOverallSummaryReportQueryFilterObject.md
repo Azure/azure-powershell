@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.Carbon
-online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonoverallsummaryreportqueryfilter
+online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonoverallsummaryreportQueryFilterObject
 schema: 2.0.0
 ---
 
-# New-AzCarbonOverallSummaryReportQueryFilter
+# New-AzCarbonOverallSummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for OverallSummaryReportQueryFilter.
+Create an in-memory object for OverallSummaryReportQueryFilterObject.
 
 ## SYNTAX
 
 ```
-New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList <String[]> -DateRangeEnd <DateTime>
+New-AzCarbonOverallSummaryReportQueryFilterObject -CarbonScopeList <String[]> -DateRangeEnd <DateTime>
  -DateRangeStart <DateTime> -SubscriptionList <String[]> [-LocationList <String[]>]
  [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for OverallSummaryReportQueryFilter.
+Create an in-memory object for OverallSummaryReportQueryFilterObject.
 
 ## EXAMPLES
 
-### Example 1: Create new OverallSummaryReportQueryFilter object
+### Example 1: Create new OverallSummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonOverallSummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+New-AzCarbonOverallSummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -DateRangeEnd 2025-03-01 -DateRangeStart 2024-03-01 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.OverallSummaryReportQueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.OverallSummaryReportQueryFilterObject
 
 ## NOTES
 

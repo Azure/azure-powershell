@@ -5,28 +5,28 @@ online version: https://learn.microsoft.com/powershell/module/Az.Carbon/new-azca
 schema: 2.0.0
 ---
 
-# New-AzCarbonTopItemsMonthlySummaryReportQueryFilter
+# New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
 
 ## SYNTAX
 
 ```
-New-AzCarbonTopItemsMonthlySummaryReportQueryFilter -CarbonScopeList <String[]> -CategoryType <String>
+New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject -CarbonScopeList <String[]> -CategoryType <String>
  -DateRangeEnd <DateTime> -DateRangeStart <DateTime> -SubscriptionList <String[]> -TopItem <Int32>
  [-LocationList <String[]>] [-ResourceGroupUrlList <String[]>] [-ResourceTypeList <String[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for TopItemsMonthlySummaryReportQueryFilter.
+Create an in-memory object for TopItemsMonthlySummaryReportQueryFilterObject.
 
 ## EXAMPLES
 
-### Example 1: Create new TopItemsMonthlySummaryReportQueryFilter object
+### Example 1: Create new TopItemsMonthlySummaryReportQueryFilterObject object
 ```powershell
-New-AzCarbonTopitemsMonthlySummaryReportQueryFilter -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
+New-AzCarbonTopitemsMonthlySummaryReportQueryFilterObject -CarbonScopeList ('Scope1', 'Scope2', 'Scope3') -CategoryType 'Resource' -DateRangeEnd 2025-03-01 -DateRangeStart 2025-03-01 -TopItem 5 -SubscriptionList ('00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000001')
 ```
 
 ```output
@@ -202,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsMonthlySummaryReportQueryFilterObject
 
 ## NOTES
 

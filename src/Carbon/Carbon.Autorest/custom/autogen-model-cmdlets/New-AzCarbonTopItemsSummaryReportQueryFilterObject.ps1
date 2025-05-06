@@ -16,39 +16,28 @@
 
 <#
 .Synopsis
-Create an in-memory object for ItemDetailsQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilter.
 .Description
-Create an in-memory object for ItemDetailsQueryFilter.
+Create an in-memory object for TopItemsSummaryReportQueryFilter.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter
+Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbonitemdetailsqueryfilter
+https://learn.microsoft.com/powershell/module/Az.Carbon/new-azcarbontopitemssummaryreportqueryfilterobject
 #>
-function New-AzCarbonItemDetailsQueryFilter {
+function New-AzCarbonTopItemsSummaryReportQueryFilterObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Carbon.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Specifies the category type for detailed emissions data, such as Resource, ResourceGroup, ResourceType, Location, or Subscription. See supported types in CategoryTypeEnum.")]
+        [Parameter(Mandatory, HelpMessage="Specifies the category type for which to retrieve top-emitting items. See supported values defined in CategoryTypeEnum.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Subscription", "ResourceGroup", "Location", "Resource", "ResourceType")]
         [string]
         $CategoryType,
-        [Parameter(Mandatory, HelpMessage="The column name to order the results by. See supported values in OrderByColumnEnum.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("ItemName", "LatestMonthEmissions", "PreviousMonthEmissions", "MonthOverMonthEmissionsChangeRatio", "MonthlyEmissionsChangeValue", "ResourceGroup")]
-        [string]
-        $OrderBy,
-        [Parameter(Mandatory, HelpMessage="Number of items to return in one request, max value is 5000.")]
+        [Parameter(Mandatory, HelpMessage="The number of top items to return, based on emissions. This value must be between 1 and 10.")]
         [int]
-        $PageSize,
-        [Parameter(HelpMessage="Pagination token for fetching the next page of data. This token is nullable and will be returned in the previous response if additional data pages are available.")]
-        [string]
-        $SkipToken,
-        [Parameter(Mandatory, HelpMessage="Direction for sorting results. See supported values in SortDirectionEnum.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Desc", "Asc")]
-        [string]
-        $SortDirection,
+        $TopItem,
         [Parameter(Mandatory, HelpMessage="List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Carbon.PSArgumentCompleterAttribute("Scope1", "Scope2", "Scope3")]
         [string[]]
@@ -74,22 +63,13 @@ function New-AzCarbonItemDetailsQueryFilter {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.ItemDetailsQueryFilter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Carbon.Models.TopItemsSummaryReportQueryFilter]::New()
 
         if ($PSBoundParameters.ContainsKey('CategoryType')) {
             $Object.CategoryType = $CategoryType
         }
-        if ($PSBoundParameters.ContainsKey('OrderBy')) {
-            $Object.OrderBy = $OrderBy
-        }
-        if ($PSBoundParameters.ContainsKey('PageSize')) {
-            $Object.PageSize = $PageSize
-        }
-        if ($PSBoundParameters.ContainsKey('SkipToken')) {
-            $Object.SkipToken = $SkipToken
-        }
-        if ($PSBoundParameters.ContainsKey('SortDirection')) {
-            $Object.SortDirection = $SortDirection
+        if ($PSBoundParameters.ContainsKey('TopItem')) {
+            $Object.TopItem = $TopItem
         }
         if ($PSBoundParameters.ContainsKey('CarbonScopeList')) {
             $Object.CarbonScopeList = $CarbonScopeList
