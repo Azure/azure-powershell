@@ -12,10 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzImageBuilderTemplate' {
-    It 'Run' -Skip {
-        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -JsonFilePath $PSScriptRoot/JsonTemplateFile.json
-        Start-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
-        $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
+    It 'Run' {
+        Write-Host -ForegroundColor Green "Starting the image builder template..."
+        Start-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
+        $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Succeeded'
     }
 
