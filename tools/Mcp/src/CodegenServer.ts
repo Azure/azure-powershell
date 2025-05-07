@@ -1,9 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { toolParameterSchema, toolSchema } from "../types.js";
-import specs from "../specs/Specs.json" assert { type: "json" };
-import { toolServices } from "../services/toolServices.js";
+import { toolParameterSchema, toolSchema } from "./types.js";
+import specs from "./specs/Specs.json" assert { type: "json" };
+import { toolServices } from "./services/toolServices.js";
 
 export class CodegenServer {
     private static _instance: CodegenServer;

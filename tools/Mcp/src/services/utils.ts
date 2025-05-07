@@ -1,7 +1,7 @@
 import fs from 'fs';
 import yaml from "js-yaml";
+import { yamlContent } from '../types.js';
 import { exec } from 'child_process';
-import { start } from 'repl';
 
 const _pwshCD = (path: string): string => { return `pwsh -Command "$path = resolve-path ${path} | Set-Location"` }
 const _autorest = "autorest --reset; autorest"
@@ -19,17 +19,18 @@ function testYaml() {
       fs.writeFileSync('./testYaml.yaml', yamlData, 'utf8');
 }
 
-export function generateAndBuild(workingDirectory: string) {
+export function generateAndBuild(workingDirectory: string): void {
     const command = [_pwshCD(workingDirectory), _autorest, _pwshBuild].join(";");
     exec(command);
 }
 
- export function getYamlContentFromReadMe(readmePath: string) {
+export function getYamlContentFromReadMe(readmePath: string): yamlContent {
     const readmeContent = fs.readFileSync(readmePath, 'utf8');
-    const startSign = "``` yaml";
-    const endSign = "```";
-    const startIndex = readmeContent.indexOf(startSign) + startSign.length;
-    const endIndex = readmeContent.indexOf(endSign, startIndex);
-    const yamlContent = readmeContent.substring(startIndex, endIndex).trim();
-    return yaml.load(yamlContent);
+    const yamlRegex = /```(?:\w+)?\r?\n(?<yaml>[\s\S]*?)\r?\n```/g;
+    const matches = [...readmeContent.matchAll(yamlRegex)];
+    if (!matches || matches.length === 0 || !matches[0].groups?.yaml) {
+        throw new Error("No yaml code block found in the README file.");
+    }
+    const yamlContent =  matches[0].groups?.yaml;
+    return yaml.load(yamlContent) as yamlContent;
 }

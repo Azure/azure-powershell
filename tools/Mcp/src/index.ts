@@ -1,6 +1,7 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import { CodegenServer } from "./models/CodegenServer.js";
+import { CodegenServer } from "./CodegenServer.js";
 import * as utils from "./services/utils.js";
+import { yamlContent } from "./types.js";
 
 // Create server instance
 // const server = new McpServer({
@@ -68,8 +69,10 @@ async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
     console.log(`Codegen MCP Server running on stdio at ${new Date()}`);
-    const yaml = utils.getYamlContentFromReadMe("C:/workspace/azure-powershell/src/Maps/Maps.Autorest/README.md");
-    console.log();
+    const yaml = utils.getYamlContentFromReadMe("D:/workspace/azure-powershell/tools/Mcp/test/README.md") as yamlContent;
+    for (const directive of yaml.directive) {
+        console.log(directive);
+    }
 }
 
 main().catch((error) => {

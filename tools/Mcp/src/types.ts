@@ -11,6 +11,10 @@ export type toolSchema = {
     callbackName: string;
 }
 
-export type autorestDirective = {
-    
+export type yamlContent = {
+    [key: string]: any;
+}
+
+export type directiveDefinition = {
+    [key: string]: any
 }
