@@ -15,7 +15,7 @@ Create an API Key of an Application Insights component.
 ```
 New-AzApplicationInsightsApiKey -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  -Description <String> -Permissions <String[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,8 @@ Create a new Api Key for an application insights resource
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,6 +89,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey
 
 ## NOTES
 

@@ -24,6 +24,12 @@ Remove-AzApplicationInsightsContinuousExport -InputObject <IApplicationInsightsI
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityComponent
+```
+Remove-AzApplicationInsightsContinuousExport -ComponentInputObject <IApplicationInsightsIdentity>
+ -ExportId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a Continuous Export configuration of an Application Insights component.
 
@@ -37,6 +43,21 @@ Remove-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Nam
 Remove a continuous export configuration in an application insights resource
 
 ## PARAMETERS
+
+### -ComponentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: DeleteViaIdentityComponent
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -60,7 +81,7 @@ This is unique within a Application Insights component.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityComponent
 Aliases:
 
 Required: True
@@ -72,7 +93,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -172,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentExportConfiguration
 
 ## NOTES
 

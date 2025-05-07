@@ -30,6 +30,12 @@ Get-AzApplicationInsightsWorkbookRevision -InputObject <IApplicationInsightsIden
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkbook
+```
+Get-AzApplicationInsightsWorkbookRevision -RevisionId <String>
+ -WorkbookInputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a single workbook revision defined by its revisionId.
 
@@ -94,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -144,7 +149,7 @@ The id of the workbook's revision.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkbook
 Aliases:
 
 Required: True
@@ -169,6 +174,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkbookInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+Parameter Sets: GetViaIdentityWorkbook
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -178,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbook
 
 ## NOTES
 

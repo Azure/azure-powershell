@@ -15,7 +15,7 @@ Update current billing features for an Application Insights component.
 ```
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,6 +101,21 @@ When the component is in the Enterprise plan, this will list both 'Basic' and 'A
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -177,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentBillingFeatures
 
 ## NOTES
 

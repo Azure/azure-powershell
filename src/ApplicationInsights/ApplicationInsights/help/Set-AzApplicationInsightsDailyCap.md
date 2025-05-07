@@ -15,7 +15,7 @@ Update current billing features for an Application Insights component.
 ```
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -161,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentBillingFeatures
 
 ## NOTES
 
