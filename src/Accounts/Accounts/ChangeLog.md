@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Fixed the issue that context is not cleared when WAM is enabled.
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
 
 ## Version 4.2.0
 * Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
