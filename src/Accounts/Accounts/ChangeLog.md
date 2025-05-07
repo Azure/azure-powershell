@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed that removeUser didn't work when create Public Client with broker.
 
 ## Version 4.2.0
 * Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
