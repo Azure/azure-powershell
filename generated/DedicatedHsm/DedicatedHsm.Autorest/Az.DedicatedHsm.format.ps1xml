@@ -2,43 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsm</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsm</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsm</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsm#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -76,9 +42,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -98,9 +98,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmOperation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -126,9 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmOperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -166,9 +166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmPatchParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmPatchParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmPatchParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmPatchParametersTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -188,9 +188,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsmProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.DedicatedHsmProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -222,9 +222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.EndpointDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.EndpointDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.EndpointDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.EndpointDependency#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -244,9 +244,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.EndpointDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.EndpointDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.EndpointDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.EndpointDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -284,9 +284,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Error</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Error</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Error</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Error#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -312,9 +312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.NetworkInterface</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.NetworkInterface</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.NetworkInterface</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.NetworkInterface#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -334,9 +334,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.OutboundEnvironmentEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.OutboundEnvironmentEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.OutboundEnvironmentEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.OutboundEnvironmentEndpoint#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -356,9 +356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.OutboundEnvironmentEndpointCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.OutboundEnvironmentEndpointCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.OutboundEnvironmentEndpointCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.OutboundEnvironmentEndpointCollection#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -378,9 +378,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -389,9 +389,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Zone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -403,18 +400,15 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Zone</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.ResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.ResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -434,9 +428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -456,9 +450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Sku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -26,7 +26,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNS
 New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -121,12 +121,12 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
 #>
 function New-AzDataBoxJobDetailsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
     # Contact details for notification and shipping.
     # To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
     ${ContactDetail},
@@ -152,14 +152,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
     # Details of the data to be exported from azure.
     # To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
     ${DataExportDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
     # Details of the data to be imported into azure.
     # To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
     ${DataImportDetail},
@@ -172,28 +172,28 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
     # Details about which key encryption type is being used.
     # To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
     ${KeyEncryptionKey},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
     # Preferences for the order.
     # To construct, see NOTES section for PREFERENCE properties and create a hash table.
     ${Preference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
     # Optional Reverse Shipping details for order.
     # To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
     ${ReverseShippingDetail},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
     # Shipping address of the customer.
     # To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
     ${ShippingAddress}

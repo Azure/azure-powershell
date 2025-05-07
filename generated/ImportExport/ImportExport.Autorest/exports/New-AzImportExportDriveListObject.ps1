@@ -24,12 +24,12 @@ $driveList = New-AzImportExportDriveListObject -DriveId "9CA995BA" -BitLockerKey
 New-AzImportExport -Name test-job -ResourceGroupName ImportTestRG -Location eastus -StorageAccountId "/subscriptions/<SubscriptionId>/resourcegroups/ImportTestRG/providers/Microsoft.Storage/storageAccounts/teststorageforimport" -JobType Import -ReturnAddressRecipientName "Some name" -ReturnAddressStreetAddress1 "Street1" -ReturnAddressCity "Redmond" -ReturnAddressStateOrProvince "WA" -ReturnAddressPostalCode "98008" -ReturnAddressCountryOrRegion "USA" -ReturnAddressPhone "4250000000" -ReturnAddressEmail test@contoso.com -DiagnosticsPath "waimportexport" -BackupDriveManifest -DriveList $driveList
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 #>
 function New-AzImportExportDriveListObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -94,8 +94,9 @@ param(
     ${PercentComplete},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.PSArgumentCompleterAttribute("Specified", "Received", "NeverReceived", "Transferring", "Completed", "CompletedMoreInfo", "ShippedBack")]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]
+    [System.String]
     # The drive's current state.
     ${State},
 
@@ -113,6 +114,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -141,6 +145,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Information message to `Set-AzSqlInstance` for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
 
 ## Version 6.0.2
 * Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."

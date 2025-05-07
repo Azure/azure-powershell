@@ -19,7 +19,7 @@ Update-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resou
  [-SelfCheckIntervalSecond <Int32>] [-SelfCheckMode <String>] [-SelfCheckTimeoutSecond <Int32>]
  [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>] [-TraceCacheSizeMegabyte <Int32>]
  [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityInstanceExpanded
@@ -29,7 +29,7 @@ Update-AzIoTOperationsServiceBroker -Name <String> -InstanceInputObject <IIoTOpe
  [-SelfCheckMode <String>] [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>]
  [-SelfTracingMode <String>] [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>]
  [-TraceSpanChannelCapacity <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,7 +38,7 @@ Update-AzIoTOperationsServiceBroker -InputObject <IIoTOperationsServiceIdentity>
  [-MetricPrometheusPort <Int32>] [-SelfCheckIntervalSecond <Int32>] [-SelfCheckMode <String>]
  [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>]
  [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -235,21 +235,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
