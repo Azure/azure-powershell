@@ -12,10 +12,27 @@ create a new Kubernetes cluster agent pool or create the properties of the exist
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNetworkCloudAgentPool -KubernetesClusterName <String> -Name <String> -ResourceGroupName <String>
+New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Count <Int64> -Location <String> -Mode <String> -VMSkuName <String>
  [-AdministratorConfigurationAdminUsername <String>]
+ [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
+ [-AgentOptionHugepagesSize <String>]
+ [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
+ [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
+ [-AvailabilityZone <String[]>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-Label <IKubernetesLabel[]>] [-Tag <Hashtable>] [-Taint <IKubernetesLabel[]>]
+ [-UpgradeSettingDrainTimeout <Int64>] [-UpgradeSettingMaxSurge <String>]
+ [-UpgradeSettingMaxUnavailable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityKubernetesClusterExpanded
+```
+New-AzNetworkCloudAgentPool -Name <String> -KubernetesClusterInputObject <INetworkCloudIdentity> -Count <Int64>
+ -Location <String> -Mode <String> -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
  [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
@@ -262,12 +279,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KubernetesClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityKubernetesClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KubernetesClusterName
 The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -360,7 +392,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -376,7 +408,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -526,6 +558,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

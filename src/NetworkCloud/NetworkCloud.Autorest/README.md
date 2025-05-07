@@ -53,7 +53,7 @@ directive:
       variant: ^(Create|Update|Cordon|Deploy|Enable|Replace|Run|PowerOff)(?!.*?Expanded)
     remove: true
   - where:
-      variant: ^CreateViaIdentity.*$
+      variant: ^CreateViaIdentityExpanded$
     remove: true
   - where:
       subject: KuberneteClusterNode

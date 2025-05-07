@@ -12,12 +12,21 @@ create a new virtual machine console or create the properties of the existing vi
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- [-SubscriptionId <String>] -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String>
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VirtualMachineName <String> -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -Location <String> -SshPublicKeyData <String> [-Expiration <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CreateViaIdentityVirtualMachineExpanded
+```
+New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> -Enabled <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
+ [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,7 +193,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -215,7 +224,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -240,12 +249,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityVirtualMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineName
 The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -290,6 +314,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 

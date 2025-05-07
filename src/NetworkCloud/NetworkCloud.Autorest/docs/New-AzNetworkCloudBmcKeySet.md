@@ -12,6 +12,15 @@ create a new baseboard management controller key set or create the existing one 
 
 ## SYNTAX
 
+### CreateViaIdentityClusterExpanded (Default)
+```
+New-AzNetworkCloudBmcKeySet -ClusterInputObject <INetworkCloudIdentity> -Name <String> -AzureGroupId <String>
+ -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
 ```
 New-AzNetworkCloudBmcKeySet -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
@@ -82,12 +91,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -224,7 +248,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -240,7 +264,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -315,6 +339,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 
 ## OUTPUTS
 
