@@ -4850,7 +4850,7 @@ function Test-VirtualMachineImageListTopOrderExpand
         $pubNames = "MicrosoftWindowsServer";
         $pubNameFilter = '*Windows*';
         $offer = "windowsserver";
-        $sku = "2012-R2-Datacenter";
+        $sku = "2025-datacenter";
         $numRecords = 3;
         $orderNameDesc = "name desc";
         $orderNameAsc = "name asc";
@@ -4858,6 +4858,11 @@ function Test-VirtualMachineImageListTopOrderExpand
         # Test -Top
         $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
         Assert-AreEqual $numRecords $vmImagesTop.Count;
+        Assert-NotNull $vmImagesTop[0].Architecture;
+        Assert-NotNull $vmImagesTop[0].HyperVGeneration;
+
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties/imageDeprecationStatus"
+        Assert-NotNull $vmImagesTop[0].ImageDeprecationStatus
 
         # Test -OrderBy
         $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
