@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed that removeUser didn't work when create Public Client with broker.
 
 ## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
