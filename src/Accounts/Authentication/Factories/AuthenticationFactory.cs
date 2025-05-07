@@ -488,38 +488,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
-            if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
-            {
-                switch (account.Type)
-                {
-                    case AzureAccount.AccountType.AccessToken:
-                        account.SetProperty(AzureAccount.Property.AccessToken, null);
-                        account.SetProperty(AzureAccount.Property.GraphAccessToken, null);
-                        account.SetProperty(AzureAccount.Property.KeyVaultAccessToken, null);
-                        break;
-                    case AzureAccount.AccountType.ManagedService:
-                        account.SetProperty(AzureAccount.Property.MSILoginUri, null);
-                        break;
-                    case AzureAccount.AccountType.ServicePrincipal:
-                        try
-                        {
-                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
-                                account.Id, account.GetTenants().FirstOrDefault()));
-                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
-    account.Id, account.GetTenants().FirstOrDefault()));
-                        }
-                        catch
-                        {
-                            // make best effort to remove credentials
-                        }
-
-                        RemoveFromTokenCache(account);
-                        break;
-                    case AzureAccount.AccountType.User:
-                        RemoveFromTokenCache(account);
-                        break;
-                }
-            }
+            RemoveUser(account, environment: null);
         }
 
         /// <summary>
