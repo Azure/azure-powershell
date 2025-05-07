@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnCustomDomain'))
 Describe 'Remove-AzCdnCustomDomain'  {
     BeforeAll {
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $endpointName = 'ps-20240402-domain040'
-        $customDomainHostName = 'ps-20240402-domain040.ps.cdne2e.azfdtest.xyz'
+        $endpointName = 'ps-2024-0901-domain040'
+        $customDomainHostName = 'ps-2024-0901-domain040.ps.cdne2e.azfdtest.xyz'
         $customDomainName = 'cd-pstest020'
 
-        $endpointName2 = 'ps-20240402-domain041'
-        $customDomainHostName2 = 'ps-20240402-domain041.ps.cdne2e.azfdtest.xyz'
+        $endpointName2 = 'ps-2024-0901-domain041'
+        $customDomainHostName2 = 'ps-2024-0901-domain041.ps.cdne2e.azfdtest.xyz'
         $customDomainName2 = 'cd-pstest021'
         
         $origin = @{

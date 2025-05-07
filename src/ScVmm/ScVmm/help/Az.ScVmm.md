@@ -1,14 +1,14 @@
 ---
 Module Name: Az.ScVmm
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
+Download Help Link: https://learn.microsoft.com/powershell/module/az.ScVmm
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.ScVmm Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: ScVmm cmdlets
 
 ## Az.ScVmm Cmdlets
 ### [Add-AzScVmmVMDisk](Add-AzScVmmVMDisk.md)

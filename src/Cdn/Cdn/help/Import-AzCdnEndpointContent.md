@@ -20,6 +20,34 @@ Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -Resour
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### LoadViaJsonString
+```
+Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LoadViaJsonFilePath
+```
+Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LoadViaIdentityProfileExpanded
+```
+Import-AzCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity> -ContentPath <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### LoadViaIdentityProfile
+```
+Import-AzCdnEndpointContent -EndpointName <String> -ProfileInputObject <ICdnIdentity>
+ -ContentFilePath <ILoadParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Load
 ```
 Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
@@ -81,11 +109,10 @@ Accept wildcard characters: False
 
 ### -ContentFilePath
 Parameters required for content load.
-To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters
-Parameter Sets: Load, LoadViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters
+Parameter Sets: LoadViaIdentityProfile, Load, LoadViaIdentity
 Aliases:
 
 Required: True
@@ -101,7 +128,7 @@ Path should be a relative file URL of the origin.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: LoadExpanded, LoadViaIdentityExpanded
+Parameter Sets: LoadExpanded, LoadViaIdentityProfileExpanded, LoadViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -132,7 +159,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: LoadExpanded, LoadViaJsonString, LoadViaJsonFilePath, LoadViaIdentityProfileExpanded, LoadViaIdentityProfile, Load
 Aliases:
 
 Required: True
@@ -144,7 +171,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -155,6 +181,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Load operation
+
+```yaml
+Type: System.String
+Parameter Sets: LoadViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Load operation
+
+```yaml
+Type: System.String
+Parameter Sets: LoadViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,12 +244,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: LoadViaIdentityProfileExpanded, LoadViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
 Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: LoadExpanded, LoadViaJsonString, LoadViaJsonFilePath, Load
 Aliases:
 
 Required: True
@@ -208,7 +279,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: LoadExpanded, LoadViaJsonString, LoadViaJsonFilePath, Load
 Aliases:
 
 Required: True
@@ -223,7 +294,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: LoadExpanded, LoadViaJsonString, LoadViaJsonFilePath, Load
 Aliases:
 
 Required: False
@@ -269,9 +340,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters
 
 ## OUTPUTS
 

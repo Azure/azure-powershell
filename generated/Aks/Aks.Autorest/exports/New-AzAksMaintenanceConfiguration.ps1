@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Creates or updates a maintenance configuration in the specified managed cluster.
+create a maintenance configuration in the specified managed cluster.
 .Description
-Creates or updates a maintenance configuration in the specified managed cluster.
+create a maintenance configuration in the specified managed cluster.
 .Example
 $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
-$TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
-$MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
+$TimeInWeek = New-AzAksTimeInWeekObject -Day Sunday -HourSlot 1,2
+New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,13 +36,13 @@ NOTALLOWEDTIME <ITimeSpan[]>: Time slots on which upgrade is not allowed.
   [Start <DateTime?>]: The start of a time span
 
 TIMEINWEEK <ITimeInWeek[]>: If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-  [Day <WeekDay?>]: The day of the week.
-  [HourSlot <Int32[]>]: Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
+  [Day <String>]: The day of the week.
+  [HourSlot <List<Int32>>]: Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/new-azaksmaintenanceconfiguration
 #>
 function New-AzAksMaintenanceConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -71,21 +71,31 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeSpan[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]]
     # Time slots on which upgrade is not allowed.
-    # To construct, see NOTES section for NOTALLOWEDTIME properties and create a hash table.
     ${NotAllowedTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeInWeek[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]]
     # If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-    # To construct, see NOTES section for TIMEINWEEK properties and create a hash table.
     ${TimeInWeek},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,6 +153,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,10 +182,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Aks.private\New-AzAksMaintenanceConfiguration_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Aks.private\New-AzAksMaintenanceConfiguration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Aks.private\New-AzAksMaintenanceConfiguration_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -180,6 +199,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

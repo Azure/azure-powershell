@@ -52,7 +52,8 @@ Describe 'AzFluidRelayServer' {
 
     It 'Delete' {
         {
-            Remove-AzFluidRelayServer -ResourceGroup $env.resourceGroup -Name $env.fluidRelayServer1
+            $config = Remove-AzFluidRelayServer -ResourceGroup $env.resourceGroup -Name $env.fluidRelayServer1
+            $config | Should -Be $NULL
         } | Should -Not -Throw
     }
 }

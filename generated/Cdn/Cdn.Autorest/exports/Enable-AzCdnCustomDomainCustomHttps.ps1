@@ -20,26 +20,56 @@ Enable https delivery of the custom domain.
 .Description
 Enable https delivery of the custom domain.
 .Example
-$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType TLS12
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType ServerNameIndication
 Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CUSTOMDOMAINHTTPSPARAMETER <ICustomDomainHttpsParameters>: The JSON object that contains the properties to secure a custom domain.
-  CertificateSource <CertificateSource>: Defines the source of the SSL certificate.
-  ProtocolType <ProtocolType>: Defines the TLS extension protocol that is used for secure delivery.
-  [MinimumTlsVersion <MinimumTlsVersion?>]: TLS protocol version that will be used for Https
+  CertificateSource <String>: Defines the source of the SSL certificate.
+  ProtocolType <String>: Defines the TLS extension protocol that is used for secure delivery.
+  [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https
+
+ENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
@@ -57,34 +87,50 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
 #>
 function Enable-AzCdnCustomDomainCustomHttps {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='EnableViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityEndpoint', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityEndpointExpanded', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the custom domain within an endpoint.
     ${CustomDomainName},
 
     [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
     ${EndpointName},
 
     [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Enable')]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath')]
+    [Parameter(ParameterSetName='EnableViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -95,15 +141,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentityEndpointExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${EndpointInputObject},
+
+    [Parameter(ParameterSetName='EnableViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='Enable', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentityEndpoint', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='EnableViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters]
     # The JSON object that contains the properties to secure a custom domain.
-    # To construct, see NOTES section for CUSTOMDOMAINHTTPSPARAMETER properties and create a hash table.
     ${CustomDomainHttpsParameter},
+
+    [Parameter(ParameterSetName='EnableViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("AzureKeyVault", "Cdn")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Defines the source of the SSL certificate.
+    ${CertificateSource},
+
+    [Parameter(ParameterSetName='EnableViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "TLS10", "TLS12")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # TLS protocol version that will be used for Https
+    ${MinimumTlsVersion},
+
+    [Parameter(ParameterSetName='EnableViaIdentityEndpointExpanded')]
+    [Parameter(ParameterSetName='EnableViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ServerNameIndication", "IPBased")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Defines the TLS extension protocol that is used for secure delivery.
+    ${ProtocolType},
+
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Enable operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Enable operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -173,6 +270,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -194,10 +300,14 @@ begin {
         $mapping = @{
             Enable = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_Enable';
             EnableViaIdentity = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaIdentity';
+            EnableViaIdentityEndpoint = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaIdentityEndpoint';
+            EnableViaIdentityEndpointExpanded = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaIdentityEndpointExpanded';
+            EnableViaIdentityProfile = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaIdentityProfile';
+            EnableViaIdentityProfileExpanded = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaIdentityProfileExpanded';
+            EnableViaJsonFilePath = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaJsonFilePath';
+            EnableViaJsonString = 'Az.Cdn.private\Enable-AzCdnCustomDomainCustomHttps_EnableViaJsonString';
         }
-        if (('Enable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Enable', 'EnableViaJsonFilePath', 'EnableViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -211,6 +321,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
