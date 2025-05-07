@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.ScVmm Module
 ## Description
-Microsoft Azure PowerShell: ScVmm cmdlets
+Azure PowerShell cmdlets for managing Arc for SCVMM resources
 
 ## Az.ScVmm Cmdlets
 ### [Add-AzScVmmVMDisk](Add-AzScVmmVMDisk.md)
