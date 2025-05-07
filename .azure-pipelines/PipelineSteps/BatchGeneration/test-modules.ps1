@@ -4,7 +4,8 @@ param (
     [string]$RepoRoot
 )
 
-# Install Az.Accounts module
+# Install Az.Accounts module and Pester module
+Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
 Install-Module -Name Az.Accounts -AllowClobber -Force -Repository PSGallery
 
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
