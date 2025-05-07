@@ -1,5 +1,5 @@
-### Example 1: {{Triggers EventHub Namespace Failover. }}
-```powershell Start-AzEventHubNamespaceFailOver
+### Example 1: Triggers EventHub Namespace Failover.
+```powershell
 Start-AzEventHubNamespaceFailOver -ResourceGroupName myresourceGroup -NamespaceName mynamespace -PrimaryLocation mylocation
 $eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName myresourceGroup -Name mynamespace 
 ```
@@ -57,4 +57,4 @@ UserAssignedIdentity               : {
 ZoneRedundant                      : False
 ```
 
-{{ Triggers EventHub Namespace Failover. }}
+Triggers EventHub Namespace Failover.
