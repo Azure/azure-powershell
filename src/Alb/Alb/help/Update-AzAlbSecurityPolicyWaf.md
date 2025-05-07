@@ -1,7 +1,7 @@
 ---
 external help file: Az.Alb-help.xml
 Module Name: Az.Alb
-online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicy
+online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalbsecuritypolicywaf
 schema: 2.0.0
 ---
 
@@ -16,20 +16,20 @@ update a SecurityPolicy
 ```
 Update-AzAlbSecurityPolicyWaf -AlbName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-WafPolicyId <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityTrafficControllerExpanded
 ```
 Update-AzAlbSecurityPolicyWaf -Name <String> -TrafficControllerInputObject <IAlbIdentity> [-Tag <Hashtable>]
- [-WafPolicyId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-WafPolicyId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAlbSecurityPolicyWaf -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-WafPolicyId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,21 +101,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityTrafficControllerExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

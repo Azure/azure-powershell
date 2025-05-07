@@ -26,14 +26,34 @@ Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CUSTOMDOMAINPROPERTY <IValidateCustomDomainInput>: Input of the custom domain to be validated for DNS mapping.
+  HostName <String>: The host name of the custom domain. Must be a domain name.
+
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: Azure Subscription ID.
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
@@ -51,47 +71,83 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
 #>
 function Test-AzCdnEndpointCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput])]
-[CmdletBinding(DefaultParameterSetName='ValidateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput])]
+[CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
     ${EndpointName},
 
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the CDN profile which is unique within the resource group.
     ${ProfileName},
 
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='ValidateExpanded1')]
+    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath')]
+    [Parameter(ParameterSetName='ValidateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityProfileExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The host name of the custom domain.
     # Must be a domain name.
     ${HostName},
+
+    [Parameter(ParameterSetName='ValidateViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput]
+    # Input of the custom domain to be validated for DNS mapping.
+    ${CustomDomainProperty},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -149,6 +205,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -168,12 +233,14 @@ begin {
         }
 
         $mapping = @{
-            ValidateExpanded1 = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateExpanded1';
-            ValidateViaIdentityExpanded1 = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaIdentityExpanded1';
+            ValidateExpanded = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateExpanded';
+            ValidateViaIdentityExpanded = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaIdentityExpanded';
+            ValidateViaIdentityProfile = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaIdentityProfile';
+            ValidateViaIdentityProfileExpanded = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaIdentityProfileExpanded';
+            ValidateViaJsonFilePath = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.Cdn.private\Test-AzCdnEndpointCustomDomain_ValidateViaJsonString';
         }
-        if (('ValidateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ValidateExpanded', 'ValidateViaJsonFilePath', 'ValidateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +254,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -17,11 +17,10 @@ The change need to be committed after this.
 
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> [-SubscriptionId <String>]
- -ClassicResourceReferenceId <String> -ProfileName <String> -SkuName <SkuName>
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ClassicResourceReferenceId <String> -ProfileName <String> [-SkuName <String>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,7 +172,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,10 +202,9 @@ Accept wildcard characters: False
 
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile
-To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -247,21 +245,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -281,11 +264,11 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -345,7 +328,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 
 ## NOTES
 

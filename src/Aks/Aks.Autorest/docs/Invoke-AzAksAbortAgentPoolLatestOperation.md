@@ -27,6 +27,12 @@ Invoke-AzAksAbortAgentPoolLatestOperation -InputObject <IAksIdentity> [-DefaultP
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### AbortViaIdentityManagedcluster
+```
+Invoke-AzAksAbortAgentPoolLatestOperation -AgentPoolName <String> -ManagedclusterInputObject <IAksIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Aborts the currently running operation on the agent pool.
 The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes.
@@ -50,7 +56,7 @@ The name of the agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Abort
+Parameter Sets: Abort, AbortViaIdentityManagedcluster
 Aliases:
 
 Required: True
@@ -93,11 +99,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 Parameter Sets: AbortViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedclusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+Parameter Sets: AbortViaIdentityManagedcluster
 Aliases:
 
 Required: True

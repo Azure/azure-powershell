@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Quantum
-Module Guid: c33ffd08-641a-46a2-8984-f16074447b27
+Module Guid: 65936c1e-015a-4add-ade9-753f9194ee60
 Download Help Link: https://learn.microsoft.com/powershell/module/az.quantum
 Help Version: 1.0.0.0
 Locale: en-US
@@ -21,7 +21,7 @@ Returns the Workspace resource associated with the given name.
 Create an in-memory object for Provider.
 
 ### [New-AzQuantumWorkspace](New-AzQuantumWorkspace.md)
-Creates or updates a workspace resource.
+create a workspace resource.
 
 ### [Remove-AzQuantumWorkspace](Remove-AzQuantumWorkspace.md)
 Deletes a Workspace resource.
@@ -30,5 +30,5 @@ Deletes a Workspace resource.
 Check the availability of the resource name.
 
 ### [Update-AzQuantumWorkspace](Update-AzQuantumWorkspace.md)
-Updates an existing workspace's tags.
+update an existing workspace's tags.
 

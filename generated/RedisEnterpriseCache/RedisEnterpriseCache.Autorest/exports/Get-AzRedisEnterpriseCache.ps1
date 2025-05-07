@@ -27,12 +27,12 @@ Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup"
 Get-AzRedisEnterpriseCache
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 function Get-AzRedisEnterpriseCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='ListBySubscriptionId', PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.PrometheusRuleGroups.private.dll'
   FormatsToProcess = './Az.PrometheusRuleGroups.format.ps1xml'
-  FunctionsToExport = 'Get-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroupActionObject', 'New-AzPrometheusRuleObject', 'Remove-AzPrometheusRuleGroup', 'Update-AzPrometheusRuleGroup', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroupActionObject', 'New-AzPrometheusRuleObject', 'Remove-AzPrometheusRuleGroup', 'Update-AzPrometheusRuleGroup'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'PrometheusRuleGroups'

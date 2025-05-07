@@ -318,4 +318,13 @@
   <data name="AgentMI_UnexpectedArcChallengeResponseError" xml:space="preserve">
     <value>Unexpected response while trying to retrieve challenge token from Hybrid IMDS. Expected Unauthorized Response.</value>
   </data>
+  <data name="AgentMI_HIMDSSocketExceptionError" xml:space="preserve">
+    <value>Request to HIMDS endpoint failed due to a socket exception. Ensure Azure Arc process is running on this server via 'azcmagent show'.</value>
+  </data>
+  <data name="AgentMI_IMDSSocketExceptionError" xml:space="preserve">
+    <value>Request to Azure IMDS endpoint failed due to a socket exception. Ensure Azure VM IMDS is running. </value>
+  </data>
+  <data name="AgentMI_ArcServerNotEnabled" xml:space="preserve">
+    <value>&gt;This hybrid server is not Azure Arc-enabled. Please ensure that the Azure Connected Machine agent is installed and the server is connected to Azure Arc.</value>
+  </data>
 </root>

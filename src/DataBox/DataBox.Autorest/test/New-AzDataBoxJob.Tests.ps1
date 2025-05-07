@@ -81,13 +81,13 @@ Describe 'New-AzDataBoxJob' {
         $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType
     
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId $env.StorageAccountId
-        
-        $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
+
+        $details = New-AzDataBoxDiskJobDetailsObject -Type "DataBoxDisk"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ExpectedDataSizeInTeraByte 10
 
         $date = Get-Date
         $scheduleDate = $date.AddDays(15)
 
-        $resource = New-AzDataBoxJob -Name $env.JobNameScheduleOrder -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" -DeliveryType "Scheduled" -DeliveryInfoScheduledDateTime $scheduleDate
+        $resource = New-AzDataBoxJob -Name $env.JobNameScheduleOrder -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBoxDisk" -DeliveryType "Scheduled" -DeliveryInfoScheduledDateTime $scheduleDate
 
         Write-Host -ForegroundColor Green "Create Schedule completed" $resource.DeliveryInfoScheduledDateTime
 
