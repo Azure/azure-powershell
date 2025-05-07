@@ -1348,9 +1348,9 @@ Test MongoMI Roles cmdlets using all parameter sets
 #>
 function Test-MongoMIRoleCmdlets
 {
-  $AccountName = "managedidentity-mongoMI-armtestaccount"
-  $rgName = "mongoMI-connection-demo-livesite"  
-  $location = "UK South"
+  $AccountName = "yayi-mongomi-test-1"
+  $rgName = "yayi-test"  
+  $location = "West US 2"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "UK South" -FailoverPriority 0 -IsZoneRedundant 0
 
@@ -1361,10 +1361,10 @@ function Test-MongoMIRoleCmdlets
   $consistencyLevel = "Session"
   $UpdatedThroughputValue = 600
 
-  $subscriptionId = "2bcd91eb-97a9-4868-bf40-662ce8ef8cb0" #$(getVariable "SubscriptionId")
+  $subscriptionId = "80be3961-0521-4a0a-8570-5cd5a4e2f98c" #$(getVariable "SubscriptionId")
 
-  $PrincipalId = "d006e945-a621-4973-8113-b0a705061e33"
-  $PrincipalId2 = "5af9fd41-fffc-4c7a-9fd8-bed87ae38ac3"
+  $PrincipalId = "5059f4fb-8e7e-4f41-9ca0-37bbaea765ea"
+  $PrincipalId2 = "15859188-ae55-4f6d-8f07-ac19a1ae8e7f"
 
   $RoleName = "roleDefinitionName12"
   $RoleName2 = "roleDefinitionName2"
