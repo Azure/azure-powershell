@@ -15,21 +15,22 @@ Updates an EventHub Namespace
 ### SetExpanded (Default)
 ```
 Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <String>]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>]
- [-MaxReplicationLagDurationInSeconds <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
- [-Replicalocation <INamespaceReplicaLocation[]>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int32>] [-MaxReplicationLagDurationInSeconds <Int64>] [-MinimumTlsVersion <String>]
- [-PublicNetworkAccess <String>] [-Replicalocation <INamespaceReplicaLocation[]>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-EnableAutoInflate] [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -451,6 +452,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoDataReplicationLocation
+Properties for User Assigned Identities
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity.
 
@@ -513,23 +546,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxReplicationLagDurationInSeconds
-The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
-When the lag exceeds the configured amount, operations on the primary replica will be failed.
-The allowed values are 0 and 5 minutes to 1 day.
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MinimumTlsVersion
 The minimum TLS version for the cluster to support, e.g.
 '1.2'
@@ -567,21 +583,6 @@ By default it is enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Replicalocation
-Properties for User Assigned Identities
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
 Parameter Sets: (All)
 Aliases:
 

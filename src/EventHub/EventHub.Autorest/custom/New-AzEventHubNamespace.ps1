@@ -129,11 +129,11 @@ function New-AzEventHubNamespace{
         [Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int64]
-        ${MaxReplicationLagDurationInSeconds},
+        ${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
-        ${Replicalocation},
+        ${GeoDataReplicationLocation},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]

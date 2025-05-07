@@ -19,7 +19,7 @@ Describe 'Start-AzEventHubNamespaceFailOver' {
         # Failover geo-Dr namespace
         $eventhubNamespace = Start-AzEventHubNamespaceFailOver -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -PrimaryLocation eastus2euap
         $eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 
-        $eventHubNamespace.Replicalocation.Count | Should -Be 2
+        $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
     }
 
     It 'SetViaIdentityExpanded' -skip {

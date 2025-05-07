@@ -174,20 +174,6 @@ directive:
   - where:
       verb: New
       subject: Namespace
-      parameter-name: GeoDataReplicationMaxReplicationLagDurationInSecond
-    set:
-      parameter-name: MaxReplicationLagDurationInSeconds
-
-  - where:
-      verb: New
-      subject: Namespace
-      parameter-name: GeoDataReplicationLocation
-    set:
-      parameter-name: ReplicaLocation
-
-  - where:
-      verb: New
-      subject: Namespace
       parameter-name: IsAutoInflateEnabled
     set:
       parameter-name: EnableAutoInflate
