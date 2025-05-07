@@ -25,11 +25,9 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,65 +35,49 @@ To create the parameters described below, construct a hash table containing the 
 
 CANMIGRATEPARAMETER <ICanMigrateParameters>: Request body for CanMigrate operation.
   [ClassicResourceReferenceId <String>]: Resource ID.
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncanprofilemigrate
 #>
 function Invoke-AzCdnCanProfileMigrate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult])]
 [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Can', Mandatory)]
-    [Parameter(ParameterSetName='CanExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Can')]
-    [Parameter(ParameterSetName='CanExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CanViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CanViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Can', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CanViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters]
     # Request body for CanMigrate operation.
-    # To construct, see NOTES section for CANMIGRATEPARAMETER properties and create a hash table.
     ${CanMigrateParameter},
 
     [Parameter(ParameterSetName='CanExpanded')]
-    [Parameter(ParameterSetName='CanViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${ClassicResourceReferenceId},
+
+    [Parameter(ParameterSetName='CanViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Can operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CanViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Can operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -165,16 +147,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Can = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_Can';
             CanExpanded = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanExpanded';
-            CanViaIdentity = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanViaIdentity';
-            CanViaIdentityExpanded = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanViaIdentityExpanded';
+            CanViaJsonFilePath = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanViaJsonFilePath';
+            CanViaJsonString = 'Az.Cdn.private\Invoke-AzCdnCanProfileMigrate_CanViaJsonString';
         }
-        if (('Can', 'CanExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Can', 'CanExpanded', 'CanViaJsonFilePath', 'CanViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -183,6 +166,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

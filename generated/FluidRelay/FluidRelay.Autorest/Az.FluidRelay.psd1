@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.FluidRelay.private.dll'
   FormatsToProcess = './Az.FluidRelay.format.ps1xml'
-  FunctionsToExport = 'Get-AzFluidRelayContainer', 'Get-AzFluidRelayServer', 'Get-AzFluidRelayServerKey', 'New-AzFluidRelayServer', 'New-AzFluidRelayServerKey', 'Remove-AzFluidRelayContainer', 'Remove-AzFluidRelayServer', 'Update-AzFluidRelayServer', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzFluidRelayContainer', 'Get-AzFluidRelayServer', 'Get-AzFluidRelayServerKey', 'New-AzFluidRelayServer', 'New-AzFluidRelayServerKey', 'Remove-AzFluidRelayContainer', 'Remove-AzFluidRelayServer', 'Update-AzFluidRelayServer'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'FluidRelay'

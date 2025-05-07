@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.22.0
 * Added `FederatedClientId` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
 * Added `Get-AzNetAppFilesUsage`
 

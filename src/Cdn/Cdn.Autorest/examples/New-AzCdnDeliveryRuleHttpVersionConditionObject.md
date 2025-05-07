@@ -10,5 +10,3 @@ HttpVersion
 ```
 
 Create an in-memory object for AzureCDN DeliveryRuleHttpVersionCondition
-
-

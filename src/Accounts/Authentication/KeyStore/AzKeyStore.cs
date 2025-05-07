@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             helper.WriteToCachedStorage(args.KeyCache);
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             InMemoryKeyCache.Clear();
         }
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             StorageHelper.TryClearLockedStorageHelper();
         }
 
-        public void SaveSecureString(IKeyStoreKey key, SecureString value)
+        public virtual void SaveSecureString(IKeyStoreKey key, SecureString value)
         {
             InMemoryKeyCache.SaveKey(key, value);
         }
 
-        public SecureString GetSecureString(IKeyStoreKey key)
+        public virtual SecureString GetSecureString(IKeyStoreKey key)
         {
             return InMemoryKeyCache.GetKey<SecureString>(key);
         }
 
-        public bool RemoveSecureString(IKeyStoreKey key)
+        public virtual bool RemoveSecureString(IKeyStoreKey key)
         {
             return InMemoryKeyCache.DeleteKey(key);
         }
