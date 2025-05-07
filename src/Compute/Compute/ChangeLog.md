@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 10.0.0
 * Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 
 * Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing. 
 
