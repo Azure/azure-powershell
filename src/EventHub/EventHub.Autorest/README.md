@@ -177,11 +177,6 @@ directive:
       parameter-name: GeoDataReplicationMaxReplicationLagDurationInSecond
     set:
       parameter-name: MaxReplicationLagDurationInSeconds
-  - where:
-      model-name: EhNamespace
-      property-name: GeoDataReplicationMaxReplicationLagDurationInSecond
-    set:
-      property-name: MaxReplicationLagDurationInSeconds
 
   - where:
       verb: New
@@ -189,11 +184,6 @@ directive:
       parameter-name: GeoDataReplicationLocation
     set:
       parameter-name: ReplicaLocation
-  - where:
-      model-name: EhNamespace
-      property-name: GeoDataReplicationLocation
-    set:
-      property-name: ReplicaLocation
 
   - where:
       verb: New

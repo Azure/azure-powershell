@@ -1,6 +1,6 @@
 ### Example 1: {{Triggers EventHub Namespace Failover. }}
-```powershell
-$eventhubNamespace = Start-AzEventHubNamespaceFailOver -ResourceGroupName myresourceGroup -Name mynamespace -PrimaryLocation mylocation
+```powershell Start-AzEventHubNamespaceFailOver
+Start-AzEventHubNamespaceFailOver -ResourceGroupName myresourceGroup -NamespaceName mynamespace -PrimaryLocation mylocation
 $eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName myresourceGroup -Name mynamespace 
 ```
 
