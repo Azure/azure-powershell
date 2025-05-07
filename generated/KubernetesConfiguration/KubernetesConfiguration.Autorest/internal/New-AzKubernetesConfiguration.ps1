@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Kubernetes Source Control Configuration.
+create a new Kubernetes Source Control Configuration.
 .Description
-Create a new Kubernetes Source Control Configuration.
+create a new Kubernetes Source Control Configuration.
 .Example
 New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
@@ -27,13 +27,13 @@ New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName a
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ISourceControlConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
 [Alias('New-AzK8sConfiguration')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ISourceControlConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -78,75 +78,87 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Name-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Option to enable Helm Operator for this git configuration.
     ${EnableHelmOperator},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Values override for the operator Helm chart.
     ${HelmOperatorChartValue},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Version of the operator Helm chart.
     ${HelmOperatorChartVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Instance name of the operator - identifying the specific configuration.
     ${OperatorInstanceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # The namespace to which this operator is installed to.
     # Maximum of 253 lower case alphanumeric characters, hyphen and period only.
     ${OperatorNamespace},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Any Parameters for the Operator instance in string format.
     ${OperatorParam},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PSArgumentCompleterAttribute("cluster", "namespace")]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]
+    [System.String]
     # Scope at which the operator will be installed.
     ${OperatorScope},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PSArgumentCompleterAttribute("Flux")]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]
+    [System.String]
     # Type of the operator
     ${OperatorType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Url of the SourceControl Repository.
     ${RepositoryUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
     [System.String]
     # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
     ${SshKnownHost},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -204,13 +216,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.KubernetesConfiguration.private\New-AzKubernetesConfiguration_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.KubernetesConfiguration.private\New-AzKubernetesConfiguration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.KubernetesConfiguration.private\New-AzKubernetesConfiguration_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -219,6 +234,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
