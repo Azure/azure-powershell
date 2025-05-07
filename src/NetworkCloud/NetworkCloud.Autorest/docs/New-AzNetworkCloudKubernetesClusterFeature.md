@@ -8,18 +8,26 @@ schema: 2.0.0
 # New-AzNetworkCloudKubernetesClusterFeature
 
 ## SYNOPSIS
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String> -KubernetesClusterName <String>
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-Option <IStringKeyValuePair[]>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityKubernetesClusterExpanded
+```
+New-AzNetworkCloudKubernetesClusterFeature -FeatureName <String>
+ -KubernetesClusterInputObject <INetworkCloudIdentity> -Location <String> [-Option <IStringKeyValuePair[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 
 ## EXAMPLES
 
@@ -84,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KubernetesClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityKubernetesClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KubernetesClusterName
 The name of the Kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -131,10 +154,9 @@ Accept wildcard characters: False
 
 ### -Option
 The configured options for the feature.
-To construct, see NOTES section for OPTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStringKeyValuePair[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -167,7 +189,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -228,9 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IKubernetesClusterFeature
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
 
 ## NOTES
 

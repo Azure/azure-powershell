@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzNetworkCloudVirtualMachine -InputObject <INetworkCloudIdentity> [-Tag <
 
 ## DESCRIPTION
 Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag updates can be done independently.
+Properties and tag update can be done independently.
 
 ## EXAMPLES
 
@@ -92,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -268,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
 
 ## NOTES
 

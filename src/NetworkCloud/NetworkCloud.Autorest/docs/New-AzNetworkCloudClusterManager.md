@@ -8,21 +8,20 @@ schema: 2.0.0
 # New-AzNetworkCloudClusterManager
 
 ## SYNOPSIS
-Create a new cluster manager or update properties of the cluster manager if it exists.
+create a new cluster manager or create properties of the cluster manager if it exists.
 
 ## SYNTAX
 
 ```
 New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -FabricControllerId <String>
  -Location <String> [-SubscriptionId <String>] [-AnalyticsWorkspaceId <String>] [-AvailabilityZone <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-Tag <Hashtable>] [-VMSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-VMSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new cluster manager or update properties of the cluster manager if it exists.
+create a new cluster manager or create properties of the cluster manager if it exists.
 
 ## EXAMPLES
 
@@ -109,6 +108,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FabricControllerId
 The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 
@@ -118,38 +132,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,6 +262,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VMSize
 Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
 The size of the Azure virtual machines to use for hosting the cluster manager resource.
@@ -334,7 +332,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterManager
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManager
 
 ## NOTES
 

@@ -8,20 +8,29 @@ schema: 2.0.0
 # New-AzNetworkCloudConsole
 
 ## SYNOPSIS
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- [-SubscriptionId <String>] -Enabled <ConsoleEnabled> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String> [-Expiration <DateTime>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VirtualMachineName <String> -Enabled <String> -ExtendedLocationName <String> -ExtendedLocationType <String>
+ -Location <String> -SshPublicKeyData <String> [-Expiration <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityVirtualMachineExpanded
+```
+New-AzNetworkCloudConsole -Name <String> -VirtualMachineInputObject <INetworkCloudIdentity> -Enabled <String>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String>
+ [-Expiration <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new virtual machine console or update the properties of the existing virtual machine console.
+create a new virtual machine console or create the properties of the existing virtual machine console.
 
 ## EXAMPLES
 
@@ -77,7 +86,7 @@ Accept wildcard characters: False
 The indicator of whether the console access is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ConsoleEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +193,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -215,7 +224,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -240,12 +249,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+Parameter Sets: CreateViaIdentityVirtualMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineName
 The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -291,9 +315,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IConsole
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IConsole
 
 ## NOTES
 
