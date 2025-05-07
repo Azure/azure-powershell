@@ -21,12 +21,12 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusOSInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,13 +40,13 @@ function New-AzWorkloadsProviderPrometheusOSInstanceObject {
         [string]
         $SslCertificateUri,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
+        [string]
         $SslPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.PrometheusOSProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('PrometheusUrl')) {
             $Object.PrometheusUrl = $PrometheusUrl
