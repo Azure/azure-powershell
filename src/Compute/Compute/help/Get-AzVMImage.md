@@ -38,15 +38,16 @@ Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Of
 ```
 
 ```output
-Version           Location  HyperVGeneration Architecture ImageDeprecationStatus PublisherName
--------           --------  ---------------- ------------ ---------------------- -------------
-26100.2033.241004 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2314.241107 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2605.241207 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2894.250113 centralus V1               x64                                 MicrosoftWindowsServer
-26100.3194.250210 centralus V1               x64                                 MicrosoftWindowsServer
-26100.3476.250306 centralus V1               x64                                 MicrosoftWindowsServer
-26100.3775.250406 centralus V1               x64                                 MicrosoftWindowsServer
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer
+26100.2314.241107 centralus MicrosoftWindowsServer
+26100.2605.241207 centralus MicrosoftWindowsServer
+26100.2894.250113 centralus MicrosoftWindowsServer
+26100.3194.250210 centralus MicrosoftWindowsServer
+26100.3476.250306 centralus MicrosoftWindowsServer
+26100.3775.250406 centralus MicrosoftWindowsServer
+
 ```
 
 This command gets all the versions of VMImage that match the specified values.
@@ -57,15 +58,15 @@ Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Of
 ```
 
 ```output
-Version           Location  HyperVGeneration Architecture ImageDeprecationStatus
--------           --------  ---------------- ------------ ----------------------
-26100.2033.241004 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.2314.241107 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.2605.241207 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.2894.250113 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.3194.250210 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.3476.250306 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
-26100.3775.250406 centralus V1               x64          Microsoft.Azure.Management.Compute.Models.ImageDeprecationSt�
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2314.241107 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2605.241207 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.2894.250113 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3194.250210 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3476.250306 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
+26100.3775.250406 centralus MicrosoftWindowsServer V1               x64          Microsoft.Azure.Management.Compute.Mo…
 ```
 
 This command gets all the versions of VMImage that match the specified values with image deprecation statuses.
@@ -103,16 +104,16 @@ This command gets a specific version of VMImage that matches the specified value
 
 ### Example 4: Get VMImage objects
 ```powershell
-Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter" -Version 26100.2*
+Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2025-datacenter" -Version 26100.2* -Expand properties
 ```
 
 ```output
-Version           Location  HyperVGeneration Architecture ImageDeprecationStatus PublisherName
--------           --------  ---------------- ------------ ---------------------- -------------
-26100.2033.241004 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2314.241107 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2605.241207 centralus V1               x64                                 MicrosoftWindowsServer
-26100.2894.250113 centralus V1               x64                                 MicrosoftWindowsServer
+Version           Location  PublisherName          HyperVGeneration Architecture ImageDeprecationStatus
+-------           --------  -------------          ---------------- ------------ ----------------------
+26100.2033.241004 centralus MicrosoftWindowsServer V1               x64
+26100.2314.241107 centralus MicrosoftWindowsServer V1               x64
+26100.2605.241207 centralus MicrosoftWindowsServer V1               x64
+26100.2894.250113 centralus MicrosoftWindowsServer V1               x64
 ```
 
 This command gets all the versions of VMImage that match the specified values with filtering over version.

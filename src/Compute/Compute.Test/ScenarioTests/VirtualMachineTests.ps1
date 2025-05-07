@@ -4856,7 +4856,7 @@ function Test-VirtualMachineImageListTopOrderExpand
         $orderNameAsc = "name asc";
 
         # Test -Top
-        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties";
         Assert-AreEqual $numRecords $vmImagesTop.Count;
         Assert-NotNull $vmImagesTop[0].Architecture;
         Assert-NotNull $vmImagesTop[0].HyperVGeneration;

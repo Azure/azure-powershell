@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
@@ -98,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string OrderBy { get; set; }
 
         [PSArgumentCompleter("properties", "properties/imageDeprecationStatus")]
-        [Parameter(ParameterSetName = ListVMImageParamSetName,
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The expand expression to apply on the operation.",
             ValueFromPipelineByPropertyName = true)]
@@ -112,6 +114,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if ((this.IsParameterBound(c => c.EdgeZone)) && this.EdgeZone != null)
                 {
+                    // Edgezone and List
                     if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                     {
                         var result = this.VirtualMachineImagesEdgeZoneClient.ListWithHttpMessagesAsync(
@@ -141,6 +144,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                         WriteObject(SubResourceWildcardFilter(Version, images), true);
                     }
+                    // EdgeZone and version provided 
                     else
                     {
                         var response = this.VirtualMachineImagesEdgeZoneClient.GetWithHttpMessagesAsync(
@@ -174,20 +178,23 @@ namespace Microsoft.Azure.Commands.Compute
                         WriteObject(image);
                     }
                 }
+                // None EdgeZone and List 
                 else if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
-                    
-                    var result = this.VirtualMachineImageClient.ListWithPropertiesWithHttpMessagesAsync(
-                        this.Location.Canonicalize(),
-                        this.PublisherName,
-                        this.Offer,
-                        this.Skus,
-                        this.Expand != null ? this.Expand : "properties",
-                        top: this.Top,
-                        orderby: this.OrderBy
-                        ).GetAwaiter().GetResult();
+                    // Expand provided 
+                    if (this.Expand != null)
+                    {
+                        var result = this.VirtualMachineImageClient.ListWithPropertiesWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            this.Expand,
+                            top: this.Top,
+                            orderby: this.OrderBy
+                            ).GetAwaiter().GetResult();
 
-                    var images = from r in result.Body
+                        var images = from r in result.Body
                                  select new PSVirtualMachineImage
                                  {
                                      RequestId = result.RequestId,
@@ -202,9 +209,37 @@ namespace Microsoft.Azure.Commands.Compute
                                      HyperVGeneration = r.HyperVGeneration,
                                      ImageDeprecationStatus = r.ImageDeprecationStatus
                                  };
+                    
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
+                    // Expand not provided 
+                    else
+                    {
+                        var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        top: this.Top,
+                        orderby: this.OrderBy
+                        ).GetAwaiter().GetResult();
+                        var images = from r in result.Body
+                                     select new PSVirtualMachineImage
+                                     {
+                                         RequestId = result.RequestId,
+                                         StatusCode = result.Response.StatusCode,
+                                         Id = r.Id,
+                                         Location = r.Location,
+                                         Version = r.Name,
+                                         PublisherName = this.PublisherName,
+                                         Offer = this.Offer,
+                                         Skus = this.Skus
+                                     };
 
-                    WriteObject(SubResourceWildcardFilter(Version, images), true);
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
                 }
+                // None EdgeZone and version provided
                 else if (this.ParameterSetName.Equals(GetVMImageDetailParamSetName) && this.Version.ToLower() == "latest")
                 {
                     var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
@@ -212,6 +247,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
+                        expand: this.Expand,
                         top: 1,
                         orderby: "name desc"
                         ).GetAwaiter().GetResult();

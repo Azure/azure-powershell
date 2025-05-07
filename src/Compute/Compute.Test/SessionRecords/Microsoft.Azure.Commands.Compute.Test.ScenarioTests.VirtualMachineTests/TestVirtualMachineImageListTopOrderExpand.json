@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fef8a341-a4ec-46c8-a580-80c85fd32f48"
+          "fbd39ca6-4b7e-4ff8-9b1e-715db7928958"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,13 +33,13 @@
           "16499"
         ],
         "x-ms-request-id": [
-          "75f23d0c-1fd5-4c10-a12e-7cdbf889c419"
+          "09458b86-97e8-48b9-97f0-83a11e37fef8"
         ],
         "x-ms-correlation-request-id": [
-          "75f23d0c-1fd5-4c10-a12e-7cdbf889c419"
+          "09458b86-97e8-48b9-97f0-83a11e37fef8"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250507T191001Z:75f23d0c-1fd5-4c10-a12e-7cdbf889c419"
+          "EASTUS:20250507T225304Z:09458b86-97e8-48b9-97f0-83a11e37fef8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: C1759CBBA78A4150AFC27BE5D0712887 Ref B: MNZ221060609023 Ref C: 2025-05-07T19:10:00Z"
+          "Ref A: 5BF866DEB18D442A9CB3C24679EEC48C Ref B: MNZ221060608035 Ref C: 2025-05-07T22:53:04Z"
         ],
         "Date": [
-          "Wed, 07 May 2025 19:10:00 GMT"
+          "Wed, 07 May 2025 22:53:04 GMT"
         ],
         "Content-Length": [
           "94512"
@@ -78,7 +78,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "e4e2fbf4-c807-420d-96af-2e09da8c7769"
+          "717b7c29-6398-4451-a61f-3024b2bb6199"
         ],
         "User-Agent": [
           "FxVersion/8.0.1525.16413",
@@ -96,7 +96,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15999,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43998"
+          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15999,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43999"
         ],
         "x-ms-served-by": [
           "76852779-c654-4812-9ee7-86d4cbde99b1_133881476403618778"
@@ -105,10 +105,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b2bc69e0-250b-487b-b636-f5446e36b5f2"
+          "ce907f63-489d-4ea3-882e-da0f0a9976b3"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/d69533a2-7b1f-4fec-84a7-c69cabfad655"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/9d51fec4-e4d8-40c7-97a2-957d58c8f56d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -117,10 +117,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "c19d3c89-a8ac-4728-a6b9-531568b2d128"
+          "2b1d13bd-d7f0-463c-a0ab-deb671bc7a0a"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250507T191001Z:c19d3c89-a8ac-4728-a6b9-531568b2d128"
+          "EASTUS:20250507T225306Z:2b1d13bd-d7f0-463c-a0ab-deb671bc7a0a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -129,10 +129,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5B65514B5FE94627A31AD50F41302C0B Ref B: MNZ221060619025 Ref C: 2025-05-07T19:10:01Z"
+          "Ref A: F153D5DA04D24EEA9C37DC4464C27B6F Ref B: MNZ221060619025 Ref C: 2025-05-07T22:53:06Z"
         ],
         "Date": [
-          "Wed, 07 May 2025 19:10:00 GMT"
+          "Wed, 07 May 2025 22:53:05 GMT"
         ],
         "Content-Length": [
           "1632"
@@ -156,7 +156,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "5a878164-7e6d-4751-a42b-4c21d99ccb4c"
+          "d1c41efd-b20f-49c0-84aa-ce3781ca6047"
         ],
         "User-Agent": [
           "FxVersion/8.0.1525.16413",
@@ -174,7 +174,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15998,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43997"
+          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15998,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43998"
         ],
         "x-ms-served-by": [
           "76852779-c654-4812-9ee7-86d4cbde99b1_133881476403618778"
@@ -183,10 +183,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "38d4ad60-daf3-4e09-8b4f-7a6b113f9aa1"
+          "6b59c976-6a80-4d45-b72a-f31d476d30ca"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/78b6db0a-2ece-4198-afc9-9676fe7fd1f2"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/afb00890-7cb3-4c63-889a-159dda24f96d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -195,10 +195,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "2bf4e13d-c050-4ee2-89d4-515a3b9a2d71"
+          "513ab90f-214d-456a-8a9d-e239cb895693"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250507T191001Z:2bf4e13d-c050-4ee2-89d4-515a3b9a2d71"
+          "EASTUS:20250507T225306Z:513ab90f-214d-456a-8a9d-e239cb895693"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -207,10 +207,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 9A7D980F59B649D3843123F66DD85389 Ref B: MNZ221060609021 Ref C: 2025-05-07T19:10:01Z"
+          "Ref A: E77C97A0268746C1A7ADAB49E1FCFA4D Ref B: MNZ221060609019 Ref C: 2025-05-07T22:53:06Z"
         ],
         "Date": [
-          "Wed, 07 May 2025 19:10:00 GMT"
+          "Wed, 07 May 2025 22:53:06 GMT"
         ],
         "Content-Length": [
           "1992"
@@ -226,15 +226,15 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/windowsserver/skus/2025-datacenter/versions?$expand=properties&$orderby=name%20desc&api-version=2024-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL3B1Ymxpc2hlcnMvTWljcm9zb2Z0V2luZG93c1NlcnZlci9hcnRpZmFjdHR5cGVzL3ZtaW1hZ2Uvb2ZmZXJzL3dpbmRvd3NzZXJ2ZXIvc2t1cy8yMDI1LWRhdGFjZW50ZXIvdmVyc2lvbnM/JGV4cGFuZD1wcm9wZXJ0aWVzJiRvcmRlcmJ5PW5hbWUlMjBkZXNjJmFwaS12ZXJzaW9uPTIwMjQtMTEtMDE=",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/windowsserver/skus/2025-datacenter/versions?$orderby=name%20desc&api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL3B1Ymxpc2hlcnMvTWljcm9zb2Z0V2luZG93c1NlcnZlci9hcnRpZmFjdHR5cGVzL3ZtaW1hZ2Uvb2ZmZXJzL3dpbmRvd3NzZXJ2ZXIvc2t1cy8yMDI1LWRhdGFjZW50ZXIvdmVyc2lvbnM/JG9yZGVyYnk9bmFtZSUyMGRlc2MmYXBpLXZlcnNpb249MjAyNC0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "8ff83352-2dda-45ac-8a67-9091b4b3c414"
+          "fe6b52fb-08e6-453d-a359-82f87fe65ac3"
         ],
         "User-Agent": [
           "FxVersion/8.0.1525.16413",
@@ -252,7 +252,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15997,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43996"
+          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15997,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43997"
         ],
         "x-ms-served-by": [
           "76852779-c654-4812-9ee7-86d4cbde99b1_133881476403618778"
@@ -261,10 +261,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "57f41e85-9880-498b-929c-c80087453f6a"
+          "804fefc7-5930-446a-81e0-12798c99ef49"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/d7c9a282-9900-48ca-ad69-5adc5475f9be"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/c23e19f2-e59f-429b-b72c-f9e9da16674c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -273,10 +273,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "81560b33-9d67-4136-80f5-99a0e4a6ddff"
+          "fd1dd778-b273-423e-9947-585b85cf6fc2"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250507T191001Z:81560b33-9d67-4136-80f5-99a0e4a6ddff"
+          "EASTUS:20250507T225306Z:fd1dd778-b273-423e-9947-585b85cf6fc2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -285,13 +285,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 8DEE7EF9BF9B490FB562E888D1832E12 Ref B: MNZ221060619033 Ref C: 2025-05-07T19:10:01Z"
+          "Ref A: A60F461FF0F64C5291A3968F3812EE8F Ref B: MNZ221060610019 Ref C: 2025-05-07T22:53:06Z"
         ],
         "Date": [
-          "Wed, 07 May 2025 19:10:00 GMT"
+          "Wed, 07 May 2025 22:53:06 GMT"
         ],
         "Content-Length": [
-          "3804"
+          "2152"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -300,19 +300,19 @@
           "-1"
         ]
       },
-      "ResponseBody": "[\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-04-11T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3775.250406\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3775.250406\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-03-10T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3476.250306\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3476.250306\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-02-12T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3194.250210\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3194.250210\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-01-14T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2894.250113\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2894.250113\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-12-09T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2605.241207\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2605.241207\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-11-11T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2314.241107\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2314.241107\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-10-31T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2033.241004\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2033.241004\"\r\n  }\r\n]",
+      "ResponseBody": "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3775.250406\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3775.250406\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3476.250306\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3476.250306\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3194.250210\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3194.250210\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2894.250113\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2894.250113\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2605.241207\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2605.241207\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2314.241107\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2314.241107\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2033.241004\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2033.241004\"\r\n  }\r\n]",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/windowsserver/skus/2025-datacenter/versions?$expand=properties&$orderby=name%20asc&api-version=2024-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL3B1Ymxpc2hlcnMvTWljcm9zb2Z0V2luZG93c1NlcnZlci9hcnRpZmFjdHR5cGVzL3ZtaW1hZ2Uvb2ZmZXJzL3dpbmRvd3NzZXJ2ZXIvc2t1cy8yMDI1LWRhdGFjZW50ZXIvdmVyc2lvbnM/JGV4cGFuZD1wcm9wZXJ0aWVzJiRvcmRlcmJ5PW5hbWUlMjBhc2MmYXBpLXZlcnNpb249MjAyNC0xMS0wMQ==",
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/windowsserver/skus/2025-datacenter/versions?$orderby=name%20asc&api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzL3B1Ymxpc2hlcnMvTWljcm9zb2Z0V2luZG93c1NlcnZlci9hcnRpZmFjdHR5cGVzL3ZtaW1hZ2Uvb2ZmZXJzL3dpbmRvd3NzZXJ2ZXIvc2t1cy8yMDI1LWRhdGFjZW50ZXIvdmVyc2lvbnM/JG9yZGVyYnk9bmFtZSUyMGFzYyZhcGktdmVyc2lvbj0yMDI0LTExLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "dd19f3a6-be0d-4558-9815-e58aacfbcd25"
+          "3822d0e9-bc23-475b-b442-d15533d3daa7"
         ],
         "User-Agent": [
           "FxVersion/8.0.1525.16413",
@@ -330,7 +330,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15996,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43995"
+          "Microsoft.Compute/ListVMImagesVersionsFromLocation3Min;15996,Microsoft.Compute/ListVMImagesVersionsFromLocation30Min;43996"
         ],
         "x-ms-served-by": [
           "76852779-c654-4812-9ee7-86d4cbde99b1_133881476403618778"
@@ -339,10 +339,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "dd773744-f321-4620-9e95-cc5a0f252d94"
+          "c29f8460-b3f4-4342-b64a-dacdfc0afa78"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus/6f13409e-b63c-49a6-a5a4-8603ce1aad28"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=401aab92-0319-46e8-8f49-0249f406012b/eastus2/4c6ddd8d-90c4-4127-aff2-d273bb9602b4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -351,10 +351,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "73fa5d7f-b8de-4593-87b7-a81bcecb695b"
+          "073f3fc7-b372-497f-99be-f9e725d672ee"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250507T191002Z:73fa5d7f-b8de-4593-87b7-a81bcecb695b"
+          "EASTUS2:20250507T225306Z:073f3fc7-b372-497f-99be-f9e725d672ee"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -363,13 +363,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 018BE353DC28440EA9F21CF29577689F Ref B: MNZ221060619051 Ref C: 2025-05-07T19:10:01Z"
+          "Ref A: 91F410395CD34324B20DAC48C4804246 Ref B: MNZ221060608023 Ref C: 2025-05-07T22:53:06Z"
         ],
         "Date": [
-          "Wed, 07 May 2025 19:10:01 GMT"
+          "Wed, 07 May 2025 22:53:06 GMT"
         ],
         "Content-Length": [
-          "3804"
+          "2152"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -378,7 +378,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "[\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-10-31T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2033.241004\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2033.241004\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-11-11T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2314.241107\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2314.241107\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2024-12-09T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2605.241207\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2605.241207\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-01-14T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2894.250113\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2894.250113\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-02-12T19:00:00-05:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3194.250210\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3194.250210\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-03-10T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3476.250306\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3476.250306\"\r\n  },\r\n  {\r\n    \"properties\": {\r\n      \"hyperVGeneration\": \"V1\",\r\n      \"architecture\": \"x64\",\r\n      \"replicaType\": \"Unmanaged\",\r\n      \"replicaCount\": null,\r\n      \"goLiveDate\": \"2025-04-11T20:00:00-04:00\"\r\n    },\r\n    \"extendedLocation\": null,\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3775.250406\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3775.250406\"\r\n  }\r\n]",
+      "ResponseBody": "[\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2033.241004\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2033.241004\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2314.241107\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2314.241107\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2605.241207\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2605.241207\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.2894.250113\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.2894.250113\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3194.250210\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3194.250210\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3476.250306\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3476.250306\"\r\n  },\r\n  {\r\n    \"location\": \"eastus\",\r\n    \"name\": \"26100.3775.250406\",\r\n    \"id\": \"/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/eastus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windowsserver/Skus/2025-datacenter/Versions/26100.3775.250406\"\r\n  }\r\n]",
       "StatusCode": 200
     }
   ],

@@ -194,6 +194,9 @@
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PublisherName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>HyperVGeneration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -201,9 +204,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ImageDeprecationStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublisherName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
