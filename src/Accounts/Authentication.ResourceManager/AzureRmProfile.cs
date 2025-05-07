@@ -819,9 +819,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 out PowerShellTokenCacheProvider tokenCacheProvider);
 
             string authority = null;
+            //If the function is called from "public virtual IAzureContext DefaultContext", authroity is empty and then ListAccounts will return empty.
+            //But as "ShouldRefreshContextsFromCache" is always false, the only call path is from GetAzureRMContext for now.
             if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
             {
-                authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
+                authority = new Uri(new Uri(sessionEnvironment.ActiveDirectoryAuthority), "organizations").AbsoluteUri;
+
             }
             var accounts = tokenCacheProvider.ListAccounts(authority);
             if (!accounts.Any())
