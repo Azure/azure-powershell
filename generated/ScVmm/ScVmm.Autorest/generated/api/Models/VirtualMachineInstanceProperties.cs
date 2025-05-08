@@ -106,19 +106,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Gets description of the checkpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string LastRestoredVMCheckpointDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointDescription; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointDescription = value ?? null; }
+        public string LastRestoredVMCheckpointDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointDescription; }
 
         /// <summary>Gets ID of the checkpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string LastRestoredVMCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointId = value ?? null; }
+        public string LastRestoredVMCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointId; }
 
         /// <summary>Gets name of the checkpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string LastRestoredVMCheckpointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointName = value ?? null; }
+        public string LastRestoredVMCheckpointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointName; }
 
         /// <summary>Gets ID of parent of the checkpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string LastRestoredVMCheckpointParentCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointParentCheckpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointParentCheckpointId = value ?? null; }
+        public string LastRestoredVMCheckpointParentCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointParentCheckpointId; }
 
         /// <summary>Internal Acessors for HardwareProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IHardwareProfile Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.HardwareProfile { get => (this._hardwareProfile = this._hardwareProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.HardwareProfile()); set { {_hardwareProfile = value;} } }
@@ -134,6 +134,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Internal Acessors for InfrastructureProfileLastRestoredVMCheckpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICheckpoint Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.InfrastructureProfileLastRestoredVMCheckpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpoint = value; }
+
+        /// <summary>Internal Acessors for LastRestoredVMCheckpointDescription</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.LastRestoredVMCheckpointDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointDescription; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointDescription = value; }
+
+        /// <summary>Internal Acessors for LastRestoredVMCheckpointId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.LastRestoredVMCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointId = value; }
+
+        /// <summary>Internal Acessors for LastRestoredVMCheckpointName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.LastRestoredVMCheckpointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointName = value; }
+
+        /// <summary>Internal Acessors for LastRestoredVMCheckpointParentCheckpointId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.LastRestoredVMCheckpointParentCheckpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointParentCheckpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IInfrastructureProfileInternal)InfrastructureProfile).LastRestoredVMCheckpointParentCheckpointId = value; }
 
         /// <summary>Internal Acessors for NetworkProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkProfile Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstancePropertiesInternal.NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.NetworkProfile()); set { {_networkProfile = value;} } }
