@@ -488,16 +488,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
-            RemoveUser(account, environment: null);
-        }
-
-        /// <summary>
-        /// Remove any stored credentials for the given user and the Azure environment used.
-        /// </summary>
-        /// <param name="account">The account to remove credentials for</param>
-        /// <param name="environment">The environment which account belongs to</param>
-        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
-        {
             if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
             {
                 switch (account.Type)
@@ -523,10 +513,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             // make best effort to remove credentials
                         }
 
-                        RemoveFromTokenCache(account, environment.ActiveDirectoryAuthority);
+                        RemoveFromTokenCache(account);
                         break;
                     case AzureAccount.AccountType.User:
-                        RemoveFromTokenCache(account, environment.ActiveDirectoryAuthority);
+                        RemoveFromTokenCache(account);
                         break;
                 }
             }
@@ -568,7 +558,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(IAzureAccount account, string authority = null)
+        private void RemoveFromTokenCache(IAzureAccount account)
         {
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -576,12 +566,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient(authority);
+            var publicClient = tokenCacheProvider.CreatePublicClient();
             var accounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
             foreach (var tokenAccount in tokenAccounts)
-            {
+                {
                 publicClient.RemoveAsync(tokenAccount)
                                 .ConfigureAwait(false).GetAwaiter().GetResult();
             }
