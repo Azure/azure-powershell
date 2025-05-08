@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* The default output access token of Get-AzAccessToken is change from plain text to SecureString.
 * Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
 * Fixed the issue that context is not cleared when WAM is enabled.
 * Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
