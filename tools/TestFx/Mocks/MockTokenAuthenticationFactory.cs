@@ -148,10 +148,5 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         {
             return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
         }
-
-        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -65,29 +65,29 @@ namespace Microsoft.Azure.Commands.Profile.Context
             bool result = false;
             if (profile != null)
             {
-                PowerShellTokenCacheProvider tokenCacheProvider = null;
+                var contexts = profile.Contexts.Values;
+                foreach (var context in contexts)
+                {
+                    client.TryRemoveContext(context);
+                }
+
+                PowerShellTokenCacheProvider tokenCacheProvider;
                 if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
                 {
                     WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
-
-                var contexts = profile.Contexts.Values;
-                foreach (var context in contexts)
+                else
                 {
-                    tokenCacheProvider?.ClearCache(context.Environment.ActiveDirectoryAuthority);
-                    client.TryRemoveContext(context);
-                }
-
-                if (tokenCacheProvider != null)
-                {
-                    profile.TrySetDefaultContext(new AzureContext());
+                    tokenCacheProvider.ClearCache();
+                    var defaultContext = new AzureContext();
+                    profile.TrySetDefaultContext(defaultContext);
                     result = true;
                 }
-
                 if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
                 {
                     keyStore?.Clear();
                 }
+
             }
 
             AzureSession.Instance.RaiseContextClearedEvent();

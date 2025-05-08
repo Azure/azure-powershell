@@ -124,20 +124,21 @@ namespace Microsoft.Azure.Commands.Profile
 
                 if (ShouldProcess(string.Format("Log out principal '{0}'", azureAccount.Id), "log out"))
                 {
+                    if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                    {
+                        AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, null);
+                    }
+
                     if (AzureRmProfileProvider.Instance.Profile != null)
                     {
                         ModifyContext((localProfile, profileClient) =>
-                        {
-                            var matchingContexts = localProfile.Contexts?.Values?.Where((c) => c != null && c.Account != null && string.Equals(c.Account.Id, azureAccount.Id, StringComparison.CurrentCultureIgnoreCase));
-                            foreach (var context in matchingContexts)
-                            {
-                                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
-                                {
-                                    AzureSession.Instance.AuthenticationFactory.RemoveUser(azureAccount, context.Environment);
-                                }
-                                profileClient.TryRemoveContext(context);
-                            }
-                        });
+                       {
+                           var matchingContexts = localProfile.Contexts?.Values?.Where((c) => c != null && c.Account != null && string.Equals(c.Account.Id, azureAccount.Id, StringComparison.CurrentCultureIgnoreCase));
+                           foreach (var context in matchingContexts)
+                           {
+                               profileClient.TryRemoveContext(context);
+                           }
+                       });
                     }
 
                     WriteObject(new PSAzureRmAccount(azureAccount));

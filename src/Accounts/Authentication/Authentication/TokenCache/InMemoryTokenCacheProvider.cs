@@ -14,7 +14,6 @@
 
 using Azure.Identity;
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public override void ClearCache(string authority)
+        public override void ClearCache()
         {
             InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions();
         }
