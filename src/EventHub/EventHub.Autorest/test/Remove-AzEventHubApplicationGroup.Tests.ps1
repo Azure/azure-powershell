@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubApplicationG
 }
 
 Describe 'Remove-AzEventHubApplicationGroup' {
-    $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
+    #$t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
 
     It 'Delete'  -skip {
         $b = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -name b -Rights @("Manage", "Send", "Listen")
