@@ -61,8 +61,8 @@ function setupEnv() {
 
     # Create profile, Standard Verizon SKU
     $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-    Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"
-    New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+    Write-Host -ForegroundColor Green "Start to create Standard_Microsoft SKU profile : $($verizonCdnProfileName)"
+    New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
     # Create endpoint, Standard Verizon SKU
     $verizonEndpointName = 'e-' + (RandomString -allChars $false -len 6);
@@ -77,7 +77,7 @@ function setupEnv() {
 
     $env.Add("VerizonCdnProfileName", $verizonCdnProfileName)
     $env.Add("VerizonEndpointName", $verizonEndpointName)
-    Write-Host -ForegroundColor Green "Standard_Verizon SKU resources have been added to the environment."
+    Write-Host -ForegroundColor Green "Standard_Microsoft SKU resources have been added to the environment."
 
     # Create profile, Standard Microsoft SKU
     $classicCdnProfileName = 'p-' + (RandomString -allChars $false -len 6)
