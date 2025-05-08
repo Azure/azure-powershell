@@ -421,6 +421,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When enabled, Get-AzAccessToken returns a plain text access token..
+        /// </summary>
+        public static string HelpMessageOfPlainTextTokenOutput {
+            get {
+                return ResourceManager.GetString("HelpMessageOfPlainTextTokenOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
         /// </summary>
         public static string HttpClientAddingHeader {

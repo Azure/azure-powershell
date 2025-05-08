@@ -239,6 +239,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 "AZURE_CLIENTS_SHOW_SECRETS_WARNING",
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new DisableInstanceDiscoveryConfig());
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.AzPsOutputPlainTextAccessToken,
+                Resources.HelpMessageOfPlainTextTokenOutput,
+                false,
+                Constants.AzPsOutputPlainTextAccessToken,
+                new[] { AppliesTo.Az }));
         }
     }
 }

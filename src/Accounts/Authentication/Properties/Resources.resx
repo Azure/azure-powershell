@@ -422,4 +422,7 @@
   <data name="AuthenticationTelemetryRecordPushError" xml:space="preserve">
     <value>Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}.</value>
   </data>
+  <data name="HelpMessageOfPlainTextTokenOutput" xml:space="preserve">
+    <value>When enabled, Get-AzAccessToken returns a plain text access token.</value>
+  </data>
 </root>

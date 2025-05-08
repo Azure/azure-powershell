@@ -27,6 +27,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Commands.Shared.Config;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -146,13 +148,13 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            if (AsSecureString.IsPresent)
+            if (AzConfigReader.GetAzConfig(ConfigKeys.AzPsOutputPlainTextAccessToken, false))
             {
-                WriteObject(new PSSecureAccessToken(result));
+                WriteObject(result);
             }
             else
             {
-                WriteObject(result);
+                WriteObject(new PSSecureAccessToken(result));
             }
         }
     }
