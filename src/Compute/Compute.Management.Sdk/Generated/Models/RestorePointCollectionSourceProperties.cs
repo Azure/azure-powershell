@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of the source resource that this restore point
-    /// collection is created from.
-    /// </summary>
     public partial class RestorePointCollectionSourceProperties
     {
         /// <summary>
@@ -32,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// RestorePointCollectionSourceProperties class.
         /// </summary>
-        /// <param name="location">Location of the source resource used to
-        /// create this restore point collection.</param>
-        /// <param name="id">Resource Id of the source resource used to create
-        /// this restore point collection</param>
         public RestorePointCollectionSourceProperties(string location = default(string), string id = default(string))
         {
             Location = location;
@@ -49,15 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets location of the source resource used to create this restore
-        /// point collection.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
 
         /// <summary>
-        /// Gets or sets resource Id of the source resource used to create this
-        /// restore point collection
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

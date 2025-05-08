@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the alternative option specified by the Publisher for this
-    /// image when this image is deprecated.
-    /// </summary>
     public partial class AlternativeOption
     {
         /// <summary>
@@ -30,11 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AlternativeOption class.
         /// </summary>
-        /// <param name="type">Describes the type of the alternative option.
-        /// Possible values include: 'None', 'Offer', 'Plan'</param>
-        /// <param name="value">Indicates the alternative option value
-        /// specified by the Publisher. This is the Offer name when the type is
-        /// Offer or the Plan name when the type is Plan.</param>
+        /// <param name="type">Possible values include: 'None', 'Offer',
+        /// 'Plan'</param>
         public AlternativeOption(string type = default(string), string value = default(string))
         {
             Type = type;
@@ -48,16 +41,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets describes the type of the alternative option. Possible
-        /// values include: 'None', 'Offer', 'Plan'
+        /// Gets or sets possible values include: 'None', 'Offer', 'Plan'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates the alternative option value specified by
-        /// the Publisher. This is the Offer name when the type is Offer or the
-        /// Plan name when the type is Plan.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

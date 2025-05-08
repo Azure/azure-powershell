@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a data disk.
-    /// </summary>
     public partial class RestorePointSourceVMDataDisk
     {
         /// <summary>
@@ -31,19 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RestorePointSourceVMDataDisk
         /// class.
         /// </summary>
-        /// <param name="lun">Gets the logical unit number.</param>
-        /// <param name="name">Gets the disk name.</param>
-        /// <param name="caching">Gets the caching type. Possible values
-        /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
-        /// <param name="diskSizeGB">Gets the initial disk size in GB for blank
-        /// data disks, and the new desired size for existing OS and Data
-        /// disks.</param>
-        /// <param name="managedDisk">Contains the managed disk
-        /// details.</param>
-        /// <param name="diskRestorePoint">Contains Disk Restore Point
-        /// properties.</param>
-        /// <param name="writeAcceleratorEnabled">Shows true if the disk is
-        /// write-accelerator enabled.</param>
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'</param>
         public RestorePointSourceVMDataDisk(int? lun = default(int?), string name = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), DiskRestorePointAttributes diskRestorePoint = default(DiskRestorePointAttributes), bool? writeAcceleratorEnabled = default(bool?))
         {
             Lun = lun;
@@ -62,45 +48,37 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the logical unit number.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; private set; }
 
         /// <summary>
-        /// Gets the disk name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the caching type. Possible values include: 'None', 'ReadOnly',
-        /// 'ReadWrite'
+        /// Gets possible values include: 'None', 'ReadOnly', 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "caching")]
         public CachingTypes? Caching { get; private set; }
 
         /// <summary>
-        /// Gets the initial disk size in GB for blank data disks, and the new
-        /// desired size for existing OS and Data disks.
         /// </summary>
         [JsonProperty(PropertyName = "diskSizeGB")]
         public int? DiskSizeGB { get; private set; }
 
         /// <summary>
-        /// Gets or sets contains the managed disk details.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
         public ManagedDiskParameters ManagedDisk { get; set; }
 
         /// <summary>
-        /// Gets or sets contains Disk Restore Point properties.
         /// </summary>
         [JsonProperty(PropertyName = "diskRestorePoint")]
         public DiskRestorePointAttributes DiskRestorePoint { get; set; }
 
         /// <summary>
-        /// Gets shows true if the disk is write-accelerator enabled.
         /// </summary>
         [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled { get; private set; }

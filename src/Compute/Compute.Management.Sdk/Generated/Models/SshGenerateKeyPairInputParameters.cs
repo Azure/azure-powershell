@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Parameters for GenerateSshKeyPair.
-    /// </summary>
     public partial class SshGenerateKeyPairInputParameters
     {
         /// <summary>
@@ -31,9 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the SshGenerateKeyPairInputParameters
         /// class.
         /// </summary>
-        /// <param name="encryptionType">The encryption type of the SSH keys to
-        /// be generated. See SshEncryptionTypes for possible set of values. If
-        /// not provided, will default to RSA. Possible values include: 'RSA',
+        /// <param name="encryptionType">Possible values include: 'RSA',
         /// 'Ed25519'</param>
         public SshGenerateKeyPairInputParameters(string encryptionType = default(string))
         {
@@ -47,9 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the encryption type of the SSH keys to be generated.
-        /// See SshEncryptionTypes for possible set of values. If not provided,
-        /// will default to RSA. Possible values include: 'RSA', 'Ed25519'
+        /// Gets or sets possible values include: 'RSA', 'Ed25519'
         /// </summary>
         [JsonProperty(PropertyName = "encryptionType")]
         public string EncryptionType { get; set; }

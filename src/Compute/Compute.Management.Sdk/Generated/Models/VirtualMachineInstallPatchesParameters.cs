@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Input for InstallPatches as directly received by the API
-    /// </summary>
     public partial class VirtualMachineInstallPatchesParameters
     {
         /// <summary>
@@ -32,17 +29,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineInstallPatchesParameters class.
         /// </summary>
-        /// <param name="rebootSetting">Defines when it is acceptable to reboot
-        /// a VM during a software update operation. Possible values include:
-        /// 'IfRequired', 'Never', 'Always'</param>
-        /// <param name="maximumDuration">Specifies the maximum amount of time
-        /// that the operation will run. It must be an ISO 8601-compliant
-        /// duration string such as PT4H (4 hours)</param>
-        /// <param name="windowsParameters">Input for InstallPatches on a
-        /// Windows VM, as directly received by the API</param>
-        /// <param name="linuxParameters">Input for InstallPatches on a Linux
-        /// VM, as directly received by the API</param>
-        public VirtualMachineInstallPatchesParameters(string rebootSetting, string maximumDuration = default(string), WindowsParameters windowsParameters = default(WindowsParameters), LinuxParameters linuxParameters = default(LinuxParameters))
+        /// <param name="rebootSetting">Possible values include: 'IfRequired',
+        /// 'Never', 'Always'</param>
+        public VirtualMachineInstallPatchesParameters(string rebootSetting, System.TimeSpan? maximumDuration = default(System.TimeSpan?), WindowsParameters windowsParameters = default(WindowsParameters), LinuxParameters linuxParameters = default(LinuxParameters))
         {
             MaximumDuration = maximumDuration;
             RebootSetting = rebootSetting;
@@ -57,31 +46,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the maximum amount of time that the
-        /// operation will run. It must be an ISO 8601-compliant duration
-        /// string such as PT4H (4 hours)
         /// </summary>
         [JsonProperty(PropertyName = "maximumDuration")]
-        public string MaximumDuration { get; set; }
+        public System.TimeSpan? MaximumDuration { get; set; }
 
         /// <summary>
-        /// Gets or sets defines when it is acceptable to reboot a VM during a
-        /// software update operation. Possible values include: 'IfRequired',
-        /// 'Never', 'Always'
+        /// Gets or sets possible values include: 'IfRequired', 'Never',
+        /// 'Always'
         /// </summary>
         [JsonProperty(PropertyName = "rebootSetting")]
         public string RebootSetting { get; set; }
 
         /// <summary>
-        /// Gets or sets input for InstallPatches on a Windows VM, as directly
-        /// received by the API
         /// </summary>
         [JsonProperty(PropertyName = "windowsParameters")]
         public WindowsParameters WindowsParameters { get; set; }
 
         /// <summary>
-        /// Gets or sets input for InstallPatches on a Linux VM, as directly
-        /// received by the API
         /// </summary>
         [JsonProperty(PropertyName = "linuxParameters")]
         public LinuxParameters LinuxParameters { get; set; }

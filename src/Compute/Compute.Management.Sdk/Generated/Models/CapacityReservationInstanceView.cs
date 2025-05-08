@@ -15,11 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a capacity reservation that provides as snapshot
-    /// of the runtime properties of the capacity reservation that is managed
-    /// by the platform and can change outside of control plane operations.
-    /// </summary>
     public partial class CapacityReservationInstanceView
     {
         /// <summary>
@@ -35,9 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CapacityReservationInstanceView
         /// class.
         /// </summary>
-        /// <param name="utilizationInfo">Unutilized capacity of the capacity
-        /// reservation.</param>
-        /// <param name="statuses">The resource status information.</param>
         public CapacityReservationInstanceView(CapacityReservationUtilization utilizationInfo = default(CapacityReservationUtilization), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             UtilizationInfo = utilizationInfo;
@@ -51,13 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets unutilized capacity of the capacity reservation.
         /// </summary>
         [JsonProperty(PropertyName = "utilizationInfo")]
         public CapacityReservationUtilization UtilizationInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }

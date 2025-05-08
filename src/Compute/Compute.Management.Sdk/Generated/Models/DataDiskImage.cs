@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains the data disk images information.
-    /// </summary>
     public partial class DataDiskImage
     {
         /// <summary>
@@ -29,10 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DataDiskImage class.
         /// </summary>
-        /// <param name="lun">Specifies the logical unit number of the data
-        /// disk. This value is used to identify data disks within the VM and
-        /// therefore must be unique for each data disk attached to a
-        /// VM.</param>
         public DataDiskImage(int? lun = default(int?))
         {
             Lun = lun;
@@ -45,9 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the logical unit number of the data disk. This value
-        /// is used to identify data disks within the VM and therefore must be
-        /// unique for each data disk attached to a VM.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; private set; }

@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the capacity reservation group. Only tags
-    /// can be updated.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class CapacityReservationGroupUpdate : UpdateResource
     {
@@ -37,24 +33,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CapacityReservationGroupUpdate
         /// class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="capacityReservations">A list of all capacity
-        /// reservation resource ids that belong to capacity reservation
-        /// group.</param>
-        /// <param name="virtualMachinesAssociated">A list of references to all
-        /// virtual machines associated to the capacity reservation
-        /// group.</param>
-        /// <param name="instanceView">The capacity reservation group instance
-        /// view which has the list of instance views for all the capacity
-        /// reservations that belong to the capacity reservation group.</param>
-        /// <param name="sharingProfile">Specifies the settings to enable
-        /// sharing across subscriptions for the capacity reservation group
-        /// resource. Pls. keep in mind the capacity reservation group resource
-        /// generally can be shared across subscriptions belonging to a single
-        /// azure AAD tenant or cross AAD tenant if there is a trust
-        /// relationship established between the AAD tenants. **Note:** Minimum
-        /// api-version: 2023-09-01. Please refer to
-        /// https://aka.ms/computereservationsharing for more details.</param>
         public CapacityReservationGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile))
             : base(tags)
         {
@@ -71,36 +49,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets a list of all capacity reservation resource ids that belong to
-        /// capacity reservation group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.capacityReservations")]
         public IList<SubResourceReadOnly> CapacityReservations { get; private set; }
 
         /// <summary>
-        /// Gets a list of references to all virtual machines associated to the
-        /// capacity reservation group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachinesAssociated")]
         public IList<SubResourceReadOnly> VirtualMachinesAssociated { get; private set; }
 
         /// <summary>
-        /// Gets the capacity reservation group instance view which has the
-        /// list of instance views for all the capacity reservations that
-        /// belong to the capacity reservation group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
         public CapacityReservationGroupInstanceView InstanceView { get; private set; }
 
         /// <summary>
-        /// Gets or sets specifies the settings to enable sharing across
-        /// subscriptions for the capacity reservation group resource. Pls.
-        /// keep in mind the capacity reservation group resource generally can
-        /// be shared across subscriptions belonging to a single azure AAD
-        /// tenant or cross AAD tenant if there is a trust relationship
-        /// established between the AAD tenants. **Note:** Minimum api-version:
-        /// 2023-09-01. Please refer to
-        /// https://aka.ms/computereservationsharing for more details.
         /// </summary>
         [JsonProperty(PropertyName = "properties.sharingProfile")]
         public ResourceSharingProfile SharingProfile { get; set; }

@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DedicatedHostGroupInstanceView
         /// class.
         /// </summary>
-        /// <param name="hosts">List of instance view of the dedicated hosts
-        /// under the dedicated host group.</param>
         public DedicatedHostGroupInstanceView(IList<DedicatedHostInstanceViewWithName> hosts = default(IList<DedicatedHostInstanceViewWithName>))
         {
             Hosts = hosts;
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of instance view of the dedicated hosts under the
-        /// dedicated host group.
         /// </summary>
         [JsonProperty(PropertyName = "hosts")]
         public IList<DedicatedHostInstanceViewWithName> Hosts { get; set; }

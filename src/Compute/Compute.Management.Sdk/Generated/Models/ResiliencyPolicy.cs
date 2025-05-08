@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an resiliency policy - AutomaticZoneRebalancingPolicy,
-    /// ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
-    /// </summary>
     public partial class ResiliencyPolicy
     {
         /// <summary>
@@ -30,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResiliencyPolicy class.
         /// </summary>
-        /// <param name="resilientVMCreationPolicy">The configuration
-        /// parameters used while performing resilient VM creation.</param>
-        /// <param name="resilientVMDeletionPolicy">The configuration
-        /// parameters used while performing resilient VM deletion.</param>
-        /// <param name="automaticZoneRebalancingPolicy">The configuration
-        /// parameters used while performing automatic AZ balancing.</param>
         public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy))
         {
             ResilientVMCreationPolicy = resilientVMCreationPolicy;
@@ -50,22 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while performing
-        /// resilient VM creation.
         /// </summary>
         [JsonProperty(PropertyName = "resilientVMCreationPolicy")]
         public ResilientVMCreationPolicy ResilientVMCreationPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while performing
-        /// resilient VM deletion.
         /// </summary>
         [JsonProperty(PropertyName = "resilientVMDeletionPolicy")]
         public ResilientVMDeletionPolicy ResilientVMDeletionPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets the configuration parameters used while performing
-        /// automatic AZ balancing.
         /// </summary>
         [JsonProperty(PropertyName = "automaticZoneRebalancingPolicy")]
         public AutomaticZoneRebalancingPolicy AutomaticZoneRebalancingPolicy { get; set; }

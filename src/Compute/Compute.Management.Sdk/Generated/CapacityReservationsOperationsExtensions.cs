@@ -22,6 +22,108 @@ namespace Microsoft.Azure.Management.Compute
     public static partial class CapacityReservationsOperationsExtensions
     {
             /// <summary>
+            /// Lists all of the capacity reservations in the specified capacity
+            /// reservation group. Use the nextLink property in the response to get the
+            /// next page of capacity reservations.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='capacityReservationGroupName'>
+            /// The name of the capacity reservation group.
+            /// </param>
+            public static IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName)
+            {
+                return operations.ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all of the capacity reservations in the specified capacity
+            /// reservation group. Use the nextLink property in the response to get the
+            /// next page of capacity reservations.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='capacityReservationGroupName'>
+            /// The name of the capacity reservation group.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// The operation that retrieves information about the capacity reservation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='capacityReservationGroupName'>
+            /// The name of the capacity reservation group.
+            /// </param>
+            /// <param name='capacityReservationName'>
+            /// The name of the capacity reservation.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
+            /// snapshot of the runtime properties of the capacity reservation that is
+            /// managed by the platform and can change outside of control plane operations.
+            /// Possible values include: 'instanceView'
+            /// </param>
+            public static CapacityReservation Get(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// The operation that retrieves information about the capacity reservation.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='capacityReservationGroupName'>
+            /// The name of the capacity reservation group.
+            /// </param>
+            /// <param name='capacityReservationName'>
+            /// The name of the capacity reservation.
+            /// </param>
+            /// <param name='expand'>
+            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
+            /// snapshot of the runtime properties of the capacity reservation that is
+            /// managed by the platform and can change outside of control plane operations.
+            /// Possible values include: 'instanceView'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CapacityReservation> GetAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// The operation to create or update a capacity reservation. Please note some
             /// properties can be set only during capacity reservation creation. Please
             /// refer to https://aka.ms/CapacityReservation for more details.
@@ -30,7 +132,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -55,7 +157,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -84,7 +186,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -107,7 +209,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -139,7 +241,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -147,9 +249,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='capacityReservationName'>
             /// The name of the capacity reservation.
             /// </param>
-            public static void Delete(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName)
+            public static CapacityReservationsDeleteHeaders Delete(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName)
             {
-                operations.DeleteAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -162,7 +264,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -173,110 +275,11 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CapacityReservationsDeleteHeaders> DeleteAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation that retrieves information about the capacity reservation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='capacityReservationGroupName'>
-            /// The name of the capacity reservation group.
-            /// </param>
-            /// <param name='capacityReservationName'>
-            /// The name of the capacity reservation.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
-            /// snapshot of the runtime properties of the capacity reservation that is
-            /// managed by the platform and can change outside of control plane operations.
-            /// Possible values include: 'instanceView'
-            /// </param>
-            public static CapacityReservation Get(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation that retrieves information about the capacity reservation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='capacityReservationGroupName'>
-            /// The name of the capacity reservation group.
-            /// </param>
-            /// <param name='capacityReservationName'>
-            /// The name of the capacity reservation.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' retrieves a
-            /// snapshot of the runtime properties of the capacity reservation that is
-            /// managed by the platform and can change outside of control plane operations.
-            /// Possible values include: 'instanceView'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CapacityReservation> GetAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all of the capacity reservations in the specified capacity
-            /// reservation group. Use the nextLink property in the response to get the
-            /// next page of capacity reservations.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='capacityReservationGroupName'>
-            /// The name of the capacity reservation group.
-            /// </param>
-            public static IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName)
-            {
-                return operations.ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all of the capacity reservations in the specified capacity
-            /// reservation group. Use the nextLink property in the response to get the
-            /// next page of capacity reservations.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='capacityReservationGroupName'>
-            /// The name of the capacity reservation group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
@@ -289,7 +292,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -314,7 +317,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -343,7 +346,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -366,7 +369,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -398,7 +401,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -406,9 +409,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='capacityReservationName'>
             /// The name of the capacity reservation.
             /// </param>
-            public static void BeginDelete(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName)
+            public static CapacityReservationsDeleteHeaders BeginDelete(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -421,7 +424,7 @@ namespace Microsoft.Azure.Management.Compute
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
@@ -432,9 +435,12 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CapacityReservationsDeleteHeaders> BeginDeleteAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string capacityReservationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, capacityReservationName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

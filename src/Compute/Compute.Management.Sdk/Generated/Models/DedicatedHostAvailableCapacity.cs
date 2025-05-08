@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Dedicated host unutilized capacity.
-    /// </summary>
     public partial class DedicatedHostAvailableCapacity
     {
         /// <summary>
@@ -33,9 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DedicatedHostAvailableCapacity
         /// class.
         /// </summary>
-        /// <param name="allocatableVMs">The unutilized capacity of the
-        /// dedicated host represented in terms of each VM size that is allowed
-        /// to be deployed to the dedicated host.</param>
         public DedicatedHostAvailableCapacity(IList<DedicatedHostAllocatableVM> allocatableVMs = default(IList<DedicatedHostAllocatableVM>))
         {
             AllocatableVMs = allocatableVMs;
@@ -48,9 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the unutilized capacity of the dedicated host
-        /// represented in terms of each VM size that is allowed to be deployed
-        /// to the dedicated host.
         /// </summary>
         [JsonProperty(PropertyName = "allocatableVMs")]
         public IList<DedicatedHostAllocatableVM> AllocatableVMs { get; set; }

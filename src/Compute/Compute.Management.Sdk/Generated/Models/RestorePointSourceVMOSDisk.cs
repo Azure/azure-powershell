@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an Operating System disk.
-    /// </summary>
     public partial class RestorePointSourceVMOSDisk
     {
         /// <summary>
@@ -29,19 +26,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RestorePointSourceVMOSDisk class.
         /// </summary>
-        /// <param name="osType">Gets the Operating System type. Possible
-        /// values include: 'Windows', 'Linux'</param>
-        /// <param name="encryptionSettings">Gets the disk encryption
-        /// settings.</param>
-        /// <param name="name">Gets the disk name.</param>
-        /// <param name="caching">Gets the caching type. Possible values
-        /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
-        /// <param name="diskSizeGB">Gets the disk size in GB.</param>
-        /// <param name="managedDisk">Gets the managed disk details</param>
-        /// <param name="diskRestorePoint">Contains Disk Restore Point
-        /// properties.</param>
-        /// <param name="writeAcceleratorEnabled">Shows true if the disk is
-        /// write-accelerator enabled.</param>
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'</param>
         public RestorePointSourceVMOSDisk(string osType = default(string), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), DiskRestorePointAttributes diskRestorePoint = default(DiskRestorePointAttributes), bool? writeAcceleratorEnabled = default(bool?))
         {
             OsType = osType;
@@ -61,51 +49,43 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the Operating System type. Possible values include: 'Windows',
-        /// 'Linux'
+        /// Gets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public string OsType { get; private set; }
 
         /// <summary>
-        /// Gets the disk encryption settings.
         /// </summary>
         [JsonProperty(PropertyName = "encryptionSettings")]
         public DiskEncryptionSettings EncryptionSettings { get; private set; }
 
         /// <summary>
-        /// Gets the disk name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the caching type. Possible values include: 'None', 'ReadOnly',
-        /// 'ReadWrite'
+        /// Gets possible values include: 'None', 'ReadOnly', 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "caching")]
         public CachingTypes? Caching { get; private set; }
 
         /// <summary>
-        /// Gets the disk size in GB.
         /// </summary>
         [JsonProperty(PropertyName = "diskSizeGB")]
         public int? DiskSizeGB { get; private set; }
 
         /// <summary>
-        /// Gets the managed disk details
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
         public ManagedDiskParameters ManagedDisk { get; set; }
 
         /// <summary>
-        /// Gets or sets contains Disk Restore Point properties.
         /// </summary>
         [JsonProperty(PropertyName = "diskRestorePoint")]
         public DiskRestorePointAttributes DiskRestorePoint { get; set; }
 
         /// <summary>
-        /// Gets shows true if the disk is write-accelerator enabled.
         /// </summary>
         [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled { get; private set; }

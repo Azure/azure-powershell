@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Information about a specific patch that was encountered during an
-    /// installation action.
-    /// </summary>
     public partial class PatchInstallationDetail
     {
         /// <summary>
@@ -32,18 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PatchInstallationDetail class.
         /// </summary>
-        /// <param name="patchId">A unique identifier for the patch.</param>
-        /// <param name="name">The friendly name of the patch.</param>
-        /// <param name="version">The version string of the package. It may
-        /// conform to Semantic Versioning. Only applies to Linux.</param>
-        /// <param name="kbId">The KBID of the patch. Only applies to Windows
-        /// patches.</param>
-        /// <param name="classifications">The classification(s) of the patch as
-        /// provided by the patch publisher.</param>
-        /// <param name="installationState">The state of the patch after the
-        /// installation operation completed. Possible values include:
-        /// 'Unknown', 'Installed', 'Failed', 'Excluded', 'NotSelected',
-        /// 'Pending'</param>
+        /// <param name="installationState">Possible values include: 'Unknown',
+        /// 'Installed', 'Failed', 'Excluded', 'NotSelected', 'Pending'</param>
         public PatchInstallationDetail(string patchId = default(string), string name = default(string), string version = default(string), string kbId = default(string), IList<string> classifications = default(IList<string>), string installationState = default(string))
         {
             PatchId = patchId;
@@ -61,41 +47,33 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets a unique identifier for the patch.
         /// </summary>
         [JsonProperty(PropertyName = "patchId")]
         public string PatchId { get; private set; }
 
         /// <summary>
-        /// Gets the friendly name of the patch.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the version string of the package. It may conform to Semantic
-        /// Versioning. Only applies to Linux.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }
 
         /// <summary>
-        /// Gets the KBID of the patch. Only applies to Windows patches.
         /// </summary>
         [JsonProperty(PropertyName = "kbId")]
         public string KbId { get; private set; }
 
         /// <summary>
-        /// Gets the classification(s) of the patch as provided by the patch
-        /// publisher.
         /// </summary>
         [JsonProperty(PropertyName = "classifications")]
         public IList<string> Classifications { get; private set; }
 
         /// <summary>
-        /// Gets the state of the patch after the installation operation
-        /// completed. Possible values include: 'Unknown', 'Installed',
-        /// 'Failed', 'Excluded', 'NotSelected', 'Pending'
+        /// Gets possible values include: 'Unknown', 'Installed', 'Failed',
+        /// 'Excluded', 'NotSelected', 'Pending'
         /// </summary>
         [JsonProperty(PropertyName = "installationState")]
         public string InstallationState { get; private set; }

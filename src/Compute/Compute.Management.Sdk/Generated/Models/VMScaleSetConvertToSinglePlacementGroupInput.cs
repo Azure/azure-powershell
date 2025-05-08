@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VMScaleSetConvertToSinglePlacementGroupInput class.
         /// </summary>
-        /// <param name="activePlacementGroupId">Id of the placement group in
-        /// which you want future virtual machine instances to be placed. To
-        /// query placement group Id, please use Virtual Machine Scale Set VMs
-        /// - Get API. If not provided, the platform will choose one with
-        /// maximum number of virtual machine instances.</param>
         public VMScaleSetConvertToSinglePlacementGroupInput(string activePlacementGroupId = default(string))
         {
             ActivePlacementGroupId = activePlacementGroupId;
@@ -45,11 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets id of the placement group in which you want future
-        /// virtual machine instances to be placed. To query placement group
-        /// Id, please use Virtual Machine Scale Set VMs - Get API. If not
-        /// provided, the platform will choose one with maximum number of
-        /// virtual machine instances.
         /// </summary>
         [JsonProperty(PropertyName = "activePlacementGroupId")]
         public string ActivePlacementGroupId { get; set; }

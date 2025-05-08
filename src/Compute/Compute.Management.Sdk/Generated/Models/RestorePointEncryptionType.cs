@@ -16,20 +16,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class RestorePointEncryptionType
     {
-        /// <summary>
-        /// Disk Restore Point is encrypted at rest with Platform managed key.
-        /// </summary>
         public const string EncryptionAtRestWithPlatformKey = "EncryptionAtRestWithPlatformKey";
-        /// <summary>
-        /// Disk Restore Point is encrypted at rest with Customer managed key
-        /// that can be changed and revoked by a customer.
-        /// </summary>
         public const string EncryptionAtRestWithCustomerKey = "EncryptionAtRestWithCustomerKey";
-        /// <summary>
-        /// Disk Restore Point is encrypted at rest with 2 layers of
-        /// encryption. One of the keys is Customer managed and the other key
-        /// is Platform managed.
-        /// </summary>
         public const string EncryptionAtRestWithPlatformAndCustomerKeys = "EncryptionAtRestWithPlatformAndCustomerKeys";
     }
 }

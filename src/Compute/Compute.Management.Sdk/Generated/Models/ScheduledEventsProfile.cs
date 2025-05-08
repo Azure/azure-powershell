@@ -26,10 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ScheduledEventsProfile class.
         /// </summary>
-        /// <param name="terminateNotificationProfile">Specifies Terminate
-        /// Scheduled Event related configurations.</param>
-        /// <param name="osImageNotificationProfile">Specifies OS Image
-        /// Scheduled Event related configurations.</param>
         public ScheduledEventsProfile(TerminateNotificationProfile terminateNotificationProfile = default(TerminateNotificationProfile), OSImageNotificationProfile osImageNotificationProfile = default(OSImageNotificationProfile))
         {
             TerminateNotificationProfile = terminateNotificationProfile;
@@ -43,15 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies Terminate Scheduled Event related
-        /// configurations.
         /// </summary>
         [JsonProperty(PropertyName = "terminateNotificationProfile")]
         public TerminateNotificationProfile TerminateNotificationProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies OS Image Scheduled Event related
-        /// configurations.
         /// </summary>
         [JsonProperty(PropertyName = "osImageNotificationProfile")]
         public OSImageNotificationProfile OsImageNotificationProfile { get; set; }

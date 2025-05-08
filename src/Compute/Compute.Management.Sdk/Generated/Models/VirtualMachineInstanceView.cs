@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a virtual machine.
-    /// </summary>
     public partial class VirtualMachineInstanceView
     {
         /// <summary>
@@ -31,44 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VirtualMachineInstanceView class.
         /// </summary>
-        /// <param name="platformUpdateDomain">Specifies the update domain of
-        /// the virtual machine.</param>
-        /// <param name="platformFaultDomain">Specifies the fault domain of the
-        /// virtual machine.</param>
-        /// <param name="computerName">The computer name assigned to the
-        /// virtual machine.</param>
-        /// <param name="osName">The Operating System running on the virtual
-        /// machine.</param>
-        /// <param name="osVersion">The version of Operating System running on
-        /// the virtual machine.</param>
-        /// <param name="hyperVGeneration">Specifies the HyperVGeneration Type
-        /// associated with a resource. Possible values include: 'V1',
+        /// <param name="hyperVGeneration">Possible values include: 'V1',
         /// 'V2'</param>
-        /// <param name="rdpThumbPrint">The Remote desktop certificate
-        /// thumbprint.</param>
-        /// <param name="vmAgent">The VM Agent running on the virtual
-        /// machine.</param>
-        /// <param name="maintenanceRedeployStatus">The Maintenance Operation
-        /// status on the virtual machine.</param>
-        /// <param name="disks">The virtual machine disk information.</param>
-        /// <param name="extensions">The extensions information.</param>
-        /// <param name="vmHealth">The application health status for the VM,
-        /// provided through Application Health Extension.</param>
-        /// <param name="bootDiagnostics">Boot Diagnostics is a debugging
-        /// feature which allows you to view Console Output and Screenshot to
-        /// diagnose VM status. You can easily view the output of your console
-        /// log. Azure also enables you to see a screenshot of the VM from the
-        /// hypervisor.</param>
-        /// <param name="assignedHost">Resource id of the dedicated host, on
-        /// which the virtual machine is allocated through automatic placement,
-        /// when the virtual machine is associated with a dedicated host group
-        /// that has automatic placement enabled. Minimum api-version:
-        /// 2020-06-01.</param>
-        /// <param name="statuses">The resource status information.</param>
-        /// <param name="patchStatus">[Preview Feature] The status of virtual
-        /// machine patch operations.</param>
-        /// <param name="isVMInStandbyPool">[Preview Feature] Specifies whether
-        /// the VM is currently in or out of the Standby Pool.</param>
         public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?))
         {
             PlatformUpdateDomain = platformUpdateDomain;
@@ -97,115 +58,87 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the update domain of the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "platformUpdateDomain")]
         public int? PlatformUpdateDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the fault domain of the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "platformFaultDomain")]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets the computer name assigned to the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "computerName")]
         public string ComputerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Operating System running on the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "osName")]
         public string OsName { get; set; }
 
         /// <summary>
-        /// Gets or sets the version of Operating System running on the virtual
-        /// machine.
         /// </summary>
         [JsonProperty(PropertyName = "osVersion")]
         public string OsVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the HyperVGeneration Type associated with a
-        /// resource. Possible values include: 'V1', 'V2'
+        /// Gets or sets possible values include: 'V1', 'V2'
         /// </summary>
         [JsonProperty(PropertyName = "hyperVGeneration")]
         public string HyperVGeneration { get; set; }
 
         /// <summary>
-        /// Gets or sets the Remote desktop certificate thumbprint.
         /// </summary>
         [JsonProperty(PropertyName = "rdpThumbPrint")]
         public string RdpThumbPrint { get; set; }
 
         /// <summary>
-        /// Gets or sets the VM Agent running on the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "vmAgent")]
         public VirtualMachineAgentInstanceView VmAgent { get; set; }
 
         /// <summary>
-        /// Gets or sets the Maintenance Operation status on the virtual
-        /// machine.
         /// </summary>
         [JsonProperty(PropertyName = "maintenanceRedeployStatus")]
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual machine disk information.
         /// </summary>
         [JsonProperty(PropertyName = "disks")]
         public IList<DiskInstanceView> Disks { get; set; }
 
         /// <summary>
-        /// Gets or sets the extensions information.
         /// </summary>
         [JsonProperty(PropertyName = "extensions")]
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
 
         /// <summary>
-        /// Gets the application health status for the VM, provided through
-        /// Application Health Extension.
         /// </summary>
         [JsonProperty(PropertyName = "vmHealth")]
         public VirtualMachineHealthStatus VmHealth { get; private set; }
 
         /// <summary>
-        /// Gets or sets boot Diagnostics is a debugging feature which allows
-        /// you to view Console Output and Screenshot to diagnose VM status.
-        /// You can easily view the output of your console log. Azure also
-        /// enables you to see a screenshot of the VM from the hypervisor.
         /// </summary>
         [JsonProperty(PropertyName = "bootDiagnostics")]
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
         /// <summary>
-        /// Gets resource id of the dedicated host, on which the virtual
-        /// machine is allocated through automatic placement, when the virtual
-        /// machine is associated with a dedicated host group that has
-        /// automatic placement enabled. Minimum api-version: 2020-06-01.
         /// </summary>
         [JsonProperty(PropertyName = "assignedHost")]
         public string AssignedHost { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         /// <summary>
-        /// Gets or sets [Preview Feature] The status of virtual machine patch
-        /// operations.
         /// </summary>
         [JsonProperty(PropertyName = "patchStatus")]
         public VirtualMachinePatchStatus PatchStatus { get; set; }
 
         /// <summary>
-        /// Gets [Preview Feature] Specifies whether the VM is currently in or
-        /// out of the Standby Pool.
         /// </summary>
         [JsonProperty(PropertyName = "isVMInStandbyPool")]
         public bool? IsVMInStandbyPool { get; private set; }

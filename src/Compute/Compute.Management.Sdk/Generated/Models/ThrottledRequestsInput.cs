@@ -12,9 +12,6 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// Api request input for LogAnalytics getThrottledRequests Api.
-    /// </summary>
     public partial class ThrottledRequestsInput : LogAnalyticsInputBase
     {
         /// <summary>
@@ -28,20 +25,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ThrottledRequestsInput class.
         /// </summary>
-        /// <param name="blobContainerSasUri">SAS Uri of the logging blob
-        /// container to which LogAnalytics Api writes output logs to.</param>
-        /// <param name="fromTime">From time of the query</param>
-        /// <param name="toTime">To time of the query</param>
-        /// <param name="groupByThrottlePolicy">Group query result by Throttle
-        /// Policy applied.</param>
-        /// <param name="groupByOperationName">Group query result by Operation
-        /// Name.</param>
-        /// <param name="groupByResourceName">Group query result by Resource
-        /// Name.</param>
-        /// <param name="groupByClientApplicationId">Group query result by
-        /// Client Application ID.</param>
-        /// <param name="groupByUserAgent">Group query result by User
-        /// Agent.</param>
         public ThrottledRequestsInput(string blobContainerSasUri, System.DateTime fromTime, System.DateTime toTime, bool? groupByThrottlePolicy = default(bool?), bool? groupByOperationName = default(bool?), bool? groupByResourceName = default(bool?), bool? groupByClientApplicationId = default(bool?), bool? groupByUserAgent = default(bool?))
             : base(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent)
         {

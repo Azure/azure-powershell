@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a virtual machine run command.
-    /// </summary>
     public partial class VirtualMachineRunCommandInstanceView
     {
         /// <summary>
@@ -33,18 +30,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineRunCommandInstanceView class.
         /// </summary>
-        /// <param name="executionState">Script execution status. Possible
-        /// values include: 'Unknown', 'Pending', 'Running', 'Failed',
-        /// 'Succeeded', 'TimedOut', 'Canceled'</param>
-        /// <param name="executionMessage">Communicate script configuration
-        /// errors or execution messages.</param>
-        /// <param name="exitCode">Exit code returned from script
-        /// execution.</param>
-        /// <param name="output">Script output stream.</param>
-        /// <param name="error">Script error stream.</param>
-        /// <param name="startTime">Script start time.</param>
-        /// <param name="endTime">Script end time.</param>
-        /// <param name="statuses">The resource status information.</param>
+        /// <param name="executionState">Possible values include: 'Unknown',
+        /// 'Pending', 'Running', 'Failed', 'Succeeded', 'TimedOut',
+        /// 'Canceled'</param>
         public VirtualMachineRunCommandInstanceView(string executionState = default(string), string executionMessage = default(string), int? exitCode = default(int?), string output = default(string), string error = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             ExecutionState = executionState;
@@ -64,52 +52,43 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets script execution status. Possible values include:
-        /// 'Unknown', 'Pending', 'Running', 'Failed', 'Succeeded', 'TimedOut',
-        /// 'Canceled'
+        /// Gets or sets possible values include: 'Unknown', 'Pending',
+        /// 'Running', 'Failed', 'Succeeded', 'TimedOut', 'Canceled'
         /// </summary>
         [JsonProperty(PropertyName = "executionState")]
         public string ExecutionState { get; set; }
 
         /// <summary>
-        /// Gets or sets communicate script configuration errors or execution
-        /// messages.
         /// </summary>
         [JsonProperty(PropertyName = "executionMessage")]
         public string ExecutionMessage { get; set; }
 
         /// <summary>
-        /// Gets or sets exit code returned from script execution.
         /// </summary>
         [JsonProperty(PropertyName = "exitCode")]
         public int? ExitCode { get; set; }
 
         /// <summary>
-        /// Gets or sets script output stream.
         /// </summary>
         [JsonProperty(PropertyName = "output")]
         public string Output { get; set; }
 
         /// <summary>
-        /// Gets or sets script error stream.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public string Error { get; set; }
 
         /// <summary>
-        /// Gets or sets script start time.
         /// </summary>
         [JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets script end time.
         /// </summary>
         [JsonProperty(PropertyName = "endTime")]
         public System.DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }

@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Input for InstallPatches on a Windows VM, as directly received by the
-    /// API
-    /// </summary>
     public partial class WindowsParameters
     {
         /// <summary>
@@ -32,18 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the WindowsParameters class.
         /// </summary>
-        /// <param name="classificationsToInclude">The update classifications
-        /// to select when installing patches for Windows.</param>
-        /// <param name="kbNumbersToInclude">Kbs to include in the patch
-        /// operation</param>
-        /// <param name="kbNumbersToExclude">Kbs to exclude in the patch
-        /// operation</param>
-        /// <param name="excludeKbsRequiringReboot">Filters out Kbs that don't
-        /// have an InstallationRebootBehavior of 'NeverReboots' when this is
-        /// set to true.</param>
-        /// <param name="maxPatchPublishDate">This is used to install patches
-        /// that were published on or before this given max published
-        /// date.</param>
         public WindowsParameters(IList<string> classificationsToInclude = default(IList<string>), IList<string> kbNumbersToInclude = default(IList<string>), IList<string> kbNumbersToExclude = default(IList<string>), bool? excludeKbsRequiringReboot = default(bool?), System.DateTime? maxPatchPublishDate = default(System.DateTime?))
         {
             ClassificationsToInclude = classificationsToInclude;
@@ -60,35 +44,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the update classifications to select when installing
-        /// patches for Windows.
         /// </summary>
         [JsonProperty(PropertyName = "classificationsToInclude")]
         public IList<string> ClassificationsToInclude { get; set; }
 
         /// <summary>
-        /// Gets or sets kbs to include in the patch operation
         /// </summary>
         [JsonProperty(PropertyName = "kbNumbersToInclude")]
         public IList<string> KbNumbersToInclude { get; set; }
 
         /// <summary>
-        /// Gets or sets kbs to exclude in the patch operation
         /// </summary>
         [JsonProperty(PropertyName = "kbNumbersToExclude")]
         public IList<string> KbNumbersToExclude { get; set; }
 
         /// <summary>
-        /// Gets or sets filters out Kbs that don't have an
-        /// InstallationRebootBehavior of 'NeverReboots' when this is set to
-        /// true.
         /// </summary>
         [JsonProperty(PropertyName = "excludeKbsRequiringReboot")]
         public bool? ExcludeKbsRequiringReboot { get; set; }
 
         /// <summary>
-        /// Gets or sets this is used to install patches that were published on
-        /// or before this given max published date.
         /// </summary>
         [JsonProperty(PropertyName = "maxPatchPublishDate")]
         public System.DateTime? MaxPatchPublishDate { get; set; }

@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a virtual machine scale set.
-    /// </summary>
     public partial class VirtualMachineScaleSetInstanceView
     {
         /// <summary>
@@ -33,12 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetInstanceView class.
         /// </summary>
-        /// <param name="virtualMachine">The instance view status summary for
-        /// the virtual machine scale set.</param>
-        /// <param name="extensions">The extensions information.</param>
-        /// <param name="statuses">The resource status information.</param>
-        /// <param name="orchestrationServices">The orchestration services
-        /// information.</param>
         public VirtualMachineScaleSetInstanceView(VirtualMachineScaleSetInstanceViewStatusesSummary virtualMachine = default(VirtualMachineScaleSetInstanceViewStatusesSummary), IList<VirtualMachineScaleSetVMExtensionsSummary> extensions = default(IList<VirtualMachineScaleSetVMExtensionsSummary>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), IList<OrchestrationServiceSummary> orchestrationServices = default(IList<OrchestrationServiceSummary>))
         {
             VirtualMachine = virtualMachine;
@@ -54,26 +45,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the instance view status summary for the virtual machine scale
-        /// set.
         /// </summary>
         [JsonProperty(PropertyName = "virtualMachine")]
         public VirtualMachineScaleSetInstanceViewStatusesSummary VirtualMachine { get; private set; }
 
         /// <summary>
-        /// Gets the extensions information.
         /// </summary>
         [JsonProperty(PropertyName = "extensions")]
         public IList<VirtualMachineScaleSetVMExtensionsSummary> Extensions { get; private set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         /// <summary>
-        /// Gets the orchestration services information.
         /// </summary>
         [JsonProperty(PropertyName = "orchestrationServices")]
         public IList<OrchestrationServiceSummary> OrchestrationServices { get; private set; }

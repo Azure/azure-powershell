@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the proximity placement group.
-    /// </summary>
     public partial class ProximityPlacementGroupUpdate : UpdateResource
     {
         /// <summary>
@@ -32,7 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the ProximityPlacementGroupUpdate
         /// class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
         public ProximityPlacementGroupUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(tags)
         {

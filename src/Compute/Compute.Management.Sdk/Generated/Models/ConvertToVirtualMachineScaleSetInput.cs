@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the Virtual Machine Scale Set to convert from Availability
-    /// Set.
-    /// </summary>
     public partial class ConvertToVirtualMachineScaleSetInput
     {
         /// <summary>
@@ -32,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// ConvertToVirtualMachineScaleSetInput class.
         /// </summary>
-        /// <param name="virtualMachineScaleSetName">Specifies information
-        /// about the Virtual Machine Scale Set that the Availability Set
-        /// should be converted to.</param>
         public ConvertToVirtualMachineScaleSetInput(string virtualMachineScaleSetName = default(string))
         {
             VirtualMachineScaleSetName = virtualMachineScaleSetName;
@@ -47,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies information about the Virtual Machine Scale
-        /// Set that the Availability Set should be converted to.
         /// </summary>
         [JsonProperty(PropertyName = "virtualMachineScaleSetName")]
         public string VirtualMachineScaleSetName { get; set; }

@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The input of virtual machine migration from Availability Set to
-    /// Flexible Virtual Machine Scale Set.
-    /// </summary>
     public partial class MigrateVMToVirtualMachineScaleSetInput
     {
         /// <summary>
@@ -32,12 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// MigrateVMToVirtualMachineScaleSetInput class.
         /// </summary>
-        /// <param name="targetZone">The target zone of VM migration to
-        /// Flexible Virtual Machine Scale Set.</param>
-        /// <param name="targetFaultDomain">The target compute fault domain of
-        /// VM migration to Flexible Virtual Machine Scale Set.</param>
-        /// <param name="targetVMSize">The target Virtual Machine size of VM
-        /// migration to Flexible Virtual Machine Scale Set.</param>
         public MigrateVMToVirtualMachineScaleSetInput(string targetZone = default(string), int? targetFaultDomain = default(int?), string targetVMSize = default(string))
         {
             TargetZone = targetZone;
@@ -52,22 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target zone of VM migration to Flexible Virtual
-        /// Machine Scale Set.
         /// </summary>
         [JsonProperty(PropertyName = "targetZone")]
         public string TargetZone { get; set; }
 
         /// <summary>
-        /// Gets or sets the target compute fault domain of VM migration to
-        /// Flexible Virtual Machine Scale Set.
         /// </summary>
         [JsonProperty(PropertyName = "targetFaultDomain")]
         public int? TargetFaultDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets the target Virtual Machine size of VM migration to
-        /// Flexible Virtual Machine Scale Set.
         /// </summary>
         [JsonProperty(PropertyName = "targetVMSize")]
         public string TargetVMSize { get; set; }

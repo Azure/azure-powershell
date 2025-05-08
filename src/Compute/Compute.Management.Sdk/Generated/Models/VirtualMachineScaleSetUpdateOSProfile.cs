@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine scale set OS profile.
-    /// </summary>
     public partial class VirtualMachineScaleSetUpdateOSProfile
     {
         /// <summary>
@@ -33,14 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetUpdateOSProfile class.
         /// </summary>
-        /// <param name="customData">A base-64 encoded string of custom
-        /// data.</param>
-        /// <param name="windowsConfiguration">The Windows Configuration of the
-        /// OS profile.</param>
-        /// <param name="linuxConfiguration">The Linux Configuration of the OS
-        /// profile.</param>
-        /// <param name="secrets">The List of certificates for addition to the
-        /// VM.</param>
         public VirtualMachineScaleSetUpdateOSProfile(string customData = default(string), WindowsConfiguration windowsConfiguration = default(WindowsConfiguration), LinuxConfiguration linuxConfiguration = default(LinuxConfiguration), IList<VaultSecretGroup> secrets = default(IList<VaultSecretGroup>))
         {
             CustomData = customData;
@@ -56,25 +45,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a base-64 encoded string of custom data.
         /// </summary>
         [JsonProperty(PropertyName = "customData")]
         public string CustomData { get; set; }
 
         /// <summary>
-        /// Gets or sets the Windows Configuration of the OS profile.
         /// </summary>
         [JsonProperty(PropertyName = "windowsConfiguration")]
         public WindowsConfiguration WindowsConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the Linux Configuration of the OS profile.
         /// </summary>
         [JsonProperty(PropertyName = "linuxConfiguration")]
         public LinuxConfiguration LinuxConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the List of certificates for addition to the VM.
         /// </summary>
         [JsonProperty(PropertyName = "secrets")]
         public IList<VaultSecretGroup> Secrets { get; set; }

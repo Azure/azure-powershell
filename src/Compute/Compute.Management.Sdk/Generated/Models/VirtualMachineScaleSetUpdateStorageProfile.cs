@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine scale set storage profile.
-    /// </summary>
     public partial class VirtualMachineScaleSetUpdateStorageProfile
     {
         /// <summary>
@@ -33,9 +30,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetUpdateStorageProfile class.
         /// </summary>
-        /// <param name="imageReference">The image reference.</param>
-        /// <param name="osDisk">The OS disk.</param>
-        /// <param name="dataDisks">The data disks.</param>
+        /// <param name="diskControllerType">Possible values include: 'SCSI',
+        /// 'NVMe'</param>
         public VirtualMachineScaleSetUpdateStorageProfile(ImageReference imageReference = default(ImageReference), VirtualMachineScaleSetUpdateOSDisk osDisk = default(VirtualMachineScaleSetUpdateOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>), string diskControllerType = default(string))
         {
             ImageReference = imageReference;
@@ -51,24 +47,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the image reference.
         /// </summary>
         [JsonProperty(PropertyName = "imageReference")]
         public ImageReference ImageReference { get; set; }
 
         /// <summary>
-        /// Gets or sets the OS disk.
         /// </summary>
         [JsonProperty(PropertyName = "osDisk")]
         public VirtualMachineScaleSetUpdateOSDisk OsDisk { get; set; }
 
         /// <summary>
-        /// Gets or sets the data disks.
         /// </summary>
         [JsonProperty(PropertyName = "dataDisks")]
         public IList<VirtualMachineScaleSetDataDisk> DataDisks { get; set; }
 
         /// <summary>
+        /// Gets or sets possible values include: 'SCSI', 'NVMe'
         /// </summary>
         [JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType { get; set; }

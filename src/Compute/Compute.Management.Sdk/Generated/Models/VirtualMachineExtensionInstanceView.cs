@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of a virtual machine extension.
-    /// </summary>
     public partial class VirtualMachineExtensionInstanceView
     {
         /// <summary>
@@ -33,13 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineExtensionInstanceView class.
         /// </summary>
-        /// <param name="name">The virtual machine extension name.</param>
-        /// <param name="type">Specifies the type of the extension; an example
-        /// is "CustomScriptExtension".</param>
-        /// <param name="typeHandlerVersion">Specifies the version of the
-        /// script handler.</param>
-        /// <param name="substatuses">The resource status information.</param>
-        /// <param name="statuses">The resource status information.</param>
         public VirtualMachineExtensionInstanceView(string name = default(string), string type = default(string), string typeHandlerVersion = default(string), IList<InstanceViewStatus> substatuses = default(IList<InstanceViewStatus>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>))
         {
             Name = name;
@@ -56,32 +46,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the virtual machine extension name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the type of the extension; an example is
-        /// "CustomScriptExtension".
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the version of the script handler.
         /// </summary>
         [JsonProperty(PropertyName = "typeHandlerVersion")]
         public string TypeHandlerVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "substatuses")]
         public IList<InstanceViewStatus> Substatuses { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
         /// </summary>
         [JsonProperty(PropertyName = "statuses")]
         public IList<InstanceViewStatus> Statuses { get; set; }

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The health status of the VM.
-    /// </summary>
     public partial class VirtualMachineHealthStatus
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VirtualMachineHealthStatus class.
         /// </summary>
-        /// <param name="status">The health status information for the
-        /// VM.</param>
         public VirtualMachineHealthStatus(InstanceViewStatus status = default(InstanceViewStatus))
         {
             Status = status;
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the health status information for the VM.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public InstanceViewStatus Status { get; private set; }

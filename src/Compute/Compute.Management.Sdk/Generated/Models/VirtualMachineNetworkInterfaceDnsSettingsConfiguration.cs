@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machines network configuration's DNS settings.
-    /// </summary>
     public partial class VirtualMachineNetworkInterfaceDnsSettingsConfiguration
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineNetworkInterfaceDnsSettingsConfiguration class.
         /// </summary>
-        /// <param name="dnsServers">List of DNS servers IP addresses</param>
         public VirtualMachineNetworkInterfaceDnsSettingsConfiguration(IList<string> dnsServers = default(IList<string>))
         {
             DnsServers = dnsServers;
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of DNS servers IP addresses
         /// </summary>
         [JsonProperty(PropertyName = "dnsServers")]
         public IList<string> DnsServers { get; set; }

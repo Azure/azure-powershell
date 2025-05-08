@@ -13,11 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Encryption at rest settings for disk restore point. It is an optional
-    /// property that can be specified in the input while creating a restore
-    /// point.
-    /// </summary>
     public partial class RestorePointEncryption
     {
         /// <summary>

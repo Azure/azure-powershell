@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Instance view statuses summary for virtual machines of a virtual
-    /// machine scale set.
-    /// </summary>
     public partial class VirtualMachineScaleSetInstanceViewStatusesSummary
     {
         /// <summary>
@@ -34,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetInstanceViewStatusesSummary class.
         /// </summary>
-        /// <param name="statusesSummary">The extensions information.</param>
         public VirtualMachineScaleSetInstanceViewStatusesSummary(IList<VirtualMachineStatusCodeCount> statusesSummary = default(IList<VirtualMachineStatusCodeCount>))
         {
             StatusesSummary = statusesSummary;
@@ -47,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the extensions information.
         /// </summary>
         [JsonProperty(PropertyName = "statusesSummary")]
         public IList<VirtualMachineStatusCodeCount> StatusesSummary { get; private set; }

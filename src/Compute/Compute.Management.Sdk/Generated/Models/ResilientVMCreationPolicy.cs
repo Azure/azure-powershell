@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The configuration parameters used while performing resilient VM
-    /// creation.
-    /// </summary>
     public partial class ResilientVMCreationPolicy
     {
         /// <summary>
@@ -30,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResilientVMCreationPolicy class.
         /// </summary>
-        /// <param name="enabled">Specifies whether resilient VM creation
-        /// should be enabled on the virtual machine scale set. The default
-        /// value is false.</param>
         public ResilientVMCreationPolicy(bool? enabled = default(bool?))
         {
             Enabled = enabled;
@@ -45,9 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies whether resilient VM creation should be
-        /// enabled on the virtual machine scale set. The default value is
-        /// false.
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }

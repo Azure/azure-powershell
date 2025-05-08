@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Virtual machine image resource information.
-    /// </summary>
     public partial class VirtualMachineImageResource : SubResource
     {
         /// <summary>
@@ -34,16 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineImageResource
         /// class.
         /// </summary>
-        /// <param name="name">The name of the resource.</param>
-        /// <param name="location">The supported Azure location of the
-        /// resource.</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="tags">Specifies the tags that are assigned to the
-        /// virtual machine. For more information about using tags, see [Using
-        /// tags to organize your Azure
-        /// resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).</param>
-        /// <param name="extendedLocation">The extended location of the Virtual
-        /// Machine.</param>
         public VirtualMachineImageResource(string name, string location, string id = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(id)
         {
@@ -60,28 +47,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the supported Azure location of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the tags that are assigned to the virtual
-        /// machine. For more information about using tags, see [Using tags to
-        /// organize your Azure
-        /// resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the extended location of the Virtual Machine.
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation { get; set; }

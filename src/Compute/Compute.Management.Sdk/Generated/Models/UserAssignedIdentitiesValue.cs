@@ -28,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the UserAssignedIdentitiesValue
         /// class.
         /// </summary>
-        /// <param name="principalId">The principal id of user assigned
-        /// identity.</param>
-        /// <param name="clientId">The client id of user assigned
-        /// identity.</param>
         public UserAssignedIdentitiesValue(string principalId = default(string), string clientId = default(string))
         {
             PrincipalId = principalId;
@@ -45,13 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the principal id of user assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the client id of user assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "clientId")]
         public string ClientId { get; private set; }

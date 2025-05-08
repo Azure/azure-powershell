@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// LogAnalytics operation status response
-    /// </summary>
     public partial class LogAnalyticsOperationResult
     {
         /// <summary>
@@ -31,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the LogAnalyticsOperationResult
         /// class.
         /// </summary>
-        /// <param name="properties">LogAnalyticsOutput</param>
         public LogAnalyticsOperationResult(LogAnalyticsOutput properties = default(LogAnalyticsOutput))
         {
             Properties = properties;
@@ -44,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets logAnalyticsOutput
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public LogAnalyticsOutput Properties { get; private set; }

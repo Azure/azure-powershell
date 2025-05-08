@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The parameters of a capacity reservation Profile.
-    /// </summary>
     public partial class CapacityReservationProfile
     {
         /// <summary>
@@ -29,11 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CapacityReservationProfile class.
         /// </summary>
-        /// <param name="capacityReservationGroup">Specifies the capacity
-        /// reservation group resource id that should be used for allocating
-        /// the virtual machine or scaleset vm instances provided enough
-        /// capacity has been reserved. Please refer to
-        /// https://aka.ms/CapacityReservation for more details.</param>
         public CapacityReservationProfile(SubResource capacityReservationGroup = default(SubResource))
         {
             CapacityReservationGroup = capacityReservationGroup;
@@ -46,10 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the capacity reservation group resource id
-        /// that should be used for allocating the virtual machine or scaleset
-        /// vm instances provided enough capacity has been reserved. Please
-        /// refer to https://aka.ms/CapacityReservation for more details.
         /// </summary>
         [JsonProperty(PropertyName = "capacityReservationGroup")]
         public SubResource CapacityReservationGroup { get; set; }

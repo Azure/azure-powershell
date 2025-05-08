@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine network interface configurations.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class VirtualMachineNetworkInterfaceConfiguration
     {
@@ -36,33 +33,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineNetworkInterfaceConfiguration class.
         /// </summary>
-        /// <param name="name">The network interface configuration
-        /// name.</param>
-        /// <param name="ipConfigurations">Specifies the IP configurations of
-        /// the network interface.</param>
-        /// <param name="primary">Specifies the primary network interface in
-        /// case the virtual machine has more than 1 network interface.</param>
-        /// <param name="deleteOption">Specify what happens to the network
-        /// interface when the VM is deleted. Possible values include:
-        /// 'Delete', 'Detach'</param>
-        /// <param name="enableAcceleratedNetworking">Specifies whether the
-        /// network interface is accelerated networking-enabled.</param>
-        /// <param name="disableTcpStateTracking">Specifies whether the network
-        /// interface is disabled for tcp state tracking.</param>
-        /// <param name="enableFpga">Specifies whether the network interface is
-        /// FPGA networking-enabled.</param>
-        /// <param name="enableIPForwarding">Whether IP forwarding enabled on
-        /// this NIC.</param>
-        /// <param name="networkSecurityGroup">The network security
-        /// group.</param>
-        /// <param name="dnsSettings">The dns settings to be applied on the
-        /// network interfaces.</param>
-        /// <param name="auxiliaryMode">Specifies whether the Auxiliary mode is
-        /// enabled for the Network Interface resource. Possible values
-        /// include: 'None', 'AcceleratedConnections', 'Floating'</param>
-        /// <param name="auxiliarySku">Specifies whether the Auxiliary sku is
-        /// enabled for the Network Interface resource. Possible values
-        /// include: 'None', 'A1', 'A2', 'A4', 'A8'</param>
+        /// <param name="deleteOption">Possible values include: 'Delete',
+        /// 'Detach'</param>
+        /// <param name="auxiliaryMode">Possible values include: 'None',
+        /// 'AcceleratedConnections', 'Floating'</param>
+        /// <param name="auxiliarySku">Possible values include: 'None', 'A1',
+        /// 'A2', 'A4', 'A8'</param>
         public VirtualMachineNetworkInterfaceConfiguration(string name, IList<VirtualMachineNetworkInterfaceIPConfiguration> ipConfigurations, bool? primary = default(bool?), string deleteOption = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), bool? enableIPForwarding = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineNetworkInterfaceDnsSettingsConfiguration dnsSettings = default(VirtualMachineNetworkInterfaceDnsSettingsConfiguration), SubResource dscpConfiguration = default(SubResource), string auxiliaryMode = default(string), string auxiliarySku = default(string))
         {
             Name = name;
@@ -87,68 +63,52 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the network interface configuration name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the primary network interface in case the
-        /// virtual machine has more than 1 network interface.
         /// </summary>
         [JsonProperty(PropertyName = "properties.primary")]
         public bool? Primary { get; set; }
 
         /// <summary>
-        /// Gets or sets specify what happens to the network interface when the
-        /// VM is deleted. Possible values include: 'Delete', 'Detach'
+        /// Gets or sets possible values include: 'Delete', 'Detach'
         /// </summary>
         [JsonProperty(PropertyName = "properties.deleteOption")]
         public string DeleteOption { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the network interface is accelerated
-        /// networking-enabled.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableAcceleratedNetworking")]
         public bool? EnableAcceleratedNetworking { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the network interface is disabled
-        /// for tcp state tracking.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disableTcpStateTracking")]
         public bool? DisableTcpStateTracking { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the network interface is FPGA
-        /// networking-enabled.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableFpga")]
         public bool? EnableFpga { get; set; }
 
         /// <summary>
-        /// Gets or sets whether IP forwarding enabled on this NIC.
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableIPForwarding")]
         public bool? EnableIPForwarding { get; set; }
 
         /// <summary>
-        /// Gets or sets the network security group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkSecurityGroup")]
         public SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the dns settings to be applied on the network
-        /// interfaces.
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsSettings")]
         public VirtualMachineNetworkInterfaceDnsSettingsConfiguration DnsSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the IP configurations of the network
-        /// interface.
         /// </summary>
         [JsonProperty(PropertyName = "properties.ipConfigurations")]
         public IList<VirtualMachineNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
@@ -159,17 +119,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SubResource DscpConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the Auxiliary mode is enabled for
-        /// the Network Interface resource. Possible values include: 'None',
+        /// Gets or sets possible values include: 'None',
         /// 'AcceleratedConnections', 'Floating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.auxiliaryMode")]
         public string AuxiliaryMode { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the Auxiliary sku is enabled for the
-        /// Network Interface resource. Possible values include: 'None', 'A1',
-        /// 'A2', 'A4', 'A8'
+        /// Gets or sets possible values include: 'None', 'A1', 'A2', 'A4',
+        /// 'A8'
         /// </summary>
         [JsonProperty(PropertyName = "properties.auxiliarySku")]
         public string AuxiliarySku { get; set; }

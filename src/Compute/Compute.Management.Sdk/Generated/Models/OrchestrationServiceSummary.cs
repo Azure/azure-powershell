@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Summary for an orchestration service of a virtual machine scale set.
-    /// </summary>
     public partial class OrchestrationServiceSummary
     {
         /// <summary>
@@ -31,12 +28,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the OrchestrationServiceSummary
         /// class.
         /// </summary>
-        /// <param name="serviceName">The name of the service. Possible values
-        /// include: 'AutomaticRepairs',
-        /// 'DummyOrchestrationServiceName'</param>
-        /// <param name="serviceState">The current state of the service.
-        /// Possible values include: 'NotRunning', 'Running',
-        /// 'Suspended'</param>
+        /// <param name="serviceName">Possible values include:
+        /// 'AutomaticRepairs'</param>
+        /// <param name="serviceState">Possible values include: 'NotRunning',
+        /// 'Running', 'Suspended'</param>
         public OrchestrationServiceSummary(string serviceName = default(string), string serviceState = default(string))
         {
             ServiceName = serviceName;
@@ -50,15 +45,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the name of the service. Possible values include:
-        /// 'AutomaticRepairs'
+        /// Gets possible values include: 'AutomaticRepairs',
+        /// 'DummyOrchestrationServiceName'
         /// </summary>
         [JsonProperty(PropertyName = "serviceName")]
         public string ServiceName { get; private set; }
 
         /// <summary>
-        /// Gets the current state of the service. Possible values include:
-        /// 'NotRunning', 'Running', 'Suspended'
+        /// Gets possible values include: 'NotRunning', 'Running', 'Suspended'
         /// </summary>
         [JsonProperty(PropertyName = "serviceState")]
         public string ServiceState { get; private set; }

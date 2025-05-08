@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies Redeploy related Scheduled Event related configurations.
-    /// </summary>
     public partial class UserInitiatedRedeploy
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UserInitiatedRedeploy class.
         /// </summary>
-        /// <param name="automaticallyApprove">Specifies Redeploy Scheduled
-        /// Event related configurations.</param>
         public UserInitiatedRedeploy(bool? automaticallyApprove = default(bool?))
         {
             AutomaticallyApprove = automaticallyApprove;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies Redeploy Scheduled Event related
-        /// configurations.
         /// </summary>
         [JsonProperty(PropertyName = "automaticallyApprove")]
         public bool? AutomaticallyApprove { get; set; }

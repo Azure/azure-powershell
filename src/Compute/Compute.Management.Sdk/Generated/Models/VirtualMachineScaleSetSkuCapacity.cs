@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes scaling information of a sku.
-    /// </summary>
     public partial class VirtualMachineScaleSetSkuCapacity
     {
         /// <summary>
@@ -31,11 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineScaleSetSkuCapacity
         /// class.
         /// </summary>
-        /// <param name="minimum">The minimum capacity.</param>
-        /// <param name="maximum">The maximum capacity that can be set.</param>
-        /// <param name="defaultCapacity">The default capacity.</param>
-        /// <param name="scaleType">The scale type applicable to the sku.
-        /// Possible values include: 'Automatic', 'None'</param>
+        /// <param name="scaleType">Possible values include: 'Automatic',
+        /// 'None'</param>
         public VirtualMachineScaleSetSkuCapacity(long? minimum = default(long?), long? maximum = default(long?), long? defaultCapacity = default(long?), VirtualMachineScaleSetSkuScaleType? scaleType = default(VirtualMachineScaleSetSkuScaleType?))
         {
             Minimum = minimum;
@@ -51,26 +45,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the minimum capacity.
         /// </summary>
         [JsonProperty(PropertyName = "minimum")]
         public long? Minimum { get; private set; }
 
         /// <summary>
-        /// Gets the maximum capacity that can be set.
         /// </summary>
         [JsonProperty(PropertyName = "maximum")]
         public long? Maximum { get; private set; }
 
         /// <summary>
-        /// Gets the default capacity.
         /// </summary>
         [JsonProperty(PropertyName = "defaultCapacity")]
         public long? DefaultCapacity { get; private set; }
 
         /// <summary>
-        /// Gets the scale type applicable to the sku. Possible values include:
-        /// 'Automatic', 'None'
+        /// Gets possible values include: 'Automatic', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "scaleType")]
         public VirtualMachineScaleSetSkuScaleType? ScaleType { get; private set; }

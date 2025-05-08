@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machines scale sets network configuration's DNS
-    /// settings.
-    /// </summary>
     public partial class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
     {
         /// <summary>
@@ -35,16 +31,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
         /// class.
         /// </summary>
-        /// <param name="domainNameLabel">The Domain name label.The
-        /// concatenation of the domain name label and vm index will be the
-        /// domain name labels of the PublicIPAddress resources that will be
-        /// created</param>
-        /// <param name="domainNameLabelScope">The Domain name label scope.The
-        /// concatenation of the hashed domain name label that generated
-        /// according to the policy from domain name label scope and vm index
-        /// will be the domain name labels of the PublicIPAddress resources
-        /// that will be created. Possible values include: 'TenantReuse',
-        /// 'SubscriptionReuse', 'ResourceGroupReuse', 'NoReuse'</param>
+        /// <param name="domainNameLabelScope">Possible values include:
+        /// 'TenantReuse', 'SubscriptionReuse', 'ResourceGroupReuse',
+        /// 'NoReuse'</param>
         public VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings(string domainNameLabel, string domainNameLabelScope = default(string))
         {
             DomainNameLabel = domainNameLabel;
@@ -58,20 +47,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the Domain name label.The concatenation of the domain
-        /// name label and vm index will be the domain name labels of the
-        /// PublicIPAddress resources that will be created
         /// </summary>
         [JsonProperty(PropertyName = "domainNameLabel")]
         public string DomainNameLabel { get; set; }
 
         /// <summary>
-        /// Gets or sets the Domain name label scope.The concatenation of the
-        /// hashed domain name label that generated according to the policy
-        /// from domain name label scope and vm index will be the domain name
-        /// labels of the PublicIPAddress resources that will be created.
-        /// Possible values include: 'TenantReuse', 'SubscriptionReuse',
-        /// 'ResourceGroupReuse', 'NoReuse'
+        /// Gets or sets possible values include: 'TenantReuse',
+        /// 'SubscriptionReuse', 'ResourceGroupReuse', 'NoReuse'
         /// </summary>
         [JsonProperty(PropertyName = "domainNameLabelScope")]
         public string DomainNameLabelScope { get; set; }

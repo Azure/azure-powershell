@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes each OS upgrade on the Virtual Machine Scale Set.
-    /// </summary>
     public partial class UpgradeOperationHistoricalStatusInfoProperties
     {
         /// <summary>
@@ -31,16 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// UpgradeOperationHistoricalStatusInfoProperties class.
         /// </summary>
-        /// <param name="runningStatus">Information about the overall status of
-        /// the upgrade operation.</param>
-        /// <param name="progress">Counts of the VMs in each state.</param>
-        /// <param name="error">Error Details for this upgrade if there are
-        /// any.</param>
-        /// <param name="startedBy">Invoker of the Upgrade Operation. Possible
-        /// values include: 'Unknown', 'User', 'Platform'</param>
-        /// <param name="targetImageReference">Image Reference details</param>
-        /// <param name="rollbackInfo">Information about OS rollback if
-        /// performed</param>
+        /// <param name="startedBy">Possible values include: 'Unknown', 'User',
+        /// 'Platform'</param>
         public UpgradeOperationHistoricalStatusInfoProperties(UpgradeOperationHistoryStatus runningStatus = default(UpgradeOperationHistoryStatus), RollingUpgradeProgressInfo progress = default(RollingUpgradeProgressInfo), ApiError error = default(ApiError), UpgradeOperationInvoker? startedBy = default(UpgradeOperationInvoker?), ImageReference targetImageReference = default(ImageReference), RollbackStatusInfo rollbackInfo = default(RollbackStatusInfo))
         {
             RunningStatus = runningStatus;
@@ -58,38 +47,32 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets information about the overall status of the upgrade operation.
         /// </summary>
         [JsonProperty(PropertyName = "runningStatus")]
         public UpgradeOperationHistoryStatus RunningStatus { get; private set; }
 
         /// <summary>
-        /// Gets counts of the VMs in each state.
         /// </summary>
         [JsonProperty(PropertyName = "progress")]
         public RollingUpgradeProgressInfo Progress { get; private set; }
 
         /// <summary>
-        /// Gets error Details for this upgrade if there are any.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public ApiError Error { get; private set; }
 
         /// <summary>
-        /// Gets invoker of the Upgrade Operation. Possible values include:
-        /// 'Unknown', 'User', 'Platform'
+        /// Gets possible values include: 'Unknown', 'User', 'Platform'
         /// </summary>
         [JsonProperty(PropertyName = "startedBy")]
         public UpgradeOperationInvoker? StartedBy { get; private set; }
 
         /// <summary>
-        /// Gets image Reference details
         /// </summary>
         [JsonProperty(PropertyName = "targetImageReference")]
         public ImageReference TargetImageReference { get; private set; }
 
         /// <summary>
-        /// Gets information about OS rollback if performed
         /// </summary>
         [JsonProperty(PropertyName = "rollbackInfo")]
         public RollbackStatusInfo RollbackInfo { get; private set; }

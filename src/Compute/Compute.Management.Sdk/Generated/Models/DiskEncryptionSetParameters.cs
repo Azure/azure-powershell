@@ -10,17 +10,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the parameter of customer managed disk encryption set
-    /// resource id that can be specified for disk. **Note:** The disk
-    /// encryption set resource id can only be specified for managed disk.
-    /// Please refer https://aka.ms/mdssewithcmkoverview for more details.
-    /// </summary>
-    public partial class DiskEncryptionSetParameters : IResource
+    public partial class DiskEncryptionSetParameters : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the DiskEncryptionSetParameters
@@ -31,6 +23,15 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the DiskEncryptionSetParameters
+        /// class.
+        /// </summary>
+        public DiskEncryptionSetParameters(string id = default(string))
+            : base(id)
+        {
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults

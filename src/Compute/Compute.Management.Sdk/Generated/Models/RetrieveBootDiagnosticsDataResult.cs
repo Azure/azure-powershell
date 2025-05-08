@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The SAS URIs of the console screenshot and serial log blobs.
-    /// </summary>
     public partial class RetrieveBootDiagnosticsDataResult
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RetrieveBootDiagnosticsDataResult
         /// class.
         /// </summary>
-        /// <param name="consoleScreenshotBlobUri">The console screenshot blob
-        /// URI</param>
-        /// <param name="serialConsoleLogBlobUri">The serial console log blob
-        /// URI.</param>
         public RetrieveBootDiagnosticsDataResult(string consoleScreenshotBlobUri = default(string), string serialConsoleLogBlobUri = default(string))
         {
             ConsoleScreenshotBlobUri = consoleScreenshotBlobUri;
@@ -48,13 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the console screenshot blob URI
         /// </summary>
         [JsonProperty(PropertyName = "consoleScreenshotBlobUri")]
         public string ConsoleScreenshotBlobUri { get; private set; }
 
         /// <summary>
-        /// Gets the serial console log blob URI.
         /// </summary>
         [JsonProperty(PropertyName = "serialConsoleLogBlobUri")]
         public string SerialConsoleLogBlobUri { get; private set; }

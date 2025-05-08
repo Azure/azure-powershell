@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The system meta data relating to this resource.
-    /// </summary>
     public partial class SystemData
     {
         /// <summary>
@@ -29,15 +26,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SystemData class.
         /// </summary>
-        /// <param name="createdAt">Specifies the time in UTC at which the
-        /// Cloud Service (extended support) resource was created. &lt;br
-        /// /&gt;Minimum api-version: 2022-04-04.</param>
-        /// <param name="lastModifiedAt">Specifies the time in UTC at which the
-        /// Cloud Service (extended support) resource was last modified. &lt;br
-        /// /&gt;Minimum api-version: 2022-04-04.</param>
-        public SystemData(System.DateTime? createdAt = default(System.DateTime?), System.DateTime? lastModifiedAt = default(System.DateTime?))
+        /// <param name="createdByType">Possible values include: 'User',
+        /// 'Application', 'ManagedIdentity', 'Key'</param>
+        /// <param name="lastModifiedByType">Possible values include: 'User',
+        /// 'Application', 'ManagedIdentity', 'Key'</param>
+        public SystemData(string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?))
         {
+            CreatedBy = createdBy;
+            CreatedByType = createdByType;
             CreatedAt = createdAt;
+            LastModifiedBy = lastModifiedBy;
+            LastModifiedByType = lastModifiedByType;
             LastModifiedAt = lastModifiedAt;
             CustomInit();
         }
@@ -48,20 +47,38 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the time in UTC at which the Cloud Service (extended
-        /// support) resource was created. &amp;lt;br /&amp;gt;Minimum
-        /// api-version: 2022-04-04.
         /// </summary>
-        [JsonProperty(PropertyName = "createdAt")]
-        public System.DateTime? CreatedAt { get; private set; }
+        [JsonProperty(PropertyName = "createdBy")]
+        public string CreatedBy { get; set; }
 
         /// <summary>
-        /// Gets specifies the time in UTC at which the Cloud Service (extended
-        /// support) resource was last modified. &amp;lt;br /&amp;gt;Minimum
-        /// api-version: 2022-04-04.
+        /// Gets or sets possible values include: 'User', 'Application',
+        /// 'ManagedIdentity', 'Key'
+        /// </summary>
+        [JsonProperty(PropertyName = "createdByType")]
+        public string CreatedByType { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "createdAt")]
+        public System.DateTime? CreatedAt { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "lastModifiedBy")]
+        public string LastModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'User', 'Application',
+        /// 'ManagedIdentity', 'Key'
+        /// </summary>
+        [JsonProperty(PropertyName = "lastModifiedByType")]
+        public string LastModifiedByType { get; set; }
+
+        /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "lastModifiedAt")]
-        public System.DateTime? LastModifiedAt { get; private set; }
+        public System.DateTime? LastModifiedAt { get; set; }
 
     }
 }

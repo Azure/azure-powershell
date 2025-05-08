@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RunCommandResult class.
         /// </summary>
-        /// <param name="value">Run command operation response.</param>
         public RunCommandResult(IList<InstanceViewStatus> value = default(IList<InstanceViewStatus>))
         {
             Value = value;
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets run command operation response.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<InstanceViewStatus> Value { get; set; }

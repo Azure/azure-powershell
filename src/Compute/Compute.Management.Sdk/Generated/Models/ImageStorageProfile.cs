@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a storage profile.
-    /// </summary>
     public partial class ImageStorageProfile
     {
         /// <summary>
@@ -31,20 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageStorageProfile class.
         /// </summary>
-        /// <param name="osDisk">Specifies information about the operating
-        /// system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For
-        /// more information about disks, see [About disks and VHDs for Azure
-        /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
-        /// <param name="dataDisks">Specifies the parameters that are used to
-        /// add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more
-        /// information about disks, see [About disks and VHDs for Azure
-        /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).</param>
-        /// <param name="zoneResilient">Specifies whether an image is zone
-        /// resilient or not. Default is false. Zone resilient images can be
-        /// created only in regions that provide Zone Redundant Storage
-        /// (ZRS).</param>
         public ImageStorageProfile(ImageOSDisk osDisk = default(ImageOSDisk), IList<ImageDataDisk> dataDisks = default(IList<ImageDataDisk>), bool? zoneResilient = default(bool?))
         {
             OsDisk = osDisk;
@@ -59,29 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies information about the operating system disk
-        /// used by the virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
-        /// For more information about disks, see [About disks and VHDs for
-        /// Azure virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [JsonProperty(PropertyName = "osDisk")]
         public ImageOSDisk OsDisk { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the parameters that are used to add a data
-        /// disk to a virtual machine. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For
-        /// more information about disks, see [About disks and VHDs for Azure
-        /// virtual
-        /// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
         /// </summary>
         [JsonProperty(PropertyName = "dataDisks")]
         public IList<ImageDataDisk> DataDisks { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether an image is zone resilient or not.
-        /// Default is false. Zone resilient images can be created only in
-        /// regions that provide Zone Redundant Storage (ZRS).
         /// </summary>
         [JsonProperty(PropertyName = "zoneResilient")]
         public bool? ZoneResilient { get; set; }

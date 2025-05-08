@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Virtual Machine Scale Set OS Upgrade History operation response.
-    /// </summary>
     public partial class UpgradeOperationHistoricalStatusInfo
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// UpgradeOperationHistoricalStatusInfo class.
         /// </summary>
-        /// <param name="properties">Information about the properties of the
-        /// upgrade operation.</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="location">Resource location</param>
         public UpgradeOperationHistoricalStatusInfo(UpgradeOperationHistoricalStatusInfoProperties properties = default(UpgradeOperationHistoricalStatusInfoProperties), string type = default(string), string location = default(string))
         {
             Properties = properties;
@@ -49,19 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets information about the properties of the upgrade operation.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public UpgradeOperationHistoricalStatusInfoProperties Properties { get; private set; }
 
         /// <summary>
-        /// Gets resource type
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets resource location
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }

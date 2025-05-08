@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an available virtual machine scale set sku.
-    /// </summary>
     public partial class VirtualMachineScaleSetSku
     {
         /// <summary>
@@ -29,11 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetSku class.
         /// </summary>
-        /// <param name="resourceType">The type of resource the sku applies
-        /// to.</param>
-        /// <param name="sku">The Sku.</param>
-        /// <param name="capacity">Specifies the number of virtual machines in
-        /// the scale set.</param>
         public VirtualMachineScaleSetSku(string resourceType = default(string), Sku sku = default(Sku), VirtualMachineScaleSetSkuCapacity capacity = default(VirtualMachineScaleSetSkuCapacity))
         {
             ResourceType = resourceType;
@@ -48,19 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the type of resource the sku applies to.
         /// </summary>
         [JsonProperty(PropertyName = "resourceType")]
         public string ResourceType { get; private set; }
 
         /// <summary>
-        /// Gets the Sku.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; private set; }
 
         /// <summary>
-        /// Gets specifies the number of virtual machines in the scale set.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public VirtualMachineScaleSetSkuCapacity Capacity { get; private set; }

@@ -13,11 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine scale set sku. NOTE: If the new VM SKU is
-    /// not supported on the hardware the scale set is currently on, you need
-    /// to deallocate the VMs in the scale set before you modify the SKU name.
-    /// </summary>
     public partial class Sku
     {
         /// <summary>
@@ -31,13 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the Sku class.
         /// </summary>
-        /// <param name="name">The sku name.</param>
-        /// <param name="tier">Specifies the tier of virtual machines in a
-        /// scale set.&lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br
-        /// /&gt;&lt;br /&gt; **Standard**&lt;br /&gt;&lt;br /&gt;
-        /// **Basic**</param>
-        /// <param name="capacity">Specifies the number of virtual machines in
-        /// the scale set.</param>
         public Sku(string name = default(string), string tier = default(string), long? capacity = default(long?))
         {
             Name = name;
@@ -52,23 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sku name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the tier of virtual machines in a scale
-        /// set.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; Possible
-        /// Values:&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;
-        /// **Standard**&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; **Basic**
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the number of virtual machines in the scale
-        /// set.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public long? Capacity { get; set; }

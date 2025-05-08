@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Inner error details.
-    /// </summary>
     public partial class InnerError
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the InnerError class.
         /// </summary>
-        /// <param name="exceptiontype">The exception type.</param>
-        /// <param name="errordetail">The internal error message or exception
-        /// dump.</param>
         public InnerError(string exceptiontype = default(string), string errordetail = default(string))
         {
             Exceptiontype = exceptiontype;
@@ -45,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the exception type.
         /// </summary>
         [JsonProperty(PropertyName = "exceptiontype")]
         public string Exceptiontype { get; set; }
 
         /// <summary>
-        /// Gets or sets the internal error message or exception dump.
         /// </summary>
         [JsonProperty(PropertyName = "errordetail")]
         public string Errordetail { get; set; }

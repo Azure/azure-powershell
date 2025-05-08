@@ -15,11 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the sku profile for the virtual machine scale set. With this
-    /// property the customer is able to specify a list of VM sizes and an
-    /// allocation strategy.
-    /// </summary>
     public partial class SkuProfile
     {
         /// <summary>
@@ -33,12 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SkuProfile class.
         /// </summary>
-        /// <param name="vmSizes">Specifies the VM sizes for the virtual
-        /// machine scale set.</param>
-        /// <param name="allocationStrategy">Specifies the allocation strategy
-        /// for the virtual machine scale set based on which the VMs will be
-        /// allocated. Possible values include: 'LowestPrice',
-        /// 'CapacityOptimized', 'Prioritized'</param>
+        /// <param name="allocationStrategy">Possible values include:
+        /// 'LowestPrice', 'CapacityOptimized', 'Prioritized'</param>
         public SkuProfile(IList<SkuProfileVMSize> vmSizes = default(IList<SkuProfileVMSize>), string allocationStrategy = default(string))
         {
             VmSizes = vmSizes;
@@ -52,17 +43,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the VM sizes for the virtual machine scale
-        /// set.
         /// </summary>
         [JsonProperty(PropertyName = "vmSizes")]
         public IList<SkuProfileVMSize> VmSizes { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the allocation strategy for the virtual
-        /// machine scale set based on which the VMs will be allocated.
-        /// Possible values include: 'LowestPrice', 'CapacityOptimized',
-        /// 'Prioritized'
+        /// Gets or sets possible values include: 'LowestPrice',
+        /// 'CapacityOptimized', 'Prioritized'
         /// </summary>
         [JsonProperty(PropertyName = "allocationStrategy")]
         public string AllocationStrategy { get; set; }

@@ -13,11 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Indicates the target Virtual Machine ScaleSet properties upon
-    /// triggering a seamless migration without downtime of the VMs via the
-    /// ConvertToVirtualMachineScaleSet API.
-    /// </summary>
     public partial class DefaultVirtualMachineScaleSetInfo
     {
         /// <summary>
@@ -33,14 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DefaultVirtualMachineScaleSetInfo
         /// class.
         /// </summary>
-        /// <param name="constrainedMaximumCapacity"> Indicates if the the
-        /// maximum capacity of the default migrated Virtual Machine Scale Set
-        /// after its migration will be constrained to a limited number of
-        /// VMs.</param>
-        /// <param name="defaultVirtualMachineScaleSet"> The default Virtual
-        /// Machine ScaleSet Uri that the Availability Set will be moved to
-        /// upon triggering a seamless migration via the
-        /// ConvertToVirtualMachineScaleSet API.</param>
         public DefaultVirtualMachineScaleSetInfo(bool? constrainedMaximumCapacity = default(bool?), SubResource defaultVirtualMachineScaleSet = default(SubResource))
         {
             ConstrainedMaximumCapacity = constrainedMaximumCapacity;
@@ -54,17 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets  Indicates if the the maximum capacity of the default migrated
-        /// Virtual Machine Scale Set after its migration will be constrained
-        /// to a limited number of VMs.
         /// </summary>
         [JsonProperty(PropertyName = "constrainedMaximumCapacity")]
         public bool? ConstrainedMaximumCapacity { get; private set; }
 
         /// <summary>
-        /// Gets  The default Virtual Machine ScaleSet Uri that the
-        /// Availability Set will be moved to upon triggering a seamless
-        /// migration via the ConvertToVirtualMachineScaleSet API.
         /// </summary>
         [JsonProperty(PropertyName = "defaultVirtualMachineScaleSet")]
         public SubResource DefaultVirtualMachineScaleSet { get; private set; }

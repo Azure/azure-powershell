@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes Compute Resource Usage.
-    /// </summary>
     public partial class Usage
     {
         /// <summary>
@@ -30,11 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the Usage class.
         /// </summary>
-        /// <param name="currentValue">The current usage of the
-        /// resource.</param>
-        /// <param name="limit">The maximum permitted usage of the
-        /// resource.</param>
-        /// <param name="name">The name of the type of usage.</param>
         public Usage(int currentValue, long limit, UsageName name)
         {
             CurrentValue = currentValue;
@@ -56,25 +48,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the current usage of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "currentValue")]
         public int CurrentValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum permitted usage of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
         public long Limit { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the type of usage.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public UsageName Name { get; set; }
 
         /// <summary>
-        /// An enum describing the unit of usage measurement.
         /// </summary>
         [JsonProperty(PropertyName = "unit")]
         public static string Unit { get; private set; }

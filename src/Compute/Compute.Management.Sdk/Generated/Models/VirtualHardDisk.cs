@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the uri of a disk.
-    /// </summary>
     public partial class VirtualHardDisk
     {
         /// <summary>
@@ -29,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VirtualHardDisk class.
         /// </summary>
-        /// <param name="uri">Specifies the virtual hard disk's uri.</param>
         public VirtualHardDisk(string uri = default(string))
         {
             Uri = uri;
@@ -42,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the virtual hard disk's uri.
         /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }

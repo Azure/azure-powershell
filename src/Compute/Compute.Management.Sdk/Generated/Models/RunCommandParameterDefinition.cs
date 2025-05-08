@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of a run command parameter.
-    /// </summary>
     public partial class RunCommandParameterDefinition
     {
         /// <summary>
@@ -32,11 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RunCommandParameterDefinition
         /// class.
         /// </summary>
-        /// <param name="name">The run command parameter name.</param>
-        /// <param name="type">The run command parameter type.</param>
-        /// <param name="defaultValue">The run command parameter default
-        /// value.</param>
-        /// <param name="required">The run command parameter required.</param>
         public RunCommandParameterDefinition(string name, string type, string defaultValue = default(string), bool? required = default(bool?))
         {
             Name = name;
@@ -52,25 +44,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the run command parameter name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the run command parameter type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the run command parameter default value.
         /// </summary>
         [JsonProperty(PropertyName = "defaultValue")]
         public string DefaultValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the run command parameter required.
         /// </summary>
         [JsonProperty(PropertyName = "required")]
         public bool? Required { get; set; }

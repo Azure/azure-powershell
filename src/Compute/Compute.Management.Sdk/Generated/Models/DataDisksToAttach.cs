@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the data disk to be attached.
-    /// </summary>
     public partial class DataDisksToAttach
     {
         /// <summary>
@@ -30,26 +27,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DataDisksToAttach class.
         /// </summary>
-        /// <param name="diskId">ID of the managed data disk.</param>
-        /// <param name="lun">The logical unit number of the data disk. This
-        /// value is used to identify data disks within the VM and therefore
-        /// must be unique for each data disk attached to a VM. If not
-        /// specified, lun would be auto assigned.</param>
-        /// <param name="caching">Specifies the caching requirements. Possible
-        /// values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting
-        /// behavior is: **None for Standard storage. ReadOnly for Premium
-        /// storage.**. Possible values include: 'None', 'ReadOnly',
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
         /// 'ReadWrite'</param>
-        /// <param name="deleteOption">Specifies whether data disk should be
-        /// deleted or detached upon VM deletion. Possible values are:
-        /// **Delete.** If this value is used, the data disk is deleted when VM
-        /// is deleted. **Detach.** If this value is used, the data disk is
-        /// retained after VM is deleted. The default value is set to
-        /// **Detach**. Possible values include: 'Delete', 'Detach'</param>
-        /// <param name="diskEncryptionSet">Specifies the customer managed disk
-        /// encryption set resource id for the managed disk.</param>
-        /// <param name="writeAcceleratorEnabled">Specifies whether
-        /// writeAccelerator should be enabled or disabled on the disk.</param>
+        /// <param name="deleteOption">Possible values include: 'Delete',
+        /// 'Detach'</param>
         public DataDisksToAttach(string diskId, int? lun = default(int?), CachingTypes? caching = default(CachingTypes?), string deleteOption = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters), bool? writeAcceleratorEnabled = default(bool?))
         {
             DiskId = diskId;
@@ -67,50 +48,34 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ID of the managed data disk.
         /// </summary>
         [JsonProperty(PropertyName = "diskId")]
         public string DiskId { get; set; }
 
         /// <summary>
-        /// Gets or sets the logical unit number of the data disk. This value
-        /// is used to identify data disks within the VM and therefore must be
-        /// unique for each data disk attached to a VM. If not specified, lun
-        /// would be auto assigned.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the caching requirements. Possible values
-        /// are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior
-        /// is: **None for Standard storage. ReadOnly for Premium storage.**.
-        /// Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+        /// Gets or sets possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "caching")]
         public CachingTypes? Caching { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether data disk should be deleted or
-        /// detached upon VM deletion. Possible values are: **Delete.** If this
-        /// value is used, the data disk is deleted when VM is deleted.
-        /// **Detach.** If this value is used, the data disk is retained after
-        /// VM is deleted. The default value is set to **Detach**. Possible
-        /// values include: 'Delete', 'Detach'
+        /// Gets or sets possible values include: 'Delete', 'Detach'
         /// </summary>
         [JsonProperty(PropertyName = "deleteOption")]
         public string DeleteOption { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the customer managed disk encryption set
-        /// resource id for the managed disk.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSet")]
         public DiskEncryptionSetParameters DiskEncryptionSet { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether writeAccelerator should be enabled
-        /// or disabled on the disk.
         /// </summary>
         [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled { get; set; }

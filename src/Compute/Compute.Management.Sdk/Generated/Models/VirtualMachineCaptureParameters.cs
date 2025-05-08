@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Capture Virtual Machine parameters.
-    /// </summary>
     public partial class VirtualMachineCaptureParameters
     {
         /// <summary>
@@ -32,12 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineCaptureParameters
         /// class.
         /// </summary>
-        /// <param name="vhdPrefix">The captured virtual hard disk's name
-        /// prefix.</param>
-        /// <param name="destinationContainerName">The destination container
-        /// name.</param>
-        /// <param name="overwriteVhds">Specifies whether to overwrite the
-        /// destination virtual hard disk, in case of conflict.</param>
         public VirtualMachineCaptureParameters(string vhdPrefix, string destinationContainerName, bool overwriteVhds)
         {
             VhdPrefix = vhdPrefix;
@@ -52,20 +43,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the captured virtual hard disk's name prefix.
         /// </summary>
         [JsonProperty(PropertyName = "vhdPrefix")]
         public string VhdPrefix { get; set; }
 
         /// <summary>
-        /// Gets or sets the destination container name.
         /// </summary>
         [JsonProperty(PropertyName = "destinationContainerName")]
         public string DestinationContainerName { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether to overwrite the destination virtual
-        /// hard disk, in case of conflict.
         /// </summary>
         [JsonProperty(PropertyName = "overwriteVhds")]
         public bool OverwriteVhds { get; set; }

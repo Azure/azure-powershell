@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Api error.
-    /// </summary>
     public partial class ApiError
     {
         /// <summary>
@@ -31,11 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ApiError class.
         /// </summary>
-        /// <param name="details">The Api error details</param>
-        /// <param name="innererror">The Api inner error</param>
-        /// <param name="code">The error code.</param>
-        /// <param name="target">The target of the particular error.</param>
-        /// <param name="message">The error message.</param>
         public ApiError(IList<ApiErrorBase> details = default(IList<ApiErrorBase>), InnerError innererror = default(InnerError), string code = default(string), string target = default(string), string message = default(string))
         {
             Details = details;
@@ -52,31 +44,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the Api error details
         /// </summary>
         [JsonProperty(PropertyName = "details")]
         public IList<ApiErrorBase> Details { get; set; }
 
         /// <summary>
-        /// Gets or sets the Api inner error
         /// </summary>
         [JsonProperty(PropertyName = "innererror")]
         public InnerError Innererror { get; set; }
 
         /// <summary>
-        /// Gets or sets the error code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the target of the particular error.
         /// </summary>
         [JsonProperty(PropertyName = "target")]
         public string Target { get; set; }
 
         /// <summary>
-        /// Gets or sets the error message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

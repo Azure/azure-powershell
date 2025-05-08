@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the SSH public key.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SshPublicKeyResource : Resource
+    public partial class SshPublicKeyResource : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the SshPublicKeyResource class.
@@ -34,19 +31,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SshPublicKeyResource class.
         /// </summary>
-        /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="publicKey">SSH public key used to authenticate to a
-        /// virtual machine through ssh. If this property is not initially
-        /// provided when the resource is created, the publicKey property will
-        /// be populated when generateKeyPair is called. If the public key is
-        /// provided upon resource creation, the provided public key needs to
-        /// be at least 2048-bit and in ssh-rsa format.</param>
-        public SshPublicKeyResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string publicKey = default(string))
-            : base(location, id, name, type, tags)
+        public SshPublicKeyResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string publicKey = default(string))
+            : base(location, id, name, type, systemData, tags)
         {
             PublicKey = publicKey;
             CustomInit();
@@ -58,12 +44,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets SSH public key used to authenticate to a virtual
-        /// machine through ssh. If this property is not initially provided
-        /// when the resource is created, the publicKey property will be
-        /// populated when generateKeyPair is called. If the public key is
-        /// provided upon resource creation, the provided public key needs to
-        /// be at least 2048-bit and in ssh-rsa format.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicKey")]
         public string PublicKey { get; set; }

@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the security profile settings for the managed disk. **Note:**
-    /// It can only be set for Confidential VMs.
-    /// </summary>
     public partial class VMDiskSecurityProfile
     {
         /// <summary>
@@ -30,18 +26,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VMDiskSecurityProfile class.
         /// </summary>
-        /// <param name="securityEncryptionType">Specifies the EncryptionType
-        /// of the managed disk. It is set to DiskWithVMGuestState for
-        /// encryption of the managed disk along with VMGuestState blob,
-        /// VMGuestStateOnly for encryption of just the VMGuestState blob, and
-        /// NonPersistedTPM for not persisting firmware state in the
-        /// VMGuestState blob.. **Note:** It can be set for only Confidential
-        /// VMs. Possible values include: 'VMGuestStateOnly',
-        /// 'DiskWithVMGuestState', 'NonPersistedTPM'</param>
-        /// <param name="diskEncryptionSet">Specifies the customer managed disk
-        /// encryption set resource id for the managed disk that is used for
-        /// Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest
-        /// blob.</param>
+        /// <param name="securityEncryptionType">Possible values include:
+        /// 'VMGuestStateOnly', 'DiskWithVMGuestState',
+        /// 'NonPersistedTPM'</param>
         public VMDiskSecurityProfile(string securityEncryptionType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters))
         {
             SecurityEncryptionType = securityEncryptionType;
@@ -55,21 +42,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the EncryptionType of the managed disk. It
-        /// is set to DiskWithVMGuestState for encryption of the managed disk
-        /// along with VMGuestState blob, VMGuestStateOnly for encryption of
-        /// just the VMGuestState blob, and NonPersistedTPM for not persisting
-        /// firmware state in the VMGuestState blob.. **Note:** It can be set
-        /// for only Confidential VMs. Possible values include:
-        /// 'VMGuestStateOnly', 'DiskWithVMGuestState', 'NonPersistedTPM'
+        /// Gets or sets possible values include: 'VMGuestStateOnly',
+        /// 'DiskWithVMGuestState', 'NonPersistedTPM'
         /// </summary>
         [JsonProperty(PropertyName = "securityEncryptionType")]
         public string SecurityEncryptionType { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the customer managed disk encryption set
-        /// resource id for the managed disk that is used for Customer Managed
-        /// Key encrypted ConfidentialVM OS Disk and VMGuest blob.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSet")]
         public DiskEncryptionSetParameters DiskEncryptionSet { get; set; }

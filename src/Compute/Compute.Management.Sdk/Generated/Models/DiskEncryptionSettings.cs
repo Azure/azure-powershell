@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a Encryption Settings for a Disk
-    /// </summary>
     public partial class DiskEncryptionSettings
     {
         /// <summary>
@@ -29,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskEncryptionSettings class.
         /// </summary>
-        /// <param name="diskEncryptionKey">Specifies the location of the disk
-        /// encryption key, which is a Key Vault Secret.</param>
-        /// <param name="keyEncryptionKey">Specifies the location of the key
-        /// encryption key in Key Vault.</param>
-        /// <param name="enabled">Specifies whether disk encryption should be
-        /// enabled on the virtual machine.</param>
         public DiskEncryptionSettings(KeyVaultSecretReference diskEncryptionKey = default(KeyVaultSecretReference), KeyVaultKeyReference keyEncryptionKey = default(KeyVaultKeyReference), bool? enabled = default(bool?))
         {
             DiskEncryptionKey = diskEncryptionKey;
@@ -49,22 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the location of the disk encryption key,
-        /// which is a Key Vault Secret.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionKey")]
         public KeyVaultSecretReference DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the location of the key encryption key in
-        /// Key Vault.
         /// </summary>
         [JsonProperty(PropertyName = "keyEncryptionKey")]
         public KeyVaultKeyReference KeyEncryptionKey { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether disk encryption should be enabled on
-        /// the virtual machine.
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool? Enabled { get; set; }

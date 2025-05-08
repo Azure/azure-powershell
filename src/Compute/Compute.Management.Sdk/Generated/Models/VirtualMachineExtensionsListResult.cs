@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The List Extension operation response
-    /// </summary>
     public partial class VirtualMachineExtensionsListResult
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineExtensionsListResult class.
         /// </summary>
-        /// <param name="value">The list of extensions</param>
         public VirtualMachineExtensionsListResult(IList<VirtualMachineExtension> value = default(IList<VirtualMachineExtension>))
         {
             Value = value;
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of extensions
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<VirtualMachineExtension> Value { get; set; }

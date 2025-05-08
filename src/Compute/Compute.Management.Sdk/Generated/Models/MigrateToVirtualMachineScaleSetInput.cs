@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the Virtual Machine Scale Set to migrate from Availability
-    /// Set.
-    /// </summary>
     public partial class MigrateToVirtualMachineScaleSetInput
     {
         /// <summary>
@@ -33,9 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// MigrateToVirtualMachineScaleSetInput class.
         /// </summary>
-        /// <param name="virtualMachineScaleSetFlexible">Specifies information
-        /// about the Virtual Machine Scale Set that the Availability Set
-        /// should be migrated to. Minimum api‐version: 2024‐11‐01.</param>
         public MigrateToVirtualMachineScaleSetInput(SubResource virtualMachineScaleSetFlexible)
         {
             VirtualMachineScaleSetFlexible = virtualMachineScaleSetFlexible;
@@ -48,9 +41,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies information about the Virtual Machine Scale
-        /// Set that the Availability Set should be migrated to. Minimum
-        /// api‐version: 2024‐11‐01.
         /// </summary>
         [JsonProperty(PropertyName = "virtualMachineScaleSetFlexible")]
         public SubResource VirtualMachineScaleSetFlexible { get; set; }

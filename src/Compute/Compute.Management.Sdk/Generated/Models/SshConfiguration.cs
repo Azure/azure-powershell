@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// SSH configuration for Linux based VMs running on Azure
-    /// </summary>
     public partial class SshConfiguration
     {
         /// <summary>
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SshConfiguration class.
         /// </summary>
-        /// <param name="publicKeys">The list of SSH public keys used to
-        /// authenticate with linux based VMs.</param>
         public SshConfiguration(IList<SshPublicKey> publicKeys = default(IList<SshPublicKey>))
         {
             PublicKeys = publicKeys;
@@ -45,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of SSH public keys used to authenticate with
-        /// linux based VMs.
         /// </summary>
         [JsonProperty(PropertyName = "publicKeys")]
         public IList<SshPublicKey> PublicKeys { get; set; }

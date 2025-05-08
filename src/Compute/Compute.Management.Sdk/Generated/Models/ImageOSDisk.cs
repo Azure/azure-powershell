@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an Operating System disk.
-    /// </summary>
     public partial class ImageOSDisk : ImageDisk
     {
         /// <summary>
@@ -29,32 +26,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageOSDisk class.
         /// </summary>
-        /// <param name="osType">This property allows you to specify the type
-        /// of the OS that is included in the disk if creating a VM from a
-        /// custom image. Possible values are: **Windows,** **Linux.**.
-        /// Possible values include: 'Windows', 'Linux'</param>
-        /// <param name="osState">The OS State. For managed images, use
-        /// Generalized. Possible values include: 'Generalized',
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        /// <param name="osState">Possible values include: 'Generalized',
         /// 'Specialized'</param>
-        /// <param name="snapshot">The snapshot.</param>
-        /// <param name="managedDisk">The managedDisk.</param>
-        /// <param name="blobUri">The Virtual Hard Disk.</param>
-        /// <param name="caching">Specifies the caching requirements. Possible
-        /// values are: **None,** **ReadOnly,** **ReadWrite.** The default
-        /// values are: **None for Standard storage. ReadOnly for Premium
-        /// storage.**. Possible values include: 'None', 'ReadOnly',
+        /// <param name="caching">Possible values include: 'None', 'ReadOnly',
         /// 'ReadWrite'</param>
-        /// <param name="diskSizeGB">Specifies the size of empty data disks in
-        /// gigabytes. This element can be used to overwrite the name of the
-        /// disk in a virtual machine image. This value cannot be larger than
-        /// 1023 GB.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. NOTE: UltraSSD_LRS can only be used with data
-        /// disks, it cannot be used with OS Disk. Possible values include:
+        /// <param name="storageAccountType">Possible values include:
         /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS',
         /// 'Premium_ZRS', 'StandardSSD_ZRS', 'PremiumV2_LRS'</param>
-        /// <param name="diskEncryptionSet">Specifies the customer managed disk
-        /// encryption set resource id for the managed image disk.</param>
         public ImageOSDisk(OperatingSystemTypes osType, OperatingSystemStateTypes osState, SubResource snapshot = default(SubResource), SubResource managedDisk = default(SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string), DiskEncryptionSetParameters diskEncryptionSet = default(DiskEncryptionSetParameters))
             : base(snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet)
         {
@@ -69,17 +49,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the type of the OS
-        /// that is included in the disk if creating a VM from a custom image.
-        /// Possible values are: **Windows,** **Linux.**. Possible values
-        /// include: 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets the OS State. For managed images, use Generalized.
-        /// Possible values include: 'Generalized', 'Specialized'
+        /// Gets or sets possible values include: 'Generalized', 'Specialized'
         /// </summary>
         [JsonProperty(PropertyName = "osState")]
         public OperatingSystemStateTypes OsState { get; set; }
