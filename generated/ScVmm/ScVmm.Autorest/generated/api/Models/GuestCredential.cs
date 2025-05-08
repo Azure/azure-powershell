@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
     {
         /// <summary>Gets or sets the password to connect with the guest.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,

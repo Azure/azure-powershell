@@ -24,12 +24,12 @@ $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
 New-AzCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnpurgeparametersobject
 #>
 function New-AzCdnPurgeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -47,6 +47,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -75,6 +78,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
