@@ -25,6 +25,12 @@ Remove-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-DefaultProfile <
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityProfile
+```
+Remove-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -66,7 +72,7 @@ Name of the domain under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityProfile
 Aliases:
 
 Required: True
@@ -94,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -135,6 +140,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: DeleteViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

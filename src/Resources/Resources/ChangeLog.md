@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Updated API version of resource types from latest to DefaultApiVersion for cmdlets `*-AzResource` and `Invoke-AzResourceAction`.
+
+## Version 7.11.0
 * Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
 * Added PotentialChanges to WhatIf result.
 

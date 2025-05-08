@@ -21,12 +21,13 @@ Create an in-memory object for TimeSpan.
 Create an in-memory object for TimeSpan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeSpanObject
+https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimespanobject
 #>
 function New-AzAksTimeSpanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzAksTimeSpanObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan]::New()
 
         if ($PSBoundParameters.ContainsKey('End')) {
             $Object.End = $End

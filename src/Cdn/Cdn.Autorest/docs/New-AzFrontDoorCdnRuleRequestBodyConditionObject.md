@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestBodyConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerequestbodyconditionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name <MatchVariable>
- -ParameterOperator <RequestBodyOperator> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleRequestBodyConditionObject -ParameterOperator <String> -ParameterTypeName <String>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ RequestBody
 Create an in-memory object for DeliveryRuleRequestBodyCondition
 
 ## PARAMETERS
-
-### -Name
-The name of the condition for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterMatchValue
 The match value for the condition of the delivery rule.
@@ -87,7 +72,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RequestBodyOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,11 +87,26 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestBodyCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestBodyCondition
 
 ## NOTES
 

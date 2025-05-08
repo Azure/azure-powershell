@@ -21,12 +21,13 @@ Create an in-memory object for HealthProbeParameters.
 Create an in-memory object for HealthProbeParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnHealthProbeParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnhealthprobeparametersobject
 #>
 function New-AzCdnHealthProbeParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,17 +38,17 @@ function New-AzCdnHealthProbeParametersObject {
         [string]
         $ProbePath,
         [Parameter(HelpMessage="Protocol to use for health probe.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https")]
+        [string]
         $ProbeProtocol,
         [Parameter(HelpMessage="The type of health probe request that is made.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "GET", "HEAD")]
+        [string]
         $ProbeRequestType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.HealthProbeParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('ProbeIntervalInSecond')) {
             $Object.ProbeIntervalInSecond = $ProbeIntervalInSecond

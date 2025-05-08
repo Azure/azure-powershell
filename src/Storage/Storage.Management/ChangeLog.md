@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed MD5 from blob and file upload in some scenarios
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageBlobContent`
+
+## Version 8.4.0
 * When create Storage context, allowed user input StorageAccountName
     - `New-AzStorageContext`
 * Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
