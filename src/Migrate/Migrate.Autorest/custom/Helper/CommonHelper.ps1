@@ -232,6 +232,7 @@ function InvokeAzMigrateGetCommandWithRetries {
     }
 }
 function ValidateReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
         [PSCustomObject]

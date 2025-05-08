@@ -135,6 +135,3 @@ Cleans up the test migration for the replicating server.
 ### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
 Suspends the ongoing replication.
 
-### [ValidateReplication](ValidateReplication.md)
-
-
