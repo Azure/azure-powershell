@@ -16,17 +16,18 @@
 
 <#
 .Synopsis
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 .Description
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceipconfigurationobject
 #>
 function New-AzConnectedNetworkInterfaceIPConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,10 +41,12 @@ function New-AzConnectedNetworkInterfaceIPConfigurationObject {
         [string]
         $IPAddress,
         [Parameter(HelpMessage="IP address allocation method.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPAllocationMethod]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "Static", "Dynamic")]
+        [string]
         $IPAllocationMethod,
         [Parameter(HelpMessage="IP address version.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPVersion]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.PSArgumentCompleterAttribute("Unknown", "IPv4")]
+        [string]
         $IPVersion,
         [Parameter(HelpMessage="The value of the subnet.")]
         [string]
@@ -51,14 +54,26 @@ function New-AzConnectedNetworkInterfaceIPConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration]::New()
 
-        $Object.DnsServer = $DnsServer
-        $Object.Gateway = $Gateway
-        $Object.IPAddress = $IPAddress
-        $Object.IPAllocationMethod = $IPAllocationMethod
-        $Object.IPVersion = $IPVersion
-        $Object.Subnet = $Subnet
+        if ($PSBoundParameters.ContainsKey('DnsServer')) {
+            $Object.DnsServer = $DnsServer
+        }
+        if ($PSBoundParameters.ContainsKey('Gateway')) {
+            $Object.Gateway = $Gateway
+        }
+        if ($PSBoundParameters.ContainsKey('IPAddress')) {
+            $Object.IPAddress = $IPAddress
+        }
+        if ($PSBoundParameters.ContainsKey('IPAllocationMethod')) {
+            $Object.IPAllocationMethod = $IPAllocationMethod
+        }
+        if ($PSBoundParameters.ContainsKey('IPVersion')) {
+            $Object.IPVersion = $IPVersion
+        }
+        if ($PSBoundParameters.ContainsKey('Subnet')) {
+            $Object.Subnet = $Subnet
+        }
         return $Object
     }
 }

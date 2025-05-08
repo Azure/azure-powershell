@@ -30,6 +30,18 @@ Get-AzConnectedNetworkVendorSkuPreview -InputObject <IConnectedNetworkIdentity> 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityVendor
+```
+Get-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <String>
+ -VendorInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityVendorSku
+```
+Get-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String>
+ -VendorSkuInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the preview information of a vendor sku.
 
@@ -101,7 +113,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
@@ -120,7 +131,7 @@ Preview subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityVendor, GetViaIdentityVendorSku
 Aliases:
 
 Required: True
@@ -135,7 +146,7 @@ The name of the vendor sku.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityVendor, List
 Aliases:
 
 Required: True
@@ -160,6 +171,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityVendor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
@@ -175,6 +201,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorSkuInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityVendorSku
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -184,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IPreviewSubscription
 
 ## NOTES
 
