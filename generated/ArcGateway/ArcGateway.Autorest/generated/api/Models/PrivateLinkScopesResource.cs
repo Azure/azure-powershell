@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         string Id { get;  }
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

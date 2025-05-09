@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models
     {
         /// <summary>The location where the email service stores its data at rest.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
