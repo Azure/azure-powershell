@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             Mandatory = false,
             HelpMessage = "Application Type, default "+ DefaultApplicationType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("SAP-HANA")]
+        [PSArgumentCompleter("SAP-HANA", "ORACLE")]
         [PSDefaultValue(Help = "Default \"SAP-HANA\"", Value = DefaultApplicationType)]
         public string ApplicationType { get; set; } = DefaultApplicationType;
 
@@ -270,6 +270,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'. To create a volume using customer-managed keys use 'Microsoft.KeyVault' note then you must set -NetworkFeature to Standard.")]
         [PSArgumentCompleter("Microsoft.NetApp", "Microsoft.KeyVault")]
         public string EncryptionKeySource { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Basic network, or Standard features available to the volume (Basic, Standard).")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string NetworkFeature { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -450,7 +456,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     ExportPolicy = volumeExportPolicy,
                     Zones = zoneList,
                     KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
-                    EncryptionKeySource = this.EncryptionKeySource
+                    EncryptionKeySource = this.EncryptionKeySource,
+                    NetworkFeatures = this.NetworkFeature
                 };
 
                 volumesInGroup.Add(dataVolume);
@@ -468,7 +475,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     ExportPolicy = volumeExportPolicy,
                     Zones = zoneList,
                     KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
-                    EncryptionKeySource = this.EncryptionKeySource
+                    EncryptionKeySource = this.EncryptionKeySource,
+                    NetworkFeatures = this.NetworkFeature
                 };
                 volumesInGroup.Add(logVolume);
                 //Shared, Log backup and Data backup only created for HostID==1.
@@ -489,7 +497,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         ExportPolicy = volumeExportPolicy,
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
-                        EncryptionKeySource = this.EncryptionKeySource
+                        EncryptionKeySource = this.EncryptionKeySource,
+                        NetworkFeatures = this.NetworkFeature
                     };
                     if (this.Zone != null)
                     {
@@ -511,7 +520,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         ExportPolicy = volumeExportPolicy,
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
-                        EncryptionKeySource = this.EncryptionKeySource
+                        EncryptionKeySource = this.EncryptionKeySource,
+                        NetworkFeatures = this.NetworkFeature
                     };
                     if (this.Zone != null)
                     {
@@ -533,7 +543,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         ExportPolicy = volumeExportPolicy,
                         Zones = zoneList,
                         KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
-                        EncryptionKeySource = this.EncryptionKeySource
+                        EncryptionKeySource = this.EncryptionKeySource,
+                        NetworkFeatures = this.NetworkFeature
                     };
                     if (this.Zone != null)
                     {

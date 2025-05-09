@@ -122,6 +122,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public string FederatedClientId { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.")]
+        [ValidateNotNullOrEmpty]
+        public string NfsV4IdDomain { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
@@ -172,7 +179,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Location = Location,
                 ActiveDirectories = ActiveDirectory?.ConvertFromPs(),
                 Tags = tagPairs,
-                Encryption = Encryption?.ConvertFromPs()
+                Encryption = Encryption?.ConvertFromPs(),
+                NfsV4IdDomain = NfsV4IdDomain
             };
             if (IdentityType != null && IdentityType.Contains("UserAssigned"))
             {
