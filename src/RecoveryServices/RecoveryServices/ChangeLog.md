@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.7.1
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
 
 ## Version 7.7.0
