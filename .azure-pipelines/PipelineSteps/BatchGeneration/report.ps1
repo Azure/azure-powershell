@@ -13,6 +13,9 @@ $reportFilePattern = @{
 }
 
 $artifactRoot = Join-Path $RepoRoot 'artifacts'
+if (-not (Test-Path -Path $artifactRoot)) {
+    New-Item -Path $artifactRoot -ItemType Directory
+}
 $failedReports = @{}
 
 foreach ($pattern in $reportFilePattern.GetEnumerator()) {
