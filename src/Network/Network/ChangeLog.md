@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 
 ## Version 7.16.1
 * Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
