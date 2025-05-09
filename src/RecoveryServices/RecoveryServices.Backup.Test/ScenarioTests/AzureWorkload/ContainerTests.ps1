@@ -78,7 +78,7 @@ function Get-AzureVmWorkloadContainer
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer;
-      Assert-True { $containers[0].FriendlyName -contains $containerName }
+      Assert-True { $containers[1].FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
@@ -92,7 +92,7 @@ function Get-AzureVmWorkloadContainer
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
          -ResourceGroupName $resourceGroupName;
-      Assert-True { $containers[0].FriendlyName -contains $containerName }
+      Assert-True { $containers[1].FriendlyName -contains $containerName }
    
       # VARIATION-4: Get Containers with friendly name and resource group filters
       $containers = Get-AzRecoveryServicesBackupContainer `
