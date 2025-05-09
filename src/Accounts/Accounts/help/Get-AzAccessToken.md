@@ -8,12 +8,12 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get secure raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+Get secure access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
 
 > [!NOTE]
-> For security purposes, the default output type will change from a plain text `String` to
-> `SecureString`. To prepare for this change and ensure secure handling, use the **AsSecureString**
-> parameter before the update takes effect.
+> For security purposes, the default output type changes from a plain text `String` to `SecureString`.
+> Please refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq)
+> for how to convert from `SecureString` to plain text.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-AsSecureString]
 ```
 
 ## DESCRIPTION
-Get access token
+Get secure access token
 
 ## EXAMPLES
 
@@ -58,8 +58,7 @@ Get access token of Microsoft Graph endpoint for current account
 ## PARAMETERS
 
 ### -AsSecureString
-Specifiy to convert output token as a secure string.
-Please always use the parameter for security purpose and to avoid the upcoming breaking change and refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq) for how to convert from `SecureString` to plain text.
+The parameter is no long used. No matter `AsSecureString` is specified, the output token is a `SecureString`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -142,11 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
-The output type is going to be deprecate.
-
 ### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
-Use `-AsSecureString` to get the token as `SecureString`.
 
 ## NOTES
 

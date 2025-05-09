@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Optional Tenant Id. Use tenant id of default context if not specified.")]
         public string TenantId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specify to convert output token as a secure string.")]
+        [Parameter(Mandatory = false, HelpMessage = "The parameter is no long used. No matter `AsSecureString` is specified, the output token is a `SecureString`.")]
         public SwitchParameter AsSecureString { get; set; }
 
         public override void ExecuteCmdlet()
