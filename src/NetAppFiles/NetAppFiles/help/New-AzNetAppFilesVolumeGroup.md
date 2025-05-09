@@ -472,6 +472,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkFeature
+Basic network, or Standard features available to the volume (Basic, Standard).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeMemory
 SAP node memory (GiB), Memory on SAP compute host
 
@@ -511,6 +526,21 @@ For PRIMARY it will be empty and HA it will be "HA - "
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
