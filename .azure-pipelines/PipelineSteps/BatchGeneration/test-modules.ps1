@@ -18,6 +18,8 @@ foreach ($subModule in $subModuleGroup) {
     $startTime = Get-Date
     $moduleName, $subModuleName = $subModule -split '/'
     $result = @{
+        OSName = $TestEnvName
+        MatrixKey = $MatrixKey
         Module = $moduleName
         SubModule = $subModuleName
         Status = "Success"

@@ -40,6 +40,7 @@ foreach ($moduleName in $sortedModuleNames) {
         Write-Host "Regenerating SubModule: $subModuleName"
         $subModuleStartTime = Get-Date
         $subModuleResult = @{
+            MatrixKey = $MatrixKey
             SubModule = $subModuleName
             Status = "Success"
             DurationSeconds = 0

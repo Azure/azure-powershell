@@ -148,9 +148,6 @@ stages:
             Write-Host "Applying all .patch files to ${{ variables.GenerationBranch }}..."
             $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch
 
-            # $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch |
-            #   Where-Object { $_.Directory.Parent.FullName -eq $env:PIPELINE_WORKSPACE }
-
             foreach ($patch in $patchFiles) {
               Write-Host "Applying patch: $($patch.FullName)"
               git apply --whitespace=fix "$($patch.FullName)"
@@ -400,16 +397,39 @@ stages:
         agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
         maxParallel: ${{ variables.MaxParallelTestMacJobs }}
  
-  # - stage: Report
-  #   condition: always()
-  #   jobs:
-  #   - job: report
-  #     displayName: 'Report'
-  #     timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
-  #     pool: ${{ variables.WindowsAgentPoolName }}
-  #     steps:
-  #     - checkout: none
+  - stage: Report
+    condition: always()
+    jobs:
+    - job: report
+      displayName: 'Report'
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      steps:
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
 
-  #     - task: PowerShell@2
-  #       name: report
-  #       displayName: 'Report Results'
+      - download: current
+        patterns: |
+          **/AnalyseReport-*.json
+          **/GenerationReport-*.json
+          **/BuildReport-*.json
+          **/Test*Report-*.json
+        displayName: 'Download build artifacts'
+
+      - task: PowerShell@2
+        name: report
+        displayName: 'Report Results'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $reportScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'report.ps1'
+            & $reportScriptPath -RepoRoot "$(Build.SourcesDirectory)" -PipelineWorkspace "$env:PIPELINE_WORKSPACE"
+      
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Reports'
+        inputs:
+          targetPath: artifacts
+          artifact: 'reports'
+        condition: always()
