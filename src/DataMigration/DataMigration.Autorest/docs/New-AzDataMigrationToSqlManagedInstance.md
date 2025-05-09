@@ -32,7 +32,7 @@ Create a new database migration to a given SQL Managed Instance.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Start a Database Migration from the on-premise Source Sql Server to target Managed Instance
 ```powershell
 $sourcePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
 $filesharePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
