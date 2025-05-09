@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             // Setup
             cmdlet.TenantId = tenantId;
             var fakeToken = "eyfaketoken.eyfaketoken";
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, bool.TrueString);
 
             var expected = new PSAccessToken { 
                 UserId = "faker@contoso.com",
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("Bearer", ((PSAccessToken)outputPipeline.First()).Type);
             Assert.Equal(expected.Token, ((PSAccessToken)outputPipeline.First()).Token);
 
+            Environment.SetEnvironmentVariable(Constants.AzPsOutputPlainTextAccessToken, null);
             AzureSession.Instance.AuthenticationFactory = previousFactory;
         }
 
