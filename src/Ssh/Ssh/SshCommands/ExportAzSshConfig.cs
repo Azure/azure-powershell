@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 using System;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 
 namespace Microsoft.Azure.Commands.Ssh
 {   
@@ -65,10 +66,12 @@ namespace Microsoft.Azure.Commands.Ssh
             base.ExecuteCmdlet();
 
             ValidateParameters();
-            SetResourceType();
+            GenericResource targetResource = GetTargetResourceAndSetResourceType();
+            ConfigurePortNumberFromResourceTag(targetResource);
 
             record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
             UpdateProgressBar(record, "Preparing to create SSH Config", 0);
+
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
             {
