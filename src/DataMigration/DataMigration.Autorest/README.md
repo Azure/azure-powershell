@@ -1,37 +1,47 @@
 <!-- region Generated -->
+
 # Az.DataMigration
+
 This directory contains the PowerShell module for the DataMigration service.
 
 ---
+
 ## Info
+
 - Modifiable: yes
 - Generated: all
 - Committed: yes
 - Packaged: yes
 
 ---
+
 ## Detail
+
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
+
 - [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
+
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
+
 For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to.md).
+
 <!-- endregion -->
 
 ### AutoRest Configuration
+
 > see https://aka.ms/autorest
 
-``` yaml
-commit: e8c359d8821038f133695c9b1f4cf40d330cbc80
+```yaml
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
+input-file:
+  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2025-03-15-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
@@ -41,12 +51,11 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
-
   #Swagger description changes
   #- from: swagger-document
   #  where: $.info
   #  transform: $["version"] = "2022-01-30-preview"
-    
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].get
     transform: $["description"] = "Retrieve the Database Migration Service."
@@ -66,7 +75,7 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].get
     transform: $["description"] = "Retrieve the specified database migration for a given SQL Db."
-  
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover"].post
     transform: $["description"] = "Initiate cutover for in-progress online database migration to SQL Managed Instance."
@@ -78,7 +87,7 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].put
     transform: $["description"] = "Create or Update Database Migration Service."
-  
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].put
     transform: $["description"] = "Create a new database migration to a given SQL Managed Instance."
@@ -110,7 +119,7 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"].delete
     transform: $["description"] = "Remove the specified database migration for a given SQL Db."
-  
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}"].patch
     transform: $["description"] = "Update Database Migration Service."
@@ -119,7 +128,6 @@ directive:
     where: $.definitions.DatabaseMigrationProperties.properties.scope
     transform: $["description"] = "Resource Id of the target resource (SQL VM or SQL Managed Instance)"
 
-  
   #Remove the unexpanded parameter set
   #For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
@@ -129,8 +137,7 @@ directive:
   - where:
       verb: Remove
       subject: SqlMigrationServiceNode
-      variant: 
-        ^Delete$|^DeleteViaIdentity$
+      variant: ^Delete$|^DeleteViaIdentity$
     remove: true
 
   - where:
@@ -165,7 +172,7 @@ directive:
       subject: DatabaseMigrationsSqlVM
     set:
       subject: ToSqlVM
-  
+
   - where:
       subject: (DatabaseMigrationSqlDb$)
     set:
@@ -175,7 +182,7 @@ directive:
       subject: DatabaseMigrationsSqlDb
     set:
       subject: ToSqlDb
-  
+
   - where:
       subject: (MonitoringData$)
     set:
@@ -229,6 +236,12 @@ directive:
       parameter-name: PassThru
     hide: true
 
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: AzureBlobAuthType|IdentityType|IdentityUserAssignedIdentity
+    hide: true
+
   #Changing parameter names
   - where:
       verb: New
@@ -257,7 +270,7 @@ directive:
       parameter-name: TargetLocationStorageAccountResourceId
     set:
       parameter-name: StorageAccountResourceId
-  
+
   - where:
       verb: New
       subject: ToSqlVM
@@ -272,6 +285,13 @@ directive:
     set:
       parameter-name: StorageAccountKey
 
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: IdentityType
+    set:
+      parameter-name: AzureBlobIdentityType
+
   # Changing parameter description
   - where:
       parameter-name: Scope
@@ -283,6 +303,23 @@ directive:
   # Remove the set-* cmdlet
   - where:
       verb: Set
+    remove: true
+
+  # Removed New-AzDataMigrationToSqlManagedInstance
+  # Replaced with a wrapper that renames IdentityUserAssignedIdentity to AzureBlobUserAssignedIdentity
+  # and changes its type from hashtable to string[] per managed identity guidelines
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+    hide: true
+
+  # Remove Cosmos(Mongo) and MigrationService cmdlets
+  - where:
+      subject: \b\w*-?Mongo\w*\b
+    remove: true
+
+  - where:
+      subject: \b\w*-?MigrationService\w*\b
     remove: true
 
   # Formatting
@@ -363,5 +400,4 @@ directive:
   - from: swagger-document
     where: $.definitions.MigrationOperationInput
     transform: $['required'] = ['migrationOperationId']
-
 ```
