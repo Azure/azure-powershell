@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzChaosTarget
 
 ## SYNOPSIS
-Update a Target resource that extends a tracked regional resource.
+update a Target resource that extends a tracked regional resource.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzChaosTarget -InputObject <IChaosIdentity> [-Location <String>] [-Proper
 ```
 
 ## DESCRIPTION
-Update a Target resource that extends a tracked regional resource.
+update a Target resource that extends a tracked regional resource.
 
 ## EXAMPLES
 

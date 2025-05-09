@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
 
         /// <summary>Azure subscription id for the the marketplace offer is purchased from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
-        public string MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionId = value ; }
+        public string MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionId = value ?? null; }
 
         /// <summary>Marketplace subscription status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
 
         /// <summary>Offer Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
-        public string OfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailOfferId = value ; }
+        public string OfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailOfferId = value ?? null; }
 
         /// <summary>Plan Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
-        public string OfferDetailPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPlanId = value ; }
+        public string OfferDetailPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPlanId = value ?? null; }
 
         /// <summary>Plan Name for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
 
         /// <summary>Publisher Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
-        public string OfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPublisherId = value ; }
+        public string OfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetailPublisherId = value ?? null; }
 
         /// <summary>Plan Display Name for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Origin(Microsoft.Azure.PowerShell.Cmdlets.Astro.PropertyOrigin.Inlined)]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
     {
         /// <summary>Azure subscription id for the the marketplace offer is purchased from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
         string MarketplaceSubscriptionStatus { get; set; }
         /// <summary>Offer Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
         string OfferDetailOfferId { get; set; }
         /// <summary>Plan Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Models
         string OfferDetailPlanName { get; set; }
         /// <summary>Publisher Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
