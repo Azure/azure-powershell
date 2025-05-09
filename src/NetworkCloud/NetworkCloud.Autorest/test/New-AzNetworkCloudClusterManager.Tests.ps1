@@ -21,19 +21,12 @@ Describe 'New-AzNetworkCloudClusterManager' {
                 $cmconfig.tagsKey1 = $cmconfig.tagsValue1
                 $cmconfig.tagsKey2 = $cmconfig.tagsValue2
             }
-            $uai = @{}
-            $uaiHash = @{
-                $cmconfig.identityResourceId = $uai
-            }
             New-AzNetworkCloudClusterManager -Name $cmconfig.clusterManagerName `
                 -ResourceGroupName $cmconfig.resourceGroup `
                 -Location $common.Location -Tag $tagshash `
                 -AnalyticsWorkspaceId $cmconfig.analyticsWorkspaceId `
                 -FabricControllerId $cmconfig.fabricControllerId `
-                -SubscriptionId $cmconfig.subscriptionId `
-                -IdentityType $cmconfig.identityTypeBoth `
-                -IdentityUserAssignedIdentity $uaiHash
-
+                -SubscriptionId $cmconfig.subscriptionId
         } | Should -Not -Throw
     }
     It 'Create ClusterManager with UserAssigned Identity' {

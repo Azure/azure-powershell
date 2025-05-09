@@ -38,7 +38,7 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
                 -CloudServiceNetworkAttachmentAttachedNetworkId $global:config.AzNetworkCloudVirtualMachine.csnAttachedNetworkId `
                 -CloudServiceNetworkAttachmentIPAllocationMethod $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod `
                 -CpuCore $global:config.AzNetworkCloudVirtualMachine.cpuCore `
-                -ExtendedLocationName $global:config.common.extendedLocation ` -ExtendedLocationType $global:config.common.customLocationType `
+                -ExtendedLocationName $global:config.AzNetworkCloudVirtualMachine.extendedLocation ` -ExtendedLocationType $global:config.AzNetworkCloudVirtualMachine.customLocationType `
                 -Location $global:config.common.location `
                 -SubscriptionId $global:config.AzNetworkCloudVirtualMachine.subscriptionId `
                 -MemorySizeGb $global:config.AzNetworkCloudVirtualMachine.memorySizeGb `
