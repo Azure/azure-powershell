@@ -427,16 +427,6 @@ stages:
             $reportScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'report.ps1'
             & $reportScriptPath -RepoRoot "$(Build.SourcesDirectory)" -PipelineWorkspace "$env:PIPELINE_WORKSPACE"
 
-      - task: PowerShell@2
-        name: report
-        displayName: 'Report Results'
-        inputs:
-          targetType: inline
-          pwsh: true
-          script: |
-            $reportScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'report.ps1'
-            & $reportScriptPath -RepoRoot "$(Build.SourcesDirectory)" -PipelineWorkspace "$env:PIPELINE_WORKSPACE"
-      
       - task: PublishPipelineArtifact@1
         displayName: 'Save Reports'
         inputs:
