@@ -13,18 +13,7 @@ Create a new database migration to a given SQL Managed Instance.
 ## SYNTAX
 
 ```
-New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
- -TargetDbName <String> [-AsJob] [-AzureBlobAccountKey <String>] [-AzureBlobAuthType <String>]
- [-AzureBlobContainerName <String>] [-AzureBlobIdentityType <String>]
- [-AzureBlobStorageAccountResourceId <String>] [-AzureBlobUserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
- [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-NoWait] [-Offline]
- [-OfflineConfigurationLastBackupName <String>] [-PassThru] [-Scope <String>] [-SourceDatabaseName <String>]
- [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
- [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
- [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
- [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-SubscriptionId <String>]
- [-TargetDatabaseCollation <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String> -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>] [-AzureBlobAuthType <String>] [-AzureBlobContainerName <String>] [-AzureBlobIdentityType <String>] [-AzureBlobStorageAccountResourceId <String>] [-AzureBlobUserAssignedIdentity <String[]>] [-FileSharePassword <SecureString>] [-FileSharePath <String>] [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>] [-Scope <String>] [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
