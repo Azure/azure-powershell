@@ -1033,35 +1033,15 @@ function GetStackDefinitionForRuntime
     # If runtime version is not provided, iterate through the list to find the default version (if available)
     if (($Runtime -ne 'Custom') -and (-not $RuntimeVersion))
     {
-        # Try to get the default version
-        $defaultVersionFound = $false
-        $RuntimeVersion = $supportedRuntimes[$Runtime] |
-                            ForEach-Object { if ($_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion)) { $_.Version } }
-
-        if ($RuntimeVersion)
+        $versionFound = $false
+        $version = GetDefaultOrLatestRuntimeVersion -SupportedRuntimes $supportedRuntimes -Runtime $Runtime -FunctionsExtensionVersion $functionsExtensionVersion
+        if (-not [string]::IsNullOrWhiteSpace($version))
         {
-            $defaultVersionFound = $true
-            Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' has a default version '$RuntimeVersion'"
+            $RuntimeVersion = $version
+            $versionFound = $true
         }
-        else
-        {
-            Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' does not have a default version. Finding the latest version."
-
-            # Iterate through the list to find the latest non preview version
-            $latestVersion = $supportedRuntimes[$Runtime] |
-                                Sort-Object -Property Version -Descending |
-                                Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion -and (-not $_.IsPreview) } |
-                                Select-Object -First 1 -ExpandProperty Version
-
-            if ($latestVersion)
-            {
-                # Set the runtime version to the latest version
-                $RuntimeVersion = $latestVersion
-            }
-        }
-
         # Error out if we could not find a default or latest version for the given runtime (except for 'Custom'), functions extension version, and os type
-        if ((-not $latestVersion) -and (-not $defaultVersionFound) -and ($Runtime -ne 'Custom'))
+        if (-not $versionFound -and ($Runtime -ne 'Custom'))
         {
             $errorMessage = "Runtime '$Runtime' in Functions version '$FunctionsVersion' on '$OSType' is not supported."
             ThrowRuntimeNotSupportedException -Message $errorMessage -ErrorId "RuntimeVersionNotSupported"
@@ -1104,7 +1084,78 @@ function GetStackDefinitionForRuntime
         Write-Verbose "Runtime '$Runtime' version '$RuntimeVersion' is in Preview for '$OSType'." -Verbose
     }
 
+    if ($runtimeJsonDefinition.EndOfLifeDate)
+    {
+        $today = Get-Today
+        $sixMonthsFromToday = (Get-Today).AddMonths(6)
+        $endOfLifeDate = $runtimeJsonDefinition.EndOfLifeDate
+        $formattedEOLDate = ([DateTime]$endOfLifeDate).ToString("MMMM dd yyyy")
+
+        $defaultRuntimeVersion = GetDefaultOrLatestRuntimeVersion -SupportedRuntimes $supportedRuntimes `
+                                                                  -Runtime $Runtime `
+                                                                  -FunctionsExtensionVersion $functionsExtensionVersion
+
+        if ($endOfLifeDate -le $today)
+        {
+            $errorMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion has reached end-of-life "
+            $errorMsg += "on $formattedEOLDate and is no longer supported. Learn more: aka.ms/FunctionsStackUpgrade."
+
+            $exception = [System.InvalidOperationException]::New($errorMsg)
+            ThrowTerminatingError -ErrorId "RuntimeVersionEndOfLife" `
+                                  -ErrorMessage $errorMsg `
+                                  -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                  -Exception $exception
+        }
+        elseif ($endOfLifeDate -lt $sixMonthsFromToday)
+        {
+            $warningMsg = "Use $Runtime $defaultRuntimeVersion as $Runtime $RuntimeVersion will reach end-of-life on $formattedEOLDate"
+            $warningMsg += " and will no longer be supported. Learn more: aka.ms/FunctionsStackUpgrade."
+            Write-Warning $warningMsg
+        }
+    }
+
     return $runtimeJsonDefinition
+}
+
+function GetDefaultOrLatestRuntimeVersion {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [Hashtable]
+        $SupportedRuntimes,
+        [Parameter(Mandatory=$true)]
+        [String]
+        $Runtime,
+        [Parameter(Mandatory=$true)]
+        [String]
+        $FunctionsExtensionVersion
+    )
+
+    $defaultVersion = $SupportedRuntimes[$Runtime] |
+        Where-Object { $_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $FunctionsExtensionVersion) } |
+        Select-Object -First 1 -ExpandProperty Version
+
+    if ($defaultVersion) {
+        Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' has a default version '$defaultVersion'"
+        return $defaultVersion
+    }
+
+    Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' does not have a default version. Finding the latest version."
+
+    $latestVersion = $SupportedRuntimes[$Runtime] |
+        Sort-Object -Property Version -Descending |
+        Where-Object { $_.SupportedFunctionsExtensionVersions -contains $FunctionsExtensionVersion -and (-not $_.IsPreview) } |
+        Select-Object -First 1 -ExpandProperty Version
+
+    if ($latestVersion) {
+        Write-Debug "$DEBUG_PREFIX Latest version for runtime '$Runtime' is '$latestVersion'"
+    }
+    else {
+        Write-Debug "$DEBUG_PREFIX No latest version found for runtime '$Runtime'"
+    }
+
+    return $latestVersion
 }
 
 function ThrowRuntimeNotSupportedException
@@ -1709,6 +1760,7 @@ Class Runtime
     [bool]$IsDefault
     [string]$PreferredOs
     [hashtable]$AppInsightsSettings
+    [Nullable[datetime]]$EndOfLifeDate
 }
 
 function GetBuiltInFunctionAppStacksDefinition
@@ -1938,6 +1990,12 @@ function ParseMinorVersion
     $runtime.SiteConfigPropertiesDictionary = GetDictionary -SettingsDictionary $RuntimeSettings.SiteConfigPropertiesDictionary
     $runtime.AppInsightsSettings = GetDictionary -SettingsDictionary $RuntimeSettings.AppInsightsSettings
     $runtime.SupportedFunctionsExtensionVersions = GetSupportedFunctionsExtensionVersion -SupportedFunctionsExtensionVersions $RuntimeSettings.SupportedFunctionsExtensionVersions
+    $runtime.EndOfLifeDate = $null
+
+    if (![string]::IsNullOrWhiteSpace($RuntimeSettings.EndOfLifeDate))
+    {
+        $runtime.EndOfLifeDate = ParseEndOfLifeDate -Runtime $runtimeName -DateString $RuntimeSettings.EndOfLifeDate
+    }
 
     foreach ($propertyName in @("isPreview", "isHidden", "isDefault"))
     {
@@ -2385,4 +2443,46 @@ function GetManagedEnvironment
     }
 
     return $managedEnv
+}
+
+function ParseEndOfLifeDate
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $DateString
+    )
+
+    try
+    {
+        $dateTime = [DateTime]::ParseExact($DateString, "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Coordinated Universal Time)'",
+                                           [System.Globalization.CultureInfo]::InvariantCulture)
+    }
+    catch
+    {
+        $message = "Failed to parse the EndOfLifeDate '$DateString' for '$Runtime' runtime. Skipping..."
+        Write-Warning $message
+    }
+
+    return $dateTime
+}
+
+function Get-Today {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param ()
+
+    if ($env:FunctionsTestMode)
+    {
+        # Test hook to support running the tests in playback mode.
+        return [datetime]"2024-01-01"
+    }
+    return Get-Date
 }
