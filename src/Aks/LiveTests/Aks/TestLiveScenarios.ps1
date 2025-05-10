@@ -6,8 +6,8 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
     $location = "eastus"
 
     $kubeName = New-LiveTestResourceName
-    $sysNodeName = New-LiveTestRandomName -Option StartWithLetter -Length 5
-    $usrNodeName = New-LiveTestRandomName -Option StartWithLetter -Length 5
+    $sysNodeName = New-LiveTestRandomName -Option StartWithLetter -MaxLength 5
+    $usrNodeName = New-LiveTestRandomName -Option StartWithLetter -MaxLength 5
 
     $vnetName = New-LiveTestResourceName
     $snetName = New-LiveTestResourceName
