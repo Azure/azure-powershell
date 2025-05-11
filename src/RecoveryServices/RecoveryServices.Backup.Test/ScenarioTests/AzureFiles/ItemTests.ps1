@@ -76,7 +76,7 @@ function Test-AzureFSRestoreToAnotherRegion
 			-EndDate $backupEndTime `
 			-Item $items[0];
 			
-		$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location -TargetStorageAccountName $targetSaName -TargetFileShareName $targetFileShareName 
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location -TargetStorageAccountName $targetSaName -TargetFileShareName $targetFileShareName
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
@@ -369,7 +369,7 @@ function Test-AzureFSFullRestore
 			-SourceFileType File `
 			-ResolveConflict Overwrite 
 			
-		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		$restoreJob =  $restoreJob	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" }
     
@@ -385,8 +385,8 @@ function Test-AzureFSFullRestore
 			-TargetStorageAccountName $targetSaName `
 			-TargetFileShareName $targetFileShareName `
 			-TargetFolder $targetFolder 
-			
-		$restoreJob1 = $restoreJob1	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		$restoreJob1 = $restoreJob1 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
     
@@ -399,10 +399,9 @@ function Test-AzureFSFullRestore
 			-ResolveConflict Overwrite `
 			-TargetStorageAccountName $targetSaName `
 			-TargetFileShareName $targetFileShareName `
-			-TargetFolder $targetFolder 
-			
-		$restoreJob2 = $restoreJob2	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
-		
+			-TargetFolder $targetFolder
+
+		$restoreJob2 = $restoreJob2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		Assert-True { $restoreJob2.Status -eq "Completed" }
 
 		# Test without storage account dependancy
@@ -414,8 +413,8 @@ function Test-AzureFSFullRestore
 			-ResolveConflict Overwrite `
 			-SourceFilePath $filePath `
 			-SourceFileType File 
-			
-		$restoreJob3 = $restoreJob3	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$restoreJob3 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob3.Status -eq "Completed" }
 
@@ -425,9 +424,9 @@ function Test-AzureFSFullRestore
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-ResolveConflict Overwrite 
-			
-		$restoreJob4 = $restoreJob4	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+			-ResolveConflict Overwrite
+		
+		$restoreJob4= $restoreJob4 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob4.Status -eq "Completed" }
 	}

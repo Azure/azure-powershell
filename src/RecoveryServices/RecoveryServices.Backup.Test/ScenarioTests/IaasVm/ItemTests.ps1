@@ -228,7 +228,8 @@ function Test-AzureCrossZonalRestore
 		
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 
-		$restoreJobCZR = $restoreJobCZR	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		$restoreJobCZR = $restoreJobCZR | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJobCZR.Status -match "Completed" } # later change to -eq
 
@@ -267,7 +268,8 @@ function Test-AzureCrossZonalRestoreToNoZone
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 0 
-		$restoreJobCZR = $restoreJobCZR	| Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		$restoreJobCZR = $restoreJobCZR | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJobCZR.Status -eq "Completed" }
 	}
