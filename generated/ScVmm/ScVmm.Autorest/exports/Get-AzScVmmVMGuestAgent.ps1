@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 .Description
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 .Example
 Get-AzScVmmVMGuestAgent -Name "test-vm" -ResourceGroupName "test-rg-01"
 

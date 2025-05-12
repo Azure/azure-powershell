@@ -14,6 +14,7 @@ Create an in-memory object for AfdDomainHttpsParameters.
 
 ```
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
+ [-CipherSuiteSetType <String>] [-CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]
  [-MinimumTlsVersion <String>] [-Secret <IResourceReference>] [<CommonParameters>]
 ```
 
@@ -54,8 +55,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CipherSuiteSetType
+cipher suite set type that will be used for Https.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomizedCipherSuiteSet
+Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinimumTlsVersion
-TLS protocol version that will be used for Https.
+TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
 
 ```yaml
 Type: System.String

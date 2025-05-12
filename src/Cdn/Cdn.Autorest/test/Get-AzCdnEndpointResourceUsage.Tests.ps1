@@ -19,18 +19,13 @@ Describe 'Get-AzCdnEndpointResourceUsage'  {
         $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
         $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
         
-        $endpointResourceUsages.Count | Should -Be 3
+        $endpointResourceUsages.Count | Should -Be 8
         $geofilterUsage.Limit | Should -Be 25
         $geofilterUsage.CurrentValue | Should -Be 0
 
         $geofilters = @(
             @{
-                RelativePath = "/mycar" 
-                Action =  "Allow"
-                CountryCode = "AU"
-            },
-            @{
-                RelativePath = "/mycars" 
+                RelativePath = "/" 
                 Action =  "Allow"
                 CountryCode = "AU"
             })
@@ -38,8 +33,8 @@ Describe 'Get-AzCdnEndpointResourceUsage'  {
         $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
         $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
 
-        $endpointResourceUsages.Count | Should -Be 3
+        $endpointResourceUsages.Count | Should -Be 8
         $geofilterUsage.Limit | Should -Be 25
-        $geofilterUsage.CurrentValue | Should -Be 2
+        $geofilterUsage.CurrentValue | Should -Be 1
     }
 }

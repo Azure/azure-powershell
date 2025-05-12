@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added server level action groups in enum of action groups to be able to be configured via auditing.
 
 ## Version 6.0.3
 * Added Information message to `Set-AzSqlInstance` for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
