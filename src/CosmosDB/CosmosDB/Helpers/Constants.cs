@@ -68,6 +68,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Per-Region, Per-Partition autoscale is enabled on the account.";
 
         //Restore specific help messages
+        public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
+        public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
         public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
         public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
