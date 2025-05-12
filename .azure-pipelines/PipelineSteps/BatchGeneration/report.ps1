@@ -4,9 +4,9 @@ param (
 )
 
 $reportFilePattern = @{
-    Generation = "AnalyseReport-*.json"
-    Build = "GenerationReport-*.json"
-    Analyze = "BuildReport-*.json"
+    Generation = "GenerationReport-*.json"
+    Build = "BuildReport-*.json"
+    Analyze = "AnalyseReport-*.json"
     TestWindows = "TestWindowsReport-*.json"
     TestLinux = "TestLinuxReport-*.json"
     TestMacOS = "TestMacOSReport-*.json"
@@ -41,7 +41,7 @@ foreach ($pattern in $reportFilePattern.GetEnumerator()) {
     $allResults | ConvertTo-Json -Depth 10 | Set-Content -Path $reportPath -Encoding UTF8
     Write-Host "Written report to $reportPath"
 
-    $failed = $allResults | Where-Object { $_.Status -eq "Failed" }
+    $failed = $allResults | Where-Object { $_.Status -ne "Success" }
     if ($failed.Count -gt 0) {
         $failedReports[$pattern.Key] = $failed
     }

@@ -68,13 +68,13 @@ stages:
       displayName: "Batch Generate: "
       dependsOn: prepare
       condition: and(
-        ne(dependencies.prepare.outputs['mtrx.generateTargets'], ''),
-        ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], ''),
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
-        matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
+        matrix: $[ dependencies.prepare.outputs['mtrx.generationTargets'] ]
         maxParallel: ${{ variables.MaxParallelGenerateJobs }}
 
       steps:

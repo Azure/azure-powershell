@@ -3,9 +3,9 @@ param (
     [string]$RepoRoot
 )
 
-$generateTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generateTargets.json"
-$generateTargets = Get-Content -Path $generateTargetsOutPutFile -Raw | ConvertFrom-Json
-$moduleGroup = $generateTargets.$MatrixKey
+$generationTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generationTargets.json"
+$generationTargets = Get-Content -Path $generationTargetsOutPutFile -Raw | ConvertFrom-Json
+$moduleGroup = $generationTargets.$MatrixKey
 Write-Host "##[group]Generating module group $MatrixKey"
 foreach ($key in $moduleGroup.PSObject.Properties.Name | Sort-Object) {
     $values = $moduleGroup.$key -join ', '
@@ -32,6 +32,7 @@ foreach ($moduleName in $sortedModuleNames) {
     $moduleResult = @{
         Module = $moduleName
         DurationSeconds = 0
+        Status = "Success"
         SubModules = @()
     }
 
@@ -53,10 +54,14 @@ foreach ($moduleName in $sortedModuleNames) {
                 Remove-Item -Path $generateLog -Recurse -Force
             }
             New-Item -ItemType File -Force -Path $generateLog
-            
+            # TODO(Bernard) Remove exception for EmailService.Autorest after test
+            if ($subModuleName -eq "EmailService.Autorest") {
+                throw "Something went wrong"
+            }
             if (-not (Update-GeneratedSubModule -ModuleRootName $moduleName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog -IsInvokedByPipeline $true)) {
                 Write-Warning "Failed to regenerate module: $moduleName, sub module: $subModuleName"
                 Write-Warning "log can be found at $generateLog"
+                $moduleResult.Status = "Failed"
                 $subModuleResult.Status = "Failed"
                 $subModuleResult.Error = "Update-GeneratedSubModule function returned false."
             }
@@ -64,6 +69,7 @@ foreach ($moduleName in $sortedModuleNames) {
         } catch {
             Write-Warning "Failed to regenerate module: $moduleName, sub module: $subModuleName"
             Write-Warning "Error message: $($_.Exception.Message)"
+            $moduleResult.Status = "Failed"
             $subModuleResult.Status = "Failed"
             $subModuleResult.Error = $_.Exception.Message
         } finally {
