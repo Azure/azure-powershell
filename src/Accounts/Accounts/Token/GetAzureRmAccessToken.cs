@@ -152,8 +152,8 @@ namespace Microsoft.Azure.Commands.Profile
             }
             catch
             {
-                //Throw exception when the caller doesn't have permission
-                //Use SecureString-biased schema
+                //Throw exception when the caller doesn't have permission.
+                //Use SecureString only when AZUREPS_OUTPUT_PLAINTEXT_AZACCESSTOKEN is successfully set.
             }
             if (usePlainText)
             {
