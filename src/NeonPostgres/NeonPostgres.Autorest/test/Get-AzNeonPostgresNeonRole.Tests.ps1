@@ -14,8 +14,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNeonPostgresNeonRole'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Define variables directly in the script
+$resourceName = "NeonDemoOrgPS1"
+$resourceGroupName = "neonrg"
+$subscriptionId = "a81c0054-6c92-41aa-a235-4f9f98f917c6"
+$projectId = "dawn-breeze-86932057"
+$branchId = "br-damp-bird-a82olmcu"
+
 Describe 'Get-AzNeonPostgresNeonRole' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $result = Get-AzNeonPostgresNeonRole -BranchName $branchId -ProjectName $projectId -OrganizationName $resourceName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId
+            $result.Count | Should -BeGreaterThan 0 
+        } | Should -Not -Throw
     }
 }

@@ -1,0 +1,48 @@
+{
+  "Get-AzNeonPostgresNeonRole+[NoContext]+List+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu/neonRoles?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu/neonRoles?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e7004a60-8e47-4e4f-88bd-5e403243deda" ],
+        "CommandName": [ "Get-AzNeonPostgresNeonRole" ],
+        "FullCommandName": [ "Get-AzNeonPostgresNeonRole_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=e57de25f-8ebc-457d-a55d-e5657e751755/southeastasia/29926e20-6a48-4936-a546-d8856b0fb7c6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199992" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "66862232-7896-45bd-8d4b-f2dfd2bc6db7" ],
+        "x-ms-correlation-request-id": [ "5f52c2d3-fce0-4c0a-86d4-041f59f496d4" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250512T085544Z:5f52c2d3-fce0-4c0a-86d4-041f59f496d4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 60942A78BB224803B2AA83594AAEC2DF Ref B: MAA201060515037 Ref C: 2025-05-12T08:55:41Z" ],
+        "Date": [ "Mon, 12 May 2025 08:55:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "178" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"branchId\":\"br-damp-bird-a82olmcu\",\"isSuperUser\":false,\"entityName\":\"neondb_owner\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

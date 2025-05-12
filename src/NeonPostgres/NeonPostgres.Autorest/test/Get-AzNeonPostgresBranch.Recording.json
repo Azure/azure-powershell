@@ -1,0 +1,94 @@
+{
+  "Get-AzNeonPostgresBranch+[NoContext]+List+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3b0524f5-21ad-4e3b-b418-5107a0c3d425" ],
+        "CommandName": [ "Get-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "Get-AzNeonPostgresBranch_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=e57de25f-8ebc-457d-a55d-e5657e751755/southeastasia/f5ae750c-01f3-4d26-b369-c2521a8bbea6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f25d0212-ce66-47b6-833f-df8b91224a0e" ],
+        "x-ms-correlation-request-id": [ "fa50c0c3-4a84-458b-8426-bd6ae659b4d8" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250512T084548Z:fa50c0c3-4a84-458b-8426-bd6ae659b4d8" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E982C9FC4A4047ECB4BF3EA91B3C0906 Ref B: MAA201060513031 Ref C: 2025-05-12T08:45:47Z" ],
+        "Date": [ "Mon, 12 May 2025 08:45:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "722" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"attributes\":[{\"name\":\"createdAt\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"80\"},{\"name\":\"computeTimeSeconds\",\"value\":\"80\"},{\"name\":\"activeTimeSeconds\",\"value\":\"312\"},{\"name\":\"writtenDataBytes\",\"value\":\"34531256\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"},{\"name\":\"lastActive\",\"value\":\"May 12, 2025 8:02 AM\"},{\"name\":\"autoscalingLimitMinCu\",\"value\":\"0.25\"},{\"name\":\"autoscalingLimitMaxCu\",\"value\":\"0.25\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"idle\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNeonPostgresBranch+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu?api-version=2025-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1/projects/dawn-breeze-86932057/branches/br-damp-bird-a82olmcu?api-version=2025-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "93ee6c37-a165-46a0-a89f-76878962dfd2" ],
+        "CommandName": [ "Get-AzNeonPostgresBranch" ],
+        "FullCommandName": [ "Get-AzNeonPostgresBranch_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.1", "Az.NeonPostgres/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=e57de25f-8ebc-457d-a55d-e5657e751755/southeastasia/38026c39-1e21-4cc0-b48b-5898af2862e6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "199995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "00bfb2ff-e698-449f-973d-c70e74c35662" ],
+        "x-ms-correlation-request-id": [ "e155d3ac-8f9b-4b86-b73c-07ab16bbedfe" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250512T084549Z:e155d3ac-8f9b-4b86-b73c-07ab16bbedfe" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB02302733554125824C0C3091C95F9F Ref B: MAA201060513031 Ref C: 2025-05-12T08:45:48Z" ],
+        "Date": [ "Mon, 12 May 2025 08:45:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "613" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"projectId\":\"dawn-breeze-86932057\",\"parentId\":null,\"roleName\":null,\"databaseName\":null,\"roles\":null,\"databases\":null,\"endpoints\":null,\"attributes\":[{\"name\":\"logicalSize\",\"value\":\"30785536\"},{\"name\":\"cpuUsedSec\",\"value\":\"80\"},{\"name\":\"computeTimeSeconds\",\"value\":\"80\"},{\"name\":\"activeTimeSeconds\",\"value\":\"312\"},{\"name\":\"writtenDataBytes\",\"value\":\"34531256\"},{\"name\":\"dataTransferBytes\",\"value\":\"0\"},{\"name\":\"isProtected\",\"value\":\"false\"},{\"name\":\"isDefault\",\"value\":\"true\"}],\"entityId\":\"br-damp-bird-a82olmcu\",\"entityName\":\"main\",\"createdAt\":\"May 12, 2025 8:02 AM\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
