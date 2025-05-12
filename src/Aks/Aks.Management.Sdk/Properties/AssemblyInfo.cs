@@ -9,8 +9,8 @@ using System.Resources;
 [assembly: AssemblyTitle("Microsoft Azure Container Service Management Library")]
 [assembly: AssemblyDescription("Provides Container Service management capabilities for Microsoft Azure.")]
 
-[assembly: AssemblyVersion("6.1.1")]
-[assembly: AssemblyFileVersion("6.1.1")]
+[assembly: AssemblyVersion("7.0.0")]
+[assembly: AssemblyFileVersion("7.0.0")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]
 [assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation")]
