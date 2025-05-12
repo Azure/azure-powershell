@@ -61,8 +61,8 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\operational-insightsworkspace\parameters.json -Value (ConvertTo-Json $workspacesParam)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\operational-insightsworkspace\template.json -TemplateParameterFile .\test\deployment-templates\operational-insightsworkspace\parameters.json -ResourceGroupName $env.resourceGroup
     #>
-    $workspace01 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName01 -Location $env.location -Sku "Standard"
-    $workspace02 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName02 -Location $env.location -Sku "Standard"
+    $workspace01 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName01 -Location $env.location
+    $workspace02 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName02 -Location $env.location
     $null = $env.Add('workspaceResourceId01', $workspace01.ResourceId)
     $null = $env.Add('workspaceResourceId02', $workspace02.ResourceId)
     Write-Host -ForegroundColor Green 'The operational insights workspace deployed successfully'

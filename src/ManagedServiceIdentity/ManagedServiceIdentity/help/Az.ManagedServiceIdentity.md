@@ -24,10 +24,10 @@ Gets the identity.
 Lists the associated resources for this identity.
 
 ### [New-AzFederatedIdentityCredential](New-AzFederatedIdentityCredential.md)
-Create or update a federated identity credential under the specified user assigned identity.
+create a federated identity credential under the specified user assigned identity.
 
 ### [New-AzUserAssignedIdentity](New-AzUserAssignedIdentity.md)
-Create or update an identity in the specified subscription and resource group.
+create an identity in the specified subscription and resource group.
 
 ### [Remove-AzFederatedIdentityCredential](Remove-AzFederatedIdentityCredential.md)
 Deletes the federated identity credential.
@@ -36,8 +36,8 @@ Deletes the federated identity credential.
 Deletes the identity.
 
 ### [Update-AzFederatedIdentityCredential](Update-AzFederatedIdentityCredential.md)
-Create or update a federated identity credential under the specified user assigned identity.
+update a federated identity credential under the specified user assigned identity.
 
 ### [Update-AzUserAssignedIdentity](Update-AzUserAssignedIdentity.md)
-Update an identity in the specified subscription and resource group.
+update an identity in the specified subscription and resource group.
 

@@ -115,6 +115,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public string UserAssignedIdentity { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "ClientId of the multi-tenant AAD Application. Used to access cross-tenant KeyVaults.")]
+        [ValidateNotNullOrEmpty]
+        public string FederatedClientId { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
@@ -156,7 +163,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                     {
                         KeySource = EncryptionKeySource,
                         KeyVaultProperties = new PSNetAppFilesKeyVaultProperties() { KeyName = KeyVaultKeyName, KeyVaultResourceId = KeyVaultResourceId, KeyVaultUri = KeyVaultUri },
-                        Identity = new PSEncryptionIdentity() { UserAssignedIdentity = UserAssignedIdentity }
+                        Identity = new PSEncryptionIdentity() { UserAssignedIdentity = UserAssignedIdentity, FederatedClientId = FederatedClientId }
                     };
                 }
             }
@@ -184,6 +191,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                     Type = IdentityType
                 };
             }
+            
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 try

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

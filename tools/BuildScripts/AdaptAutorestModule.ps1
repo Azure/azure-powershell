@@ -212,6 +212,12 @@ try{
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
             New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
+            $indexPath = Join-Path $helpPath "Az.$ModuleRootName.md"
+            $content = Get-Content -Path $indexPath
+            $content = $content -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleRootName.ToLower())"
+            $content = $content -replace '{{ Please enter version of help manually \(X.X.X.X\) format }}', '1.0.0.0'
+            $content = $content -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleRootName cmdlets"
+            $content | Set-Content -Path $indexPath
         }
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."

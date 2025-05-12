@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DedicatedHsm
-Module Guid: 841c2fad-e8c0-4924-b9b9-9d27d0f40b48
+Module Guid: 1fcbb2f1-cb1e-4d67-9da2-5e7b35810c88
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dedicatedhsm
 Help Version: 1.0.0.0
 Locale: en-US
@@ -19,11 +19,11 @@ Gets a list of egress endpoints (network endpoints of all outbound dependencies)
 The operation returns properties of each egress endpoint.
 
 ### [New-AzDedicatedHsm](New-AzDedicatedHsm.md)
-Create or Update a dedicated HSM in the specified subscription.
+create a dedicated HSM in the specified subscription.
 
 ### [Remove-AzDedicatedHsm](Remove-AzDedicatedHsm.md)
 Deletes the specified Azure Dedicated HSM.
 
 ### [Update-AzDedicatedHsm](Update-AzDedicatedHsm.md)
-Update a dedicated HSM in the specified subscription.
+update a dedicated HSM in the specified subscription.
 

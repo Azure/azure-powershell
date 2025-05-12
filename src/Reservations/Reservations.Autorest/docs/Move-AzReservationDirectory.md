@@ -18,22 +18,22 @@ Move-AzReservationDirectory -ReservationOrderId <String> [-DestinationTenantId <
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Change
-```
-Move-AzReservationDirectory -ReservationOrderId <String> -Body <IChangeDirectoryRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ChangeViaIdentity
-```
-Move-AzReservationDirectory -InputObject <IReservationsIdentity> -Body <IChangeDirectoryRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ChangeViaIdentityExpanded
 ```
 Move-AzReservationDirectory -InputObject <IReservationsIdentity> [-DestinationTenantId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ChangeViaJsonFilePath
+```
+Move-AzReservationDirectory -ReservationOrderId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ChangeViaJsonString
+```
+Move-AzReservationDirectory -ReservationOrderId <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,22 +70,6 @@ Move reservation order from one tenant to another
 
 ## PARAMETERS
 
-### -Body
-Request body for change directory of a reservation.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
-Parameter Sets: Change, ChangeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -119,11 +103,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: ChangeViaIdentity, ChangeViaIdentityExpanded
+Parameter Sets: ChangeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -133,12 +116,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Change operation
+
+```yaml
+Type: System.String
+Parameter Sets: ChangeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Change operation
+
+```yaml
+Type: System.String
+Parameter Sets: ChangeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservationOrderId
 Order Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: Change, ChangeExpanded
+Parameter Sets: ChangeExpanded, ChangeViaJsonFilePath, ChangeViaJsonString
 Aliases:
 
 Required: True
@@ -184,13 +197,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryResponse
 
 ## NOTES
 
