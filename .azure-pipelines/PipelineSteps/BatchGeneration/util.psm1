@@ -1,3 +1,37 @@
+function Get-AutorestV4ModuleMap {
+    param (
+        [string]$srcPath
+    )
+    
+    $result = @{}
+
+    Get-ChildItem -Path $srcPath -Directory | ForEach-Object {
+        $module = $_
+
+        Get-ChildItem -Path $module.FullName -Directory | Where-Object { 
+            $_.Name -like '*.autorest'
+        } | ForEach-Object {
+            $subModule = $_
+            
+            $readmePath = Join-Path $subModule.FullName 'README.md'
+
+            if (Test-Path $readmePath) {
+                $readmeContent = Get-Content -Path $readmePath -Raw
+
+                if ($readmeContent -notmatch 'use-extension:\s+"@autorest/powershell":\s+"3.x"') {
+                    if ($result.ContainsKey($module.Name)) {
+                        $result[$module.Name] += $subModule.Name
+                    } else {
+                        $result[$module.Name] = @($subModule.Name) 
+                    }
+                }
+            }
+        }
+    }
+
+    return $result
+}
+
 function Group-Modules {
     param (
         [array]$Modules,

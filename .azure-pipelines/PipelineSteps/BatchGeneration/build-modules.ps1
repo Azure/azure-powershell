@@ -15,6 +15,7 @@ foreach ($moduleName in $moduleGroup) {
 
     $startTime = Get-Date
     $result = @{
+        MatrixKey = $MatrixKey
         Module = $moduleName
         Status = "Success"
         DurationSeconds = 0

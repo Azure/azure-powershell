@@ -4,14 +4,13 @@ param (
     [string]$RepoRoot
 )
 
+# Install Az.Accounts module and Pester module
+Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
+Install-Module -Name Az.Accounts -AllowClobber -Force -Repository PSGallery
+
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
 $subModuleGroup = Get-Targets -RepoRoot $RepoRoot -TargetsOutputFileName "test$($TestEnvName)Targets.json" -MatrixKey $MatrixKey
-
-if ($TestEnvName -eq 'Linux') {
-    $accountsModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.Accounts" "Az.Accounts.psd1"
-    Import-Module $accountsModulePath -Force
-}
 
 $results = @()  
 
@@ -19,6 +18,8 @@ foreach ($subModule in $subModuleGroup) {
     $startTime = Get-Date
     $moduleName, $subModuleName = $subModule -split '/'
     $result = @{
+        OSName = $TestEnvName
+        MatrixKey = $MatrixKey
         Module = $moduleName
         SubModule = $subModuleName
         Status = "Success"
@@ -30,6 +31,12 @@ foreach ($subModule in $subModuleGroup) {
         Write-Host "Testing sub module: $subModule"
         $subModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.$ModuleName" $subModuleName
         Push-Location $subModulePath
+        # remove the integrated Az Accounts so that the installed latest one could be used for test
+        $integratedAzAccounts = Join-Path $subModulePath 'generated' 'modules' 'Az.Accounts'
+        If (Test-Path $integratedAzAccounts){
+            Write-Host "Removing integrated Az.Accounts module from $integratedAzAccounts"
+            Remove-Item -Path $integratedAzAccounts -Recurse -Force
+        }
 
         & ".\test-module.ps1"  
 

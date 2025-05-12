@@ -68,13 +68,13 @@ stages:
       displayName: "Batch Generate: "
       dependsOn: prepare
       condition: and(
-        ne(dependencies.prepare.outputs['mtrx.generateTargets'], ''),
-        ne(dependencies.prepare.outputs['mtrx.generateTargets'], '{}')
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], ''),
+        ne(dependencies.prepare.outputs['mtrx.generationTargets'], '{}')
         )
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
-        matrix: $[ dependencies.prepare.outputs['mtrx.generateTargets'] ]
+        matrix: $[ dependencies.prepare.outputs['mtrx.generationTargets'] ]
         maxParallel: ${{ variables.MaxParallelGenerateJobs }}
 
       steps:
@@ -147,9 +147,6 @@ stages:
 
             Write-Host "Applying all .patch files to ${{ variables.GenerationBranch }}..."
             $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch
-
-            # $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch |
-            #   Where-Object { $_.Directory.Parent.FullName -eq $env:PIPELINE_WORKSPACE }
 
             foreach ($patch in $patchFiles) {
               Write-Host "Applying patch: $($patch.FullName)"
@@ -399,3 +396,40 @@ stages:
         agentPoolName: ${{ variables.MacOSAgentPoolName }}
         agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
         maxParallel: ${{ variables.MaxParallelTestMacJobs }}
+ 
+  - stage: Report
+    condition: always()
+    jobs:
+    - job: report
+      displayName: 'Report'
+      timeoutInMinutes: ${{ variables.IntermediateStepTimeoutInMinutes }}
+      pool: ${{ variables.WindowsAgentPoolName }}
+      steps:
+      - checkout: self
+        fetchDepth: 1
+        fetchTags: false
+
+      - download: current
+        patterns: |
+          **/AnalyseReport-*.json
+          **/GenerationReport-*.json
+          **/BuildReport-*.json
+          **/Test*Report-*.json
+        displayName: 'Download build artifacts'
+
+      - task: PowerShell@2
+        name: report
+        displayName: 'Report Results'
+        inputs:
+          targetType: inline
+          pwsh: true
+          script: |
+            $reportScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'report.ps1'
+            & $reportScriptPath -RepoRoot "$(Build.SourcesDirectory)" -PipelineWorkspace "$env:PIPELINE_WORKSPACE"
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Save Reports'
+        inputs:
+          targetPath: artifacts
+          artifact: 'reports'
+        condition: always()
