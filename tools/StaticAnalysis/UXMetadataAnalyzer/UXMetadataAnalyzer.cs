@@ -115,7 +115,11 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-
+                    if(moduleFolder == null || !Directory.Exists(moduleFolder))
+                    {
+                        issueLogger.LogUXMetadataIssue(new IssueLoggerContext { ModuleName = moduleName }, 1, "Module folder not found.");
+                        continue;
+                    }
                     string[] UXFolders = Directory.GetDirectories(moduleFolder, "UX", SearchOption.AllDirectories);
                     foreach (var UXFolder in UXFolders)
                     {
@@ -201,7 +205,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                         }
                     }
                 }
-                string description = string.Format("Cannot find the defination of parameter {0} in example", parameterNameInExample);
+                string description = string.Format("Cannot find the definition of parameter {0} in example", parameterNameInExample);
                 issueLogger.LogUXMetadataIssue(context, 1, description);
                 return null;
             }).ToList();
@@ -235,7 +239,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 issueLogger.LogUXMetadataIssue(context, 1, description);
             }
 
-            #region valiate the parameters in path
+            #region validate the parameters in path
             var httpPathParameterRegex = new Regex(@"\{\w+\}");
             HashSet<string> parametersFromHttpPath = new HashSet<string>(httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')), StringComparer.OrdinalIgnoreCase);
             ValidateParametersDefinedInPathContainsInExample(context, parametersFromHttpPath, example, issueLogger);
