@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Optional Tenant Id. Use tenant id of default context if not specified.")]
         public string TenantId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The parameter is no long used. No matter `AsSecureString` is specified, the output token is a `SecureString`.")]
+        [Parameter(Mandatory = false, HelpMessage = "The parameter is no long used but kept for backward compatibility.")]
         public SwitchParameter AsSecureString { get; set; }
 
         public override void ExecuteCmdlet()
