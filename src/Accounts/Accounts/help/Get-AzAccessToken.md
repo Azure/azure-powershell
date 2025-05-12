@@ -58,7 +58,7 @@ Get access token of Microsoft Graph endpoint for current account
 ## PARAMETERS
 
 ### -AsSecureString
-The parameter is no long used. No matter `AsSecureString` is specified, the output token is a `SecureString`.
+The parameter is no long used but kept for backward compatibility. No matter `AsSecureString` is specified, the output token is a `SecureString`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

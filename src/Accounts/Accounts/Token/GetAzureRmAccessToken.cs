@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -151,6 +152,8 @@ namespace Microsoft.Azure.Commands.Profile
             }
             catch
             {
+                //Throw exception when the caller doesn't have permission
+                //Use SecureString-biased schema
             }
             if (usePlainText)
             {
