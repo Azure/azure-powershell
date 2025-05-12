@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 replication.RemoteVolumeResourceId = DataProtection.Replication.RemoteVolumeResourceId;
                 replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
                 replication.RemotePath = DataProtection.Replication?.RemotePath?.ConvertToPs();
-                replication.DestinationReplications = DataProtection.Replication.DestinationReplications.ConvertToPs();
+                replication.DestinationReplications = DataProtection.Replication?.DestinationReplications?.ConvertToPs();
                 psDataProtection.Replication = replication;
             }
             if (DataProtection.Snapshot != null)
