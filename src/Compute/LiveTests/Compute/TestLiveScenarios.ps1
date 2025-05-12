@@ -29,12 +29,27 @@ Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test cr
     $vmCfg | Set-AzVMSourceImage -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-datacenter-azure-edition-core" -Version "latest"
     $vmCfg | Add-AzVMNetworkInterface -Id $nic.Id -DeleteOption Delete
     $vmCfg | Set-AzVMBootDiagnostic -Disable
-    $actual = New-AzVM -ResourceGroupName $rgName -Location $location -VM $vmCfg -DisableBginfoExtension
+    New-AzVM -ResourceGroupName $rgName -Location $location -VM $vmCfg -DisableBginfoExtension
+
+    $actual = Get-AzVM -ResourceGroupName $rgName -Name $vmName
 
     Assert-NotNull $actual
+    Assert-NotNull $actual.NetworkProfile.NetworkInterfaces
     Assert-AreEqual $rgName $actual.ResourceGroupName
     Assert-AreEqual $vmName $actual.Name
     Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual "Standard_D2s_v3" $actual.HardwareProfile.VmSize
+    Assert-AreEqual $nic.Id $actual.NetworkProfile.NetworkInterfaces[0].Id
+    Assert-AreEqual "TrustedLaunch" $actual.SecurityProfile.SecurityType
+    Assert-AreEqual $computerName $actual.OSProfile.ComputerName
+    Assert-AreEqual "MicrosoftWindowsServer" $actual.StorageProfile.ImageReference.Publisher
+    Assert-AreEqual "WindowsServer" $actual.StorageProfile.ImageReference.Offer
+    Assert-AreEqual "2022-datacenter-azure-edition-core" $actual.StorageProfile.ImageReference.Sku
+    Assert-AreEqual "latest" $actual.StorageProfile.ImageReference.Version
+    Assert-AreEqual $osDiskName $actual.StorageProfile.OsDisk.Name
+    Assert-AreEqual "StandardSSD_LRS" $actual.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
+    Assert-AreEqual "FromImage" $actual.StorageProfile.OsDisk.CreateOption
+    Assert-AreEqual "Delete" $actual.StorageProfile.OsDisk.DeleteOption
 
     Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
