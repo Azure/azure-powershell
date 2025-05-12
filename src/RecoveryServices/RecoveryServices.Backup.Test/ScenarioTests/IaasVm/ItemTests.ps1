@@ -259,7 +259,7 @@ function Test-AzureCrossZonalRestoreToNoZone
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "f2edfd5d-5496-4683-b94f-b3588c579009"
-	$recoveryPointId = "656339447820742" # latest vaultStandard recovery point	
+	$recoveryPointId = "654837130230650"
 	try
 	{	
 		# Setup
