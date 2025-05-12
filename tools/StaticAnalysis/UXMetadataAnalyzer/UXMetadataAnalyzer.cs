@@ -115,11 +115,6 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-                    if(moduleFolder == null || !Directory.Exists(moduleFolder))
-                    {
-                        issueLogger.LogUXMetadataIssue(new IssueLoggerContext { ModuleName = moduleName }, 1, "Module folder not found.");
-                        continue;
-                    }
                     string[] UXFolders = Directory.GetDirectories(moduleFolder, "UX", SearchOption.AllDirectories);
                     foreach (var UXFolder in UXFolders)
                     {
