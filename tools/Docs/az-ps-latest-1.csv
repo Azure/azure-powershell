@@ -115,7 +115,6 @@ pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.5.2.zip;sourceType=sa]Az.Marketplace,0.5.2
 pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.2.0.zip;sourceType=sa]Az.MarketplaceOrdering,2.2.0
 pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.1.zip;sourceType=sa]Az.Mdp,0.1.1
-pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Media.1.2.0.zip;sourceType=sa]Az.Media,1.2.0
 pac118,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.7.0.zip;sourceType=sa]Az.Migrate,2.7.0
 pac119,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.3.0.zip;sourceType=sa]Az.MixedReality,0.3.0
 pac120,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.4.2.zip;sourceType=sa]Az.MobileNetwork,0.4.2
