@@ -231,6 +231,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
+        public const string ThroughputBucketsHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
 
         // Role cmdlets help messages
         public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";

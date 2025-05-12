@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         private static int? Throughput;
         private static int? AutoscaleMaxThroughput;
 
-        public static ThroughputSettingsUpdateParameters CreateThroughputSettingsObject(int? throughput = null, int? autoscaleMaxThroughput = null)
+        public static ThroughputSettingsUpdateParameters CreateThroughputSettingsObject(int? throughput = null, int? autoscaleMaxThroughput = null, ThroughputBucketResource[] throughputBuckets = null)
         {
             Throughput = throughput;
             AutoscaleMaxThroughput = autoscaleMaxThroughput;
@@ -33,14 +33,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
             {
                 throughputSettingsUpdateParameters.Resource = new ThroughputSettingsResource
                 {
-                    Throughput = throughput.Value
+                    Throughput = throughput.Value,
+                    ThroughputBuckets = throughputBuckets
                 };
             }
             else if (autoscaleMaxThroughput != null)
             {
                 throughputSettingsUpdateParameters.Resource = new ThroughputSettingsResource
                 {
-                    AutoscaleSettings = new AutoscaleSettingsResource { MaxThroughput = autoscaleMaxThroughput.Value }
+                    AutoscaleSettings = new AutoscaleSettingsResource { MaxThroughput = autoscaleMaxThroughput.Value },
+                    ThroughputBuckets = throughputBuckets
                 };
             }
 

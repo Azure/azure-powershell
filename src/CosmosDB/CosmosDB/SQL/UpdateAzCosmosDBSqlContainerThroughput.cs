@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void CallSDKMethod(ThroughputSettingsUpdateParameters throughputSettingsUpdateParameters) 
         {
+            if (ThroughputBuckets != null)
+            {
+                throughputSettingsUpdateParameters.Resource.ThroughputBuckets = ThroughputBuckets.Length > 0 ? ThroughputBuckets : null;
+            }
+
             if (ShouldProcess(Name, "Updating the throughput value of a CosmosDB Sql Container"))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.UpdateSqlContainerThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, throughputSettingsUpdateParameters).GetAwaiter().GetResult().Body;
