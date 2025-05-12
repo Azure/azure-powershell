@@ -231,6 +231,9 @@ function New-AzMigrateLocalServerReplication {
                 -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
 
+        # Validate the VM
+        ValidateReplication -Machine $machine -MigrationType $instanceType
+        
         # $siteObject is not null or exception would have been thrown
         $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
@@ -419,23 +422,23 @@ function New-AzMigrateLocalServerReplication {
             if ($SiteType -eq $SiteTypes.HyperVSites) {
                 $osDisk = $machine.Disk | Where-Object { $_.InstanceId -eq $OSDiskID }
                 if ($null -eq $osDisk) {
-                    throw "No Disk found with InstanceId '$OSDiskID' from discovered machine disks."
+                    throw "No Disk found with InstanceId $OSDiskID from discovered machine disks."
                 }
 
                 $diskName = Split-Path $osDisk.Path -leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $machine.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
-                    throw "No Disk found with Uuid '$OSDiskID' from discovered machine disks."
+                    throw "No Disk found with Uuid $OSDiskID from discovered machine disks."
                 }
 
                 $diskName = Split-Path $osDisk.Path -leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
             }
 
@@ -495,7 +498,7 @@ function New-AzMigrateLocalServerReplication {
 
                 $diskName = Split-Path -Path $discoveredDisk.Path -Leaf
                 if (IsReservedOrTrademarked($diskName)) {
-                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                    throw "The disk name $diskName or part of the name is a trademarked or reserved word."
                 }
 
                 if ($uniqueDisks.Contains($disk.DiskId)) {
