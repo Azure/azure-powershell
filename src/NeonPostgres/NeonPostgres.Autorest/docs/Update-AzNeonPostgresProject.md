@@ -15,43 +15,43 @@ update a Project
 ### UpdateExpanded (Default)
 ```
 Update-AzNeonPostgresProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Attribute <IModelsAttributes[]>] [-BranchAttribute <IModelsAttributes[]>]
- [-BranchDatabase <IModelsNeonDatabaseProperties[]>] [-BranchDatabaseName <String>]
- [-BranchEndpoint <IModelsEndpointProperties[]>] [-BranchEntityName <String>] [-BranchParentId <String>]
- [-BranchProjectId <String>] [-BranchRole <IModelsNeonRoleProperties[]>] [-BranchRoleName <String>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
- [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IModelsEndpointProperties[]>]
+ [-SubscriptionId <String>] [-Attribute <IAttributes[]>] [-BranchAttribute <IAttributes[]>]
+ [-BranchDatabase <INeonDatabaseProperties[]>] [-BranchDatabaseName <String>]
+ [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>] [-BranchParentId <String>]
+ [-BranchProjectId <String>] [-BranchRole <INeonRoleProperties[]>] [-BranchRoleName <String>]
+ [-Database <INeonDatabaseProperties[]>] [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
+ [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-Attribute <IModelsAttributes[]>]
- [-BranchAttribute <IModelsAttributes[]>] [-BranchDatabase <IModelsNeonDatabaseProperties[]>]
- [-BranchDatabaseName <String>] [-BranchEndpoint <IModelsEndpointProperties[]>] [-BranchEntityName <String>]
- [-BranchParentId <String>] [-BranchProjectId <String>] [-BranchRole <IModelsNeonRoleProperties[]>]
- [-BranchRoleName <String>] [-Database <IModelsNeonDatabaseProperties[]>]
+Update-AzNeonPostgresProject -InputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
+ [-BranchAttribute <IAttributes[]>] [-BranchDatabase <INeonDatabaseProperties[]>]
+ [-BranchDatabaseName <String>] [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>]
+ [-BranchParentId <String>] [-BranchProjectId <String>] [-BranchRole <INeonRoleProperties[]>]
+ [-BranchRoleName <String>] [-Database <INeonDatabaseProperties[]>]
  [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
- [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IModelsEndpointProperties[]>]
+ [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOrganizationExpanded
 ```
 Update-AzNeonPostgresProject -Name <String> -OrganizationInputObject <INeonPostgresIdentity>
- [-Attribute <IModelsAttributes[]>] [-BranchAttribute <IModelsAttributes[]>]
- [-BranchDatabase <IModelsNeonDatabaseProperties[]>] [-BranchDatabaseName <String>]
- [-BranchEndpoint <IModelsEndpointProperties[]>] [-BranchEntityName <String>] [-BranchParentId <String>]
- [-BranchProjectId <String>] [-BranchRole <IModelsNeonRoleProperties[]>] [-BranchRoleName <String>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
- [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IModelsEndpointProperties[]>]
+ [-Attribute <IAttributes[]>] [-BranchAttribute <IAttributes[]>] [-BranchDatabase <INeonDatabaseProperties[]>]
+ [-BranchDatabaseName <String>] [-BranchEndpoint <IEndpointProperties[]>] [-BranchEntityName <String>]
+ [-BranchParentId <String>] [-BranchProjectId <String>] [-BranchRole <INeonRoleProperties[]>]
+ [-BranchRoleName <String>] [-Database <INeonDatabaseProperties[]>]
+ [-DefaultEndpointSettingAutoscalingLimitMaxCu <Single>]
+ [-DefaultEndpointSettingAutoscalingLimitMinCu <Single>] [-Endpoint <IEndpointProperties[]>]
  [-EntityName <String>] [-HistoryRetention <Int32>] [-PgVersion <Int32>] [-RegionId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Role <INeonRoleProperties[]>] [-Storage <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Additional attributes for the entity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsAttributes[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Additional attributes for the entity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsAttributes[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Neon Databases associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonDatabaseProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Endpoints associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsEndpointProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 Roles associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonRoleProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 Neon Databases associated with the project
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonDatabaseProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 Endpoints associated with the project
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsEndpointProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -479,7 +479,7 @@ Accept wildcard characters: False
 Roles associated with the project
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonRoleProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
 Parameter Sets: (All)
 Aliases:
 

@@ -28,7 +28,7 @@ For information on how to develop for `Az.NeonPostgres`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: eb9abbcdb08fe6c2faca5c2a6182568b52a3b1ce
+commit: fb9d32d1bddf171eb777b33ff7fb7dd30a8771da
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -74,22 +74,4 @@ directive:
     - Organizations_GetPostgresVersions
     - Projects_Update
     - Branches_Update
-    - Computes_List
-    - Computes_Get
-    - Computes_CreateOrUpdate
-    - Computes_Update
-    - Computes_Delete
-    - Endpoints_List
-    - Endpoints_Get
-    - Endpoints_CreateOrUpdate
-    - Endpoints_Update
-    - Endpoints_Delete
-    - NeonDatabases_Get
-    - NeonDatabases_CreateOrUpdate
-    - NeonDatabases_Update
-    - NeonDatabases_Delete
-    - NeonRoles_Get
-    - NeonRoles_CreateOrUpdate
-    - NeonRoles_Update
-    - NeonRoles_Delete
 ```

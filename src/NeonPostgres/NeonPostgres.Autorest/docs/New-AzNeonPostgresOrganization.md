@@ -21,7 +21,7 @@ New-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> -Locat
  [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
  [-OfferDetailPlanName <String>] [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>]
  [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
- [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IModelsProjectProperties>]
+ [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IProjectProperties>]
  [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
  [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
@@ -450,7 +450,7 @@ Accept wildcard characters: False
 Neon Project Properties
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsProjectProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectProperties
 Parameter Sets: CreateExpanded
 Aliases:
 

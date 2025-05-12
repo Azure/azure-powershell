@@ -21,7 +21,7 @@ Update-AzNeonPostgresOrganization -Name <String> -ResourceGroupName <String> [-S
  [-MarketplaceDetailSubscriptionStatus <String>] [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>]
  [-OfferDetailPlanName <String>] [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>]
  [-OfferDetailTermUnit <String>] [-PartnerOrganizationPropertyOrganizationId <String>]
- [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IModelsProjectPropertiesUpdate>]
+ [-PartnerOrganizationPropertyOrganizationName <String>] [-ProjectProperty <IProjectPropertiesUpdate>]
  [-SingleSignOnPropertyAadDomain <String[]>] [-SingleSignOnPropertyEnterpriseAppId <String>]
  [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserDetailEmailAddress <String>] [-UserDetailFirstName <String>]
@@ -38,7 +38,7 @@ Update-AzNeonPostgresOrganization -InputObject <INeonPostgresIdentity> [-Company
  [-OfferDetailOfferId <String>] [-OfferDetailPlanId <String>] [-OfferDetailPlanName <String>]
  [-OfferDetailPublisherId <String>] [-OfferDetailTermId <String>] [-OfferDetailTermUnit <String>]
  [-PartnerOrganizationPropertyOrganizationId <String>] [-PartnerOrganizationPropertyOrganizationName <String>]
- [-ProjectProperty <IModelsProjectPropertiesUpdate>] [-SingleSignOnPropertyAadDomain <String[]>]
+ [-ProjectProperty <IProjectPropertiesUpdate>] [-SingleSignOnPropertyAadDomain <String[]>]
  [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
  [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserDetailEmailAddress <String>]
  [-UserDetailFirstName <String>] [-UserDetailLastName <String>] [-UserDetailPhoneNumber <String>]
@@ -489,7 +489,7 @@ Accept wildcard characters: False
 Neon Project Properties
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsProjectPropertiesUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IProjectPropertiesUpdate
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

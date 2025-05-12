@@ -15,38 +15,38 @@ update a Branch
 ### UpdateExpanded (Default)
 ```
 Update-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IModelsAttributes[]>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IModelsEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IAttributes[]>]
+ [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProjectExpanded
 ```
 Update-AzNeonPostgresBranch -Name <String> -ProjectInputObject <INeonPostgresIdentity>
- [-Attribute <IModelsAttributes[]>] [-Database <IModelsNeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IModelsEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Attribute <IAttributes[]>] [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>]
+ [-Endpoint <IEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
+ [-Role <INeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOrganizationExpanded
 ```
 Update-AzNeonPostgresBranch -Name <String> -ProjectName <String>
- -OrganizationInputObject <INeonPostgresIdentity> [-Attribute <IModelsAttributes[]>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IModelsEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -OrganizationInputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
+ [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-Attribute <IModelsAttributes[]>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IModelsEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzNeonPostgresBranch -InputObject <INeonPostgresIdentity> [-Attribute <IAttributes[]>]
+ [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Additional attributes for the entity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsAttributes[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Neon Databases associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonDatabaseProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Endpoints associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsEndpointProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -340,7 +340,7 @@ Accept wildcard characters: False
 Roles associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonRoleProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
 Parameter Sets: (All)
 Aliases:
 

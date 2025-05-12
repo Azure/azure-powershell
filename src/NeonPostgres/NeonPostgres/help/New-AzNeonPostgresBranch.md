@@ -15,10 +15,10 @@ create a Branch
 ### CreateExpanded (Default)
 ```
 New-AzNeonPostgresBranch -Name <String> -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IModelsAttributes[]>]
- [-Database <IModelsNeonDatabaseProperties[]>] [-DatabaseName <String>]
- [-Endpoint <IModelsEndpointProperties[]>] [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>]
- [-Role <IModelsNeonRoleProperties[]>] [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Attribute <IAttributes[]>]
+ [-Database <INeonDatabaseProperties[]>] [-DatabaseName <String>] [-Endpoint <IEndpointProperties[]>]
+ [-EntityName <String>] [-ParentId <String>] [-ProjectId <String>] [-Role <INeonRoleProperties[]>]
+ [-RoleName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Additional attributes for the entity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsAttributes[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IAttributes[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Neon Databases associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonDatabaseProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonDatabaseProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Endpoints associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsEndpointProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IEndpointProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 Roles associated with the branch
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsNeonRoleProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonRoleProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 

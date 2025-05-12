@@ -37,9 +37,8 @@ Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <
 ### Get
 ```
 Get-AzNeonPostgresProjectConnectionUri -OrganizationName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ConnectionUriParameter <IModelsConnectionUriProperties> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -ConnectionUriParameter <IConnectionUriProperties>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityOrganizationExpanded
@@ -53,7 +52,7 @@ Get-AzNeonPostgresProjectConnectionUri -ProjectName <String> -OrganizationInputO
 ### GetViaIdentityOrganization
 ```
 Get-AzNeonPostgresProjectConnectionUri -ProjectName <String> -OrganizationInputObject <INeonPostgresIdentity>
- -ConnectionUriParameter <IModelsConnectionUriProperties> [-DefaultProfile <PSObject>]
+ -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,7 +66,7 @@ Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity> [-Br
 ### GetViaIdentity
 ```
 Get-AzNeonPostgresProjectConnectionUri -InputObject <INeonPostgresIdentity>
- -ConnectionUriParameter <IModelsConnectionUriProperties> [-DefaultProfile <PSObject>]
+ -ConnectionUriParameter <IConnectionUriProperties> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 Connection uri parameters for the associated database
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsConnectionUriProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IConnectionUriProperties
 Parameter Sets: Get, GetViaIdentityOrganization, GetViaIdentity
 Aliases:
 
@@ -379,13 +378,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsConnectionUriProperties
+### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IConnectionUriProperties
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.INeonPostgresIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IModelsConnectionUriProperties
+### Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.IConnectionUriProperties
 
 ## NOTES
 

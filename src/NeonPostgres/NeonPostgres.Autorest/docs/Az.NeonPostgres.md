@@ -14,6 +14,12 @@ Microsoft Azure PowerShell: NeonPostgres cmdlets
 ### [Get-AzNeonPostgresBranch](Get-AzNeonPostgresBranch.md)
 Get a Branch
 
+### [Get-AzNeonPostgresCompute](Get-AzNeonPostgresCompute.md)
+List Compute resources by Branch
+
+### [Get-AzNeonPostgresEndpoint](Get-AzNeonPostgresEndpoint.md)
+List Endpoint resources by Branch
+
 ### [Get-AzNeonPostgresNeonDatabase](Get-AzNeonPostgresNeonDatabase.md)
 List NeonDatabase resources by Branch
 
