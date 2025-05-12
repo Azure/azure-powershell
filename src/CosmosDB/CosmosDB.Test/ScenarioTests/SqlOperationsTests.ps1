@@ -1168,6 +1168,9 @@ function Test-SqlThroughputCmdlets
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
+  $ThroughputBucket1 = New-AzCosmosDBThroughputBucketObject -Id 1 -MaxThroughputPercentage 50
+  $ThroughputBucket2 = New-AzCosmosDBThroughputBucketObject -Id 2 -MaxThroughputPercentage 50
+
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
       $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
@@ -1214,6 +1217,17 @@ function Test-SqlThroughputCmdlets
       # can only update throughput of database if it has atleast one container with shared throughput
       # $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -InputObject $AutoscaleDatabase -AutoscaleMaxThroughput $AutoscaleUpdatedDatabaseThroughput
       # Assert-AreEqual $UpdatedThroughput.AutoscaleSettings.MaxThroughput $AutoscaleUpdatedDatabaseThroughput
+
+      # Test throughput buckets for container
+      $NewContainerWithBuckets = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name "containerWithBuckets" -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -ThroughputBuckets @($ThroughputBucket1, $ThroughputBucket2)
+      $ContainerThroughputWithBuckets = Get-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name "containerWithBuckets"
+
+      Assert-AreEqual $ContainerThroughputWithBuckets.ThroughputBuckets[0].Id 1
+      Assert-AreEqual $ContainerThroughputWithBuckets.ThroughputBuckets[0].MaxThroughputPercentage 50
+      Assert-AreEqual $ContainerThroughputWithBuckets.ThroughputBuckets[1].Id 2
+      Assert-AreEqual $ContainerThroughputWithBuckets.ThroughputBuckets[1].MaxThroughputPercentage 50
+
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainerWithBuckets
 
       Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
       Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
