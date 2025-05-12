@@ -362,10 +362,6 @@
     "alias": "Billing"
   },
   {
-    "regex": "Media",
-    "alias": "Media Services"
-  },
-  {
     "regex": "UsageAggregates",
     "alias": "Usage Aggregates"
   },
