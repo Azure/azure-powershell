@@ -1,39 +1,43 @@
 {
-  "Update-AzNeonPostgresOrganization+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDemoRG/providers/Neon.Postgres/organizations/almasTestNeonPSRecord1A?api-version=2025-03-01+1": {
+  "Update-AzNeonPostgresOrganization+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1?api-version=2025-03-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/NeonDemoRG/providers/Neon.Postgres/organizations/almasTestNeonPSRecord1A?api-version=2025-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"userDetails\": {\r\n      \"firstName\": \"Almas\",\r\n      \"lastName\": \"Khan\",\r\n      \"emailAddress\": \"khanalmas@microsoft.com\",\r\n      \"upn\": \"khanalmas_microsoft.com#EXT#@qumulotesttenant2.onmicrosoft.com\",\r\n      \"phoneNumber\": \"+1234567890\"\r\n    },\r\n    \"companyDetails\": {\r\n      \"companyName\": \"DemoCompany\",\r\n      \"country\": \"USA\",\r\n      \"officeAddress\": \"1234 Azure Ave\",\r\n      \"businessPhone\": \"+1234567890\",\r\n      \"domain\": \"demo.com\",\r\n      \"numberOfEmployees\": 500\r\n    },\r\n    \"partnerOrganizationProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"singleSignOnState\": \"Enable\",\r\n        \"enterpriseAppId\": \"app12345\",\r\n        \"singleSignOnUrl\": \"https://sso.partnerorg.com\",\r\n        \"aadDomains\": [ \"partnerorg.com\" ]\r\n      },\r\n      \"organizationId\": \"org12345\",\r\n      \"organizationName\": \"PartnerOrgRecord1A\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/a81c0054-6c92-41aa-a235-4f9f98f917c6/resourceGroups/neonrg/providers/Neon.Postgres/organizations/NeonDemoOrgPS1?api-version=2025-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"marketplaceDetails\": {\r\n      \"offerDetails\": {\r\n        \"publisherId\": \"neon1722366567200\",\r\n        \"offerId\": \"neon_serverless_postgres_azure_prod\",\r\n        \"planId\": \"neon_serverless_postgres_azure_prod_free\",\r\n        \"planName\": \"Free Plan\",\r\n        \"termUnit\": \"P1M\",\r\n        \"termId\": \"gmz7xq9ge3py\"\r\n      },\r\n      \"subscriptionId\": \"e276aac0-83e0-4381-dffe-0400d1af8065\",\r\n      \"subscriptionStatus\": \"Subscribed\"\r\n    },\r\n    \"userDetails\": {\r\n      \"firstName\": \"Demo\",\r\n      \"lastName\": \"User\",\r\n      \"emailAddress\": \"Demouser@testtestliftrtest2.onmicrosoft.com\",\r\n      \"upn\": \"Demouser@testtestliftrtest2.onmicrosoft.com\",\r\n      \"phoneNumber\": \"+1234567890\"\r\n    },\r\n    \"companyDetails\": {\r\n      \"companyName\": \"Contoso\",\r\n      \"country\": \"USA\",\r\n      \"officeAddress\": \"1234 Azure Ave\",\r\n      \"businessPhone\": \"+1234567890\",\r\n      \"domain\": \"contoso.com\",\r\n      \"numberOfEmployees\": 500\r\n    },\r\n    \"partnerOrganizationProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"singleSignOnState\": \"Enable\",\r\n        \"enterpriseAppId\": \"\",\r\n        \"singleSignOnUrl\": \"https://console.neon.tech/azure/sso/org-bitter-scene-70654971\",\r\n        \"aadDomains\": [ \"\" ]\r\n      },\r\n      \"organizationId\": \"org-bitter-scene-70654971\",\r\n      \"organizationName\": \"NeonDemoOrgPS1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "876" ]
+        "Content-Length": [ "1343" ]
       }
     },
     "Response": {
-      "StatusCode": 401,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "WWW-Authenticate": [ "Bearer authorization_uri=\"https://login.windows.net/c8604a67-8a77-4032-85a9-c6a9aaac5a7c\", error=\"invalid_token\", error_description=\"The access token is from the wrong issuer. It must match the tenant associated with this subscription. Please use correct authority to get the token.\"" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "48c8e8b0-bb3d-46e9-81a7-d131c3dfb98b" ],
-        "x-ms-correlation-request-id": [ "48c8e8b0-bb3d-46e9-81a7-d131c3dfb98b" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20250426T075318Z:48c8e8b0-bb3d-46e9-81a7-d131c3dfb98b" ],
+        "x-ms-operation-identifier": [ "tenantId=63ed2519-4773-4c00-b86b-5b27eb2a7e95,objectId=e57de25f-8ebc-457d-a55d-e5657e751755/southeastasia/3aba518a-e1b5-474a-a874-7fca05a61eba" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "19999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "2f322365-1b80-4c0c-9ae9-c385d79ebe22" ],
+        "x-ms-correlation-request-id": [ "8c4cabcd-b46b-4ffa-80dd-c4eb06edd1b3" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250512T072658Z:8c4cabcd-b46b-4ffa-80dd-c4eb06edd1b3" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0D6AFA6FF9FD416595A354F6CEA2F727 Ref B: MAA201060514039 Ref C: 2025-04-26T07:53:18Z" ],
-        "Date": [ "Sat, 26 Apr 2025 07:53:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2B3028FE5FE9453C8B11E9CA3519FDAC Ref B: MAA201060515023 Ref C: 2025-05-12T07:26:56Z" ],
+        "Date": [ "Mon, 12 May 2025 07:26:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "677" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"InvalidAuthenticationTokenTenant\",\"message\":\"The access token is from the wrong issuer \u0027https://sts.windows.net/f27f5a05-ee13-4d31-b6d9-6bfe7b758c17/\u0027. It must match the tenant \u0027https://sts.windows.net/c8604a67-8a77-4032-85a9-c6a9aaac5a7c/\u0027 associated with this subscription. Please use the authority (URL) \u0027https://login.windows.net/c8604a67-8a77-4032-85a9-c6a9aaac5a7c\u0027 to get the token. Note, if the subscription is transferred to another tenant there is no impact to the services, but information about new tenant could take time to propagate (up to an hour). If you just transferred your subscription and see this error message, please try back later.\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourcePatchValidateFailed\",\"message\":\"Plan is not changed for resource\"}}",
       "isContentBase64": false
     }
   }

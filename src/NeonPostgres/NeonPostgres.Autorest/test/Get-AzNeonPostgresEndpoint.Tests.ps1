@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNeonPostgresProject'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNeonPostgresEndpoint'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzNeonPostgresProject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNeonPostgresEndpoint.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNeonPostgresProject'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzNeonPostgresProject' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityOrganizationExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
+Describe 'Get-AzNeonPostgresEndpoint' {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

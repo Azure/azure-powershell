@@ -74,4 +74,8 @@ directive:
     - Organizations_GetPostgresVersions
     - Projects_Update
     - Branches_Update
+    - Compute_Get
+    - Endpoint_Get
+    - NeonRole_Get
+    - NeonDatabase_Get
 ```
