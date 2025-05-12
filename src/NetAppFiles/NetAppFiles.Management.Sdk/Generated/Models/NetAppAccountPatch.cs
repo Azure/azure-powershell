@@ -55,7 +55,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="disableShowmount">Shows the status of disableShowmount for all volumes under the
         /// subscription, null equals false
         /// </param>
-        public NetAppAccountPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?))
+
+        /// <param name="nfsV4IdDomain">Domain for NFSv4 user ID mapping. This property will be set for all NetApp
+        /// accounts in the subscription and region and only affect non ldap NFSv4
+        /// volumes.
+        /// </param>
+
+        /// <param name="multiAdStatus">MultiAD Status for the account
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public NetAppAccountPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
 
         {
             this.Location = location;
@@ -68,6 +76,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ActiveDirectories = activeDirectories;
             this.Encryption = encryption;
             this.DisableShowmount = disableShowmount;
+            this.NfsV4IdDomain = nfsV4IdDomain;
+            this.MultiAdStatus = multiAdStatus;
             CustomInit();
         }
 
@@ -137,6 +147,20 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableShowmount")]
         public bool? DisableShowmount {get; private set; }
+
+        /// <summary>
+        /// Gets or sets domain for NFSv4 user ID mapping. This property will be set
+        /// for all NetApp accounts in the subscription and region and only affect non
+        /// ldap NFSv4 volumes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nfsV4IDDomain")]
+        public string NfsV4IdDomain {get; set; }
+
+        /// <summary>
+        /// Gets multiAD Status for the account Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.multiAdStatus")]
+        public string MultiAdStatus {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -169,6 +193,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.Encryption.Validate();
             }
+            if (this.NfsV4IdDomain != null)
+            {
+                if (this.NfsV4IdDomain.Length > 255)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "NfsV4IdDomain", 255);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.NfsV4IdDomain, "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,253}[a-zA-Z0-9]$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "NfsV4IdDomain", "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,253}[a-zA-Z0-9]$");
+                }
+            }
+
         }
     }
 }

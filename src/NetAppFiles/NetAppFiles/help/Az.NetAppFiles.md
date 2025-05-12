@@ -14,8 +14,14 @@ The topics in this section document the Azure PowerShell cmdlets for Azure NetAp
 ### [Approve-AzNetAppFilesReplication](Approve-AzNetAppFilesReplication.md)
 Approve/Authorize replication connection on the source volume
 
+### [Convert-AzNetAppFilesAccountToCmk](Convert-AzNetAppFilesAccountToCmk.md)
+Transition volumes encryption from PMK to CMK.
+
 ### [Get-AzNetAppFilesAccount](Get-AzNetAppFilesAccount.md)
 Gets details of an Azure NetApp Files (ANF) account.
+
+### [Get-AzNetAppFilesAccountKeyVaultStatus](Get-AzNetAppFilesAccountKeyVaultStatus.md)
+Get information about how volumes under NetApp account are encrypted
 
 ### [Get-AzNetAppFilesActiveDirectory](Get-AzNetAppFilesActiveDirectory.md)
 Gets details of an Azure NetApp Files (ANF) Active Directory configuration.
@@ -68,6 +74,9 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 ### [Get-AzNetAppFilesSubvolumeMetadata](Get-AzNetAppFilesSubvolumeMetadata.md)
 Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
+### [Get-AzNetAppFilesUsage](Get-AzNetAppFilesUsage.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
 
@@ -91,6 +100,9 @@ Get volume's restore status
 
 ### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
 Re-Initializes the replication connection on the destination volume
+
+### [Invoke-AzNetAppFilesAccountChangeKeyVault](Invoke-AzNetAppFilesAccountChangeKeyVault.md)
+Change Key Vault/Managed HSM that is used for encryption of volumes under NetApp account
 
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.

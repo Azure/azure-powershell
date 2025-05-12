@@ -445,10 +445,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public VolumePropertiesDataProtection DataProtection {get; set; }
 
         /// <summary>
-        /// Gets or sets restoring
+        /// Gets restoring
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isRestoring")]
-        public bool? IsRestoring {get; set; }
+        public bool? IsRestoring {get; private set; }
 
         /// <summary>
         /// Gets or sets if enabled (true) the volume will contain a read-only snapshot

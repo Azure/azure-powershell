@@ -26,11 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 ? diskPhysicalSectorSize 
                 : null;
 
-            // TODO(helenafework): Add this code back once backend is fixed to check for empty string
-            // StorageContainerId = 
-            //     string.IsNullOrWhiteSpace(storageContainerId)
-            //     ? null
-            //     : storageContainerId;
+            StorageContainerId = 
+                string.IsNullOrWhiteSpace(storageContainerId)
+                ? null
+                : storageContainerId;
         }
 
         /// <summary>Gets or sets the type of the virtual hard disk, vhd or vhdx.</summary>
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
         /// <summary>Gets or sets a value indicating whether disk is os disk.</summary>
         public bool IsOSDisk { get; set; }
 
-        // /// <summary>Gets or sets the target storage account ARM Id.</summary>
-        // public string StorageContainerId { get; set; }
+        /// <summary>Gets or sets the target storage account ARM Id.</summary>
+        public string StorageContainerId { get; set; }
     }
 }

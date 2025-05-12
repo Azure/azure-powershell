@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzMapsAccount' {
     It 'CreateExpanded' {
         {    
-          New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName S1 -Location $env.location
+          New-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName03 -SkuName G2 -Location $env.location
         } | Should -Not -Throw
     }
 }

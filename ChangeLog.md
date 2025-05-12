@@ -1,3 +1,65 @@
+## 13.5.0 - May 2025
+#### Az.Accounts 4.2.0
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314
+* Fixed token in auxiliary authentication header.
+* Collected authentication method for telemetry in end process of cmdlet.
+
+#### Az.Compute 9.3.0
+* Added new cmdlets 'Add-AzVmssSkuProfileVMSize' and 'Remove-AzVmssSkuProfileVMSize' to add and remove VM sizes to and from the VMSS SkuProfile.
+* Added new parameters 'ZonePlacementPolicy', 'IncludeZone', 'ExcludeZone', and 'AlignRegionalDisksToVMZone' to cmdlets 'New-AzVM' and 'New-AzVmConfig'
+* Added new parameter 'AlignRegionalDisksToVMZone' to cmdlet 'Update-AzVM'.
+* VM/VMSS related cmdlets will now use 2024-11-01 ComputeRP API calls.
+
+#### Az.DataFactory 1.19.2
+* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
+* Added more support for AzureDatabricks connection properties.
+
+#### Az.DataProtection 2.7.0
+* Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
+* Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
+
+#### Az.ElasticSan 1.4.0
+* Changed parameters 'BaseSizeTiB' and 'ExtendedCapacitySizeTiB' in cmdlet 'New-AzElasticSan' to be optional.
+    - 'New-AzElasticSan'
+
+#### Az.FrontDoor 1.13.0
+* Added support for Captcha
+
+#### Az.MarketplaceOrdering 2.2.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Network 7.16.1
+* Onboarded 'Microsoft.DocumentDB/mongoClusters' to private link cmdlets
+
+#### Az.RecoveryServices 7.7.0
+* Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
+* Deprecated the 'Token' parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter 'SecureToken' going forward.
+
+#### Az.ResourceGraph 1.2.1
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+#### Az.Resources 7.11.0
+* Added SuppressDiagnostics Parameter to Test-Deployment cmdlets.
+* Added PotentialChanges to WhatIf result.
+
+#### Az.Sql 6.0.3
+* Added Information message to 'Set-AzSqlInstance' for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
+
+#### Az.Storage 8.4.0
+* When create Storage context, allowed user input StorageAccountName
+    - 'New-AzStorageContext'
+* Reported error when user create user delegation SAS with a storage context not contains StorageAccountName.
+    - 'New-AzStorageBlobSASToken'
+    - 'New-AzStorageContainerSASToken'
+    - 'New-AzDataLakeGen2SasToken'
+
+#### Az.Synapse 3.2.1
+* Fixed an error of not correctly setting the cmdlet context
+
+#### Az.Websites 3.4.1
+* Added AppServicePlan management support for Pv4 and Pmv4 tiers.
+
 ## 13.4.0 - April 2025
 #### Az.Accounts 4.1.0
 * Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
