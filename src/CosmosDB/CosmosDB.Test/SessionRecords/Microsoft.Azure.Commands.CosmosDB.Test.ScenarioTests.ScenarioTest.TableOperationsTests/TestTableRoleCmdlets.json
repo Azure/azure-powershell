@@ -1,12 +1,87 @@
 {
   "Entries": [
     {
+      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourcegroups/table-connection-demo-livesite?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Jlc291cmNlZ3JvdXBzL3RhYmxlLWNvbm5lY3Rpb24tZGVtby1saXZlc2l0ZT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e09f1f16-b2a1-4a7f-bdb5-2fefd687247b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "30"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"UK South\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "da6f2e55-216b-429c-9214-02112dee4bca"
+        ],
+        "x-ms-correlation-request-id": [
+          "da6f2e55-216b-429c-9214-02112dee4bca"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20250513T005246Z:da6f2e55-216b-429c-9214-02112dee4bca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 71D2631C2C48421FBD96F42D190235D6 Ref B: MNZ221060609049 Ref C: 2025-05-13T00:52:44Z"
+        ],
+        "Date": [
+          "Tue, 13 May 2025 00:52:46 GMT"
+        ],
+        "Content-Length": [
+          "214"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourceGroups/table-connection-demo-livesite\",\r\n  \"name\": \"table-connection-demo-livesite\",\r\n  \"location\": \"uksouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
       "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourceGroups/table-connection-demo-livesite/providers/Microsoft.DocumentDB/databaseAccounts/managedidentity-table-armtestaccount?api-version=2025-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Jlc291cmNlR3JvdXBzL3RhYmxlLWNvbm5lY3Rpb24tZGVtby1saXZlc2l0ZS9wcm92aWRlcnMvTWljcm9zb2Z0LkRvY3VtZW50REIvZGF0YWJhc2VBY2NvdW50cy9tYW5hZ2VkaWRlbnRpdHktdGFibGUtYXJtdGVzdGFjY291bnQ/YXBpLXZlcnNpb249MjAyNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cfa359dc-eb8a-4088-94bb-14d6c81c6300"
+          "7be73090-a638-4cef-aae6-6aa9ae037509"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +105,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "119effd1-0cd2-426b-ae79-6b254621bd6d"
+          "274a601b-3b08-470d-8533-e177045ac429"
         ],
         "x-ms-correlation-request-id": [
-          "119effd1-0cd2-426b-ae79-6b254621bd6d"
+          "274a601b-3b08-470d-8533-e177045ac429"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250513T001531Z:119effd1-0cd2-426b-ae79-6b254621bd6d"
+          "EASTUS:20250513T005247Z:274a601b-3b08-470d-8533-e177045ac429"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,13 +123,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: A5EB97449F8A47DB9C173364CD2F0276 Ref B: BL2AA2011003029 Ref C: 2025-05-13T00:15:31Z"
+          "Ref A: 3A347F3765C94718BD466A81864EA706 Ref B: MNZ221060618011 Ref C: 2025-05-13T00:52:46Z"
         ],
         "Date": [
-          "Tue, 13 May 2025 00:15:30 GMT"
+          "Tue, 13 May 2025 00:52:46 GMT"
         ],
         "Content-Length": [
-          "122"
+          "276"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +138,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'table-connection-demo-livesite' could not be found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/managedidentity-table-armtestaccount' under resource group 'table-connection-demo-livesite' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -72,7 +147,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dcf6c441-ec88-411c-a868-c3cb9df095c7"
+          "a131114c-28b5-4cbe-aecb-c677e646b1fb"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +171,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c645790e-fb26-4947-937f-efa0e03509fe"
+          "2d99b680-e58e-4b42-bea9-57f022530d0a"
         ],
         "x-ms-correlation-request-id": [
-          "c645790e-fb26-4947-937f-efa0e03509fe"
+          "2d99b680-e58e-4b42-bea9-57f022530d0a"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20250513T001531Z:c645790e-fb26-4947-937f-efa0e03509fe"
+          "EASTUS:20250513T005250Z:2d99b680-e58e-4b42-bea9-57f022530d0a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,13 +189,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E3F529474AC4465F988FCEEBB6EB7F06 Ref B: MNZ221060619039 Ref C: 2025-05-13T00:15:31Z"
+          "Ref A: A2136C21AB2C4190A2D38442540275ED Ref B: MNZ221060610051 Ref C: 2025-05-13T00:52:50Z"
         ],
         "Date": [
-          "Tue, 13 May 2025 00:15:30 GMT"
+          "Tue, 13 May 2025 00:52:50 GMT"
         ],
         "Content-Length": [
-          "122"
+          "276"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,8 +204,86 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'table-connection-demo-livesite' could not be found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/managedidentity-table-armtestaccount' under resource group 'table-connection-demo-livesite' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourceGroups/table-connection-demo-livesite/providers/Microsoft.DocumentDB/databaseAccounts/managedidentity-table-armtestaccount?api-version=2025-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Jlc291cmNlR3JvdXBzL3RhYmxlLWNvbm5lY3Rpb24tZGVtby1saXZlc2l0ZS9wcm92aWRlcnMvTWljcm9zb2Z0LkRvY3VtZW50REIvZGF0YWJhc2VBY2NvdW50cy9tYW5hZ2VkaWRlbnRpdHktdGFibGUtYXJtdGVzdGFjY291bnQ/YXBpLXZlcnNpb249MjAyNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7be73090-a638-4cef-aae6-6aa9ae037509"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "672"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\"\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"UK South\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"enableAutomaticFailover\": true,\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableTable\"\r\n      }\r\n    ],\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"UK South\",\r\n  \"tags\": {}\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=74023126-ad70-4efc-9210-d00c403cc872/eastus/bd0523d4-6d65-4002-ae90-68e83dfb2365"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "32673100-e0a3-4464-bf60-13c717a8106b"
+        ],
+        "x-ms-correlation-request-id": [
+          "32673100-e0a3-4464-bf60-13c717a8106b"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20250513T005250Z:32673100-e0a3-4464-bf60-13c717a8106b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 86D221D5658146D2B3729F14A2891C4C Ref B: MNZ221060618011 Ref C: 2025-05-13T00:52:47Z"
+        ],
+        "Date": [
+          "Tue, 13 May 2025 00:52:49 GMT"
+        ],
+        "Content-Length": [
+          "261"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"BadRequest\",\r\n  \"message\": \"Dns record for managedidentity-table-armtestaccount under zone Document is already taken. Please use a different name for the account.\\r\\nActivityId: 7be73090-a638-4cef-aae6-6aa9ae037509, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "StatusCode": 400
     }
   ],
   "Names": {},
