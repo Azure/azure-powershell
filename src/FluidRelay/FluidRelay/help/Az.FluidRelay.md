@@ -21,7 +21,7 @@ Get a Fluid Relay server.
 Get primary and secondary key for this server.
 
 ### [New-AzFluidRelayServer](New-AzFluidRelayServer.md)
-Create or Update a Fluid Relay server.
+create a Fluid Relay server.
 
 ### [New-AzFluidRelayServerKey](New-AzFluidRelayServerKey.md)
 Regenerate the primary or secondary key for this server.
@@ -33,5 +33,5 @@ Delete a Fluid Relay container.
 Delete a Fluid Relay server.
 
 ### [Update-AzFluidRelayServer](Update-AzFluidRelayServer.md)
-Update a Fluid Relay server.
+update a Fluid Relay server.
 

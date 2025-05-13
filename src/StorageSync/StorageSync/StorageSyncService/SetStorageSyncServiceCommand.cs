@@ -123,15 +123,15 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             Mandatory = false,
             HelpMessage = HelpMessages.StorageSyncServiceIdentityTypeParameter)]
         [ValidateSet(StorageSyncServiceIdentityType.systemAssigned,
-            StorageSyncServiceIdentityType.userAssigned,
-            StorageSyncServiceIdentityType.systemAssignedUserAssigned,
+            //StorageSyncServiceIdentityType.userAssigned,
+            //StorageSyncServiceIdentityType.systemAssignedUserAssigned,
             StorageSyncServiceIdentityType.none,
             IgnoreCase = true)]
         public string IdentityType { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
+            Mandatory = false,
+            HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
         public bool UseIdentity { get; set; }
 
         /// <summary>
@@ -214,6 +214,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 if (this.IsParameterBound(c => c.UseIdentity))
                 {
                     useIdentity = this.UseIdentity;
+
+                    if(!this.UseIdentity)
+                    {
+                        throw new PSArgumentException($"This cmdlet cannot be used to reset the Storage Sync Service Identity. Please reach out to administrator to turn off managed identity for StorageSync service.");
+                    }
                 }
                 else
                 {
@@ -246,6 +251,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             { this.UserAssignedIdentityId, new UserAssignedIdentity() }
                         };
                     }
+                }
+                else
+                {
+                    // Set Default
+                    updateParameters.Identity = new ManagedServiceIdentity() { Type = StorageSyncModels.ManagedServiceIdentityType.SystemAssigned };
                 }
 
                 Target = string.Join("/", resourceGroupName, resourceName);

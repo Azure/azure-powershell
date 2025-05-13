@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="throughput">Throughput of a physical partition
         /// </param>
-        public PhysicalPartitionThroughputInfoResource(string id, double? throughput = default(double?))
+
+        /// <param name="targetThroughput">Target throughput of a physical partition
+        /// </param>
+        public PhysicalPartitionThroughputInfoResource(string id, double? throughput = default(double?), double? targetThroughput = default(double?))
 
         {
             this.Id = id;
             this.Throughput = throughput;
+            this.TargetThroughput = targetThroughput;
             CustomInit();
         }
 
@@ -54,6 +58,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "throughput")]
         public double? Throughput {get; set; }
+
+        /// <summary>
+        /// Gets or sets target throughput of a physical partition
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetThroughput")]
+        public double? TargetThroughput {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

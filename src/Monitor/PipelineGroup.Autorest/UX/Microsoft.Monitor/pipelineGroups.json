@@ -1,6 +1,6 @@
 {
   "resourceType": "pipelineGroups",
-  "apiVersion": "2023-10-01-preview",
+  "apiVersion": "2024-10-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.monitor"
   },

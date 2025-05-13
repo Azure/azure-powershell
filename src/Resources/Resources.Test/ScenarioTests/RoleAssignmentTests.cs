@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaByResource");
         }
 
-        [Fact]//(Skip = "Test indicates Graph call is not recorded when it actually is, refer to https://github.com/Azure/azure-powershell/issues/14632 for more details, test passes in record mode")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {

@@ -38,12 +38,35 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
+schedules:
+- cron: 0 16 * * 0,1,2,3,4,5,6
+  displayName: Daily Archive
+  branches:
+    include:
+    - main
+
 trigger:
   batch: true
   branches:
     include:
     - main
-  
+    - release-*
+    - Az.*
+    - LTS
+    - generation-LTS
+    - stack-dev
+    - preview
+    - AzureRM
+    - AzureRM6.13
+    - AzureRM.*
+    - DeploymentRollouts
+    - Compute-*
+    - test-filtering-branch
+    - azvmremotingpreview
+    - test-build-filter
+    - generation
+    - Azure
+
 jobs:
 - job: Build
   displayName: Build
@@ -57,24 +80,24 @@ jobs:
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
-  - task: PowerShell@2
-    displayName: 'Get Github Access Token'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
-  # - template: util/get-github-pat-steps.yml
+  # - task: PowerShell@2
+  #   displayName: 'Get Github Access Token'
+  #   inputs:
+  #     targetType: inline
+  #     pwsh: true
+  #     script: |
+  #       $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+  #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '18.20.7'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -84,7 +107,11 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
-  
+  - task: Npm@1
+    displayName: Install tsp client
+    inputs:
+      command: custom
+      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
@@ -110,15 +137,15 @@ jobs:
             Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } elseif ("$(Build.reason)" -eq 'Schedule') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } else {
           Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
           exit 1
         }
         $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
-        
+
         $sourceBranchName = "$(Build.SourceBranch)".Replace("refs/heads/","")
         $baseBranchName = "origin/$sourceBranchName"
         $tmpBranchName = "archive/$sourceBranchName/$(Build.Reason)"
@@ -161,7 +188,7 @@ jobs:
         git add $generatedPath
         git commit -m $prTitle
         git push origin $tmpBranchName --force
-        
+
         & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
@@ -196,10 +223,10 @@ jobs:
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -238,10 +265,10 @@ jobs:
     parameters:
       artifactName: build-${{ variables.TestFramework }}
   - task: UseDotNet@2
-    displayName: 'Use .NET SDK 6 for tests'
+    displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:

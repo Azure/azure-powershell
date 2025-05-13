@@ -15,13 +15,34 @@ Regenerate the primary or secondary key for this server.
 ### RegenerateExpanded (Default)
 ```
 New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String>]
- -KeyName <KeyName> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -KeyName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RegenerateViaIdentityResourceGroupExpanded
+```
+New-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroupInputObject <IFluidRelayIdentity>
+ -KeyName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> -KeyName <KeyName> [-DefaultProfile <PSObject>]
+New-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> -KeyName <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +87,7 @@ The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath, RegenerateViaIdentityResourceGroupExpanded
 Aliases:
 
 Required: True
@@ -78,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
@@ -92,12 +112,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 The key to regenerate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.KeyName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityResourceGroupExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,7 +162,7 @@ The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -122,12 +172,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
+Parameter Sets: RegenerateViaIdentityResourceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -177,7 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServerKeys
 
 ## NOTES
 

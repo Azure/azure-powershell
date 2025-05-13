@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewall
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azwindowsfirewalllogsdatasourceobject
 #>
 function New-AzWindowsFirewallLogsDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

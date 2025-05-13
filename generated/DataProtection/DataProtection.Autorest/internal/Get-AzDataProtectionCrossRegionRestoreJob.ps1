@@ -25,9 +25,9 @@ Fetches list of Cross Region Restore job belonging to the vault
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobsRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobsRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PARAMETER <ICrossRegionRestoreJobsRequest>: Details of Backup Vault for which CR
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectioncrossregionrestorejob
 #>
 function Get-AzDataProtectionCrossRegionRestoreJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -72,7 +72,7 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobsRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobsRequest]
     # Details of Backup Vault for which CRR Jobs are to be fetched
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

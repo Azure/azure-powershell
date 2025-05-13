@@ -2,11 +2,11 @@ parameters:
 - name: dotnet_sdk
   displayName: .NET SDK
   type: string
-  default: 6.0.x
+  default: 8.x
 - name: testFramework
   displayName: Test Framework
   type: string
-  default: net6.0
+  default: net8.0
 - name: testPoolName
   displayName: Test Pool Name
   type: string
@@ -30,7 +30,7 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Install .NET SDK'
+    displayName: 'Install .NET SDK for Build'
     inputs:
       packageType: sdk
       version: ${{ parameters.dotnet_sdk }}
@@ -57,7 +57,7 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Install .NET SDK'
+    displayName: 'Install .NET SDK for Test'
     inputs:
       packageType: sdk
       version: ${{ parameters.dotnet_sdk }}

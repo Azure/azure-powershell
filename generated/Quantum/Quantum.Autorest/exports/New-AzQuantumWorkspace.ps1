@@ -16,15 +16,15 @@
 
 <#
 .Synopsis
-Creates or updates a workspace resource.
+create a workspace resource.
 .Description
-Creates or updates a workspace resource.
+create a workspace resource.
 .Example
 $object = New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
-New-AzQuantumWorkspace -Name azps-qw -ResourceGroupName azps_test_group_quantum -Location eastus -IdentityType 'SystemAssigned' -Provider $object -StorageAccount "/subscriptions/{subId}/resourceGroups/azps_test_group_quantum/providers/Microsoft.Storage/storageAccounts/azpssa"
+New-AzQuantumWorkspace -Name azps-qw -ResourceGroupName azps_test_group_quantum -Location eastus -EnableSystemAssignedIdentity -Provider $object -StorageAccount "/subscriptions/{subId}/resourceGroups/azps_test_group_quantum/providers/Microsoft.Storage/storageAccounts/azpssa"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IQuantumWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,14 +34,14 @@ PROVIDER <IProvider[]>: List of Providers selected for this Workspace
   [ApplicationName <String>]: The provider's marketplace application display name.
   [Id <String>]: Unique id of this provider.
   [InstanceUri <String>]: A Uri identifying the specific instance of this provider.
-  [ProvisioningState <Status?>]: Provisioning status field
+  [ProvisioningState <String>]: Provisioning status field
   [ResourceUsageId <String>]: Id to track resource usage for the provider.
   [Sku <String>]: The sku associated with pricing information for this provider.
 .Link
 https://learn.microsoft.com/powershell/module/az.quantum/new-azquantumworkspace
 #>
 function New-AzQuantumWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IQuantumWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,39 +64,49 @@ param(
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.ResourceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IProvider[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IProvider[]]
     # List of Providers selected for this Workspace
-    # To construct, see NOTES section for PROVIDER properties and create a hash table.
     ${Provider},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
     [System.String]
     # ARM Resource Id of the storage account associated with this workspace.
     ${StorageAccount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -166,6 +176,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -186,10 +205,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Quantum.private\New-AzQuantumWorkspace_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Quantum.private\New-AzQuantumWorkspace_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Quantum.private\New-AzQuantumWorkspace_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -203,6 +222,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -211,7 +211,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -RestoreRequest $ossRestoreReqFiles
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
-        $restoreJobCSR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $ossRestoreReqFiles
+        $restoreJobCSR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance[0].BackupInstanceName -Parameter $ossRestoreReqFiles
 
         $jobid = $restoreJobCSR.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true

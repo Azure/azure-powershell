@@ -10,6 +10,7 @@ New-AzStandbyContainerGroupPool `
 -ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
 -ProfileRevision 1 `
 -SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
+-Zone @("1", "2", "3") `
 ```
 
 ```output
@@ -34,6 +35,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1, 2, 3}
 ```
 
 The above command created a standby container pool.

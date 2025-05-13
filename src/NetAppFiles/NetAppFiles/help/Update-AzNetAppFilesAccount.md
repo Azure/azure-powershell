@@ -17,9 +17,9 @@ Updates an Azure NetApp Files (ANF) account according to the optional modifiers 
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
- [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
+ [-FederatedClientId <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -110,6 +110,21 @@ Accept wildcard characters: False
 
 ### -EncryptionKeySource
 The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+ClientId of the multi-tenant AAD Application. Used to access cross-tenant KeyVaults.
 
 ```yaml
 Type: System.String

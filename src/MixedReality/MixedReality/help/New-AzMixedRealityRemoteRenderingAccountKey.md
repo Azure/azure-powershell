@@ -19,6 +19,20 @@ New-AzMixedRealityRemoteRenderingAccountKey -AccountName <String> -ResourceGroup
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### RegenerateViaJsonString
+```
+New-AzMixedRealityRemoteRenderingAccountKey -AccountName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzMixedRealityRemoteRenderingAccountKey -AccountName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### RegenerateViaIdentityExpanded
 ```
 New-AzMixedRealityRemoteRenderingAccountKey -InputObject <IMixedRealityIdentity> [-Serial <Int32>]
@@ -50,7 +64,7 @@ Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -78,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
@@ -92,12 +105,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of an Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -112,7 +155,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -129,7 +172,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -179,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
+### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IAccountKeys
 
 ## NOTES
 

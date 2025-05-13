@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity Azure PostgreSQL sink.
+    /// A copy activity Azure Database for PostgreSQL sink.
     /// </summary>
     [Newtonsoft.Json.JsonObject("AzurePostgreSqlSink")]
     public partial class AzurePostgreSqlSink : CopySink
@@ -54,11 +54,19 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="preCopyScript">A query to execute before starting the copy. Type: string (or Expression
         /// with resultType string).
         /// </param>
-        public AzurePostgreSqlSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object))
+
+        /// <param name="writeMethod">The write behavior for the operation. Default is Bulk Insert.
+        /// Possible values include: &#39;BulkInsert&#39;, &#39;CopyCommand&#39;, &#39;Upsert&#39;</param>
+
+        /// <param name="upsertSettings">Azure Database for PostgreSQL upsert option settings
+        /// </param>
+        public AzurePostgreSqlSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object preCopyScript = default(object), string writeMethod = default(string), AzurePostgreSqlSinkUpsertSettings upsertSettings = default(AzurePostgreSqlSinkUpsertSettings))
 
         : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.PreCopyScript = preCopyScript;
+            this.WriteMethod = writeMethod;
+            this.UpsertSettings = upsertSettings;
             CustomInit();
         }
 
@@ -74,5 +82,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "preCopyScript")]
         public object PreCopyScript {get; set; }
+
+        /// <summary>
+        /// Gets or sets the write behavior for the operation. Default is Bulk Insert. Possible values include: &#39;BulkInsert&#39;, &#39;CopyCommand&#39;, &#39;Upsert&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "writeMethod")]
+        public string WriteMethod {get; set; }
+
+        /// <summary>
+        /// Gets or sets azure Database for PostgreSQL upsert option settings
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upsertSettings")]
+        public AzurePostgreSqlSinkUpsertSettings UpsertSettings {get; set; }
     }
 }

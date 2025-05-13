@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMigrateProtectedItem_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Gets the list of protected items in the given vault.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems", ApiVersion = "2021-02-16-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems", ApiVersion = "2024-09-01")]
     public partial class GetAzMigrateProtectedItem_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {
@@ -48,6 +48,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Migrate Client => Microsoft.Azure.PowerShell.Cmdlets.Migrate.Module.Instance.ClientAPI;
+
+        /// <summary>Backing field for <see cref="ContinuationToken" /> property.</summary>
+        private string _continuationToken;
+
+        /// <summary>Continuation token.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Continuation token.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Continuation token.",
+        SerializedName = @"continuationToken",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Query)]
+        public string ContinuationToken { get => this._continuationToken; set => this._continuationToken = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -81,6 +95,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="OdataOption" /> property.</summary>
+        private string _odataOption;
+
+        /// <summary>OData options.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "OData options.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"OData options.",
+        SerializedName = @"odataOptions",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Query)]
+        public string OdataOption { get => this._odataOption; set => this._odataOption = value; }
+
+        /// <summary>Backing field for <see cref="PageSize" /> property.</summary>
+        private int _pageSize;
+
+        /// <summary>Page size.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Page size.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Page size.",
+        SerializedName = @"pageSize",
+        PossibleTypes = new [] { typeof(int) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Query)]
+        public int PageSize { get => this._pageSize; set => this._pageSize = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.HttpPipeline" /> that the remote call will use.
@@ -154,24 +196,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -335,13 +377,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ProtectedItemList(SubscriptionId, ResourceGroupName, VaultName, onOk, onDefault, this, Pipeline);
+                        await this.Client.ProtectedItemList(SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("OdataOption") ? OdataOption : null, this.InvocationInformation.BoundParameters.ContainsKey("ContinuationToken") ? ContinuationToken : null, this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?), VaultName, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VaultName=VaultName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,OdataOption=this.InvocationInformation.BoundParameters.ContainsKey("OdataOption") ? OdataOption : null,ContinuationToken=this.InvocationInformation.BoundParameters.ContainsKey("ContinuationToken") ? ContinuationToken : null,PageSize=this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?),VaultName=VaultName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -379,12 +421,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated> response)
         {
             using( NoSynchronizationContext )
             {
@@ -401,15 +443,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IErrorResponseAutoGenerated>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IErrorResponseAutoGenerated>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, OdataOption=this.InvocationInformation.BoundParameters.ContainsKey("OdataOption") ? OdataOption : null, ContinuationToken=this.InvocationInformation.BoundParameters.ContainsKey("ContinuationToken") ? ContinuationToken : null, PageSize=this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?), VaultName=VaultName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, OdataOption=this.InvocationInformation.BoundParameters.ContainsKey("OdataOption") ? OdataOption : null, ContinuationToken=this.InvocationInformation.BoundParameters.ContainsKey("ContinuationToken") ? ContinuationToken : null, PageSize=this.InvocationInformation.BoundParameters.ContainsKey("PageSize") ? PageSize : default(int?), VaultName=VaultName })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -419,12 +461,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelCollection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelListResult> response)
         {
             using( NoSynchronizationContext )
             {

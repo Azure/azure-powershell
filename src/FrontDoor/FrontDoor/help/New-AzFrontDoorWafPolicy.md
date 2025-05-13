@@ -17,8 +17,9 @@ New-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledSta
  [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-Tag <Hashtable>]
  [-RequestBodyCheck <String>] [-Sku <String>] [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>]
- [-JavascriptChallengeExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-JavascriptChallengeExpirationInMinutes <Int32>] [-CaptchaExpirationInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ Name         PolicyMode PolicyEnabledState RedirectUrl
 Create WAF policy
 
 ## PARAMETERS
+
+### -CaptchaExpirationInMinutes
+setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomBlockResponseBody
 Custom Response Body
@@ -122,7 +138,7 @@ Accept wildcard characters: False
 setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

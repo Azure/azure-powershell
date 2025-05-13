@@ -47,6 +47,8 @@ function Invoke-AzEdgeOrderItemCancellation {
 [CmdletBinding(DefaultParameterSetName='CancelExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CancelExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaJsonString', Mandatory)]
     [Alias('OrderItemName')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
@@ -54,6 +56,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CancelExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -61,6 +65,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CancelExpanded')]
+    [Parameter(ParameterSetName='CancelViaJsonFilePath')]
+    [Parameter(ParameterSetName='CancelViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -71,14 +77,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CancelExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CancelViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
     [System.String]
     # Reason for cancellation.
     ${Reason},
+
+    [Parameter(ParameterSetName='CancelViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Cancel operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CancelViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category('Body')]
+    [System.String]
+    # Json string supplied to the Cancel operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -142,6 +160,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,10 +190,10 @@ begin {
         $mapping = @{
             CancelExpanded = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderItemCancellation_CancelExpanded';
             CancelViaIdentityExpanded = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderItemCancellation_CancelViaIdentityExpanded';
+            CancelViaJsonFilePath = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderItemCancellation_CancelViaJsonFilePath';
+            CancelViaJsonString = 'Az.EdgeOrder.private\Invoke-AzEdgeOrderItemCancellation_CancelViaJsonString';
         }
-        if (('CancelExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CancelExpanded', 'CancelViaJsonFilePath', 'CancelViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -180,6 +207,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

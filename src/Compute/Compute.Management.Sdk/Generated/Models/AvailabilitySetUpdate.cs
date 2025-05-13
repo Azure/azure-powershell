@@ -48,8 +48,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="scheduledEventsPolicy">Specifies Redeploy, Reboot and
         /// ScheduledEventsAdditionalPublishingTargets Scheduled Event related
         /// configurations for the availability set.</param>
+        /// <param name="virtualMachineScaleSetMigrationInfo">Describes the
+        /// migration properties on the Availability Set.</param>
         /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<SubResource> virtualMachines = default(IList<SubResource>), SubResource proximityPlacementGroup = default(SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), Sku sku = default(Sku))
+        public AvailabilitySetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<SubResource> virtualMachines = default(IList<SubResource>), SubResource proximityPlacementGroup = default(SubResource), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), VirtualMachineScaleSetMigrationInfo virtualMachineScaleSetMigrationInfo = default(VirtualMachineScaleSetMigrationInfo), Sku sku = default(Sku))
             : base(tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProximityPlacementGroup = proximityPlacementGroup;
             Statuses = statuses;
             ScheduledEventsPolicy = scheduledEventsPolicy;
+            VirtualMachineScaleSetMigrationInfo = virtualMachineScaleSetMigrationInfo;
             Sku = sku;
             CustomInit();
         }
@@ -107,6 +110,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.scheduledEventsPolicy")]
         public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
+
+        /// <summary>
+        /// Gets describes the migration properties on the Availability Set.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.virtualMachineScaleSetMigrationInfo")]
+        public VirtualMachineScaleSetMigrationInfo VirtualMachineScaleSetMigrationInfo { get; private set; }
 
         /// <summary>
         /// Gets or sets sku of the availability set

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Gets all the consumer groups in a Namespace. An empty feed is returned if no consumer group exists in the Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups", ApiVersion = "2023-01-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzEventHubConsumerGroup_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext

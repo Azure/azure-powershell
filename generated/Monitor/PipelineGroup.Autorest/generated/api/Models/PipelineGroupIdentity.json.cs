@@ -78,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             }
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
-            {_azureMonitorWorkspaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("azureMonitorWorkspaceName"), out var __jsonAzureMonitorWorkspaceName) ? (string)__jsonAzureMonitorWorkspaceName : (string)_azureMonitorWorkspaceName;}
             {_pipelineGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("pipelineGroupName"), out var __jsonPipelineGroupName) ? (string)__jsonPipelineGroupName : (string)_pipelineGroupName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             }
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
-            AddIf( null != (((object)this._azureMonitorWorkspaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._azureMonitorWorkspaceName.ToString()) : null, "azureMonitorWorkspaceName" ,container.Add );
             AddIf( null != (((object)this._pipelineGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._pipelineGroupName.ToString()) : null, "pipelineGroupName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a TrafficController</summary>
+    /// <summary>update a TrafficController</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAlb_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.PreviewMessage("Application Gateway for Containers is currently in Preview.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Update a TrafficController")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"update a TrafficController")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}", ApiVersion = "2025-01-01")]
     public partial class UpdateAzAlb_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext
@@ -112,6 +112,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource-specific properties for this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Alb.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdateProperties Property { get => _propertiesBody.Property ?? null /* object */; set => _propertiesBody.Property = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

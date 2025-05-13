@@ -27,11 +27,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="OperationKind" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind? _operationKind;
+        private string _operationKind;
 
         /// <summary>Name of the operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Origin(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind? OperationKind { get => this._operationKind; set => this._operationKind = value; }
+        public string OperationKind { get => this._operationKind; set => this._operationKind = value; }
 
         /// <summary>Backing field for <see cref="ProviderInstanceName" /> property.</summary>
         private string _providerInstanceName;
@@ -100,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -108,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location of the deleted vault.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -116,14 +122,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the operation",
         SerializedName = @"operationKind",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind) })]
-        Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind? OperationKind { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PSArgumentCompleterAttribute("add", "replace", "remove")]
+        string OperationKind { get; set; }
         /// <summary>Name of the provider instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the provider instance.",
         SerializedName = @"providerInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -132,6 +145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -140,6 +156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the identity resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -148,6 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the SAP monitor resource.",
         SerializedName = @"sapMonitorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -158,6 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource provider scope of the resource. Parent resource being extended by Managed Identities.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -169,6 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -177,6 +205,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the vault",
         SerializedName = @"vaultName",
         PossibleTypes = new [] { typeof(string) })]
@@ -191,7 +222,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models
         /// <summary>The location of the deleted vault.</summary>
         string Location { get; set; }
         /// <summary>Name of the operation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support.AccessPolicyUpdateKind? OperationKind { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.PSArgumentCompleterAttribute("add", "replace", "remove")]
+        string OperationKind { get; set; }
         /// <summary>Name of the provider instance.</summary>
         string ProviderInstanceName { get; set; }
         /// <summary>Name of the resource group.</summary>

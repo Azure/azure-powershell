@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="sqlServerLicenseType">The SQL Server license type.
         /// </param>
 
+        /// <param name="linuxLicenseType">The license type for Linux VM&#39;s.
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;</param>
+
         /// <param name="dataMoverRunAsAccountId">The data mover run as account Id.
         /// </param>
 
@@ -125,6 +128,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="resumeProgressPercentage">The resume progress percentage.
         /// </param>
 
+        /// <param name="deltaSyncProgressPercentage">The delta sync progress percentage.
+        /// </param>
+
+        /// <param name="isCheckSumResyncCycle">A value indicating whether checksum resync cycle is in progress.
+        /// </param>
+
         /// <param name="initialSeedingRetryCount">The initial seeding retry count.
         /// </param>
 
@@ -134,12 +143,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="resumeRetryCount">The resume retry count.
         /// </param>
 
+        /// <param name="deltaSyncRetryCount">The delta sync retry count.
+        /// </param>
+
         /// <param name="resyncRequired">A value indicating whether resync is required.
         /// </param>
 
         /// <param name="resyncState">The resync state.
-        /// Possible values include: 'None', 'PreparedForResynchronization',
-        /// 'StartedResynchronization'</param>
+        /// Possible values include: &#39;None&#39;, &#39;PreparedForResynchronization&#39;,
+        /// &#39;StartedResynchronization&#39;</param>
 
         /// <param name="performAutoResync">A value indicating whether auto resync is to be done.
         /// </param>
@@ -150,9 +162,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="targetDiskTags">The tags for the target disks.
         /// </param>
 
-        /// <param name="supportedOSVersions">List of supported inplace OS Upgrade versions.
+        /// <param name="supportedOSVersions">A value indicating the inplace OS Upgrade version.
         /// </param>
-        public VMwareCbtMigrationDetails(string vmwareMachineId = default(string), string osType = default(string), string osName = default(string), string firmwareType = default(string), string targetGeneration = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string dataMoverRunAsAccountId = default(string), string snapshotRunAsAccountId = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetLocation = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<VMwareCbtProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<VMwareCbtProtectedDiskDetails>), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicDetails> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicDetails>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string migrationRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialSeedingProgressPercentage = default(int?), int? migrationProgressPercentage = default(int?), int? resyncProgressPercentage = default(int?), int? resumeProgressPercentage = default(int?), long? initialSeedingRetryCount = default(long?), long? resyncRetryCount = default(long?), long? resumeRetryCount = default(long?), string resyncRequired = default(string), string resyncState = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> supportedOSVersions = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="applianceMonitoringDetails">A value indicating the appliance monitoring details.
+        /// </param>
+
+        /// <param name="gatewayOperationDetails">A value indicating the gateway operation details.
+        /// </param>
+
+        /// <param name="operationName">A value indicating the SRS operation name.
+        /// </param>
+        public VMwareCbtMigrationDetails(string vmwareMachineId = default(string), string osType = default(string), string osName = default(string), string firmwareType = default(string), string targetGeneration = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string dataMoverRunAsAccountId = default(string), string snapshotRunAsAccountId = default(string), string storageAccountId = default(string), string targetVMName = default(string), string targetVMSize = default(string), string targetLocation = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVMKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVMSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<VMwareCbtProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<VMwareCbtProtectedDiskDetails>), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicDetails> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicDetails>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string migrationRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialSeedingProgressPercentage = default(int?), int? migrationProgressPercentage = default(int?), int? resyncProgressPercentage = default(int?), int? resumeProgressPercentage = default(int?), int? deltaSyncProgressPercentage = default(int?), string isCheckSumResyncCycle = default(string), long? initialSeedingRetryCount = default(long?), long? resyncRetryCount = default(long?), long? resumeRetryCount = default(long?), long? deltaSyncRetryCount = default(long?), string resyncRequired = default(string), string resyncState = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> seedDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> supportedOSVersions = default(System.Collections.Generic.IList<string>), ApplianceMonitoringDetails applianceMonitoringDetails = default(ApplianceMonitoringDetails), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), string operationName = default(string))
 
         {
             this.VmwareMachineId = vmwareMachineId;
@@ -162,6 +183,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetGeneration = targetGeneration;
             this.LicenseType = licenseType;
             this.SqlServerLicenseType = sqlServerLicenseType;
+            this.LinuxLicenseType = linuxLicenseType;
             this.DataMoverRunAsAccountId = dataMoverRunAsAccountId;
             this.SnapshotRunAsAccountId = snapshotRunAsAccountId;
             this.StorageAccountId = storageAccountId;
@@ -188,15 +210,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.MigrationProgressPercentage = migrationProgressPercentage;
             this.ResyncProgressPercentage = resyncProgressPercentage;
             this.ResumeProgressPercentage = resumeProgressPercentage;
+            this.DeltaSyncProgressPercentage = deltaSyncProgressPercentage;
+            this.IsCheckSumResyncCycle = isCheckSumResyncCycle;
             this.InitialSeedingRetryCount = initialSeedingRetryCount;
             this.ResyncRetryCount = resyncRetryCount;
             this.ResumeRetryCount = resumeRetryCount;
+            this.DeltaSyncRetryCount = deltaSyncRetryCount;
             this.ResyncRequired = resyncRequired;
             this.ResyncState = resyncState;
             this.PerformAutoResync = performAutoResync;
             this.SeedDiskTags = seedDiskTags;
             this.TargetDiskTags = targetDiskTags;
             this.SupportedOSVersions = supportedOSVersions;
+            this.ApplianceMonitoringDetails = applianceMonitoringDetails;
+            this.GatewayOperationDetails = gatewayOperationDetails;
+            this.OperationName = operationName;
             CustomInit();
         }
 
@@ -247,6 +275,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sqlServerLicenseType")]
         public string SqlServerLicenseType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for Linux VM&#39;s. Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;LinuxServer&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linuxLicenseType")]
+        public string LinuxLicenseType {get; set; }
 
         /// <summary>
         /// Gets the data mover run as account Id.
@@ -406,6 +440,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public int? ResumeProgressPercentage {get; private set; }
 
         /// <summary>
+        /// Gets the delta sync progress percentage.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deltaSyncProgressPercentage")]
+        public int? DeltaSyncProgressPercentage {get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether checksum resync cycle is in progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isCheckSumResyncCycle")]
+        public string IsCheckSumResyncCycle {get; private set; }
+
+        /// <summary>
         /// Gets the initial seeding retry count.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "initialSeedingRetryCount")]
@@ -422,6 +468,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resumeRetryCount")]
         public long? ResumeRetryCount {get; private set; }
+
+        /// <summary>
+        /// Gets the delta sync retry count.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deltaSyncRetryCount")]
+        public long? DeltaSyncRetryCount {get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether resync is required.
@@ -454,9 +506,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public System.Collections.Generic.IDictionary<string, string> TargetDiskTags {get; set; }
 
         /// <summary>
-        /// Gets or sets list of supported inplace OS Upgrade versions.
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedOSVersions")]
         public System.Collections.Generic.IList<string> SupportedOSVersions {get; set; }
+
+        /// <summary>
+        /// Gets a value indicating the appliance monitoring details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "applianceMonitoringDetails")]
+        public ApplianceMonitoringDetails ApplianceMonitoringDetails {get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating the gateway operation details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayOperationDetails")]
+        public GatewayOperationDetails GatewayOperationDetails {get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating the SRS operation name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operationName")]
+        public string OperationName {get; private set; }
     }
 }

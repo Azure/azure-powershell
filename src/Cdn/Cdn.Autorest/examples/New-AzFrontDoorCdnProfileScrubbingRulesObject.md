@@ -23,4 +23,3 @@ RequestUri             EqualsAny             Disabled
 ```
 
 Create an in-memory object for ProfileScrubbingRules and disbale the Scrubbing rule
-

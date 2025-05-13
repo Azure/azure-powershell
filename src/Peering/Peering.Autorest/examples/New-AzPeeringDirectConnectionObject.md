@@ -9,8 +9,6 @@ New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixe
 BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps
 --------------- -------------------- --------------- ------------ ------------------- ------------------- --------------------------
 10000           c111111111111        PendingApproval                                  82
-
 ```
 
 Creates an in-memory direct connection object
-

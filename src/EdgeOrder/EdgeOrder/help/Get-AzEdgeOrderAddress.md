@@ -163,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResource
 
 ## NOTES
 

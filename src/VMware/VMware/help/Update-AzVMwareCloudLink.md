@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareCloudLink
 
 ## SYNOPSIS
-Update a CloudLink
+update a CloudLink
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-LinkedCloud <String>] 
 ```
 
 ## DESCRIPTION
-Update a CloudLink
+update a CloudLink
 
 ## EXAMPLES
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.PowerShell
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

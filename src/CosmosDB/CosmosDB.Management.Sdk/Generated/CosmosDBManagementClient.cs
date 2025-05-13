@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
@@ -211,6 +216,26 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the IServiceOperations
         /// </summary>
         public virtual IServiceOperations Service { get; private set; }
+        /// <summary>
+        /// Gets the IFleetOperations
+        /// </summary>
+        public virtual IFleetOperations Fleet { get; private set; }
+        /// <summary>
+        /// Gets the IFleetAnalyticsOperations
+        /// </summary>
+        public virtual IFleetAnalyticsOperations FleetAnalytics { get; private set; }
+        /// <summary>
+        /// Gets the IFleetspaceOperations
+        /// </summary>
+        public virtual IFleetspaceOperations Fleetspace { get; private set; }
+        /// <summary>
+        /// Gets the IFleetspaceAccountOperations
+        /// </summary>
+        public virtual IFleetspaceAccountOperations FleetspaceAccount { get; private set; }
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        public virtual IMongoMiResourcesOperations MongoMiResources { get; private set; }
         /// <summary>
         /// Initializes a new instance of the CosmosDBManagementClient class.
         /// </summary>
@@ -415,6 +440,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -485,8 +513,13 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTables = new RestorableTablesOperations(this);
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
+            this.Fleet = new FleetOperations(this);
+            this.FleetAnalytics = new FleetAnalyticsOperations(this);
+            this.Fleetspace = new FleetspaceOperations(this);
+            this.FleetspaceAccount = new FleetspaceAccountOperations(this);
+            this.MongoMiResources = new MongoMiResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-05-15-preview";
+            this.ApiVersion = "2025-05-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

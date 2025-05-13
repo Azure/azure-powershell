@@ -25,6 +25,12 @@ Remove-AzSapMonitorProviderInstance -InputObject <IHanaOnAzureIdentity> [-Defaul
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentitySapMonitor
+```
+Remove-AzSapMonitorProviderInstance -Name <String> -SapMonitorInputObject <IHanaOnAzureIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 
@@ -80,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity
@@ -99,7 +104,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentitySapMonitor
 Aliases: ProviderInstanceName
 
 Required: True
@@ -151,6 +156,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapMonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity
+Parameter Sets: DeleteViaIdentitySapMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

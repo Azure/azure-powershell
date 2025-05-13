@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"taiwannorthwest", "taiwannorth"},
             {"jioindiacentral", "jioindiawest"},
             {"jioindiawest", "jioindiacentral"},
+            {"israelnorthwest", "israelcentral"},
+            {"southwestus", "centralus"},
+            {"southcentralus2", "westcentralus"},
+            {"southeastus3", "westus3"},
+            {"southeastus5", "centralus"},
             {"southeastus", "westus3"}
         };
 
@@ -142,7 +147,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
             
             return containersCount;
-        }
+        }        
     }
 }
 

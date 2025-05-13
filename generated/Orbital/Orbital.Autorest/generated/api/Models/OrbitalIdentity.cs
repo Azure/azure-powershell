@@ -81,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Contact name.",
         SerializedName = @"contactName",
         PossibleTypes = new [] { typeof(string) })]
@@ -89,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Contact Profile name.",
         SerializedName = @"contactProfileName",
         PossibleTypes = new [] { typeof(string) })]
@@ -97,6 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Spacecraft ID.",
         SerializedName = @"spacecraftName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

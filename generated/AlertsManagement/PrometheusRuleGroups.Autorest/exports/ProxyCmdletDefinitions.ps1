@@ -27,7 +27,7 @@ Get-AzPrometheusRuleGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IPrometheusRuleGroupsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.alertsmanagement/get-azprometheusrulegroup
 #>
 function Get-AzPrometheusRuleGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -72,7 +72,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -131,6 +130,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -155,9 +163,7 @@ begin {
             List = 'Az.PrometheusRuleGroups.private\Get-AzPrometheusRuleGroup_List';
             List1 = 'Az.PrometheusRuleGroups.private\Get-AzPrometheusRuleGroup_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -171,6 +177,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -216,9 +225,9 @@ end {
 
 <#
 .Synopsis
-Create or update a Prometheus rule group definition.
+create a Prometheus rule group definition.
 .Description
-Create or update a Prometheus rule group definition.
+create a Prometheus rule group definition.
 .Example
 $rule1 = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m"
 $scope = "/subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/MyresourceGroup/providers/microsoft.monitor/accounts/MyAccounts"
@@ -233,7 +242,7 @@ $scope = "/subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/My
 New-AzPrometheusRuleGroup -ResourceGroupName MyresourceGroup -RuleGroupName MyRuleGroup -Location eastus -Rule $rule1 -Scope $scope -Enabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -241,7 +250,7 @@ To create the parameters described below, construct a hash table containing the 
 
 RULE <IPrometheusRule[]>: Defines the rules in the Prometheus rule group.
   Expression <String>: The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
-  [Action <IPrometheusRuleGroupAction[]>]: Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+  [Action <List<IPrometheusRuleGroupAction>>]: Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
     [ActionGroupId <String>]: The resource id of the action group to use.
     [ActionProperty <IPrometheusRuleGroupActionProperties>]: The properties of an action group object.
       [(Any) <String>]: This indicates any property can be added to this object.
@@ -260,7 +269,7 @@ RULE <IPrometheusRule[]>: Defines the rules in the Prometheus rule group.
 https://learn.microsoft.com/powershell/module/az.alertsmanagement/new-azprometheusrulegroup
 #>
 function New-AzPrometheusRuleGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -283,21 +292,20 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRule[]]
     # Defines the rules in the Prometheus rule group.
-    # To construct, see NOTES section for RULE properties and create a hash table.
     ${Rule},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.String[]]
@@ -306,37 +314,49 @@ param(
     # This may change in future.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.String]
     # Apply rule to data from a specific cluster.
     ${ClusterName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.String]
     # Rule group description.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Enable/disable rule group.
     ${Enabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.TimeSpan]
     # The interval in which to run the Prometheus rule group represented in ISO 8601 duration format.
     # Should be between 1 and 15 minutes
     ${Interval},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -394,6 +414,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -414,10 +443,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.PrometheusRuleGroups.private\New-AzPrometheusRuleGroup_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.PrometheusRuleGroups.private\New-AzPrometheusRuleGroup_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.PrometheusRuleGroups.private\New-AzPrometheusRuleGroup_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -431,6 +460,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -527,7 +559,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -592,6 +623,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -614,9 +654,7 @@ begin {
             Delete = 'Az.PrometheusRuleGroups.private\Remove-AzPrometheusRuleGroup_Delete';
             DeleteViaIdentity = 'Az.PrometheusRuleGroups.private\Remove-AzPrometheusRuleGroup_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -630,6 +668,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -675,16 +716,16 @@ end {
 
 <#
 .Synopsis
-Update an Prometheus rule group definition.
+update an Prometheus rule group definition.
 .Description
-Update an Prometheus rule group definition.
+update an Prometheus rule group definition.
 .Example
 Update-AzPrometheusRuleGroup -RuleGroupName MyRuleGroup -ResourceGroupName MyResourceGroup -Enabled:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -699,10 +740,12 @@ INPUTOBJECT <IPrometheusRuleGroupsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.alertsmanagement/update-azprometheusrulegroup
 #>
 function Update-AzPrometheusRuleGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -710,12 +753,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [System.String]
     # The name of the rule group.
     ${RuleGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -726,21 +773,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # the flag that indicates whether the Prometheus rule group is enabled.
     ${Enabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResourcePatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupResourcePatchParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -798,6 +858,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -819,10 +888,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.PrometheusRuleGroups.private\Update-AzPrometheusRuleGroup_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.PrometheusRuleGroups.private\Update-AzPrometheusRuleGroup_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.PrometheusRuleGroups.private\Update-AzPrometheusRuleGroup_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.PrometheusRuleGroups.private\Update-AzPrometheusRuleGroup_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -836,6 +905,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -889,7 +961,7 @@ New-AzPrometheusRuleGroupActionObject -ActionGroupId /subscriptions/fffffffff-ff
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -898,10 +970,10 @@ To create the parameters described below, construct a hash table containing the 
 ACTIONPROPERTY <IPrometheusRuleGroupActionProperties>: The properties of an action group object.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleGroupActionObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusrulegroupactionobject
 #>
 function New-AzPrometheusRuleGroupActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRuleGroupAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -912,9 +984,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupActionProperties]
     # The properties of an action group object.
-    # To construct, see NOTES section for ACTIONPROPERTY properties and create a hash table.
     ${ActionProperty}
 )
 
@@ -925,6 +996,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -953,6 +1027,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1005,7 +1082,7 @@ Create an in-memory object for PrometheusRule.
 New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m" -Expression 'histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service="billing-processing"}[5m])) by (job_type))'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1022,10 +1099,10 @@ ANNOTATION <IPrometheusRuleAnnotations>: The annotations clause specifies a set 
 LABEL <IPrometheusRuleLabels>: Labels to add or overwrite before storing the result.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusruleobject
 #>
 function New-AzPrometheusRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1038,9 +1115,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupAction[]]
     # Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-    # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
     [Parameter()]
@@ -1051,10 +1127,9 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleAnnotations]
     # The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
     # The annotation values can be templated.
-    # To construct, see NOTES section for ANNOTATION properties and create a hash table.
     ${Annotation},
 
     [Parameter()]
@@ -1071,9 +1146,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleLabels]
     # Labels to add or overwrite before storing the result.
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter()]
@@ -1109,6 +1183,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1137,6 +1214,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO.Abstractions;
 using System.Text.Json;
 using AzDev.Models;
@@ -20,25 +21,25 @@ namespace AzDev.Services
 {
     internal class DefaultContextProvider : IContextProvider
     {
+        private readonly ILogger _logger;
         private readonly string _contextFilePath;
         private IFileSystem _fileSystem;
         private DevContext _cachedContext;
 
-        public DefaultContextProvider(string contextFilePath) : this(contextFilePath, new FileSystem())
-        {
-        }
-
-        public DefaultContextProvider(string contextFilePath, IFileSystem fileSystem)
+        public DefaultContextProvider(string contextFilePath, IFileSystem fileSystem, ILogger logger)
         {
             _contextFilePath = contextFilePath;
             _fileSystem = fileSystem;
             _cachedContext = null;
+            _logger = logger;
         }
 
         public string ContextPath => _contextFilePath;
 
         public DevContext LoadContext()
         {
+            _logger.Debug($"[DefaultContextProvider] Loading context from {_contextFilePath}");
+
             if (_cachedContext != null)
             {
                 return _cachedContext;
@@ -52,6 +53,9 @@ namespace AzDev.Services
 
             string json = _fileSystem.File.ReadAllText(_contextFilePath);
             _cachedContext = JsonSerializer.Deserialize<DevContext>(json);
+
+            _logger.Debug($"[DefaultContextProvider] Context loaded successfully");
+
             return _cachedContext;
         }
 

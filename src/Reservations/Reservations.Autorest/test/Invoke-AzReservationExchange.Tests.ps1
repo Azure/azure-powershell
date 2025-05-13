@@ -101,17 +101,14 @@ Describe 'Invoke-AzReservationExchange' {
     }
 
     It 'Post' {
-        $calculateExchangeRequest = @{
-            ReservationsToExchange = $reservationsToReturn
-            ReservationsToPurchase = $reservationsToPurchase
-        }
-        $calculateExchangeRes = Invoke-AzReservationCalculateExchange -Body $calculateExchangeRequest
+        $reservationToReturn2 = "Quantity=1;ReservationId=/providers/microsoft.capacity/reservationOrders/068506a3-a704-4c3e-8d3a-6c566d4af58b/reservations/936a414b-5999-4eb9-9fe7-883c5fc19d34"
+        $reservation2ToPurchase2 = $reservationsToPurchase | ConvertTo-Json
+        $calculateExchangeRequest = "ReservationsToExchange=$reservationToReturn2;ReservationsToPurchase=$reservation2ToPurchase2"
+        $calculateExchangeRes = Invoke-AzReservationCalculateExchange -JsonString $calculateExchangeRequest
         $calculateExchangeRes.SessionId | Should -Not -Be $null
 
-        $request = @{
-            SessionId = $calculateExchangeRes.SessionId
-        }
-        $response = Invoke-AzReservationExchange -Body $request
+        $json = "SessionId=$($calculateExchangeRes.SessionId)"
+        $response = Invoke-AzReservationExchange -JsonString $json
         ExecuteTestCases($response)
     }
 }

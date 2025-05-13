@@ -15,8 +15,22 @@ Get deployment log file URL
 ### Get (Default)
 ```
 Get-AzSpringCloudAppDeploymentLogFileUrl -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringCloudAppDeploymentLogFileUrl -AppName <String> -Name <String>
+ -SpringInputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityApp
+```
+Get-AzSpringCloudAppDeploymentLogFileUrl -Name <String> -AppInputObject <ISpringCloudIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,7 +50,7 @@ Get-AzSpringCloudAppDeploymentLogFileUrl -ResourceGroupName SpringCloud-gp-junxi
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL.
@@ -47,19 +61,34 @@ Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceN
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL by pipeline.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentityApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySpring
 Aliases:
 
 Required: True
@@ -70,7 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -86,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -105,7 +134,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySpring, GetViaIdentityApp
 Aliases:
 
 Required: True
@@ -158,6 +187,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -217,37 +261,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILogFileUrlResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISpringCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
-  - `[AppName <String>]`: The name of the App resource.
-  - `[BindingName <String>]`: The name of the Binding resource.
-  - `[BuildName <String>]`: The name of the build resource.
-  - `[BuildResultName <String>]`: The name of the build result resource.
-  - `[BuildServiceName <String>]`: The name of the build service resource.
-  - `[BuilderName <String>]`: The name of the builder resource.
-  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
-  - `[BuildpackName <String>]`: The name of the buildpack resource.
-  - `[CertificateName <String>]`: The name of the certificate resource.
-  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
-  - `[DeploymentName <String>]`: The name of the Deployment resource.
-  - `[DomainName <String>]`: The name of the custom domain resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ServiceName <String>]`: The name of the Service resource.
-  - `[ServiceRegistryName <String>]`: The name of Service Registry.
-  - `[StackName <String>]`: The name of the stack resource.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

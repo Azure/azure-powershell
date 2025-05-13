@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -41,6 +43,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public Action<string> DebugLog;
         public Action<string> InteractiveInformationLog;
         internal Func<string, string> PromptAndReadLine;
+
+        public ICmdletContext CmdletContext;
 
         private List<AzureTenant> _queriedTenants = new List<AzureTenant>();
 
@@ -683,6 +687,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new SimpleAccessToken(account, tenantId);
             }
 
+            var optionalParameters = new Dictionary<string, object>()
+            {
+                {AuthenticationFactory.TokenCacheParameterName,  _cache},
+                {AuthenticationFactory.ResourceIdParameterName, resourceId },
+                {AuthenticationFactory.CmdletContextParameterName, CmdletContext }
+            };
+
             return AzureSession.Instance.AuthenticationFactory.Authenticate(
                 account,
                 environment,
@@ -690,8 +701,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 password,
                 promptBehavior,
                 promptAction,
-                _cache,
-                resourceId);
+                optionalParameters);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,

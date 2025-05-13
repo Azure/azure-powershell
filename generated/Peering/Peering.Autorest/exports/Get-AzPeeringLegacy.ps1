@@ -23,12 +23,12 @@ Lists all of the legacy peerings under the given subscription matching the speci
 Get-AzPeeringLegacy -Kind Direct -PeeringLocation Seattle
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringlegacy
 #>
 function Get-AzPeeringLegacy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -39,9 +39,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LegacyPeeringsKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Direct", "Exchange")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LegacyPeeringsKind]
+    [System.String]
     # The kind of the peering.
     ${Kind},
 
@@ -58,9 +58,9 @@ param(
     ${Asn},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Edge", "Transit", "Cdn", "Internal", "Ix", "IxRs", "Voice", "EdgeZoneForOperators")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType]
+    [System.String]
     # The direct peering type.
     ${DirectPeeringType},
 
@@ -120,6 +120,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -141,9 +150,7 @@ begin {
         $mapping = @{
             List = 'Az.Peering.private\Get-AzPeeringLegacy_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -157,6 +164,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

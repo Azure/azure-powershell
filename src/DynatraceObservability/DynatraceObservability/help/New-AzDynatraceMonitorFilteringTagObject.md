@@ -1,7 +1,7 @@
 ---
 external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorfilteringtagobject
+online version: https://learn.microsoft.com/powershell/module/Az.DynatraceObservability/new-azdynatracemonitorfilteringtagobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for FilteringTag.
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitorFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>]
+New-AzDynatraceMonitorFilteringTagObject [-Action <String>] [-Name <String>] [-Value <String>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Valid actions for a filtering tag.
 Exclusion takes priority over inclusion.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.FilteringTag
 
 ## NOTES
 

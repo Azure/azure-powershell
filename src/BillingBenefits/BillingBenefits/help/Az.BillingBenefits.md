@@ -36,12 +36,16 @@ Validate savings plan purchase.
 Validate savings plan patch.
 
 ### [New-AzBillingBenefitsReservationOrderAlias](New-AzBillingBenefitsReservationOrderAlias.md)
-Create a reservation order alias.
+create a reservation order alias.
 
 ### [New-AzBillingBenefitsSavingsPlanOrderAlias](New-AzBillingBenefitsSavingsPlanOrderAlias.md)
-Create a savings plan.
+create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 
 ### [Update-AzBillingBenefitsSavingsPlan](Update-AzBillingBenefitsSavingsPlan.md)
-Update savings plan.
+update savings plan.
+
+### [Update-AzBillingBenefitsSavingsPlanOrderAlias](Update-AzBillingBenefitsSavingsPlanOrderAlias.md)
+update a savings plan.
+Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
 

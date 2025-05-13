@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Updates specific properties of a job.
+update specific properties of a job.
 You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center.
 It can also be used to cancel an existing job.
 .Description
-Updates specific properties of a job.
+update specific properties of a job.
 You can call this operation to notify the Import/Export service that the hard drives comprising the import or export job have been shipped to the Microsoft data center.
 It can also be used to cancel an existing job.
 .Example
@@ -31,7 +31,7 @@ Get-AzImportExport -Name test-job -ResourceGroupName ImportTestRG | Update-AzImp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ DRIVELIST <IDriveStatus[]>: List of drives that comprise the job.
   [ManifestHash <String>]: The Base16-encoded MD5 hash of the manifest file on the drive.
   [ManifestUri <String>]: A URI that points to the blob containing the drive manifest file. 
   [PercentComplete <Int64?>]: Percentage completed for the drive. 
-  [State <DriveState?>]: The drive's current state. 
+  [State <String>]: The drive's current state. 
   [VerboseLogUri <String>]: A URI that points to the blob containing the verbose log for the data transfer operation. 
 
 INPUTOBJECT <IImportExportIdentity>: Identity Parameter
@@ -61,10 +61,12 @@ INPUTOBJECT <IImportExportIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.importexport/update-azimportexport
 #>
 function Update-AzImportExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('JobName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Path')]
     [System.String]
@@ -72,12 +74,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Path')]
     [System.String]
     # The resource group name uniquely identifies the resource group within the user subscription.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -88,7 +94,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -97,136 +102,168 @@ param(
     # Specifies the preferred language for the response.
     ${AcceptLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether the manifest files on the drives should be copied to block blobs.
     ${BackupDriveManifest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If specified, the value must be true.
     # The service will attempt to cancel the job.
     ${CancelRequested},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the carrier that is used to ship the import or export drives.
     ${DeliveryPackageCarrierName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.Int64]
     # The number of drives included in the package.
     ${DeliveryPackageDriveCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The date when the package is shipped.
     ${DeliveryPackageShipDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The tracking number of the package.
     ${DeliveryPackageTrackingNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus[]]
     # List of drives that comprise the job.
-    # To construct, see NOTES section for DRIVELIST properties and create a hash table.
     ${DriveList},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Indicates whether error logging or verbose logging is enabled.
     ${LogLevel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The city name to use when returning the drives.
     ${ReturnAddressCity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The country or region to use when returning the drives.
     ${ReturnAddressCountryOrRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Email address of the recipient of the returned drives.
     ${ReturnAddressEmail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # Phone number of the recipient of the returned drives.
     ${ReturnAddressPhone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The postal code to use when returning the drives.
     ${ReturnAddressPostalCode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The name of the recipient who will receive the hard drives when they are returned.
     ${ReturnAddressRecipientName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The state or province to use when returning the drives.
     ${ReturnAddressStateOrProvince},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The first line of the street address to use when returning the drives.
     ${ReturnAddressStreetAddress1},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The second line of the street address to use when returning the drives.
     ${ReturnAddressStreetAddress2},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The customer's account number with the carrier.
     ${ReturnShippingCarrierAccountNumber},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # The carrier's name.
     ${ReturnShippingCarrierName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
     [System.String]
     # If specified, the value must be Shipping, which tells the Import/Export service that the package for the job has been shipped.
     # The ReturnAddress and DeliveryPackage properties must have been set either in this request or in a previous request, otherwise the request will fail.
     ${State},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IUpdateJobParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IUpdateJobParametersTags]))]
     [System.Collections.Hashtable]
     # Specifies the tags that will be assigned to the job.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -284,6 +321,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -305,10 +351,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ImportExport.private\Update-AzImportExport_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ImportExport.private\Update-AzImportExport_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ImportExport.private\Update-AzImportExport_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ImportExport.private\Update-AzImportExport_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -322,6 +368,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

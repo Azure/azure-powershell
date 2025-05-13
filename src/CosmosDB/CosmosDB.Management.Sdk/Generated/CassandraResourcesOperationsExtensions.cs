@@ -1199,6 +1199,358 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static CassandraRoleDefinitionResource GetCassandraRoleDefinition(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ICassandraResourcesOperations)operations).GetCassandraRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleDefinitionResource> GetCassandraRoleDefinitionAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCassandraRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static CassandraRoleDefinitionResource CreateUpdateCassandraRoleDefinition(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters)
+        {
+                return ((ICassandraResourcesOperations)operations).CreateUpdateCassandraRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateCassandraRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleDefinitionResource> CreateUpdateCassandraRoleDefinitionAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateCassandraRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateCassandraRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static CassandraResourcesDeleteCassandraRoleDefinitionHeaders DeleteCassandraRoleDefinition(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ICassandraResourcesOperations)operations).DeleteCassandraRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraResourcesDeleteCassandraRoleDefinitionHeaders> DeleteCassandraRoleDefinitionAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteCassandraRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<CassandraRoleDefinitionResource> ListCassandraRoleDefinitions(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((ICassandraResourcesOperations)operations).ListCassandraRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CassandraRoleDefinitionResource>> ListCassandraRoleDefinitionsAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCassandraRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static CassandraRoleAssignmentResource GetCassandraRoleAssignment(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ICassandraResourcesOperations)operations).GetCassandraRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleAssignmentResource> GetCassandraRoleAssignmentAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCassandraRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static CassandraRoleAssignmentResource CreateUpdateCassandraRoleAssignment(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters)
+        {
+                return ((ICassandraResourcesOperations)operations).CreateUpdateCassandraRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateCassandraRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleAssignmentResource> CreateUpdateCassandraRoleAssignmentAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateCassandraRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateCassandraRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static CassandraResourcesDeleteCassandraRoleAssignmentHeaders DeleteCassandraRoleAssignment(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ICassandraResourcesOperations)operations).DeleteCassandraRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraResourcesDeleteCassandraRoleAssignmentHeaders> DeleteCassandraRoleAssignmentAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteCassandraRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<CassandraRoleAssignmentResource> ListCassandraRoleAssignments(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((ICassandraResourcesOperations)operations).ListCassandraRoleAssignmentsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CassandraRoleAssignmentResource>> ListCassandraRoleAssignmentsAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCassandraRoleAssignmentsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create or update an Azure Cosmos DB Cassandra keyspace
         /// </summary>
         /// <param name='operations'>
@@ -1943,6 +2295,186 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginMigrateCassandraViewToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, keyspaceName, viewName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static CassandraRoleDefinitionResource BeginCreateUpdateCassandraRoleDefinition(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters)
+        {
+                return ((ICassandraResourcesOperations)operations).BeginCreateUpdateCassandraRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateCassandraRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleDefinitionResource> BeginCreateUpdateCassandraRoleDefinitionAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateCassandraRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateCassandraRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static CassandraResourcesDeleteCassandraRoleDefinitionHeaders BeginDeleteCassandraRoleDefinition(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ICassandraResourcesOperations)operations).BeginDeleteCassandraRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraResourcesDeleteCassandraRoleDefinitionHeaders> BeginDeleteCassandraRoleDefinitionAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteCassandraRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static CassandraRoleAssignmentResource BeginCreateUpdateCassandraRoleAssignment(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters)
+        {
+                return ((ICassandraResourcesOperations)operations).BeginCreateUpdateCassandraRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateCassandraRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraRoleAssignmentResource> BeginCreateUpdateCassandraRoleAssignmentAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateCassandraRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateCassandraRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static CassandraResourcesDeleteCassandraRoleAssignmentHeaders BeginDeleteCassandraRoleAssignment(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ICassandraResourcesOperations)operations).BeginDeleteCassandraRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CassandraResourcesDeleteCassandraRoleAssignmentHeaders> BeginDeleteCassandraRoleAssignmentAsync(this ICassandraResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteCassandraRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
     }

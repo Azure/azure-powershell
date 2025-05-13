@@ -25,26 +25,26 @@ Creates the replication extension in the given vault.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IReplicationExtensionModel>: Replication extension model.
-  Property <IReplicationExtensionModelProperties>: Replication extension model properties.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Property <IReplicationExtensionModelProperties>]: The resource-specific properties for this resource.
     CustomProperty <IReplicationExtensionModelCustomProperties>: Replication extension model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
-  [SystemDataCreatedAt <DateTime?>]: Gets or sets the timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: Gets or sets identity that created the resource.
-  [SystemDataCreatedByType <String>]: Gets or sets the type of identity that created the resource: user, application,         managedIdentity.
-  [SystemDataLastModifiedAt <DateTime?>]: Gets or sets the timestamp of resource last modification (UTC).
-  [SystemDataLastModifiedBy <String>]: Gets or sets the identity that last modified the resource.
-  [SystemDataLastModifiedByType <String>]: Gets or sets the type of identity that last modified the resource: user, application,         managedIdentity.
+      InstanceType <String>: Discriminator property for ReplicationExtensionModelCustomProperties.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -55,7 +55,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -73,6 +73,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -93,15 +96,15 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 
-PROPERTY <IReplicationExtensionModelProperties>: Replication extension model properties.
+PROPERTY <IReplicationExtensionModelProperties>: The resource-specific properties for this resource.
   CustomProperty <IReplicationExtensionModelCustomProperties>: Replication extension model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for ReplicationExtensionModelCustomProperties.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationextension
 #>
 function New-AzMigrateReplicationExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -145,16 +148,16 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel]
     # Replication extension model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModelProperties]
-    # Replication extension model properties.
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModelProperties]
+    # The resource-specific properties for this resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 

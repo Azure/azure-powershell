@@ -16,7 +16,8 @@ Disables protection for a Backup-protected item.
 ```
 Disable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPoints]
  [-RetainRecoveryPointsAsPerPolicy] [-Force] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-SecureToken <SecureString>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +59,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $item[0] -RetainRecoveryPointsA
 $item = Get-AzRecoveryServicesBackupItem -VaultId $suspendVault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
  $item[0].ProtectionState
 ```
+
 ```output
 BackupsSuspended
 ```
@@ -135,6 +137,21 @@ If this option is used, all the recovery points for this item will expire as per
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

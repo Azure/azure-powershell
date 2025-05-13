@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareCluster
 
 ## SYNOPSIS
-Create a Cluster
+create a Cluster
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ New-AzVMwareCluster -InputObject <IVMwareIdentity> -SkuName <String> [-ClusterSi
 ```
 
 ## DESCRIPTION
-Create a Cluster
+create a Cluster
 
 ## EXAMPLES
 

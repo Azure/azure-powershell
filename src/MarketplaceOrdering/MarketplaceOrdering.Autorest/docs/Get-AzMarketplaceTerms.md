@@ -20,7 +20,7 @@ Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-Su
 
 ### Get
 ```
-Get-AzMarketplaceTerms -Name <String> -OfferType <OfferType> -Product <String> -Publisher <String>
+Get-AzMarketplaceTerms -Name <String> -OfferType <String> -Product <String> -Publisher <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Publisher identifier string of image being deployed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -156,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms
 
 ## NOTES
 

@@ -39,8 +39,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public SiteRecoveryManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -62,7 +70,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VaultSetting>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VaultSetting>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -73,14 +81,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (this.Client.SubscriptionId == null)
@@ -95,6 +103,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -104,8 +114,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
@@ -244,8 +254,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// Gets the vault setting. This includes the Migration Hub connection settings.
+        /// Gets the vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
@@ -270,7 +288,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> GetWithHttpMessagesAsync(string vaultSettingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> GetWithHttpMessagesAsync(string resourceGroupName, string resourceName, string vaultSettingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -281,14 +299,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (this.Client.SubscriptionId == null)
@@ -308,6 +326,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("vaultSettingName", vaultSettingName);
 
 
@@ -318,8 +338,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{vaultSettingName}", System.Uri.EscapeDataString(vaultSettingName));
 
@@ -461,6 +481,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <summary>
         /// The operation to configure vault setting.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
@@ -473,16 +500,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> CreateWithHttpMessagesAsync(string vaultSettingName, VaultSettingCreationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting> _response = await BeginCreateWithHttpMessagesAsync(vaultSettingName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, vaultSettingName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// The operation to configure vault setting.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='vaultSettingName'>
         /// Vault setting name.
         /// </param>
@@ -510,7 +544,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> BeginCreateWithHttpMessagesAsync(string vaultSettingName, VaultSettingCreationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VaultSetting>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string vaultSettingName, VaultSettingCreationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -521,14 +555,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            if (this.Client.ResourceName == null)
+            if (resourceGroupName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
 
-            if (this.Client.ResourceGroupName == null)
+            if (resourceName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ResourceGroupName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
             }
 
             if (this.Client.SubscriptionId == null)
@@ -553,6 +587,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("vaultSettingName", vaultSettingName);
 
                 tracingParameters.Add("input", input);
@@ -564,8 +600,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}").ToString();
-            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(this.Client.ResourceName));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(this.Client.ResourceGroupName));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{vaultSettingName}", System.Uri.EscapeDataString(vaultSettingName));
 
@@ -711,7 +747,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         }
         /// <summary>
-        /// Gets the list of vault setting. This includes the Migration Hub connection settings.
+        /// Gets the list of vault setting. This includes the Migration Hub connection
+        /// settings.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

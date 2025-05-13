@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,22 +38,18 @@ function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
         [string]
         $Location,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
         $RunOutputName,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Type of distribution.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Distribute as a Managed Disk Image.")]
         [Switch]
         $ManagedImageDistributor
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor]::New()
 
         if ($PSBoundParameters.ContainsKey('ImageId')) {
             $Object.ImageId = $ImageId
@@ -65,9 +62,6 @@ function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
         }
         if ($PSBoundParameters.ContainsKey('RunOutputName')) {
             $Object.RunOutputName = $RunOutputName
-        }
-        if ($ManagedImageDistributor.IsPresent) {
-            $Object.Type = "ManagedImage"
         }
         return $Object
     }

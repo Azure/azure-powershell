@@ -21,47 +21,47 @@ Create an in-memory object for DataBoxCustomerDiskJobDetails.
 Create an in-memory object for DataBoxCustomerDiskJobDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
 #>
 function New-AzDataBoxCustomerDiskJobDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for import jobs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
         $ImportDiskDetailsCollection,
         [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for export jobs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
         $ExportDiskDetailsCollection,
         [Parameter(HelpMessage="Carrier Account Number of customer for customer disk.")]
         [string]
         $ReturnToCustomerPackageDetailCarrierAccountNumber,
         [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails]
         $ContactDetail,
         [Parameter(HelpMessage="Details of the data to be exported from azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]]
         $DataExportDetail,
         [Parameter(HelpMessage="Details of the data to be imported into azure.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]]
         $DataImportDetail,
         [Parameter(HelpMessage="The expected size of the data, which needs to be transferred in this job, in terabytes.")]
         [int]
         $ExpectedDataSizeInTeraByte,
         [Parameter(HelpMessage="Details about which key encryption type is being used.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey]
         $KeyEncryptionKey,
         [Parameter(HelpMessage="Preferences for the order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences]
         $Preference,
         [Parameter(HelpMessage="Optional Reverse Shipping details for order.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails]
         $ReverseShippingDetail,
         [Parameter(HelpMessage="Shipping address of the customer.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress]
         $ShippingAddress,
         [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator])]
@@ -70,7 +70,7 @@ function New-AzDataBoxCustomerDiskJobDetailsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('ImportDiskDetailsCollection')) {
             $Object.ImportDiskDetailsCollection = $ImportDiskDetailsCollection

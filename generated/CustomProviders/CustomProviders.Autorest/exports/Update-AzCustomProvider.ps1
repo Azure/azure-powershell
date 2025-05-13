@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Updates an existing custom resource provider.
+update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 .Description
-Updates an existing custom resource provider.
+update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 .Example
 Update-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type -Tag @{MyTag="MyValue"} | Format-List
@@ -29,7 +29,7 @@ Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Update-AzCus
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest
+Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,10 +46,12 @@ INPUTOBJECT <ICustomProvidersIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.customproviders/update-azcustomprovider
 #>
 function Update-AzCustomProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ResourceProviderName')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Path')]
     [System.String]
@@ -57,12 +59,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -75,15 +81,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IResourceProvidersUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IResourceProvidersUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -141,6 +159,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -162,10 +189,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.CustomProviders.private\Update-AzCustomProvider_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.CustomProviders.private\Update-AzCustomProvider_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.CustomProviders.private\Update-AzCustomProvider_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.CustomProviders.private\Update-AzCustomProvider_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +206,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

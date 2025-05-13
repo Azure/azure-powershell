@@ -38,10 +38,10 @@ INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [CentralInstanceName <String>]: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   [DatabaseInstanceName <String>]: Database resource name string modeled as parameter for auto generation to work correctly.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SapVirtualInstanceName <String>]: The name of the Virtual Instances for SAP solutions resource
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/remove-azworkloadssapvirtualinstance
 #>
@@ -69,6 +69,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]

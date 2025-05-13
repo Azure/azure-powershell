@@ -25,12 +25,12 @@ Lists all the supported operations by the Microsoft.ChangeAnalysis resource prov
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IResourceProviderOperationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceProviderOperationDefinition
 .Link
 https://learn.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysisoperation
 #>
 function Get-AzChangeAnalysisOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.Api20210401.IResourceProviderOperationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Models.IResourceProviderOperationDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -96,12 +96,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.ChangeAnalysis.private\Get-AzChangeAnalysisOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

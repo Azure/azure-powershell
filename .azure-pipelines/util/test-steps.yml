@@ -11,10 +11,10 @@ steps:
     artifactName: build-${{ parameters.testFramework }}
 
 - task: UseDotNet@2
-  displayName: 'Use .NET SDK 6 for tests'
+  displayName: 'Use .NET SDK'
   inputs:
     packageType: sdk
-    version: 6.0.x
+    version: 8.x
 
 - task: PowerShell@2
   displayName: Remove pre-installed Az modules
@@ -32,16 +32,6 @@ steps:
   env:
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
   continueOnError: true
-
-# Comment this because it's not triggered for 3 years
-# - powershell: |
-#    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
-#    Install-Module -Name Az.Accounts -Scope CurrentUser -Force
-#    $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
-#    Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
-#   workingDirectory: 'artifacts/Debug'
-#   displayName: Test for AutoGen Modules With Windows PowerShell
-#   condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force

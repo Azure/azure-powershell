@@ -23,7 +23,7 @@ Create an in-memory object for TransferConfiguration.
 New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="True"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +49,7 @@ TRANSFERFILTERDETAIL <ITransferConfigurationTransferFilterDetails>: Map of filte
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -61,7 +61,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferAllDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails]
     # Map of filter type and the details to transfer all data.
     # This field is required only if the TransferConfigurationType is given as TransferAll.
     # To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
@@ -69,7 +69,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferFilterDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails]
     # Map of filter type and the details to filter.
     # This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
     # To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.

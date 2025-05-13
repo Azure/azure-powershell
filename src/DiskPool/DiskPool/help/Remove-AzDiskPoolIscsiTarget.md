@@ -19,6 +19,13 @@ Remove-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGrou
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityDiskPool
+```
+Remove-AzDiskPoolIscsiTarget -Name <String> -DiskPoolInputObject <IDiskPoolIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzDiskPoolIscsiTarget -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -77,6 +84,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskPoolInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
+Parameter Sets: DeleteViaIdentityDiskPool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DiskPoolName
 The name of the Disk Pool.
 
@@ -94,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
@@ -113,7 +134,7 @@ The name of the iSCSI Target.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityDiskPool
 Aliases: IscsiTargetName
 
 Required: True

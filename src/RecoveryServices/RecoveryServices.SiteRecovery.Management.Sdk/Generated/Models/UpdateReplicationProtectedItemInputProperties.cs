@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="licenseType">License type.
-        /// Possible values include: 'NotSpecified', 'NoLicenseType', 'WindowsServer'</param>
+        /// Possible values include: &#39;NotSpecified&#39;, &#39;NoLicenseType&#39;, &#39;WindowsServer&#39;</param>
 
         /// <param name="recoveryAvailabilitySetId">The target availability set Id.
         /// </param>

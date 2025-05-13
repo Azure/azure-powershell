@@ -8,19 +8,42 @@ schema: 2.0.0
 # New-AzDiskPoolIscsiTarget
 
 ## SYNOPSIS
-Create or Update an iSCSI Target.
+create an iSCSI Target.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
+```
+New-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGroupName <String> -AclMode <String>
+ [-SubscriptionId <String>] [-Lun <IIscsiLun[]>] [-ManagedBy <String>] [-ManagedByExtended <String[]>]
+ [-StaticAcl <IAcl[]>] [-TargetIqn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityDiskPoolExpanded
+```
+New-AzDiskPoolIscsiTarget -DiskPoolInputObject <IDiskPoolIdentity> -Name <String> -AclMode <String>
+ [-Lun <IIscsiLun[]>] [-ManagedBy <String>] [-ManagedByExtended <String[]>] [-StaticAcl <IAcl[]>]
+ [-TargetIqn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
 ```
 New-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGroupName <String>
- -AclMode <IscsiTargetAclMode> [-SubscriptionId <String>] [-Lun <IIscsiLun[]>] [-ManagedBy <String>]
- [-ManagedByExtended <String[]>] [-StaticAcl <IAcl[]>] [-TargetIqn <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or Update an iSCSI Target.
+create an iSCSI Target.
 
 ## EXAMPLES
 
@@ -43,8 +66,8 @@ This command creates an iSCSI target.
 Mode for Target connectivity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: True
@@ -85,12 +108,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskPoolInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
+Parameter Sets: CreateViaIdentityDiskPoolExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DiskPoolName
 The name of the Disk Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -102,11 +170,10 @@ Accept wildcard characters: False
 
 ### -Lun
 List of LUNs to be exposed through iSCSI Target.
-To construct, see NOTES section for LUN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiLun[]
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: False
@@ -122,7 +189,7 @@ Indicates if this resource is managed by another Azure resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: False
@@ -137,7 +204,7 @@ List of Azure resource ids that manage this resource.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: False
@@ -183,7 +250,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -195,11 +262,10 @@ Accept wildcard characters: False
 
 ### -StaticAcl
 Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
-To construct, see NOTES section for STATICACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IAcl[]
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: False
@@ -214,7 +280,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -229,7 +295,7 @@ iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDiskPoolExpanded
 Aliases:
 
 Required: False
@@ -275,9 +341,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiTarget
 
 ## NOTES
 

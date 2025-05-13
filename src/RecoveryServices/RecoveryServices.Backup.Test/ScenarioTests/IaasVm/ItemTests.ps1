@@ -227,7 +227,9 @@ function Test-AzureCrossZonalRestore
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID -RecoveryPointId $recoveryPointId
 		
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 
+		
+		$restoreJobCZR = $restoreJobCZR | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJobCZR.Status -match "Completed" } # later change to -eq
 
@@ -257,7 +259,7 @@ function Test-AzureCrossZonalRestoreToNoZone
 	$targetSubnetName = "default"
 	$owner = "sgholap"
 	$subscriptionId = "f2edfd5d-5496-4683-b94f-b3588c579009"
-	$recoveryPointId = "656339447820742" # latest vaultStandard recovery point	
+	$recoveryPointId = "654837130230650"
 	try
 	{	
 		# Setup
@@ -266,7 +268,9 @@ function Test-AzureCrossZonalRestoreToNoZone
 		$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -VaultId $vault.ID -RecoveryPointId $recoveryPointId
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
-			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 0 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 0 
+		
+		$restoreJobCZR = $restoreJobCZR | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJobCZR.Status -eq "Completed" }
 	}
@@ -339,7 +343,7 @@ function Test-AzureVMMUA
 	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
 	$vmFriendlyName = "hiaganewvm2"
 	# $resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/iaasvm-pstest-rg/providers/Microsoft.DataProtection/resourceGuards/mua-pstest-rguard"
-	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard"
+	$resGuardId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/ResourceGuards/test1-rGuard" # HiagaPSTest1
 	$lowerRetentionPolicy = "mua-vm-lowerDailyRet"
 	
 	try

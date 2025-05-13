@@ -35,12 +35,12 @@
     <!-- General -->
     <Configuration Condition="'$(Configuration)' != 'Release'">Debug</Configuration>
     <Scope Condition="$(Scope) == ''">All</Scope>
-    <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.2</TestFramework>
+    <TestFramework Condition="'$(TestFramework)' == ''">net8.0</TestFramework>
     <IsGenerateBased Condition="'$(IsGenerateBased)' != 'true'">false</IsGenerateBased>
     <IsSecurityCheck Condition="'$(IsSecurityCheck)' != 'true'">false</IsSecurityCheck>
     <ModifiedModuleBuild Condition="'$(ModifiedModuleBuild)' != 'true'">false</ModifiedModuleBuild>
 
-    
+
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
     <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>

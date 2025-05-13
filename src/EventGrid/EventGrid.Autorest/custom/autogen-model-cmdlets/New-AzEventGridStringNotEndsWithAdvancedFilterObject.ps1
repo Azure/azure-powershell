@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotEndsWithAdvancedFil
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotendswithadvancedfilterobject
 #>
 function New-AzEventGridStringNotEndsWithAdvancedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotEndsWithAdvancedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

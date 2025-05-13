@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
 using Microsoft.Rest.Azure;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 {   
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
         public string ApplicationIdentifier { get; set; } = DefaultSapSystemId;
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Default proximity placement group, for data, log, and if present the shared volume, in all volume groups. Specifies that the data, log, and shared volumes are to be created close to the VMs")]
         //[ResourceNameCompleter(
         //    "Microsoft.NetApp/netAppAccounts/volumegroups",
@@ -263,6 +264,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             HelpMessage = "Application specific placement rules for the volume group")]
         [ValidateNotNullOrEmpty]
         public IList<PlacementKeyValuePairs> GlobalPlacementRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'. To create a volume using customer-managed keys use 'Microsoft.KeyVault' note then you must set -NetworkFeature to Standard.")]
+        [PSArgumentCompleter("Microsoft.NetApp", "Microsoft.KeyVault")]
+        public string EncryptionKeySource { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'")]
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of Availability Zones")]
+        public string[] Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -406,6 +423,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             var sharedThroughput = this.SharedPerformance ?? CalculateThroughput(NodeMemory, SapVolumeType.Shared);
             var logBackupThroughput = this.LogBackupPerformance ?? CalculateThroughput(NodeMemory, SapVolumeType.LogBackup);
             var dataBackupThroughput = this.DataBackupPerformance ?? CalculateThroughput(NodeMemory, SapVolumeType.DataBackup);
+            var zoneList = this.Zone?.ToList();
 
             List<VolumeGroupVolumeProperties> volumesInGroup = new List<VolumeGroupVolumeProperties>();
             for (int i = 0; i < hostCount; i++)
@@ -429,8 +447,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     CreationToken = dataVolumeName,
                     SubnetId = SubnetId,
                     Tags = tagPairs,
-                    ExportPolicy = volumeExportPolicy
+                    ExportPolicy = volumeExportPolicy,
+                    Zones = zoneList,
+                    KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
+                    EncryptionKeySource = this.EncryptionKeySource
                 };
+
                 volumesInGroup.Add(dataVolume);
                 var logVolume = new VolumeGroupVolumeProperties {
                     Name = logVolumeName,
@@ -443,7 +465,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     CreationToken = logVolumeName,
                     SubnetId = SubnetId,
                     Tags = tagPairs,
-                    ExportPolicy = volumeExportPolicy
+                    ExportPolicy = volumeExportPolicy,
+                    Zones = zoneList,
+                    KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
+                    EncryptionKeySource = this.EncryptionKeySource
                 };
                 volumesInGroup.Add(logVolume);
                 //Shared, Log backup and Data backup only created for HostID==1.
@@ -461,8 +486,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         CreationToken = sharedVolumeName,
                         SubnetId = SubnetId,
                         Tags = tagPairs,
-                        ExportPolicy = volumeExportPolicy
+                        ExportPolicy = volumeExportPolicy,
+                        Zones = zoneList,
+                        KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
+                        EncryptionKeySource = this.EncryptionKeySource
                     };
+                    if (this.Zone != null)
+                    {
+                        sharedVolume.Zones = this.Zone?.ToList();
+                    }
                     volumesInGroup.Add(sharedVolume);
                     var logBackupVolume = new VolumeGroupVolumeProperties
                     {
@@ -476,8 +508,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         CreationToken = logBackupVolumeName,
                         SubnetId = SubnetId,
                         Tags = tagPairs,
-                        ExportPolicy = volumeExportPolicy
+                        ExportPolicy = volumeExportPolicy,
+                        Zones = zoneList,
+                        KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
+                        EncryptionKeySource = this.EncryptionKeySource
                     };
+                    if (this.Zone != null)
+                    {
+                        logBackupVolume.Zones = this.Zone?.ToList();
+                    }
                     volumesInGroup.Add(logBackupVolume);
                     var dataBackupVolume = new VolumeGroupVolumeProperties
                     {
@@ -491,8 +530,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                         CreationToken = dataBackupVolumeName,
                         SubnetId = SubnetId,
                         Tags = tagPairs,
-                        ExportPolicy = volumeExportPolicy
+                        ExportPolicy = volumeExportPolicy,
+                        Zones = zoneList,
+                        KeyVaultPrivateEndpointResourceId = this.KeyVaultPrivateEndpointResourceId,
+                        EncryptionKeySource = this.EncryptionKeySource
                     };
+                    if (this.Zone != null)
+                    {
+                        dataBackupVolume.Zones = this.Zone?.ToList();
+                    }
                     volumesInGroup.Add(dataBackupVolume);
                 }
             }

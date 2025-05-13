@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Fluid Relay server.</summary>
+    /// <summary>update a Fluid Relay server.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFluidRelayServer_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Description(@"Update a Fluid Relay server.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Description(@"update a Fluid Relay server.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}", ApiVersion = "2022-06-01")]
     public partial class UpdateAzFluidRelayServer_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,32 +37,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>The updatable properties of a Fluid Relay server</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerUpdate _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.FluidRelayServerUpdate();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>A FluidRelay Server.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.FluidRelayServer();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.FluidRelay Client => Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.ClientAPI;
-
-        /// <summary>
-        /// key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
-        /// or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version.
-        /// Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned)
-        /// should have permission to access this key url.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version. Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version. Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.",
-        SerializedName = @"keyEncryptionKeyUrl",
-        PossibleTypes = new [] { typeof(string) })]
-        public string CustomerManagedKeyEncryptionKeyUrl { get => _resourceBody.CustomerManagedKeyEncryptionKeyUrl ?? null; set => _resourceBody.CustomerManagedKeyEncryptionKeyUrl = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -70,6 +72,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -83,30 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType IdentityType { get => _resourceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType)""); set => _resourceBody.IdentityType = value; }
-
-        /// <summary>The list of user identities associated with the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of user identities associated with the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of user identities associated with the resource.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _resourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _resourceBody.IdentityUserAssignedIdentity = value; }
-
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity _inputObject;
 
@@ -117,43 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>Values can be SystemAssigned or UserAssigned</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Values can be SystemAssigned or UserAssigned")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Values can be SystemAssigned or UserAssigned",
-        SerializedName = @"identityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType KeyEncryptionKeyIdentityType { get => _resourceBody.KeyEncryptionKeyIdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType)""); set => _resourceBody.KeyEncryptionKeyIdentityType = value; }
-
-        /// <summary>
-        /// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource
-        /// group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.",
-        SerializedName = @"userAssignedIdentityResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyEncryptionKeyIdentityUserAssignedIdentityResourceId { get => _resourceBody.KeyEncryptionKeyIdentityUserAssignedIdentityResourceId ?? null; set => _resourceBody.KeyEncryptionKeyIdentityUserAssignedIdentityResourceId = value; }
-
-        /// <summary>The geo-location where the resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The geo-location where the resource lives",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _resourceBody.Location ?? null; set => _resourceBody.Location = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -166,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -193,32 +141,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerUpdateTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -241,6 +197,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -305,13 +266,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _resourceBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _resourceBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.UserAssignedIdentitiesValue());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _resourceBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _resourceBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _resourceBody.IdentityType = "None";
             }
         }
 
@@ -323,7 +347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'FluidRelayServersUpdate' operation"))
+                if (ShouldProcess($"Call remote 'FluidRelayServersCreateOrUpdate' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Token) )
                     {
@@ -362,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -377,7 +401,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.FluidRelayServersUpdateViaIdentity(InputObject.Id, _resourceBody, onOk, onDefault, this, Pipeline);
+                        _resourceBody = await this.Client.FluidRelayServersGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_resourceBody();
+                        await this.Client.FluidRelayServersCreateOrUpdateViaIdentity(InputObject.Id, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -394,13 +421,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.FluidRelayServerName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.FluidRelayServersUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroup ?? null, InputObject.FluidRelayServerName ?? null, _resourceBody, onOk, onDefault, this, Pipeline);
+                        _resourceBody = await this.Client.FluidRelayServersGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroup ?? null, InputObject.FluidRelayServerName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_resourceBody();
+                        await this.Client.FluidRelayServersCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroup ?? null, InputObject.FluidRelayServerName ?? null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_resourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -420,11 +450,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzFluidRelayServer_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzFluidRelayServer_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzFluidRelayServer_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_resourceBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -446,12 +484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -468,15 +506,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_resourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_resourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -486,12 +524,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer">Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer> response)
         {
             using( NoSynchronizationContext )
             {
@@ -503,8 +541,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

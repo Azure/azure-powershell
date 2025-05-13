@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStandbyVMPool
 
 ## SYNOPSIS
-Create a StandbyVirtualMachinePoolResource
+create a StandbyVirtualMachinePoolResource
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Create a StandbyVirtualMachinePoolResource
+create a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 

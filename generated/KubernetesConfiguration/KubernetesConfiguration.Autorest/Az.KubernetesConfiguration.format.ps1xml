@@ -2,283 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KubernetesConfigurationIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.AzureBlobDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KubernetesConfigurationIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClusterName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClusterResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClusterRp</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExtensionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FluxConfigurationName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OperationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceControlConfigurationName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClusterName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClusterResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClusterRp</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExtensionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FluxConfigurationName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OperationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceControlConfigurationName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Identity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Identity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Plan</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Plan</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Product</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PromotionCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Publisher</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Product</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PromotionCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Publisher</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.AzureBlobDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.AzureBlobDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.AzureBlobDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -334,9 +60,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.AzureBlobPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.AzureBlobPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.AzureBlobPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.AzureBlobPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -392,9 +118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.BucketDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.BucketDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.BucketDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.BucketDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -444,9 +170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.BucketPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.BucketPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.BucketPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.BucketPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -496,9 +222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ComplianceStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ComplianceStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ComplianceStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ComplianceStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -536,9 +262,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ConfigurationProtectedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ConfigurationProtectedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ConfigurationProtectedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -558,9 +284,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.Extension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.Extension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Extension</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Extension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -610,9 +370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -674,9 +434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesAksAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesAksAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesAksAssignedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesAksAssignedIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -702,9 +462,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesConfigurationProtectedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesConfigurationProtectedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesConfigurationProtectedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -724,9 +484,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesConfigurationSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesConfigurationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesConfigurationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesConfigurationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -746,9 +506,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesCustomLocationSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesCustomLocationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionPropertiesCustomLocationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionPropertiesCustomLocationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -768,9 +528,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionsList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -790,9 +550,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ExtensionStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ExtensionStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -836,9 +596,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -864,9 +624,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -892,9 +652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPatchPropertiesConfigurationProtectedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPatchPropertiesConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPatchPropertiesConfigurationProtectedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPatchPropertiesConfigurationProtectedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -914,9 +674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -996,9 +756,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPropertiesConfigurationProtectedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPropertiesConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPropertiesConfigurationProtectedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationPropertiesConfigurationProtectedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1018,9 +778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.FluxConfigurationsList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1040,9 +800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.GitRepositoryDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.GitRepositoryDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.GitRepositoryDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.GitRepositoryDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1098,9 +858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.GitRepositoryPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.GitRepositoryPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.GitRepositoryPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.GitRepositoryPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1156,9 +916,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.HelmOperatorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.HelmOperatorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.HelmOperatorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.HelmOperatorProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1184,9 +944,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.HelmReleasePropertiesDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.HelmReleasePropertiesDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.HelmReleasePropertiesDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.HelmReleasePropertiesDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1224,15 +984,110 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.KustomizationDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.KustomizationDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Identity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DependsOn</Label>
+            <Label>PrincipalId</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KubernetesConfigurationIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KubernetesConfigurationIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClusterName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClusterResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClusterRp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FluxConfigurationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceControlConfigurationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClusterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClusterResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClusterRp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FluxConfigurationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceControlConfigurationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KustomizationDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KustomizationDefinition#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
           <TableColumnHeader>
             <Label>Force</Label>
           </TableColumnHeader>
@@ -1258,9 +1113,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DependsOn</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Force</PropertyName>
               </TableColumnItem>
@@ -1288,15 +1140,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.KustomizationPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KustomizationPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.KustomizationPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.KustomizationPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>DependsOn</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Force</Label>
           </TableColumnHeader>
@@ -1319,9 +1168,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DependsOn</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Force</PropertyName>
               </TableColumnItem>
@@ -1346,9 +1192,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ManagedIdentityDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ManagedIdentityDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ManagedIdentityDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ManagedIdentityDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1368,9 +1214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ManagedIdentityPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ManagedIdentityPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ManagedIdentityPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ManagedIdentityPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1390,9 +1236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectReferenceDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectReferenceDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectReferenceDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectReferenceDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1418,9 +1264,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectStatusConditionDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectStatusConditionDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectStatusConditionDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectStatusConditionDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1458,9 +1304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectStatusDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectStatusDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ObjectStatusDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ObjectStatusDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1498,9 +1344,87 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusResultProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.OperationStatusResultProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1532,9 +1456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionPropertiesConfigurationProtectedSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionPropertiesConfigurationProtectedSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionPropertiesConfigurationProtectedSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionPropertiesConfigurationProtectedSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1554,9 +1478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionPropertiesConfigurationSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionPropertiesConfigurationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.PatchExtensionPropertiesConfigurationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.PatchExtensionPropertiesConfigurationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1576,9 +1500,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.RepositoryRefDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Plan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.RepositoryRefDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Plan#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Product</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PromotionCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Publisher</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Product</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PromotionCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Publisher</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.RepositoryRefDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.RepositoryRefDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1616,9 +1608,127 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ScopeCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ScopeCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperationDisplay#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperationList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ResourceProviderOperationList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ScopeCluster</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ScopeCluster#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1638,9 +1748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ScopeNamespace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ScopeNamespace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ScopeNamespace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ScopeNamespace#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1660,9 +1770,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ServicePrincipalDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ServicePrincipalDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ServicePrincipalDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ServicePrincipalDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1712,9 +1822,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ServicePrincipalPatchDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ServicePrincipalPatchDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ServicePrincipalPatchDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.ServicePrincipalPatchDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1764,9 +1874,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1798,9 +1908,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfigurationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfigurationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfigurationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfigurationList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1820,9 +1930,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.SourceControlConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SourceControlConfigurationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1896,173 +2006,51 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>NextLink</Label>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusResult</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>CreatedAt</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
+                <PropertyName>CreatedBy</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusResultProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.OperationStatusResultProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Origin</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
+                <PropertyName>CreatedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>LastModifiedAt</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Origin</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperationDisplay</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperationDisplay</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
+                <PropertyName>LastModifiedBy</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperationList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ResourceProviderOperationList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
+                <PropertyName>LastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

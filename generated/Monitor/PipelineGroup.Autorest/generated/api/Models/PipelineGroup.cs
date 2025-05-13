@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// <summary>Backing field for <see cref="ExtendedLocation" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesExtendedLocation _extendedLocation;
 
-        /// <summary>The extended location for given pipeline group.</summary>
+        /// <summary>The complex type of the extended location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesExtendedLocation ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureResourceManagerCommonTypesExtendedLocation()); set => this._extendedLocation = value; }
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     {
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IExporter> Exporter { get; set; }
-        /// <summary>The extended location for given pipeline group.</summary>
+        /// <summary>The complex type of the extended location.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesExtendedLocation ExtendedLocation { get; set; }
         /// <summary>The name of the extended location.</summary>
         string ExtendedLocationName { get; set; }

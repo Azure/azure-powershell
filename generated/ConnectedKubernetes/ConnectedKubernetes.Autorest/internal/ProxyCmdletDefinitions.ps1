@@ -25,12 +25,12 @@ Lists all of the available API operations for Connected Cluster resource.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesoperation
 #>
 function Get-AzConnectedKubernetesOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetesOperation_Get';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -149,7 +155,7 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -OnboardingTimeout 600
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -170,7 +176,7 @@ ARCAGENTRYCONFIGURATION <IArcAgentryConfigurations[]>: Configuration settings fo
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -201,15 +207,6 @@ param(
     ${AgentPublicKeyCertificate},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]
-    # The type of identity used for the connected cluster.
-    # The type 'SystemAssigned, includes a system created identity.
-    # The type 'None' means no identity is assigned to the connected cluster.
-    ${IdentityType},
-
-    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
@@ -236,9 +233,9 @@ param(
     ${AadProfileTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AutoUpgradeOptions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AutoUpgradeOptions]
+    [System.String]
     # Indicates whether the Arc agents on the be upgraded automatically to the latest version.
     # Defaults to Enabled.
     ${ArcAgentProfileAgentAutoUpgrade},
@@ -246,7 +243,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IAgentError[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IAgentError[]]
     # List of arc agentry and system components errors on the cluster resource.
     ${ArcAgentProfileAgentError},
 
@@ -259,23 +256,21 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ISystemComponent[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISystemComponent[]]
     # List of system extensions that are installed on the cluster resource.
-    # To construct, see NOTES section for ARCAGENTPROFILESYSTEMCOMPONENT properties and create a hash table.
     ${ArcAgentProfileSystemComponent},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IArcAgentryConfigurations[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentryConfigurations[]]
     # Configuration settings for customizing the behavior of the connected cluster.
-    # To construct, see NOTES section for ARCAGENTRYCONFIGURATION properties and create a hash table.
     ${ArcAgentryConfiguration},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+    [System.String]
     # Indicates whether Azure Hybrid Benefit is opted in
     ${AzureHybridBenefit},
 
@@ -290,6 +285,12 @@ param(
     [System.String]
     # The Kubernetes distribution version on this connected cluster.
     ${DistributionVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
@@ -310,9 +311,9 @@ param(
     ${Infrastructure},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ConnectedClusterKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("ProvisionedCluster")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ConnectedClusterKind]
+    [System.String]
     # The kind of connected cluster.
     ${Kind},
 
@@ -336,22 +337,22 @@ param(
     ${PrivateLinkScopeResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState]
+    [System.String]
     # Property which describes the state of private link on a connected cluster resource.
     ${PrivateLinkState},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState]
+    [System.String]
     # Provisioning state of the connected cluster resource.
     ${ProvisioningState},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -430,13 +431,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.ConnectedKubernetes.private\New-AzConnectedKubernetes_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -445,6 +447,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -530,7 +535,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -607,14 +611,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.ConnectedKubernetes.private\Remove-AzConnectedKubernetes_Delete';
             DeleteViaIdentity = 'Az.ConnectedKubernetes.private\Remove-AzConnectedKubernetes_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -623,6 +628,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -654,9 +662,9 @@ end {
 
 <#
 .Synopsis
-API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
+API to register a new Kubernetes cluster and update a tracked resource in Azure Resource Manager (ARM).
 .Description
-API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
+API to register a new Kubernetes cluster and update a tracked resource in Azure Resource Manager (ARM).
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 .Example
@@ -687,7 +695,7 @@ Set-AzConnectedKubernetes -InputObject $inputObject
 Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId | Set-AzConnectedKubernetes -WorkloadIdentityEnabled:$false
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -708,7 +716,7 @@ ARCAGENTRYCONFIGURATION <IArcAgentryConfigurations[]>: Configuration settings fo
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 #>
 function Set-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -739,13 +747,10 @@ param(
     ${AgentPublicKeyCertificate},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]
-    # The type of identity used for the connected cluster.
-    # The type 'SystemAssigned, includes a system created identity.
-    # The type 'None' means no identity is assigned to the connected cluster.
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
@@ -774,9 +779,9 @@ param(
     ${AadProfileTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AutoUpgradeOptions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AutoUpgradeOptions]
+    [System.String]
     # Indicates whether the Arc agents on the be upgraded automatically to the latest version.
     # Defaults to Enabled.
     ${ArcAgentProfileAgentAutoUpgrade},
@@ -784,7 +789,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IAgentError[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IAgentError[]]
     # List of arc agentry and system components errors on the cluster resource.
     ${ArcAgentProfileAgentError},
 
@@ -797,23 +802,21 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ISystemComponent[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ISystemComponent[]]
     # List of system extensions that are installed on the cluster resource.
-    # To construct, see NOTES section for ARCAGENTPROFILESYSTEMCOMPONENT properties and create a hash table.
     ${ArcAgentProfileSystemComponent},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IArcAgentryConfigurations[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IArcAgentryConfigurations[]]
     # Configuration settings for customizing the behavior of the connected cluster.
-    # To construct, see NOTES section for ARCAGENTRYCONFIGURATION properties and create a hash table.
     ${ArcAgentryConfiguration},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+    [System.String]
     # Indicates whether Azure Hybrid Benefit is opted in
     ${AzureHybridBenefit},
 
@@ -848,9 +851,9 @@ param(
     ${Infrastructure},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ConnectedClusterKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("ProvisionedCluster")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ConnectedClusterKind]
+    [System.String]
     # The kind of connected cluster.
     ${Kind},
 
@@ -874,22 +877,22 @@ param(
     ${PrivateLinkScopeResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState]
+    [System.String]
     # Property which describes the state of private link on a connected cluster resource.
     ${PrivateLinkState},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState]
+    [System.String]
     # Provisioning state of the connected cluster resource.
     ${ProvisioningState},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -968,13 +971,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ConnectedKubernetes.private\Set-AzConnectedKubernetes_UpdateExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -983,6 +987,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1029,7 +1036,7 @@ Update-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1044,7 +1051,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 #>
 function Update-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1072,13 +1079,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+    [System.String]
     # Indicates whether Azure Hybrid Benefit is opted in
     ${AzureHybridBenefit},
 
@@ -1096,7 +1102,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedClusterPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -1157,14 +1163,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.ConnectedKubernetes.private\Update-AzConnectedKubernetes_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ConnectedKubernetes.private\Update-AzConnectedKubernetes_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1173,6 +1180,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

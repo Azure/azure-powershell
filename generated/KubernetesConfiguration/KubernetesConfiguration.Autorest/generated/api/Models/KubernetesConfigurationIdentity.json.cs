@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_clusterRp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterRp"), out var __jsonClusterRp) ? (string)__jsonClusterRp : (string)ClusterRp;}
-            {_clusterResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterResourceName"), out var __jsonClusterResourceName) ? (string)__jsonClusterResourceName : (string)ClusterResourceName;}
-            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)ClusterName;}
-            {_extensionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("extensionName"), out var __jsonExtensionName) ? (string)__jsonExtensionName : (string)ExtensionName;}
-            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
-            {_fluxConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("fluxConfigurationName"), out var __jsonFluxConfigurationName) ? (string)__jsonFluxConfigurationName : (string)FluxConfigurationName;}
-            {_sourceControlConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("sourceControlConfigurationName"), out var __jsonSourceControlConfigurationName) ? (string)__jsonSourceControlConfigurationName : (string)SourceControlConfigurationName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_clusterRp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterRp"), out var __jsonClusterRp) ? (string)__jsonClusterRp : (string)_clusterRp;}
+            {_clusterResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterResourceName"), out var __jsonClusterResourceName) ? (string)__jsonClusterResourceName : (string)_clusterResourceName;}
+            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)_clusterName;}
+            {_extensionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("extensionName"), out var __jsonExtensionName) ? (string)__jsonExtensionName : (string)_extensionName;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)_operationId;}
+            {_fluxConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("fluxConfigurationName"), out var __jsonFluxConfigurationName) ? (string)__jsonFluxConfigurationName : (string)_fluxConfigurationName;}
+            {_sourceControlConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("sourceControlConfigurationName"), out var __jsonSourceControlConfigurationName) ? (string)__jsonSourceControlConfigurationName : (string)_sourceControlConfigurationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

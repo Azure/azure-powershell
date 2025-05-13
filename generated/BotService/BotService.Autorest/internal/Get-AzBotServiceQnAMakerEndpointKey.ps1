@@ -25,24 +25,13 @@ Lists the QnA Maker endpoint keys
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysRequestBody
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysRequestBody
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysResponse
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
-  [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
-  [Id <String>]: Resource identity path
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
-  [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
-  [ResourceName <String>]: The name of the Bot resource.
-  [SubscriptionId <String>]: Azure Subscription ID.
 
 PARAMETER <IQnAMakerEndpointKeysRequestBody>: The request body for a request to Bot Service Management to list QnA Maker endpoint keys.
   [Authkey <String>]: Subscription key which provides access to this API.
@@ -51,46 +40,45 @@ PARAMETER <IQnAMakerEndpointKeysRequestBody>: The request body for a request to 
 https://learn.microsoft.com/powershell/module/az.botservice/get-azbotserviceqnamakerendpointkey
 #>
 function Get-AzBotServiceQnAMakerEndpointKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysResponse])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IQnAMakerEndpointKeysRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IQnAMakerEndpointKeysRequestBody]
     # The request body for a request to Bot Service Management to list QnA Maker endpoint keys.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # Subscription key which provides access to this API.
     ${Authkey},
 
     [Parameter(ParameterSetName='GetExpanded')]
-    [Parameter(ParameterSetName='GetViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # the host name of the QnA Maker endpoint
     ${Hostname},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,16 +136,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_Get';
             GetExpanded = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetExpanded';
-            GetViaIdentity = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaIdentity';
-            GetViaIdentityExpanded = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaIdentityExpanded';
+            GetViaJsonFilePath = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.BotService.private\Get-AzBotServiceQnAMakerEndpointKey_GetViaJsonString';
         }
-        if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'GetExpanded', 'GetViaJsonFilePath', 'GetViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -166,6 +155,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

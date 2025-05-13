@@ -789,6 +789,236 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraViewToManualThroughputHeaders>> MigrateCassandraViewToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Definition with the given Id.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleDefinitionResource>> GetCassandraRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='createUpdateCassandraRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleDefinitionResource,CassandraResourcesCreateUpdateCassandraRoleDefinitionHeaders>> CreateUpdateCassandraRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraRoleDefinitionHeaders>> DeleteCassandraRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<CassandraRoleDefinitionResource>>> ListCassandraRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role
+        /// Assignment with the given Id.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleAssignmentResource>> GetCassandraRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='createUpdateCassandraRoleAssignmentParameters'>
+        /// The properties required to create or update a Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleAssignmentResource,CassandraResourcesCreateUpdateCassandraRoleAssignmentHeaders>> CreateUpdateCassandraRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraRoleAssignmentHeaders>> DeleteCassandraRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<CassandraRoleAssignmentResource>>> ListCassandraRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Create or update an Azure Cosmos DB Cassandra keyspace
         /// </summary>
         /// <remarks>
@@ -1276,6 +1506,122 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraViewToManualThroughputHeaders>> BeginMigrateCassandraViewToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string viewName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='createUpdateCassandraRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleDefinitionResource,CassandraResourcesCreateUpdateCassandraRoleDefinitionHeaders>> BeginCreateUpdateCassandraRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, CassandraRoleDefinitionResource createUpdateCassandraRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraRoleDefinitionHeaders>> BeginDeleteCassandraRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB Cassandra Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='createUpdateCassandraRoleAssignmentParameters'>
+        /// The properties required to create or update a Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CassandraRoleAssignmentResource,CassandraResourcesCreateUpdateCassandraRoleAssignmentHeaders>> BeginCreateUpdateCassandraRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, CassandraRoleAssignmentResource createUpdateCassandraRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB Cassandra Role Assignment.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraRoleAssignmentHeaders>> BeginDeleteCassandraRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

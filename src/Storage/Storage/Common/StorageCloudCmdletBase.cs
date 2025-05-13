@@ -670,23 +670,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             _cancellationTokenSource.Cancel();
             base.StopProcessing();
         }
-
-        /// <summary>
-        /// true if FIPS policy is enabled on the current machine
-        /// </summary>
-        public static bool fipsEnabled { get; } = IsFIPSEnabled();
-
-        internal static bool IsFIPSEnabled()
-        {
-            try
-            {
-                System.Security.Cryptography.MD5.Create();
-                return false;
-            }
-            catch (System.Reflection.TargetInvocationException)
-            {
-                return true;
-            }
-        }
     }
 }

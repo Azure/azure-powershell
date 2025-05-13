@@ -37,12 +37,14 @@ The details on the file(s) available for download will be available in the polli
 New-AzCostManagementDetailReport -Scope "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Metric 'ActualCost' -TimePeriodStart "2022-10-01" -TimePeriodEnd "2022-10-20"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResults
 .Link
 https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
+.Link
+https://docs.microsoft.com/en-us/rest/api/costmanagement/
 #>
 function New-AzCostManagementDetailReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResults])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -53,7 +55,7 @@ param(
     # Also, Modern Commerce Account scopes are '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for billingAccount scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
     ${Scope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # This parameter can be used only by Enterprise Agreement customers.
@@ -63,7 +65,7 @@ param(
     # If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost.
     ${BillingPeriod},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # This parameter can only be used by Microsoft Customer Agreement customers.
@@ -72,27 +74,39 @@ param(
     # If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost.
     ${InvoiceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.CostDetailsMetricType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PSArgumentCompleterAttribute("ActualCost", "AmortizedCost")]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.CostDetailsMetricType]
+    [System.String]
     # The type of the detailed report.
     # By default ActualCost is provided
     ${Metric},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The end date to pull data to.
     # example format 2020-03-15
     ${TimePeriodEnd},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
     [System.String]
     # The start date to pull data from.
     # example format 2020-03-15
     ${TimePeriodStart},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -162,6 +176,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,6 +205,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.CostManagement.private\New-AzCostManagementDetailReport_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -190,6 +215,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

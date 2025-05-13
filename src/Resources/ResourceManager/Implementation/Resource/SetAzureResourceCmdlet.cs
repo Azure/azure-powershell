@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = this.DetermineApiVersion(resourceId);
                     var resourceBody = this.GetResourceBody();
 
                     var operationResult = this.ShouldUsePatchSemantics()
@@ -234,9 +234,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private async Task<JObject> GetResource()
         {
             var resourceId = this.GetResourceId();
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = DetermineApiVersion(resourceId);
 
             return await this
                 .GetResourcesClient()

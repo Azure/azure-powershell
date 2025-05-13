@@ -274,7 +274,7 @@ function Bump-AzVersion
     # Add artifacts as PSModulePath to skip installation
     if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
     {
-        $env:PSModulePath += ";$resolvedArtifactsOutputPath"
+        $env:PSModulePath = "$resolvedArtifactsOutputPath;" + $env:PSModulePath
     }
 
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
@@ -404,6 +404,7 @@ function Update-AzSyntaxChangelog
     $newContent = $changeLog + "`r`n" + $currentContent
     Set-Content -Path $targetFile -Value $newContent
     Remove-Item -Path $syntaxChangeLog
+    Write-Host "SyntaxChangeLog revising completed."
 }
 
 function New-CommandMappingFile
@@ -516,7 +517,7 @@ switch ($PSCmdlet.ParameterSetName)
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {
-            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.ps1
+            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.psm1
             Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
         }
     }

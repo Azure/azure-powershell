@@ -36,6 +36,7 @@ using Azure.Storage;
 using Azure.Storage.Blobs.Specialized;
 using Azure;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -699,8 +700,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 ValidateBlobProperties(BlobProperties);
             }
 
-            // if FIPS policy is enabled, must use native MD5
-            if (fipsEnabled)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 CloudStorageAccount.UseV1MD5 = false;
             }

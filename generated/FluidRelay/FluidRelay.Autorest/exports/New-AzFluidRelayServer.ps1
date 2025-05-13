@@ -16,19 +16,32 @@
 
 <#
 .Synopsis
-Create or Update a Fluid Relay server.
+create a Fluid Relay server.
 .Description
-Create or Update a Fluid Relay server.
+create a Fluid Relay server.
 .Example
-New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -IdentityUserAssignedIdentity @{"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned' -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
+New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -EnableSystemAssignedIdentity:$true -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+RESOURCEGROUPINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
 #>
 function New-AzFluidRelayServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -38,26 +51,38 @@ param(
     # The Fluid Relay server resource name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
     # The resource group containing the resource.
     ${ResourceGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription id (GUID) for this resource.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${ResourceGroupInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
     [System.String]
     # key encryption key Url, with or without a version.
@@ -67,28 +92,23 @@ param(
     # The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.
     ${CustomerManagedKeyEncryptionKeyUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType]
+    [System.String]
     # Values can be SystemAssigned or UserAssigned
     ${KeyEncryptionKeyIdentityType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
     [System.String]
     # user assigned identity to use for accessing key encryption key Url.
@@ -96,26 +116,50 @@ param(
     # Mutually exclusive with identityType systemAssignedIdentity.
     ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ProvisioningState]
+    [System.String]
     # Provision states for FluidRelay RP
     ${ProvisioningState},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.StorageSku])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.PSArgumentCompleterAttribute("standard", "basic")]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.StorageSku]
+    [System.String]
     # Sku of the storage associated with the resource
     ${Storagesku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityResourceGroupExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -173,6 +217,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -193,10 +246,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.FluidRelay.private\New-AzFluidRelayServer_CreateExpanded';
+            CreateViaIdentityResourceGroupExpanded = 'Az.FluidRelay.private\New-AzFluidRelayServer_CreateViaIdentityResourceGroupExpanded';
+            CreateViaJsonFilePath = 'Az.FluidRelay.private\New-AzFluidRelayServer_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.FluidRelay.private\New-AzFluidRelayServer_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -210,6 +264,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

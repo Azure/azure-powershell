@@ -21,17 +21,17 @@ Create an in-memory object for KeyEncryptionKey.
 Create an in-memory object for KeyEncryptionKey.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Managed identity properties used for key encryption.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IIdentityProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties]
         $IdentityProperty,
         [Parameter(Mandatory, HelpMessage="Type of encryption key used for key encryption.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType])]
@@ -46,7 +46,7 @@ function New-AzDataBoxKeyEncryptionKeyObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.KeyEncryptionKey]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey]::New()
 
         if ($PSBoundParameters.ContainsKey('IdentityProperty')) {
             $Object.IdentityProperty = $IdentityProperty

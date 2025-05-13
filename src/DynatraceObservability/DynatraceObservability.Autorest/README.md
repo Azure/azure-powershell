@@ -27,30 +27,30 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 8820fa48b53c2c5c6cada3d44046b879932893cd
+commit: 099640c73c1af7f9410f184d204807f9d0da2edb
+tag: package-2023-04-27
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/dynatrace.json
+  - $(repo)/specification/dynatrace/resource-manager/readme.md
+
+try-require: 
+  - $(repo)/specification/dynatrace/resource-manager/readme.powershell.md
+
 title: DynatraceObservability
 subject-prefix: Dynatrace
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
       verb: Set
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
   # Rename subject
   - where:
       subject: ^MonitorAccountCredentials$
@@ -298,9 +298,10 @@ directive:
           - ProvisioningState
           - SingleSignOnState
           - SingleSignOnUrl
-  # - model-cmdlet:
-    # - FilteringTag 
-    # --> Generate cmdlet: New-AzDynatraceMonitorFilteringTagObject
+  - model-cmdlet:
+      - model-name: FilteringTag
+        cmdlet-name: New-AzDynatraceMonitorFilteringTagObject
+
   - from: GetAzDynatraceMonitorAppService_List.cs
     where: $
     transform: $ = $.replace(", SupportsShouldProcess = true" ,"");

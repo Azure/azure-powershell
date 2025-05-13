@@ -27,7 +27,7 @@ title: CosmosDBManagementClient
 ### 
 ``` yaml 
 commit: main
-apiversion: "2024-05-15-preview"
+apiversion: "2025-05-01-preview"
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/cosmos-db.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/dataTransferService.json
@@ -39,6 +39,11 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/rbac.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/restorable.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/fleet.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/tablerbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/gremlinrbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/cassandrarbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/mongoMIrbac.json
 
 output-folder: Generated
 

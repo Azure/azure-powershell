@@ -18,12 +18,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Site name of interest.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<StorageClassification> ListByReplicationFabrics(this IReplicationStorageClassificationsOperations operations, string fabricName)
+        public static Microsoft.Rest.Azure.IPage<StorageClassification> ListByReplicationFabrics(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
-                return ((IReplicationStorageClassificationsOperations)operations).ListByReplicationFabricsAsync(fabricName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationsOperations)operations).ListByReplicationFabricsAsync(resourceGroupName, resourceName, fabricName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +39,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Site name of interest.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassification>> ListByReplicationFabricsAsync(this IReplicationStorageClassificationsOperations operations, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassification>> ListByReplicationFabricsAsync(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName, string fabricName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(fabricName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationFabricsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,15 +65,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='storageClassificationName'>
         /// Storage classification name.
         /// </param>
-        public static StorageClassification Get(this IReplicationStorageClassificationsOperations operations, string fabricName, string storageClassificationName)
+        public static StorageClassification Get(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName)
         {
-                return ((IReplicationStorageClassificationsOperations)operations).GetAsync(fabricName, storageClassificationName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, storageClassificationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -67,6 +88,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -77,9 +105,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageClassification> GetAsync(this IReplicationStorageClassificationsOperations operations, string fabricName, string storageClassificationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageClassification> GetAsync(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, storageClassificationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -90,9 +118,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<StorageClassification> List(this IReplicationStorageClassificationsOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StorageClassification> List(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationStorageClassificationsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationsOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -101,12 +136,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassification>> ListAsync(this IReplicationStorageClassificationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassification>> ListAsync(this IReplicationStorageClassificationsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

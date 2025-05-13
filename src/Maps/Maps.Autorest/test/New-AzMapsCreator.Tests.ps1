@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMapsCreator' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         {  
           New-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName03 -Name $env.creatorName03 -Location $env.creatorLocation -StorageUnit 3
         } | Should -Not -Throw

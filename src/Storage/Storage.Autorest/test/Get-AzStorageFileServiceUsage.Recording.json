@@ -1,0 +1,45 @@
+{
+  "Get-AzStorageFileServiceUsage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "37111ece-efd8-499e-96c7-652f9a1b9988" ],
+        "CommandName": [ "Get-AzStorageFileServiceUsage" ],
+        "FullCommandName": [ "Get-AzStorageFileServiceUsage_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.0", "Az.Storage/8.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5cccb2aa-f3c0-4eb2-8122-ec8a4169a0bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "cab13187-875c-44f1-a013-7b77b1ed5822" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250218T054956Z:cab13187-875c-44f1-a013-7b77b1ed5822" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D57841BA453A439A90847909CDCA91B0 Ref B: MAA201060513045 Ref C: 2025-02-18T05:49:55Z" ],
+        "Date": [ "Tue, 18 Feb 2025 05:49:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1120" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default\",\"name\":\"default\",\"type\":\"Microsoft.Storage/storageAccounts/fileServices/usages\",\"properties\":{\"storageAccountLimits\":{\"maxFileShares\":50,\"maxProvisionedStorageGiB\":262144,\"maxProvisionedIOPS\":102400,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareLimits\":{\"minProvisionedStorageGiB\":32,\"maxProvisionedStorageGiB\":262144,\"minProvisionedIOPS\":3000,\"maxProvisionedIOPS\":102400,\"minProvisionedBandwidthMiBPerSec\":125,\"maxProvisionedBandwidthMiBPerSec\":10340},\"fileShareRecommendations\":{\"baseIOPS\":3000,\"ioScalar\":1.0,\"baseBandwidthMiBPerSec\":125,\"bandwidthScalar\":0.1},\"burstingConstants\":{\"burstFloorIOPS\":10000,\"burstIOScalar\":3.0,\"burstTimeframeSeconds\":3600},\"storageAccountUsage\":{\"liveShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0},\"softDeletedShares\":{\"fileShareCount\":0,\"provisionedStorageGiB\":0,\"provisionedIOPS\":0,\"provisionedBandwidthMiBPerSec\":0}}}}",
+      "isContentBase64": false
+    }
+  }
+}

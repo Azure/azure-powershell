@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -117,11 +117,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of Azure region.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         SerializedName = @"sapVirtualInstanceName",
         PossibleTypes = new [] { typeof(string) })]
         string SapVirtualInstanceName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -166,13 +166,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
         string DatabaseInstanceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The name of Azure region.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Virtual Instances for SAP solutions resource</summary>
         string SapVirtualInstanceName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
 
     }

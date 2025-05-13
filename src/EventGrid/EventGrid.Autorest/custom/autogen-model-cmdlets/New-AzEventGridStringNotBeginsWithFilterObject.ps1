@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotBeginsWithFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotbeginswithfilterobject
 #>
 function New-AzEventGridStringNotBeginsWithFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotBeginsWithFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

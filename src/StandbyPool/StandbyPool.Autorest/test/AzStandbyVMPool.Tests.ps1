@@ -37,6 +37,7 @@ Describe 'AzStandbyVMPool' {
             $standbyvmpool.Name | Should -Be latest
             $standbyvmpool.InstanceCountSummary.Count | Should BeGreaterThan 0
             $standbyvmpool.InstanceCountSummary.instanceCountsByState.Count | Should BeGreaterThan 0
+            $standbyvmpool.StatusCode | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 

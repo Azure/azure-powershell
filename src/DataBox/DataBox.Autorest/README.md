@@ -33,7 +33,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/databox.json
+  - "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/cb5ef7fc4cb443bd5f6b21d02cbce41051beb6ae/specification/databox/resource-manager/Microsoft.DataBox/stable/2025-02-01/databox.json"
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -148,7 +148,7 @@ directive:
           
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets');  
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets');  
     
   - model-cmdlet:
     - DataBoxDiskJobDetails

@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 return container;
             }
+            AddIf( null != this._securityPolicyConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) this._securityPolicyConfiguration.ToJson(null,serializationMode) : null, "securityPolicyConfigurations" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._configurationEndpoint)
@@ -122,6 +123,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeRead))
             {
+                if (null != this._securityPolicy)
+                {
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._securityPolicy )
+                    {
+                        AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
+                    }
+                    container.Add("securityPolicies",__h);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeRead))
+            {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
             AfterToJson(ref container);
@@ -140,9 +153,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
             {
                 return;
             }
+            {_securityPolicyConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject>("securityPolicyConfigurations"), out var __jsonSecurityPolicyConfigurations) ? Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.SecurityPolicyConfigurations.FromJson(__jsonSecurityPolicyConfigurations) : _securityPolicyConfiguration;}
             {_configurationEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray>("configurationEndpoints"), out var __jsonConfigurationEndpoints) ? If( __jsonConfigurationEndpoints as Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _configurationEndpoint;}
             {_frontend = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray>("frontends"), out var __jsonFrontends) ? If( __jsonFrontends as Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId) (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceId.FromJson(__p) )) ))() : null : _frontend;}
             {_association = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray>("associations"), out var __jsonAssociations) ? If( __jsonAssociations as Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId) (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceId.FromJson(__k) )) ))() : null : _association;}
+            {_securityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray>("securityPolicies"), out var __jsonSecurityPolicies) ? If( __jsonSecurityPolicies as Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IResourceId) (Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ResourceId.FromJson(__f) )) ))() : null : _securityPolicy;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }

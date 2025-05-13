@@ -11,7 +11,7 @@ public class DefaultContextProviderTests
     {
         var fs = new MockFileSystem();
         const string profilePath = @"C:\DevContext.json";
-        var contextProvider = new DefaultContextProvider(profilePath, fs);
+        var contextProvider = new DefaultContextProvider(profilePath, fs, NoopLogger.Instance);
         // context file should not exist
         Assert.False(fs.FileExists(profilePath));
         Assert.Throws<FileNotFoundException>(contextProvider.LoadContext);
@@ -28,7 +28,7 @@ public class DefaultContextProviderTests
         // the in-memory context should be updated
         Assert.Equal(context.AzurePowerShellRepositoryRoot, contextProvider.LoadContext().AzurePowerShellRepositoryRoot);
         // force reload from disk
-        contextProvider = new DefaultContextProvider(profilePath, fs);
+        contextProvider = new DefaultContextProvider(profilePath, fs, NoopLogger.Instance);
         Assert.Equal(context.AzurePowerShellRepositoryRoot, contextProvider.LoadContext().AzurePowerShellRepositoryRoot);
     }
 
@@ -44,7 +44,7 @@ public class DefaultContextProviderTests
                 ""UnsupportedProperty"":""value""
             }") }
         }); // UnsupportedProperty should not block deserialization
-        var contextProvider = new DefaultContextProvider(profilePath, fs);
+        var contextProvider = new DefaultContextProvider(profilePath, fs, NoopLogger.Instance);
         var context = contextProvider.LoadContext();
         Assert.Equal(@"D:\azure-powershell", context.AzurePowerShellRepositoryRoot);
         Assert.Equal(@"D:\azure-powershell-common", context.AzurePowerShellCommonRepositoryRoot);

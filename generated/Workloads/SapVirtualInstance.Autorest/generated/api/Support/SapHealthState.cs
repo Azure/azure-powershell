@@ -10,12 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapHealthState :
         System.IEquatable<SapHealthState>
     {
+        /// <summary>SAP System health is degraded.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHealthState Degraded = @"Degraded";
 
+        /// <summary>SAP System health is healthy.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHealthState Healthy = @"Healthy";
 
+        /// <summary>SAP System is unhealthy.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHealthState Unhealthy = @"Unhealthy";
 
+        /// <summary>SAP System health is unknown.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHealthState Unknown = @"Unknown";
 
         /// <summary>the value for an instance of the <see cref="SapHealthState" /> Enum.</summary>

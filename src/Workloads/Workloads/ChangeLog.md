@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.Workloads
+* Upgraded API version to 2024-09-01
+
 ## Version 0.4.0
 * Upgraded nuget package to signed package.
 
@@ -39,4 +43,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.Workloads
-

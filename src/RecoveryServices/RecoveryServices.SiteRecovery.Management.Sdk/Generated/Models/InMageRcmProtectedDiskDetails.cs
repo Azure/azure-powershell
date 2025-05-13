@@ -36,6 +36,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="capacityInBytes">The disk capacity in bytes.
         /// </param>
 
+        /// <param name="diskState">The disk state.
+        /// Possible values include: &#39;Unavailable&#39;, &#39;InitialReplicationPending&#39;,
+        /// &#39;InitialReplicationFailed&#39;, &#39;Protected&#39;</param>
+
         /// <param name="logStorageAccountId">The log storage account ARM Id.
         /// </param>
 
@@ -52,7 +56,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="diskType">The disk type.
-        /// Possible values include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;,
+        /// &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;</param>
 
         /// <param name="dataPendingInLogDataStoreInMb">The data pending in log data store in MB.
         /// </param>
@@ -68,13 +73,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="resyncDetails">The resync details.
         /// </param>
-        public InMageRcmProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string diskType = default(string), double? dataPendingInLogDataStoreInMb = default(double?), double? dataPendingAtSourceAgentInMb = default(double?), string isInitialReplicationComplete = default(string), InMageRcmSyncDetails irDetails = default(InMageRcmSyncDetails), InMageRcmSyncDetails resyncDetails = default(InMageRcmSyncDetails))
+
+        /// <param name="customTargetDiskName">The custom target Azure disk name.
+        /// </param>
+
+        /// <param name="sectorSizeInBytes">The logical sector size (in bytes), 512 by default.
+        /// </param>
+        public InMageRcmProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string diskState = default(string), string logStorageAccountId = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string diskType = default(string), double? dataPendingInLogDataStoreInMb = default(double?), double? dataPendingAtSourceAgentInMb = default(double?), string isInitialReplicationComplete = default(string), InMageRcmSyncDetails irDetails = default(InMageRcmSyncDetails), InMageRcmSyncDetails resyncDetails = default(InMageRcmSyncDetails), string customTargetDiskName = default(string), int? sectorSizeInBytes = default(int?))
 
         {
             this.DiskId = diskId;
             this.DiskName = diskName;
             this.IsOSDisk = isOSDisk;
             this.CapacityInBytes = capacityInBytes;
+            this.DiskState = diskState;
             this.LogStorageAccountId = logStorageAccountId;
             this.DiskEncryptionSetId = diskEncryptionSetId;
             this.SeedManagedDiskId = seedManagedDiskId;
@@ -86,6 +98,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.IsInitialReplicationComplete = isInitialReplicationComplete;
             this.IrDetails = irDetails;
             this.ResyncDetails = resyncDetails;
+            this.CustomTargetDiskName = customTargetDiskName;
+            this.SectorSizeInBytes = sectorSizeInBytes;
             CustomInit();
         }
 
@@ -120,6 +134,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public long? CapacityInBytes {get; private set; }
 
         /// <summary>
+        /// Gets the disk state. Possible values include: &#39;Unavailable&#39;, &#39;InitialReplicationPending&#39;, &#39;InitialReplicationFailed&#39;, &#39;Protected&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskState")]
+        public string DiskState {get; private set; }
+
+        /// <summary>
         /// Gets the log storage account ARM Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logStorageAccountId")]
@@ -150,7 +170,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string TargetManagedDiskId {get; private set; }
 
         /// <summary>
-        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the disk type. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;UltraSSD_LRS&#39;, &#39;StandardSSD_ZRS&#39;, &#39;Premium_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskType")]
         public string DiskType {get; set; }
@@ -184,5 +204,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resyncDetails")]
         public InMageRcmSyncDetails ResyncDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom target Azure disk name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customTargetDiskName")]
+        public string CustomTargetDiskName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the logical sector size (in bytes), 512 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sectorSizeInBytes")]
+        public int? SectorSizeInBytes {get; set; }
     }
 }

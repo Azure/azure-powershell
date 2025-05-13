@@ -60,6 +60,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Fluid Relay container resource name.",
         SerializedName = @"fluidRelayContainerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Fluid Relay server resource name.",
         SerializedName = @"fluidRelayServerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource group containing the resource.",
         SerializedName = @"resourceGroup",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription id (GUID) for this resource.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

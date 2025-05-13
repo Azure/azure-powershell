@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleremoteaddressconditionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRemoteAddressConditionObject -ParameterOperator <RemoteAddressOperator>
- -Name <MatchVariable> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
- [-ParameterTransform <Transform[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleRemoteAddressConditionObject -ParameterOperator <String> -ParameterTypeName <String>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ RemoteAddress
 Create an in-memory object for DeliveryRuleRemoteAddressCondition
 
 ## PARAMETERS
-
-### -Name
-The name of the condition for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterMatchValue
 Match values to match against.
@@ -89,7 +74,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RemoteAddressOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,11 +89,25 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRemoteAddressCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRemoteAddressCondition
 
 ## NOTES
 

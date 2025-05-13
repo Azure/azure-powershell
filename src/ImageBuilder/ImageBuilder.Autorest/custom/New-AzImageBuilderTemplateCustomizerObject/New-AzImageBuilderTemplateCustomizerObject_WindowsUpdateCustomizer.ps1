@@ -21,15 +21,15 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateWindowsUpdateCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_WindowsUpdateCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateWindowsUpdateCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
         [Parameter(HelpMessage="Array of filters to select updates to apply. Omit or specify empty array to use the default (no filter). Refer to above link for examples and detailed description of this field.")]
         [string[]]
         $Filter,
@@ -42,17 +42,13 @@ function New-AzImageBuilderTemplateCustomizerObject_WindowsUpdateCustomizer {
         [Parameter(HelpMessage="Friendly Name to provide context on what this customization step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of customization tool you want to use on the Image. For example, `"Shell`" can be shell customizer.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Installs Windows Updates. Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update)")]
         [Switch]
         $WindowsUpdateCustomizer
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateWindowsUpdateCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('Filter')) {
             $Object.Filter = $Filter
@@ -65,9 +61,6 @@ function New-AzImageBuilderTemplateCustomizerObject_WindowsUpdateCustomizer {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($WindowsUpdateCustomizer.IsPresent) {
-            $Object.Type = "WindowsUpdate"
         }
         return $Object
     }

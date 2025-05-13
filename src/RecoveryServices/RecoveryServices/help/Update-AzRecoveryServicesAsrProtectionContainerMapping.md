@@ -43,7 +43,7 @@ Start the operation to disable auto update for container.
 Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping  -AzureToAzure -EnableAutoUpdate -AutomationAccountId $automationAccountId
 ```
 
-Start the operation to disable enable auto update for container.
+Start the operation to enable auto update for container.
 
 ## PARAMETERS
 

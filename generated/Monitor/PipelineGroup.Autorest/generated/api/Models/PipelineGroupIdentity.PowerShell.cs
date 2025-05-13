@@ -116,10 +116,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
-            if (content.Contains("AzureMonitorWorkspaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).AzureMonitorWorkspaceName = (string) content.GetValueForProperty("AzureMonitorWorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).AzureMonitorWorkspaceName, global::System.Convert.ToString);
-            }
             if (content.Contains("PipelineGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).PipelineGroupName = (string) content.GetValueForProperty("PipelineGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).PipelineGroupName, global::System.Convert.ToString);
@@ -152,10 +148,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AzureMonitorWorkspaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).AzureMonitorWorkspaceName = (string) content.GetValueForProperty("AzureMonitorWorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentityInternal)this).AzureMonitorWorkspaceName, global::System.Convert.ToString);
             }
             if (content.Contains("PipelineGroupName"))
             {

@@ -20,14 +20,12 @@ Patch an existing Kubernetes Cluster Extension.
 .Description
 Patch an existing Kubernetes Cluster Extension.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ Update-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +47,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 #>
 function Update-AzKubernetesExtension {
     [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
@@ -102,14 +100,14 @@ function Update-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IPatchExtensionPropertiesConfigurationSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},

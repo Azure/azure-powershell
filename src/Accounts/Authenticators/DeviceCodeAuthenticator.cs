@@ -56,6 +56,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             options.DisableInstanceDiscovery = deviceCodeParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var codeCredential = new DeviceCodeCredential(options);
 
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                return options.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+            };
+            CollectTelemetry(codeCredential, options);
+
             TracingAdapter.Information($"{DateTime.Now:T} - [DeviceCodeAuthenticator] Calling DeviceCodeCredential.AuthenticateAsync - TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'");
             var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);
             return MsalAccessToken.GetAccessTokenAsync(

@@ -403,6 +403,18 @@ For more information, see https://learn.microsoft.com/en-us/sql/relational-datab
 
         public const string IntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
 
+        public const string IntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit = "DIU number setting reserved for copy activity execution.";
+
+        public const string IntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute copy activity.";
+
+        public const string IntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.";
+
+        public const string IntegrationRuntimeManagedVNetNumberOfPipelineNodes = "Number of the pipeline nodes, which should be greater than 0 and less than 11.";
+
+        public const string IntegrationRuntimeManagedVNetNumberOfExternalNodes = "Number of the the external nodes, which should be greater than 0 and less than 11.";
+
+        public const string IntegrationRuntimeSelfContainedInteractiveAuthoringEnabled = "An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.";
+
         public const string IntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string IntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";

@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapHighAvailabilityType :
         System.IEquatable<SapHighAvailabilityType>
     {
+        /// <summary>HA deployment with availability sets.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType AvailabilitySet = @"AvailabilitySet";
 
+        /// <summary>HA deployment with availability zones.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapHighAvailabilityType AvailabilityZone = @"AvailabilityZone";
 
         /// <summary>the value for an instance of the <see cref="SapHighAvailabilityType" /> Enum.</summary>

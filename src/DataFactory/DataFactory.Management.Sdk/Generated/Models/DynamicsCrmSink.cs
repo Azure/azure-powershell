@@ -59,12 +59,23 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="alternateKeyName">The logical name of the alternate key which will be used when upserting
         /// records. Type: string (or Expression with resultType string).
         /// </param>
-        public DynamicsCrmSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object ignoreNullValues = default(object), object alternateKeyName = default(object))
+
+        /// <param name="bypassBusinessLogicExecution">Controls the bypass of Dataverse custom business logic. Type: string (or
+        /// Expression with resultType string). Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="bypassPowerAutomateFlows">Controls the bypass of Power Automate flows. Default is false. Type:
+        /// boolean (or Expression with resultType boolean).
+        /// </param>
+        public DynamicsCrmSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object ignoreNullValues = default(object), object alternateKeyName = default(object), object bypassBusinessLogicExecution = default(object), object bypassPowerAutomateFlows = default(object))
 
         : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.IgnoreNullValues = ignoreNullValues;
             this.AlternateKeyName = alternateKeyName;
+            this.BypassBusinessLogicExecution = bypassBusinessLogicExecution;
+            this.BypassPowerAutomateFlows = bypassPowerAutomateFlows;
             CustomInit();
         }
         /// <summary>
@@ -95,6 +106,21 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "alternateKeyName")]
         public object AlternateKeyName {get; set; }
+
+        /// <summary>
+        /// Gets or sets controls the bypass of Dataverse custom business logic. Type:
+        /// string (or Expression with resultType string). Type: string (or Expression
+        /// with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "bypassBusinessLogicExecution")]
+        public object BypassBusinessLogicExecution {get; set; }
+
+        /// <summary>
+        /// Gets or sets controls the bypass of Power Automate flows. Default is false.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "bypassPowerAutomateFlows")]
+        public object BypassPowerAutomateFlows {get; set; }
         /// <summary>
         /// Gets or sets the write behavior for the operation.
         /// </summary>

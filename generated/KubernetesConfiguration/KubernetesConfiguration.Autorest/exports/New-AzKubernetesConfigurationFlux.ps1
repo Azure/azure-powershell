@@ -36,13 +36,13 @@ $kustomizations = @{
 New-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp -Namespace namespace-t01 -Scope 'cluster' -GitRepositoryUrl https://github.com/Azure/gitops-flux2-kustomize-helm-mt -RepositoryRefBranch main -SourceKind 'GitRepository' -GitRepositorySyncIntervalInSecond 600 -GitRepositoryTimeoutInSecond 600 -Suspend:$false -Kustomization $kustomizations
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 #>
 function New-AzKubernetesConfigurationFlux {
 [Alias('New-AzK8sConfigurationFlux')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -166,7 +166,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
     [System.Collections.Hashtable]
     # Key-value pairs of protected configuration settings for the configuration
     ${ConfigurationProtectedSetting},
@@ -215,7 +215,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesKustomizations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfigurationPropertiesKustomizations]))]
     [System.Collections.Hashtable]
     # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
     ${Kustomization},
@@ -262,9 +262,9 @@ param(
     ${RepositoryRefTag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PSArgumentCompleterAttribute("cluster", "namespace")]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType]
+    [System.String]
     # Scope at which the operator will be installed.
     ${Scope},
 
@@ -305,9 +305,9 @@ param(
     ${ServicePrincipalTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PSArgumentCompleterAttribute("GitRepository", "Bucket", "AzureBlob")]
     [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
+    [System.String]
     # Source Kind to pull the configuration data from.
     ${SourceKind},
 
@@ -385,6 +385,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -406,9 +415,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.KubernetesConfiguration.custom\New-AzKubernetesConfigurationFlux';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -422,6 +429,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

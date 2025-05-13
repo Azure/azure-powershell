@@ -37,8 +37,9 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
- [-EnableResilientVMDelete <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -66,8 +67,9 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate <Boolean>]
- [-EnableResilientVMDelete <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableResilientVMDelete <Boolean>] [-EnableAutomaticZoneRebalance <Boolean>]
+ [-AutomaticZoneRebalanceStrategy <String>] [-AutomaticZoneRebalanceBehavior <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +155,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceBehavior
+Specifies the behavior for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceStrategy
+Specifies the strategy for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -306,6 +338,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticZoneRebalance
+Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -807,7 +854,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### -ProvisionVMAgent
 Indicates whether virtual machine agent should be provisioned on the Windows virtual machines in the VMSS.

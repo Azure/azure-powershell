@@ -45,6 +45,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
 
     $k8sName1 = RandomString -allChars $false -len 6
+    #$k8sName2 = RandomString -allChars $false -len 6
 
     $flux1 = RandomString -allChars $false -len 6
     $flux2 = RandomString -allChars $false -len 6
@@ -57,6 +58,7 @@ function setupEnv() {
     $kubernetesConfigurationName2 = RandomString -allChars $false -len 6
 
     $env.Add("k8sName1", $k8sName1)
+    #$env.Add("k8sName2", $k8sName2)
 
     $env.Add("flux1", $flux1)
     $env.Add("flux2", $flux2)
@@ -73,17 +75,26 @@ function setupEnv() {
     $resourceGroup = "testgroup" + $env.k8sName1
     $env.Add("resourceGroup", $resourceGroup)
 
-    write-host "1. start to create test group..."
+    # make sure you have installed az cli and logged in to your account. And install below extensions
+    # az extension add -n connectedk8s --upgrade
+
+    write-host "1. start to create test group $($env.resourceGroup)..."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    write-host "2. az aks create..."
-    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.29.2 --vm-set-type AvailabilitySet
-
+    write-host "2. az aks create $($env.k8sName1)... connected cluster"
+    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.32.2 --vm-set-type AvailabilitySet
+    #az acr create --resource-group $env.resourceGroup --name $env.clusterName --sku Basic
+    
     write-host "3. az aks get-credentials..."
     az aks get-credentials --name $env.k8sName1 --resource-group $env.resourceGroup
-
+    
     write-host "4. az connectedk8s connect..."
     az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
+    # az connectedk8s enable-features --features cluster-connect -n $env.clusterName -g $env.resourceGroup
+    
+    # 2025/5/7: Failed to record the test with old logic, and failed to record with managed cluster.
+    #write-host "5. az aks create $($env.k8sName2)... managed cluster"
+    #az aks create --name $env.k8sName2 --resource-group $env.resourceGroup --kubernetes-version 1.32.2 --vm-set-type AvailabilitySet
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -93,5 +104,5 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }

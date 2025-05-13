@@ -25,22 +25,22 @@ Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -Resource
 Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy:$false
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ICredentialResults
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ICredentialResults
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IListClusterUserCredentialProperties>: .
-  AuthenticationMethod <AuthenticationMethod>: The mode of client authentication.
+  AuthenticationMethod <String>: The mode of client authentication.
   ClientProxy <Boolean>: Boolean value to indicate whether the request is for client side proxy or not
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 #>
 function Get-AzConnectedKubernetesUserCredential {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ICredentialResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ICredentialResults])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -66,15 +66,14 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties]
     # .
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter(ParameterSetName='ListExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AuthenticationMethod])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.PSArgumentCompleterAttribute("Token", "AAD")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AuthenticationMethod]
+    [System.String]
     # The mode of client authentication.
     ${AuthenticationMethod},
 
@@ -83,6 +82,18 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Boolean value to indicate whether the request is for client side proxy or not
     ${ClientProxy},
+
+    [Parameter(ParameterSetName='ListViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the List operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ListViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # Json string supplied to the List operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -140,6 +151,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,10 +181,10 @@ begin {
         $mapping = @{
             List = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetesUserCredential_List';
             ListExpanded = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetesUserCredential_ListExpanded';
+            ListViaJsonFilePath = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetesUserCredential_ListViaJsonFilePath';
+            ListViaJsonString = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetesUserCredential_ListViaJsonString';
         }
-        if (('List', 'ListExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'ListExpanded', 'ListViaJsonFilePath', 'ListViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -178,6 +198,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

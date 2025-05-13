@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticTrafficFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticTrafficFilterResponse
 
 ## NOTES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMPlacementPolicyProperties
 https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarevmplacementpolicypropertyobject
 #>
 function New-AzVMwareVMPlacementPolicyPropertyObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMPlacementPolicyProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

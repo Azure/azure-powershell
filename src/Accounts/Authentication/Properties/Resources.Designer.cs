@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}..
+        /// </summary>
+        public static string AuthenticationTelemetryRecordPushError {
+            get {
+                return ResourceManager.GetString("AuthenticationTelemetryRecordPushError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Context autosave is not supported on current environment. Please disable it using &apos;Disable-AzContextSave&apos;..
         /// </summary>
         public static string AutosaveNotSupportedWithSuggestion {

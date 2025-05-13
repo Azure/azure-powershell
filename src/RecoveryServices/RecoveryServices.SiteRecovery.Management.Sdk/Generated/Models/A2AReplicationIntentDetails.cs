@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="autoProtectionOfDataDisk">A value indicating whether the auto protection is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="multiVMGroupName">The multi vm group name.
         /// </param>
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="agentAutoUpdateStatus">A value indicating whether the auto update is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="automationAccountArmId">The automation account arm id.
         /// </param>
 
         /// <param name="automationAccountAuthenticationType">A value indicating the type authentication to use for automation Account.
-        /// Possible values include: 'RunAsAccount', 'SystemAssignedIdentity'</param>
+        /// Possible values include: &#39;RunAsAccount&#39;, &#39;SystemAssignedIdentity&#39;</param>
         public A2AReplicationIntentDetails(string recoveryAvailabilityType, string fabricObjectId = default(string), string primaryLocation = default(string), string recoveryLocation = default(string), string recoverySubscriptionId = default(string), System.Collections.Generic.IList<A2AProtectionIntentDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AProtectionIntentDiskInputDetails>), System.Collections.Generic.IList<A2AProtectionIntentManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AProtectionIntentManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), ProtectionProfileCustomDetails protectionProfile = default(ProtectionProfileCustomDetails), StorageAccountCustomDetails primaryStagingStorageAccount = default(StorageAccountCustomDetails), RecoveryAvailabilitySetCustomDetails recoveryAvailabilitySet = default(RecoveryAvailabilitySetCustomDetails), RecoveryVirtualNetworkCustomDetails recoveryVirtualNetwork = default(RecoveryVirtualNetworkCustomDetails), RecoveryProximityPlacementGroupCustomDetails recoveryProximityPlacementGroup = default(RecoveryProximityPlacementGroupCustomDetails), string autoProtectionOfDataDisk = default(string), string multiVMGroupName = default(string), string multiVMGroupId = default(string), StorageAccountCustomDetails recoveryBootDiagStorageAccount = default(StorageAccountCustomDetails), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), string agentAutoUpdateStatus = default(string), string automationAccountArmId = default(string), string automationAccountAuthenticationType = default(string))
 
         {

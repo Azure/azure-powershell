@@ -13,7 +13,7 @@
 
 function Test-AccountRelatedCmdlets
 {
-  $rgName = "CosmosDBResourceGroup91"
+  $rgName = "CosmosDBResourceGroup92"
   $location = "East US"
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"                                                                                     
@@ -86,6 +86,9 @@ function Test-AccountRelatedCmdlets
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableBurstCapacity 1
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 1
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnablePerRegionPerPartitionAutoscale 1
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Geo"
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480

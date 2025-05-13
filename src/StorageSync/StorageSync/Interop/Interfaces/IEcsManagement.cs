@@ -718,6 +718,7 @@ namespace Commands.StorageSync.Interop.Interfaces
            [Out, MarshalAs(UnmanagedType.U4)]
             out uint serverAuthType);
 
+        int ResetServerCertificateSettingsRegistry();
         IConnectionPoint GetScrubbingEngineConnectionPoint();
 
         IConnectionPoint GetStableVersionDeepGcConnectionPoint();

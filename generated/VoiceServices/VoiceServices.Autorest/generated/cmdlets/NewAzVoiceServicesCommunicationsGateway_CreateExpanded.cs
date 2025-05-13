@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a CommunicationsGateway</summary>
+    /// <summary>create a CommunicationsGateway</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVoiceServicesCommunicationsGateway_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Description(@"Create a CommunicationsGateway")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Description(@"create a CommunicationsGateway")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}", ApiVersion = "2023-01-31")]
     public partial class NewAzVoiceServicesCommunicationsGateway_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,8 +37,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>A CommunicationsGateway resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.CommunicationsGateway();
+        private Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.CommunicationsGateway();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Details of API bridge functionality, if required</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -46,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"Details of API bridge functionality, if required",
         SerializedName = @"apiBridge",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IApiBridgeProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IApiBridgeProperties ApiBridge { get => _resourceBody.ApiBridge ?? null /* object */; set => _resourceBody.ApiBridge = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IApiBridgeProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IApiBridgeProperties ApiBridge { get => _resourceBody.ApiBridge ?? null /* object */; set => _resourceBody.ApiBridge = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -58,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.MicrosoftVoiceServices Client => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.ClientAPI;
@@ -71,9 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"Voice codecs to support",
         SerializedName = @"codecs",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TeamsCodecs) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TeamsCodecs))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TeamsCodecs[] Codec { get => _resourceBody.Codec ?? null /* arrayOf */; set => _resourceBody.Codec = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PSArgumentCompleterAttribute("PCMA", "PCMU", "G722", "G722_2", "SILK_8", "SILK_16")]
+        public string[] Codec { get => _resourceBody.Codec?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.Codec = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -93,9 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"The scope at which the auto-generated domain name can be re-used",
         SerializedName = @"autoGeneratedDomainNameLabelScope",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope DomainNameLabelScope { get => _resourceBody.AutoGeneratedDomainNameLabelScope ?? ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.AutoGeneratedDomainNameLabelScope)""); set => _resourceBody.AutoGeneratedDomainNameLabelScope = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PSArgumentCompleterAttribute("TenantReuse", "SubscriptionReuse", "ResourceGroupReuse", "NoReuse")]
+        public string DomainNameLabelScope { get => _resourceBody.AutoGeneratedDomainNameLabelScope ?? null; set => _resourceBody.AutoGeneratedDomainNameLabelScope = value; }
 
         /// <summary>How to handle 911 calls</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "How to handle 911 calls")]
@@ -105,9 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"How to handle 911 calls",
         SerializedName = @"e911Type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type E911Type { get => _resourceBody.E911Type ?? ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type)""); set => _resourceBody.E911Type = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PSArgumentCompleterAttribute("Standard", "DirectToEsrp")]
+        public string E911Type { get => _resourceBody.E911Type ?? null; set => _resourceBody.E911Type = value; }
 
         /// <summary>A list of dial strings used for emergency calling.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -119,7 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         Description = @"A list of dial strings used for emergency calling.",
         SerializedName = @"emergencyDialStrings",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] EmergencyDialString { get => _resourceBody.EmergencyDialString ?? null /* arrayOf */; set => _resourceBody.EmergencyDialString = value; }
+        public string[] EmergencyDialString { get => _resourceBody.EmergencyDialString?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.EmergencyDialString = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -166,6 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         Description = @"Unique identifier for this deployment",
         SerializedName = @"communicationsGatewayName",
         PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("CommunicationsGatewayName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -191,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>What platforms to support</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -202,9 +224,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"What platforms to support",
         SerializedName = @"platforms",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.CommunicationsPlatform) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.CommunicationsPlatform))]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.CommunicationsPlatform[] Platform { get => _resourceBody.Platform ?? null /* arrayOf */; set => _resourceBody.Platform = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PSArgumentCompleterAttribute("OperatorConnect", "TeamsPhoneMobile")]
+        public string[] Platform { get => _resourceBody.Platform?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.Platform = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -245,8 +267,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"The regions in which to deploy the resources needed for Teams Calling",
         SerializedName = @"serviceLocations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties[] ServiceLocation { get => _resourceBody.ServiceLocation ?? null /* arrayOf */; set => _resourceBody.ServiceLocation = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IServiceRegionProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IServiceRegionProperties[] ServiceLocation { get => _resourceBody.ServiceLocation?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ServiceLocation = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IServiceRegionProperties>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -262,7 +284,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -275,8 +298,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
         /// This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
@@ -296,24 +319,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -360,6 +383,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -424,11 +452,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -440,10 +493,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -453,7 +522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzVoiceServicesCommunicationsGateway_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzVoiceServicesCommunicationsGateway_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzVoiceServicesCommunicationsGateway_CreateExpanded()
         {
@@ -519,7 +588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -532,12 +601,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CommunicationsGatewaysCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CommunicationsGatewaysCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_resourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -575,12 +644,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -597,15 +666,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -615,12 +684,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway">Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway> response)
         {
             using( NoSynchronizationContext )
             {
@@ -632,8 +701,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="FabricAgentName" /> property.</summary>
         private string _fabricAgentName;
 
-        /// <summary>The fabric agent (Dra) name.</summary>
+        /// <summary>The fabric agent name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string FabricAgentName { get => this._fabricAgentName; set => this._fabricAgentName = value; }
 
@@ -193,6 +193,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Replication policy name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string PolicyName { get => this._policyName; set => this._policyName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The private endpoint connection name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionProxyName" /> property.</summary>
+        private string _privateEndpointConnectionProxyName;
+
+        /// <summary>The private endpoint connection proxy name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionProxyName { get => this._privateEndpointConnectionProxyName; set => this._privateEndpointConnectionProxyName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateLinkResourceName" /> property.</summary>
+        private string _privateLinkResourceName;
+
+        /// <summary>The private link name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PrivateLinkResourceName { get => this._privateLinkResourceName; set => this._privateLinkResourceName = value; }
 
         /// <summary>Backing field for <see cref="ProtectableItemName" /> property.</summary>
         private string _protectableItemName;
@@ -400,11 +421,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"eventName",
         PossibleTypes = new [] { typeof(string) })]
         string EventName { get; set; }
-        /// <summary>The fabric agent (Dra) name.</summary>
+        /// <summary>The fabric agent name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The fabric agent (Dra) name.",
+        Description = @"The fabric agent name.",
         SerializedName = @"fabricAgentName",
         PossibleTypes = new [] { typeof(string) })]
         string FabricAgentName { get; set; }
@@ -544,6 +565,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"policyName",
         PossibleTypes = new [] { typeof(string) })]
         string PolicyName { get; set; }
+        /// <summary>The private endpoint connection name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The private endpoint connection name.",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The private endpoint connection proxy name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The private endpoint connection proxy name.",
+        SerializedName = @"privateEndpointConnectionProxyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionProxyName { get; set; }
+        /// <summary>The private link name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The private link name.",
+        SerializedName = @"privateLinkResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateLinkResourceName { get; set; }
         /// <summary>Protectable item name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -717,7 +762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string EmailConfigurationName { get; set; }
         /// <summary>Unique name of an event within a migrate project.</summary>
         string EventName { get; set; }
-        /// <summary>The fabric agent (Dra) name.</summary>
+        /// <summary>The fabric agent name.</summary>
         string FabricAgentName { get; set; }
         /// <summary>Fabric name.</summary>
         string FabricName { get; set; }
@@ -753,6 +798,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string OperationStatusName { get; set; }
         /// <summary>Replication policy name.</summary>
         string PolicyName { get; set; }
+        /// <summary>The private endpoint connection name.</summary>
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The private endpoint connection proxy name.</summary>
+        string PrivateEndpointConnectionProxyName { get; set; }
+        /// <summary>The private link name.</summary>
+        string PrivateLinkResourceName { get; set; }
         /// <summary>Protectable item name.</summary>
         string ProtectableItemName { get; set; }
         /// <summary>The protected item name.</summary>

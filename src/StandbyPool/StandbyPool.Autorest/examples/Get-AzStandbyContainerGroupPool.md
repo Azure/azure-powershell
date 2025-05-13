@@ -28,6 +28,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1}
 ```
 
 Above command is getting a standby container group pool.

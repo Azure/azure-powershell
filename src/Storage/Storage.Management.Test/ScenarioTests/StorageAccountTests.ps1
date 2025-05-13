@@ -1539,8 +1539,8 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
         Assert-AreEqual $false $sto.AllowBlobPublicAccess
         
-        $tlsVersion = "TLS1_1"
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $true ;
+        $tlsVersion = "TLS1_2"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -MinimumTlsVersion $tlsVersion -AllowBlobPublicAccess $false ;
         
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -1548,7 +1548,7 @@ function Test-NewSetAzureStorageAccountTLSveresionBlobPublicAccess
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $tlsVersion $sto.MinimumTlsVersion
-        Assert-AreEqual $true $sto.AllowBlobPublicAccess
+        Assert-AreEqual $false $sto.AllowBlobPublicAccess
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -2277,6 +2277,8 @@ function Test-NewAzStorageContext
         Assert-AreEqual $stoname $sto.StorageAccountName;
 
         $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -StorageAccountName $sto.StorageAccountName)[0].Value
+        # Need sanitize the sharedkey in record file, but New-AzStorageContext assume it's based64 string, so update it to a static based64 string.
+        $stokey = "xxxxxxxx"
         $ctxAccountInfo = New-AzStorageContext -StorageAccountName $sto.StorageAccountName -StorageAccountKey $stokey
         Assert-AreEqual $ctxAccountInfo.BlobEndpoint $blobEndpoint
         Assert-AreEqual $ctxAccountInfo.TableEndpoint $tableEndpoint

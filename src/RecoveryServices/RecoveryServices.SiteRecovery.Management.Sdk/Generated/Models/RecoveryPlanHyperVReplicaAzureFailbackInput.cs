@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="dataSyncOption">The data sync option.
-        /// Possible values include: 'ForDownTime', 'ForSynchronization'</param>
+        /// Possible values include: &#39;ForDownTime&#39;, &#39;ForSynchronization&#39;</param>
 
         /// <param name="recoveryVMCreationOption">The ALR option.
-        /// Possible values include: 'CreateVmIfNotFound', 'NoAction'</param>
+        /// Possible values include: &#39;CreateVmIfNotFound&#39;, &#39;NoAction&#39;</param>
         public RecoveryPlanHyperVReplicaAzureFailbackInput(string dataSyncOption, string recoveryVMCreationOption)
 
         {

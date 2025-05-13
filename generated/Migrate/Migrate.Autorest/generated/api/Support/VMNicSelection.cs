@@ -10,12 +10,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct VMNicSelection :
         System.IEquatable<VMNicSelection>
     {
+        /// <summary>Not Selected.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMNicSelection NotSelected = @"NotSelected";
 
+        /// <summary>Default selection by ASR.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMNicSelection SelectedByDefault = @"SelectedByDefault";
 
+        /// <summary>Selected by user.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMNicSelection SelectedByUser = @"SelectedByUser";
 
+        /// <summary>
+        /// NIC configuration overridden by user. Differs from SelectedByUser in the sense that the legacy SelectedByUser is used
+        /// both for explicit modification by user and implicit approval of user if the settings are used for TFO/FO. SelectedByUserOverride
+        /// implies user overriding at least one of the configurations.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMNicSelection SelectedByUserOverride = @"SelectedByUserOverride";
 
         /// <summary>the value for an instance of the <see cref="VMNicSelection" /> Enum.</summary>

@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("JsonArrayMapper"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapper = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonArrayMapper) content.GetValueForProperty("JsonArrayMapper",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapper, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonArrayMapperTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).Endpoint, global::System.Convert.ToString);
@@ -137,6 +141,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             if (content.Contains("ReadQueueLength"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).ReadQueueLength = (int?) content.GetValueForProperty("ReadQueueLength",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).ReadQueueLength, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("JsonArrayMapperKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperKey = (System.Collections.Generic.List<string>) content.GetValueForProperty("JsonArrayMapperKey",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperKey, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("JsonArrayMapperSourceField"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperSourceField = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperSourceField) content.GetValueForProperty("JsonArrayMapperSourceField",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperSourceField, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonMapperSourceFieldTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JsonArrayMapperDestinationField"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperDestinationField = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperDestinationField) content.GetValueForProperty("JsonArrayMapperDestinationField",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperDestinationField, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonMapperDestinationFieldTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceFieldName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).SourceFieldName = (string) content.GetValueForProperty("SourceFieldName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).SourceFieldName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationFieldDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldDestination = (string) content.GetValueForProperty("DestinationFieldDestination",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationFieldName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldName = (string) content.GetValueForProperty("DestinationFieldName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -155,6 +183,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("JsonArrayMapper"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapper = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonArrayMapper) content.GetValueForProperty("JsonArrayMapper",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapper, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonArrayMapperTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).Endpoint = (string) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).Endpoint, global::System.Convert.ToString);
@@ -166,6 +198,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             if (content.Contains("ReadQueueLength"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).ReadQueueLength = (int?) content.GetValueForProperty("ReadQueueLength",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).ReadQueueLength, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("JsonArrayMapperKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperKey = (System.Collections.Generic.List<string>) content.GetValueForProperty("JsonArrayMapperKey",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperKey, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("JsonArrayMapperSourceField"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperSourceField = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperSourceField) content.GetValueForProperty("JsonArrayMapperSourceField",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperSourceField, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonMapperSourceFieldTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JsonArrayMapperDestinationField"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperDestinationField = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperDestinationField) content.GetValueForProperty("JsonArrayMapperDestinationField",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).JsonArrayMapperDestinationField, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.JsonMapperDestinationFieldTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceFieldName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).SourceFieldName = (string) content.GetValueForProperty("SourceFieldName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).SourceFieldName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationFieldDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldDestination = (string) content.GetValueForProperty("DestinationFieldDestination",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldDestination, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationFieldName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldName = (string) content.GetValueForProperty("DestinationFieldName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)this).DestinationFieldName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

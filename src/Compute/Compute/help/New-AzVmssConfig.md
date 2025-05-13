@@ -34,8 +34,9 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
- [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
+ [-AutomaticZoneRebalanceBehavior <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -52,14 +53,17 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EnableSpotRestore]
  [-SpotRestoreTimeout <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionIdentity <String>] [-EncryptionAtHost]
- [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-AutomaticRepairAction <String>] [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>]
- [-ImageReferenceId <String>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
+ [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>]
+ [-EncryptionIdentity <String>] [-EncryptionAtHost] [-OrchestrationMode <String>]
+ [-CapacityReservationGroupId <String>] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
+ [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
  [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
- [-EnableResilientVMDelete] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
+ [-AutomaticZoneRebalanceBehavior <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,6 +253,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AutomaticZoneRebalanceBehavior
+Specifies the behavior for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceStrategy
+Specifies the strategy for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BaseRegularPriorityCount
 Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode. 
 
@@ -369,6 +403,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableAutomaticZoneRebalance
+Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableResilientVMCreate
 Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
 
@@ -475,6 +524,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EncryptionIdentity
+Specifies the user identity associated with the virtual machine.That identity will be used for Azure Disk Encryption.
+
+
+```yaml
+Type: System.String
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EvictionPolicy
 Specifies the eviction policy for the virtual machines in the scale set.
 
@@ -528,20 +593,6 @@ The user identity references will be ARM resource ids in the form: '/subscriptio
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ExplicitIdentityParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EncryptionIdentity
-Specifies the user identity associated with the virtual machine.That identity will be used for Azure Disk Encryption.
-```yaml
-Type: System.String
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases:
 
@@ -819,7 +870,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### -ProximityPlacementGroupId
 The resource id of the Proximity Placement Group to use with this scale set.

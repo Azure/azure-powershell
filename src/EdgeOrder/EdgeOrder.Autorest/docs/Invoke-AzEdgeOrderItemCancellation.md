@@ -24,6 +24,18 @@ Invoke-AzEdgeOrderItemCancellation -InputObject <IEdgeOrderIdentity> -Reason <St
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CancelViaJsonFilePath
+```
+Invoke-AzEdgeOrderItemCancellation -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaJsonString
+```
+Invoke-AzEdgeOrderItemCancellation -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Cancel order item.
 
@@ -56,7 +68,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IEdgeOrderIdentity
@@ -70,12 +81,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the order item
 
 ```yaml
 Type: System.String
-Parameter Sets: CancelExpanded
+Parameter Sets: CancelExpanded, CancelViaJsonFilePath, CancelViaJsonString
 Aliases: OrderItemName
 
 Required: True
@@ -105,7 +146,7 @@ Reason for cancellation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded, CancelViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -121,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CancelExpanded
+Parameter Sets: CancelExpanded, CancelViaJsonFilePath, CancelViaJsonString
 Aliases:
 
 Required: True
@@ -136,7 +177,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CancelExpanded
+Parameter Sets: CancelExpanded, CancelViaJsonFilePath, CancelViaJsonString
 Aliases:
 
 Required: False

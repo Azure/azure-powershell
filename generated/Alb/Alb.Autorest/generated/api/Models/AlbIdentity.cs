@@ -40,6 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="SecurityPolicyName" /> property.</summary>
+        private string _securityPolicyName;
+
+        /// <summary>SecurityPolicy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Origin(Microsoft.Azure.PowerShell.Cmdlets.Alb.PropertyOrigin.Owned)]
+        public string SecurityPolicyName { get => this._securityPolicyName; set => this._securityPolicyName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -107,6 +114,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>SecurityPolicy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"SecurityPolicy",
+        SerializedName = @"securityPolicyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecurityPolicyName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(
         Required = false,
@@ -142,6 +160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
         string Id { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>SecurityPolicy</summary>
+        string SecurityPolicyName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>traffic controller name for path</summary>

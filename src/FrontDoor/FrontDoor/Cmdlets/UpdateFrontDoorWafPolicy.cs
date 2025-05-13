@@ -124,6 +124,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
         public int? JavascriptChallengeExpirationInMinutes { get; set; }
 
+        /// Defines the Captcha cookie validity lifetime in minutes. This
+        /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
+        /// integer between 5 and 1440
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440")]
+        public int? CaptchaExpirationInMinutes { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -213,6 +219,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 if (JavascriptChallengeExpirationInMinutes != null)
                 {
                     updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+                }
+            }
+            
+            if (this.IsParameterBound(c => c.CaptchaExpirationInMinutes))
+            {
+                if (CaptchaExpirationInMinutes != null)
+                {
+                    updateParameters.PolicySettings.CaptchaExpirationInMinutes = CaptchaExpirationInMinutes;
                 }
             }
 

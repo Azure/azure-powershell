@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_RestartCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,17 +43,13 @@ function New-AzImageBuilderTemplateCustomizerObject_RestartCustomizer {
         [Parameter(HelpMessage="Friendly Name to provide context on what this customization step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of customization tool you want to use on the Image. For example, `"Shell`" can be shell customizer.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer windows-restart provisioner")]
         [Switch]
         $RestartCustomizer
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('RestartCheckCommand')) {
             $Object.RestartCheckCommand = $RestartCheckCommand
@@ -65,9 +62,6 @@ function New-AzImageBuilderTemplateCustomizerObject_RestartCustomizer {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($RestartCustomizer.IsPresent) {
-            $Object.Type = "WindowsRestart"
         }
         return $Object
     }

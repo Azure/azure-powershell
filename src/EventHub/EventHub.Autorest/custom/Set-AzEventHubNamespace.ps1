@@ -110,6 +110,15 @@ function Set-AzEventHubNamespace{
         [System.Int32]
         ${SkuCapacity},
 
+        [Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
+        ${GeoDataReplicationLocation},
+
         [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Collections.Hashtable]
@@ -188,6 +197,8 @@ function Set-AzEventHubNamespace{
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
+            $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -224,6 +235,12 @@ function Set-AzEventHubNamespace{
                 }
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable
+            }
+            if ($GeoDataReplicationMaxReplicationLagDurationInSecond) {
+                $eventHubNamespace.GeoDataReplicationMaxReplicationLagDurationInSecond = $GeoDataReplicationMaxReplicationLagDurationInSecond
+            }
+            if ($GeoDataReplicationLocation) {
+                $eventHubNamespace.GeoDataReplicationLocation = $GeoDataReplicationLocation
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate

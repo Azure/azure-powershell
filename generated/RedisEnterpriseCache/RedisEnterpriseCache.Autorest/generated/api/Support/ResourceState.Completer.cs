@@ -82,6 +82,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'ScalingFailed'", "ScalingFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ScalingFailed");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Moving".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Moving'", "Moving", global::System.Management.Automation.CompletionResultType.ParameterValue, "Moving");
+            }
         }
     }
 }

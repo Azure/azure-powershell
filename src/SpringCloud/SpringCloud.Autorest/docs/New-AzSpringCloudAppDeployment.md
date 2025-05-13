@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzSpringCloudAppDeployment
 
 ## SYNOPSIS
-Create a new Deployment or update an exiting Deployment.
+create a new Deployment or create an exiting Deployment.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
  -ServiceName <String> [-SubscriptionId <String>] [-Active] [-AddonConfig <Hashtable>]
@@ -20,8 +21,40 @@ New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupNa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityAppExpanded
+```
+New-AzSpringCloudAppDeployment -AppInputObject <ISpringCloudIdentity> -Name <String> [-Active]
+ [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>]
+ [-ResourceRequestMemory <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentitySpringExpanded
+```
+New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-Active] [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>]
+ [-ResourceRequestMemory <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new Deployment or update an exiting Deployment.
+create a new Deployment or create an exiting Deployment.
 
 ## EXAMPLES
 
@@ -64,7 +97,7 @@ Indicates whether the Deployment is active
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -79,7 +112,7 @@ Collection of addons
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -89,12 +122,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentityAppExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -140,10 +188,40 @@ Collection of environment variables
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,7 +264,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -203,7 +281,7 @@ This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tie
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -220,7 +298,7 @@ This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi}
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -235,7 +313,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -250,7 +328,7 @@ Current capacity of the target resource
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -265,7 +343,7 @@ Name of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -280,7 +358,7 @@ Tier of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -292,11 +370,10 @@ Accept wildcard characters: False
 
 ### -Source
 Uploaded source information of the deployment.
-To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IUserSourceInfo
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo
+Parameter Sets: CreateExpanded, CreateViaIdentityAppExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -306,13 +383,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -358,9 +450,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IDeploymentResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IDeploymentResource
 
 ## NOTES
 

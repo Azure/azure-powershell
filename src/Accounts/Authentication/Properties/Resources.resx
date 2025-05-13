@@ -419,4 +419,7 @@
     <value>Authentication failed against resource {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {0}'.</value>
     <comment>0 = resource ID</comment>
   </data>
+  <data name="AuthenticationTelemetryRecordPushError" xml:space="preserve">
+    <value>Fail to push authentication telemetry record, please check the CmdletcContext with Id {0}.</value>
+  </data>
 </root>

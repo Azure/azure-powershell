@@ -62,7 +62,7 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ```powershell
 $VM = Get-AzVM -Name 'SpecialVM'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $VM.Id -ExemptionCategory Waiver
 ```
 
 The first command gets a VM named SpecialVM by using the Get-AzVM cmdlet and stores it in the $VM variable.

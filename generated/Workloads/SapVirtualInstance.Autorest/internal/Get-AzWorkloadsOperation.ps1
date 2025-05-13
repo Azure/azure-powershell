@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Lists all the available API operations under this PR
+List the operations for the provider
 .Description
-Lists all the available API operations under this PR
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsoperation
 #>
 function Get-AzWorkloadsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

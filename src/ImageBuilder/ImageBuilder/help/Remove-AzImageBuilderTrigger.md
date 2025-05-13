@@ -19,6 +19,13 @@ Remove-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -Resourc
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityImageTemplate
+```
+Remove-AzImageBuilderTrigger -Name <String> -ImageTemplateInputObject <IImageBuilderIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzImageBuilderTrigger -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -77,6 +84,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageTemplateInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
+Parameter Sets: DeleteViaIdentityImageTemplate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ImageTemplateName
 The name of the image Template
 
@@ -94,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
@@ -113,7 +134,7 @@ The name of the trigger
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityImageTemplate
 Aliases: TriggerName
 
 Required: True

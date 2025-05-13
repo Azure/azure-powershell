@@ -21,5 +21,5 @@ Creates a log analytics solution.
 Deletes the solution in the subscription.
 
 ### [Update-AzMonitorLogAnalyticsSolution](Update-AzMonitorLogAnalyticsSolution.md)
-Update the tags of a solution.
+update the tags of a solution.
 

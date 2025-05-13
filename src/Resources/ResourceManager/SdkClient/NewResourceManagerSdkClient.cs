@@ -481,6 +481,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             deployment.Tags = parameters?.Tags == null ? null : new Dictionary<string, string>(parameters.Tags);
             deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
 
+            if (!string.IsNullOrEmpty(parameters.ValidationLevel))
+            {
+                deployment.Properties.ValidationLevel = parameters.ValidationLevel;
+            }
+
             return deployment;
         }
 
@@ -489,36 +494,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             try
             {
                 var validationResult = this.ValidateDeployment(parameters, deployment);
-                switch (validationResult)
-                {
-                    case DeploymentExtended deploymentExtended:
-                        return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentExtended.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
-                    case DeploymentValidationError deploymentValidationError:
-                        return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
-                    case JObject obj:
-                        // 202 Response is not deserialized in DeploymentsOperations so we should attempt to deserialize the object here before failing
-                        // Should attempt to deserialize for success(DeploymentExtended)
-                        try
-                        {
-                            var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentExtended>(validationResult.ToString(), ResourceManagementClient.DeserializationSettings);
-                            return new TemplateValidationInfo(deploymentDeserialized?.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentDeserialized?.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
-                        }
-                        catch (Newtonsoft.Json.JsonException)
-                        { 
-                            throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
-                        }
-                    default:
-                        throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
-                }
+                return new TemplateValidationInfo(validationResult);
             }
             catch (Exception ex)
             {
                 var error = HandleError(ex).FirstOrDefault();
-                return new TemplateValidationInfo(new List<Provider>(), error.AsArray().ToList(), new List<DeploymentDiagnosticsDefinition>());
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
             }
         }
 
-        private object ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
         {
             var scopedDeployment = new ScopedDeployment { Properties = deployment.Properties, Location = deployment.Location };
 
@@ -547,26 +532,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private List<ErrorDetail> HandleError(Exception ex)
+        private List<ErrorResponse> HandleError(Exception ex)
         {
             if (ex == null)
             {
                 return null;
             }
 
-            ErrorDetail error = null;
+            ErrorResponse error = null;
             var innerException = HandleError(ex.InnerException);
             if (ex is CloudException)
             {
                 var cloudEx = ex as CloudException;
-                error = new ErrorDetail(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
             }
             else
             {
-                error = new ErrorDetail(null, ex.Message, null, innerException);
+                error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
-            return new List<ErrorDetail> { error };
+            return new List<ErrorResponse> { error };
 
         }
 
@@ -1529,7 +1514,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
-        private void DisplayInnerDetailErrorMessage(ErrorDetail error)
+        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)

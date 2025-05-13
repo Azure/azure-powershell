@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdD9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdD9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -51,7 +51,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "493"
@@ -67,8 +67,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9leHRlbmRlZEluZm9ybWF0aW9uL3ZhdWx0RXh0ZW5kZWRJbmZvP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/extendedInformation/vaultExtendedInfo?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9leHRlbmRlZEluZm9ybWF0aW9uL3ZhdWx0RXh0ZW5kZWRJbmZvP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -120,7 +120,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "449"
@@ -136,8 +136,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -186,7 +186,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "937"
@@ -202,8 +202,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -255,7 +255,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072408Z:041222fc-f65e-4d95-a524-51bd284d61c7"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "5710"
@@ -271,8 +271,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lcj9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lcj9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -324,7 +324,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072412Z:5a681ba3-4a86-4705-a8fc-df3f4372d8e5"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "640"
@@ -340,8 +340,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer/replicationProtectionContainerMappings?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer/replicationProtectionContainerMappings?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -393,7 +393,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072414Z:bff748eb-b81f-4786-b5d0-b4e348df2bb4"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4135"
@@ -409,8 +409,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/appconsistency-policy-failback?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2FwcGNvbnNpc3RlbmN5LXBvbGljeS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/appconsistency-policy-failback?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2FwcGNvbnNpc3RlbmN5LXBvbGljeS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -462,7 +462,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072417Z:7b4863fd-7936-4642-9a06-5b50a007fab8"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "500"
@@ -478,8 +478,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/crashconsistency-policy-failback?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2NyYXNoY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/crashconsistency-policy-failback?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2NyYXNoY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -531,7 +531,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072417Z:ee60860d-30da-43c1-8eaa-db183bc2c417"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "505"
@@ -547,8 +547,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/24-hour-replication-policy?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzLzI0LWhvdXItcmVwbGljYXRpb24tcG9saWN5P2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/24-hour-replication-policy?api-version=2024-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzLzI0LWhvdXItcmVwbGljYXRpb24tcG9saWN5P2FwaS12ZXJzaW9uPTIwMjQtMTAtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -600,7 +600,7 @@
                                                                                 "SOUTHEASTASIA:20221109T072419Z:0b9546fd-7ca5-4d3d-8c76-517f3607861e"
                                                                             ],
                                                 "Date":  [
-                                                             "Mon, 22 Apr 2024 10:59:15 GMT"
+                                                             "Sun, 09 Mar 2025 15:27:13 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "545"

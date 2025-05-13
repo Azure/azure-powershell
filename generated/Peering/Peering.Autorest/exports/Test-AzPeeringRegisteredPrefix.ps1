@@ -25,7 +25,7 @@ Test-AzPeeringRegisteredPrefix -Name accessibilityTesting2 -PeeringName DemoPeer
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringRegisteredPrefix
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredPrefix
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,14 +42,27 @@ INPUTOBJECT <IPeeringIdentity>: Identity Parameter
   [RegisteredPrefixName <String>]: The name of the registered prefix.
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID.
+
+PEERINGINPUTOBJECT <IPeeringIdentity>: Identity Parameter
+  [ConnectionMonitorTestName <String>]: The name of the connection monitor test
+  [Id <String>]: Resource identity path
+  [PeerAsnName <String>]: The peer ASN name.
+  [PeeringName <String>]: The name of the peering.
+  [PeeringServiceName <String>]: The name of the peering service.
+  [PrefixName <String>]: The name of the prefix.
+  [RegisteredAsnName <String>]: The name of the registered ASN.
+  [RegisteredPrefixName <String>]: The name of the registered prefix.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/test-azpeeringregisteredprefix
 #>
 function Test-AzPeeringRegisteredPrefix {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringRegisteredPrefix])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredPrefix])]
 [CmdletBinding(DefaultParameterSetName='Validate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityPeering', Mandatory)]
     [Alias('RegisteredPrefixName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [System.String]
@@ -79,8 +92,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='ValidateViaIdentityPeering', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
+    # Identity Parameter
+    ${PeeringInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +156,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,10 +186,9 @@ begin {
         $mapping = @{
             Validate = 'Az.Peering.private\Test-AzPeeringRegisteredPrefix_Validate';
             ValidateViaIdentity = 'Az.Peering.private\Test-AzPeeringRegisteredPrefix_ValidateViaIdentity';
+            ValidateViaIdentityPeering = 'Az.Peering.private\Test-AzPeeringRegisteredPrefix_ValidateViaIdentityPeering';
         }
-        if (('Validate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Validate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -176,6 +202,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

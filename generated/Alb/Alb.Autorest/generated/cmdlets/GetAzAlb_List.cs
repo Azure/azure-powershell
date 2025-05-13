@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"List TrafficController resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers", ApiVersion = "2025-01-01")]
     public partial class GetAzAlb_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext

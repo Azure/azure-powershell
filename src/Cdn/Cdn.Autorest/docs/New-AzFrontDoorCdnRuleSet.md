@@ -8,17 +8,24 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Creates a new rule set within the specified profile.
+create a new rule set within the specified profile.
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityProfile
+```
+New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new rule set within the specified profile.
+create a new rule set within the specified profile.
 
 ## EXAMPLES
 
@@ -68,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -88,7 +110,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -103,7 +125,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: False
@@ -149,9 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
 
 ## NOTES
 

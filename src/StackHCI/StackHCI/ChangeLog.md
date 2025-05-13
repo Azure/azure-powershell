@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added EOL Message for 22H2
 
 ## Version 2.5.0
 * Upgraded nuget package to signed package.

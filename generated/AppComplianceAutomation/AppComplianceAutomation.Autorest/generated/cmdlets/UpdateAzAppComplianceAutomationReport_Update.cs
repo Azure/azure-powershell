@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an exiting AppComplianceAutomation report.</summary>
+    /// <summary>update an exiting AppComplianceAutomation report.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/providers/Microsoft.AppComplianceAutomation/reports/{reportName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAppComplianceAutomationReport_Update", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"Update an exiting AppComplianceAutomation report.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Description(@"update an exiting AppComplianceAutomation report.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.HttpPath(Path = "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}", ApiVersion = "2024-06-27")]
     public partial class UpdateAzAppComplianceAutomationReport_Update : global::System.Management.Automation.PSCmdlet,

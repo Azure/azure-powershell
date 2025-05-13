@@ -225,6 +225,25 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     }
 
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    List<string> resourceIds = new List<string>();
+
+                    // Get the aux header for the LNG2/VNG2
+                    if (this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2.Id);
+                    }
+
+                    if (this.VirtualNetworkGatewayConnection.LocalNetworkGateway2 != null)
+                    {
+                        resourceIds.Add(this.VirtualNetworkGatewayConnection.LocalNetworkGateway2.Id);
+                    }
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     
                     vnetGatewayConnectionModel.Tags =
@@ -232,9 +251,8 @@ namespace Microsoft.Azure.Commands.Network
                         TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
                         TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
 
-                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
-                        this.VirtualNetworkGatewayConnection.ResourceGroupName,
-                        this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel);
+                    this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
+
                     var getvnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name);
                     WriteObject(getvnetGatewayConnection);
                 });

@@ -20,8 +20,7 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
  [-UseSystemAssignedIdentityInEncryption <Object>] [-AsJob] [-ManagedResourceGroupName <String>]
  [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-EnablePublicNetworkAccess <Boolean>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

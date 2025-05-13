@@ -24,7 +24,7 @@ $proxy = Set-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGr
 $proxy | fl
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardProxyBaseResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ RESOURCEGUARDOPERATIONDETAIL <IResourceGuardOperationDetail[]>: .
 https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionresourceguardmapping
 #>
 function Set-AzDataProtectionResourceGuardMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardProxyBaseResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

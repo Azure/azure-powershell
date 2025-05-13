@@ -27,11 +27,11 @@ For information on how to develop for `Az.PipelineGroup`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: cf406046c304ec528a84ae1a151f3d1a647058a2
+commit: ba1d416d3bfa258bc55d9b5a892093df29d2efff
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/monitor/resource-manager/Microsoft.Monitor/preview/2023-10-01-preview/azuremonitor.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/monitor/resource-manager/Microsoft.Monitor/PipelineGroups/preview/2024-10-01-preview/pipelineGroups.json
 
 root-module-name: $(prefix).Monitor
 title: PipelineGroup

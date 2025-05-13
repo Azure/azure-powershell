@@ -164,6 +164,16 @@ namespace Microsoft.Azure.Management.Compute
         /// </param>
         /// <param name='forceDeletion'>
         /// Optional parameter to force delete virtual machines.
+        /// NOTE: As of api-version 2024-11-01, we are rolling out a feature
+        /// where if the forceDeletion parameter is unspecified OR not
+        /// explicitly set to false, AND all of the VM's attached disks
+        /// including the OS disk are marked with the delete option, then the
+        /// VM will be force deleted. For more details on how to configure
+        /// delete options for a VM's resources, see [Delete a VM and attached
+        /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
+        /// To avoid defaulting to force delete, ensure that the forceDeletion
+        /// parameter is explicitly set to false. This feature is expected to
+        /// rollout by end of March 2025.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -419,7 +429,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <summary>
         /// The operation to power off (stop) a virtual machine. The virtual
         /// machine can be restarted with the same provisioned resources. You
-        /// are still charged for this virtual machine.
+        /// are still charged for this virtual machine. NOTE: This operation is
+        /// not allowed on a virtual machine that is being deallocated or has
+        /// already been deallocated.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -725,6 +737,32 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<StorageProfile,VirtualMachinesAttachDetachDataDisksHeaders>> AttachDetachDataDisksWithHttpMessagesAsync(string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Migrate a virtual machine from availability set to Flexible Virtual
+        /// Machine Scale Set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Migrate Virtual Machine operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> MigrateToVMScaleSetWithHttpMessagesAsync(string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Run command on the VM.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -869,6 +907,16 @@ namespace Microsoft.Azure.Management.Compute
         /// </param>
         /// <param name='forceDeletion'>
         /// Optional parameter to force delete virtual machines.
+        /// NOTE: As of api-version 2024-11-01, we are rolling out a feature
+        /// where if the forceDeletion parameter is unspecified OR not
+        /// explicitly set to false, AND all of the VM's attached disks
+        /// including the OS disk are marked with the delete option, then the
+        /// VM will be force deleted. For more details on how to configure
+        /// delete options for a VM's resources, see [Delete a VM and attached
+        /// resources](https://learn.microsoft.com/en-us/azure/virtual-machines/delete).
+        /// To avoid defaulting to force delete, ensure that the forceDeletion
+        /// parameter is explicitly set to false. This feature is expected to
+        /// rollout by end of March 2025.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -937,7 +985,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <summary>
         /// The operation to power off (stop) a virtual machine. The virtual
         /// machine can be restarted with the same provisioned resources. You
-        /// are still charged for this virtual machine.
+        /// are still charged for this virtual machine. NOTE: This operation is
+        /// not allowed on a virtual machine that is being deallocated or has
+        /// already been deallocated.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1188,6 +1238,32 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<StorageProfile,VirtualMachinesAttachDetachDataDisksHeaders>> BeginAttachDetachDataDisksWithHttpMessagesAsync(string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Migrate a virtual machine from availability set to Flexible Virtual
+        /// Machine Scale Set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmName'>
+        /// The name of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Migrate Virtual Machine operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginMigrateToVMScaleSetWithHttpMessagesAsync(string resourceGroupName, string vmName, MigrateVMToVirtualMachineScaleSetInput parameters = default(MigrateVMToVirtualMachineScaleSetInput), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Run command on the VM.
         /// </summary>

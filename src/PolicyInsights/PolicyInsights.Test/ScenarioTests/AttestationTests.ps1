@@ -819,11 +819,25 @@ function Attestation-Error-Handling {
    $policyAssignmentId = Get-TestAttestationSubscriptionPolicyAssignmentId
    $attestationName = "Attestation-Error-Crud"
    $RGName = Get-PSAttestationTestRGName
+   $codecompare = "InvalidCreateAttestationRequest"
+   $messagecompare = "Unable to create attestation '$attestationName'. No compliance data was found for resource '/subscriptions/$(Get-TestSubscriptionId)/resourceGroups/$RGName' against policy assignment '$policyAssignmentId'"
 
-   Assert-ThrowsContains `
-   {
+   try {
       New-AzPolicyAttestation -ResourceGroupName $RGName -PolicyAssignmentId $policyAssignmentId -Name $attestationName -ComplianceState $Compliant
-   } `
-      "InvalidCreateAttestationRequest: Unable to create attestation '$attestationName'. No compliance data was found for resource '/subscriptions/$(Get-TestSubscriptionId)/resourceGroups/$RGName' against policy assignment '$policyAssignmentId'"
+   }
+   catch {
+      $actualMessage = $_.Exception.Body.error.Message
+      $actualCode = $_.Exception.Body.error.Code
+
+      Assert-AreEqual $codecompare $actualCode
+      if ($actualMessage.Contains($messagecompare)) {
+         return $true
+      }
+      else {
+         throw "Expected exception does not contain the expected text '$messagecompare', the actual message is '$actualMessage'"
+      }
+   }
+
+   throw "No Error occurred"
    #endregion
 }

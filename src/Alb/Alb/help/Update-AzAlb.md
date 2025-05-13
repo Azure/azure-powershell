@@ -8,24 +8,25 @@ schema: 2.0.0
 # Update-AzAlb
 
 ## SYNOPSIS
-Update a TrafficController
+update a TrafficController
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <Hashtable>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlb -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAlb -InputObject <IAlbIdentity> [-Property <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a TrafficController
+update a TrafficController
 
 ## EXAMPLES
 
@@ -78,6 +79,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

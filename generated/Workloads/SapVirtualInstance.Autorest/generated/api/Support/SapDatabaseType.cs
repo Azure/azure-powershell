@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapDatabaseType :
         System.IEquatable<SapDatabaseType>
     {
+        /// <summary>DB2 database type of the SAP system.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType Db2 = @"DB2";
 
+        /// <summary>HANA Database type of SAP system.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapDatabaseType Hana = @"HANA";
 
         /// <summary>the value for an instance of the <see cref="SapDatabaseType" /> Enum.</summary>

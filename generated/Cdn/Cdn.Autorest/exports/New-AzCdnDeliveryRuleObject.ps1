@@ -30,29 +30,28 @@ $actions = @($action1, $action2)
 New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
-  Name <DeliveryRuleAction>: The name of the action for the delivery rule.
+ACTION <IDeliveryRuleAction[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
+  Name <String>: The name of the action for the delivery rule.
 
 CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed.
-  Name <MatchVariable>: The name of the condition for the delivery rule.
+  Name <String>: The name of the condition for the delivery rule.
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleobject
 #>
 function New-AzCdnDeliveryRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction[]]
     # A list of actions that are executed when all the conditions of a rule are satisfied.
-    # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
     [Parameter(Mandatory)]
@@ -67,9 +66,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleCondition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition[]]
     # A list of conditions that must be matched for the actions to be executed.
-    # To construct, see NOTES section for CONDITION properties and create a hash table.
     ${Condition},
 
     [Parameter()]
@@ -86,6 +84,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -114,6 +115,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

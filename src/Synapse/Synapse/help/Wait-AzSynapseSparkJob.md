@@ -22,15 +22,13 @@ Wait-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> -LivyId <
 ### WaitSparkJobByIdFromParentObjectParameterSet
 ```
 Wait-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> -LivyId <Int32> [-WaitIntervalInSeconds <Int32>]
- [-TimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-TimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WaitSparkJobByIdFromInputObjectParameterSet
 ```
 Wait-AzSynapseSparkJob -SparkJobObject <PSSynapseSparkJob> [-LivyId <Int32>] [-WaitIntervalInSeconds <Int32>]
- [-TimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-TimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

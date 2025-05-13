@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticDeliveryAttributeMappi
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstaticdeliveryattributemappingobject
 #>
 function New-AzEventGridStaticDeliveryAttributeMappingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticDeliveryAttributeMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

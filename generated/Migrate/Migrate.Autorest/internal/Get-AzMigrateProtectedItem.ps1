@@ -27,7 +27,7 @@ Gets the details of the protected item.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -60,6 +60,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -83,7 +86,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateprotecteditem
 #>
 function Get-AzMigrateProtectedItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -122,6 +125,24 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # Continuation token.
+    ${ContinuationToken},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # OData options.
+    ${OdataOption},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.Int32]
+    # Page size.
+    ${PageSize},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

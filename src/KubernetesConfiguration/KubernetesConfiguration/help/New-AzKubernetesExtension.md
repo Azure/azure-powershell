@@ -15,11 +15,11 @@ Create a new Kubernetes Cluster Extension.
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -ExtensionType <String>
- [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ReleaseNamespace <String>]
+ [-AkAssignedIdentityType <String>] [-AutoUpgradeMinorVersion] [-ReleaseNamespace <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-IdentityType <ResourceIdentityType>] [-TargetNamespace <String>] [-PlanName <String>]
- [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-ReleaseTrain <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EnableSystemAssignedIdentity] [-TargetNamespace <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ReleaseTrain <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 2: Create a Flux Cluster Extension.
 ```powershell
-New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -EnableSystemAssignedIdentity
 ```
 
 ```output
@@ -60,7 +60,7 @@ Create a Flux Cluster Extension.
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,6 +178,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExtensionType
 Type of the Extension, of which this resource is an instance of.
 It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
@@ -188,21 +203,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -452,7 +452,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension
 
 ## NOTES
 

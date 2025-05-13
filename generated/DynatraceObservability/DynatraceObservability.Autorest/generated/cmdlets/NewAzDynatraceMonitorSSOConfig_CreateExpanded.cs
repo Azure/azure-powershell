@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a DynatraceSingleSignOnResource</summary>
+    /// <summary>create a DynatraceSingleSignOnResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDynatraceMonitorSSOConfig_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"Create a DynatraceSingleSignOnResource")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"create a DynatraceSingleSignOnResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}", ApiVersion = "2021-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}", ApiVersion = "2023-04-27")]
     public partial class NewAzDynatraceMonitorSSOConfig_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,8 +37,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>Single sign-on configurations for a given monitor resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.DynatraceSingleSignOnResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.DynatraceSingleSignOnResource();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>array of Aad(azure active directory) domains</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -47,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         Description = @"array of Aad(azure active directory) domains",
         SerializedName = @"aadDomains",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AadDomain { get => _resourceBody.AadDomain ?? null /* arrayOf */; set => _resourceBody.AadDomain = value; }
+        public string[] AadDomain { get => _resourceBody.AadDomain?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.AadDomain = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -58,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.DynatraceObservability Client => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.ClientAPI;
@@ -82,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         SerializedName = @"enterpriseAppId",
         PossibleTypes = new [] { typeof(string) })]
         public string EnterpriseAppId { get => _resourceBody.EnterpriseAppId ?? null; set => _resourceBody.EnterpriseAppId = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -124,9 +145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         private string _name;
 
         /// <summary>Single Sign On Configuration Name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Single Sign On Configuration Name")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Single Sign On Configuration Name")]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Single Sign On Configuration Name",
         SerializedName = @"configurationName",
@@ -134,7 +155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"""default""")]
+        Script = @"""default""",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
@@ -150,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -190,9 +212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         ReadOnly = false,
         Description = @"State of Single Sign On",
         SerializedName = @"singleSignOnState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates SingleSignOnState { get => _resourceBody.SingleSignOnState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.SingleSignOnStates)""); set => _resourceBody.SingleSignOnState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
+        public string SingleSignOnState { get => _resourceBody.SingleSignOnState ?? null; set => _resourceBody.SingleSignOnState = value; }
 
         /// <summary>The login URL specific to this Dynatrace Environment</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The login URL specific to this Dynatrace Environment")]
@@ -219,7 +241,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -228,24 +251,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -293,6 +316,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -357,11 +385,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -373,10 +426,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -386,7 +455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzDynatraceMonitorSSOConfig_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzDynatraceMonitorSSOConfig_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzDynatraceMonitorSSOConfig_CreateExpanded()
         {
@@ -452,7 +521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -462,15 +531,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Name"))
+                {
+                    Name = (string)this.MyInvocation.BoundParameters["Name"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SingleSignOnCreateOrUpdate(SubscriptionId, ResourceGroupName, MonitorName, Name, _resourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.SingleSignOnCreateOrUpdate(SubscriptionId, ResourceGroupName, MonitorName, Name, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,Name=Name,body=_resourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -508,12 +581,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -530,15 +603,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=_resourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=_resourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -548,12 +621,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource">Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -565,8 +638,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

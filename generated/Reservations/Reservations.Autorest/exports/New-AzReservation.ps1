@@ -16,42 +16,20 @@
 
 <#
 .Synopsis
-Purchase `ReservationOrder` and create resource under the specified URI.
+Purchase `ReservationOrder` and purchase resource under the specified URI.
 .Description
-Purchase `ReservationOrder` and create resource under the specified URI.
+Purchase `ReservationOrder` and purchase resource under the specified URI.
 .Example
 New-AzReservation -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'TestVm2222' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y' -ReservationOrderId '846655fa-d9e7-4fb8-9512-3ab7367352f1'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IPurchaseRequest>: The request for reservation purchase
-  [AppliedScopePropertyDisplayName <String>]: Display name
-  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
-  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-  [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
-  [DisplayName <String>]: Friendly name of the reservation
-  [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
-  [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
-  [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
-  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
-  [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of reservation.
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -62,31 +40,22 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/new-azreservation
 #>
 function New-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='PurchaseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Purchase', Mandatory)]
     [Parameter(ParameterSetName='PurchaseExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurchaseViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurchaseViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${ReservationOrderId},
 
-    [Parameter(ParameterSetName='PurchaseViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Purchase', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PurchaseViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest]
-    # The request for reservation purchase
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
@@ -135,17 +104,17 @@ param(
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("Single", "Shared", "ManagementGroup")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType]
+    [System.String]
     # Type of the Applied Scope.
     ${AppliedScopeType},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("Upfront", "Monthly")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan]
+    [System.String]
     # Represent the billing plans.
     ${BillingPlan},
 
@@ -165,9 +134,9 @@ param(
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("On", "Off")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility]
+    [System.String]
     # Turning this on will apply the reservation discount to other VMs in the same VM size group.
     # Only specify for VirtualMachines reserved resource type.
     ${InstanceFlexibility},
@@ -195,9 +164,9 @@ param(
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse", "VMwareCloudSimple", "RedHatOsa", "Databricks", "AppService", "ManagedDisk", "BlockBlob", "RedisCache", "AzureDataExplorer", "MySql", "MariaDb", "PostgreSql", "DedicatedHost", "SapHana", "SqlAzureHybridBenefit", "AVS", "DataFactory", "NetAppStorage", "AzureFiles", "SqlEdge", "VirtualMachineSoftware")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType]
+    [System.String]
     # The type of the resource that is being reserved.
     ${ReservedResourceType},
 
@@ -217,11 +186,23 @@ param(
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("P1Y", "P3Y", "P5Y")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm]
+    [System.String]
     # Represent the term of reservation.
     ${Term},
+
+    [Parameter(ParameterSetName='PurchaseViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Purchase operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PurchaseViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Purchase operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -291,6 +272,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -310,10 +300,10 @@ begin {
         }
 
         $mapping = @{
-            Purchase = 'Az.Reservations.private\New-AzReservation_Purchase';
             PurchaseExpanded = 'Az.Reservations.private\New-AzReservation_PurchaseExpanded';
-            PurchaseViaIdentity = 'Az.Reservations.private\New-AzReservation_PurchaseViaIdentity';
             PurchaseViaIdentityExpanded = 'Az.Reservations.private\New-AzReservation_PurchaseViaIdentityExpanded';
+            PurchaseViaJsonFilePath = 'Az.Reservations.private\New-AzReservation_PurchaseViaJsonFilePath';
+            PurchaseViaJsonString = 'Az.Reservations.private\New-AzReservation_PurchaseViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -322,6 +312,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

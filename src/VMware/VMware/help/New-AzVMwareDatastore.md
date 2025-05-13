@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareDatastore
 
 ## SYNOPSIS
-Create a Datastore
+create a Datastore
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <St
 ```
 
 ## DESCRIPTION
-Create a Datastore
+create a Datastore
 
 ## EXAMPLES
 

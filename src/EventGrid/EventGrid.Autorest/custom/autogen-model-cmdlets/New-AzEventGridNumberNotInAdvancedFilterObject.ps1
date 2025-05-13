@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberNotInAdvancedFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumbernotinadvancedfilterobject
 #>
 function New-AzEventGridNumberNotInAdvancedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberNotInAdvancedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

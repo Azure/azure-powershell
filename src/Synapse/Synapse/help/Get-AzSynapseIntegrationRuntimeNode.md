@@ -22,8 +22,7 @@ Get-AzSynapseIntegrationRuntimeNode [-ResourceGroupName <String>] -WorkspaceName
 ### GetByParentObjectParameterSet
 ```
 Get-AzSynapseIntegrationRuntimeNode -IntegrationRuntimeName <String> -WorkspaceObject <PSSynapseWorkspace>
- -Name <String> [-IpAddress] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -Name <String> [-IpAddress] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet

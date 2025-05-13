@@ -127,6 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Metric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Metric = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics) content.GetValueForProperty("Metric",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Metric, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetricsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).PolicyId, global::System.Convert.ToString);
@@ -146,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Rule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyRule>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MetricEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).MetricEnabled = (bool?) content.GetValueForProperty("MetricEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).MetricEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -180,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Metric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Metric = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesMetrics) content.GetValueForProperty("Metric",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Metric, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesMetricsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PolicyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).PolicyId, global::System.Convert.ToString);
@@ -199,6 +211,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("Rule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyRule>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MetricEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).MetricEnabled = (bool?) content.GetValueForProperty("MetricEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal)this).MetricEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

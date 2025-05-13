@@ -149,6 +149,9 @@ Validate whether adhoc backup will be successful or not
 ### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
 Validates if Restore can be triggered for a DataSource
 
+### [Test-AzDataProtectionBackupInstanceUpdate](Test-AzDataProtectionBackupInstanceUpdate.md)
+Validate whether update for backup instance will be successful or not
+
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
 Undeletes a soft deleted backup instance
 

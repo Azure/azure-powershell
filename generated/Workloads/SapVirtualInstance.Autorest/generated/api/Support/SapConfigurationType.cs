@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct SapConfigurationType :
         System.IEquatable<SapConfigurationType>
     {
+        /// <summary>SAP system will be deployed by service. No OS configurations will be done.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType Deployment = @"Deployment";
 
+        /// <summary>SAP system will be deployed by service. OS configurations will be done.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType DeploymentWithOSConfig = @"DeploymentWithOSConfig";
 
+        /// <summary>Existing SAP system will be registered.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType Discovery = @"Discovery";
 
         /// <summary>the value for an instance of the <see cref="SapConfigurationType" /> Enum.</summary>

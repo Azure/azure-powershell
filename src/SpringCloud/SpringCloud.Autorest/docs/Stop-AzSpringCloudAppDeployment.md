@@ -25,6 +25,18 @@ Stop-AzSpringCloudAppDeployment -InputObject <ISpringCloudIdentity> [-DefaultPro
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopViaIdentityApp
+```
+Stop-AzSpringCloudAppDeployment -AppInputObject <ISpringCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaIdentitySpring
+```
+Stop-AzSpringCloudAppDeployment -AppName <String> -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Stop the deployment.
 
@@ -46,12 +58,27 @@ Stop Spring Cloud Service by pipeline.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: StopViaIdentityApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentitySpring
 Aliases:
 
 Required: True
@@ -94,7 +121,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -113,7 +139,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityApp, StopViaIdentitySpring
 Aliases: DeploymentName
 
 Required: True
@@ -181,6 +207,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: StopViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

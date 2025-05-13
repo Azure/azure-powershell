@@ -12,9 +12,22 @@ Gets the SSO configuration details from the partner.
 
 ## SYNTAX
 
+### GetExpanded (Default)
 ```
 Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-UserPrincipal <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-UserPrincipal <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +66,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
-Monitor resource name
+### -JsonFilePath
+Path of Json file supplied to the Get operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -68,15 +81,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -JsonString
+Json string supplied to the Get operation
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Monitor resource name
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,8 +147,39 @@ user principal id of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -136,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse
 
 ## NOTES
 

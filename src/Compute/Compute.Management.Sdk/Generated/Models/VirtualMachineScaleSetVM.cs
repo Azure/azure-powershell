@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// view.</param>
         /// <param name="hardwareProfile">Specifies the hardware settings for
         /// the virtual machine.</param>
+        /// <param name="resilientVMDeletionStatus">Specifies the resilient VM
+        /// deletion status for the virtual machine. Possible values include:
+        /// 'Enabled', 'Disabled', 'InProgress', 'Failed'</param>
         /// <param name="storageProfile">Specifies the storage settings for the
         /// virtual machine disks.</param>
         /// <param name="additionalCapabilities">Specifies additional
@@ -118,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="etag">Etag is property returned in Update/Get response
         /// of the VMSS VM, so that customer can supply it in the header to
         /// ensure optimistic updates.</param>
-        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string))
+        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
@@ -127,6 +130,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             VmId = vmId;
             InstanceView = instanceView;
             HardwareProfile = hardwareProfile;
+            ResilientVMDeletionStatus = resilientVMDeletionStatus;
             StorageProfile = storageProfile;
             AdditionalCapabilities = additionalCapabilities;
             OsProfile = osProfile;
@@ -191,6 +195,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.hardwareProfile")]
         public HardwareProfile HardwareProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the resilient VM deletion status for the
+        /// virtual machine. Possible values include: 'Enabled', 'Disabled',
+        /// 'InProgress', 'Failed'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resilientVMDeletionStatus")]
+        public string ResilientVMDeletionStatus { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the storage settings for the virtual machine

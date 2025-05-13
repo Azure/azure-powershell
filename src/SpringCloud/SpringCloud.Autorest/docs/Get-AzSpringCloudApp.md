@@ -30,6 +30,12 @@ Get-AzSpringCloudApp -InputObject <ISpringCloudIdentity> [-SyncStatus <String>] 
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySpring
+```
+Get-AzSpringCloudApp -Name <String> -SpringInputObject <ISpringCloudIdentity> [-SyncStatus <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get an App and its properties.
 
@@ -95,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -114,7 +119,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySpring
 Aliases: AppName
 
 Required: True
@@ -155,6 +160,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -176,7 +196,7 @@ Indicates whether sync status
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentitySpring
 Aliases:
 
 Required: False
@@ -195,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
 

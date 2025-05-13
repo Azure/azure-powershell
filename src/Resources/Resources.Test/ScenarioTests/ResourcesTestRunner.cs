@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
-                .WithCommonPsScripts(new[]
-                {
+                .WithCommonPsScripts(
+                [
                     @"Common.ps1",
-                })
+                ])
                 .WithExtraRmModules(helper => new[]
                 {
                     helper.RMResourceModule,
@@ -50,25 +50,24 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>
+                    userAgentsToIgnore: [],
+                    resourceProviders: new Dictionary<string, string>
                     {
-                        { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2019-10-01" }
-                    },
-                    resourceProviders: new Dictionary<string, string>()
+                        {"Microsoft.Resources", null},
+                        {"Microsoft.Features", null},
+                        {"Microsoft.Authorization", null},
+                        {"Providers.Test", null},
+                        {"microsoft.web", null },
+                        {"Microsoft.Web", null }
+                    }
                 )
-                .WithManagementClients(mockContext =>
-                {
-                    var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
-                        ? new Func<ServiceClientCredentials>(() =>
-                        {
-                            var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                            return testEnvironment.TokenInfo[TokenAudience.Management];
-                        })()
-                        : new TokenCredentials("foo");
-
-                    HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
-                    return HttpClientHelperFactory.Instance;
-                })
+                .WithManagementClients(context =>
+                    {
+                        var creds = context.GetClientCredentials(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+                        HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(creds);
+                        return HttpClientHelperFactory.Instance;
+                    }
+                )
                 .Build();
         }
     }

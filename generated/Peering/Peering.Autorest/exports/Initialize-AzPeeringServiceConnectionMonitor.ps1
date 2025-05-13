@@ -22,26 +22,8 @@ Initialize Peering Service for Connection Monitor functionality
 .Example
 Initialize-AzPeeringServiceConnectionMonitor 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IPeeringIdentity>: Identity Parameter
-  [ConnectionMonitorTestName <String>]: The name of the connection monitor test
-  [Id <String>]: Resource identity path
-  [PeerAsnName <String>]: The peer ASN name.
-  [PeeringName <String>]: The name of the peering.
-  [PeeringServiceName <String>]: The name of the peering service.
-  [PrefixName <String>]: The name of the prefix.
-  [RegisteredAsnName <String>]: The name of the registered ASN.
-  [RegisteredPrefixName <String>]: The name of the registered prefix.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/initialize-azpeeringserviceconnectionmonitor
 #>
@@ -49,19 +31,12 @@ function Initialize-AzPeeringServiceConnectionMonitor {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Initialize', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Initialize')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='InitializeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -125,6 +100,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -145,11 +129,8 @@ begin {
 
         $mapping = @{
             Initialize = 'Az.Peering.private\Initialize-AzPeeringServiceConnectionMonitor_Initialize';
-            InitializeViaIdentity = 'Az.Peering.private\Initialize-AzPeeringServiceConnectionMonitor_InitializeViaIdentity';
         }
-        if (('Initialize') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Initialize') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -163,6 +144,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

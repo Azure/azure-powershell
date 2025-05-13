@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// The location of Microsoft Fabric LakeHouse Files dataset.
+    /// The location of Microsoft Fabric Lakehouse Files dataset.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseLocation")]
     public partial class LakeHouseLocation : DatasetLocation

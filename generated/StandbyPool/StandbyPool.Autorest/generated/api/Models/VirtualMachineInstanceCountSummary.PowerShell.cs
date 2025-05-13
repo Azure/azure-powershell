@@ -9,7 +9,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 
     /// <summary>
     /// Contains the counts of VMs in each power state in a given zone, fault domain, as known by the StandbyPool resource provider.
-    /// Note: any updates to pool resources outside of StandbyPoolRP (i.e deleting a VM through portal) are not reflected here.
     /// Note: any resources in the Running state may still be installing extensions / not fully provisioned.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(VirtualMachineInstanceCountSummaryTypeConverter))]
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             if (content.Contains("InstanceCountsByState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCountTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolVirtualMachineStateCountTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -163,13 +162,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             }
             if (content.Contains("InstanceCountsByState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolResourceStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCountTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount>) content.GetValueForProperty("InstanceCountsByState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IVirtualMachineInstanceCountSummaryInternal)this).InstanceCountsByState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IPoolVirtualMachineStateCount>(__y, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolVirtualMachineStateCountTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
     }
     /// Contains the counts of VMs in each power state in a given zone, fault domain, as known by the StandbyPool resource provider.
-    /// Note: any updates to pool resources outside of StandbyPoolRP (i.e deleting a VM through portal) are not reflected here.
     /// Note: any resources in the Running state may still be installing extensions / not fully provisioned.
     [System.ComponentModel.TypeConverter(typeof(VirtualMachineInstanceCountSummaryTypeConverter))]
     public partial interface IVirtualMachineInstanceCountSummary

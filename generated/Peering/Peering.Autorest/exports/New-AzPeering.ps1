@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Description
-Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 .Example
 $peerAsnId = "/subscriptions/{subId}/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest"
 $directConnections = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000
@@ -26,7 +26,7 @@ $directConnections = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 
 New-AzPeering -Name TestPeeringPs -ResourceGroupName DemoRG -Kind Direct -Location "South Central US" -DirectConnection $directConnections -DirectPeeringType Cdn -DirectPeerAsnId $peerAsnId -PeeringLocation Dallas -Sku Premium_Direct_Unlimited
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ DIRECTCONNECTION <IDirectConnection[]>: The set of connections that constitute a
   [BgpSessionPrefixV6 <String>]: The IPv6 prefix that contains both ends' IPv6 addresses.
   [ConnectionIdentifier <String>]: The unique identifier (GUID) for the connection.
   [PeeringDbFacilityId <Int32?>]: The PeeringDB.com ID of the facility at which the connection has to be set up.
-  [SessionAddressProvider <SessionAddressProvider?>]: The field indicating if Microsoft provides session ip addresses.
+  [SessionAddressProvider <String>]: The field indicating if Microsoft provides session ip addresses.
   [UseForPeeringService <Boolean?>]: The flag that indicates whether or not the connection is used for peering service.
 
 EXCHANGECONNECTION <IExchangeConnection[]>: The set of connections that constitute an exchange peering.
@@ -64,7 +64,7 @@ EXCHANGECONNECTION <IExchangeConnection[]>: The set of connections that constitu
 https://learn.microsoft.com/powershell/module/az.peering/new-azpeering
 #>
 function New-AzPeering {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -88,9 +88,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Direct", "Exchange")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind]
+    [System.String]
     # The kind of the peering.
     ${Kind},
 
@@ -103,9 +103,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IDirectConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection[]]
     # The set of connections that constitute a direct peering.
-    # To construct, see NOTES section for DIRECTCONNECTION properties and create a hash table.
     ${DirectConnection},
 
     [Parameter()]
@@ -115,18 +114,17 @@ param(
     ${DirectPeerAsnId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Edge", "Transit", "Cdn", "Internal", "Ix", "IxRs", "Voice", "EdgeZoneForOperators")]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType]
+    [System.String]
     # The type of direct peering.
     ${DirectPeeringType},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IExchangeConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection[]]
     # The set of connections that constitute an exchange peering.
-    # To construct, see NOTES section for EXCHANGECONNECTION properties and create a hash table.
     ${ExchangeConnection},
 
     [Parameter()]
@@ -150,7 +148,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringTags]))]
     [System.Collections.Hashtable]
     # The resource tags.
     ${Tag},
@@ -211,6 +209,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -232,9 +239,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.Peering.private\New-AzPeering_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -248,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

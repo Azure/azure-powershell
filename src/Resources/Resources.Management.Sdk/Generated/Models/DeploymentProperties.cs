@@ -65,7 +65,10 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// the parent template or nested template. Only applicable to nested
         /// templates. If not specified, default value is outer.
         /// </param>
-        public DeploymentProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions))
+
+        /// <param name="validationLevel">The validation level of the deployment
+        /// Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;</param>
+        public DeploymentProperties(DeploymentMode mode, object template = default(object), TemplateLink templateLink = default(TemplateLink), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), ParametersLink parametersLink = default(ParametersLink), DebugSetting debugSetting = default(DebugSetting), OnErrorDeployment onErrorDeployment = default(OnErrorDeployment), ExpressionEvaluationOptions expressionEvaluationOptions = default(ExpressionEvaluationOptions), string validationLevel = default(string))
 
         {
             this.Template = template;
@@ -76,6 +79,7 @@ namespace Microsoft.Azure.Management.Resources.Models
             this.DebugSetting = debugSetting;
             this.OnErrorDeployment = onErrorDeployment;
             this.ExpressionEvaluationOptions = expressionEvaluationOptions;
+            this.ValidationLevel = validationLevel;
             CustomInit();
         }
 
@@ -150,6 +154,12 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expressionEvaluationOptions")]
         public ExpressionEvaluationOptions ExpressionEvaluationOptions {get; set; }
+
+        /// <summary>
+        /// Gets or sets the validation level of the deployment Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "validationLevel")]
+        public string ValidationLevel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -174,6 +184,7 @@ namespace Microsoft.Azure.Management.Resources.Models
             {
                 this.ParametersLink.Validate();
             }
+
 
 
 

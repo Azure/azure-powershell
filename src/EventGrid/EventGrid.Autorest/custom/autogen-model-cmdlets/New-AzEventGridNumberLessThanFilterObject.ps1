@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberLessThanFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumberlessthanfilterobject
 #>
 function New-AzEventGridNumberLessThanFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberLessThanFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -37,7 +37,7 @@ $vault.EncryptionSetting.CmkKeyVaultProperty |fl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -62,7 +62,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='GetViaIdentity1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -175,11 +175,11 @@ Fetches the Cross Region Restore Job
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -209,7 +209,7 @@ PARAMETER <ICrossRegionRestoreJobRequest>: Details of CRR Job to be fetched
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectioncrossregionrestorejobdetail
 #>
 function Get-AzDataProtectionCrossRegionRestoreJobDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -247,7 +247,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobRequest]
     # Details of CRR Job to be fetched
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -387,9 +387,9 @@ Fetches list of Cross Region Restore job belonging to the vault
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobsRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobsRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -402,7 +402,7 @@ PARAMETER <ICrossRegionRestoreJobsRequest>: Details of Backup Vault for which CR
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectioncrossregionrestorejob
 #>
 function Get-AzDataProtectionCrossRegionRestoreJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -434,7 +434,7 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreJobsRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreJobsRequest]
     # Details of Backup Vault for which CRR Jobs are to be fetched
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -563,9 +563,9 @@ Returns a list of Secondary Recovery Points for a DataSource in a vault, that ca
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IFetchSecondaryRPsRequestParameters
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IFetchSecondaryRPsRequestParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPointResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPointResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -578,7 +578,7 @@ PARAMETER <IFetchSecondaryRPsRequestParameters>: Information about BI whose seco
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionfetchsecondaryrecoverypoint
 #>
 function Get-AzDataProtectionFetchSecondaryRecoveryPoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPointResource])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -616,7 +616,7 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IFetchSecondaryRPsRequestParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IFetchSecondaryRPsRequestParameters]
     # Information about BI whose secondary RecoveryPoints are requested
     # Source region and
     # BI ARM path
@@ -751,7 +751,7 @@ Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -776,7 +776,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
 #>
 function Get-AzDataProtectionJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -937,12 +937,12 @@ $instance = $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Datasour
 $recoveryPoints = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name -UseSecondaryRegion
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPointResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPointResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 #>
 function Get-AzDataProtectionRecoveryPoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRecoveryPointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPointResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1140,9 +1140,9 @@ While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $
 $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1224,7 +1224,7 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 #>
 function New-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1264,21 +1264,21 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource]
     # BackupInstance Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
     # BackupInstanceResource properties
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppProxyResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppProxyResourceTags]))]
     [System.Collections.Hashtable]
     # Proxy Resource tags.
     ${Tag},
@@ -1520,9 +1520,9 @@ Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Daily -Crit
 New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "newAKSPolicy" -Policy $defaultPol
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1535,7 +1535,7 @@ PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 #>
 function New-AzDataProtectionBackupPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1568,7 +1568,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicyResource]
     # BaseBackupPolicy resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1720,9 +1720,9 @@ $cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c
 New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1777,7 +1777,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1810,7 +1810,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1818,7 +1818,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
@@ -1855,7 +1855,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings]
     # Customer Managed Key details of the resource.
     # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
     ${EncryptionSetting},
@@ -1917,7 +1917,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppBaseTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppBaseTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2044,11 +2044,11 @@ Creates or updates a ResourceGuard resource belonging to a resource group.
 New-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "mua-rg" -Name "mua-resource-guard" -Location "centraluseuap"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2080,7 +2080,7 @@ PARAMETER <IResourceGuardResource>: .
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 #>
 function New-AzDataProtectionResourceGuard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardResource])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Put', Mandatory)]
@@ -2118,7 +2118,7 @@ param(
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PutViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IResourceGuardResource]
     # .
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2148,7 +2148,7 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [Parameter(ParameterSetName='PutViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDppBaseTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppBaseTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2267,9 +2267,9 @@ Triggers Cross Region Restore for BackupInstance.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreRequestObject
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2308,7 +2308,7 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
 https://learn.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancecrossregionrestore
 #>
 function Start-AzDataProtectionBackupInstanceCrossRegionRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='Trigger', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2334,21 +2334,21 @@ param(
 
     [Parameter(ParameterSetName='Trigger', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreRequestObject]
     # Cross Region Restore Request Object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreDetails]
     # Cross region restore details.
     # To construct, see NOTES section for CROSSREGIONRESTOREDETAIL properties and create a hash table.
     ${CrossRegionRestoreDetail},
 
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
@@ -2606,9 +2606,9 @@ $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2632,7 +2632,7 @@ RESTORETARGETINFO <IRestoreTargetInfoBase>: Gets or sets the restore target info
 https://learn.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 #>
 function Start-AzDataProtectionBackupInstanceRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='Trigger', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2671,7 +2671,7 @@ param(
 
     [Parameter(ParameterSetName='Trigger', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
     # Azure backup restore request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2684,7 +2684,7 @@ param(
 
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IRestoreTargetInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IRestoreTargetInfoBase]
     # Gets or sets the restore target information.
     # To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
     ${RestoreTargetInfo},
@@ -2843,7 +2843,7 @@ This operation will stop protection of a backup instance and data will be held f
 Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStopProtectionRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStopProtectionRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -2928,7 +2928,7 @@ param(
 
     [Parameter(ParameterSetName='StopViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStopProtectionRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStopProtectionRequest]
     # Request body of Stop protection when MUA is Enabled
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3061,7 +3061,7 @@ This operation will stop backup for a backup instance and retains the backup dat
 Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISuspendBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -3146,7 +3146,7 @@ param(
 
     [Parameter(ParameterSetName='SuspendViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISuspendBackupRequest]
     # Request body of Suspend backup when MUA is Enabled
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3281,11 +3281,11 @@ Validates whether Cross Region Restore can be triggered for DataSource.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateCrossRegionRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateCrossRegionRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3340,7 +3340,7 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancecrossregionrestore
 #>
 function Test-AzDataProtectionBackupInstanceCrossRegionRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -3378,7 +3378,7 @@ param(
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateCrossRegionRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateCrossRegionRestoreRequestObject]
     # Cross Region Restore Request Object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3386,7 +3386,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ICrossRegionRestoreDetails]
     # Cross region restore details.
     # To construct, see NOTES section for CROSSREGIONRESTOREDETAIL properties and create a hash table.
     ${CrossRegionRestoreDetail},
@@ -3394,7 +3394,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
@@ -3528,11 +3528,11 @@ $instance = Initialize-AzDataProtectionBackupInstance -SnapshotResourceGroupId $
 Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -BackupInstance  $instance[0].Property
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateForBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3628,7 +3628,7 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 #>
 function Test-AzDataProtectionBackupInstanceReadiness {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -3663,14 +3663,14 @@ param(
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateForBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForBackupRequest]
     # Validate for backup request
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
     # Backup Instance
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -3804,11 +3804,11 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instances[0
 $validateRestore = Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName $ResourceGroupName -Name $instance[0].Name -VaultName $VaultName -RestoreRequest $RestoreRequestObject -SubscriptionId $SubscriptionId -RestoreToSecondaryRegion
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3856,27 +3856,27 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 #>
 function Test-AzDataProtectionBackupInstanceRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
-[CmdletBinding(DefaultParameterSetName='ValidateViaIdentity1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
+[CmdletBinding(DefaultParameterSetName='ValidateViaIdentity2', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Validate1', Mandatory)]
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='Validate2', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded2', Mandatory)]
     [Alias('BackupInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the backup instance.
     ${Name},
 
-    [Parameter(ParameterSetName='Validate1', Mandatory)]
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='Validate2', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Validate1')]
-    [Parameter(ParameterSetName='ValidateExpanded1')]
+    [Parameter(ParameterSetName='Validate2')]
+    [Parameter(ParameterSetName='ValidateExpanded2')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3884,33 +3884,33 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Validate1', Mandatory)]
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='Validate2', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the backup vault.
     ${VaultName},
 
-    [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentity2', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded2', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Validate1', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Validate2', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentity2', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateRestoreRequestObject]
     # Validate restore request object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='ValidateExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
@@ -3985,12 +3985,292 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Validate1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_Validate1';
-            ValidateExpanded1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateExpanded1';
-            ValidateViaIdentity1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateViaIdentity1';
-            ValidateViaIdentityExpanded1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateViaIdentityExpanded1';
+            Validate2 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_Validate2';
+            ValidateExpanded2 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateExpanded2';
+            ValidateViaIdentity2 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateViaIdentity2';
+            ValidateViaIdentityExpanded2 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceRestore_ValidateViaIdentityExpanded2';
         }
-        if (('Validate1', 'ValidateExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Validate2', 'ValidateExpanded2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Validate whether update for backup instance will be successful or not
+.Description
+Validate whether update for backup instance will be successful or not
+.Example
+$backupInstanceResource = Get-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId | Where-Object { $_.Name -match $backupInstanceName }
+$backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicyARMId
+
+Test-AzDataProtectionBackupInstanceUpdate -Name $backupInstanceResource.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -BackupInstance $backupInstanceResource.Property
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForModifyBackupRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BACKUPINSTANCE <IBackupInstance>: Backup Instance
+  DataSourceInfo <IDatasource>: Gets or sets the data source information.
+    ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+    [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+    [ResourceLocation <String>]: Location of datasource.
+    [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+    [ResourceType <String>]: Resource Type of Datasource.
+    [ResourceUri <String>]: Uri of the resource.
+    [Type <String>]: DatasourceType of the resource.
+  ObjectType <String>: 
+  PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
+    PolicyId <String>: 
+    [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
+      [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+        ObjectType <String>: Type of the specific object - used for deserializing
+      [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
+        DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+        ObjectType <String>: Type of the specific object - used for deserializing
+  [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
+    ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+    [DatasourceType <String>]: DatasourceType of the resource.
+    [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+    [ResourceLocation <String>]: Location of datasource.
+    [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+    [ResourceType <String>]: Resource Type of Datasource.
+    [ResourceUri <String>]: Uri of the resource.
+  [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
+    ObjectType <String>: Type of the specific object - used for deserializing
+  [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
+  [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+    [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+    [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
+  [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+
+INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+  [BackupInstanceName <String>]: The name of the backup instance.
+  [BackupPolicyName <String>]: 
+  [Id <String>]: Resource identity path
+  [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Location <String>]: The location in which uniqueness will be verified.
+  [OperationId <String>]: 
+  [RecoveryPointId <String>]: 
+  [RequestName <String>]: 
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
+  [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VaultName <String>]: The name of the backup vault.
+
+PARAMETER <IValidateForModifyBackupRequest>: Validate for modify backup request
+  BackupInstance <IBackupInstance>: Backup Instance
+    DataSourceInfo <IDatasource>: Gets or sets the data source information.
+      ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+      [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+      [ResourceLocation <String>]: Location of datasource.
+      [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+      [ResourceType <String>]: Resource Type of Datasource.
+      [ResourceUri <String>]: Uri of the resource.
+      [Type <String>]: DatasourceType of the resource.
+    ObjectType <String>: 
+    PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
+      PolicyId <String>: 
+      [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
+        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+          ObjectType <String>: Type of the specific object - used for deserializing
+        [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
+          DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+          ObjectType <String>: Type of the specific object - used for deserializing
+    [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
+      ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
+      [DatasourceType <String>]: DatasourceType of the resource.
+      [ObjectType <String>]: Type of Datasource object, used to initialize the right inherited type
+      [ResourceLocation <String>]: Location of datasource.
+      [ResourceName <String>]: Unique identifier of the resource in the context of parent.
+      [ResourceType <String>]: Resource Type of Datasource.
+      [ResourceUri <String>]: Uri of the resource.
+    [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
+      ObjectType <String>: Type of the specific object - used for deserializing
+    [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
+    [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+      [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+      [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
+    [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+.Link
+https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstanceupdate
+#>
+function Test-AzDataProtectionBackupInstanceUpdate {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
+[CmdletBinding(DefaultParameterSetName='ValidateViaIdentity1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Validate1', Mandatory)]
+    [Alias('BackupInstanceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the backup instance.
+    ${Name},
+
+    [Parameter(ParameterSetName='Validate1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Validate1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Validate1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the backup vault.
+    ${VaultName},
+
+    [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Validate1', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IValidateForModifyBackupRequest]
+    # Validate for modify backup request
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
+    # Backup Instance
+    # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
+    ${BackupInstance},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Validate1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceUpdate_Validate1';
+            ValidateViaIdentity1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceUpdate_ValidateViaIdentity1';
+            ValidateViaIdentityExpanded1 = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceUpdate_ValidateViaIdentityExpanded1';
+        }
+        if (('Validate1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -4221,7 +4501,7 @@ $UAMI = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/re
 $vault = Update-AzDataProtectionBackupVault -AssignUserIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -IdentityType 'SystemAssigned,UserAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4239,7 +4519,7 @@ ENCRYPTIONSETTING <IEncryptionSettings>: Customer Managed Key details of the res
 https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 #>
 function Update-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4296,7 +4576,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings]
     # Customer Managed Key details of the resource.
     # To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
     ${EncryptionSetting},
@@ -4345,7 +4625,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IPatchResourceRequestInputTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IPatchResourceRequestInputTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

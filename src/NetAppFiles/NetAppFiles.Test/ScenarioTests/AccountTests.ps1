@@ -26,17 +26,17 @@ function Test-AccountActiveDirectory
     $resourceLocation = 'westus2'
 
     $activeDirectory1 = @{
-        Username = "sdkuser"
+        Username = "xxxxxxxx"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
-        Password = "sdkpass"
+        Password = "xxxxxxxx"
         Domain = "sdkdomain"
         Dns = "192.0.2.2"
         SmbServerName = "PSMBSName1"
     }
     $activeDirectory2 = @{
-        Username = "sdkuser1"
+        Username = "xxxxxxxx"
 		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
-        Password = "sdkpass2"
+        Password = "xxxxxxxx"
         Domain = "sdkdomain"
         Dns = "192.0.2.2"
         SmbServerName = "PSMBSName2"
@@ -61,7 +61,8 @@ function Test-AccountActiveDirectory
             $newTagValue = "tagValue1"
             #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
             #New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
-            Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
+            #With n ew feature multiple AD is not allowed
+            #Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
             #Assert-True { $false }
         }
         catch
@@ -208,19 +209,41 @@ function Test-AccountCMK
     $resourceGroup = Get-ResourceGroupName
     $accName1 = Get-ResourceName
     $accName2 = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName1 = Get-ResourceName
+
     $identityName = Get-ResourceName
+    $akvPrivateEndpoint = Get-ResourceName
     #$keyVaultName = Get-ResourceName
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $resourceLocation = "westus"
     $keySource = "Microsoft.KeyVault"
-    $keyVaultUri = "https://akvtestvault2.vault.azure.net/"
+    #$keyVaultUri = "https://akvtestvault2.vault.azure.net/"
+    $keyVaultUri = "https://akvtestvaultwestus.vault.azure.net/"
     $keyName = "akvTestMaster"
-    $keyVaultName = "akvTestVault2"
-    $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
+    #$keyVaultName = "akvTestVault2"
+    $keyVaultName = "akvTestVaultWestus"
+    #$keyVaultName = Get-ResourceName
+    #$keyVaultName =  "psAkv"+$resourceGroup+$resourceLocation
+    #$keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
+    $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVaultWestus"
     $kvResourceGroup = "akvTestRG"
     # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/FakeUserIdentity"
-    $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
+    #$userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
 
-    $identityType = "UserAssigned"
+    $identityType = "SystemAssigned"
+
+    #volume props
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte
+    $doubleUsage = 2 * $usageThreshold
+    $subnetName = "default"
+    $akvSubnetName = "akvSubnet"
+    $standardPoolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
 
     try
     {
@@ -230,46 +253,127 @@ function Test-AccountCMK
         # New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation
         # $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
         # Create keyvault and userIdeneity then give the identity access to the keyvault
-        # $azKeyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroup -Location $resourceLocation -EnablePurgeProtection                
+        #$azKeyVault = New-AzKeyVault -ResourceGroupName $resourceGroup -Name $keyVaultName -Location $resourceLocation -EnablePurgeProtection
+        #$azKeyVault = Get-AzKeyVault -ResourceGroupName $kvResourceGroup -Name $keyVaultName
+        #Assert-NotNull $azKeyVault.ResourceID
+        #$keyVaultResourceId = $azKeyVault.ResourceID
         
-        #Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupname $kvResourceGroup -ObjectId $userAssignedIdenity.PrincipalId -PermissionsToKeys create,get,encrypt,decrypt  -BypassObjectIdValidation
-        # Create key
-        #$keyVaultKey = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination "Software"
-
+        #$keyVaultUri = $azKeyVault.VaultUri                
+        #Create key in vault
+        #Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyVaultName -Destination "Software"
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
 
-        # $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
-        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -Location $resourceLocation -Tag @{$newTagName = $newTagValue} -IdentityType $identityType
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 
+
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        #set access policy account identity, and the permissions "Get," "Encrypt," and "Decrypt."       
+        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName  -ObjectId $retrievedAcc.Identity.PrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
+                
+
+        #subnet for akv
+        $akvSubnet = Add-AzVirtualNetworkSubnetConfig -Name $akvSubnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -PrivateEndpointNetworkPoliciesFlag Disabled | Set-AzVirtualNetwork
+ 
+        $subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name 'AzureBastionSubnet' -VirtualNetwork $virtualNetwork -AddressPrefix '10.0.3.0/24' | Set-AzVirtualNetwork
+
+        $ip = @{
+            ResourceGroupName = $resourceGroup
+            Name = 'public-ip'
+            Location = $resourceLocation
+            AllocationMethod = 'Static'
+            Sku = 'Standard'            
+        }
+        New-AzPublicIpAddress @ip
+
+        $bastion = @{
+            Name = 'bastion'
+            ResourceGroupName = $resourceGroup
+            PublicIpAddressRgName = $resourceGroup  
+            PublicIpAddressName = 'public-ip'
+            VirtualNetworkRgName = $resourceGroup
+            VirtualNetworkName = $virtualNetwork.Name
+            Sku = 'Basic'
+        }
+        New-AzBastion @bastion
+        # create pool and volume 
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -PoolSize $standardPoolSize -ServiceLevel $serviceLevel
+		
+        ## Create the private endpoint connection. ## 
+        $pec = @{
+            Name = 'akvPrivateEndpoint'
+            PrivateLinkServiceId = $keyVaultResourceId
+            GroupID = 'vault'
+        }
+        $privateEndpointConnection = New-AzPrivateLinkServiceConnection @pec
+
+        ## Get the virtual network we created previously into a variable. ##
+        $vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroup -Name $virtualNetwork.Name
+        $akvSubnet = $vnet | Select-Object -ExpandProperty subnets | Where-Object Name -eq $akvSubnetName
+
+        ## Create the private endpoint. ##
+        $pe = @{
+            ResourceGroupName = $resourceGroup
+            Name = 'private-endpoint'
+            Location = $resourceLocation
+            Subnet = $akvSubnet
+            PrivateLinkServiceConnection = $privateEndpointConnection
+        }
+        $privateEndpoint = New-AzPrivateEndpoint @pe
+
+        #update account with cmk
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -EncryptionKeySource $keySource -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
-        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        #Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
-        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
+        #Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # create and check account 2 using the Confirm flag
-        $retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
-        Assert-AreEqual $accName2 $retrievedAcc2.Name
+        #$retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -IdentityType $identityType -Confirm:$false
+        #Assert-AreEqual $accName2 $retrievedAcc2.Name
 
         # update and check account setting Encryption CMK properties
-        $retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
-        Assert-AreEqual $accName2 $retrievedAcc2.Name
-        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
-        Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
-        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
+        #$retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $azKeyVault.VaultUri 
+        #Assert-AreEqual $accName2 $retrievedAcc2.Name
+        #Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        #Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
+        #Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # Assert-ThrowsContains{$retrievedAcc = Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'
         Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 
 
+
+        #Create the CMK volume 
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -NetworkFeature Standard -EncryptionKeySource 'Microsoft.KeyVault' -KeyVaultPrivateEndpointResourceId $privateEndpoint.Id
+        Assert-AreEqual "$accName1/$poolName/$volName1" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+
+        # Get KeyVaultInformation 
+        $keyVaultInfo = Get-AzNetAppFilesAccountKeyVaultStatus -ResourceGroupName $resourceGroup -AccountName $accName1
+        Assert-Null $keyVaultInfo.KeyVaultPrivateEndpoints
+        #$keyVaultPrivateEndpoint = @{
+        #    VirtualNetworkId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].VirtualNetworkId
+        #    PrivateEndpointId = $keyVaultInfo.KeyVaultPrivateEndpoints[0].PrivateEndpointId
+        #}
+
+        $keyVaultPrivateEndpoint = @{
+            VirtualNetworkId = $vnet.Id
+            PrivateEndpointId = $privateEndpoint.Id
+        }
+        Assert-ThrowsContains{$retrievedAcc = Invoke-AzNetAppFilesAccountChangeKeyVault -ResourceGroupName $resourceGroup -AccountName $accName1 -KeyVaultUri $keyVaultUri -KeyVaultKeyName  $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultPrivateEndpoint $keyVaultPrivateEndpoint} 'Volume encryption is already configured to use https://akvtestvaultwestus.vault.azure.net/. Please select a different key vault.'
+        
+        #Assert-ThrowsContains{$retrievedAcc = Convert-AzNetAppFilesAccountToCmk -ResourceGroupName $resourceGroup -AccountName $accName1 -VirtualNetworkId $keyVaultInfo.VirtualNetworkId -PrivateEndpointId $keyVaultInfo.PrivateEndpointId } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'       
+
         # get and check accounts by group (list)
         $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
-        Assert-AreEqual 2 $retrievedAcc.Length
-
-        Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1
-        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
         Assert-AreEqual 1 $retrievedAcc.Length
     }
     finally

@@ -7,7 +7,7 @@ Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"  -S
 ```output
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox None         NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Gets a particular job 
@@ -20,8 +20,8 @@ Get-AzDataBoxJob -SubscriptionId "SubscriptionId"
 ```output
 Name        Location      Status        TransferType    SkuName    IdentityType  DeliveryType Detail
 ----        --------      ------        ------------    -------    ------------  ------------ ------
-brtestdbd  brazilsouth   DeviceOrdered ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
-testorder  uksouth       Cancelled     ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
+brtestdbd  brazilsouth   DeviceOrdered ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
+testorder  uksouth       Cancelled     ImportToAzure   DataBoxDisk None          NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxDiskJobDetails
 ```
 
  List all job under a subscription 
@@ -34,9 +34,9 @@ Get-AzDataBoxJob -ResourceGroupName "resourceGroupName"
 ```output
 Name                   Location Status        TransferType    SkuName IdentityType   DeliveryType Detail
 ----                   -------- ------        ------------    ------- ------------   ------------ ------
-abcbnkndnkndn          westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
-abcbnkndnkndn-Clone    westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
-abcOrder               westus   Cancelled     ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+abcbnkndnkndn          westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+abcbnkndnkndn-Clone    westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
+abcOrder               westus   Cancelled     ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
  List all job under a resource group 

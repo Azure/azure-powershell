@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Create or update a virtual machine image template
+create a virtual machine image template
 .Description
-Create or update a virtual machine image template
+create a virtual machine image template
 .Example
-$source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
+$source = New-AzImageBuilderTemplateSourceObject -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
 $customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name "CheckSumCompareShellScript" -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" -Sha256Checksum "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
 $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
 $userAssignedIdentity = "/subscriptions/{subId}/resourcegroups/azps_test_group_imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-imagebuilder"
 
-New-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor
+New-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Location eastus -UserAssignedIdentity $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor
 .Example
 $requestbodyjson = '{
   "location": "eastus",
@@ -68,7 +68,7 @@ $requestbodyjson = '{
 }'
 $requestbodyjson | Out-File -FilePath "C:\request_body.json"
 
-New-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder -JsonTemplatePath "C:\request_body.json"
+New-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder -JsonFilePath "C:\request_body.json"
 .Example
 New-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder -JsonString '{
   "location": "eastus",
@@ -111,33 +111,33 @@ New-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_i
 }'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CUSTOMIZE <IImageTemplateCustomizer[]>: 
+CUSTOMIZE <IImageTemplateCustomizer[]>: Specifies the properties used to describe the customization steps of the image, like Image source etc
   Type <String>: The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   [Name <String>]: Friendly Name to provide context on what this customization step does
 
-DISTRIBUTE <IImageTemplateDistributor[]>: 
+DISTRIBUTE <IImageTemplateDistributor[]>: The distribution targets where the image output needs to go to.
   RunOutputName <String>: The name to be used for the associated RunOutput.
   Type <String>: Type of distribution.
   [ArtifactTag <IImageTemplateDistributorArtifactTags>]: Tags that will be applied to the artifact once it has been created/updated by the distributor.
     [(Any) <String>]: This indicates any property can be added to this object.
 
-SOURCE <IImageTemplateSource>: 
+SOURCE <IImageTemplateSource>: Specifies the properties used to describe the source image.
   Type <String>: Specifies the type of source image you want to start with.
 
-VALIDATOR <IImageTemplateInVMValidator[]>: 
+VALIDATOR <IImageTemplateInVMValidator[]>: List of validations to be performed.
   Type <String>: The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   [Name <String>]: Friendly Name to provide context on what this validation step does
 .Link
 https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 #>
 function New-AzImageBuilderTemplate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -161,119 +161,153 @@ param(
     # The subscription Id forms part of the URI for every service call.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Alias('JsonTemplatePath')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[]]
-    # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer[]]
+    # Specifies the properties used to describe the customization steps of the image, like Image source etc
     ${Customize},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[]]
-    # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor[]]
+    # The distribution targets where the image output needs to go to.
     ${Distribute},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource]
-    # To construct, see NOTES section for SOURCE properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSource]
+    # Specifies the properties used to describe the source image.
     ${Source},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String]
-    ${UserAssignedIdentityId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Int32]
+    # Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions).
+    # Omit or specify 0 to use the default (4 hours).
     ${BuildTimeoutInMinute},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
+    # The staging resource group id in the same subscription as the image template that will be used to build the image.
+    # If this field is empty, a resource group with a random name will be created.
+    # If the resource group specified in this field doesn't exist, it will be created with the same name.
+    # If the resource group specified exists, it must be empty and in the same region as the image template.
+    # The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
     ${StagingResourceGroup},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
+    # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState])]
+    [Alias('UserAssignedIdentityId')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # Enabling this field will improve VM boot time by optimizing the final customized image output.
     ${VMBootState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Int32]
+    # Size of the OS disk in GB.
+    # Omit or specify 0 to use Azure's default OS disk size.
     ${VMProfileOsdiskSizeGb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String[]]
+    # Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM.
+    # This may include the identity of the image template.
     ${VMProfileUserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
+    # Size of the virtual machine used to build, customize and capture images.
+    # Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
     ${VMProfileVmsize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
+    # If validation fails and this field is set to false, output image(s) will not be distributed.
+    # This is the default behavior.
+    # If validation fails and this field is set to true, output image(s) will still be distributed.
+    # Please use this option with caution as it may result in bad images being distributed for use.
+    # In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure.
+    # [Note: This field has no effect if validation succeeds.]
     ${ValidateContinueDistributeOnFailure},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
+    # If this field is set to true, the image specified in the 'source' section will directly be validated.
+    # No separate build will be run to generate and then validate a customized image.
     ${ValidateSourceValidationOnly},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator[]]
-    # To construct, see NOTES section for VALIDATOR properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator[]]
+    # List of validations to be performed.
     ${Validator},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
+    # Size of the proxy virtual machine used to pass traffic to the build VM and validation VM.
+    # Omit or specify empty string to use the default (Standard_A1_v2).
     ${VnetConfigProxyVMSize},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
+    # Resource id of a pre-existing subnet.
     ${VnetConfigSubnetId},
-
-    [Parameter(ParameterSetName='JsonTemplatePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String]
-    ${JsonTemplatePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Runtime')]
-    [System.String]
-    # Json string.
-    ${JsonString},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Runtime')]
@@ -334,6 +368,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -353,13 +396,11 @@ begin {
         }
 
         $mapping = @{
+            CreateViaJsonFilePath = 'Az.ImageBuilder.private\New-AzImageBuilderTemplate_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.ImageBuilder.private\New-AzImageBuilderTemplate_CreateViaJsonString';
-            CreateExpanded = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate_CreateExpanded';
-            JsonTemplatePath = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate_JsonTemplatePath';
+            CreateExpanded = 'Az.ImageBuilder.custom\New-AzImageBuilderTemplate';
         }
-        if (('CreateViaJsonString', 'CreateExpanded', 'JsonTemplatePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateViaJsonFilePath', 'CreateViaJsonString', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -373,6 +414,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

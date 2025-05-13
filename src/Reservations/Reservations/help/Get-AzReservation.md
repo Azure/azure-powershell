@@ -18,6 +18,12 @@ Get-AzReservation [-Filter <String>] [-Orderby <String>] [-SelectedState <String
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityReservationOrder
+```
+Get-AzReservation -Id <String> -ReservationOrderInputObject <IReservationsIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzReservation -Id <String> -OrderId <String> [-Expand <String>] [-DefaultProfile <PSObject>]
@@ -98,7 +104,7 @@ Supported value of this query is renewProperties
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: GetViaIdentityReservationOrder, Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -131,7 +137,7 @@ Id of the reservation item
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityReservationOrder, Get
 Aliases: ReservationId
 
 Required: True
@@ -143,7 +149,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
@@ -184,6 +189,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationOrderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+Parameter Sets: GetViaIdentityReservationOrder
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -241,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

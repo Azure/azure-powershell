@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberGreaterThanOrEqualsAdv
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumbergreaterthanorequalsadvancedfilterobject
 #>
 function New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberGreaterThanOrEqualsAdvancedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName,
                 () =>
                 {
-                    var desiredState = Enabled ? ManagedIdentitySqlControlSettingsState.Enabled : ManagedIdentitySqlControlSettingsState.Disabled;
+                    var desiredState = Enabled ? DesiredState.Enabled : DesiredState.Disabled;
                     var result = new PSManagedIdentitySqlControlSettingsModel(SynapseAnalyticsClient.UpdateManagedIdentitySqlControlSetting(this.ResourceGroupName, this.WorkspaceName, desiredState));
                     WriteObject(result);
                 });

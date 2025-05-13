@@ -17,14 +17,10 @@
 <#
 .Synopsis
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 .Description
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 .Example
 Update-AzWorkloadsSapCentralInstance  -Name cs0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -Tag @{ Test = "PS"; k2 = "v2"}
 .Example
@@ -33,7 +29,7 @@ Update-AzWorkloadsSapCentralInstance  -InputObject /subscriptions/49d64d54-e966-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapCentralServerInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapCentralServerInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,16 +40,16 @@ INPUTOBJECT <ISapVirtualInstanceIdentity>: Identity Parameter
   [CentralInstanceName <String>]: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   [DatabaseInstanceName <String>]: Database resource name string modeled as parameter for auto generation to work correctly.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SapVirtualInstanceName <String>]: The name of the Virtual Instances for SAP solutions resource
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapcentralinstance
 #>
 function Update-AzWorkloadsSapCentralInstance {
 [Alias('Update-AzVISCentralInstance')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapCentralServerInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapCentralServerInstance])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -80,6 +76,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -91,7 +88,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.IUpdateSapCentralInstanceRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IUpdateSapCentralInstanceRequestTags]))]
     [System.Collections.Hashtable]
     # Gets or sets the Resource tags.
     ${Tag},

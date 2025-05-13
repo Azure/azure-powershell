@@ -15,8 +15,8 @@ Deploy the build file to an existing deployment.
 ### DeployAppForStandard (Default)
 ```
 Deploy-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String> -FilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployAppForEnterprise
@@ -266,10 +266,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -15,7 +15,11 @@
         },
         "serviceNetworkingApiVersion": {
             "type": "string",
-            "defaultValue": "2023-11-01"
+            "defaultValue": "2025-01-01"
+        },
+        "wafApiVersion": {
+            "type": "string",
+            "defaultValue": "2024-05-01"
         }
     },
     "variables": {
@@ -23,12 +27,15 @@
         "subnetName": "alb-subnet",
         "extraSubnetName": "extra-alb-subnet",
         "removeSubnetName": "remove-alb-subnet",
+        "wafPolicyName": "test-wafPolicy",
+        "extraWafPolicyName": "extra-test-wafPolicy",
         "albName": "test-alb",
         "removeAlbName": "[concat('remove-',variables('albName'))]",
         "deleteAlbName": "[concat('delete-',variables('albName'))]",
         "associationAlbName": "[concat('association-',variables('albName'))]",
         "frontendName": "test-frontend",
         "associationName": "test-association",
+        "wafSecurityPolicyName": "test-wafSecurityPolicy",
         "rgName": "test-rg"
     },
     "resources": [
@@ -123,6 +130,68 @@
                             }
                         },
                         {
+                            "name": "[variables('wafPolicyName')]",
+                            "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+                            "apiVersion": "[parameters('wafApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "customRules": [],
+                                "policySettings": {
+                                    "requestBodyCheck": false,
+                                    "maxRequestBodySizeInKb": 128,
+                                    "fileUploadLimitInMb": 100,
+                                    "state": "Enabled",
+                                    "mode": "Detection"
+                                },
+                                "managedRules": {
+                                    "managedRuleSets": [
+                                        {
+                                            "ruleSetType": "Microsoft_DefaultRuleSet",
+                                            "ruleSetVersion": "2.1",
+                                            "ruleGroupOverrides": []
+                                        },
+                                        {
+                                            "ruleSetType": "Microsoft_BotManagerRuleSet",
+                                            "ruleSetVersion": "1.0",
+                                            "ruleGroupOverrides": []
+                                        }
+                                    ],
+                                    "exclusions": []
+                                }
+                            }
+                        },
+                        {
+                            "name": "[variables('extraWafPolicyName')]",
+                            "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+                            "apiVersion": "[parameters('wafApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "customRules": [],
+                                "policySettings": {
+                                    "requestBodyCheck": false,
+                                    "maxRequestBodySizeInKb": 128,
+                                    "fileUploadLimitInMb": 100,
+                                    "state": "Enabled",
+                                    "mode": "Detection"
+                                },
+                                "managedRules": {
+                                    "managedRuleSets": [
+                                        {
+                                            "ruleSetType": "Microsoft_DefaultRuleSet",
+                                            "ruleSetVersion": "2.1",
+                                            "ruleGroupOverrides": []
+                                        },
+                                        {
+                                            "ruleSetType": "Microsoft_BotManagerRuleSet",
+                                            "ruleSetVersion": "1.0",
+                                            "ruleGroupOverrides": []
+                                        }
+                                    ],
+                                    "exclusions": []
+                                }
+                            }
+                        },
+                        {
                             "name": "[variables('deleteAlbName')]",
                             "type": "Microsoft.ServiceNetworking/trafficControllers",
                             "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
@@ -160,6 +229,22 @@
                             "dependsOn": [
                                 "[variables('vnetName')]",
                                 "[concat(variables('frontendName'))]"
+                            ]
+                        },
+                        {
+                            "name": "[concat(variables('removeAlbName'), '/', variables('wafsecurityPolicyName'))]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/securitypolicies",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "policyType": "waf",
+                                "wafPolicy": {
+                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('rgName'),'/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/',variables('wafPolicyName'))]"
+                                }
+                            },
+                            "dependsOn": [
+                                "[variables('wafPolicyName')]",
+                                "[concat(variables('removeAlbName'))]"
                             ]
                         },
                         {
@@ -210,6 +295,22 @@
                             "dependsOn": [
                                 "[variables('vnetName')]",
                                 "[concat(variables('frontendName'), '2')]"
+                            ]
+                        },
+                        {
+                            "name": "[concat(variables('AlbName'), '/', variables('wafsecurityPolicyName'))]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/securitypolicies",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "policyType": "waf",
+                                "wafPolicy": {
+                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('rgName'),'/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/',variables('wafPolicyName'))]"
+                                }
+                            },
+                            "dependsOn": [
+                                "[variables('wafPolicyName')]",
+                                "[concat(variables('albName'))]"
                             ]
                         }
                     ]

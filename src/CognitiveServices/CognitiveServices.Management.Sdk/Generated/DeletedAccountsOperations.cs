@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='location'>
         /// Resource location.
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='location'>
         /// Resource location.

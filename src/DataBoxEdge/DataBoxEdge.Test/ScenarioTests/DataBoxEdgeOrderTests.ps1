@@ -68,23 +68,23 @@ function Test-CreateNewOrder
 	try
 	{
 		$newDevice = New-AzDataBoxEdgeDevice $rgname $dfname -Sku $sku -Location $location
-		$newOrder = New-AzDataBoxEdgeOrder -ResourceGroupName $rgname -DeviceName $dfname -ContactPerson $contactPerson -CompanyName $companyName -Phone $phone -Email $email -AddressLine1  $addressLine1 -PostalCode $postalCode -City $city -State $state -Country $country
-		Assert-AreEqual $newDevice.Name $dfname
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.ContactPerson $contactPerson
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.CompanyName $companyName
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.Phone $phone
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.EmailList $email
+		Assert-ThrowsContains { New-AzDataBoxEdgeOrder -ResourceGroupName $rgname -DeviceName $dfname -ContactPerson $contactPerson -CompanyName $companyName -Phone $phone -Email $email -AddressLine1  $addressLine1 -PostalCode $postalCode -City $city -State $state -Country $country } "For creation of a new order use the Azure Edge Hardware Center"
+		# Assert-AreEqual $newDevice.Name $dfname
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.ContactPerson $contactPerson
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.CompanyName $companyName
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.Phone $phone
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ContactInformation.EmailList $email
 
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.AddressLine1 $addressLine1
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.PostalCode $postalCode
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.City $city
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.State $state
-		Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.Country $country
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.AddressLine1 $addressLine1
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.PostalCode $postalCode
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.City $city
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.State $state
+		# Assert-AreEqual $newOrder.DataBoxEdgeOrder.ShippingAddress.Country $country
 
 	}
 	finally
 	{
-		Remove-AzDataBoxEdgeOrder $rgname $dfname
+		# Remove-AzDataBoxEdgeOrder $rgname $dfname
 		Remove-AzDataBoxEdgeDevice $rgname $dfname
 	}  
 }
@@ -114,8 +114,8 @@ function Test-RemoveOrder
 	try
 	{
 		$newDevice = New-AzDataBoxEdgeDevice $rgname $dfname -Sku $sku -Location $location
-		$newOrder = New-AzDataBoxEdgeOrder -ResourceGroupName $rgname -DeviceName $dfname -ContactPerson $contactPerson -CompanyName $companyName -Phone $phone -Email $email -AddressLine1  $addressLine1 -PostalCode $postalCode -City $city -State $state -Country $country
-		Remove-AzDataBoxEdgeOrder $rgname $dfname
+		Assert-ThrowsContains { New-AzDataBoxEdgeOrder -ResourceGroupName $rgname -DeviceName $dfname -ContactPerson $contactPerson -CompanyName $companyName -Phone $phone -Email $email -AddressLine1  $addressLine1 -PostalCode $postalCode -City $city -State $state -Country $country } "For creation of a new order use the Azure Edge Hardware Center"
+		# Remove-AzDataBoxEdgeOrder $rgname $dfname
 
 	}
 	finally

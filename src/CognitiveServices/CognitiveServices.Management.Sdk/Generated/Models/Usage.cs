@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="unit">The unit of the metric.
-        /// Possible values include: 'Count', 'Bytes', 'Seconds', 'Percent',
-        /// 'CountPerSecond', 'BytesPerSecond', 'Milliseconds'</param>
+        /// Possible values include: &#39;Count&#39;, &#39;Bytes&#39;, &#39;Seconds&#39;, &#39;Percent&#39;,
+        /// &#39;CountPerSecond&#39;, &#39;BytesPerSecond&#39;, &#39;Milliseconds&#39;</param>
 
         /// <param name="name">The name information for the metric.
         /// </param>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="status">Cognitive Services account quota usage status.
-        /// Possible values include: 'Included', 'Blocked', 'InOverage', 'Unknown'</param>
+        /// Possible values include: &#39;Included&#39;, &#39;Blocked&#39;, &#39;InOverage&#39;, &#39;Unknown&#39;</param>
         public Usage(string unit = default(string), MetricName name = default(MetricName), string quotaPeriod = default(string), double? limit = default(double?), double? currentValue = default(double?), string nextResetTime = default(string), string status = default(string))
 
         {

@@ -10,18 +10,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Suppor
     public partial struct DiskSkuName :
         System.IEquatable<DiskSkuName>
     {
+        /// <summary>Premium_LRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName PremiumLrs = @"Premium_LRS";
 
+        /// <summary>PremiumV2_LRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName PremiumV2Lrs = @"PremiumV2_LRS";
 
+        /// <summary>Premium_ZRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName PremiumZrs = @"Premium_ZRS";
 
+        /// <summary>Standard LRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName StandardLrs = @"Standard_LRS";
 
+        /// <summary>StandardSSD_LRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName StandardSsdLrs = @"StandardSSD_LRS";
 
+        /// <summary>StandardSSD_ZRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName StandardSsdZrs = @"StandardSSD_ZRS";
 
+        /// <summary>UltraSSD_LRS Disk SKU.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.DiskSkuName UltraSsdLrs = @"UltraSSD_LRS";
 
         /// <summary>the value for an instance of the <see cref="DiskSkuName" /> Enum.</summary>

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Peering
-Module Guid: 78c6a853-5ea3-4374-9c5f-5b532d62c892
+Module Guid: ce52109a-e66b-4a81-8749-638d97fc0a97
 Download Help Link: https://learn.microsoft.com/powershell/module/az.peering
 Help Version: 1.0.0.0
 Locale: en-US
@@ -60,16 +60,16 @@ Lists all of the available peering service locations for the specified kind of p
 Initialize Peering Service for Connection Monitor functionality
 
 ### [New-AzPeering](New-AzPeering.md)
-Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering or create an existing peering with the specified name under the given subscription and resource group.
 
 ### [New-AzPeeringAsn](New-AzPeeringAsn.md)
-Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
+create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 
 ### [New-AzPeeringCheckServiceProviderAvailabilityInputObject](New-AzPeeringCheckServiceProviderAvailabilityInputObject.md)
 Create an in-memory object for CheckServiceProviderAvailabilityInput.
 
 ### [New-AzPeeringConnectionMonitorTest](New-AzPeeringConnectionMonitorTest.md)
-Creates or updates a connection monitor test with the specified name under the given subscription, resource group and peering service.
+create a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ### [New-AzPeeringContactDetailObject](New-AzPeeringContactDetailObject.md)
 Create an in-memory object for ContactDetail.
@@ -81,16 +81,16 @@ Create an in-memory object for DirectConnection.
 Create an in-memory object for ExchangeConnection.
 
 ### [New-AzPeeringRegisteredAsn](New-AzPeeringRegisteredAsn.md)
-Creates a new registered ASN with the specified name under the given subscription, resource group and peering.
+create a new registered ASN with the specified name under the given subscription, resource group and peering.
 
 ### [New-AzPeeringRegisteredPrefix](New-AzPeeringRegisteredPrefix.md)
-Creates a new registered prefix with the specified name under the given subscription, resource group and peering.
+create a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ### [New-AzPeeringService](New-AzPeeringService.md)
-Creates a new peering service or updates an existing peering with the specified name under the given subscription and resource group.
+create a new peering service or create an existing peering with the specified name under the given subscription and resource group.
 
 ### [New-AzPeeringServicePrefix](New-AzPeeringServicePrefix.md)
-Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+create a new prefix with the specified name under the given subscription, resource group and peering service.
 
 ### [Remove-AzPeering](Remove-AzPeering.md)
 Deletes an existing peering with the specified name under the given subscription and resource group.
@@ -123,8 +123,20 @@ Validates an existing registered prefix with the specified name under the given 
 Checks if the peering service provider is present within 1000 miles of customer's location
 
 ### [Update-AzPeering](Update-AzPeering.md)
-Updates tags for a peering with the specified name under the given subscription and resource group.
+update tags for a peering with the specified name under the given subscription and resource group.
+
+### [Update-AzPeeringAsn](Update-AzPeeringAsn.md)
+update a new peer ASN or update an existing peer ASN with the specified name under the given subscription.
+
+### [Update-AzPeeringConnectionMonitorTest](Update-AzPeeringConnectionMonitorTest.md)
+update a connection monitor test with the specified name under the given subscription, resource group and peering service.
+
+### [Update-AzPeeringRegisteredAsn](Update-AzPeeringRegisteredAsn.md)
+update a new registered ASN with the specified name under the given subscription, resource group and peering.
+
+### [Update-AzPeeringRegisteredPrefix](Update-AzPeeringRegisteredPrefix.md)
+update a new registered prefix with the specified name under the given subscription, resource group and peering.
 
 ### [Update-AzPeeringService](Update-AzPeeringService.md)
-Updates tags for a peering service with the specified name under the given subscription and resource group.
+update tags for a peering service with the specified name under the given subscription and resource group.
 

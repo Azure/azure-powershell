@@ -357,6 +357,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnablePerRegionPerPartitionAutoscale
+Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableMultipleWriteLocations
 Enable Multiple Write Locations.
 Accepted values: false, true

@@ -34,7 +34,7 @@ subject-prefix: $(service-name)
 inlining-threshold: 100
 
 # pin the swagger version by using the commit id instead of branch name
-commit: 1b338481329645df2d9460738cbaab6109472488
+commit: 5f011882d0580b9ba3291be4177a31ae3d4552f7
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -93,6 +93,10 @@ directive:
       subject: Frontends
     set: 
       subject: Frontend
+  - where: 
+      subject: SecurityPolicies
+    set: 
+      subject: SecurityPolicy
 # Renames for parameters continued
   - where:
       subject: Frontend
@@ -114,6 +118,25 @@ directive:
       parameter-name: TrafficControllerName
     set:
       parameter-name: AlbName
+  - where:
+      subject: SecurityPolicy
+      parameter-name: SecurityPolicyName
+    set:
+      parameter-name: Name
+  - where:
+      subject: SecurityPolicy
+      parameter-name: TrafficControllerName
+    set:
+      parameter-name: AlbName
+# hide Security Policy New and Update
+  - where:
+      subject: SecurityPolicy
+      verb: New
+    hide: true
+  - where:
+      subject: SecurityPolicy
+      verb: Update
+    hide: true
 # remove set-* related cmdlets, since they are not supported for Azure PowerShell modules.
   - where:
       verb: Set
@@ -139,6 +162,17 @@ directive:
           - Location
           - AssociationType
           - SubnetId
+          - ProvisioningState
+  - where:
+      model-name: SecurityPolicy
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - PolicyType
+          - WafPolicyId
           - ProvisioningState
   - where:
       verb: New
