@@ -78,5 +78,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinRoleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinRoleCmdlets");
+        }
     }
 }
