@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "connectionName": "testConnection",
+    "resourceGroupName": "testRG",
+    "api-version": "2024-09-27",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connection/testConnection",
+        "type": "Microsoft.AzureDataTransfer/connections",
+        "location": "East US"
+      }
+    }
+  }
+}

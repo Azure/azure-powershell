@@ -1,0 +1,34 @@
+{
+  "parameters": {
+    "resourceGroupName": "testRG",
+    "connectionName": "testConnection",
+    "api-version": "2024-09-27",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testFlow",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection/flows/testFlow",
+            "type": "Microsoft.AzureDataTransfer/connections/flows",
+            "location": "East US",
+            "storageAccountName": "testsa",
+            "storageContainerName": "testcontainer",
+            "flowType": "Blob"
+          },
+          {
+            "name": "testInstallation2",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection/flows/testFlow",
+            "type": "Microsoft.AzureDataTransfer/connections/flows",
+            "location": "East US",
+            "storageAccountName": "testsa",
+            "storageContainerName": "testcontainer",
+            "flowType": "Blob"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parameters": {
+    "pipelineName": "testPipeline",
+    "resourceGroupName": "testRG",
+    "api-version": "2024-09-27",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "pipeline": {
+      "properties": {
+        "remoteCloud": "testdc"
+      },
+      "location": "East US"
+    }
+  },
+  "responses": {
+    "201": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/pipelines/testPipeline",
+        "type": "Microsoft.AzureDataTransfer/pipelines",
+        "location": "East US"
+      }
+    },
+    "200": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/pipelines/testPipeline",
+        "type": "Microsoft.AzureDataTransfer/pipelines",
+        "location": "East US"
+      }
+    }
+  }
+}

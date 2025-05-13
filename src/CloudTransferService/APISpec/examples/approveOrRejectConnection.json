@@ -1,0 +1,31 @@
+{
+  "parameters": {
+    "pipelineName": "testPipeline",
+    "resourceGroupName": "testRG",
+    "api-version": "2024-09-27",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "connection": {
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection",
+      "statusReason": "Example reason"
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "location": "http://management.azure.com/subscriptions/12345/providers/Microsoft.AzureDataTransfer/locations/eastUS?api-version=2024-09-27"
+      }
+    },
+    "200": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection",
+        "type": "Microsoft.AzureDataTransfer/connections",
+        "location": "East US",
+        "properties": {
+          "pipeline": "testdc",
+          "justification": "justification",
+          "requirementId": "id"
+        }
+      }
+    }
+  }
+}

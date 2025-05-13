@@ -1,0 +1,43 @@
+{
+  "parameters": {
+    "accountName": "sampleacct",
+    "resourceGroupName": "teleportalClient",
+    "api-version": "2024-09-27",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Microsoft.AzureDataTransfer/read",
+            "display": {
+              "provider": "CTS Experience",
+              "resource": "Flow",
+              "operation": "Read flows",
+              "description": "Read flows"
+            }
+          },
+          {
+            "name": "Microsoft.AzureDataTransfer/write",
+            "display": {
+              "provider": "CTS Experience",
+              "resource": "Flow",
+              "operation": "Update flows",
+              "description": "Update flows"
+            }
+          },
+          {
+            "name": "Microsoft.AzureDataTransfer/delete",
+            "display": {
+              "provider": "CTS Experience",
+              "resource": "Flow",
+              "operation": "Delete flows",
+              "description": "Delete flows"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

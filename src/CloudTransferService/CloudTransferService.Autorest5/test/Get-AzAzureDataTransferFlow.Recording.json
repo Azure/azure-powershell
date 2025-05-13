@@ -1,0 +1,47 @@
+{
+  "Get-AzAzureDataTransferFlow+[NoContext]+List - Should retrieve all flows for a connection+$GET+https://eastus2euap.management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/faikh-send-connection-6/flows?api-version=2024-09-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/faikh-send-connection-6/flows?api-version=2024-09-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ba5f1c7c-740d-4e3d-964d-a2afff967424" ],
+        "CommandName": [ "Get-AzAzureDataTransferFlow" ],
+        "FullCommandName": [ "Get-AzAzureDataTransferFlow_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DataTransfer/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b1678041-ed81-4b66-a35d-6ba3c20f54da" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "4000" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "ddb0d25b-e013-4fed-b522-70456c0c6d23" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "ddb0d25b-e013-4fed-b522-70456c0c6d23" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20250421T110417Z:ddb0d25b-e013-4fed-b522-70456c0c6d23" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6DC5AADB547146FE849A38ADD7083835 Ref B: MAA201060514025 Ref C: 2025-04-21T11:04:16Z" ],
+        "Date": [ "Mon, 21 Apr 2025 11:04:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1022" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/faikh-send-connection-6/flows/faikh-send-flow-2\",\"name\":\"faikh-send-flow-2\",\"type\":\"private.azuredatatransfer/connections/flows\",\"location\":\"westcentralus\",\"tags\":{\"someTag\":\"someValue\"},\"systemData\":{\"lastModifiedBy\":\"faikh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T09:42:31.17311Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"connection\":{\"id\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg/providers/Private.AzureDataTransfer/connections/faikh-send-connection-6\"},\"flowId\":\"80800d2e-5682-4c83-9587-d02811ccc31d\",\"status\":\"Disabled\",\"storageAccountName\":\"/subscriptions/389ff96a-b137-405b-a3c8-4d22514708b5/resourceGroups/rpaas-rg-faikh/providers/Microsoft.Storage/storageAccounts/armstrongtest\",\"storageContainerName\":\"armstrong-test-container\",\"flowType\":\"Mission\",\"dataType\":\"Blob\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

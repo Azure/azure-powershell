@@ -1,0 +1,3054 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2024-09-27",
+    "title": "azuredatatransferrp",
+    "description": "Azure Data Transfer service resource provider"
+  },
+  "host": "eastus2euap.management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/providers/Private.AzureDataTransfer/validateSchema": {
+      "post": {
+        "description": "Validates a schema for Azure Data Transfer.",
+        "x-ms-examples": {
+          "Performs action request": {
+            "$ref": "examples/postValidateSchema.json"
+          }
+        },
+        "operationId": "AzureDataTransfer_validateSchema",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "schema",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/schema"
+            },
+            "description": "The schema to validate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result of the schema validation.",
+            "schema": {
+              "$ref": "#/definitions/validateSchemaResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/providers/Private.AzureDataTransfer/listApprovedSchemas": {
+      "post": {
+        "description": "Lists approved schemas for Azure Data Transfer.",
+        "x-ms-examples": {
+          "Performs action request": {
+            "$ref": "examples/postListApprovedSchemas.json"
+          }
+        },
+        "operationId": "AzureDataTransfer_listApprovedSchemas",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "pipeline",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/listApprovedSchemasRequest"
+            },
+            "description": "The request to list approved schemas."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of approved schemas.",
+            "schema": {
+              "$ref": "#/definitions/schemasListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}": {
+      "get": {
+        "description": "Gets flow resource.",
+        "x-ms-examples": {
+          "Gets flow resource": {
+            "$ref": "examples/getFlow.json"
+          }
+        },
+        "operationId": "Flows_Get",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved the flows resource.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Creates or updates the flow resource.",
+        "operationId": "Flows_CreateOrUpdate",
+        "x-ms-examples": {
+          "Creates or updates the flow resource": {
+            "$ref": "examples/createOrUpdateFlow.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "flow",
+            "description": "Flow body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created the flows resource.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "201": {
+            "description": "Accepted creation the flows resource.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "delete": {
+        "description": "Deletes the flow resource.",
+        "x-ms-examples": {
+          "Deletes the flow resource": {
+            "$ref": "examples/deleteFlow.json"
+          }
+        },
+        "operationId": "Flows_Delete",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted delete the flows resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Deleted the flows resource."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "description": "Updates the flow resource.",
+        "operationId": "Flows_Update",
+        "x-ms-examples": {
+          "Updates the flow resource": {
+            "$ref": "examples/patchFlow.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "flow",
+            "description": "Flow body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flowsPatch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated the flows resource.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Accepted update to the flows resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable": {
+      "post": {
+        "description": "Enables the specified flow.",
+        "x-ms-examples": {
+          "Enables the specified flow": {
+            "$ref": "examples/enableOrDisableFlow.json"
+          }
+        },
+        "operationId": "Flows_Enable",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Enables a flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Enables a flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable": {
+      "post": {
+        "description": "Disables the specified flow",
+        "x-ms-examples": {
+          "Disables the specified flow": {
+            "$ref": "examples/enableOrDisableFlow.json"
+          }
+        },
+        "operationId": "Flows_Disable",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Disables a flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Disables a flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/link": {
+      "post": {
+        "description": "Links the specified flow.",
+        "x-ms-examples": {
+          "Links the specified flow": {
+            "$ref": "examples/linkFlow.json"
+          }
+        },
+        "operationId": "Flows_Link",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "flow",
+            "description": "Flow body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Links a flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Links a flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setPassphrase": {
+      "post": {
+        "description": "Sets the passphrase of the specified flow.",
+        "x-ms-examples": {
+          "Set the flow stream passphrase": {
+            "$ref": "examples/setFlowPassphrase.json"
+          }
+        },
+        "operationId": "Flows_SetPassphrase",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "passphrase",
+            "description": "Passphrase to set",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setStreamPassphrase"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sets a flow passphrase.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Sets a flow passphrase.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/generatePassphrase": {
+      "post": {
+        "description": "Generate a compliant passphrase for the specified flow.",
+        "x-ms-examples": {
+          "Generate a new compliant streaming passphrase": {
+            "$ref": "examples/generateFlowPassphrase.json"
+          }
+        },
+        "operationId": "Flows_GeneratePassphrase",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generate and set the flow passphrase.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "Generate and set the flow passphrase.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getSourceAddresses": {
+      "post": {
+        "description": "Get the source addresses for the specified flow.",
+        "x-ms-examples": {
+          "Get the flow stream source addresses": {
+            "$ref": "examples/getFlowSourceAddresses.json"
+          }
+        },
+        "operationId": "Flows_GetSourceAddresses",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The source addresses of the flow.",
+            "schema": {
+              "$ref": "#/definitions/streamSourceAddresses"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setSourceAddresses": {
+      "post": {
+        "description": "Set the source addresses for the specified flow.",
+        "x-ms-examples": {
+          "Set the flow stream source addresses": {
+            "$ref": "examples/setFlowSourceAddresses.json"
+          }
+        },
+        "operationId": "Flows_SetSourceAddresses",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "sourceAddresses",
+            "description": "Source addresses wanted",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setSourceAddresses"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The source addresses of the flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "The source addresses of the flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpoints": {
+      "post": {
+        "description": "Get the destination endpoints for the specified flow and stream ID.",
+        "x-ms-examples": {
+          "Get the flow stream destination endpoints": {
+            "$ref": "examples/getFlowDestinationEndpoints.json"
+          }
+        },
+        "operationId": "Flows_GetDestinationEndpoints",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The destination endpoints of the stream ID on this flow.",
+            "schema": {
+              "$ref": "#/definitions/getDestinationEndpointsResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpoints": {
+      "post": {
+        "description": "Set the destination endpoints for the specified flow and stream ID.",
+        "x-ms-examples": {
+          "Set the flow stream destination endpoints": {
+            "$ref": "examples/setFlowDestinationEndpoints.json"
+          }
+        },
+        "operationId": "Flows_SetDestinationEndpoints",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "streamDestinationEndpoints",
+            "description": "Stream ID destination endpoints wanted",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setDestinationEndpoints"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The destination endpoint of the stream ID on this flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "The destination endpoint of the stream ID on this flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getDestinationEndpointPorts": {
+      "post": {
+        "description": "Get the destination endpoint ports for the specified flow and stream ID.",
+        "x-ms-examples": {
+          "Get the flow stream destination endpoint ports": {
+            "$ref": "examples/getFlowDestinationEndpointPorts.json"
+          }
+        },
+        "operationId": "Flows_GetDestinationEndpointPorts",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The destination endpoint ports of the stream ID on this flow.",
+            "schema": {
+              "$ref": "#/definitions/getDestinationEndpointPortsResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/setDestinationEndpointPorts": {
+      "post": {
+        "description": "Set the destination endpoint ports for the specified flow and stream ID.",
+        "x-ms-examples": {
+          "Set the flow stream destination endpoint ports": {
+            "$ref": "examples/setFlowDestinationEndpointPorts.json"
+          }
+        },
+        "operationId": "Flows_SetDestinationEndpointPorts",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "streamDestinationEndpointPorts",
+            "description": "Stream ID destination endpoint ports wanted",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setDestinationEndpointPorts"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The destination endpoint ports of the stream ID on this flow.",
+            "schema": {
+              "$ref": "#/definitions/flow"
+            }
+          },
+          "202": {
+            "description": "The destination endpoint ports of the stream ID on this flow.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/getStreamConnectionString": {
+      "post": {
+        "description": "Get the connection string for the specified flow.",
+        "x-ms-examples": {
+          "Get the flow stream connection string": {
+            "$ref": "examples/getStreamConnectionString.json"
+          }
+        },
+        "operationId": "Flows_GetStreamConnectionString",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "#/parameters/flowNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get the connection string for the specified flow.",
+            "schema": {
+              "$ref": "#/definitions/getStreamConnectionStringResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/flows": {
+      "get": {
+        "description": "Gets flows in a connection.",
+        "x-ms-examples": {
+          "Gets flows in a connection": {
+            "$ref": "examples/listFlowsByConnection.json"
+          }
+        },
+        "operationId": "Flows_ListByConnection",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all flows under the resource group.",
+            "schema": {
+              "$ref": "#/definitions/flowsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}": {
+      "get": {
+        "description": "Gets connection resource.",
+        "x-ms-examples": {
+          "Gets connection resource": {
+            "$ref": "examples/getConnection.json"
+          }
+        },
+        "operationId": "Connections_Get",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved the connections resource.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Creates or updates the connection resource.",
+        "operationId": "Connections_CreateOrUpdate",
+        "x-ms-examples": {
+          "Creates or updates the connection resource": {
+            "$ref": "examples/createOrUpdateConnection.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "connection",
+            "description": "Connection body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created the connections resource.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "201": {
+            "description": "Accepted create of the connections resource.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "delete": {
+        "description": "Deletes the connection resource.",
+        "x-ms-examples": {
+          "Deletes the connection resource": {
+            "$ref": "examples/deleteConnection.json"
+          }
+        },
+        "operationId": "Connections_Delete",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted delete the connections resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Deleted the connections resource."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "description": "Updates the connection resource.",
+        "operationId": "Connections_Update",
+        "x-ms-examples": {
+          "Updates the connection resource": {
+            "$ref": "examples/patchConnection.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "connection",
+            "description": "Connection body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/connectionsPatch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated the connections resource.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "202": {
+            "description": "Accepted update to the connections resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/link": {
+      "post": {
+        "description": "Links the connection to its pending connection.",
+        "x-ms-examples": {
+          "Links the specified connection": {
+            "$ref": "examples/linkConnection.json"
+          }
+        },
+        "operationId": "Connections_Link",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "connection",
+            "description": "Connection body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Links a connection.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "202": {
+            "description": "Links a connection.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/listPendingConnections": {
+      "post": {
+        "description": "Lists all pending connections for a connection.",
+        "x-ms-examples": {
+          "Lists a list of pending connections": {
+            "$ref": "examples/listPendingConnections.json"
+          }
+        },
+        "operationId": "ListPendingConnections_List",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all pending connections.",
+            "schema": {
+              "$ref": "#/definitions/pendingConnectionsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}/listPendingFlows": {
+      "post": {
+        "description": "Lists all pending flows for a connection.",
+        "x-ms-examples": {
+          "Lists a list of pending flows": {
+            "$ref": "examples/listPendingFlows.json"
+          }
+        },
+        "operationId": "ListPendingFlows_List",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/connectionNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all connections under the resource group.",
+            "schema": {
+              "$ref": "#/definitions/pendingFlowsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections": {
+      "get": {
+        "description": "Gets connections in a resource group.",
+        "x-ms-examples": {
+          "Gets connections in a resource group": {
+            "$ref": "examples/listConnectionsByResourceGroup.json"
+          }
+        },
+        "operationId": "Connections_ListByResourceGroup",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all connections under the resource group.",
+            "schema": {
+              "$ref": "#/definitions/connectionsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Private.AzureDataTransfer/connections": {
+      "get": {
+        "description": "Gets connections in a subscription.",
+        "x-ms-examples": {
+          "Gets connections in a subscription": {
+            "$ref": "examples/listConnectionsBySubscription.json"
+          }
+        },
+        "operationId": "Connections_ListBySubscription",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all connections under the subscription.",
+            "schema": {
+              "$ref": "#/definitions/connectionsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}": {
+      "get": {
+        "description": "Gets pipeline resource.",
+        "x-ms-examples": {
+          "Gets pipeline resource": {
+            "$ref": "examples/getPipeline.json"
+          }
+        },
+        "operationId": "Pipelines_Get",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved the pipelines resource.",
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Creates or updates the pipeline resource.",
+        "operationId": "Pipelines_CreateOrUpdate",
+        "x-ms-examples": {
+          "Creates or updates the pipeline resource": {
+            "$ref": "examples/createOrUpdatePipeline.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "pipeline",
+            "description": "Pipeline body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created the pipelines resource.",
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          },
+          "201": {
+            "description": "Accepted create of the pipelines resource.",
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "delete": {
+        "description": "Deletes the pipeline resource.",
+        "x-ms-examples": {
+          "Deletes the pipeline resource": {
+            "$ref": "examples/deletePipeline.json"
+          }
+        },
+        "operationId": "Pipelines_Delete",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted delete of the pipelines resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Deleted the pipelines resource."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "description": "Updates the pipeline resource.",
+        "operationId": "Pipelines_Update",
+        "x-ms-examples": {
+          "Updates the pipeline resource": {
+            "$ref": "examples/patchPipeline.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "pipeline",
+            "description": "Pipeline body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pipelinesPatch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated the pipelines resource.",
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          },
+          "202": {
+            "description": "Accepted update to the pipelines resource.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/pipeline"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}/approveConnection": {
+      "post": {
+        "description": "Approves the specified connection in a pipeline.",
+        "x-ms-examples": {
+          "Approves the specified connection in a pipeline": {
+            "$ref": "examples/approveOrRejectConnection.json"
+          }
+        },
+        "operationId": "Pipelines_ApproveConnection",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "connection",
+            "description": "Connection body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Approves a connection.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "202": {
+            "description": "Approves a connection.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}/rejectConnection": {
+      "post": {
+        "description": "Rejects the specified connection in a pipeline.",
+        "x-ms-examples": {
+          "Rejects the specified connection in a pipeline": {
+            "$ref": "examples/approveOrRejectConnection.json"
+          }
+        },
+        "operationId": "Pipelines_RejectConnection",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "connection",
+            "description": "Connection body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rejects a connection.",
+            "schema": {
+              "$ref": "#/definitions/connection"
+            }
+          },
+          "202": {
+            "description": "Rejects a connection.",
+            "headers": {
+              "location": {
+                "description": "Location response header",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}/listSchemas": {
+      "post": {
+        "description": "Lists the schemas for the specified connection in a pipeline.",
+        "x-ms-examples": {
+          "Lists schemas for a pipeline": {
+            "$ref": "examples/listSchemas.json"
+          }
+        },
+        "operationId": "ListSchemas_List",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/pipelineNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "schema",
+            "description": "Schema(s) to retrieve",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/schema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Approves a connection.",
+            "schema": {
+              "description": "The schemas for this connection",
+              "$ref": "#/definitions/schemasListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines": {
+      "get": {
+        "description": "Gets pipelines in a resource group.",
+        "x-ms-examples": {
+          "Gets pipelines in a resource group": {
+            "$ref": "examples/listPipelinesByResourceGroup.json"
+          }
+        },
+        "operationId": "Pipelines_ListByResourceGroup",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all pipelines under the resource group.",
+            "schema": {
+              "$ref": "#/definitions/pipelinesListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Private.AzureDataTransfer/pipelines": {
+      "get": {
+        "description": "Gets pipelines in a subscription.",
+        "x-ms-examples": {
+          "Gets pipelines in a subscription": {
+            "$ref": "examples/listPipelinesBySubscription.json"
+          }
+        },
+        "operationId": "Pipelines_ListBySubscription",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all pipelines under the subscription.",
+            "schema": {
+              "$ref": "#/definitions/pipelinesListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/providers/Private.AzureDataTransfer/operations": {
+      "get": {
+        "tags": [
+          "Operations"
+        ],
+        "operationId": "Operations_List",
+        "x-ms-examples": {
+          "List operations": {
+            "$ref": "./examples/listOperations.json"
+          }
+        },
+        "description": "Lists all of the available Private.AzureDataTransfer REST API operations.",
+        "parameters": [
+          {
+            "$ref": "./common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed all of the available operations.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/OperationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "validateSchemaResult": {
+      "type": "object",
+      "description": "Result of the schema validation.",
+      "properties": {
+        "status": {
+          "enum": [
+            "Succeeded",
+            "Failed"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "validateSchemaStatus",
+            "modelAsString": true
+          },
+          "description": "Validation status of the schema"
+        },
+        "message": {
+          "type": "string",
+          "description": "Message describing the schema validation"
+        }
+      }
+    },
+    "listApprovedSchemasRequest": {
+      "type": "object",
+      "properties": {
+        "pipeline": {
+          "type": "string",
+          "description": "The name of the pipeline to filter approved schemas."
+        },
+        "direction": {
+          "description": "The direction pipeline to filter approved schemas.",
+          "enum": [
+            "Send",
+            "Receive"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "listApprovedSchemasDirection",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "selectedResource": {
+      "type": "object",
+      "description": "A resource selected from ARM",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the connection"
+        },
+        "id": {
+          "type": "string",
+          "description": "Id of the connection"
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the connection",
+          "x-ms-mutability": [
+            "create",
+            "read"
+          ]
+        },
+        "subscriptionName": {
+          "type": "string",
+          "description": "Name of the subscription with the connection"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "flowProperties": {
+      "type": "object",
+      "properties": {
+        "connection": {
+          "$ref": "#/definitions/selectedResource",
+          "description": "The connection associated with this flow"
+        },
+        "flowId": {
+          "type": "string",
+          "description": "Dataflow GUID associated with this flow",
+          "readOnly": true
+        },
+        "keyVaultUri": {
+          "type": "string",
+          "description": "AME, PME, or TORUS only! AKV Chain Containing SAS Token"
+        },
+        "linkStatus": {
+          "enum": [
+            "Linked",
+            "Unlinked"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "linkStatusFlow",
+            "modelAsString": true
+          },
+          "description": "Link status of the current flow",
+          "readOnly": true
+        },
+        "linkedFlowId": {
+          "type": "string",
+          "description": "Resource ID of the linked flow",
+          "readOnly": true
+        },
+        "status": {
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "flowStatus",
+            "modelAsString": true
+          },
+          "description": "Status of the current flow"
+        },
+        "storageAccountName": {
+          "type": "string",
+          "description": "Storage Account"
+        },
+        "storageAccountId": {
+          "type": "string",
+          "format": "arm-id",
+          "description": "Storage Account ID",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "scopes": [
+                  "*"
+                ],
+                "type": "Microsoft.Storage/storageAccounts"
+              }
+            ]
+          }
+        },
+        "storageContainerName": {
+          "type": "string",
+          "description": "Storage Container Name"
+        },
+        "serviceBusQueueId": {
+          "type": "string",
+          "format": "arm-id",
+          "description": "Service Bus Queue ID",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "scopes": [
+                  "*"
+                ],
+                "type": "Microsoft.Storage/namespaces/queues"
+              }
+            ]
+          }
+        },
+        "flowType": {
+          "$ref": "#/definitions/flowType",
+          "description": "The flow type for this flow"
+        },
+        "dataType": {
+          "enum": [
+            "Blob",
+            "Table"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "dataType",
+            "modelAsString": true
+          },
+          "description": "Transfer Storage Blobs or Tables"
+        },
+        "provisioningState": {
+          "description": "Provisioning state of the flow",
+          "enum": [
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Accepted"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "provisioningState",
+            "modelAsString": true
+          },
+          "readOnly": true
+        },
+        "policies": {
+          "type": "array",
+          "description": "The policies for this flow",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schema": {
+          "$ref": "#/definitions/schema",
+          "description": "The selected schema for this flow"
+        },
+        "messagingOptions": {
+          "$ref": "#/definitions/messagingOptions",
+          "description": "The messaging options for this flow"
+        },
+        "customerManagedKeyVaultUri": {
+          "type": "string",
+          "format": "url",
+          "description": "The URI to the customer managed key for this flow"
+        },
+        "streamId": {
+          "type": "string",
+          "description": "The flow stream identifier"
+        },
+        "streamProtocol": {
+          "description": "The protocol of the stream",
+          "enum": [
+            "UDP",
+            "SRT",
+            "RTP"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "streamProtocol",
+            "modelAsString": true
+          }
+        },
+        "streamLatency": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The latency of the stream in milliseconds"
+        },
+        "passphrase": {
+          "type": "string",
+          "description": "The passphrase used for SRT streams"
+        },
+        "sourceAddresses": {
+          "$ref": "#/definitions/streamSourceAddresses",
+          "description": "The source IP address and CIDR ranges of the stream"
+        },
+        "destinationEndpoints": {
+          "type": "array",
+          "description": "The destination endpoints of the stream",
+          "items": {
+            "type": "string"
+          }
+        },
+        "destinationEndpointPorts": {
+          "type": "array",
+          "description": "The destination endpoint ports of the stream",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "description": "Properties of flow"
+    },
+    "flow": {
+      "type": "object",
+      "x-ms-azure-resource": true,
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/flowProperties"
+        },
+        "plan": {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/Plan"
+        },
+        "identity": {
+          "$ref": "./common-types/resource-management/v3/managedidentity.json#/definitions/ManagedServiceIdentity",
+          "description": "The managed identity of the flow resource, if configured."
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "allOf": [
+        {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ],
+      "description": "The flow resource definition."
+    },
+    "pendingFlow": {
+      "type": "object",
+      "description": "Pending flow object",
+      "properties": {
+        "subscriptionId": {
+          "type": "string",
+          "description": "Subscription ID of the pending flow.",
+          "readOnly": true
+        },
+        "connectionId": {
+          "type": "string",
+          "description": "Connection ID of the pending flow.",
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/flowProperties"
+        },
+        {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "flowsPatch": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "$ref": "./common-types/resource-management/v3/managedidentity.json#/definitions/ManagedServiceIdentity",
+          "description": "The managed identity of the flow resource, if configured."
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
+        }
+      },
+      "description": "The flows resource patch definition."
+    },
+    "flowsListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/flow"
+          },
+          "description": "Flows array.",
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "nextLink": {
+          "description": "Link to next results",
+          "type": "string"
+        }
+      },
+      "description": "The flows list result."
+    },
+    "connectionProperties": {
+      "type": "object",
+      "properties": {
+        "pipeline": {
+          "type": "string",
+          "description": "Pipeline to use to transfer data"
+        },
+        "direction": {
+          "description": "Direction of data movement",
+          "enum": [
+            "Send",
+            "Receive"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "direction",
+            "modelAsString": true
+          }
+        },
+        "justification": {
+          "type": "string",
+          "description": "Justification for the connection request"
+        },
+        "status": {
+          "description": "Status of the connection",
+          "enum": [
+            "InReview",
+            "Approved",
+            "Rejected",
+            "Accepted"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "status",
+            "modelAsString": true
+          },
+          "readOnly": true
+        },
+        "statusReason": {
+          "type": "string",
+          "description": "Reason for status",
+          "readOnly": true
+        },
+        "linkStatus": {
+          "enum": [
+            "Linked",
+            "Unlinked"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "linkStatus",
+            "modelAsString": true
+          },
+          "description": "Link status of the current connection",
+          "readOnly": true
+        },
+        "linkedConnectionId": {
+          "type": "string",
+          "description": "Resource ID of the linked connection",
+          "readOnly": true
+        },
+        "flowTypes": {
+          "$ref": "#/definitions/flowTypes",
+          "description": "The flow types being requested for this connection"
+        },
+        "requirementId": {
+          "description": "Requirement ID of the connection",
+          "type": "string"
+        },
+        "remoteSubscriptionId": {
+          "description": "Subscription ID to link cloud subscriptions together",
+          "type": "string"
+        },
+        "approver": {
+          "description": "Approver of this connection request",
+          "type": "string",
+          "readOnly": true
+        },
+        "pin": {
+          "description": "PIN to link requests together",
+          "type": "string"
+        },
+        "dateSubmitted": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp that this connection request was submitted at",
+          "readOnly": true
+        },
+        "primaryContact": {
+          "type": "string",
+          "description": "The primary contact for this connection request"
+        },
+        "secondaryContacts": {
+          "type": "array",
+          "description": "The secondary contacts for this connection request",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provisioningState": {
+          "description": "Provisioning state of the connection",
+          "enum": [
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Accepted"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "provisioningState",
+            "modelAsString": true
+          },
+          "readOnly": true
+        },
+        "policies": {
+          "type": "array",
+          "description": "The policies for this connection",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schemas": {
+          "description": "The schemas for this connection",
+          "$ref": "#/definitions/schemas"
+        },
+        "schemaUris": {
+          "description": "The schema URIs for this connection",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "url"
+          }
+        }
+      },
+      "required": [
+        "pipeline"
+      ],
+      "description": "Properties of connection"
+    },
+    "connection": {
+      "type": "object",
+      "x-ms-azure-resource": true,
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/connectionProperties"
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "allOf": [
+        {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ],
+      "description": "The connection resource definition."
+    },
+    "pendingConnection": {
+      "type": "object",
+      "description": "Pending connection object",
+      "properties": {
+        "subscriptionId": {
+          "type": "string",
+          "description": "Subscription ID of the pending connection.",
+          "readOnly": true
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/connectionProperties"
+        },
+        {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "connectionsPatch": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
+        }
+      },
+      "description": "The connections resource patch definition."
+    },
+    "connectionsListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/connection"
+          },
+          "description": "Connections array.",
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "nextLink": {
+          "description": "Link to next results",
+          "type": "string"
+        }
+      },
+      "description": "The connections list result."
+    },
+    "pendingConnectionsListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pendingConnection"
+          },
+          "description": "Connections array.",
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "nextLink": {
+          "description": "Link to next results",
+          "type": "string"
+        }
+      },
+      "description": "The connections list result."
+    },
+    "pendingFlowsListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pendingFlow"
+          },
+          "description": "flows array.",
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "nextLink": {
+          "description": "Link to next results",
+          "type": "string"
+        }
+      },
+      "description": "The flows list result."
+    },
+    "operationStatusProperties": {
+      "type": "object",
+      "description": "Operation status associated with the last patch request",
+      "properties": {
+        "status": {
+          "enum": [
+            "Failed",
+            "Succeeded"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "operationStatusEnum",
+            "modelAsString": true
+          },
+          "description": "Operation status for the last patch request for this connection.",
+          "readOnly": true
+        },
+        "id": {
+          "type": "string",
+          "description": "Operation status ID of the last patch request for this connection.",
+          "readOnly": true
+        },
+        "message": {
+          "type": "string",
+          "description": "Message for the operation for the last patch request for this connection.",
+          "readOnly": true
+        }
+      }
+    },
+    "internalMetadataProperties": {
+      "type": "object",
+      "description": "Internal metadata of the connection inside pipeline.",
+      "properties": {
+        "operationStatus": {
+          "$ref": "#/definitions/operationStatusProperties"
+        },
+        "statusSetBy": {
+          "type": "string",
+          "description": "User that last set the approved status for this connection",
+          "readOnly": true
+        }
+      },
+      "additionalProperties": {}
+    },
+    "pipelineConnection": {
+      "description": "Connection body inside a pipeline",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Connection id inside pipeline"
+        },
+        "name": {
+          "type": "string",
+          "description": "Connection name inside pipeline",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "Connection type inside pipeline",
+          "readOnly": true
+        },
+        "location": {
+          "type": "string",
+          "description": "Connection location inside pipeline",
+          "x-ms-mutability": [
+            "read"
+          ],
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "Connection etag inside pipeline",
+          "readOnly": true
+        },
+        "systemData": {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/systemData"
+        },
+        "properties": {
+          "type": "object",
+          "description": "Connection properties inside pipeline",
+          "properties": {
+            "internalMetadata": {
+              "$ref": "#/definitions/internalMetadataProperties"
+            }
+          },
+          "additionalProperties": {}
+        }
+      },
+      "additionalProperties": {},
+      "required": [
+        "id"
+      ]
+    },
+    "pipelineProperties": {
+      "type": "object",
+      "properties": {
+        "remoteCloud": {
+          "type": "string",
+          "description": "Remote cloud of the data to be transferred or received"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of this pipeline"
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pipelineConnection"
+          },
+          "description": "Connections associated with pipeline",
+          "readOnly": true,
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "subscribers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/subscriber"
+          },
+          "x-ms-identifiers": [],
+          "description": "Subscribers of this resource"
+        },
+        "provisioningState": {
+          "description": "Provisioning state of the pipeline",
+          "enum": [
+            "Failed",
+            "Succeeded",
+            "Canceled",
+            "Accepted"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "provisioningState",
+            "modelAsString": true
+          },
+          "readOnly": true
+        },
+        "policies": {
+          "type": "array",
+          "description": "The policies for this pipeline",
+          "items": {
+            "type": "string"
+          }
+        },
+        "flowTypes": {
+          "$ref": "#/definitions/flowTypes",
+          "description": "The flow types allowed for this pipeline"
+        }
+      },
+      "required": [
+        "remoteCloud"
+      ],
+      "description": "Properties of pipeline"
+    },
+    "pipeline": {
+      "type": "object",
+      "x-ms-azure-resource": true,
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/pipelineProperties"
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "allOf": [
+        {
+          "$ref": "./common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ],
+      "description": "The pipeline resource definition."
+    },
+    "pipelinesPatch": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "object",
+          "properties": {
+            "connections": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/pipelineConnection"
+              },
+              "description": "Connections associated with pipeline",
+              "x-ms-identifiers": [
+                "id"
+              ]
+            },
+            "flowTypes": {
+              "$ref": "#/definitions/flowTypes",
+              "description": "The flow types allowed for this pipeline"
+            }
+          },
+          "description": "Properties of pipelines patch body."
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
+        }
+      },
+      "description": "The pipelines resource patch definition."
+    },
+    "pipelinesListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pipeline"
+          },
+          "description": "Pipelines array.",
+          "x-ms-identifiers": [
+            "id"
+          ]
+        },
+        "nextLink": {
+          "description": "Link to next results",
+          "type": "string"
+        }
+      },
+      "description": "The pipelines list result."
+    },
+    "subscriber": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of the subscriber"
+        },
+        "notifications": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number specifying what notifications to receive"
+        }
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "description": "The schemas for this connection",
+      "x-ms-identifiers": [
+        "connectionId",
+        "name"
+      ],
+      "items": {
+        "$ref": "#/definitions/schema"
+      }
+    },
+    "schema": {
+      "type": "object",
+      "description": "The schema object.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID associated with this schema"
+        },
+        "connectionId": {
+          "type": "string",
+          "description": "Connection ID associated with this schema"
+        },
+        "status": {
+          "enum": [
+            "New",
+            "Approved"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "schemaStatus",
+            "modelAsString": true
+          },
+          "description": "Status of the schema"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the schema"
+        },
+        "content": {
+          "type": "string",
+          "description": "Content of the schema"
+        },
+        "direction": {
+          "description": "The direction of the schema.",
+          "enum": [
+            "Send",
+            "Receive"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "schemaDirection",
+            "modelAsString": true
+          }
+        },
+        "schemaUri": {
+          "type": "string",
+          "format": "url",
+          "description": "Uri containing SAS token for the zipped schema"
+        },
+        "schemaType": {
+          "description": "The Schema Type",
+          "enum": [
+            "Xsd",
+            "Zip"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "SchemaType",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "schemasListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Schemas array.",
+          "$ref": "#/definitions/schemas"
+        }
+      },
+      "description": "The schemas list result."
+    },
+    "flowTypes": {
+      "type": "array",
+      "description": "The flow types that are allowed for this resource",
+      "items": {
+        "$ref": "#/definitions/flowType"
+      }
+    },
+    "flowType": {
+      "enum": [
+        "Unknown",
+        "Complex",
+        "DevSecOps",
+        "Messaging",
+        "Mission",
+        "MicrosoftInternal",
+        "BasicFiles",
+        "Data",
+        "Standard",
+        "StreamingVideo",
+        "Opaque",
+        "MissionOpaqueXML"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "name": "flowType",
+        "modelAsString": true
+      },
+      "description": "Flow type for the specified resource"
+    },
+    "resourceBody": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the resource."
+        },
+        "statusReason": {
+          "type": "string",
+          "description": "Reason for resource operation."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "description": "The resource to reference."
+    },
+    "messagingOptions": {
+      "type": "object",
+      "properties": {
+        "billingTier": {
+          "enum": [
+            "BlobTransport",
+            "Standard",
+            "Premium"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "flowBillingTier",
+            "modelAsString": true
+          },
+          "description": "Billing tier for this messaging flow"
+        }
+      },
+      "description": "The option associated with messaging flows."
+    },
+    "streamSourceAddresses": {
+      "type": "object",
+      "description": "The source IP address and CIDR ranges of the stream",
+      "properties": {
+        "sourceAddresses": {
+          "type": "array",
+          "description": "A source IP address or CIDR range",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "getDestinationEndpointsResult": {
+      "type": "object",
+      "description": "List of destination endpoints for the flow stream",
+      "properties": {
+        "endpoints": {
+          "type": "array",
+          "description": "The destination endpoints for the flow stream",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "getDestinationEndpointPortsResult": {
+      "type": "object",
+      "description": "List of destination endpoint ports for the flow stream",
+      "properties": {
+        "ports": {
+          "type": "array",
+          "description": "The destination endpoint port for the flow stream",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "getStreamConnectionStringResult": {
+      "type": "object",
+      "description": "The connection string for the specified streaming flow",
+      "properties": {
+        "connectionString": {
+          "type": "string",
+          "description": "The connection string for the specified streaming flow"
+        }
+      }
+    },
+    "setStreamPassphrase": {
+      "type": "object",
+      "description": "Set the passphrase used for SRT streams",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The passphrase used for SRT streams"
+        }
+      }
+    },
+    "setSourceAddresses": {
+      "type": "object",
+      "description": "Set the source addresses for the specified stream ID",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Source addresses"
+        }
+      }
+    },
+    "setDestinationEndpoints": {
+      "type": "object",
+      "description": "Set the destination endpoints for the specified stream ID",
+      "properties": {
+        "endpoints": {
+          "type": "array",
+          "description": "The specified stream ID destination endpoints",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "setDestinationEndpointPorts": {
+      "type": "object",
+      "description": "Set the destination endpoint ports for the specified stream ID",
+      "properties": {
+        "ports": {
+          "type": "array",
+          "description": "The specified stream ID destination endpoint ports",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "flowNameParameter": {
+      "x-ms-parameter-location": "method",
+      "name": "flowName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]{3,64}$",
+      "maxLength": 64,
+      "minLength": 3,
+      "description": "The name for the flow that is to be onboarded."
+    },
+    "connectionNameParameter": {
+      "x-ms-parameter-location": "method",
+      "name": "connectionName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]{3,64}$",
+      "maxLength": 64,
+      "minLength": 3,
+      "description": "The name for the connection that is to be requested."
+    },
+    "pipelineNameParameter": {
+      "x-ms-parameter-location": "method",
+      "name": "pipelineName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]{3,64}$",
+      "maxLength": 64,
+      "minLength": 3,
+      "description": "The name for the pipeline that is to be requested."
+    }
+  }
+}

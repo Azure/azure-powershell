@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "api-version": "2024-09-27",
+    "pipeline": {
+      "pipeline": "test",
+      "direction": "Send"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "test.xsd",
+            "content": "xsd content"
+          }
+        ]
+      }
+    }
+  }
+}

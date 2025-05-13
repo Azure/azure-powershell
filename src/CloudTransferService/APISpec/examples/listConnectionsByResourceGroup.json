@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "resourceGroupName": "testRG",
+    "api-version": "2024-09-27",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testConnection",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection",
+            "type": "Microsoft.AzureDataTransfer/connections",
+            "location": "East US",
+            "properties": {
+              "pipeline": "testdc",
+              "justification": "justification",
+              "requirementId": "id"
+            }
+          },
+          {
+            "name": "testConnection2",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.AzureDataTransfer/connections/testConnection2",
+            "type": "Microsoft.AzureDataTransfer/connections",
+            "location": "East US",
+            "properties": {
+              "pipeline": "testdc",
+              "justification": "justification",
+              "requirementId": "id"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
