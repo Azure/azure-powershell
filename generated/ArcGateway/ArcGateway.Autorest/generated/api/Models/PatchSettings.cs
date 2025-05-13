@@ -64,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         /// <summary>Internal Acessors for StatusError</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).Error = value; }
 
+        /// <summary>Internal Acessors for StatusHotpatchEnablementStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal.StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).HotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).HotpatchEnablementStatus = value; }
+
         /// <summary>Internal Acessors for Target</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).Target = value; }
 
@@ -83,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).HotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).HotpatchEnablementStatus = value ?? null; }
+        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IPatchSettingsStatusInternal)Status).HotpatchEnablementStatus; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
