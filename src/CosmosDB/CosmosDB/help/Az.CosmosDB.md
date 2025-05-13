@@ -165,6 +165,24 @@ Gets the CosmosDB Table Role Assignment.
 ### [Get-AzCosmosDBTableRoleDefinition](Get-AzCosmosDBTableRoleDefinition.md)
 Gets the CosmosDB Table Role Definition.
 
+### [Get-AzCosmosDBGremlinRoleAssignment](Get-AzCosmosDBGremlinRoleAssignment.md)
+Gets the CosmosDB Gremlin Role Assignment.
+
+### [Get-AzCosmosDBGremlinRoleDefinition](Get-AzCosmosDBGremlinRoleDefinition.md)
+Gets the CosmosDB Gremlin Role Definition.
+
+### [Get-AzCosmosDBCassandraRoleAssignment](Get-AzCosmosDBCassandraRoleAssignment.md)
+Gets the CosmosDB Cassandra Role Assignment.
+
+### [Get-AzCosmosDBCassandraRoleDefinition](Get-AzCosmosDBCassandraRoleDefinition.md)
+Gets the CosmosDB Cassandra Role Definition.
+
+### [Get-AzCosmosDBMongoMIRoleAssignment](Get-AzCosmosDBMongoMIRoleAssignment.md)
+Gets the CosmosDB MongoMI Role Assignment.
+
+### [Get-AzCosmosDBMongoMIRoleDefinition](Get-AzCosmosDBMongoMIRoleDefinition.md)
+Gets the CosmosDB MongoMI Role Definition.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
@@ -357,6 +375,24 @@ Creates a new CosmosDB Table Role Assignment.
 ### [New-AzCosmosDBTableRoleDefinition](New-AzCosmosDBTableRoleDefinition.md)
 Creates a new CosmosDB Table Role Definition.
 
+### [New-AzCosmosDBGremlinRoleAssignment](New-AzCosmosDBGremlinRoleAssignment.md)
+Creates a new CosmosDB Gremlin Role Assignment.
+
+### [New-AzCosmosDBGremlinRoleDefinition](New-AzCosmosDBGremlinRoleDefinition.md)
+Creates a new CosmosDB Gremlin Role Definition.
+
+### [New-AzCosmosDBCassandraRoleAssignment](New-AzCosmosDBCassandraRoleAssignment.md)
+Creates a new CosmosDB Cassandra Role Assignment.
+
+### [New-AzCosmosDBCassandraRoleDefinition](New-AzCosmosDBCassandraRoleDefinition.md)
+Creates a new CosmosDB Cassandra Role Definition.
+
+### [New-AzCosmosDBMongoMIRoleAssignment](New-AzCosmosDBMongoMIRoleAssignment.md)
+Creates a new CosmosDB MongoMI Role Assignment.
+
+### [New-AzCosmosDBMongoMIRoleDefinition](New-AzCosmosDBMongoMIRoleDefinition.md)
+Creates a new CosmosDB MongoMI Role Definition.
+
 ### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
 Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 
@@ -428,6 +464,24 @@ Deletes the CosmosDB Table Role Assignment.
 
 ### [Remove-AzCosmosDBTableRoleDefinition](Remove-AzCosmosDBTableRoleDefinition.md)
 Deletes the CosmosDB Table Role Definition.
+
+### [Remove-AzCosmosDBGremlinRoleAssignment](Remove-AzCosmosDBGremlinRoleAssignment.md)
+Deletes the CosmosDB Gremlin Role Assignment.
+
+### [Remove-AzCosmosDBGremlinRoleDefinition](Remove-AzCosmosDBGremlinRoleDefinition.md)
+Deletes the CosmosDB Gremlin Role Definition.
+
+### [Remove-AzCosmosDBCassandraRoleAssignment](Remove-AzCosmosDBCassandraRoleAssignment.md)
+Deletes the CosmosDB Cassandra Role Assignment.
+
+### [Remove-AzCosmosDBCassandraRoleDefinition](Remove-AzCosmosDBCassandraRoleDefinition.md)
+Deletes the CosmosDB Cassandra Role Definition.
+
+### [Remove-AzCosmosDBMongoMIRoleAssignment](Remove-AzCosmosDBMongoMIRoleAssignment.md)
+Deletes the CosmosDB MongoMI Role Assignment.
+
+### [Remove-AzCosmosDBMongoMIRoleDefinition](Remove-AzCosmosDBMongoMIRoleDefinition.md)
+Deletes the CosmosDB MongoMI Role Definition.
 
 ### [Remove-AzManagedCassandraCluster](Remove-AzManagedCassandraCluster.md)
 Deletes a Azure Managed Instances for Apache Cassandra cluster.
@@ -560,6 +614,24 @@ Updates an existing CosmosDB Table Role Assignment.
 
 ### [Update-AzCosmosDBTableRoleDefinition](Update-AzCosmosDBTableRoleDefinition.md)
 Updates an existing CosmosDB Table Role Definition.
+
+### [Update-AzCosmosDBGremlinRoleAssignment](Update-AzCosmosDBGremlinRoleAssignment.md)
+Updates an existing CosmosDB Gremlin Role Assignment.
+
+### [Update-AzCosmosDBGremlinRoleDefinition](Update-AzCosmosDBGremlinRoleDefinition.md)
+Updates an existing CosmosDB Gremlin Role Definition.
+
+### [Update-AzCosmosDBCassandraRoleAssignment](Update-AzCosmosDBCassandraRoleAssignment.md)
+Updates an existing CosmosDB Cassandra Role Assignment.
+
+### [Update-AzCosmosDBCassandraRoleDefinition](Update-AzCosmosDBCassandraRoleDefinition.md)
+Updates an existing CosmosDB Cassandra Role Definition.
+
+### [Update-AzCosmosDBMongoMIRoleAssignment](Update-AzCosmosDBMongoMIRoleAssignment.md)
+Updates an existing CosmosDB MongoMI Role Assignment.
+
+### [Update-AzCosmosDBMongoMIRoleDefinition](Update-AzCosmosDBMongoMIRoleDefinition.md)
+Updates an existing CosmosDB MongoMI Role Definition.
 
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
