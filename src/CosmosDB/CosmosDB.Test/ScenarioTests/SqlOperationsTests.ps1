@@ -1205,6 +1205,7 @@ function Test-SqlThroughputCmdlets
       # Throughput bucketing scenario
       $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $rgName -Name $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $ContainerThroughputValue -ThroughputBuckets @($ThroughputBucket1, $ThroughputBucket2)
       Assert-AreEqual $UpdatedContainerThroughput.Throughput $ContainerThroughputValue
+      Assert-AreEqual $UpdatedContainerThroughput.ThroughputBuckets.Count 2
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBuckets[0].Id 1
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBuckets[0].MaxThroughputPercentage 20
       Assert-AreEqual $UpdatedContainerThroughput.ThroughputBuckets[1].Id 2
