@@ -52,7 +52,7 @@ Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test cr
     Assert-AreEqual "Delete" $actual.StorageProfile.OsDisk.DeleteOption
 
     Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
-    $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName -ErrorAction SilentlyContinue
     Assert-Null $vm
 }
 
