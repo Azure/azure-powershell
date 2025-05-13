@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public int Id { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.MaxThroughputPercentageHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.ThroughputBucketMaxThroughputHelpMessage)]
         [ValidateNotNullOrEmpty]
         public int MaxThroughputPercentage { get; set; }
 

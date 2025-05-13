@@ -68,8 +68,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Per-Region, Per-Partition autoscale is enabled on the account.";
 
         //Restore specific help messages
-        public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
-        public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
         public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
         public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
@@ -233,7 +231,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
+
+        // Throughput bucketing help messages
         public const string ThroughputBucketsHelpMessage = "Array of throughput buckets to be applied to the Cosmos DB resource.";
+        public const string ThroughputBucketIdHelpMessage = "The ID of the throughput bucket.";
+        public const string ThroughputBucketMaxThroughputHelpMessage = "The maximum throughput of the throughput bucket.";
 
         // Role cmdlets help messages
         public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";
