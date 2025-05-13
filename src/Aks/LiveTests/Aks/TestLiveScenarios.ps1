@@ -40,7 +40,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
 
     Write-Host "##[section]Start creating AKS cluster : New-AzAksCluster"
 
-    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
+    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -Location $location -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
 
     Write-Host "##[section]Finished creating AKS cluster : New-AzAksCluster"
 
