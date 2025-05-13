@@ -26,6 +26,18 @@ Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-Mana
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### AcceptViaJsonFilePath
+```
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AcceptViaJsonString
+```
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Accept subscription ownership.
 
@@ -77,7 +89,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
@@ -91,12 +102,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Accept operation
+
+```yaml
+Type: System.String
+Parameter Sets: AcceptViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Accept operation
+
+```yaml
+Type: System.String
+Parameter Sets: AcceptViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupId
 Management group Id for the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,7 +182,7 @@ Subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptExpanded
+Parameter Sets: AcceptExpanded, AcceptViaJsonFilePath, AcceptViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +197,7 @@ The friendly name of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
 Aliases: DisplayName
 
 Required: False
@@ -171,7 +212,7 @@ Tags for the subscription
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
 Aliases:
 
 Required: False

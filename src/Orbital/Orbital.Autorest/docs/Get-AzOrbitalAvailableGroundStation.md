@@ -13,7 +13,7 @@ Returns list of available ground stations.
 ## SYNTAX
 
 ```
-Get-AzOrbitalAvailableGroundStation -Capability <CapabilityParameter> [-SubscriptionId <String[]>]
+Get-AzOrbitalAvailableGroundStation -Capability <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Gets the specified  available ground station.
 Ground Station Capability.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStation
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableGroundStation
 
 ## NOTES
 

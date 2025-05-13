@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.Common
 
         internal static bool TryDequeueIfNotNull<T>(this ConcurrentQueue<T> queue, out T result)
         {
-            result = default(T);
+            result = default;
             if (null == queue)
             {
                 return false;

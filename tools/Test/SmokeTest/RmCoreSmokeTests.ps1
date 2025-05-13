@@ -134,7 +134,6 @@ $resourceTestCommands = @(
     # @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
     @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment}},
-    @{Name = "Az.Media";                      Command = {Get-AzMediaService -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Monitor";                    Command = {Get-AzLogProfile}},
     @{Name = "Az.Network";                    Command = {Get-AzNetworkInterface}},
     @{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace}},

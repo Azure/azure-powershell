@@ -27,7 +27,7 @@ Get-AzBillingBenefitsSavingsPlan -OrderId d7ea1620-2bba-46e2-8434-11f31bfb984d -
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModel
+Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,14 +39,22 @@ INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   [SavingsPlanId <String>]: ID of the savings plan
   [SavingsPlanOrderAliasName <String>]: Name of the savings plan order alias
   [SavingsPlanOrderId <String>]: Order ID of the savings plan
+
+SAVINGSPLANORDERINPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationOrderAliasName <String>]: Name of the reservation order alias
+  [SavingsPlanId <String>]: ID of the savings plan
+  [SavingsPlanOrderAliasName <String>]: Name of the savings plan order alias
+  [SavingsPlanOrderId <String>]: Order ID of the savings plan
 .Link
 https://learn.microsoft.com/powershell/module/az.billingbenefits/get-azbillingbenefitssavingsplan
 #>
 function Get-AzBillingBenefitsSavingsPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.ISavingsPlanModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySavingsPlanOrder', Mandatory)]
     [Alias('SavingsPlanId')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
     [System.String]
@@ -65,11 +73,17 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySavingsPlanOrder', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity]
+    # Identity Parameter
+    ${SavingsPlanOrderInputObject},
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentitySavingsPlanOrder')]
     [Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Category('Query')]
     [System.String]
     # May be used to expand the detail information of some properties.
@@ -131,6 +145,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -152,6 +175,7 @@ begin {
         $mapping = @{
             Get = 'Az.BillingBenefits.private\Get-AzBillingBenefitsSavingsPlan_Get';
             GetViaIdentity = 'Az.BillingBenefits.private\Get-AzBillingBenefitsSavingsPlan_GetViaIdentity';
+            GetViaIdentitySavingsPlanOrder = 'Az.BillingBenefits.private\Get-AzBillingBenefitsSavingsPlan_GetViaIdentitySavingsPlanOrder';
             List = 'Az.BillingBenefits.private\Get-AzBillingBenefitsSavingsPlan_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -161,6 +185,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

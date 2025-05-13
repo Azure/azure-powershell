@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 * Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
     - `Add-AzLoadBalancerRuleConfig`
@@ -62,6 +63,14 @@
     - `New-AzNetworkManagerConnectivityConfiguration`
     - `Set-AzNetworkManagerConnectivityConfiguration`
     - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.16.1
+* Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
+
+## Version 7.16.0
+* Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.
+    - `Add-AzNetworkInterfaceIpConfig`
+    - `New-AzNetworkInterfaceIpConfig`
 
 ## Version 7.15.1
 * Updated VirtualNetworkGatewayConnection cmdlets to pass AuxilaryAuthHeader for referenced resourceIds i.e. LocalNetworkGateway2, VirtualNetworkGateway2. This is needed in case referenced resourceIds are in different AAD Tenant.

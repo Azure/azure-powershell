@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.1
+* Added AppServicePlan management support for Pv4 and Pmv4 tiers.
+
+## Version 3.4.0
+* Add support for pull based deployments from a URL with MSI authentication in `Publish-AzWebApp`
+
 ## Version 3.3.1
 * Migrated Websites.Helper generation from autorest csharp to autorest powershell.
 

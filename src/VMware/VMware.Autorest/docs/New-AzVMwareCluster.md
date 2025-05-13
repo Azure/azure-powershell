@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareCluster
 
 ## SYNOPSIS
-Create a Cluster
+create a Cluster
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> -S
 ```
 
 ## DESCRIPTION
-Create a Cluster
+create a Cluster
 
 ## EXAMPLES
 

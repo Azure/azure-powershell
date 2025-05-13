@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventHub
-Module Guid: 9e121baf-ee5e-4cb7-bb95-fff6bb4ee003
+Module Guid: 94ceb244-cf13-44e9-a891-409d8b37af84
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventhub
 Help Version: 1.0.0.0
 Locale: en-US
@@ -86,6 +86,9 @@ Regenerates an EventHub SAS key
 ### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
+### [New-AzEventHubLocationsNameObject](New-AzEventHubLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
+
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
 
@@ -154,6 +157,9 @@ Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
+
+### [Start-AzEventHubNamespaceFailOver](Start-AzEventHubNamespaceFailOver.md)
+Triggers EventHub Namespace Failover
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks availability of a namespace name or disaster recovery alias.

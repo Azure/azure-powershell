@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.MavenLibraryProperties
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclustermavenlibraryobject
 #>
 function New-AzHdInsightOnAksClusterMavenLibraryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibrary')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

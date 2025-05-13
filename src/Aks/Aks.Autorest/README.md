@@ -37,11 +37,6 @@ input-file:
 title: Aks
 module-version: 0.1.0
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -52,7 +47,7 @@ directive:
       verb: Get|New|Set|Remove
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$|^UpdateViaIdentityManagedCluster$|^UpdateViaIdentityManagedClusterExpanded$|^CreateViaIdentityManagedCluster$|^CreateViaIdentityManagedClusterExpanded$
       subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
     remove: true
   - where:  
@@ -65,8 +60,10 @@ directive:
       verb: Update
     remove: true
   - model-cmdlet:
-    - TimeSpan
-    - TimeInWeek
+      - model-name: TimeSpan
+        cmdlet-name: New-AzAksTimeSpanObject
+      - model-name: TimeInWeek
+        cmdlet-name: New-AzAksTimeInWeekObject
   - where:
       subject: ^ManagedCluster$
       parameter-name: ResourceName

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a dedicated HSM in the specified subscription.
+update a dedicated HSM in the specified subscription.
 .Description
-Update a dedicated HSM in the specified subscription.
+update a dedicated HSM in the specified subscription.
 .Example
 Update-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
 .Example
@@ -28,7 +28,7 @@ Update-AzDedicatedHsm -InputObject $hsm -Tag @{'key1' = '1'; 'key2' = 2; 'key3' 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
+Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,22 +43,28 @@ INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
 #>
 function Update-AzDedicatedHsm {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Path')]
     [System.String]
     # Name of the dedicated HSM
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Path')]
     [System.String]
     # The name of the Resource Group to which the server belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -70,15 +76,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmPatchParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,6 +166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,10 +196,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.DedicatedHsm.private\Update-AzDedicatedHsm_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.DedicatedHsm.private\Update-AzDedicatedHsm_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.DedicatedHsm.private\Update-AzDedicatedHsm_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DedicatedHsm.private\Update-AzDedicatedHsm_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -186,6 +213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

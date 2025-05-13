@@ -41,17 +41,13 @@ input-file:
 module-version: 0.1.0
 title: ConnectedNetwork
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -137,11 +133,17 @@ directive:
   - no-inline:
       - Device
   #  The generated cmdlet need to Re-Name 
-  # - model-cmdlet:
-  #     - AzureStackEdgeFormat
-  #     - NetworkInterface
-  #     - NetworkInterfaceIPConfiguration
-  #     - NetworkFunctionUserConfiguration
-  #     - NetworkFunctionVendorConfiguration
-  #     - NetworkFunctionRoleConfiguration
+  - model-cmdlet:
+      - model-name: AzureStackEdgeFormat
+        cmdlet-name: New-AzConnectedNetworkAzureStackEdgeObject
+      - model-name: NetworkInterface
+        cmdlet-name: New-AzConnectedNetworkInterfaceObject
+      - model-name: NetworkInterfaceIPConfiguration
+        cmdlet-name: New-AzConnectedNetworkInterfaceIPConfigurationObject
+      - model-name: NetworkFunctionUserConfiguration
+        cmdlet-name: New-AzConnectedNetworkFunctionUserConfigurationObject
+      - model-name: NetworkFunctionVendorConfiguration
+        cmdlet-name: New-AzConnectedNetworkFunctionVendorConfigurationObject
+      - model-name: NetworkFunctionRoleConfiguration
+        cmdlet-name: New-AzConnectedNetworkFunctionRoleConfigurationObject
 ```

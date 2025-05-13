@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="osMinorVersion">The OS Minor Version.
         /// </param>
-        public OSDetails(string osType = default(string), string productType = default(string), string osEdition = default(string), string osVersion = default(string), string osMajorVersion = default(string), string osMinorVersion = default(string))
+
+        /// <param name="userSelectedOSName">The OS name selected by user.
+        /// </param>
+        public OSDetails(string osType = default(string), string productType = default(string), string osEdition = default(string), string osVersion = default(string), string osMajorVersion = default(string), string osMinorVersion = default(string), string userSelectedOSName = default(string))
 
         {
             this.OSType = osType;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.OSVersion = osVersion;
             this.OSMajorVersion = osMajorVersion;
             this.OSMinorVersion = osMinorVersion;
+            this.UserSelectedOSName = userSelectedOSName;
             CustomInit();
         }
 
@@ -94,5 +98,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "oSMinorVersion")]
         public string OSMinorVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS name selected by user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userSelectedOSName")]
+        public string UserSelectedOSName {get; set; }
     }
 }

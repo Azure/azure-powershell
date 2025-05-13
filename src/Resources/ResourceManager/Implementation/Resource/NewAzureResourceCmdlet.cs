@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Common.ArgumentCompleters;
-    using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = DetermineApiVersion(resourceId);
                     var resourceBody = this.GetResourceBody();
 
                     var operationResult = this.GetResourcesClient()

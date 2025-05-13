@@ -246,6 +246,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string ResourceGuardMappingName = "Resource guard mapping Name to be fetched";
             public const string AuxiliaryAccessToken = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant";
+            public const string TokenDepricated = "Parameter deprecated. Please use SecureToken instead.";
             public const string ResourceGuardId = "ResourceGuardId of the ResourceGuard to be mapped with RecoveryServicesVault";
         }
     }

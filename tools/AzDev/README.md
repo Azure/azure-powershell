@@ -4,9 +4,12 @@ This module is designed to help developers of Azure PowerShell modules. It provi
 
 All the cmdlets in this module are prefixed with `Dev-` to avoid conflicts with other modules.
 
+Like many other tools, this module targets `net8.0` so always run it in PowerShell 7.2 or later.
+
 - [Quick start](#quick-start)
 - [Features](#features)
   - [Repo inventory](#repo-inventory)
+  - [Update Assemblies in `src/lib`](#update-assemblies-in-srclib)
   - [Connect azure-powershell and azure-powershell-common](#connect-azure-powershell-and-azure-powershell-common)
   - [Autorest helper](#autorest-helper)
     - [Open swagger online](#open-swagger-online)
@@ -58,6 +61,16 @@ Test             70
 Track1Sdk        48
 Other             8
 LegacyHelper      4
+```
+
+### Update Assemblies in `src/lib`
+
+`Update-DevDependency` is used to update the assemblies in the `src/lib` directory. This is useful because it saves you from having to manually download / extract / pick the correct one from the package.
+
+```powershell
+# Update the assembly manifest manually, then
+Update-DevDependency
+# Check in all the changes
 ```
 
 ### Connect azure-powershell and azure-powershell-common
