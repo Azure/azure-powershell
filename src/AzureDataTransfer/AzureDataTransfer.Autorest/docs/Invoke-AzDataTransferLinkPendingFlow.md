@@ -15,8 +15,8 @@ Links the specified flow.
 ### LinkExpanded (Default)
 ```
 Invoke-AzDataTransferLinkPendingFlow -ConnectionName <String> -FlowName <String> -ResourceGroupName <String>
- -Id <String> [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PendingFlowId <String> [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Link
@@ -42,13 +42,13 @@ Invoke-AzDataTransferLinkPendingFlow -ConnectionInputObject <IDataTransferIdenti
 ### LinkViaIdentityConnectionExpanded
 ```
 Invoke-AzDataTransferLinkPendingFlow -ConnectionInputObject <IDataTransferIdentity> -FlowName <String>
- -Id <String> [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -PendingFlowId <String> [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### LinkViaIdentityExpanded
 ```
-Invoke-AzDataTransferLinkPendingFlow -InputObject <IDataTransferIdentity> -Id <String>
+Invoke-AzDataTransferLinkPendingFlow -InputObject <IDataTransferIdentity> -PendingFlowId <String>
  [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -174,21 +174,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: LinkExpanded, LinkViaIdentityConnectionExpanded, LinkViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -243,6 +228,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PendingFlowId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: LinkExpanded, LinkViaIdentityConnectionExpanded, LinkViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
