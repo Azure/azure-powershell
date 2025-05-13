@@ -131,6 +131,11 @@ stages:
             git fetch origin "${{ variables.GenerationBranch }}"
             git checkout "${{ variables.GenerationBranch }}"
 
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: 'prepare'
+          targetPath: artifacts
+
       - download: current
         patterns: '**/changed-*.patch'
         displayName: 'Download all .patch artifacts'
@@ -172,6 +177,8 @@ stages:
 
             $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
             & $filterModulesPath -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" -ChangedFiles $changedFiles -RepoRoot "$(Build.SourcesDirectory)"
+        env:
+            RUN_TEST_ON_ALL_MODULES: $(RUN_TEST_ON_ALL_MODULES)
 
       - task: PublishPipelineArtifact@1
         displayName: 'Upload filtered targets'

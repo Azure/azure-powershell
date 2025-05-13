@@ -11,19 +11,41 @@ param (
 
 $utilFilePath = Join-Path $RepoRoot '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'util.psm1'
 Import-Module $utilFilePath -Force
+$artifactsDir = Join-Path $RepoRoot 'artifacts'
 
 $changedModulesDict = @{}
 $changedSubModulesDict = @{}
-for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
-    if ($ChangedFiles[$i] -match '^(src|generated)/([^/]+)/([^/]+\.autorest)/') {
-        $parent = $Matches[2]
-        $child = $Matches[3]
-        $key = "$parent/$child"
-        
-        $changedModulesDict[$parent] = $true
-        $changedSubModulesDict[$key] = $true
+if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
+    Write-Host "Run test on all modules"
+    $V4ModulesFile = Join-Path $artifactsDir "generationTargets.json"
+    $V4ModuleMaps = Get-Content -Raw -Path $V4ModulesFile | ConvertFrom-Json
+
+    foreach ($matrixKey in $V4ModuleMaps.PSObject.Properties.Name) {
+        Write-Host "##[group]Matrix key: $matrixKey"
+        $moduleMap = $V4ModuleMaps.$matrixKey
+        foreach ($moduleName in $moduleMap.PSObject.Properties.Name) {
+            foreach ($subModuleName in $moduleMap.$moduleName) {
+                $subModule = "$moduleName/$subModuleName"
+                $changedModulesDict[$moduleName] = $true
+                $changedSubModulesDict[$subModule] = $true
+            }
+        }
     }
 }
+else {
+    Write-Host "Run test on changed modules"
+    for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
+        if ($ChangedFiles[$i] -match '^(src|generated)/([^/]+)/([^/]+\.autorest)/') {
+            $moduleName = $Matches[2]
+            $subModuleName = $Matches[3]
+            $subModule = "$moduleName/$subModuleName"
+            
+            $changedModulesDict[$moduleName] = $true
+            $changedSubModulesDict[$subModule] = $true
+        }
+    }
+}
+
 $changedModules = $changedModulesDict.Keys | Sort-Object
 $changedSubModules = $changedSubModulesDict.Keys | Sort-Object
 
