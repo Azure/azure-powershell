@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataTransferConnection
 
 ## SYNOPSIS
-Update the connection resource.
+update the connection resource.
 
 ## SYNTAX
 
@@ -43,27 +43,14 @@ update the connection resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update tags for a connection
 ```powershell
-{{ Add code here }}
+Update-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01 -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example updates the tags for the connection `Connection01` in the resource group `ResourceGroup01`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

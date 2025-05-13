@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataTransferFlow
 
 ## SYNOPSIS
-Update the flow resource.
+update the flow resource.
 
 ## SYNTAX
 
@@ -69,27 +69,23 @@ update the flow resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update tags for a flow
 ```powershell
-{{ Add code here }}
+Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example updates the tags for the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01`.
 
-{{ Add description here }}
+---
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a flow with additional parameters
 ```powershell
-{{ Add code here }}
+Update-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name Flow01 -CustomerManagedKeyVaultUri "https://mykeyvault.vault.azure.net/" -DestinationEndpoint "https://destination.blob.core.windows.net" -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example updates the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` by modifying the Key Vault URI and destination endpoint.
 
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

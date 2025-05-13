@@ -40,27 +40,55 @@ Gets connection resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specified connection
 ```powershell
-{{ Add code here }}
+$connection01 = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              : Connection01
+ResourceGroupName : ResourceGroup01
+Status            : Active
 ```
 
-{{ Add description here }}
+This example retrieves a specific connection named `Connection01` within the resource group `ResourceGroup01`.
 
-### Example 2: {{ Add title here }}
+---
+
+### Example 2: Get a list of connections in a resource group
 ```powershell
-{{ Add code here }}
+$connectionsInResourceGroup = Get-AzDataTransferConnection -ResourceGroupName ResourceGroup01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                    SystemDataCreatedAt   SystemDataCreatedBy       SystemDataCreatedByType   
+-------- ----                    -------------------   -------------------       ----- 
+eastus   connection_1            2/23/2024 7:20:04 PM  example@example.com       User  
+westus   connection_2            2/23/2024 7:31:55 PM  example@example.com       User  
 ```
 
-{{ Add description here }}
+This example retrieves all connections in the resource group `ResourceGroup01`.
+
+---
+
+### Example 3: Get a list of connections in a subscription
+```powershell
+$connectionsInSubscription = Get-AzDataTransferConnection -SubscriptionId "00000000-0000-0000-0000-000000000000"
+```
+
+```output
+Name              : Connection01
+ResourceGroupName : ResourceGroup01
+Status            : Active
+
+Name              : Connection02
+ResourceGroupName : ResourceGroup02
+Status            : Inactive
+```
+
+This example retrieves all connections in the subscription with the ID `00000000-0000-0000-0000-000000000000`.
+
+---
 
 ## PARAMETERS
 

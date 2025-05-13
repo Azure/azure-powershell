@@ -36,27 +36,21 @@ Deletes the flow resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific flow
 ```powershell
-{{ Add code here }}
+Remove-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name flow01
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example removes a specific flow named `flow01` in the connection `Connection01` within the resource group `ResourceGroup01`.
 
-{{ Add description here }}
+---
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a flow and return the result
 ```powershell
-{{ Add code here }}
+$result = Remove-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name flow01 -PassThru -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This example removes a specific flow named `flow01` in the connection `Connection01` within the resource group `ResourceGroup01` without prompting for confirmation and returns the result of the operation.
 
 ## PARAMETERS
 

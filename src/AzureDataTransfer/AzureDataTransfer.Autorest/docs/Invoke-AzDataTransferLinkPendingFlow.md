@@ -72,27 +72,14 @@ Links the specified flow.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Link a pending flow by ID
 ```powershell
-{{ Add code here }}
+Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -FlowName Flow01 -PendingFlowId "pending-flow-id-123" -StatusReason "Linking approved" -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example links a pending flow with the ID `pending-flow-id-123` to the flow `Flow01` in the connection `Connection01` within the resource group `ResourceGroup01` and provides a status reason.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

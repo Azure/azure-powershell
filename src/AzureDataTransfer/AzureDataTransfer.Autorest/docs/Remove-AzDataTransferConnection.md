@@ -29,27 +29,21 @@ Deletes the connection resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific connection
 ```powershell
-{{ Add code here }}
+Remove-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example removes a specific connection named `Connection01` within the resource group `ResourceGroup01`.
 
-{{ Add description here }}
+---
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a connection and return the result
 ```powershell
-{{ Add code here }}
+$result = Remove-AzDataTransferConnection -ResourceGroupName ResourceGroup01 -Name Connection01 -PassThru -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This example removes a specific connection named `Connection01` within the resource group `ResourceGroup01` without prompting for confirmation and returns the result of the operation.
 
 ## PARAMETERS
 

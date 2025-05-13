@@ -58,27 +58,14 @@ Links the connection to its pending connection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Link a pending connection by ID
 ```powershell
-{{ Add code here }}
+Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -PendingConnectionId "pending-connection-id-123" -StatusReason "Linking approved" -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example links a pending connection with the ID `pending-connection-id-123` to the connection `Connection01` within the resource group `ResourceGroup01` and provides a status reason.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

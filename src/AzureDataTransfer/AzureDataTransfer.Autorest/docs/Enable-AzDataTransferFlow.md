@@ -36,27 +36,14 @@ Enables the specified flow.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable a specific flow
 ```powershell
-{{ Add code here }}
+Enable-AzDataTransferFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01 -Name flow01 -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example enables a specific flow named `flow01` in the connection `Connection01` within the resource group `ResourceGroup01` without prompting for confirmation.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

@@ -22,27 +22,28 @@ Lists all pending flows for a connection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all pending flows for a specific connection
 ```powershell
-{{ Add code here }}
+$pendingFlows = Get-AzDataTransferListPendingFlow -ResourceGroupName ResourceGroup01 -ConnectionName Connection01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                : pending-flow-id-123
+ConnectionName    : Connection01
+ResourceGroupName : ResourceGroup01
+Status            : Pending
+Requestor         : user@example.com
+
+Id                : pending-flow-id-456
+ConnectionName    : Connection01
+ResourceGroupName : ResourceGroup01
+Status            : Pending
+Requestor         : admin@example.com
 ```
 
-{{ Add description here }}
+This example lists all pending flows for the connection `Connection01` within the resource group `ResourceGroup01`.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 

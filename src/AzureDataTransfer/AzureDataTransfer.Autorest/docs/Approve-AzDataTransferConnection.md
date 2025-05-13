@@ -8,13 +8,13 @@ schema: 2.0.0
 # Approve-AzDataTransferConnection
 
 ## SYNOPSIS
-Approves the specified connection request in a pipeline.
+Approves the specified connection in a pipeline.
 
 ## SYNTAX
 
 ### ApproveExpanded (Default)
 ```
-Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Id <String>
+Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -ConnectionId <String>
  [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,8 +34,9 @@ Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -Connectio
 
 ### ApproveViaIdentityExpanded
 ```
-Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -Id <String> [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -ConnectionId <String>
+ [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ApproveViaJsonFilePath
@@ -57,27 +58,14 @@ Approves the specified connection in a pipeline.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Approve a connection request by ID
 ```powershell
-{{ Add code here }}
+Approve-AzDataTransferConnection -PipelineName Pipeline01 -ResourceGroupName ResourceGroup01 -ConnectionId "connection-id-123" -StatusReason "Approved for processing" -Confirm:$false
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This example approves a connection request with the ID `connection-id-123` in the pipeline `Pipeline01` within the resource group `ResourceGroup01` and provides a status reason.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+---
 
 ## PARAMETERS
 
@@ -111,6 +99,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ConnectionId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ApproveExpanded, ApproveViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -121,21 +124,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ApproveExpanded, ApproveViaIdentityExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
