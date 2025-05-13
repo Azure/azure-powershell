@@ -17,8 +17,7 @@
         "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
         "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
         "src/{ModuleName}/*/README.md",
-        "src/{ModuleName}/*/readme.md",
-        "generated/{ModuleName}/readme.md"
+        "src/{ModuleName}/*/readme.md"
       ],
       "phases": [
         "build:related-module",
