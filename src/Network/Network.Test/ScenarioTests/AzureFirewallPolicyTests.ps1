@@ -1457,9 +1457,10 @@ function Test-AzureFirewallPolicyPremiumFeatures {
         $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name $bypassTestName -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "10.0.0.0"
         $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
         $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $sigOverride -BypassTraffic $bypass -PrivateRange @("10.0.0.0/8", "172.16.0.0/12")
+        $userassignedIdentity = @($identity.id)
 
         # Create AzureFirewallPolicy (with Intrusion Detection, TransportSecurity and Identity parameters)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection  -UserAssignedIdentityId $identity.Id
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection  -UserAssignedIdentityId $userassignedIdentity
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
@@ -1597,19 +1598,26 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "westus2"
+    $location = "francecentral"
     $vnetName = Get-ResourceName
-    $pacFile ="https://packetcapturesdev.blob.core.windows.net/explicit-proxy/pacfile.pac?sp=r&st=2022-06-02T21:14:54Z&se=2022-07-15T05:14:54Z&spr=https&sv=2021-06-08&sr=b&sig=VqX7Jfqb0P2HhuoDFDCeGLHvtM65Tu8lpkV96kCWZn0%3D"
+    $identityName = "PacFileMSI-testExplicitProxyV2"
+    $identityRG = "ExplicitProxy_clipstestresource"
+    $pacFileURL = "https://eproxypstestresources.blob.core.windows.net/explicitproxycontainer/proxy.pac"
    
     try {
 
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
-        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -HttpsPort 121 -EnablePacFile  -PacFilePort 122 -PacFile $pacFile
+        #GetIdentityPrincipalId
+        $identity = Get-AzUserAssignedIdentity -ResourceGroupName $identityRG -Name $identityName
+       
+        $userAssignedIdentity = @($identity.Id)
+
+        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -EnablePacFile  -PacFilePort 122 -PacFile $pacFileURL 
 
         # Create AzureFirewallPolicy (with Explicit Proxy Settings)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId $userAssignedIdentity
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -1622,22 +1630,90 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
         Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxy
         Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
-        Assert-AreEqual 121 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
         Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
-        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual $pacFileURL $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual $identity.principalid $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Values[0].principalId
 
         # Modify
-        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -HttpsPort 123 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
+        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86
         # Set AzureFirewallPolicy
-        $azureFirewallPolicy.ExplicitProxy = $exProxy
-        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        $getAzureFirewallPolicy.ExplicitProxy = $exProxy
+        $getAzureFirewallPolicy.Identity.Type = "None"
+        Set-AzFirewallPolicy -InputObject $getAzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
         Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
         Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
-        Assert-AreEqual 123 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
-        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
-        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-Null $getAzureFirewallPolicy.ExplicitProxy.EnablePacFile
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Policy With Multiple Identities
+#>
+function Test-AzureFirewallPolicyMultipleIdentities {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $location = "francecentral"
+    $tlsIdentityName = "TLSIdentity_clipstestresource"
+    $eproxyIdentityName = "PacFileMSI-testExplicitProxyV2"
+    $keyvaultSecretID = "https://explicitproxyclipskv.vault.azure.net/secrets/cacert/e99a9c61211d499aa2950da88d8e6966"
+    $pacFileURL = "https://eproxypstestresources.blob.core.windows.net/explicitproxycontainer/proxy.pac"
+    $secretName = "cacert" 
+    $resourceRG = "ExplicitProxy_clipstestresource"
+
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        #GetIdentity
+        $tlsIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceRG -Name $tlsIdentityName
+
+        $eproxyIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceRG -Name $eproxyIdentityName
+
+        #Enable Explicit Proxy - Single MSI
+        $userAssignedIdentity = @($eproxyIdentity.Id, $tlsIdentity.Id)
+        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -EnablePacFile  -PacFilePort 122 -PacFile $pacFileURL 
+
+        # Create AzureFirewallPolicy (with Explicit Proxy Settings)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier Premium -TransportSecurityName $secretName -TransportSecurityKeyVaultSecretId $keyvaultSecretID  -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId $userAssignedIdentity
+
+        #Get Azure FirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull  $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFileURL $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual 2 $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Count
+
+        #Get Azure FirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #Disable TLS, Explicit Proxy and Remove Managed Identity
+        $getAzureFirewallPolicy.Identity.Type = "None"
+        $getAzureFirewallPolicy.ExplicitProxy  = $null
+        $getAzureFirewallPolicy.TransportSecurity = $null
+        Set-AzFirewallPolicy -InputObject $getAzureFirewallPolicy
+
+        #Get Azure FirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-Null $getAzureFirewallPolicy.ExplicitProxy
+        Assert-Null $getAzureFirewallPolicy.TransportSecurity
     }
     finally {
         # Cleanup

@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
-        public string UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -202,13 +202,16 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.UserAssignedIdentityId != null)
             {
+                var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+                foreach (var identityId in this.UserAssignedIdentityId)
+                {
+                    userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                }
+
                 firewallPolicy.Identity = new PSManagedServiceIdentity
                 {
                     Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
+                    UserAssignedIdentities = userAssignedIdentities
                 };
             }
             else if (this.Identity != null)
