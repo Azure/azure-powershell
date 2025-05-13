@@ -21,7 +21,6 @@ if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
     $V4ModuleMaps = Get-Content -Raw -Path $V4ModulesFile | ConvertFrom-Json
 
     foreach ($matrixKey in $V4ModuleMaps.PSObject.Properties.Name) {
-        Write-Host "##[group]Matrix key: $matrixKey"
         $moduleMap = $V4ModuleMaps.$matrixKey
         foreach ($moduleName in $moduleMap.PSObject.Properties.Name) {
             foreach ($subModuleName in $moduleMap.$moduleName) {
