@@ -126,7 +126,8 @@ directive:
   - from: swagger-document
     where: $.definitions.flowProperties.properties.connection
     transform: $['x-ms-client-name'] = 'FlowPropertiesConnection'
-
+  
+  # Rename approve/reject ConnectionId param
   - where:
       verb: Invoke
       subject: ^RejectPipelineConnection$
@@ -140,7 +141,9 @@ directive:
       parameter-name: Id
     set:
       parameter-name: ConnectionId
+  
 
+  # Rename approve/reject Connection cmdlets
   - where:
       verb: Invoke
       subject: ^RejectPipelineConnection$
@@ -154,6 +157,7 @@ directive:
     set:
       subject: Connection
 
+  # Rename Link cmdltes
   - where:
       verb: Invoke
       subject: ^LinkConnection$
@@ -165,4 +169,11 @@ directive:
       subject: ^LinkFlow$
     set:
       subject: LinkPendingFlow
+
+  # Hide unneeded params
+  - where:
+      verb: New
+      subject: ^Connection$
+      parameter-name: Policy
+    hide: true
 ```

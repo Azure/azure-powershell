@@ -16,10 +16,9 @@ create the connection resource.
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-Justification <String>]
- [-Pin <String>] [-PipelineName <String>] [-Policy <String[]>] [-PrimaryContact <String>]
- [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
- [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>] [-RemoteSubscriptionId <String>]
+ [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>] [-SecondaryContact <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -241,21 +240,6 @@ Pipeline to use to transfer data
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this connection
-
-```yaml
-Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
