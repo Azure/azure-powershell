@@ -17,17 +17,14 @@ create the flow resource.
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
  [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity]
- [-FlowPropertyConnectionId <String>] [-FlowPropertyConnectionLocation <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -244,66 +241,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlowPropertyConnectionId
-Id of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionLocation
-Location of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionName
-Name of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionSubscriptionName
-Name of the subscription with the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FlowType
 The flow type for this flow
 
@@ -343,21 +280,6 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultUri
-AME, PME, or TORUS only! AKV Chain Containing SAS Token
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -509,21 +431,6 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this flow
-
-```yaml
-Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
