@@ -44,7 +44,7 @@ The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status f
 
 ### Example 1: List status by project name.
 ```powershell
-Get-AzMigrateServerReplication -ResourceGroupName cbtpvtrg -ProjectName migpvt
+Get-AzMigrateServerMigrationStatus -ResourceGroupName cbtpvtrg -ProjectName migpvt
 ```
 
 ```output
