@@ -17,11 +17,9 @@ update the flow resource.
 Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
  [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowPropertyConnectionId <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
+ [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-PlanPublisher <String>] [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
  [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
  [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
  [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
@@ -34,11 +32,9 @@ Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroup
 ```
 Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
  [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-DestinationEndpoint <String[]>]
- [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-FlowPropertyConnectionId <String>] [-FlowPropertyConnectionName <String>]
- [-FlowPropertyConnectionSubscriptionName <String>] [-FlowType <String>] [-KeyVaultUri <String>]
+ [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>]
  [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-Policy <String[]>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
  [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
  [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
@@ -51,11 +47,9 @@ Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <
 ```
 Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-CustomerManagedKeyVaultUri <String>]
  [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowPropertyConnectionId <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
+ [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-PlanPublisher <String>] [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
  [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
  [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
  [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
@@ -225,51 +219,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlowPropertyConnectionId
-Id of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionName
-Name of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionSubscriptionName
-Name of the subscription with the connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FlowType
 The flow type for this flow
 
@@ -297,21 +246,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -KeyVaultUri
-AME, PME, or TORUS only! AKV Chain Containing SAS Token
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -445,21 +379,6 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this flow
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

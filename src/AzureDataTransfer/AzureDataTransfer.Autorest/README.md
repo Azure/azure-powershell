@@ -186,19 +186,19 @@ directive:
     hide: true
 
   - where:
-      verb: New
+      verb: New|Update
       subject: ^Flow$
       parameter-name: Policy
     hide: true
 
   - where:
-      verb: New
+      verb: New|Update
       subject: ^Flow$
       parameter-name: KeyVaultUri
     hide: true
 
   - where:
-      verb: New
+      verb: New|Update
       subject: ^Flow$
       parameter-name: ^FlowProperty*
     hide: true
