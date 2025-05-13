@@ -158,6 +158,14 @@ directive:
       subject: Connection
 
   # Rename Link cmdltes
+
+  - where:
+      verb: Invoke
+      subject: ^LinkConnection$
+      parameter-name: Id
+    set:
+      parameter-name: PendingConnectionId
+
   - where:
       verb: Invoke
       subject: ^LinkConnection$

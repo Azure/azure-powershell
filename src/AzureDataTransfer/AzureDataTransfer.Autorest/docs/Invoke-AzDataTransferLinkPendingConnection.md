@@ -14,9 +14,9 @@ Links the connection to its pending connection.
 
 ### LinkExpanded (Default)
 ```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String> -Id <String>
- [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
+ -PendingConnectionId <String> [-SubscriptionId <String>] [-StatusReason <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Link
@@ -34,7 +34,7 @@ Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> 
 
 ### LinkViaIdentityExpanded
 ```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -Id <String>
+Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -PendingConnectionId <String>
  [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -130,21 +130,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -199,6 +184,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PendingConnectionId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
