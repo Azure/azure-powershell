@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Autorest Upgration: Default commit title
 
 ## Version 0.1.2
 * Upgraded nuget package to signed package.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Autorest Upgration: Default commit title
 * First preview release for module Az.CommunicationServiceSmtpUsername
 
 ## Version 0.4.2
