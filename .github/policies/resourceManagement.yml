@@ -3065,6 +3065,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Neon Postgre
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Neon Postgre
+        then:
+        - mentionUsers:
+            mentionees:
+            - alluri02
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: NetApp Files
         - hasLabel:
             label: Service Attention
