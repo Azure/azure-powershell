@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStandbyVMPool
 
 ## SYNOPSIS
-Update a StandbyVirtualMachinePoolResource
+update a StandbyVirtualMachinePoolResource
 
 ## SYNTAX
 
@@ -16,22 +16,19 @@ Update a StandbyVirtualMachinePoolResource
 ```
 Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
- [-VMState <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VMState <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -42,7 +39,7 @@ Update-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-MaxReadyCapacity <I
 ```
 
 ## DESCRIPTION
-Update a StandbyVirtualMachinePoolResource
+update a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 

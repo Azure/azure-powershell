@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzSpringCloudBuildServiceBuilder
 
 ## SYNOPSIS
-Create or update a KPack builder.
+create a KPack builder.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>]
@@ -19,8 +20,36 @@ New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityBuildServiceExpanded
+```
+New-AzSpringCloudBuildServiceBuilder -BuildServiceInputObject <ISpringCloudIdentity> -Name <String>
+ [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentitySpringExpanded
+```
+New-AzSpringCloudBuildServiceBuilder -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a KPack builder.
+create a KPack builder.
 
 ## EXAMPLES
 
@@ -56,17 +85,31 @@ Accept wildcard characters: False
 
 ### -BuildpackGroup
 Builder buildpack groups.
-To construct, see NOTES section for BUILDPACKGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpacksGroupProperties[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildpacksGroupProperties[]
+Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BuildServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentityBuildServiceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -80,6 +123,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +195,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -137,7 +210,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -147,12 +220,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StackId
 Id of the ClusterStack.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -167,7 +255,7 @@ Version of the ClusterStack
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -183,7 +271,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -229,9 +317,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuilderResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuilderResource
 
 ## NOTES
 

@@ -1,8 +1,8 @@
 ---
 Module Name: Az.CosmosDB
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: {{ https://learn.microsoft.com/powershell/module/az.cosmosdb }}
-Help Version: {{ 1.0.0.1 }}
+Download Help Link: https://learn.microsoft.com/powershell/module/az.cosmosdb
+Help Version: 1.0.0.1
 Locale: en-US
 ---
 
@@ -341,6 +341,9 @@ Creates a new object of type PSIndexes. It can be passed as a parameter value fo
 
 ### [New-AzCosmosDBSqlIndexingPolicy](New-AzCosmosDBSqlIndexingPolicy.md)
 Creates a new CosmosDB Sql IndexingPolicy object.
+
+### [New-AzCosmosDBSqlVectorEmbeddingPolicy](New-AzCosmosDBSqlVectorEmbeddingPolicy.md)
+Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
 
 ### [New-AzCosmosDBSqlRoleAssignment](New-AzCosmosDBSqlRoleAssignment.md)
 Creates a new CosmosDB Sql Role Assignment.

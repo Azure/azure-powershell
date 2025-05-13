@@ -236,7 +236,21 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             databaseAccountCreateUpdateParameters.Capabilities = new List<Capability> { new Capability { Name = "EnableTable" } };
                             break;
                         case "Sql":
-                            break;
+                            {
+                                if (Capabilities != null && Capabilities.Length > 0)
+                                {
+                                    List<Capability> capabilitiesList = new List<Capability>();
+
+                                    foreach (string capability in Capabilities)
+                                    {
+                                        capabilitiesList.Add(new Capability { Name = capability });
+                                    }
+
+                                    databaseAccountCreateUpdateParameters.Capabilities = capabilitiesList;
+                                }
+
+                                break;
+                            }
                     }
 
                     ApiKind = null;

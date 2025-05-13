@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOriginGroup'))
 Describe 'Remove-AzCdnOriginGroup'  {
     It 'Delete' {
         $subId = $env.SubscriptionId
-        $endpointName = 'e-clipstest090'
+        $endpointName = 'e-clipstest390'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
         $location = "westus"
@@ -54,7 +54,7 @@ Describe 'Remove-AzCdnOriginGroup'  {
 
     It 'DeleteViaIdentity' {
         $subId = $env.SubscriptionId
-        $endpointName2 = 'e-clipstest092'
+        $endpointName2 = 'e-clipstest392'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
         
         $location = "westus"

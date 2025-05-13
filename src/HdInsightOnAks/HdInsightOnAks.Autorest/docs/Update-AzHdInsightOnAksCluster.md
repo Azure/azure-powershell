@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzHdInsightOnAksCluster
 
 ## SYNOPSIS
-Update an existing Cluster.
+update an existing Cluster.
 
 ## SYNTAX
 
@@ -126,7 +126,7 @@ Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
-Update an existing Cluster.
+update an existing Cluster.
 
 ## EXAMPLES
 

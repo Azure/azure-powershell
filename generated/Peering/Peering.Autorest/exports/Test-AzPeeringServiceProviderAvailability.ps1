@@ -24,9 +24,7 @@ $providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject
 Test-AzPeeringServiceProviderAvailability -CheckServiceProviderAvailabilityInput $providerAvailability
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ICheckServiceProviderAvailabilityInput
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ICheckServiceProviderAvailabilityInput
 .Outputs
 System.String
 .Notes
@@ -37,18 +35,6 @@ To create the parameters described below, construct a hash table containing the 
 CHECKSERVICEPROVIDERAVAILABILITYINPUT <ICheckServiceProviderAvailabilityInput>: Class for CheckServiceProviderAvailabilityInput
   [PeeringServiceLocation <String>]: Gets or sets the peering service location.
   [PeeringServiceProvider <String>]: Gets or sets the peering service provider.
-
-INPUTOBJECT <IPeeringIdentity>: Identity Parameter
-  [ConnectionMonitorTestName <String>]: The name of the connection monitor test
-  [Id <String>]: Resource identity path
-  [PeerAsnName <String>]: The peer ASN name.
-  [PeeringName <String>]: The name of the peering.
-  [PeeringServiceName <String>]: The name of the peering service.
-  [PrefixName <String>]: The name of the prefix.
-  [RegisteredAsnName <String>]: The name of the registered ASN.
-  [RegisteredPrefixName <String>]: The name of the registered prefix.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [SubscriptionId <String>]: The Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/test-azpeeringserviceprovideravailability
 #>
@@ -56,43 +42,42 @@ function Test-AzPeeringServiceProviderAvailability {
 [OutputType([System.String])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ICheckServiceProviderAvailabilityInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ICheckServiceProviderAvailabilityInput]
     # Class for CheckServiceProviderAvailabilityInput
-    # To construct, see NOTES section for CHECKSERVICEPROVIDERAVAILABILITYINPUT properties and create a hash table.
     ${CheckServiceProviderAvailabilityInput},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
     [System.String]
     # Gets or sets the peering service location.
     ${PeeringServiceLocation},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
     [System.String]
     # Gets or sets the peering service provider.
     ${PeeringServiceProvider},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -150,6 +135,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -171,12 +165,10 @@ begin {
         $mapping = @{
             Check = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_Check';
             CheckExpanded = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_CheckExpanded';
-            CheckViaIdentity = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_CheckViaIdentity';
-            CheckViaIdentityExpanded = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.Peering.private\Test-AzPeeringServiceProviderAvailability_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +182,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

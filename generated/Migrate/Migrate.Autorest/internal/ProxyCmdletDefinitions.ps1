@@ -27,7 +27,7 @@ Gets the details of the fabric agent.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IDraModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -60,6 +60,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -80,24 +83,25 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratedra
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratefabricagent
 #>
-function Get-AzMigrateDra {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IDraModel])]
+function Get-AzMigrateFabricAgent {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IFabricAgentModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The fabric agent (Dra) name.
-    ${FabricAgentName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The fabric name.
     ${FabricName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('FabricAgentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The fabric agent name.
+    ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -180,9 +184,9 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Get = 'Az.Migrate.private\Get-AzMigrateDra_Get';
-            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateDra_GetViaIdentity';
-            List = 'Az.Migrate.private\Get-AzMigrateDra_List';
+            Get = 'Az.Migrate.private\Get-AzMigrateFabricAgent_Get';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateFabricAgent_GetViaIdentity';
+            List = 'Az.Migrate.private\Get-AzMigrateFabricAgent_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
@@ -572,7 +576,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -590,6 +594,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -715,6 +722,256 @@ begin {
             GetViaIdentity2 = 'Az.Migrate.private\Get-AzMigrateHyperVSite_GetViaIdentity2';
         }
         if (('Get', 'Get1', 'Get2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Method to get job.
+.Description
+Method to get job.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareJob
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalreplicationjob
+#>
+function Get-AzMigrateLocalReplicationJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareJob], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Alias('JobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Job ARM name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Site name.
+    ${SiteName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The vault name.
+    ${VaultName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # Continuation token.
+    ${ContinuationToken},
+
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # OData options.
+    ${OdataOption},
+
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.Int32]
+    # Page size.
+    ${PageSize},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_Get';
+            Get1 = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_Get1';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_GetViaIdentity';
+            GetViaIdentity1 = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_GetViaIdentity1';
+            List = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_List';
+            List1 = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_List1';
+        }
+        if (('Get', 'Get1', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -940,12 +1197,12 @@ Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IOperationsDiscovery
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IOperationAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IOperationAutoGenerated
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IOperationsDiscovery], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api40.IOperationAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IOperationsDiscovery], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IOperationAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List2', Mandatory)]
@@ -1066,9 +1323,9 @@ end {
 
 <#
 .Synopsis
-Tracks the results of an asynchronous operation on the policy.
+Gets the details of the policy.
 .Description
-Tracks the results of an asynchronous operation on the policy.
+Gets the details of the policy.
 .Example
 {{ Add code here }}
 .Example
@@ -1077,7 +1334,7 @@ Tracks the results of an asynchronous operation on the policy.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IOperationStatusAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1092,7 +1349,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -1110,218 +1367,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name.
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [SiteName <String>]: Site name.
-  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
-  [VaultSettingName <String>]: Vault setting name.
-  [VcenterName <String>]: VCenter ARM name.
-  [VirtualMachineName <String>]: Virtual Machine name.
-.Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratepolicyoperationstatus
-#>
-function Get-AzMigratePolicyOperationStatus {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IOperationStatusAutoGenerated])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The ID of an ongoing async operation.
-    ${OperationId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The policy name.
-    ${PolicyName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Azure Subscription Id in which migrate project was created.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The vault name.
-    ${VaultName},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.Migrate.private\Get-AzMigratePolicyOperationStatus_Get';
-            GetViaIdentity = 'Az.Migrate.private\Get-AzMigratePolicyOperationStatus_GetViaIdentity';
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets the details of the policy.
-.Description
-Gets the details of the policy.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AccountName <String>]: Run as account ARM name.
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [ClusterName <String>]: Cluster ARM name.
-  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
-  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
-  [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
-  [FabricName <String>]: Fabric name.
-  [HostName <String>]: Host ARM name.
-  [Id <String>]: Resource identity path
-  [IntentObjectName <String>]: Replication protection intent name.
-  [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
-  [LogicalNetworkName <String>]: Logical network name.
-  [MachineName <String>]: Machine ARM name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrateProjectName <String>]: Name of the Azure Migrate project.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [OperationStatusName <String>]: Operation status ARM name.
-  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -1345,7 +1393,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratepolicy
 #>
 function Get-AzMigratePolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1500,7 +1548,7 @@ Gets the details of the protected item.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1515,7 +1563,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -1533,6 +1581,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -1556,7 +1607,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateprotecteditem
 #>
 function Get-AzMigrateProtectedItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1595,6 +1646,24 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # Continuation token.
+    ${ContinuationToken},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # OData options.
+    ${OdataOption},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.Int32]
+    # Page size.
+    ${PageSize},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1700,9 +1769,9 @@ end {
 
 <#
 .Synopsis
-Tracks the results of an asynchronous operation on the replication extension.
+Gets the details of the replication extension.
 .Description
-Tracks the results of an asynchronous operation on the replication extension.
+Gets the details of the replication extension.
 .Example
 {{ Add code here }}
 .Example
@@ -1711,7 +1780,7 @@ Tracks the results of an asynchronous operation on the replication extension.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IOperationStatusAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1726,7 +1795,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -1744,218 +1813,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name.
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [SiteName <String>]: Site name.
-  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
-  [VaultSettingName <String>]: Vault setting name.
-  [VcenterName <String>]: VCenter ARM name.
-  [VirtualMachineName <String>]: Virtual Machine name.
-.Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationextensionoperationstatus
-#>
-function Get-AzMigrateReplicationExtensionOperationStatus {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IOperationStatusAutoGenerated])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The ID of an ongoing async operation.
-    ${OperationId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The replication extension name.
-    ${ReplicationExtensionName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Azure Subscription Id in which migrate project was created.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The vault name.
-    ${VaultName},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.Migrate.private\Get-AzMigrateReplicationExtensionOperationStatus_Get';
-            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateReplicationExtensionOperationStatus_GetViaIdentity';
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Gets the details of the replication extension.
-.Description
-Gets the details of the replication extension.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AccountName <String>]: Run as account ARM name.
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [ClusterName <String>]: Cluster ARM name.
-  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
-  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
-  [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
-  [FabricName <String>]: Fabric name.
-  [HostName <String>]: Host ARM name.
-  [Id <String>]: Resource identity path
-  [IntentObjectName <String>]: Replication protection intent name.
-  [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
-  [LogicalNetworkName <String>]: Logical network name.
-  [MachineName <String>]: Machine ARM name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrateProjectName <String>]: Name of the Azure Migrate project.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [OperationStatusName <String>]: Operation status ARM name.
-  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -1979,7 +1839,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationextension
 #>
 function Get-AzMigrateReplicationExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2466,7 +2326,7 @@ Gets the details of the vault.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IVaultModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2481,7 +2341,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -2499,6 +2359,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -2522,7 +2385,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratevault
 #>
 function Get-AzMigrateVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IVaultModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2556,7 +2419,6 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
     [System.String]
@@ -2694,7 +2556,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -2712,6 +2574,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -2885,228 +2750,6 @@ end {
 
 <#
 .Synopsis
-Gets the details of the job.
-.Description
-Gets the details of the job.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMigrateIdentity>: Identity Parameter
-  [AccountName <String>]: Run as account ARM name.
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [ClusterName <String>]: Cluster ARM name.
-  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
-  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
-  [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
-  [FabricName <String>]: Fabric name.
-  [HostName <String>]: Host ARM name.
-  [Id <String>]: Resource identity path
-  [IntentObjectName <String>]: Replication protection intent name.
-  [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
-  [LogicalNetworkName <String>]: Logical network name.
-  [MachineName <String>]: Machine ARM name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrateProjectName <String>]: Name of the Azure Migrate project.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [OperationStatusName <String>]: Operation status ARM name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name.
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [SiteName <String>]: Site name.
-  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
-  [VaultSettingName <String>]: Vault setting name.
-  [VcenterName <String>]: VCenter ARM name.
-  [VirtualMachineName <String>]: Virtual Machine name.
-.Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateworkflow
-#>
-function Get-AzMigrateWorkflow {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The job (workflow) name.
-    ${JobName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Azure Subscription Id in which migrate project was created.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The vault name.
-    ${VaultName},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
-    [System.String]
-    # Continuation token.
-    ${ContinuationToken},
-
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
-    [System.String]
-    # Filter string.
-    ${Filter},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Get = 'Az.Migrate.private\Get-AzMigrateWorkflow_Get';
-            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateWorkflow_GetViaIdentity';
-            List = 'Az.Migrate.private\Get-AzMigrateWorkflow_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Performs the planned failover on the protected item.
 .Description
 Performs the planned failover on the protected item.
@@ -3116,11 +2759,11 @@ Performs the planned failover on the protected item.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3129,7 +2772,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IPlannedFailoverModel>: Planned failover model.
   Property <IPlannedFailoverModelProperties>: Planned failover model properties.
     CustomProperty <IPlannedFailoverModelCustomProperties>: Planned failover model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
+      InstanceType <String>: Discriminator property for PlannedFailoverModelCustomProperties.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -3140,7 +2783,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -3158,6 +2801,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -3180,12 +2826,12 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 
 PROPERTY <IPlannedFailoverModelProperties>: Planned failover model properties.
   CustomProperty <IPlannedFailoverModelCustomProperties>: Planned failover model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for PlannedFailoverModelCustomProperties.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigrateplannedprotecteditemfailover
 #>
 function Invoke-AzMigratePlannedProtectedItemFailover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties])]
 [CmdletBinding(DefaultParameterSetName='PlannedViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Planned', Mandatory)]
@@ -3229,7 +2875,7 @@ param(
     [Parameter(ParameterSetName='Planned', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PlannedViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModel]
     # Planned failover model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -3237,7 +2883,7 @@ param(
     [Parameter(ParameterSetName='PlannedExpanded', Mandatory)]
     [Parameter(ParameterSetName='PlannedViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPlannedFailoverModelProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPlannedFailoverModelProperties]
     # Planned failover model properties.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -3732,26 +3378,26 @@ Creates the policy.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IPolicyModel>: Policy model.
-  Property <IPolicyModelProperties>: Policy model properties.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Property <IPolicyModelProperties>]: The resource-specific properties for this resource.
     CustomProperty <IPolicyModelCustomProperties>: Policy model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
-  [SystemDataCreatedAt <DateTime?>]: Gets or sets the timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: Gets or sets identity that created the resource.
-  [SystemDataCreatedByType <String>]: Gets or sets the type of identity that created the resource: user, application,         managedIdentity.
-  [SystemDataLastModifiedAt <DateTime?>]: Gets or sets the timestamp of resource last modification (UTC).
-  [SystemDataLastModifiedBy <String>]: Gets or sets the identity that last modified the resource.
-  [SystemDataLastModifiedByType <String>]: Gets or sets the type of identity that last modified the resource: user, application,         managedIdentity.
+      InstanceType <String>: Discriminator property for PolicyModelCustomProperties.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -3762,7 +3408,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -3780,6 +3426,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -3800,15 +3449,15 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 
-PROPERTY <IPolicyModelProperties>: Policy model properties.
+PROPERTY <IPolicyModelProperties>: The resource-specific properties for this resource.
   CustomProperty <IPolicyModelCustomProperties>: Policy model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for PolicyModelCustomProperties.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratepolicy
 #>
 function New-AzMigratePolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -3852,16 +3501,16 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModel]
     # Policy model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IPolicyModelProperties]
-    # Policy model properties.
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IPolicyModelProperties]
+    # The resource-specific properties for this resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
@@ -3991,28 +3640,28 @@ Creates the protected item.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IProtectedItemModel>: Protected item model.
-  Property <IProtectedItemModelProperties>: Protected item model properties.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Property <IProtectedItemModelProperties>]: The resource-specific properties for this resource.
     CustomProperty <IProtectedItemModelCustomProperties>: Protected item model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
+      InstanceType <String>: Discriminator property for ProtectedItemModelCustomProperties.
     PolicyName <String>: Gets or sets the policy name.
     ReplicationExtensionName <String>: Gets or sets the replication extension name.
-  [SystemDataCreatedAt <DateTime?>]: Gets or sets the timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: Gets or sets identity that created the resource.
-  [SystemDataCreatedByType <String>]: Gets or sets the type of identity that created the resource: user, application,         managedIdentity.
-  [SystemDataLastModifiedAt <DateTime?>]: Gets or sets the timestamp of resource last modification (UTC).
-  [SystemDataLastModifiedBy <String>]: Gets or sets the identity that last modified the resource.
-  [SystemDataLastModifiedByType <String>]: Gets or sets the type of identity that last modified the resource: user, application,         managedIdentity.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -4023,7 +3672,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -4041,6 +3690,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -4061,17 +3713,17 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 
-PROPERTY <IProtectedItemModelProperties>: Protected item model properties.
+PROPERTY <IProtectedItemModelProperties>: The resource-specific properties for this resource.
   CustomProperty <IProtectedItemModelCustomProperties>: Protected item model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for ProtectedItemModelCustomProperties.
   PolicyName <String>: Gets or sets the policy name.
   ReplicationExtensionName <String>: Gets or sets the replication extension name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateprotecteditem
 #>
 function New-AzMigrateProtectedItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -4115,16 +3767,16 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel]
     # Protected item model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModelProperties]
-    # Protected item model properties.
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelProperties]
+    # The resource-specific properties for this resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
@@ -4254,26 +3906,26 @@ Creates the replication extension in the given vault.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IReplicationExtensionModel>: Replication extension model.
-  Property <IReplicationExtensionModelProperties>: Replication extension model properties.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Property <IReplicationExtensionModelProperties>]: The resource-specific properties for this resource.
     CustomProperty <IReplicationExtensionModelCustomProperties>: Replication extension model custom properties.
-      InstanceType <String>: Gets or sets the instance type.
-  [SystemDataCreatedAt <DateTime?>]: Gets or sets the timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: Gets or sets identity that created the resource.
-  [SystemDataCreatedByType <String>]: Gets or sets the type of identity that created the resource: user, application,         managedIdentity.
-  [SystemDataLastModifiedAt <DateTime?>]: Gets or sets the timestamp of resource last modification (UTC).
-  [SystemDataLastModifiedBy <String>]: Gets or sets the identity that last modified the resource.
-  [SystemDataLastModifiedByType <String>]: Gets or sets the type of identity that last modified the resource: user, application,         managedIdentity.
+      InstanceType <String>: Discriminator property for ReplicationExtensionModelCustomProperties.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -4284,7 +3936,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -4302,6 +3954,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -4322,15 +3977,15 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 
-PROPERTY <IReplicationExtensionModelProperties>: Replication extension model properties.
+PROPERTY <IReplicationExtensionModelProperties>: The resource-specific properties for this resource.
   CustomProperty <IReplicationExtensionModelCustomProperties>: Replication extension model custom properties.
-    InstanceType <String>: Gets or sets the instance type.
+    InstanceType <String>: Discriminator property for ReplicationExtensionModelCustomProperties.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationextension
 #>
 function New-AzMigrateReplicationExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -4374,16 +4029,16 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModel]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModel]
     # Replication extension model.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IReplicationExtensionModelProperties]
-    # Replication extension model properties.
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IReplicationExtensionModelProperties]
+    # The resource-specific properties for this resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
@@ -4692,9 +4347,9 @@ end {
 
 <#
 .Synopsis
-Deletes the fabric agent.
+Deletes fabric agent.
 .Description
-Deletes the fabric agent.
+Deletes fabric agent.
 .Example
 {{ Add code here }}
 .Example
@@ -4718,7 +4373,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -4736,6 +4391,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -4756,23 +4414,24 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratedra
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratefabricagent
 #>
-function Remove-AzMigrateDra {
+function Remove-AzMigrateFabricAgent {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The fabric agent (Dra) name.
-    ${FabricAgentName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
     # The fabric name.
     ${FabricName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('FabricAgentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The fabric agent name.
+    ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -4871,8 +4530,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Delete = 'Az.Migrate.private\Remove-AzMigrateDra_Delete';
-            DeleteViaIdentity = 'Az.Migrate.private\Remove-AzMigrateDra_DeleteViaIdentity';
+            Delete = 'Az.Migrate.private\Remove-AzMigrateFabricAgent_Delete';
+            DeleteViaIdentity = 'Az.Migrate.private\Remove-AzMigrateFabricAgent_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
@@ -4942,7 +4601,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -4960,6 +4619,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -5167,7 +4829,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -5185,6 +4847,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -5398,7 +5063,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -5416,6 +5081,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -5803,7 +5471,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
@@ -5821,6 +5489,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -7582,6 +7253,268 @@ begin {
             TestExpanded = 'Az.Migrate.private\Test-AzMigrateReplicationMigrationItemMigrate_TestExpanded';
         }
         if (('TestExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Performs update on the protected item.
+.Description
+Performs update on the protected item.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelUpdate
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IProtectedItemModelUpdate>: Protected item model update.
+  [Property <IProtectedItemModelPropertiesUpdate>]: Protected item model properties.
+    [CustomProperty <IProtectedItemModelCustomPropertiesUpdate>]: Protected item model custom properties update.
+      InstanceType <String>: Discriminator property for ProtectedItemModelCustomPropertiesUpdate.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+PROPERTY <IProtectedItemModelPropertiesUpdate>: Protected item model properties.
+  [CustomProperty <IProtectedItemModelCustomPropertiesUpdate>]: Protected item model custom properties update.
+    InstanceType <String>: Discriminator property for ProtectedItemModelCustomPropertiesUpdate.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/update-azmigrateprotecteditem
+#>
+function Update-AzMigrateProtectedItem {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('ProtectedItemName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The protected item name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Update')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription Id in which migrate project was created.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The vault name.
+    ${VaultName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelUpdate]
+    # Protected item model update.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModelPropertiesUpdate]
+    # Protected item model properties.
+    # To construct, see NOTES section for PROPERTY properties and create a hash table.
+    ${Property},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Update = 'Az.Migrate.private\Update-AzMigrateProtectedItem_Update';
+            UpdateExpanded = 'Az.Migrate.private\Update-AzMigrateProtectedItem_UpdateExpanded';
+            UpdateViaIdentity = 'Az.Migrate.private\Update-AzMigrateProtectedItem_UpdateViaIdentity';
+            UpdateViaIdentityExpanded = 'Az.Migrate.private\Update-AzMigrateProtectedItem_UpdateViaIdentityExpanded';
+        }
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

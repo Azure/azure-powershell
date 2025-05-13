@@ -8,9 +8,9 @@
         - Additional information about change #1
     * Overview of change #2
         - Additional information about change #2
-        - Additional information about change #2
-    * Overview of change #3
-    * Overview of change #4
+        - Additional information about change #2	
+    * Overview of change #3	
+    * Overview of change #4	
         - Additional information about change #4
 
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+* Added validation for Data.Replication
+  - Added validation to protect virtual machines in `New-AzMigrateLocalServerReplication`
+
+## Version 2.7.0
+* Updated Data.Replication to newer API version
+  - Updated Data.Replication to point to stable API version 2024-09-01
+* Rebranded Data.Replication cmdlets
+  - Rebranded Data.Replication cmdlets from Azure Stack HCI to Azure Local
 
 ## Version 2.6.0
 * Upgraded nuget package to signed package.

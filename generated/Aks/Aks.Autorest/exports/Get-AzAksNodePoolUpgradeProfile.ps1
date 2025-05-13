@@ -25,7 +25,7 @@ Get-AzAksNodePoolUpgradeProfile -ResourceGroupName group -ClusterName myCluster 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,11 +42,23 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the managed cluster resource.
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+MANAGEDCLUSTERINPUTOBJECT <IAksIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CommandId <String>]: Id of the command.
+  [ConfigName <String>]: The name of the maintenance configuration.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the managed cluster resource.
+  [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepoolupgradeprofile
 #>
 function Get-AzAksNodePoolUpgradeProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolUpgradeProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeProfile])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -56,6 +68,7 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityManagedCluster', Mandatory)]
     [Alias('AgentPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [System.String]
@@ -80,8 +93,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityManagedCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity]
+    # Identity Parameter
+    ${ManagedClusterInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,6 +157,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -160,10 +187,9 @@ begin {
         $mapping = @{
             Get = 'Az.Aks.private\Get-AzAksNodePoolUpgradeProfile_Get';
             GetViaIdentity = 'Az.Aks.private\Get-AzAksNodePoolUpgradeProfile_GetViaIdentity';
+            GetViaIdentityManagedCluster = 'Az.Aks.private\Get-AzAksNodePoolUpgradeProfile_GetViaIdentityManagedCluster';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +203,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

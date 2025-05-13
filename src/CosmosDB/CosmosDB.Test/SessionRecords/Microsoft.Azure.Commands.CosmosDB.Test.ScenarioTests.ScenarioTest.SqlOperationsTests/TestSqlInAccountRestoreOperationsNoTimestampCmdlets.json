@@ -73,7 +73,7 @@
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourceGroups/CosmosDBResourceGroup63\",\r\n  \"name\": \"CosmosDBResourceGroup63\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/resourceGroups/CosmosDBResourceGroup63/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-14?api-version=2025-05-01-preview",

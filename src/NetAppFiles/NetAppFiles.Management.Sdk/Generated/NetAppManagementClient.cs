@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual INetAppResourceOperations NetAppResource { get; private set; }
         /// <summary>
+        /// Gets the INetAppResourceUsagesOperations
+        /// </summary>
+        public virtual INetAppResourceUsagesOperations NetAppResourceUsages { get; private set; }
+        /// <summary>
         /// Gets the INetAppResourceQuotaLimitsOperations
         /// </summary>
         public virtual INetAppResourceQuotaLimitsOperations NetAppResourceQuotaLimits { get; private set; }
@@ -336,6 +340,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -369,6 +376,7 @@ namespace Microsoft.Azure.Management.NetApp
         {
             this.Operations = new Operations(this);
             this.NetAppResource = new NetAppResourceOperations(this);
+            this.NetAppResourceUsages = new NetAppResourceUsagesOperations(this);
             this.NetAppResourceQuotaLimits = new NetAppResourceQuotaLimitsOperations(this);
             this.NetAppResourceRegionInfos = new NetAppResourceRegionInfosOperations(this);
             this.Accounts = new AccountsOperations(this);
@@ -386,7 +394,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-07-01";
+            this.ApiVersion = "2025-01-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -191,19 +191,19 @@
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Skus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Offer</PropertyName>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublisherName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>HyperVGeneration</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Id</PropertyName>
+                <PropertyName>Architecture</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ImageDeprecationStatus</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

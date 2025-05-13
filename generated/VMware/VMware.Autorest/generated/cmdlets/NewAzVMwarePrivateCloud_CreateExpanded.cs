@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a PrivateCloud</summary>
+    /// <summary>create a PrivateCloud</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwarePrivateCloud_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a PrivateCloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"create a PrivateCloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}", ApiVersion = "2023-09-01")]
     public partial class NewAzVMwarePrivateCloud_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Public", "Private")]
         public string DnsZoneType { get => _privateCloudBody.DnsZoneType ?? null; set => _privateCloudBody.DnsZoneType = value; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _privateCloudBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>Status of customer managed encryption key</summary>

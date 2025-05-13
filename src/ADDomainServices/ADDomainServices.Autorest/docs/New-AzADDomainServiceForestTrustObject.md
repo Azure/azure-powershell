@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceForestTrustObject
+online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-azaddomainserviceforesttrustobject
 schema: 2.0.0
 ---
 
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust
 
 ## NOTES
 

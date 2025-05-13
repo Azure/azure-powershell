@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Commands.Common.Authentication.Abstractions;
-    using Entities.Providers;
     using Extensions;
-    using Common;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Extensions.Caching.Memory;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-    // TODO: Remove IfDef
-#if NETSTANDARD
-    using Microsoft.Extensions.Caching.Memory;
-#else
-    using System.Runtime.Caching;
-#endif
 
     /// <summary>
     /// Helper class for determining the API version
@@ -40,119 +32,130 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     internal static class ApiVersionHelper
     {
         /// <summary>
-        /// Determines the API version.
+        /// Determines the appropriate API version for a resource identified by its resource ID.
         /// </summary>
-        /// <param name="context">The azure profile.</param>
+        /// <param name="context">The Azure context.</param>
         /// <param name="resourceId">The resource Id.</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
-        internal static Task<string> DetermineApiVersion(IAzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        /// <param name="pre">When true, includes preview API versions in selection consideration.</param>
+        /// <returns>The default API version for the specified resource type. Otherwise, fallback to the latest API version.</returns>
+        internal static string DetermineApiVersion(IAzureContext context, string resourceId, bool pre)
         {
-            var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId)
-                ?? ResourceIdUtility.GetProviderNamespace(resourceId);
+            var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId) ?? ResourceIdUtility.GetProviderNamespace(resourceId);
+            var resourceType = ResourceIdUtility.GetExtensionResourceType(resourceId, false) ?? ResourceIdUtility.GetResourceType(resourceId, false);
 
-            var resourceType = ResourceIdUtility.GetExtensionResourceType(resourceId: resourceId, includeProviderNamespace: false)
-                ?? ResourceIdUtility.GetResourceType(resourceId: resourceId, includeProviderNamespace: false);
-
-            return DetermineApiVersion(context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre, cmdletHeaderValues: cmdletHeaderValues);
+            return DetermineApiVersion(context, providerNamespace, resourceType, pre);
         }
 
         /// <summary>
-        /// Determines the API version.
+        /// Determines the appropriate API version for a resource based on its provider namespace and resource type.
         /// </summary>
-        /// <param name="context">The azure profile.</param>
+        /// <param name="context">The Azure context.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
-        internal static Task<string> DetermineApiVersion(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        /// <param name="pre">When true, includes preview API versions in selection consideration.</param>
+        /// <returns>The default API version for the specified resource type. Otherwise, fallback to the latest API version.</returns>
+        internal static string DetermineApiVersion(IAzureContext context, string providerNamespace, string resourceType, bool pre)
         {
-            var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace: providerNamespace, resourceType: resourceType);
-            var apiVersions = ApiVersionCache.Instance
-                .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => GetApiVersionsForResourceType(
-                    context,
-                    providerNamespace: providerNamespace,
-                    resourceType: resourceType,
-                    cancellationToken: cancellationToken,
-                    cmdletHeaderValues: cmdletHeaderValues));
-
-            apiVersions = apiVersions.CoalesceEnumerable().ToArray();
-            var apiVersionsToSelectFrom = apiVersions;
-            if (pre == null || pre == false)
-            {
-                apiVersionsToSelectFrom = apiVersions
-                    .Where(apiVersion => apiVersion.IsDecimal(NumberStyles.AllowDecimalPoint) || apiVersion.IsDateTime("yyyy-mm-dd", DateTimeStyles.None))
-                    .ToArray();
-            }
-
-            var selectedApiVersion = apiVersionsToSelectFrom.OrderByDescending(apiVersion => apiVersion).FirstOrDefault();
-            if (string.IsNullOrWhiteSpace(selectedApiVersion) && apiVersions.Any())
-            {
-                // fall back on pre-release APIs if they're the only ones available.
-                selectedApiVersion = apiVersions.OrderByDescending(apiVersion => apiVersion).FirstOrDefault();
-            }
-
-            var result = string.IsNullOrWhiteSpace(selectedApiVersion)
-                ? Constants.DefaultApiVersion
-                : selectedApiVersion;
-
-            return Task.FromResult(result);
+            var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace, resourceType);
+            var availableApiVersions = ApiVersionCache.Instance.AddOrGetExisting(cacheKey, () => GetAvailableApiVersionsForResourceType(context, providerNamespace, resourceType));
+            return SelectApiVersion(availableApiVersions, pre);
         }
 
         /// <summary>
-        /// Determines the list of api versions currently supported by the RP.
+        /// Retrieves all available API versions for a specified resource type from the resource provider.
         /// </summary>
-        /// <param name="context">The azure profile.</param>
+        /// <param name="context">The Azure context.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <param name="cmdletHeaderValues">The cmdlet info header values.</param>
-        private static string[] GetApiVersionsForResourceType(IAzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
+        /// <returns>
+        /// An array of available API versions. If a default API version exists, returns an array containing only the default version.
+        /// </returns>
+        private static string[] GetAvailableApiVersionsForResourceType(IAzureContext context, string providerNamespace, string resourceType)
         {
-            var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context, cmdletHeaderValues);
+            var providers = GetResourceProviders(context, providerNamespace);
+            return GetAvailableApiVersions(providers, resourceType);
+        }
 
-            var defaultSubscription = context.Subscription;
+        /// <summary>
+        /// Retrieves the resource providers for a given namespace.
+        /// </summary>
+        /// <param name="context">The Azure context.</param>
+        /// <param name="providerNamespace">The provider namespace.</param>
+        /// <returns>The collection of the resource providers.</returns>
+        private static IEnumerable<Provider> GetResourceProviders(IAzureContext context, string providerNamespace)
+        {
+            var resourceManagerSdkClient = new ResourceManagerSdkClient(context);
+            return resourceManagerSdkClient.ListResourceProviders(providerNamespace).CoalesceEnumerable();
+        }
 
-            var resourceCollectionId = defaultSubscription == null
-                ? "/providers"
-                : string.Format("/subscriptions/{0}/providers", defaultSubscription.Id);
+        /// <summary>
+        /// Extracts the available API versions from provider data for a specific resource type.
+        /// </summary>
+        /// <param name="providers">Collection of resource providers.</param>
+        /// <param name="resourceType">The resource type.</param>
+        /// <returns>
+        /// An array of available API versions. If a default API version exists, returns an array containing only the default version.
+        /// </returns>
+        private static string[] GetAvailableApiVersions(IEnumerable<Provider> providers, string resourceType)
+        {
+            var providerResourceTypes = providers.SelectMany(p => p.ResourceTypes.CoalesceEnumerable());
 
-            var providers = PaginatedResponseHelper.Enumerate(
-                getFirstPage: () => resourceManagerClient
-                    .ListObjectColleciton<ResourceProviderDefinition>(
-                        resourceCollectionId: resourceCollectionId,
-                        apiVersion: Constants.ProvidersApiVersion,
-                        cancellationToken: cancellationToken),
-                getNextPage: nextLink => resourceManagerClient
-                    .ListNextBatch<ResourceProviderDefinition>(
-                    nextLink: nextLink,
-                    cancellationToken: cancellationToken),
-                cancellationToken: cancellationToken);
+            var resourceTypeFilter = providerResourceTypes.Where(rt => rt.ResourceType.EqualsInsensitively(resourceType));
+            if (!resourceTypeFilter.Any())
+            {
+                // If the specified resource type is not found, fallback to the top level resource type.
+                var topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
+                resourceTypeFilter = providerResourceTypes.Where(rt => rt.ResourceType.EqualsInsensitively(topLevelResourceType));
+            }
+            var matchingResourceTypes = resourceTypeFilter.ToArray();
 
-            string[] apiVersions = providers
-                .CoalesceEnumerable()
-                .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
-                .SelectMany(provider => provider.ResourceTypes)
-                .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
-                .Select(type => type.ApiVersions)
+            var defaultApiVersion = matchingResourceTypes
+                .Select(rt => rt.DefaultApiVersion)
+                .Where(v => !string.IsNullOrWhiteSpace(v))
+                .OrderByDescending(v => v)
                 .FirstOrDefault();
-            if (apiVersions == null)
-            {
-                string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
-                return providers
-                    .CoalesceEnumerable()
-                    .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
-                    .SelectMany(provider => provider.ResourceTypes)
-                    .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
-                    .Select(type => type.ApiVersions)
-                    .FirstOrDefault();
-            }
-            else
-            {
-                return apiVersions;
-            }
+
+            if (!string.IsNullOrWhiteSpace(defaultApiVersion))
+                return new[] { defaultApiVersion };
+
+            // If the default API version is not found, fallback to the list of available API versions.
+            return matchingResourceTypes
+                .SelectMany(rt => rt.ApiVersions.CoalesceEnumerable())
+                .Where(v => !string.IsNullOrWhiteSpace(v))
+                .ToArray();
+        }
+
+        /// <summary>
+        /// Selects the most appropriate API version from a collection of available versions.
+        /// </summary>
+        /// <param name="availableApiVersions">Collection of all available API versions.</param>
+        /// <param name="pre">When true, includes preview API versions in selection consideration.</param>
+        /// <returns>
+        /// The API version to use, selected with the following priority:
+        /// 1. Default API version if available
+        /// 2. Latest stable API version if available and pre = false
+        /// 3. Latest API version (including preview) if pre = true or no stable version exists
+        /// 4. Fallback constant if no API versions found
+        /// </returns>
+        private static string SelectApiVersion(IEnumerable<string> availableApiVersions, bool pre)
+        {
+            if (!availableApiVersions.Any())
+                return Constants.DefaultApiVersion;
+
+            if (availableApiVersions.Count() == 1)
+                return availableApiVersions.First();
+
+            var matchingApiVersions = pre
+                ? availableApiVersions
+                : availableApiVersions.Where(v => v.IsDecimal(NumberStyles.AllowDecimalPoint) ||
+                                                  v.IsDateTime("yyyy-mm-dd", DateTimeStyles.None));
+
+            var latestApiVersion = matchingApiVersions.OrderByDescending(v => v).FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(latestApiVersion))
+                return latestApiVersion;
+
+            // If no stable API version is found, fallback to the latest preview API version.
+            return availableApiVersions.OrderByDescending(v => v).First();
         }
 
         /// <summary>
@@ -165,12 +168,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             static ApiVersionCache()
             {
-// TODO: Remove IfDef
-#if NETSTANDARD
                 Cache = new MemoryCache(new MemoryCacheOptions());
-#else
-                Cache = MemoryCache.Default;
-#endif
             }
             /// <summary>
             /// The API version cache
@@ -200,7 +198,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 cacheKey = cacheKey.ToUpperInvariant();
 
-                var cacheItem = GetCacheItem(cacheKey: cacheKey);
+                var cacheItem = GetCacheItem(cacheKey);
                 if (cacheItem != null) return cacheItem;
 
                 var expirationTime = DateTime.UtcNow.Add(CacheDataExpirationTime);
@@ -209,10 +207,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                 if (cacheItem != null)
                 {
-                    SetCacheItem(
-                        cacheKey: cacheKey,
-                        data: cacheItem,
-                        absoluteExpirationTime: expirationTime);
+                    SetCacheItem(cacheKey, cacheItem, expirationTime);
                 }
 
                 return cacheItem;
@@ -235,7 +230,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="absoluteExpirationTime">The absolute expiration time.</param>
             private static void SetCacheItem(string cacheKey, string[] data, DateTimeOffset absoluteExpirationTime)
             {
-                Cache.Set(key: cacheKey, value: data, absoluteExpiration: absoluteExpirationTime);
+                Cache.Set(cacheKey, data, absoluteExpirationTime);
             }
 
             /// <summary>
@@ -246,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="resourceType">The resource type.</param>
             internal static string GetCacheKey(string environmentName, string providerNamespace, string resourceType)
             {
-                return string.Format("{0}/{1}/{2}", environmentName.CoalesceEnumerable(), providerNamespace.CoalesceString(), resourceType.CoalesceString()).ToUpperInvariant();
+                return string.Format("{0}/{1}/{2}", environmentName.CoalesceString(), providerNamespace.CoalesceString(), resourceType.CoalesceString()).ToUpperInvariant();
             }
         }
     }

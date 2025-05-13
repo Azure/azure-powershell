@@ -124,7 +124,7 @@ try {
                     npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
                     npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-07
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
                     npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
                     npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
                 }
@@ -198,7 +198,9 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff ".\Generated"
+            # Use a single regex to ignore comments in .cs and .psd1 files
+            $diff = git diff --ignore-matching-lines="^\s*(//|/\*.*\*/|#)" ".\Generated"
+
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{

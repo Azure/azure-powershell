@@ -221,6 +221,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -VectorEmbeddingPolicy
+VectorEmbedding Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlVectorEmbeddingPolicy.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Sql Container object.
 
@@ -435,6 +450,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
+
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
 
 ## OUTPUTS
 

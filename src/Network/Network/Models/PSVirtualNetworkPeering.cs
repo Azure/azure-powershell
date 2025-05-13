@@ -54,6 +54,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId RemoteVirtualNetwork { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? PeerCompleteVnets { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableOnlyIPv6Peering { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> RemoteGateways { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -71,6 +85,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+
+        [JsonIgnore]
+        public string LocalSubnetNamesText
+        {
+            get { return JsonConvert.SerializeObject(LocalSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RemoteSubnetNamesText
+        {
+            get { return JsonConvert.SerializeObject(RemoteSubnetNames, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string RemoteVirtualNetworkText

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an existing Cluster Pool Tags.</summary>
+    /// <summary>update an existing Cluster Pool Tags.</summary>
     /// <remarks>
     /// [OpenAPI] UpdateTags=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzHdInsightOnAksClusterPoolTag_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Update an existing Cluster Pool Tags.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"update an existing Cluster Pool Tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}", ApiVersion = "2024-05-01-preview")]
     public partial class UpdateAzHdInsightOnAksClusterPoolTag_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

@@ -2,49 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.AccountKeyRegenerateRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AccountName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AccountName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.AccountKeyRegenerateRequest</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.AccountKeyRegenerateRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.AccountKeyRegenerateRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -64,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.AccountKeys</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.AccountKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.AccountKeys</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.AccountKeys#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -92,9 +52,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CheckNameAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CheckNameAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CheckNameAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CheckNameAvailabilityRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -114,9 +74,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CheckNameAvailabilityResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CheckNameAvailabilityResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CheckNameAvailabilityResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CheckNameAvailabilityResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -148,9 +108,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.CloudErrorBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -182,9 +142,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.LogSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Identity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.LogSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Identity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.LogSpecification</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.LogSpecification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -216,9 +204,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MetricDimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MetricDimension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MetricDimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MetricDimension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -256,9 +244,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MetricSpecification</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MetricSpecification</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MetricSpecification</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MetricSpecification#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -297,12 +285,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SourceMdmNamespace</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedAggregationType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedTimeGrainType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Unit</Label>
@@ -348,12 +330,6 @@
                 <PropertyName>SourceMdmNamespace</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SupportedAggregationType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SupportedTimeGrainType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Unit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -362,9 +338,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MixedRealityAccountProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityAccountProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.MixedRealityAccountProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityAccountProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -396,9 +372,49 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.MixedRealityIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AccountName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AccountName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccount</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccount#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -430,9 +446,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccountIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccountIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccountIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccountIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -458,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccountPage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccountPage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ObjectAnchorsAccountPage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.ObjectAnchorsAccountPage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -480,9 +496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -514,9 +530,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -554,9 +570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.OperationPage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.OperationPage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.OperationPage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.OperationPage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -576,9 +592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.RemoteRenderingAccount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.RemoteRenderingAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.RemoteRenderingAccount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.RemoteRenderingAccount#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -610,9 +626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.RemoteRenderingAccountPage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.RemoteRenderingAccountPage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.RemoteRenderingAccountPage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.RemoteRenderingAccountPage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -632,93 +648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.SpatialAnchorsAccount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.SpatialAnchorsAccount</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.SpatialAnchorsAccountPage</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.SpatialAnchorsAccountPage</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Identity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Identity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -738,9 +670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Sku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -784,9 +716,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SpatialAnchorsAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SpatialAnchorsAccount#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SpatialAnchorsAccountPage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SpatialAnchorsAccountPage#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -836,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -864,9 +852,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api10.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

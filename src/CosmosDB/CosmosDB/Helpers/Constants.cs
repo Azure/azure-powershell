@@ -104,6 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
         public const string SqlConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string SqlClientEncryptionPolicyHelpMessage = "ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided this is set as the ClientEncryptionPolicy of the container.";
+        public const string SqlVectorEmbeddingPolicyHelpMessage = "VectorEmbeddingPolicy Object of type PSSqlVectorEmbeddingPolicy, when provided this is set as the VectorEmbeddingPolicy of the container.";
         public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
@@ -124,6 +125,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IndexingPolicyCompositePathHelpMessage = "Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath";
         public const string SpatialTypeHelpMessage = "Array of strings with acceptable values: Point, LineString, Polygon, MultiPolygon. Represent’s paths spatial type.";
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
+        public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";

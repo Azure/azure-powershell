@@ -18,22 +18,16 @@ Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] [-EmailId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaJsonFilePath
 ```
-Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -Body <IUserEmailId> [-DefaultProfile <PSObject>]
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzElasticOrganizationApiKey [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzElasticOrganizationApiKey -InputObject <IElasticIdentity> [-EmailId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzElasticOrganizationApiKey -InputObject <IElasticIdentity> -Body <IUserEmailId>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,28 +37,12 @@ Fetch User API Key from internal database, if it was generated and stored while 
 
 ### Example 1: Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 ```powershell
-Get-AzElasticOrganizationApiKey -Body $EmailIdObject
+Get-AzElasticOrganizationApiKey -EmailId "jkore@microsoft.com"
 ```
 
 This command will Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 
 ## PARAMETERS
-
-### -Body
-Email Id of the User Organization, of which the API Key must be returned
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -87,7 +65,7 @@ The User email Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Parameter Sets: GetExpanded
 Aliases:
 
 Required: False
@@ -97,19 +75,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Get operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Type: System.String
+Parameter Sets: GetViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -119,7 +111,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,13 +157,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserEmailId
-
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserApiKeyResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse
 
 ## NOTES
 

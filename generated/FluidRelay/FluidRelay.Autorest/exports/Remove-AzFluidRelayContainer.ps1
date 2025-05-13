@@ -31,7 +31,21 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+FLUIDRELAYSERVERINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
 INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
+RESOURCEGROUPINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
   [FluidRelayServerName <String>]: The Fluid Relay server resource name.
   [Id <String>]: Resource identity path
@@ -45,12 +59,15 @@ function Remove-AzFluidRelayContainer {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourceGroup', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
     # The Fluid Relay server resource name.
     ${FluidRelayServerName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityFluidRelayServer', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityResourceGroup', Mandatory)]
     [Alias('FluidRelayContainerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
@@ -74,8 +91,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityFluidRelayServer', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${FluidRelayServerInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityResourceGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${ResourceGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,6 +167,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -160,10 +197,10 @@ begin {
         $mapping = @{
             Delete = 'Az.FluidRelay.private\Remove-AzFluidRelayContainer_Delete';
             DeleteViaIdentity = 'Az.FluidRelay.private\Remove-AzFluidRelayContainer_DeleteViaIdentity';
+            DeleteViaIdentityFluidRelayServer = 'Az.FluidRelay.private\Remove-AzFluidRelayContainer_DeleteViaIdentityFluidRelayServer';
+            DeleteViaIdentityResourceGroup = 'Az.FluidRelay.private\Remove-AzFluidRelayContainer_DeleteViaIdentityResourceGroup';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -177,6 +214,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

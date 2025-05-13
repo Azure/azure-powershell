@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomainValidationToken
 
 ## SYNOPSIS
-Updates the domain validation token.
+refresh the domain validation token.
 
 ## SYNTAX
 
@@ -25,8 +25,14 @@ Update-AzFrontDoorCdnCustomDomainValidationToken -InputObject <ICdnIdentity> [-D
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RefreshViaIdentityProfile
+```
+Update-AzFrontDoorCdnCustomDomainValidationToken -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the domain validation token.
+refresh the domain validation token.
 
 ## EXAMPLES
 
@@ -66,7 +72,7 @@ Name of the domain under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Refresh
+Parameter Sets: Refresh, RefreshViaIdentityProfile
 Aliases:
 
 Required: True
@@ -94,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -138,8 +143,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: RefreshViaIdentityProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

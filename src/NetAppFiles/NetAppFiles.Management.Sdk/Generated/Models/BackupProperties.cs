@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="creationDate">The creation date of the backup
         /// </param>
 
+        /// <param name="snapshotCreationDate">The snapshot creation date of the backup
+        /// </param>
+
+        /// <param name="completionDate">The completion date of the backup
+        /// </param>
+
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
 
@@ -57,11 +63,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="backupPolicyResourceId">ResourceId used to identify the backup policy
         /// </param>
-        public BackupProperties(string volumeResourceId, string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), bool? useExistingSnapshot = default(bool?), string snapshotName = default(string), string backupPolicyResourceId = default(string))
+
+        /// <param name="isLargeVolume">Specifies if the backup is for a large volume.
+        /// </param>
+        public BackupProperties(string volumeResourceId, string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? snapshotCreationDate = default(System.DateTime?), System.DateTime? completionDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), bool? useExistingSnapshot = default(bool?), string snapshotName = default(string), string backupPolicyResourceId = default(string), bool? isLargeVolume = default(bool?))
 
         {
             this.BackupId = backupId;
             this.CreationDate = creationDate;
+            this.SnapshotCreationDate = snapshotCreationDate;
+            this.CompletionDate = completionDate;
             this.ProvisioningState = provisioningState;
             this.Size = size;
             this.Label = label;
@@ -71,6 +82,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.UseExistingSnapshot = useExistingSnapshot;
             this.SnapshotName = snapshotName;
             this.BackupPolicyResourceId = backupPolicyResourceId;
+            this.IsLargeVolume = isLargeVolume;
             CustomInit();
         }
 
@@ -91,6 +103,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationDate")]
         public System.DateTime? CreationDate {get; private set; }
+
+        /// <summary>
+        /// Gets the snapshot creation date of the backup
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotCreationDate")]
+        public System.DateTime? SnapshotCreationDate {get; private set; }
+
+        /// <summary>
+        /// Gets the completion date of the backup
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "completionDate")]
+        public System.DateTime? CompletionDate {get; private set; }
 
         /// <summary>
         /// Gets azure lifecycle management
@@ -146,6 +170,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupPolicyResourceId")]
         public string BackupPolicyResourceId {get; private set; }
+
+        /// <summary>
+        /// Gets specifies if the backup is for a large volume.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isLargeVolume")]
+        public bool? IsLargeVolume {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

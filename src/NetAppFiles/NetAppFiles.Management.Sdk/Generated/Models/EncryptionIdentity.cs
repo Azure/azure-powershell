@@ -32,11 +32,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// authenticate with key vault. Applicable if identity.type has
         /// &#39;UserAssigned&#39;. It should match key of identity.userAssignedIdentities.
         /// </param>
-        public EncryptionIdentity(string principalId = default(string), string userAssignedIdentity = default(string))
+
+        /// <param name="federatedClientId">ClientId of the multi-tenant AAD Application. Used to access cross-tenant
+        /// keyvaults.
+        /// </param>
+        public EncryptionIdentity(string principalId = default(string), string userAssignedIdentity = default(string), string federatedClientId = default(string))
 
         {
             this.PrincipalId = principalId;
             this.UserAssignedIdentity = userAssignedIdentity;
+            this.FederatedClientId = federatedClientId;
             CustomInit();
         }
 
@@ -60,5 +65,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentity")]
         public string UserAssignedIdentity {get; set; }
+
+        /// <summary>
+        /// Gets or sets clientId of the multi-tenant AAD Application. Used to access
+        /// cross-tenant keyvaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "federatedClientId")]
+        public string FederatedClientId {get; set; }
     }
 }
