@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.1
 * Updated API client to latest commit for version 2023-12-01
 * Refreshed stack definitions
 * Enforced runtime EOL policy for function app creation: block expired, warn if within 6 months

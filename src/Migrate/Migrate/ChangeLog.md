@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 2.7.1
+
 * Added validation for Data.Replication
   - Added validation to protect virtual machines in `New-AzMigrateLocalServerReplication`
 

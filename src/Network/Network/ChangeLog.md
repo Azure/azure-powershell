@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.16.2
 * Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 
 ## Version 7.16.1

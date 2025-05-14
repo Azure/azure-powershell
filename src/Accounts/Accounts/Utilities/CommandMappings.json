@@ -101,6 +101,7 @@
       "Start-AzAksCluster": {},
       "Start-AzAksManagedClusterCommand": {},
       "Stop-AzAksCluster": {},
+      "Update-AzAksMaintenanceConfiguration": {},
       "Get-AzAksClusterUpgradeProfile": {}
     },
     "Az.AksArc": {
@@ -814,6 +815,15 @@
       "Remove-AzBotService": {},
       "Update-AzBotService": {}
     },
+    "Az.Carbon": {
+      "Get-AzCarbonEmissionDataAvailableDateRange": {},
+      "Get-AzCarbonEmissionReport": {},
+      "New-AzCarbonItemDetailsQueryFilterObject": {},
+      "New-AzCarbonMonthlySummaryReportQueryFilterObject": {},
+      "New-AzCarbonOverallSummaryReportQueryFilterObject": {},
+      "New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject": {},
+      "New-AzCarbonTopItemsSummaryReportQueryFilterObject": {}
+    },
     "Az.Cdn": {
       "Clear-AzCdnEndpointContent": {},
       "Clear-AzFrontDoorCdnEndpointContent": {},
@@ -845,6 +855,9 @@
       "Get-AzFrontDoorCdnSecret": {},
       "Get-AzFrontDoorCdnSecurityPolicy": {},
       "Import-AzCdnEndpointContent": {},
+      "Invoke-AzCdnAbortProfileToAFDMigration": {},
+      "Invoke-AzCdnCommitProfileToAFDMigration": {},
+      "Move-AzCdnProfileToAFD": {},
       "New-AzCdnCustomDomain": {},
       "New-AzCdnDeliveryRuleCacheExpirationActionObject": {},
       "New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject": {},
@@ -869,6 +882,7 @@
       "New-AzCdnHealthProbeParametersObject": {},
       "New-AzCdnLoadParametersObject": {},
       "New-AzCdnManagedHttpsParametersObject": {},
+      "New-AzCdnMigrationEndpointMappingObject": {},
       "New-AzCdnOrigin": {},
       "New-AzCdnOriginGroup": {},
       "New-AzCdnOriginGroupOverrideActionObject": {},
@@ -954,6 +968,7 @@
       "Test-AzCdnEndpointCustomDomain": {},
       "Test-AzCdnNameAvailability": {},
       "Test-AzCdnProbe": {},
+      "Test-AzCdnProfileMigrationCompatibility": {},
       "Test-AzFrontDoorCdnEndpointCustomDomain": {},
       "Test-AzFrontDoorCdnEndpointNameAvailability": {},
       "Test-AzFrontDoorCdnProfileHostNameAvailability": {},
@@ -971,6 +986,7 @@
       "Update-AzFrontDoorCdnProfileSku": {},
       "Update-AzFrontDoorCdnRoute": {},
       "Update-AzFrontDoorCdnRule": {},
+      "Update-AzFrontDoorCdnSecret": {},
       "Update-AzFrontDoorCdnSecurityPolicy": {}
     },
     "Az.ChangeAnalysis": {
@@ -1481,7 +1497,11 @@
       "Start-AzConnectedNetworkVendorFunctionRoleInstance": {},
       "Stop-AzConnectedNetworkVendorFunctionRoleInstance": {},
       "Update-AzConnectedNetworkDeviceTag": {},
-      "Update-AzConnectedNetworkFunctionTag": {}
+      "Update-AzConnectedNetworkFunctionTag": {},
+      "Update-AzConnectedNetworkVendor": {},
+      "Update-AzConnectedNetworkVendorFunction": {},
+      "Update-AzConnectedNetworkVendorSku": {},
+      "Update-AzConnectedNetworkVendorSkuPreview": {}
     },
     "Az.ConnectedVMware": {
       "Get-AzConnectedVMwareCluster": {},
@@ -3024,6 +3044,7 @@
       "New-AzEventHubIPRuleConfig": {},
       "New-AzEventHubKey": {},
       "New-AzEventHubKeyVaultPropertiesObject": {},
+      "New-AzEventHubLocationsNameObject": {},
       "New-AzEventHubNamespace": {},
       "New-AzEventHubSchemaGroup": {},
       "New-AzEventHubThrottlingPolicyConfig": {},
@@ -3046,6 +3067,7 @@
       "Set-AzEventHubGeoDRConfigurationFailOver": {},
       "Set-AzEventHubNamespace": {},
       "Set-AzEventHubNetworkRuleSet": {},
+      "Start-AzEventHubNamespaceFailOver": {},
       "Test-AzEventHubName": {},
       "Get-AzEventHubNamespaceV2": {},
       "New-AzEventHubNamespaceV2": {},
@@ -3355,8 +3377,7 @@
       "Remove-AzImageBuilderTemplate": {},
       "Remove-AzImageBuilderTrigger": {},
       "Start-AzImageBuilderTemplate": {},
-      "Stop-AzImageBuilderTemplate": {},
-      "Update-AzImageBuilderTemplate": {}
+      "Stop-AzImageBuilderTemplate": {}
     },
     "Az.ImportExport": {
       "Get-AzImportExport": {},
@@ -4195,19 +4216,6 @@
       "New-AzMdpPool": {},
       "Remove-AzMdpPool": {},
       "Update-AzMdpPool": {}
-    },
-    "Az.Media": {
-      "Get-AzMediaService": {},
-      "Get-AzMediaServiceKey": {},
-      "Get-AzMediaServiceNameAvailability": {},
-      "New-AzMediaService": {},
-      "New-AzMediaServiceStorageConfig": {},
-      "Remove-AzMediaService": {},
-      "Set-AzMediaService": {},
-      "Set-AzMediaServiceKey": {},
-      "Sync-AzMediaServiceStorageKey": {},
-      "Get-AzMediaServiceKeys": {},
-      "Sync-AzMediaServiceStorageKeys": {}
     },
     "Az.Migrate": {
       "Get-AzMigrateDiscoveredServer": {},
@@ -6461,6 +6469,7 @@
       "Get-AzRedisEnterpriseCacheDatabase": {},
       "Get-AzRedisEnterpriseCacheKey": {},
       "Get-AzRedisEnterpriseCacheOperationStatus": {},
+      "Get-AzRedisEnterpriseCacheSku": {},
       "Import-AzRedisEnterpriseCache": {},
       "Invoke-AzRedisEnterpriseCacheDatabaseFlush": {},
       "Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup": {},
@@ -7889,6 +7898,7 @@
       "New-AzStorageContext": {},
       "New-AzStorageDirectory": {},
       "New-AzStorageEncryptionScope": {},
+      "New-AzStorageFileHardLink": {},
       "New-AzStorageFileSASToken": {},
       "New-AzStorageLocalUserPermissionScope": {},
       "New-AzStorageLocalUserSshPassword": {},
@@ -7973,7 +7983,6 @@
       "Update-AzStorageEncryptionScope": {},
       "Update-AzStorageFileServiceProperty": {},
       "Update-AzStorageServiceProperty": {},
-      "New-AzStorageFileHardLink": {},
       "Get-AzStorageAccountMigration": {},
       "Get-AzStorageFileServiceUsage": {},
       "Start-AzStorageAccountMigration": {},
