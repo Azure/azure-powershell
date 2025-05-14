@@ -82,3 +82,31 @@ $VMNicSelection = @{
     SelectedByUser = "SelectedByUser";
     NotSelected    = "NotSelected";
 }
+
+$PowerStatus = @{
+    OffVMware = "OFF";
+    OnVMWare = "ON";
+    OffHyperV = "PowerOff";
+    OnHyperV = "Running";
+}
+
+$HighAvailability = @{
+    NO = "No";
+    YES = "Yes";
+}
+
+$VMwareToolsStatus = @{
+    NotRunning = "NotRunning";
+    OK = "OK";
+    NotInstalled = "NotInstalled";
+}
+
+$VmReplicationValidationMessage = "Replication could not be initiated. Please ensure the necessary changes are made, and allow up to 30 minutes before re-trying."
+$VmReplicationValidationMessages = @{
+    VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
+    AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
+    VmWareToolsNotInstalled = "VMware tools not installed on VM. $VmReplicationValidationMessage";
+    VmWareToolsNotRunning   = "VMware tools not running on VM. $VmReplicationValidationMessage";
+    VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
+    OsTypeNotFound          = "Hyper-V Integration Services not running on VM. $VmReplicationValidationMessage";
+}

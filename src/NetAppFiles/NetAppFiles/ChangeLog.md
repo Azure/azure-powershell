@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `NfsV4IdDomain` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
+
+## Version 0.22.0
 * Added `FederatedClientId` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
 * Added `Get-AzNetAppFilesUsage`
 

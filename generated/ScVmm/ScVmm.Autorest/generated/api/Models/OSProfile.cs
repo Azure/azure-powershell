@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).StatusHotpatchEnablementStatus = value ?? null; }
+        public string LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).StatusHotpatchEnablementStatus; }
 
         /// <summary>Internal Acessors for ComputerName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.ComputerName { get => this._computerName; set { {_computerName = value;} } }
@@ -96,6 +96,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         /// <summary>Internal Acessors for LinuxConfigurationPatchSettingsStatusErrorTarget</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.LinuxConfigurationPatchSettingsStatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).Target = value; }
 
+        /// <summary>
+        /// Internal Acessors for LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileLinuxConfigurationInternal)LinuxConfiguration).StatusHotpatchEnablementStatus = value; }
+
         /// <summary>Internal Acessors for WindowConfigurationPatchSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.WindowConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).PatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).PatchSetting = value; }
 
@@ -124,6 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Internal Acessors for WindowsConfigurationPatchSettingsStatusErrorTarget</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.WindowsConfigurationPatchSettingsStatusErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).Target = value; }
+
+        /// <summary>
+        /// Internal Acessors for WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus
+        /// </summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileInternal.WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).StatusHotpatchEnablementStatus = value; }
 
         /// <summary>Backing field for <see cref="WindowsConfiguration" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfiguration _windowsConfiguration;
@@ -169,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).StatusHotpatchEnablementStatus = value ?? null; }
+        public string WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IOSProfileWindowsConfigurationInternal)WindowsConfiguration).StatusHotpatchEnablementStatus; }
 
         /// <summary>Creates an new <see cref="OSProfile" /> instance.</summary>
         public OSProfile()
