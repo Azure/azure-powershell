@@ -27,11 +27,11 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: e8c359d8821038f133695c9b1f4cf40d330cbc80
+commit: ff761e7c771e6e57442ade02e86a063ec9e7276c
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/sqlmigration.json
+  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2025-03-15-preview/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0
@@ -228,6 +228,12 @@ directive:
       subject: ToSqlDb
       parameter-name: PassThru
     hide: true
+  
+  - where:
+      verb: New
+      subject: ToSqlVM
+      parameter-name: AzureBlobAuthType|IdentityType|IdentityUserAssignedIdentity
+    hide: true
 
   #Changing parameter names
   - where:
@@ -271,6 +277,13 @@ directive:
       parameter-name: TargetLocationAccountKey
     set:
       parameter-name: StorageAccountKey
+  
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+      parameter-name: IdentityType
+    set:
+      parameter-name: AzureBlobIdentityType
 
   # Changing parameter description
   - where:
@@ -283,6 +296,23 @@ directive:
   # Remove the set-* cmdlet
   - where:
       verb: Set
+    remove: true
+  
+  # Removed New-AzDataMigrationToSqlManagedInstance
+  # Replaced with a wrapper that renames IdentityUserAssignedIdentity to AzureBlobUserAssignedIdentity
+  # and changes its type from hashtable to string[] per managed identity guidelines
+  - where:
+      verb: New
+      subject: ToSqlManagedInstance
+    hide: true
+  
+  # Remove Cosmos(Mongo) and MigrationService cmdlets
+  - where:
+      subject: \b\w*-?Mongo\w*\b
+    remove: true
+
+  - where:
+      subject: \b\w*-?MigrationService\w*\b
     remove: true
 
   # Formatting
