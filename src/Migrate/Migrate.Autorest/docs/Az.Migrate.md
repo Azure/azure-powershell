@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: 72e0bbdf-2561-4f4e-90e1-2a27c36b7ab8
+Module Guid: 43d52836-91c6-43e0-a366-84ddbf46d837
 Download Help Link: https://learn.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -46,6 +46,9 @@ Gets the details of registered recovery services provider.
 
 ### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
 Method to get run as account.
+
+### [Get-AzMigrateServerMigrationStatus](Get-AzMigrateServerMigrationStatus.md)
+Retrieves the details of the replicating server status.
 
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 Retrieves the details of the replicating server.

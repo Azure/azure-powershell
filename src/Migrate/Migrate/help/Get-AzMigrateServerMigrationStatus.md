@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateservermigrationstatus
 schema: 2.0.0
@@ -14,27 +14,28 @@ Retrieves the details of the replicating server status.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
+Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByApplianceName
 ```
-Get-AzMigrateServerMigrationStatus -ApplianceName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ -ApplianceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
-Get-AzMigrateServerMigrationStatus -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetHealthByMachineName
 ```
-Get-AzMigrateServerMigrationStatus -Health -MachineName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateServerMigrationStatus -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
+ -MachineName <String> [-Health] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,4 +255,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
