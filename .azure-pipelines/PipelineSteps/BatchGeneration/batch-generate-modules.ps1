@@ -1,6 +1,7 @@
 param (
     [string]$MatrixKey,
-    [string]$RepoRoot
+    [string]$RepoRoot,
+    [string]$CommitTitle
 )
 
 $generationTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generationTargets.json"
@@ -33,6 +34,7 @@ foreach ($moduleName in $sortedModuleNames) {
         Module = $moduleName
         DurationSeconds = 0
         Status = "Success"
+        Changed = "No"
         SubModules = @()
     }
 
@@ -78,6 +80,32 @@ foreach ($moduleName in $sortedModuleNames) {
             $moduleResult.SubModules += $subModuleResult
         }
     }
+
+    Set-Location $RepoRoot
+    $srcFolderModuleRelativePath = ".\src\$moduleName"
+    $generatedFolderModuleRelativePath = ".\generated\$moduleName"
+    $diffSrc = git diff --name-only HEAD -- $srcFolderModuleRelativePath
+    $diffGenerated = git diff --name-only HEAD -- $generatedFolderModuleRelativePath
+    $diff = $diffSrc -or $diffGenerated
+    if ($diff) {
+        Write-Host "Changes detected in $moduleName, adding change log"
+        $moduleResult.Changed = "Yes"
+        $changeLogPath = Join-Path $RepoRoot "src" $moduleName $moduleName "ChangeLog.md"
+        $changeLogContent = Get-Content $changeLogPath
+        $newChangeLogEntry = "* Autorest Upgration: $CommitTitle"
+        
+        $index = $changeLogContent.IndexOf("## Upcoming Release")
+        if ($index -ge 0) {
+            $newChangeLogContent = $changeLogContent[0..$index] + $newChangeLogEntry + $changeLogContent[($index + 1)..($changeLogContent.Count - 1)]
+            Set-Content $changelogPath -Value $newChangeLogContent
+            $moduleResult.Changed = "Yes, Change Log Updated"
+            Write-Host "New change log entry added to $changeLogPath"
+        } else {
+            $moduleResult.Changed = "Yes, Change Log Not Updated"
+            Write-Host "Can not find '## Upcoming Release'"
+        }
+    }
+
     $moduleEndTime = Get-Date
     $moduleResult.DurationSeconds = ($moduleEndTime - $moduleStartTime).TotalSeconds
     $results += $moduleResult

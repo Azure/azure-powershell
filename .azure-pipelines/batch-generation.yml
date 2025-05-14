@@ -1,3 +1,9 @@
+parameters:
+- name: CommitTitle
+  displayName: 'Title of the commit that trigger batch generation'
+  type: string
+  default: 'Default commit title'
+
 variables:
   IntermediateStepTimeoutInMinutes: 30
   GenerateTimeoutInMinutes: 120
@@ -98,7 +104,7 @@ stages:
             git checkout "${{ variables.GenerationBranch }}"
 
             $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
+            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -CommitTitle "${{ parameters.CommitTitle }}"
 
           workingDirectory: $(Build.SourcesDirectory)
 
@@ -159,7 +165,7 @@ stages:
             }
             
             git add .
-            git commit -m "Apply matrix job patches to ${{ variables.GenerationBranch }}"
+            git commit -m "Apply batch generation patches to ${{ variables.GenerationBranch }}"
             git push origin "${{ variables.GenerationBranch }}"
 
       - task: PowerShell@2
@@ -176,7 +182,14 @@ stages:
             git checkout $sourceBranchName
 
             $filterModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'filter.ps1'
-            & $filterModulesPath -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" -ChangedFiles $changedFiles -RepoRoot "$(Build.SourcesDirectory)"
+            & $filterModulesPath `
+              -MaxParallelBuildJobs "${{ variables.MaxParallelBuildJobs }}" `
+              -MaxParallelAnalyzeJobs "${{ variables.MaxParallelAnalyzeJobs }}" `
+              -MaxParallelTestWindowsJobs "${{ variables.MaxParallelTestWindowsJobs }}" `
+              -MaxParallelTestLinuxJobs "${{ variables.MaxParallelTestLinuxJobs }}" `
+              -MaxParallelTestMacJobs "${{ variables.MaxParallelTestMacJobs }}" `
+              -ChangedFiles $changedFiles `
+              -RepoRoot "$(Build.SourcesDirectory)"
         env:
             RUN_TEST_ON_ALL_MODULES: $(RUN_TEST_ON_ALL_MODULES)
 
