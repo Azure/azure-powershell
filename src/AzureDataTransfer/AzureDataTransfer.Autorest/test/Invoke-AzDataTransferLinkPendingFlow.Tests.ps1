@@ -15,8 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataTransferLinkPend
 }
 
 Describe 'Invoke-AzDataTransferLinkPendingFlow' {
-    It 'LinkExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LinkPendingFlow' {
+        {
+            # Link the pending flow
+            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is linked
+            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName
+            $linkedFlow.Status | Should -Be "Linked"
+        } | Should -Not -Throw
+    }
+
+    It 'LinkPendingFlow when already linked' {
+        {
+            # Ensure the flow is already linked
+            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Attempt to link the flow again
+            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is still linked
+            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName
+            $linkedFlow.Status | Should -Be "Linked"
+        } | Should -Not -Throw
     }
 
     It 'LinkViaJsonString' -skip {
@@ -24,10 +45,6 @@ Describe 'Invoke-AzDataTransferLinkPendingFlow' {
     }
 
     It 'LinkViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Link' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
