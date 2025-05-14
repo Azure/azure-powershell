@@ -208,4 +208,10 @@ directive:
       subject: ^Flow$
       parameter-name: ^FlowProperty*
     hide: true
+
+  - where:
+      verb: Update
+      subject: ^Flow$
+      parameter-name: DestinationEndpoint|DestinationEndpointPort|Passphrase|SourceAddressList
+    hide: true
 ```

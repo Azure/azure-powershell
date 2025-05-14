@@ -16,43 +16,39 @@ update the flow resource.
 ```
 Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
- [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
  [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
- [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityConnectionExpanded
-```
-Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
- [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-DestinationEndpoint <String[]>]
- [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>]
- [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
- [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>]
+ [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>]
+ [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>]
  [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
  [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityConnectionExpanded
+```
+Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
+ [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
- [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>]
+ [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
  [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -174,36 +170,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationEndpoint
-The destination endpoints of the stream
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationEndpointPort
-The destination endpoint ports of the stream
-
-```yaml
-Type: System.Int64[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableSystemAssignedIdentity
 Determines whether to enable a system-assigned identity for the resource.
 
@@ -284,21 +250,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Passphrase
-The passphrase used for SRT streams
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -530,21 +481,6 @@ Service Bus Queue ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceAddressList
-A source IP address or CIDR range
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
