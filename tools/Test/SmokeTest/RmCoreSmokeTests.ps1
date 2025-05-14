@@ -134,8 +134,6 @@ $resourceTestCommands = @(
     # @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
     @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment}},
-    # Comment out Media test, since it seems this service has been deprecated. And It can not be found in Portal. Need to remove it after double check with PM and service team.
-    # @{Name = "Az.Media";                      Command = {Get-AzMediaService -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Monitor";                    Command = {Get-AzLogProfile}},
     @{Name = "Az.Network";                    Command = {Get-AzNetworkInterface}},
     @{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace}},

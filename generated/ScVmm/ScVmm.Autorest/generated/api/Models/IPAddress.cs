@@ -23,6 +23,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         /// <summary>Internal Acessors for Subnet</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnet Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IIPAddressInternal.Subnet { get => (this._subnet = this._subnet ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.Subnet()); set { {_subnet = value;} } }
 
+        /// <summary>Internal Acessors for SubnetAddressPrefix</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IIPAddressInternal.SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnetInternal)Subnet).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnetInternal)Subnet).AddressPrefix = value; }
+
         /// <summary>Backing field for <see cref="Subnet" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnet _subnet;
 
@@ -32,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
 
         /// <summary>Represents address prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]
-        public string SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnetInternal)Subnet).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnetInternal)Subnet).AddressPrefix = value ?? null; }
+        public string SubnetAddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ISubnetInternal)Subnet).AddressPrefix; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;

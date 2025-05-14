@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-Enables Guest Management on the Virtual Machine.
+Installs Azure Arc agent on the Virtual Machine.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzScVmmVMGuestAgent -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-Enables Guest Management on the Virtual Machine by installing GuestAgent.
+Installs Azure Arc agent on the Virtual Machine
 
 ## EXAMPLES
 
