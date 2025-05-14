@@ -13,7 +13,7 @@ Invoke-LiveTestScenario -Name "Operate ContainerApp" -Description "Test operatin
     $delName = New-LiveTestResourceName
     $wsName = New-LiveTestResourceName
 
-    $pflName = New-AdlAnalyticsAccount
+    $pflName = New-LiveTestResourceName
     $envName = New-LiveTestResourceName
     $tplName = New-LiveTestResourceName
     $daprName = New-LiveTestResourceName

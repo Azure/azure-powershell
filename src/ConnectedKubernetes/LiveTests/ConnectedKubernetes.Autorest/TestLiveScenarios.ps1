@@ -3,8 +3,8 @@ Invoke-LiveTestScenario -Name "Test ConnectedKubernetes" -Description "Test AzCo
     param ($rg)
     $rgName = $rg.ResourceGroupName
     $ckName = New-LiveTestResourceName
-    wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz -q
-    tar -zxvf helm-v3.6.3-linux-amd64.tar.gz
+    wget https://get.helm.sh/helm-v3.17.3-linux-amd64.tar.gz -q
+    tar -zxvf helm-v3.17.3-linux-amd64.tar.gz
     sudo cp linux-amd64/helm /usr/local/bin/
     helm version
     minikube start 2>&1 > minikube_output.txt
