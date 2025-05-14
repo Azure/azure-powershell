@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Autorest Upgration: Default commit title
 
 ## Version 3.3.1
 * This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
