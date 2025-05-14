@@ -15,8 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataTransferConnection'
 }
 
 Describe 'New-AzDataTransferConnection' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateNewConnection' {
+        {
+            # Create a new connection
+            New-AzDataTransferConnection -Location $env:Location -PipelineName $env:PipelineName -Direction $env:Direction -FlowType $env:FlowType -ResourceGroupName $env:ResourceGroupName -Justification $env:Justification -RemoteSubscriptionId $env:RemoteSubscriptionId -RequirementId $env:RequirementId -Name $env:ConnectionName -PrimaryContact $env:PrimaryContact -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is created
+            $createdConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $createdConnection | Should -Not -BeNullOrEmpty
+            $createdConnection.Name | Should -Be $env:ConnectionName
+        } | Should -Not -Throw
+    }
+
+    It 'CreateExistingConnection' {
+        {
+            # Ensure the connection already exists
+            New-AzDataTransferConnection -Location $env:Location -PipelineName $env:PipelineName -Direction $env:Direction -FlowType $env:FlowType -ResourceGroupName $env:ResourceGroupName -Justification $env:Justification -RemoteSubscriptionId $env:RemoteSubscriptionId -RequirementId $env:RequirementId -Name $env:ConnectionName -PrimaryContact $env:PrimaryContact -Confirm:$false | Should -BeNullOrEmpty
+
+            # Attempt to create the same connection again
+            New-AzDataTransferConnection -Location $env:Location -PipelineName $env:PipelineName -Direction $env:Direction -FlowType $env:FlowType -ResourceGroupName $env:ResourceGroupName -Justification $env:Justification -RemoteSubscriptionId $env:RemoteSubscriptionId -RequirementId $env:RequirementId -Name $env:ConnectionName -PrimaryContact $env:PrimaryContact -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection still exists and no duplicate is created
+            $existingConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $existingConnection | Should -Not -BeNullOrEmpty
+            $existingConnection.Name | Should -Be $env:ConnectionName
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {
