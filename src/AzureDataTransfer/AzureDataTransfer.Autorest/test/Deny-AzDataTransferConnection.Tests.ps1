@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzDataTransferConnection
 }
 
 Describe 'Deny-AzDataTransferConnection' {
-    It 'ApproveExpanded' -skip {
+    It 'RejectExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -27,23 +27,7 @@ Describe 'Deny-AzDataTransferConnection' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'RejectExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Reject' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApproveViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApproveViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Approve' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -52,14 +36,6 @@ Describe 'Deny-AzDataTransferConnection' {
     }
 
     It 'RejectViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApproveViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ApproveViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
