@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.0.0
 * Removed MD5 from blob and file upload in some scenarios
     - `Set-AzStorageFileContent`
     - `Set-AzStorageBlobContent`
