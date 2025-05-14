@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="components">List of Resiliency based Recommendation Components for the gateway
         /// </param>
-        public GatewayResiliencyInformation(string overallScore = default(string), string scoreChange = default(string), string minScoreFromRecommendations = default(string), string maxScoreFromRecommendations = default(string), string lastComputedTime = default(string), string nextEligibleComputeTime = default(string), System.Collections.Generic.IList<ResiliencyRecommendationComponents> components = default(System.Collections.Generic.IList<ResiliencyRecommendationComponents>))
+        public GatewayResiliencyInformation(string overallScore = default(string), string scoreChange = default(string), string minScoreFromRecommendations = default(string), string maxScoreFromRecommendations = default(string), System.DateTime? lastComputedTime = default(System.DateTime?), System.DateTime? nextEligibleComputeTime = default(System.DateTime?), System.Collections.Generic.IList<ResiliencyRecommendationComponents> components = default(System.Collections.Generic.IList<ResiliencyRecommendationComponents>))
 
         {
             this.OverallScore = overallScore;
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// computed for the gateway
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastComputedTime")]
-        public string LastComputedTime {get; set; }
+        public System.DateTime? LastComputedTime {get; set; }
 
         /// <summary>
         /// Gets or sets timestamp denoting the next eligible time to re-compute the
         /// resiliency score for the gateway
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextEligibleComputeTime")]
-        public string NextEligibleComputeTime {get; set; }
+        public System.DateTime? NextEligibleComputeTime {get; set; }
 
         /// <summary>
         /// Gets or sets list of Resiliency based Recommendation Components for the

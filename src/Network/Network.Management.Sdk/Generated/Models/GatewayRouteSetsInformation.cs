@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="circuitsMetadataMap">Dictionary containing map of the circuit id and circuit details
         /// </param>
-        public GatewayRouteSetsInformation(string lastComputedTime = default(string), string nextEligibleComputeTime = default(string), string routeSetVersion = default(string), System.Collections.Generic.IList<GatewayRouteSet> routeSets = default(System.Collections.Generic.IList<GatewayRouteSet>), System.Collections.Generic.IDictionary<string, CircuitMetadataMap> circuitsMetadataMap = default(System.Collections.Generic.IDictionary<string, CircuitMetadataMap>))
+        public GatewayRouteSetsInformation(System.DateTime? lastComputedTime = default(System.DateTime?), System.DateTime? nextEligibleComputeTime = default(System.DateTime?), string routeSetVersion = default(string), System.Collections.Generic.IList<GatewayRouteSet> routeSets = default(System.Collections.Generic.IList<GatewayRouteSet>), System.Collections.Generic.IDictionary<string, CircuitMetadataMap> circuitsMetadataMap = default(System.Collections.Generic.IDictionary<string, CircuitMetadataMap>))
 
         {
             this.LastComputedTime = lastComputedTime;
@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// computed for the gateway
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastComputedTime")]
-        public string LastComputedTime {get; set; }
+        public System.DateTime? LastComputedTime {get; set; }
 
         /// <summary>
         /// Gets or sets timestamp denoting the next eligible time to re-compute the
         /// route sets for the gateway
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextEligibleComputeTime")]
-        public string NextEligibleComputeTime {get; set; }
+        public System.DateTime? NextEligibleComputeTime {get; set; }
 
         /// <summary>
         /// Gets or sets version for the route set
