@@ -15,16 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferConnection'
 }
 
 Describe 'Get-AzDataTransferConnection' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $connections = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName
+            $connections.Count | Should -BeGreaterThan 0
+            $connections | ForEach-Object {
+                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+            }
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List in Subscription' {
+        {
+            $connections = Get-AzDataTransferConnection -SubscriptionId $env:SubscriptionId
+            $connections.Count | Should -BeGreaterThan 0
+            $connections | ForEach-Object {
+                $_.SubscriptionId | Should -Be $env:SubscriptionId
+            }
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $connection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $connection | Should -Not -BeNullOrEmpty
+            $connection.Name | Should -Be $env:ConnectionName
+            $connection.ResourceGroupName | Should -Be $env:ResourceGroupName
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

@@ -15,16 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferPipeline'))
 }
 
 Describe 'Get-AzDataTransferPipeline' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List in Subscription' {
+        {
+            $pipelines = Get-AzDataTransferPipeline -SubscriptionId $env:SubscriptionId
+            $pipelines.Count | Should -BeGreaterThan 0
+            $pipelines | ForEach-Object {
+                $_.SubscriptionId | Should -Be $env:SubscriptionId
+            }
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $pipelines = Get-AzDataTransferPipeline -ResourceGroupName $env:ResourceGroupName
+            $pipelines.Count | Should -BeGreaterThan 0
+            $pipelines | ForEach-Object {
+                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+            }
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $pipeline = Get-AzDataTransferPipeline -ResourceGroupName $env:ResourceGroupName -Name $env:PipelineName
+            $pipeline | Should -Not -BeNullOrEmpty
+            $pipeline.Name | Should -Be $env:PipelineName
+            $pipeline.ResourceGroupName | Should -Be $env:ResourceGroupName
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

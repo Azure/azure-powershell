@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferListPending
 }
 
 Describe 'Get-AzDataTransferListPendingConnection' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $pendingConnections = Get-AzDataTransferListPendingConnection -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName
+            $pendingConnections.Count | Should -BeGreaterThan 0
+            $pendingConnections | ForEach-Object {
+                $_.ConnectionName | Should -Be $env:ConnectionName
+                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+                $_.Status | Should -Be "Pending"
+            }
+        } | Should -Not -Throw
     }
 }
