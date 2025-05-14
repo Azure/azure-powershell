@@ -44,28 +44,37 @@ module-version: 0.1.0
 title: Peering
 subject-prefix: $(service-name)
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
-
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+  # remove update cmdlets directive, if need please add back
+  # - where:
+  #     subject: PeerAsn
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: ConnectionMonitorTest
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: RegisteredAsn
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: RegisteredPrefix
+  #     verb: Update
+  #   remove: true
   # Change cmdlet verb: Invoke-AzPeeringInvokeLookingGlass -> Start-AzPeeringInvokeLookingGlass
   - where:
       verb: Invoke
@@ -107,10 +116,10 @@ directive:
   # $directConnection = New-AzPeeringDirectConnectionObject ......
   # New-AzPeering -DirectConnection $directConnection ......
   - model-cmdlet:
-      - ExchangeConnection
-      - DirectConnection
-      - ContactDetail
-      - CheckServiceProviderAvailabilityInput
+      - model-name: ExchangeConnection
+      - model-name: DirectConnection
+      - model-name: ContactDetail
+      - model-name: CheckServiceProviderAvailabilityInput
 
   # Change all parameters named SkuName(SkuName -> Sku) and add the alias SkuName to Sku
   - where:

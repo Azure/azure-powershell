@@ -166,13 +166,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVMSizeFromAllLocations()
-        {
-            TestRunner.RunTestScript("Test-GetVMSizeFromAllLocations");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
             TestRunner.RunTestScript("Test-VirtualMachineListWithPaging");
@@ -688,6 +681,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestEncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm()
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachinePlacement");
         }
     }
 }

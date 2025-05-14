@@ -21,12 +21,12 @@ Create an in-memory object for ShippingAddress.
 Create an in-memory object for ShippingAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -70,7 +70,7 @@ function New-AzDataBoxShippingAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('AddressType')) {
             $Object.AddressType = $AddressType

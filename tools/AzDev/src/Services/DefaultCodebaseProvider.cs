@@ -20,38 +20,31 @@ namespace AzDev.Services
 {
     internal class DefaultCodebaseProvider : ICodebaseProvider
     {
-        private ILogger _logger = new NoopLogger();
+        private readonly ILogger _logger;
         private readonly IContextProvider _contextProvider;
         private readonly IFileSystem _fs;
         private Codebase _codebase;
 
-        public DefaultCodebaseProvider(IContextProvider contextProvider)
-            : this(contextProvider, new FileSystem()) { }
-
-        public DefaultCodebaseProvider(IContextProvider contextProvider, IFileSystem fs)
+        public DefaultCodebaseProvider(IContextProvider contextProvider, IFileSystem fs, ILogger logger)
         {
-            _contextProvider = contextProvider ?? throw new ArgumentNullException(nameof(contextProvider));
+            _contextProvider = contextProvider;
             _fs = fs;
-        }
-
-        public void SetLogger(ILogger logger)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger = logger;
         }
 
         public Codebase GetCodebase()
         {
-            _logger.Verbose("Loading codebase information");
+            _logger.Debug("[DefaultCodebaseProvider] Loading codebase information");
 
             if (_codebase == null)
             {
                 var path = _contextProvider.LoadContext().AzurePowerShellRepositoryRoot;
-                _logger.Verbose($"Codebase path: {path}");
+                _logger.Debug($"[DefaultCodebaseProvider] Codebase path: {path}");
                 var src = _fs.Path.Combine(path, FileOrDirNames.Src);
-                _codebase = _codebase ?? Codebase.FromFileSystem(_fs, _logger, src);
+                _codebase = Codebase.FromFileSystem(_fs, _logger, src);
             }
 
-            _logger.Verbose("Codebase loaded successfully");
+            _logger.Debug("[DefaultCodebaseProvider] Codebase loaded successfully");
 
             return _codebase;
         }

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Maps
-Module Guid: dc0410d0-8396-4441-a4d3-fdaaa915369d
+Module Guid: 28ccfd74-6337-4e18-97fa-345b819a2341
 Download Help Link: https://learn.microsoft.com/powershell/module/az.maps
 Help Version: 1.0.0.0
 Locale: en-US
@@ -26,7 +26,7 @@ Get a Maps Creator resource.
 List operations available for the Maps Resource Provider
 
 ### [New-AzMapsAccount](New-AzMapsAccount.md)
-Create or update a Maps Account.
+create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ### [New-AzMapsAccountKey](New-AzMapsAccountKey.md)
@@ -34,7 +34,7 @@ Regenerate either the primary or secondary key for use with the Maps APIs.
 The old key will stop working immediately.
 
 ### [New-AzMapsCreator](New-AzMapsCreator.md)
-Create or update a Maps Creator resource.
+create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 
@@ -45,10 +45,10 @@ Delete a Maps Account.
 Delete a Maps Creator resource.
 
 ### [Update-AzMapsAccount](Update-AzMapsAccount.md)
-Updates a Maps Account.
+update a Maps Account.
 Only a subset of the parameters may be updated after creation, such as Sku, Tags, Properties.
 
 ### [Update-AzMapsCreator](Update-AzMapsCreator.md)
-Updates the Maps Creator resource.
+update the Maps Creator resource.
 Only a subset of the parameters may be updated after creation, such as Tags.
 

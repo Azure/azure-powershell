@@ -231,3 +231,46 @@ function InvokeAzMigrateGetCommandWithRetries {
         return $result
     }
 }
+function ValidateReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory)]
+        [PSCustomObject]
+        ${Machine},
+
+        [Parameter(Mandatory)]
+        [System.String]
+        ${MigrationType}
+    )
+    # Check if the VM is already protected
+    $protectedItem = Az.Migrate\Get-AzMigrateLocalServerReplication `
+        -DiscoveredMachineId $Machine.Id  `
+        -ErrorAction SilentlyContinue
+    if ($null -ne $protectedItem) {
+        throw $VmReplicationValidationMessages.AlreadyInReplication
+    }
+
+    if ($Machine.PowerStatus -eq $PowerStatus.OffVMware -or $Machine.PowerStatus -eq $PowerStatus.OffHyperV) {
+        throw $VmReplicationValidationMessages.VmPoweredOff
+    }
+
+    if ($MigrationType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
+        if (-not $Machine.OperatingSystemDetailOSType -or $Machine.OperatingSystemDetailOSType -eq "") {
+            throw $VmReplicationValidationMessages.OsTypeNotFound
+        }
+
+        if ($Machine.ClusterId -and $Machine.HighAvailability -eq $HighAvailability.NO) {
+            throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+        }
+    }
+
+    if ($MigrationType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
+        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotRunning) {
+            throw $VmReplicationValidationMessages.VmWareToolsNotRunning
+        }
+
+        if ($Machine.VMwareToolsStatus -eq $VMwareToolsStatus.NotInstalled) {
+            throw $VmReplicationValidationMessages.VmWareToolsNotInstalled
+        }
+    }
+}

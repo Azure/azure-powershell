@@ -65,6 +65,27 @@ namespace StorageSyncTests
         }
 
         /// <summary>
+        /// Defines the test method TestNewRegisteredServerWithIdentityError.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewRegisteredServerWithIdentityError()
+        {
+            TestRunner.RunTestScript("Test-NewRegisteredServerWithIdentityError"); 
+        }
+
+        /// <summary>
+        /// Defines the test method TestNewRegisteredServerWithIdentity.
+        /// Storage Sync Service is created with identity and registered server is created with identity.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewRegisteredServerWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-NewRegisteredServerWithIdentity");
+        }
+
+        /// <summary>
         /// Defines the test method TestNewRegisteredServer.
         /// </summary>
         [Fact]
@@ -162,6 +183,26 @@ namespace StorageSyncTests
         public void TestRemoveRegisteredServerInputObject()
         {
             TestRunner.RunTestScript("Test-RemoveRegisteredServerInputObject");
+        }
+
+        /// <summary>
+        /// Defines the test method TestPatchRegisteredServer.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchRegisteredServer()
+        {
+            TestRunner.RunTestScript("Test-PatchRegisteredServer");
+        }
+
+        /// <summary>
+        /// Defines the test method TestPatchRegisteredServerWithServerEndpoint.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchRegisteredServerWithServerEndpoint()
+        {
+            TestRunner.RunTestScript("Test-PatchRegisteredServerWithServerEndpoint");
         }
     }
 }

@@ -33,7 +33,7 @@ Gets smart group history
 Gets Alert Summary Information
 
 ### [New-AzPrometheusRuleGroup](New-AzPrometheusRuleGroup.md)
-Create or update a Prometheus rule group definition.
+create a Prometheus rule group definition.
 
 ### [New-AzPrometheusRuleGroupActionObject](New-AzPrometheusRuleGroupActionObject.md)
 Create an in-memory object for PrometheusRuleGroupAction.
@@ -57,7 +57,7 @@ Updates alert processing rule properties.
 Updates alert state
 
 ### [Update-AzPrometheusRuleGroup](Update-AzPrometheusRuleGroup.md)
-Update an Prometheus rule group definition.
+update an Prometheus rule group definition.
 
 ### [Update-AzSmartGroupState](Update-AzSmartGroupState.md)
 Updates smart group state

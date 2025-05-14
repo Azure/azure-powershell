@@ -58,6 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the domain service.",
         SerializedName = @"domainServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -66,6 +69,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group within the user's subscription. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -87,6 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

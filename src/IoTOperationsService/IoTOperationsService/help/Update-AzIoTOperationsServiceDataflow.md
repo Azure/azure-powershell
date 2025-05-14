@@ -16,7 +16,7 @@ update a DataflowResource
 ```
 Update-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Mode <String>] [-Operation <IDataflowOperation[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzIoTOperationsServiceDataflow -InstanceName <String> -Name <String> -Pro
 ```
 Update-AzIoTOperationsServiceDataflow -Name <String> -ProfileName <String>
  -InstanceInputObject <IIoTOperationsServiceIdentity> [-Mode <String>] [-Operation <IDataflowOperation[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,14 +33,14 @@ Update-AzIoTOperationsServiceDataflow -Name <String> -ProfileName <String>
 Update-AzIoTOperationsServiceDataflow -Name <String>
  -DataflowProfileInputObject <IIoTOperationsServiceIdentity> [-Mode <String>]
  [-Operation <IDataflowOperation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTOperationsServiceDataflow -InputObject <IIoTOperationsServiceIdentity> [-Mode <String>]
  [-Operation <IDataflowOperation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -303,21 +303,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityInstanceExpanded
 Aliases: DataflowProfileName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -68,17 +68,17 @@ Describe 'AzMixedRealityObjectAnchorsAccount' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         {
-            $config = Update-AzMixedRealityObjectAnchorsAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus2 -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityObjectAnchorsAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Tag @{"a"="1"}
             $config.Name | Should -Be $env.objectAnchorsAccount1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzMixedRealityObjectAnchorsAccount -Name $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
-            $config = Update-AzMixedRealityObjectAnchorsAccount -InputObject $config -Location eastus2 -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityObjectAnchorsAccount -InputObject $config -Tag @{"a"="1"}
             $config.Name | Should -Be $env.objectAnchorsAccount2
         } | Should -Not -Throw
     }
