@@ -15,6 +15,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzDataTransferConnect
 }
 
 Describe 'Approve-AzDataTransferConnection' {
+    It 'Approve' {
+        {
+            # Approve the connection
+            Approve-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionIdToApprove -StatusReason "Approved for testing" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is approved
+            $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionNameToApprove
+            $approvedConnection.Status | Should -Be "Approved"
+        } | Should -Not -Throw
+    }
+
+    It 'Approve when already approved' {
+        {
+            # Ensure the connection is already approved
+            Approve-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionId -StatusReason "Approved for processing" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Attempt to approve the connection again
+            Approve-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionId -StatusReason "Approved for processing" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is still approved
+            $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $approvedConnection.Status | Should -Be "Approved"
+        } | Should -Not -Throw
+    }
+
+    It 'Approve when already rejected' {
+        {
+            # Reject the connection first
+            Deny-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionId -StatusReason "Rejected for testing" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Attempt to approve the rejected connection
+            Approve-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionId -StatusReason "Approved for processing" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is still rejected
+            $rejectedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $rejectedConnection.Status | Should -Be "Rejected"
+        } | Should -Not -Throw
+    }
+
     It 'ApproveExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -24,10 +63,6 @@ Describe 'Approve-AzDataTransferConnection' {
     }
 
     It 'ApproveViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Approve' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
