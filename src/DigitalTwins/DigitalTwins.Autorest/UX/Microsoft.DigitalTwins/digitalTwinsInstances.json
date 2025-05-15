@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzDigitalTwinsInstance",
+      "name": "Get-AzDigitalTwinsDigitalTwin",
       "description": "Get DigitalTwinsInstances resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsdigitaltwin"
         },
         "parameterSets": [
           {
@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Remove-AzDigitalTwinsInstance",
+      "name": "Remove-AzDigitalTwinsDigitalTwin",
       "description": "Delete a DigitalTwinsInstance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsdigitaltwin"
         },
         "parameterSets": [
           {

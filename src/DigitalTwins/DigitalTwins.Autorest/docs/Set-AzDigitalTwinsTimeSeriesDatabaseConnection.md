@@ -1,74 +1,48 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinstimeseriesdatabaseconnection
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinstimeseriesdatabaseconnection
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsTimeSeriesDatabaseConnection
+# Set-AzDigitalTwinsTimeSeriesDatabaseConnection
 
 ## SYNOPSIS
-create a time series database connection.
+update a time series database connection.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
+Set-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
  -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
+### Update
 ```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
+Set-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
  -ResourceName <String> -TimeSeriesDatabaseConnectionDescription <ITimeSeriesDatabaseConnection>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### UpdateViaJsonFilePath
 ```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIdentity>
- -TimeSeriesDatabaseConnectionDescription <ITimeSeriesDatabaseConnection> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityDigitalTwinsInstance
-```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
- -Name <String> -TimeSeriesDatabaseConnectionDescription <ITimeSeriesDatabaseConnection>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityDigitalTwinsInstanceExpanded
-```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
- -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
+Set-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
  -ResourceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaJsonString
 ```
-New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
+Set-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
  -ResourceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a time series database connection.
+update a time series database connection.
 
 ## EXAMPLES
 
@@ -127,42 +101,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DigitalTwinsInstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentityDigitalTwinsInstance, CreateViaIdentityDigitalTwinsInstanceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -173,11 +117,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -192,7 +136,7 @@ Name of time series database connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityDigitalTwinsInstance, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: TimeSeriesDatabaseConnectionName
 
 Required: True
@@ -222,7 +166,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -237,7 +181,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -252,7 +196,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -267,7 +211,7 @@ Describes a time series database connection resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityDigitalTwinsInstance
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -312,8 +256,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 

@@ -1,11 +1,11 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsdigitaltwin
 schema: 2.0.0
 ---
 
-# Update-AzDigitalTwinsInstance
+# Update-AzDigitalTwinsDigitalTwin
 
 ## SYNOPSIS
 update the metadata of a DigitalTwinsInstance.
@@ -15,32 +15,32 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -DigitalTwinsCreate <IDigitalTwinsDescription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-EnableSystemAssignedIdentity <Boolean>]
- [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String>
+ -DigitalTwinsCreate <IDigitalTwinsDescription> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity>
- -DigitalTwinsCreate <IDigitalTwinsDescription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDigitalTwinsDigitalTwin -InputObject <IDigitalTwinsIdentity>
+ -DigitalTwinsCreate <IDigitalTwinsDescription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDigitalTwinsDigitalTwin -InputObject <IDigitalTwinsIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,31 +49,27 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ## EXAMPLES
 
-### Example 1: Update metadata of DigitalTwinsInstance.
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Tag @{"abc"="123"}
+{{ Add code here }}
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update metadata of DigitalTwinsInstance.
+{{ Add description here }}
 
-### Example 2: Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance | Update-AzDigitalTwinsInstance -Tag @{"1234"="abcd"}
+{{ Add code here }}
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -127,7 +123,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -143,7 +139,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,21 +179,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 Public network access for the DigitalTwinsInstance.
 
@@ -218,7 +199,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -233,7 +214,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -248,7 +229,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
@@ -320,3 +301,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

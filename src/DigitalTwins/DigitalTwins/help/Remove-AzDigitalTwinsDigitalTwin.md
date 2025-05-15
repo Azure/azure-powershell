@@ -1,47 +1,56 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsdigitaltwin
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsEndpoint
+# Remove-AzDigitalTwinsDigitalTwin
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance endpoint.
+Delete a DigitalTwinsInstance.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityDigitalTwinsInstance
-```
-Remove-AzDigitalTwinsEndpoint -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity> -EndpointName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsDigitalTwin -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance endpoint.
+Delete a DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+{{ Add code here }}
 ```
 
-Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,36 +79,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DigitalTwinsInstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: DeleteViaIdentityDigitalTwinsInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -EndpointName
-Name of Endpoint Resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityDigitalTwinsInstance
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,6 +122,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -236,9 +230,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsDescription
 
 ## NOTES
 
 ## RELATED LINKS
-

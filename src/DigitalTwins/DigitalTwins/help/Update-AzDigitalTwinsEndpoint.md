@@ -1,78 +1,63 @@
 ---
 external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsendpoint
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsEndpoint
+# Update-AzDigitalTwinsEndpoint
 
 ## SYNOPSIS
-create DigitalTwinsInstance endpoint.
+update DigitalTwinsInstance endpoint.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -EndpointType <String> [-AuthenticationType <String>] [-DeadLetterSecret <String>]
- [-DeadLetterUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-AuthenticationType <String>] [-DeadLetterSecret <String>]
+ [-DeadLetterUri <String>] [-EndpointType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityDigitalTwinsInstanceExpanded
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityDigitalTwinsInstanceExpanded
-```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
- -EndpointType <String> [-AuthenticationType <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
+ [-AuthenticationType <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>] [-EndpointType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityDigitalTwinsInstance
+### UpdateViaIdentityDigitalTwinsInstance
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
  -EndpointDescription <IDigitalTwinsEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### Update
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+Update-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] -EndpointDescription <IDigitalTwinsEndpointResource> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> -EndpointType <String>
- [-AuthenticationType <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-AuthenticationType <String>]
+ [-DeadLetterSecret <String>] [-DeadLetterUri <String>] [-EndpointType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### UpdateViaIdentity
 ```
-New-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity>
+Update-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity>
  -EndpointDescription <IDigitalTwinsEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create DigitalTwinsInstance endpoint.
+update DigitalTwinsInstance endpoint.
 
 ## EXAMPLES
 
@@ -123,7 +108,7 @@ If 'IdentityBased' is select, the endpointUri and entityPath properties must be 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,7 +124,7 @@ Will be obfuscated during read.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +139,7 @@ Dead letter storage URL for identity-based authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -185,7 +170,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityDigitalTwinsInstance
+Parameter Sets: UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityDigitalTwinsInstance
 Aliases:
 
 Required: True
@@ -200,7 +185,7 @@ DigitalTwinsInstance endpoint resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
-Parameter Sets: CreateViaIdentityDigitalTwinsInstance, Create, CreateViaIdentity
+Parameter Sets: UpdateViaIdentityDigitalTwinsInstance, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -215,7 +200,7 @@ Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityDigitalTwinsInstance, Create
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityDigitalTwinsInstance, Update
 Aliases:
 
 Required: True
@@ -230,10 +215,10 @@ The type of Digital Twins endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDigitalTwinsInstanceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -245,43 +230,13 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -320,7 +275,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -335,7 +290,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -350,7 +305,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False

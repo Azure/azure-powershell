@@ -1,81 +1,74 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/set-azdigitaltwinsdigitaltwin
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsInstance
+# Set-AzDigitalTwinsDigitalTwin
 
 ## SYNOPSIS
-create the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to create the DigitalTwinsInstance.
+update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Location <String> [-EnableSystemAssignedIdentity] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String> -Location <String>
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### Update
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -DigitalTwinsCreate <IDigitalTwinsDescription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String>
+ -DigitalTwinsCreate <IDigitalTwinsDescription> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaJsonFilePath
 ```
-New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
- [-EnableSystemAssignedIdentity] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### UpdateViaJsonString
 ```
-New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -DigitalTwinsCreate <IDigitalTwinsDescription>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Set-AzDigitalTwinsDigitalTwin -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to create the DigitalTwinsInstance.
+update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: Create or update the metadata of a DigitalTwinsInstance.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
+{{ Add code here }}
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -115,7 +108,7 @@ The description of the DigitalTwins service.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsDescription
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -129,8 +122,8 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -140,27 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -171,11 +149,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -190,7 +168,7 @@ The resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -220,23 +198,8 @@ The private endpoint connections.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IPrivateEndpointConnection[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -250,7 +213,7 @@ Public network access for the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -265,7 +228,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -280,7 +243,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -295,7 +258,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -310,7 +273,7 @@ The resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -358,8 +321,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsDescription
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsDescription
@@ -367,3 +328,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

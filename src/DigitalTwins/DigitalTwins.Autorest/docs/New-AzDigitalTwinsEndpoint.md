@@ -8,97 +8,95 @@ schema: 2.0.0
 # New-AzDigitalTwinsEndpoint
 
 ## SYNOPSIS
-Create or update DigitalTwinsInstance endpoint.
+create DigitalTwinsInstance endpoint.
 
 ## SYNTAX
 
-### EventHub (Default)
+### CreateExpanded (Default)
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -ConnectionStringPrimaryKey <String> -EndpointType <EndpointType> [-SubscriptionId <String>]
- [-AuthenticationType <AuthenticationType>] [-ConnectionStringSecondaryKey <String>]
- [-DeadLetterSecret <String>] [-DeadLetterUri <String>] [-EndpointDescription <IDigitalTwinsEndpointResource>]
+ -EndpointType <String> [-SubscriptionId <String>] [-AuthenticationType <String>] [-DeadLetterSecret <String>]
+ [-DeadLetterUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ -EndpointDescription <IDigitalTwinsEndpointResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity>
+ -EndpointDescription <IDigitalTwinsEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityDigitalTwinsInstance
+```
+New-AzDigitalTwinsEndpoint -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity> -EndpointName <String>
+ -EndpointDescription <IDigitalTwinsEndpointResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityDigitalTwinsInstanceExpanded
+```
+New-AzDigitalTwinsEndpoint -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity> -EndpointName <String>
+ -EndpointType <String> [-AuthenticationType <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### EventGrid
+### CreateViaIdentityExpanded
 ```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -AccessKey1 <String> -EndpointType <EndpointType> -TopicEndpoint <String> [-SubscriptionId <String>]
- [-AuthenticationType <AuthenticationType>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> -EndpointType <String>
+ [-AuthenticationType <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ServiceBus
+### CreateViaJsonFilePath
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> -PrimaryConnectionString <String> [-SubscriptionId <String>]
- [-AuthenticationType <AuthenticationType>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update DigitalTwinsInstance endpoint.
+create DigitalTwinsInstance endpoint.
 
 ## EXAMPLES
 
-### Example 1: Create an AzDigitalTwinsEndpoint for Eventhub
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -connectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+{{ Add code here }}
 ```
 
 ```output
-Name       EndpointType AuthenticationType ResourceGroupName
-----       ------------ ------------------ -----------------
-azps-dt-eh EventHub     KeyBased           azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by connectionStringPrimaryKey
+{{ Add description here }}
 
-### Example 2: Create an AzDigitalTwinsEndpoint for EventGrid
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
+{{ Add code here }}
 ```
 
 ```output
-Name       EndpointType AuthenticationType ResourceGroupName
-----       ------------ ------------------ -----------------
-azps-dt-eg EventGrid    KeyBased           azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an AzDigitalTwinsEndpoint for Eventhub by TopicEndpoint and accessKey1
-
-### Example 3: Create an AzDigitalTwinsEndpoint for ServiceBus
-```powershell
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
-```
-
-```output
-Name       EndpointType AuthenticationType ResourceGroupName
-----       ------------ ------------------ -----------------
-azps-dt-sb ServiceBus   KeyBased           azps_test_group
-```
-
-Create an AzDigitalTwinsEndpoint for ServicBus by PrimaryConnectionString
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AccessKey1
-The subscription identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: EventGrid
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -122,38 +120,8 @@ If 'KeyBased' is selected, a connection string must be specified (at least the p
 If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionStringPrimaryKey
-The subscription identifier.
-
-```yaml
 Type: System.String
-Parameter Sets: EventHub
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionStringSecondaryKey
-The subscription identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: EventHub
+Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +137,7 @@ Will be obfuscated during read.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -184,7 +152,7 @@ Dead letter storage URL for identity-based authentication.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +163,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -209,16 +178,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointDescription
-DigitalTwinsInstance endpoint resource.
-To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
+### -DigitalTwinsInstanceInputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+Parameter Sets: CreateViaIdentityDigitalTwinsInstance, CreateViaIdentityDigitalTwinsInstanceExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -EndpointDescription
+DigitalTwinsInstance endpoint resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
+Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityDigitalTwinsInstance
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -230,7 +213,7 @@ Name of Endpoint Resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityDigitalTwinsInstance, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -244,8 +227,53 @@ Accept wildcard characters: False
 The type of Digital Twins endpoint
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityDigitalTwinsInstanceExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -270,27 +298,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrimaryConnectionString
-The subscription identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: ServiceBus
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -305,7 +318,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -320,27 +333,12 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TopicEndpoint
-The subscription identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: EventGrid
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -381,11 +379,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 
 ## NOTES
 

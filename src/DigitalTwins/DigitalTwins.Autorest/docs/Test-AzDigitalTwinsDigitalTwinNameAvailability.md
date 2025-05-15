@@ -1,11 +1,11 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsdigitaltwinnameavailability
 schema: 2.0.0
 ---
 
-# Test-AzDigitalTwinsInstanceNameAvailability
+# Test-AzDigitalTwinsDigitalTwinNameAvailability
 
 ## SYNOPSIS
 Check if a DigitalTwinsInstance name is available.
@@ -14,41 +14,40 @@ Check if a DigitalTwinsInstance name is available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonString
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonFilePath
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String>
+ -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity>
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -InputObject <IDigitalTwinsIdentity>
+ -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzDigitalTwinsDigitalTwinNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,31 +55,27 @@ Check if a DigitalTwinsInstance name is available.
 
 ## EXAMPLES
 
-### Example 1: Check if a DigitalTwinsInstance name is available.
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
+{{ Add code here }}
 ```
 
 ```output
-Message                  NameAvailable Reason
--------                  ------------- ------
-'testName' is available. True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if a DigitalTwinsInstance name is available.
+{{ Add description here }}
 
-### Example 2: Check if a DigitalTwinsInstance name is not available.
+### Example 2: {{ Add title here }}
 ```powershell
-Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
+{{ Add code here }}
 ```
 
 ```output
-Message                                                                                                                                NameAvailable Reason
--------                                                                                                                                ------------- ------
-'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if a DigitalTwinsInstance name is not available.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -120,7 +115,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CheckViaIdentityExpanded, CheckViaIdentity
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -165,7 +160,7 @@ Location of DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: True
@@ -190,27 +185,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: False
@@ -267,3 +247,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,11 +1,11 @@
 ---
 external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsdigitaltwinnameavailability
 schema: 2.0.0
 ---
 
-# Test-AzDigitalTwinsInstanceNameAvailability
+# Test-AzDigitalTwinsDigitalTwinNameAvailability
 
 ## SYNOPSIS
 Check if a DigitalTwinsInstance name is available.
@@ -14,39 +14,40 @@ Check if a DigitalTwinsInstance name is available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -Name <String>
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> [-SubscriptionId <String>] -Name <String>
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
+Test-AzDigitalTwinsDigitalTwinNameAvailability -Location <String> [-SubscriptionId <String>]
  -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
+Test-AzDigitalTwinsDigitalTwinNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity>
+Test-AzDigitalTwinsDigitalTwinNameAvailability -InputObject <IDigitalTwinsIdentity>
  -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -56,31 +57,27 @@ Check if a DigitalTwinsInstance name is available.
 
 ## EXAMPLES
 
-### Example 1: Check if a DigitalTwinsInstance name is available.
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
+{{ Add code here }}
 ```
 
 ```output
-Message                  NameAvailable Reason
--------                  ------------- ------
-'testName' is available. True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if a DigitalTwinsInstance name is available.
+{{ Add description here }}
 
-### Example 2: Check if a DigitalTwinsInstance name is not available.
+### Example 2: {{ Add title here }}
 ```powershell
-Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
+{{ Add code here }}
 ```
 
 ```output
-Message                                                                                                                                NameAvailable Reason
--------                                                                                                                                ------------- ------
-'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if a DigitalTwinsInstance name is not available.
+{{ Add description here }}
 
 ## PARAMETERS
 
