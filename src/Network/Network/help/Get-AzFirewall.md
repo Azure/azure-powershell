@@ -283,7 +283,7 @@ This example retrieves a firewall and calls Allocate on the firewall to start th
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -313,7 +313,7 @@ Accept wildcard characters: True
 Specifies the name of the resource group that Firewall belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

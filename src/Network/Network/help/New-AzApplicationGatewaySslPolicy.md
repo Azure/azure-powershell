@@ -16,7 +16,8 @@ Creates an SSL policy for an application gateway.
 ```
 New-AzApplicationGatewaySslPolicy [-DisabledSslProtocols <String[]>] [-PolicyType <String>]
  [-PolicyName <String>] [-CipherSuite <String[]>] [-MinProtocolVersion <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,5 +181,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
 
 [Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
-
-

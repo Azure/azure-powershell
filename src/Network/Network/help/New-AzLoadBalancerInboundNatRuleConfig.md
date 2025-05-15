@@ -19,7 +19,8 @@ New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-Fro
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset]
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-FrontendPortRangeStart <Int32>]
  [-FrontendPortRangeEnd <Int32>] [-BackendAddressPool <PSBackendAddressPool>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -27,8 +28,8 @@ New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-Fro
 New-AzLoadBalancerInboundNatRuleConfig -Name <String> [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP] [-EnableTcpReset]
  [-FrontendIpConfigurationId <String>] [-FrontendPortRangeStart <Int32>] [-FrontendPortRangeEnd <Int32>]
- [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
