@@ -459,3 +459,25 @@ stages:
           targetPath: artifacts
           artifact: 'reports'
         condition: always()
+  
+  - stage: FailedJobNotification
+    dependsOn:
+      - Generate
+      - Build
+      - Test
+      - Report
+    condition: failed()
+    jobs:
+      - job: FailJobNotification
+        steps:          
+          - task: PowerShell@2
+            name: notification
+            displayName: "teams notification on failed job"
+            inputs:
+              targetType: inline
+              pwsh: true
+              script: |
+                $notificationScriptPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'notify-failed-job.ps1'
+                & $notificationScriptPath -RepoRoot "$(Build.SourcesDirectory)"
+            env:
+              TEAMS_URL: $(TEAMS_URL)

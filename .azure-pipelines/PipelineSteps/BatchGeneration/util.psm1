@@ -109,3 +109,42 @@ function Get-Targets {
     Write-Host
     return $targetGroup
 }
+
+function Send-Teams {
+    param (
+        [string]$to,
+        [string]$title,
+        [string]$content
+    )
+
+    $teamsUrl = $env:TEAMS_URL
+    if ([string]::IsNullOrEmpty($teamsUrl)) {
+        Write-Host "TEAMS_URL environment variable is not set." -ForegroundColor Red
+        exit 1
+    }
+
+    if ([string]::IsNullOrEmpty($to)) {
+        Write-Host "'to' parameter is empty, nothing to send." -ForegroundColor Yellow
+        return 0 
+    }
+
+    $body = @{
+        to = $to
+        title = $title
+        content = $content
+    } | ConvertTo-Json -Depth 3
+
+    try {
+        Invoke-RestMethod -Uri $teamsUrl -Method Post -Headers @{
+            'Accept' = 'application/json'
+            'Content-Type' = 'application/json'
+        } -Body $body
+
+        Write-Host "Message sent successfully."
+        return 0
+    }
+    catch {
+        Write-Host "Failed to send message: $_" -ForegroundColor Red
+        exit 1 
+    }
+}
