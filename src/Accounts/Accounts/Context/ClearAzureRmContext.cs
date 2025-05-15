@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 var contexts = profile.Contexts.Values;
                 foreach (var context in contexts)
                 {
-                    tokenCacheProvider?.ClearCache(context.Environment.ActiveDirectoryAuthority);
+                    tokenCacheProvider?.ClearCache(context?.Environment?.ActiveDirectoryAuthority);
                     client.TryRemoveContext(context);
                 }
 

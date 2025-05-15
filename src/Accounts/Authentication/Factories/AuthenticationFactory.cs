@@ -523,10 +523,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             // make best effort to remove credentials
                         }
 
-                        RemoveFromTokenCache(account, environment.ActiveDirectoryAuthority);
+                        RemoveFromTokenCache(account, environment?.ActiveDirectoryAuthority);
                         break;
                     case AzureAccount.AccountType.User:
-                        RemoveFromTokenCache(account, environment.ActiveDirectoryAuthority);
+                        RemoveFromTokenCache(account, environment?.ActiveDirectoryAuthority);
                         break;
                 }
             }

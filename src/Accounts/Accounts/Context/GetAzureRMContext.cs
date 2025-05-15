@@ -84,7 +84,10 @@ namespace Microsoft.Azure.Commands.Profile
                     var defaultProfile = DefaultProfile as AzureRmProfile;
                     if (defaultProfile != null && string.Equals(AzureSession.Instance?.ARMContextSaveMode, "CurrentUser"))
                     {
-                        AzureSession.Instance.SetProperty(AzureSession.Property.Environment, DefaultContext.Environment.Name);
+                        if (!string.IsNullOrEmpty(DefaultContext?.Environment?.Name))
+                        {
+                            AzureSession.Instance.SetProperty(AzureSession.Property.Environment, DefaultContext.Environment.Name);
+                        }
                         defaultProfile.RefreshContextsFromCache(_cmdletContext);
                     }
                 }
