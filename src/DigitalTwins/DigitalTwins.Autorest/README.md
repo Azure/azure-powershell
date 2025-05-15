@@ -37,83 +37,103 @@ module-version: 0.3.0
 title: DigitalTwins
 subject-prefix: $(service-name)
 
-# directive:
-  # - where:
-  #     subject: DigitalTwin
-  #   set:
-  #     subject: Instance
-  # - where:
-  #     subject: DigitalTwinNameAvailability
-  #   set:
-  #     subject: InstanceNameAvailability
-  # - where:
-  #     verb: Set
-  #   hide: true
+identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
-  # - where:
-  #     subject: Instance
-  #     variant: ^Create$|^CreateViaIdentity$
-  #   remove: true
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
-  # - where:
-  #     subject: PrivateEndpointConnection
-  #     variant: ^Create$|^CreateViaIdentity$
-  #   remove: true
+directive:
+  - where:
+      subject: DigitalTwin
+    set:
+      subject: Instance
+  - where:
+      subject: DigitalTwinEndpoint
+    set:
+      subject: Endpoint
+  - where:
+      subject: DigitalTwinNameAvailability
+    set:
+      subject: InstanceNameAvailability
+  - where:
+      verb: Set
+    hide: true
 
-  # - where:
-  #     variant: ^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
-  #   remove: true
+  - where:
+      subject: Instance
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
 
-  # - where:
-  #     verb: New
-  #     subject: DigitalTwinsEndpoint
-  #   hide: true
-  # - where:
-  #     verb: New
-  #     subject: TimeSeriesDatabaseConnection
-  #   hide: true
+  - where:
+      subject: PrivateEndpointConnection
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
 
-  # - where:
-  #     model-name: DigitalTwinsEndpointResource
-  #   set:
-  #     format-table:
-  #       properties:
-  #         - Name
-  #         - EndpointType
-  #         - AuthenticationType
-  #         - ResourceGroupName
-  # - where:
-  #     model-name: DigitalTwinsDescription
-  #   set:
-  #     format-table:
-  #       properties:
-  #         - Name
-  #         - Location
-  #         - ResourceGroupName
-  # - where:
-  #     model-name: PrivateEndpointConnection
-  #   set:
-  #     format-table:
-  #       properties:
-  #         - Name
-  #         - GroupId
-  #         - PrivateLinkServiceConnectionStateStatus
-  #         - ResourceGroupName
-  # - where:
-  #     model-name: GroupIdInformation
-  #   set:
-  #     format-table:
-  #       properties:
-  #         - GroupId
-  #         - Name
-  #         - ResourceGroupName
-  # - where:
-  #     model-name: TimeSeriesDatabaseConnection
-  #   set:
-  #     format-table:
-  #       properties:
-  #         - Name
-  #         - ConnectionType
-  #         - ProvisioningState
-  #         - ResourceGroupName
+  - where:
+      variant: ^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
+    remove: true
+
+  - where:
+      verb: New
+      subject: Endpoint
+    hide: true
+  - where:
+      verb: New
+      subject: TimeSeriesDatabaseConnection
+    hide: true
+
+  - where:
+      model-name: DigitalTwinsEndpointResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - EndpointType
+          - AuthenticationType
+          - ResourceGroupName
+  - where:
+      model-name: DigitalTwinsDescription
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ResourceGroupName
+  - where:
+      model-name: PrivateEndpointConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - GroupId
+          - PrivateLinkServiceConnectionStateStatus
+          - ResourceGroupName
+  - where:
+      model-name: GroupIdInformation
+    set:
+      format-table:
+        properties:
+          - GroupId
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: TimeSeriesDatabaseConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - ConnectionType
+          - ProvisioningState
+          - ResourceGroupName
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property');
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property');
 ```

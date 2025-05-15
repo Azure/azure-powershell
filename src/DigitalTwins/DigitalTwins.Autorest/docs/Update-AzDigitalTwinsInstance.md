@@ -1,44 +1,39 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/update-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsInstance
+# Update-AzDigitalTwinsInstance
 
 ## SYNOPSIS
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update metadata of DigitalTwinsInstance.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Location <String> [-IdentityType <DigitalTwinsIdentityType>]
- [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-IdentityType <DigitalTwinsIdentityType>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
- [-IdentityType <DigitalTwinsIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+Update-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-IdentityType <DigitalTwinsIdentityType>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update metadata of DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: Create or update the metadata of a DigitalTwinsInstance.
+### Example 1: Update metadata of DigitalTwinsInstance.
 ```powershell
-New-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
+Update-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Tag @{"abc"="123"}
 ```
 
 ```output
@@ -47,8 +42,20 @@ Name                       Location ResourceGroupName
 azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update metadata of DigitalTwinsInstance.
+
+### Example 2: Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
+```powershell
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance | Update-AzDigitalTwinsInstance -Tag @{"1234"="abcd"}
+```
+
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
+```
+
+Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
 
 ## PARAMETERS
 
@@ -105,7 +112,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -115,42 +122,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateEndpointConnection
-The private endpoint connections.
-To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +157,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -196,7 +172,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -211,7 +187,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -222,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The resource tags.
+Instance patch properties
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -281,3 +257,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

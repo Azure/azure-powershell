@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a time series database connection.
 ```powershell
-{{ Add code here }}
+New-AzDigitalTwinsTimeSeriesDatabaseConnection -Name azps-tsdc -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -AdxDatabaseName "azpsadec1database" -AdxEndpointUri "https://azpsdataexplorer.eastus.kusto.windows.net" -AdxResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.Kusto/clusters/azpsdataexplorer" -AdxTableName "azpsadec1database-table" -EventHubEndpointUri "sb://azps-eventhubs.servicebus.windows.net/" -EventHubEntityPath "azps-eventhubs" -EventHubNamespaceResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.EventHub/namespaces/azps-eventhubs"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ConnectionType    ProvisioningState ResourceGroupName
+----      --------------    ----------------- -----------------
+azps-tsdc AzureDataExplorer Succeed            azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create or update a time series database connection.

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DigitalTwins-help.xml
+external help file:
 Module Name: Az.DigitalTwins
 online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
 schema: 2.0.0
@@ -15,11 +15,10 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ### CreateExpanded (Default)
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Location <String> [-IdentityType <DigitalTwinsIdentityType>]
+New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> -Location <String>
+ [-SubscriptionId <String>] [-IdentityType <DigitalTwinsIdentityType>]
  [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -27,7 +26,7 @@ New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-
 New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
  [-IdentityType <DigitalTwinsIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,3 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,21 +1,22 @@
 {
-  "resourceType": "digitalTwinsInstances",
+  "resourceType": "digitalTwinsInstances/privateEndpointConnections",
   "apiVersion": "2022-05-31",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins"
   },
   "commands": [
     {
-      "name": "Get-AzDigitalTwinsInstance",
-      "description": "Get DigitalTwinsInstances resource.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+      "name": "Get-AzDigitalTwinsPrivateEndpointConnection",
+      "description": "Get private endpoint connection properties for the given private endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsprivateendpointconnection"
         },
         "parameterSets": [
           {
             "parameters": [
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "-ResourceName <String>",
               "[-SubscriptionId <String[]>]"
@@ -25,8 +26,12 @@
       },
       "examples": [
         {
-          "description": "Get DigitalTwinsInstances resource.",
+          "description": "Get private endpoint connection properties for the given private endpoint.",
           "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
             {
               "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
@@ -44,16 +49,17 @@
       ]
     },
     {
-      "name": "Remove-AzDigitalTwinsInstance",
-      "description": "Delete a DigitalTwinsInstance.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}",
+      "name": "Remove-AzDigitalTwinsPrivateEndpointConnection",
+      "description": "Delete private endpoint connection with the specified name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance"
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsprivateendpointconnection"
         },
         "parameterSets": [
           {
             "parameters": [
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "-ResourceName <String>",
               "[-SubscriptionId <String>]"
@@ -63,8 +69,12 @@
       },
       "examples": [
         {
-          "description": "Delete a DigitalTwinsInstance.",
+          "description": "Delete private endpoint connection with the specified name.",
           "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
             {
               "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"

@@ -1,41 +1,41 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsEndpoint
+# Remove-AzDigitalTwinsPrivateEndpointConnection
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance endpoint.
+Delete private endpoint connection with the specified name.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <String>
+ -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance endpoint.
+Delete private endpoint connection with the specified name.
 
 ## EXAMPLES
 
-### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName.
+### Example 1: Delete private endpoint connection with the specified name.
 ```powershell
-Remove-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Remove-AzDigitalTwinsPrivateEndpointConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name "11c903a5-7b8a-4b86-812d-03f007dca6df"
 ```
 
-Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName.
+Delete private endpoint connection with the specified name.
 
 ## PARAMETERS
 
@@ -70,21 +70,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of Endpoint Resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -98,6 +83,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the private endpoint connection.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: PrivateEndpointConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -216,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### System.Boolean
 
 ## NOTES
 

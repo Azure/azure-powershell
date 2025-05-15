@@ -1,65 +1,67 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinstimeseriesdatabaseconnection
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsprivatelinkresource
 schema: 2.0.0
 ---
 
-# Get-AzDigitalTwinsTimeSeriesDatabaseConnection
+# Get-AzDigitalTwinsPrivateLinkResource
 
 ## SYNOPSIS
-Get the description of an existing time series database connection.
+Get the specified private link resource for the given Digital Twin.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsPrivateLinkResource -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsPrivateLinkResource -ResourceGroupName <String> -ResourceId <String> -ResourceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsPrivateLinkResource -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the description of an existing time series database connection.
+Get the specified private link resource for the given Digital Twin.
 
 ## EXAMPLES
 
-### Example 1: List description of an existing time series database connection.
+### Example 1: Get the specified private link resource for the given Digital Twin.
 ```powershell
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Get-AzDigitalTwinsPrivateLinkResource -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
 ```
 
 ```output
-Name      ConnectionType    ProvisioningState ResourceGroupName
-----      --------------    ----------------- -----------------
-azps-tsdc AzureDataExplorer Succeed            azps_test_group
+GroupId Name ResourceGroupName
+------- ---- -----------------
+API     API  azps_test_group
 ```
 
-List description of an existing time series database connection.
+Get the specified private link resource for the given Digital Twin.
 
-### Example 2: Get the description of an existing time series database connection.
+### Example 2: Get the specified private link resource for the given Digital Twin.
 ```powershell
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name azps-tsdc
+Get-AzDigitalTwinsPrivateLinkResource -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ResourceId API
 ```
 
 ```output
-Name      ConnectionType    ProvisioningState ResourceGroupName
-----      --------------    ----------------- -----------------
-azps-tsdc AzureDataExplorer Succeed            azps_test_group
+GroupId Name ResourceGroupName
+------- ---- -----------------
+API     API  azps_test_group
 ```
 
-Get the description of an existing time series database connection.
+Get the specified private link resource for the given Digital Twin.
 
 ## PARAMETERS
 
@@ -95,13 +97,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of time series database connection.
+### -ResourceGroupName
+The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: TimeSeriesDatabaseConnectionName
+Parameter Sets: List, Get
+Aliases:
 
 Required: True
 Position: Named
@@ -110,12 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the DigitalTwinsInstance.
+### -ResourceId
+The name of the private link resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -130,7 +132,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -145,7 +147,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -164,9 +166,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformation
 
 ## NOTES
 
 ## RELATED LINKS
-

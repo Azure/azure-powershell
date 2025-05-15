@@ -1,65 +1,65 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinstimeseriesdatabaseconnection
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Get-AzDigitalTwinsTimeSeriesDatabaseConnection
+# Get-AzDigitalTwinsPrivateEndpointConnection
 
 ## SYNOPSIS
-Get the description of an existing time series database connection.
+Get private endpoint connection properties for the given private endpoint.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName <String> -ResourceName <String>
+Get-AzDigitalTwinsPrivateEndpointConnection -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the description of an existing time series database connection.
+Get private endpoint connection properties for the given private endpoint.
 
 ## EXAMPLES
 
-### Example 1: List description of an existing time series database connection.
+### Example 1: List private endpoint connection properties for the digital twins instance.
 ```powershell
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Get-AzDigitalTwinsPrivateEndpointConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
 ```
 
 ```output
-Name      ConnectionType    ProvisioningState ResourceGroupName
-----      --------------    ----------------- -----------------
-azps-tsdc AzureDataExplorer Succeed            azps_test_group
+Name                                 GroupId PrivateLinkServiceConnectionStateStatus ResourceGroupName
+----                                 ------- --------------------------------------- -----------------
+11c903a5-7b8a-4b86-812d-03f007dca6df {API}   Approved                                azps_test_group
 ```
 
-List description of an existing time series database connection.
+List private endpoint connection properties for the digital twins instance.
 
-### Example 2: Get the description of an existing time series database connection.
+### Example 2: Get private endpoint connection properties for the given private endpoint.
 ```powershell
-Get-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name azps-tsdc
+Get-AzDigitalTwinsPrivateEndpointConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name "11c903a5-7b8a-4b86-812d-03f007dca6df"
 ```
 
 ```output
-Name      ConnectionType    ProvisioningState ResourceGroupName
-----      --------------    ----------------- -----------------
-azps-tsdc AzureDataExplorer Succeed            azps_test_group
+Name                                 GroupId PrivateLinkServiceConnectionStateStatus ResourceGroupName
+----                                 ------- --------------------------------------- -----------------
+11c903a5-7b8a-4b86-812d-03f007dca6df {API}   Approved                                azps_test_group
 ```
 
-Get the description of an existing time series database connection.
+Get private endpoint connection properties for the given private endpoint.
 
 ## PARAMETERS
 
@@ -96,12 +96,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of time series database connection.
+The name of the private endpoint connection.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: TimeSeriesDatabaseConnectionName
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection
 
 ## NOTES
 

@@ -1,41 +1,40 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsEndpoint
+# Remove-AzDigitalTwinsInstance
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance endpoint.
+Delete a DigitalTwinsInstance.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance endpoint.
+Delete a DigitalTwinsInstance.
 
 ## EXAMPLES
 
-### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName.
+### Example 1: Remove an AzDigitalTwinsInstance by name.
 ```powershell
-Remove-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Remove-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
 ```
 
-Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName.
+This command removes an AzDigitalTwinsInstance by name.
 
 ## PARAMETERS
 
@@ -64,21 +63,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointName
-Name of Endpoint Resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
 
 ## NOTES
 

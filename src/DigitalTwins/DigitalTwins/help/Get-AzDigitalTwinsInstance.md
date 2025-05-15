@@ -1,67 +1,85 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance
 schema: 2.0.0
 ---
 
-# Get-AzDigitalTwinsEndpoint
+# Get-AzDigitalTwinsInstance
 
 ## SYNOPSIS
-Get DigitalTwinsInstances Endpoint.
+Get DigitalTwinsInstances resource.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDigitalTwinsEndpoint -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzDigitalTwinsInstance [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzDigitalTwinsInstance -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>]
+Get-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get DigitalTwinsInstances Endpoint.
+Get DigitalTwinsInstances resource.
 
 ## EXAMPLES
 
-### Example 1: List AzDigitalTwinsEndpoint in ResourceGroup
+### Example 1: List DigitalTwinsInstances resource.
 ```powershell
-Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Get-AzDigitalTwinsInstance
 ```
 
 ```output
-Name            EndpointType AuthenticationType ResourceGroupName
-----            ------------ ------------------ -----------------
-azps-dt-eh      EventHub     KeyBased           azps_test_group
-azps-dt-eg      EventGrid    KeyBased           azps_test_group
-azps-dt-sb      ServiceBus   KeyBased           azps_test_group
+Name                      Location ResourceGroupName
+----                      -------- -----------------
+azps-dt                   eastus   azps_test_group
+azps-digitaltwin-instance eastus   azps_test_group
 ```
 
-List all AzDigitalTwinsEndpoints by ResourceGroupName
+List DigitalTwinsInstances resource.
 
-### Example 2: Get AzDigitalTwinsEndpoint by EndpointName
+### Example 2: Get DigitalTwinsInstances resource by ResourceGroup.
 ```powershell
-Get-AzDigitalTwinsEndpoint -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -EndpointName azps-dt-eh
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group
 ```
 
 ```output
-Name       EndpointType AuthenticationType ResourceGroupName
-----       ------------ ------------------ -----------------
-azps-dt-eh EventHub     KeyBased           azps_test_group
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Get AzDigitalTwinsEndpoint by EndpointName in ResourceGroup
+Get DigitalTwinsInstances resource by ResourceGroup.
+
+### Example 3: Get DigitalTwinsInstances resource by Instance Name.
+```powershell
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+```
+
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
+```
+
+Get DigitalTwinsInstances resource by Instance Name.
 
 ## PARAMETERS
 
@@ -75,21 +93,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointName
-Name of Endpoint Resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,7 +120,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List1, Get
 Aliases:
 
 Required: True
@@ -132,7 +135,7 @@ The name of the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -147,7 +150,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, List1, Get
 Aliases:
 
 Required: False
@@ -166,9 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
 
 ## NOTES
 
 ## RELATED LINKS
-

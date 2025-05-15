@@ -15,40 +15,13 @@ Check if a DigitalTwinsInstance name is available.
 ### CheckExpanded (Default)
 ```
 Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonString
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaJsonFilePath
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzDigitalTwinsInstanceNameAvailability -Location <String> [-SubscriptionId <String>]
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity>
- -DigitalTwinsInstanceCheckName <ICheckNameRequest> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,63 +73,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DigitalTwinsInstanceCheckName
-The result returned from a database check name availability request.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ICheckNameRequest
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: CheckViaIdentityExpanded, CheckViaIdentity
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,7 +94,7 @@ Location of DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -180,25 +109,10 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +124,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -256,13 +170,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ICheckNameRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult
 
 ## NOTES
 

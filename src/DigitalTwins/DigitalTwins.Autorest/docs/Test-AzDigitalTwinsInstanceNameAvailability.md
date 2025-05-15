@@ -1,58 +1,61 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsEndpoint
+# Test-AzDigitalTwinsInstanceNameAvailability
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance endpoint.
+Check if a DigitalTwinsInstance name is available.
 
 ## SYNTAX
 
-### Delete (Default)
+### CheckExpanded (Default)
 ```
-Remove-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzDigitalTwinsInstanceNameAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CheckViaIdentityExpanded
 ```
-Remove-AzDigitalTwinsEndpoint -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzDigitalTwinsInstanceNameAvailability -InputObject <IDigitalTwinsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance endpoint.
+Check if a DigitalTwinsInstance name is available.
 
 ## EXAMPLES
 
-### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName.
+### Example 1: Check if a DigitalTwinsInstance name is available.
 ```powershell
-Remove-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
 ```
 
-Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName.
+```output
+Message                  NameAvailable Reason
+-------                  ------------- ------
+'testName' is available. True
+```
+
+Check if a DigitalTwinsInstance name is available.
+
+### Example 2: Check if a DigitalTwinsInstance name is not available.
+```powershell
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
+```
+
+```output
+Message                                                                                                                                NameAvailable Reason
+-------                                                                                                                                ------------- ------
+'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
+```
+
+Check if a DigitalTwinsInstance name is not available.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -70,28 +73,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Name of Endpoint Resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,42 +89,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group that contains the DigitalTwinsInstance.
+### -Location
+Location of DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
@@ -146,12 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the DigitalTwinsInstance.
+### -Name
+Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +124,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -216,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult
 
 ## NOTES
 

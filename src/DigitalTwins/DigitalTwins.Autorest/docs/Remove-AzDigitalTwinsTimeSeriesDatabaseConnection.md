@@ -25,13 +25,6 @@ Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIde
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityDigitalTwinsInstance
-```
-Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -DigitalTwinsInstanceInputObject <IDigitalTwinsIdentity>
- -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Delete a time series database connection.
 
@@ -77,23 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DigitalTwinsInstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
-Parameter Sets: DeleteViaIdentityDigitalTwinsInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
@@ -112,7 +91,7 @@ Name of time series database connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityDigitalTwinsInstance
+Parameter Sets: Delete
 Aliases: TimeSeriesDatabaseConnectionName
 
 Required: True
@@ -237,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
 
 ## NOTES
 
