@@ -101,6 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                         string vaultName = resourceIdentifier.ResourceName;
                         string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
+                        string vmResourceGroupName = Container != null ? Container.Name : ResourceId.Split('/')[4];
 
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -110,7 +111,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ContainerParams.Name, containerName },
                                 { ContainerParams.ContainerType, ServiceClientHelpers.GetServiceClientWorkloadType(WorkloadType).ToString() },
                                 { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
-                                { ContainerParams.Container, Container}
+                                { ContainerParams.Container, Container},
+                                { ContainerParams.ResourceGroupName, vmResourceGroupName },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
