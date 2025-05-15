@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                         }
                                         else
                                         {
-                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id, removedContext.Environment.ActiveDirectoryAuthority))
+                                            if (!tokenCacheProvider.TryRemoveAccount(removedContext.Account.Id, removedContext?.Environment?.ActiveDirectoryAuthority))
                                             {
                                                 WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
                                             }
