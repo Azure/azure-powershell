@@ -1,8 +1,8 @@
 {
-  "New-AzNetworkSecurityPerimeterLoggingConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp6/loggingConfigurations/instance?api-version=2024-07-01+1": {
+  "New-AzNetworkSecurityPerimeterLoggingConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp6/loggingConfigurations/instance?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp6/loggingConfigurations/instance?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp6/loggingConfigurations/instance?api-version=2024-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"enabledLogCategories\": [ \"NspPublicOutboundResourceRulesAllowed\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,29 +18,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/8299c6f9-1c3f-4e94-8a55-7947fb63e401" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-request-id": [ "30fccf40-e6ce-47ee-8a2a-64af89bca9b7" ],
-        "x-ms-correlation-request-id": [ "30fccf40-e6ce-47ee-8a2a-64af89bca9b7" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101827Z:30fccf40-e6ce-47ee-8a2a-64af89bca9b7" ],
+        "x-ms-request-id": [ "55351596-3b0e-4483-bcc2-7545910a364c" ],
+        "x-ms-correlation-request-id": [ "55351596-3b0e-4483-bcc2-7545910a364c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250515T071758Z:55351596-3b0e-4483-bcc2-7545910a364c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A4ABD6EC84EF4E16989708A86257BF57 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:18:26Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:18:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C6923C4810B44936B557C0667E61A095 Ref B: MNZ221060608039 Ref C: 2025-05-15T07:17:58Z" ],
+        "Date": [ "Thu, 15 May 2025 07:17:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "391" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"instance\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp6/loggingConfigurations/instance\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/loggingConfigurations\",\"properties\":{\"version\":\"1\",\"enabledLogCategories\":[\"NspPublicOutboundResourceRulesAllowed\"],\"destinationType\":[]}}",
+      "Content": "{\"name\":\"instance\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp6/loggingConfigurations/instance\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/loggingConfigurations\",\"properties\":{\"version\":\"1\",\"enabledLogCategories\":[\"NspPublicOutboundResourceRulesAllowed\"],\"destinationType\":[]}}",
       "isContentBase64": false
     }
   },
-  "New-AzNetworkSecurityPerimeterLoggingConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp7/loggingConfigurations/instance?api-version=2024-07-01+2": {
+  "New-AzNetworkSecurityPerimeterLoggingConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp7/loggingConfigurations/instance?api-version=2024-07-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp7/loggingConfigurations/instance?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp7/loggingConfigurations/instance?api-version=2024-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"enabledLogCategories\": [ \"NspPublicOutboundResourceRulesAllowed\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -56,22 +57,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
-        "x-ms-request-id": [ "25badd16-4618-4b5d-ac2e-946a66adb5e4" ],
-        "x-ms-correlation-request-id": [ "25badd16-4618-4b5d-ac2e-946a66adb5e4" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20250320T101828Z:25badd16-4618-4b5d-ac2e-946a66adb5e4" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=37ca76fe-83f1-4c59-823b-b1953db8111c/eastus/928c2d36-dd23-4712-9eb0-5dccf459cb18" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "044855a9-97a9-43b4-b0e6-20c3c5ed24cb" ],
+        "x-ms-correlation-request-id": [ "044855a9-97a9-43b4-b0e6-20c3c5ed24cb" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250515T071800Z:044855a9-97a9-43b4-b0e6-20c3c5ed24cb" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E1FD43CAF3774316B19DAE47DB2E5B74 Ref B: MNZ221060609031 Ref C: 2025-03-20T10:18:27Z" ],
-        "Date": [ "Thu, 20 Mar 2025 10:18:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CBCE28C7AF5D48A0AF3FD6A1DD7B536B Ref B: MNZ221060608039 Ref C: 2025-05-15T07:17:59Z" ],
+        "Date": [ "Thu, 15 May 2025 07:17:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "391" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"instance\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tc7fy/providers/Microsoft.Network/networkSecurityPerimeters/tc7fyt-nsp7/loggingConfigurations/instance\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/loggingConfigurations\",\"properties\":{\"version\":\"1\",\"enabledLogCategories\":[\"NspPublicOutboundResourceRulesAllowed\"],\"destinationType\":[]}}",
+      "Content": "{\"name\":\"instance\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tp3iv/providers/Microsoft.Network/networkSecurityPerimeters/tp3ivt-nsp7/loggingConfigurations/instance\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/loggingConfigurations\",\"properties\":{\"version\":\"1\",\"enabledLogCategories\":[\"NspPublicOutboundResourceRulesAllowed\"],\"destinationType\":[]}}",
       "isContentBase64": false
     }
   }
