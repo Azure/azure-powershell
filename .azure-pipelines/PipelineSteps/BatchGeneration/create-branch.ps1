@@ -19,4 +19,4 @@ $body = @{
 Invoke-RestMethod -Uri "https://api.github.com/repos/$Owner/$Repo/git/refs" `
                 -Method Post -Headers $headers -Body $body -ContentType "application/json"
 
-Write-Host "Created branch '$NewBranch' from '$BBaseBranch'"
+Write-Host "Created branch '$NewBranch' from '$BaseBranch'"

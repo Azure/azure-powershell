@@ -20,7 +20,6 @@ variables:
   LinuxAgentPoolName: pool-ubuntu-2004
   MacOSAgentPoolName: 'Azure Pipelines'
   MacOSAgentPoolVMImage: macOS-latest
-  GenerationBranch: batch-generation/branch-$(Build.BuildId)
 
 trigger: none
 
@@ -42,17 +41,20 @@ stages:
       - template: util/get-github-pat-steps.yml
 
       - task: PowerShell@2
+        name: checkout
         displayName: 'Create Batch Generation Branch'
         inputs:
           targetType: inline
           pwsh: true
           script: |
-            $newBranch = "$(GenerationBranch)"
+            $date = Get-Date -Format "yy-MM-dd"
+            $generationBranch = "batch-generation/branch-$date-$(Build.BuildId)"
             $token = "$(GitHubToken)"
 
             $createBranchPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'create-branch.ps1'
             # TODO: (Bernard) Change BaseBranch to main after test
-            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'bernard-pipeline-generation' -NewBranch $newBranch -Token $token
+            & $createBranchPath -Owner 'Azure' -Repo 'azure-powershell' -BaseBranch 'bernard-pipeline-generation' -NewBranch $generationBranch -Token $token
+            Write-Host "##vso[task.setvariable variable=GenerationBranch;isOutput=true]$generationBranch"
 
       - task: PowerShell@2
         name: mtrx
@@ -77,6 +79,8 @@ stages:
         ne(dependencies.prepare.outputs['mtrx.generationTargets'], ''),
         ne(dependencies.prepare.outputs['mtrx.generationTargets'], '{}')
         )
+      variables:
+        GenerationBranch: $[dependencies.prepare.outputs['checkout.GenerationBranch']]
       timeoutInMinutes: ${{ variables.GenerateTimeoutInMinutes }}
       pool: ${{ variables.WindowsAgentPoolName }}
       strategy:
@@ -100,12 +104,11 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            git fetch origin "${{ variables.GenerationBranch }}"
-            git checkout "${{ variables.GenerationBranch }}"
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
 
             $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
             & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -CommitTitle "${{ parameters.CommitTitle }}"
-
           workingDirectory: $(Build.SourcesDirectory)
 
       - task: PublishPipelineArtifact@1
@@ -116,7 +119,10 @@ stages:
         condition: always()
 
   - stage: Build
+    dependsOn: Generate
     condition: always()
+    variables:
+      GenerationBranch: $[stageDependencies.Generate.prepare.outputs['checkout.GenerationBranch']]
     jobs:
     - job: filter
       displayName: 'Filter Changed Modules'
@@ -134,8 +140,8 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            git fetch origin "${{ variables.GenerationBranch }}"
-            git checkout "${{ variables.GenerationBranch }}"
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
 
       - task: DownloadPipelineArtifact@2
         inputs:
@@ -156,7 +162,7 @@ stages:
             git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
             git config user.name "azure-powershell-bot"
 
-            Write-Host "Applying all .patch files to ${{ variables.GenerationBranch }}..."
+            Write-Host "Applying all .patch files to "$(GenerationBranch)"..."
             $patchFiles = Get-ChildItem -Path "$env:PIPELINE_WORKSPACE" -Recurse -Filter *.patch
 
             foreach ($patch in $patchFiles) {
@@ -165,8 +171,8 @@ stages:
             }
             
             git add .
-            git commit -m "Apply batch generation patches to ${{ variables.GenerationBranch }}"
-            git push origin "${{ variables.GenerationBranch }}"
+            git commit -m "Autorest Upgration - ${{ parameters.CommitTitle }}"
+            git push origin "$(GenerationBranch)"
 
       - task: PowerShell@2
         name: mtrx
@@ -229,8 +235,8 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            git fetch origin "${{ variables.GenerationBranch }}"
-            git checkout "${{ variables.GenerationBranch }}"
+            git fetch origin "$(GenerationBranch)"
+            git checkout "$(GenerationBranch)"
 
             $buildModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'build-modules.ps1'
             & $buildModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)"
