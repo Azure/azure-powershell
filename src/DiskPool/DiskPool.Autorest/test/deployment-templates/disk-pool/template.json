@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "diskPoolName": {
+            "defaultValue": "disk-pool-01",
+            "type": "string"
+        },
+        "subnetId": {
+            "defaultValue": "subnetId",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.StoragePool/diskPools",
+            "apiVersion": "2021-04-01-preview",
+            "name": "[parameters('diskPoolName')]",
+            "location": "westeurope",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "properties": {
+                "disks": [],
+                "availabilityZones": [
+                    "1"
+                ],
+                "subnetId": "[parameters('subnetId')]"
+            }
+        }
+    ]
+}

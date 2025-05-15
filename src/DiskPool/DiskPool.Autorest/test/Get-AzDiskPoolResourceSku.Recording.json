@@ -1,0 +1,45 @@
+{
+  "Get-AzDiskPoolResourceSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/skus?api-version=2021-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/providers/Microsoft.StoragePool/locations/westeurope/skus?api-version=2021-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "9a5afb4c-b080-49a8-8ce7-f422636e3562" ],
+        "CommandName": [ "Get-AzDiskPoolResourceSku" ],
+        "FullCommandName": [ "Get-AzDiskPoolResourceSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Content-Security-Policy": [ "default-src \u0027self\u0027; frame-ancestors \u0027none\u0027" ],
+        "X-Ms-Client-Request-Id": [ "9a5afb4c-b080-49a8-8ce7-f422636e3562" ],
+        "X-Ms-Request-Id": [ "fc79cce6-bd10-48eb-a050-53990969a668" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "dd39480b-dcc3-499d-a340-2cb2def2af48" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211012T223142Z:dd39480b-dcc3-499d-a340-2cb2def2af48" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Oct 2021 22:31:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "987" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"apiVersion\":\"2021-08-01\",\"capabilities\":[{\"name\":\"MaxNumberOfDisks\",\"value\":\"32\"}],\"locationInfo\":{\"location\":\"westeurope\",\"zones\":[\"3\",\"1\",\"2\"],\"zoneDetails\":[{\"name\":[\"3\",\"1\",\"2\"],\"capabilities\":[{\"name\":\"DiskPool.Disk.Sku.UltraSSD_LRS\",\"value\":\"true\"}]}]},\"resourceType\":\"diskPools\",\"name\":\"Standard_S1\",\"tier\":\"Standard\"},{\"apiVersion\":\"2021-08-01\",\"capabilities\":[{\"name\":\"MaxNumberOfDisks\",\"value\":\"32\"}],\"locationInfo\":{\"location\":\"westeurope\",\"zones\":[\"3\",\"1\",\"2\"],\"zoneDetails\":[{\"name\":[\"3\",\"1\",\"2\"],\"capabilities\":[{\"name\":\"DiskPool.Disk.Sku.UltraSSD_LRS\",\"value\":\"true\"}]}]},\"resourceType\":\"diskPools\",\"name\":\"Premium_P1\",\"tier\":\"Premium\"},{\"apiVersion\":\"2021-08-01\",\"capabilities\":[{\"name\":\"MaxNumberOfDisks\",\"value\":\"16\"}],\"locationInfo\":{\"location\":\"westeurope\",\"zones\":[\"3\",\"1\",\"2\"],\"zoneDetails\":[{\"name\":[\"3\",\"1\",\"2\"],\"capabilities\":[{\"name\":\"DiskPool.Disk.Sku.UltraSSD_LRS\",\"value\":\"true\"}]}]},\"resourceType\":\"diskPools\",\"name\":\"Basic_B1\",\"tier\":\"Basic\"}]}",
+      "isContentBase64": false
+    }
+  }
+}
