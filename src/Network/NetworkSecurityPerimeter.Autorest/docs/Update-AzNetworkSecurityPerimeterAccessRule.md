@@ -16,18 +16,18 @@ Updates an access rule.
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
- [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
- [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,21 +179,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the access rule.
 
@@ -326,21 +311,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

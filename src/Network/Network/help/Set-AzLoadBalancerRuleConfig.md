@@ -19,7 +19,7 @@ Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-EnableConnectionTracking]
  [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool[]>]
- [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-EnableConnectionTracking]
  [-FrontendIpConfigurationId <String>] [-BackendAddressPoolId <String[]>] [-ProbeId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ Note that the configuration does not enable a floating IP address, which had bee
 Specifies a **BackendAddressPool** object to associate with a load balancer rule.
 
 ```yaml
-Type: PSBackendAddressPool[]
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Specifies the ID of a **BackendAddressPool** object to associate with a load balancer rule configuration.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables a floating IP address for a rule configuration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
 
 ```yaml
-Type: PSFrontendIPConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Specifies the ID for a front-end IP address configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 Specifies the front-end port that is matched by a load balancer rule configuration.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Specifies the length of time, in minutes, for which the state of conversations is maintained in a load balancer.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ Specifies a load balancer.
 This cmdlet updates a rule configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ Specifies a load distribution.
 The acceptable values for this parameter are: SourceIP and SourceIPProtocol.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +278,7 @@ Accept wildcard characters: False
 Specifies the name of a load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -293,7 +293,7 @@ Accept wildcard characters: False
 Specifies a probe to associate with a load balancer rule configuration.
 
 ```yaml
-Type: PSProbe
+Type: Microsoft.Azure.Commands.Network.Models.PSProbe
 Parameter Sets: SetByResource
 Aliases:
 
@@ -308,7 +308,7 @@ Accept wildcard characters: False
 Specifies the ID of the probe to associate with a load balancer rule configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -319,27 +319,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Protocol
 Specifies the protocol that is matched by a load balancer rule.
 The acceptable values for this parameter are: Tcp or Udp.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +339,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -369,7 +354,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

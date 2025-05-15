@@ -15,11 +15,10 @@ create a network access rule.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessRuleId <String>]
- [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -32,10 +31,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
@@ -49,10 +47,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String>
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -ProfileName <String>
- [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfile
@@ -65,10 +62,10 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String>
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String>
- -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-AccessRuleId <String>] [-AddressPrefix <String[]>]
- [-Direction <String>] [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
- [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -128,21 +125,6 @@ Creates a NetworkSecurityPerimeterAccessRule
 
 ## PARAMETERS
 
-### -AccessRuleId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases: Id
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AddressPrefix
 Inbound address prefixes (IPv4/IPv6)
 
@@ -190,7 +172,8 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAddress
-Outbound rules email address format.
+Outbound rules in email address format.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -205,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -FullyQualifiedDomainName
-Outbound rules fully qualified domain name format.
+Outbound rules in fully qualified domain name format.
 
 ```yaml
 Type: System.String[]
@@ -264,21 +247,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the NSP access rule.
 
@@ -325,7 +293,8 @@ Accept wildcard characters: False
 ```
 
 ### -PhoneNumber
-Outbound rules phone number format.
+Outbound rules in phone number format.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -400,7 +369,8 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceTag
-Inbound rules service tag names.
+Inbound rules of type service tag.
+This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
@@ -441,21 +411,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
