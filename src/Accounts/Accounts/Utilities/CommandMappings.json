@@ -4230,6 +4230,7 @@
       "Get-AzMigrateReplicationProtectionContainerMapping": {},
       "Get-AzMigrateReplicationRecoveryServicesProvider": {},
       "Get-AzMigrateRunAsAccount": {},
+      "Get-AzMigrateServerMigrationStatus": {},
       "Get-AzMigrateServerReplication": {},
       "Get-AzMigrateSite": {},
       "Get-AzMigrateSolution": {},
