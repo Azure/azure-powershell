@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The Private Endpoint resource.
-    /// </summary>
     public partial class PrivateEndpoint
     {
         /// <summary>
@@ -29,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PrivateEndpoint class.
         /// </summary>
-        /// <param name="id">The ARM identifier for Private Endpoint</param>
         public PrivateEndpoint(string id = default(string))
         {
             Id = id;
@@ -42,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ARM identifier for Private Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

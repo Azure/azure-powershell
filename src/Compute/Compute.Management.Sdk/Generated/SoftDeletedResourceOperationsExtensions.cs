@@ -21,50 +21,32 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class SoftDeletedResourceOperationsExtensions
     {
-            /// <summary>
-            /// List soft-deleted resources of an artifact in the gallery, such as
-            /// soft-deleted gallery image version of an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Gallery in which the soft-deleted resources resides.
             /// </param>
             /// <param name='artifactType'>
-            /// The type of the artifact to be listed, such as gallery image version.
             /// </param>
             /// <param name='artifactName'>
-            /// The artifact name to be listed. If artifact type is Images, then the
-            /// artifact name should be the gallery image name.
             /// </param>
             public static IPage<GallerySoftDeletedResource> ListByArtifactName(this ISoftDeletedResourceOperations operations, string resourceGroupName, string galleryName, string artifactType, string artifactName)
             {
                 return operations.ListByArtifactNameAsync(resourceGroupName, galleryName, artifactType, artifactName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List soft-deleted resources of an artifact in the gallery, such as
-            /// soft-deleted gallery image version of an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Gallery in which the soft-deleted resources resides.
             /// </param>
             /// <param name='artifactType'>
-            /// The type of the artifact to be listed, such as gallery image version.
             /// </param>
             /// <param name='artifactName'>
-            /// The artifact name to be listed. If artifact type is Images, then the
-            /// artifact name should be the gallery image name.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -77,10 +59,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List soft-deleted resources of an artifact in the gallery, such as
-            /// soft-deleted gallery image version of an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -92,10 +70,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListByArtifactNameNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List soft-deleted resources of an artifact in the gallery, such as
-            /// soft-deleted gallery image version of an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

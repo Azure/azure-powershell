@@ -21,36 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class ResourceSkusOperationsExtensions
     {
-            /// <summary>
-            /// Gets the list of Microsoft.Compute SKUs available for your Subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='filter'>
-            /// The filter to apply on the operation. Only **location** filter is supported
-            /// currently.
             /// </param>
             /// <param name='includeExtendedLocations'>
-            /// To Include Extended Locations information or not in the response.
             /// </param>
             public static IPage<ResourceSku> List(this IResourceSkusOperations operations, string filter = default(string), string includeExtendedLocations = default(string))
             {
                 return operations.ListAsync(filter, includeExtendedLocations).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of Microsoft.Compute SKUs available for your Subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='filter'>
-            /// The filter to apply on the operation. Only **location** filter is supported
-            /// currently.
             /// </param>
             /// <param name='includeExtendedLocations'>
-            /// To Include Extended Locations information or not in the response.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -63,9 +51,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets the list of Microsoft.Compute SKUs available for your Subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -77,9 +62,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of Microsoft.Compute SKUs available for your Subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

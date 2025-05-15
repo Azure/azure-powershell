@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the platform attribute of the image version.
-    /// </summary>
     public partial class PlatformAttribute
     {
         /// <summary>
@@ -29,10 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PlatformAttribute class.
         /// </summary>
-        /// <param name="name">This property specifies the name of the
-        /// platformAttribute. It is read-only.</param>
-        /// <param name="value">This property specifies the value of the
-        /// corresponding name property. It is read-only.</param>
         public PlatformAttribute(string name = default(string), string value = default(string))
         {
             Name = name;
@@ -46,15 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets this property specifies the name of the platformAttribute. It
-        /// is read-only.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets this property specifies the value of the corresponding name
-        /// property. It is read-only.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; private set; }

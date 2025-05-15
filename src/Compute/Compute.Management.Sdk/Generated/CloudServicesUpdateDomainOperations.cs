@@ -50,19 +50,11 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// Updates the role instances in the specified update domain.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='updateDomain'>
-        /// Specifies an integer value that identifies the update domain. Update
-        /// domains are identified with a zero-based index: the first update domain has
-        /// an ID of 0, the second has an ID of 1, and so on.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,21 +69,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Gets the specified update domain of a cloud service. Use nextLink property
-        /// in the response to get the next page of update domains. Do this till
-        /// nextLink is null to fetch all the update domains.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='updateDomain'>
-        /// Specifies an integer value that identifies the update domain. Update
-        /// domains are identified with a zero-based index: the first update domain has
-        /// an ID of 0, the second has an ID of 1, and so on.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -127,6 +109,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -280,14 +269,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all update domains in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -323,6 +307,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -455,7 +446,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<UpdateDomain>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<UpdateDomain>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -474,19 +465,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Updates the role instances in the specified update domain.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='updateDomain'>
-        /// Specifies an integer value that identifies the update domain. Update
-        /// domains are identified with a zero-based index: the first update domain has
-        /// an ID of 0, the second has an ID of 1, and so on.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -519,6 +502,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             UpdateDomain parameters = default(UpdateDomain);
@@ -662,9 +652,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all update domains in a cloud service.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -816,7 +803,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<UpdateDomain>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<UpdateDomain>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

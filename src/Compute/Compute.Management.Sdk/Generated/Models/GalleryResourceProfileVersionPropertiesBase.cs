@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of a gallery ResourceProfile version.
-    /// </summary>
     public partial class GalleryResourceProfileVersionPropertiesBase
     {
         /// <summary>
@@ -33,14 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryResourceProfileVersionPropertiesBase class.
         /// </summary>
-        /// <param name="targetLocations">The target regions where the Resource
-        /// Profile version is going to be replicated to. This property is
-        /// updatable.</param>
-        /// <param name="excludeFromLatest">If set to true, Virtual Machines
-        /// deployed from the latest version of the Resource Profile won't use
-        /// this Profile version.</param>
-        /// <param name="publishedDate">The timestamp for when the Resource
-        /// Profile Version is published.</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
@@ -60,23 +49,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target regions where the Resource Profile version
-        /// is going to be replicated to. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "targetLocations")]
         public IList<TargetRegion> TargetLocations { get; set; }
 
         /// <summary>
-        /// Gets or sets if set to true, Virtual Machines deployed from the
-        /// latest version of the Resource Profile won't use this Profile
-        /// version.
         /// </summary>
         [JsonProperty(PropertyName = "excludeFromLatest")]
         public bool? ExcludeFromLatest { get; set; }
 
         /// <summary>
-        /// Gets the timestamp for when the Resource Profile Version is
-        /// published.
         /// </summary>
         [JsonProperty(PropertyName = "publishedDate")]
         public System.DateTime? PublishedDate { get; private set; }

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The Usage Names.
-    /// </summary>
     public partial class UsageName
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UsageName class.
         /// </summary>
-        /// <param name="value">The name of the resource.</param>
-        /// <param name="localizedValue">The localized name of the
-        /// resource.</param>
         public UsageName(string value = default(string), string localizedValue = default(string))
         {
             Value = value;
@@ -45,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the localized name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "localizedValue")]
         public string LocalizedValue { get; set; }

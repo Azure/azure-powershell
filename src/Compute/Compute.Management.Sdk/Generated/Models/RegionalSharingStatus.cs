@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Gallery regional sharing status
-    /// </summary>
     public partial class RegionalSharingStatus
     {
         /// <summary>
@@ -29,12 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RegionalSharingStatus class.
         /// </summary>
-        /// <param name="region">Region name</param>
-        /// <param name="state">Gallery sharing state in current region.
-        /// Possible values include: 'Succeeded', 'InProgress', 'Failed',
-        /// 'Unknown'</param>
-        /// <param name="details">Details of gallery regional sharing
-        /// failure.</param>
+        /// <param name="state">Possible values include: 'Succeeded',
+        /// 'InProgress', 'Failed', 'Unknown'</param>
         public RegionalSharingStatus(string region = default(string), string state = default(string), string details = default(string))
         {
             Region = region;
@@ -49,20 +42,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets region name
         /// </summary>
         [JsonProperty(PropertyName = "region")]
         public string Region { get; set; }
 
         /// <summary>
-        /// Gets or sets gallery sharing state in current region. Possible
-        /// values include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
+        /// Gets possible values include: 'Succeeded', 'InProgress', 'Failed',
+        /// 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
-        public string State { get; set; }
+        public string State { get; private set; }
 
         /// <summary>
-        /// Gets or sets details of gallery regional sharing failure.
         /// </summary>
         [JsonProperty(PropertyName = "details")]
         public string Details { get; set; }

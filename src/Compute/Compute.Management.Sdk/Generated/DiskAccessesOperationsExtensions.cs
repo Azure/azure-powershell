@@ -23,236 +23,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class DiskAccessesOperationsExtensions
     {
-            /// <summary>
-            /// Creates or updates a disk access resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskAccess'>
-            /// disk access object supplied in the body of the Put disk access operation.
-            /// </param>
-            public static DiskAccess CreateOrUpdate(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, DiskAccess diskAccess)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, diskAccessName, diskAccess).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a disk access resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskAccess'>
-            /// disk access object supplied in the body of the Put disk access operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskAccess> CreateOrUpdateAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, DiskAccess diskAccess, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskAccessName, diskAccess, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags
-            /// </param>
-            public static DiskAccess Update(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.UpdateAsync(resourceGroupName, diskAccessName, tags).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskAccess> UpdateAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskAccessName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            public static DiskAccess Get(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
-            {
-                return operations.GetAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskAccess> GetAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            public static void Delete(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
-            {
-                operations.DeleteAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a disk access resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disk access resources under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<DiskAccess> ListByResourceGroup(this IDiskAccessesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disk access resources under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DiskAccess>> ListByResourceGroupAsync(this IDiskAccessesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all the disk access resources under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -261,9 +31,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disk access resources under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -278,253 +45,178 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets the private link resources possible under disk access resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            public static PrivateLinkResourceListResult GetPrivateLinkResources(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
+            public static IPage<DiskAccess> ListByResourceGroup(this IDiskAccessesOperations operations, string resourceGroupName)
             {
-                return operations.GetPrivateLinkResourcesAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the private link resources possible under disk access resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateLinkResourceListResult> GetPrivateLinkResourcesAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DiskAccess>> ListByResourceGroupAsync(this IDiskAccessesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetPrivateLinkResourcesWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
-            /// <summary>
-            /// Approve or reject a private endpoint connection under disk access resource,
-            /// this can't be used to create a new private endpoint connection.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
-            /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
-            /// </param>
-            public static PrivateEndpointConnection UpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection)
+            public static DiskAccess Get(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
             {
-                return operations.UpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Approve or reject a private endpoint connection under disk access resource,
-            /// this can't be used to create a new private endpoint connection.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
-            /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> UpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskAccess> GetAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
-            /// <summary>
-            /// Gets information about a private endpoint connection under a disk access
-            /// resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
+            /// <param name='diskAccess'>
             /// </param>
-            public static PrivateEndpointConnection GetAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
+            public static DiskAccess CreateOrUpdate(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, DiskAccess diskAccess)
             {
-                return operations.GetAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, diskAccessName, diskAccess).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets information about a private endpoint connection under a disk access
-            /// resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
+            /// <param name='diskAccess'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> GetAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskAccess> CreateOrUpdateAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, DiskAccess diskAccess, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskAccessName, diskAccess, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
-            /// <summary>
-            /// Deletes a private endpoint connection under a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
+            /// <param name='tags'>
             /// </param>
-            public static void DeleteAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
+            public static DiskAccess Update(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
-                operations.DeleteAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, diskAccessName, tags).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a private endpoint connection under a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
+            /// <param name='tags'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskAccess> UpdateAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskAccessName, tags, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
-            /// <summary>
-            /// List information about private endpoint connections under a disk access
-            /// resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
+            /// </param>
+            public static DiskAccessesDeleteHeaders Delete(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
+            {
+                return operations.DeleteAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskAccessesDeleteHeaders> DeleteAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
             /// </param>
             public static IPage<PrivateEndpointConnection> ListPrivateEndpointConnections(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
             {
                 return operations.ListPrivateEndpointConnectionsAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List information about private endpoint connections under a disk access
-            /// resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -537,46 +229,164 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Creates or updates a disk access resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            public static PrivateEndpointConnection GetAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
+            {
+                return operations.GetAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PrivateEndpointConnection> GetAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            /// <param name='privateLinkServiceConnectionState'>
+            /// </param>
+            public static PrivateEndpointConnection UpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
+            {
+                return operations.UpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            /// <param name='privateLinkServiceConnectionState'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PrivateEndpointConnection> UpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            public static DiskAccessesDeleteAPrivateEndpointConnectionHeaders DeleteAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
+            {
+                return operations.DeleteAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='privateEndpointConnectionName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskAccessesDeleteAPrivateEndpointConnectionHeaders> DeleteAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            public static PrivateLinkResourceListResult GetPrivateLinkResources(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
+            {
+                return operations.GetPrivateLinkResourcesAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PrivateLinkResourceListResult> GetPrivateLinkResourcesAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetPrivateLinkResourcesWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskAccessName'>
             /// </param>
             /// <param name='diskAccess'>
-            /// disk access object supplied in the body of the Put disk access operation.
             /// </param>
             public static DiskAccess BeginCreateOrUpdate(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, DiskAccess diskAccess)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, diskAccessName, diskAccess).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Creates or updates a disk access resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='diskAccess'>
-            /// disk access object supplied in the body of the Put disk access operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -589,46 +399,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Updates (patches) a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             public static DiskAccess BeginUpdate(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
                 return operations.BeginUpdateAsync(resourceGroupName, diskAccessName, tags).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Updates (patches) a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -641,197 +433,108 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            public static void BeginDelete(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
+            public static DiskAccessesDeleteHeaders BeginDelete(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, diskAccessName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskAccessesDeleteHeaders> BeginDeleteAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskAccessName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Approve or reject a private endpoint connection under disk access resource,
-            /// this can't be used to create a new private endpoint connection.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
             /// </param>
-            public static PrivateEndpointConnection BeginUpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection)
+            public static PrivateEndpointConnection BeginUpdateAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
             {
-                return operations.BeginUpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection).GetAwaiter().GetResult();
+                return operations.BeginUpdateAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Approve or reject a private endpoint connection under disk access resource,
-            /// this can't be used to create a new private endpoint connection.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
             /// </param>
-            /// <param name='privateEndpointConnection'>
-            /// private endpoint connection object supplied in the body of the Put private
-            /// endpoint connection operation.
+            /// <param name='privateLinkServiceConnectionState'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateEndpointConnection> BeginUpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateEndpointConnection> BeginUpdateAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateEndpointConnection, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, privateLinkServiceConnectionState, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
-            /// <summary>
-            /// Deletes a private endpoint connection under a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
             /// </param>
-            public static void BeginDeleteAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
+            public static DiskAccessesDeleteAPrivateEndpointConnectionHeaders BeginDeleteAPrivateEndpointConnection(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName)
             {
-                operations.BeginDeleteAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAPrivateEndpointConnectionAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a private endpoint connection under a disk access resource.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskAccessName'>
-            /// The name of the disk access resource that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='privateEndpointConnectionName'>
-            /// The name of the private endpoint connection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskAccessesDeleteAPrivateEndpointConnectionHeaders> BeginDeleteAPrivateEndpointConnectionAsync(this IDiskAccessesOperations operations, string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disk access resources under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<DiskAccess> ListByResourceGroupNext(this IDiskAccessesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disk access resources under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DiskAccess>> ListByResourceGroupNextAsync(this IDiskAccessesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginDeleteAPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, diskAccessName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
-            /// <summary>
-            /// Lists all the disk access resources under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -843,9 +546,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disk access resources under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -863,10 +563,34 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List information about private endpoint connections under a disk access
-            /// resource
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<DiskAccess> ListByResourceGroupNext(this IDiskAccessesOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DiskAccess>> ListByResourceGroupNextAsync(this IDiskAccessesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -878,10 +602,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListPrivateEndpointConnectionsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List information about private endpoint connections under a disk access
-            /// resource
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

@@ -17,12 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery image version that you want to
-    /// create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryImageVersion : Resource
+    public partial class GalleryImageVersion : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersion class.
@@ -43,8 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        /// <param name="restore">Indicates if this is a soft-delete resource
-        /// restoration request.</param>
         public GalleryImageVersion(string location, GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile))
             : base(location, id, name, type, tags)
         {
@@ -97,8 +91,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ImageVersionSecurityProfile SecurityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates if this is a soft-delete resource
-        /// restoration request.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restore")]
         public bool? Restore { get; set; }

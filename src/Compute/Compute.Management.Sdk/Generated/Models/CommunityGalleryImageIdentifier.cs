@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the community gallery image definition identifier.
-    /// </summary>
     public partial class CommunityGalleryImageIdentifier
     {
         /// <summary>
@@ -31,12 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CommunityGalleryImageIdentifier
         /// class.
         /// </summary>
-        /// <param name="publisher">The name of the gallery image definition
-        /// publisher.</param>
-        /// <param name="offer">The name of the gallery image definition
-        /// offer.</param>
-        /// <param name="sku">The name of the gallery image definition
-        /// SKU.</param>
         public CommunityGalleryImageIdentifier(string publisher = default(string), string offer = default(string), string sku = default(string))
         {
             Publisher = publisher;
@@ -51,19 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the gallery image definition publisher.
         /// </summary>
         [JsonProperty(PropertyName = "publisher")]
         public string Publisher { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the gallery image definition offer.
         /// </summary>
         [JsonProperty(PropertyName = "offer")]
         public string Offer { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the gallery image definition SKU.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public string Sku { get; set; }

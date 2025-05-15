@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the provisioned performance target of the disk. Bursting is
         /// disabled by default. Does not apply to Ultra disks.</param>
         /// <param name="purchasePlan">Purchase plan information to be added on </param>
-        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan)
+        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, DiskPurchasePlan purchasePlan)
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
-        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan, IDictionary<string, string> tags)
+        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, DiskPurchasePlan purchasePlan, IDictionary<string, string> tags)
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
-        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan, IDictionary<string, string> tags, DiskSku sku)
+        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, DiskPurchasePlan purchasePlan, IDictionary<string, string> tags, DiskSku sku)
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
-        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan, PropertyUpdatesInProgress propertyUpdatesInProgress, bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
+        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, DiskPurchasePlan purchasePlan, PropertyUpdatesInProgress propertyUpdatesInProgress, bool? supportsHibernation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>), DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
-        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection,long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan, SupportedCapabilities supportedCapabilities, PropertyUpdatesInProgress propertyUpdatesInProgress, bool? supportsHibernation, string publicNetworkAccess, IDictionary<string, string> tags, DiskSku sku = default(DiskSku))
+        public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection,long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, DiskPurchasePlan purchasePlan, SupportedCapabilities supportedCapabilities, PropertyUpdatesInProgress propertyUpdatesInProgress, bool? supportsHibernation, string publicNetworkAccess, IDictionary<string, string> tags, DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CustomInit();
         }
 
-        public DiskUpdate(OperatingSystemTypes? osType , int? diskSizeGB , EncryptionSettingsCollection encryptionSettingsCollection , long? diskIOPSReadWrite , long? diskMBpsReadWrite , long? diskIOPSReadOnly , long? diskMBpsReadOnly , int? maxShares , Encryption encryption , string networkAccessPolicy , string diskAccessId , string tier , bool? burstingEnabled , PurchasePlan purchasePlan , SupportedCapabilities supportedCapabilities , PropertyUpdatesInProgress propertyUpdatesInProgress , bool? supportsHibernation , string publicNetworkAccess , string dataAccessAuthMode , IDictionary<string, string> tags , DiskSku sku = default(DiskSku))
+        public DiskUpdate(OperatingSystemTypes? osType , int? diskSizeGB , EncryptionSettingsCollection encryptionSettingsCollection , long? diskIOPSReadWrite , long? diskMBpsReadWrite , long? diskIOPSReadOnly , long? diskMBpsReadOnly , int? maxShares , Encryption encryption , string networkAccessPolicy , string diskAccessId , string tier , bool? burstingEnabled , DiskPurchasePlan purchasePlan , SupportedCapabilities supportedCapabilities , PropertyUpdatesInProgress propertyUpdatesInProgress , bool? supportsHibernation , string publicNetworkAccess , string dataAccessAuthMode , IDictionary<string, string> tags , DiskSku sku = default(DiskSku))
         {
             OsType = osType;
             DiskSizeGB = diskSizeGB;

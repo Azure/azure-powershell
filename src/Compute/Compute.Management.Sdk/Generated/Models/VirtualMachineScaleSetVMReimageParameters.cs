@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a Virtual Machine Scale Set VM Reimage Parameters.
-    /// </summary>
     public partial class VirtualMachineScaleSetVMReimageParameters : VirtualMachineReimageParameters
     {
         /// <summary>
@@ -31,17 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetVMReimageParameters class.
         /// </summary>
-        /// <param name="tempDisk">Specifies whether to reimage temp disk.
-        /// Default value: false. Note: This temp disk reimage parameter is
-        /// only supported for VM/VMSS with Ephemeral OS disk.</param>
-        /// <param name="exactVersion">Specifies in decimal number, the version
-        /// the OS disk should be reimaged to. If exact version is not
-        /// provided, the OS disk is reimaged to the existing version of OS
-        /// Disk.</param>
-        /// <param name="osProfile">Specifies information required for
-        /// reimaging the non-ephemeral OS disk.</param>
-        /// <param name="forceUpdateOSDiskForEphemeral">Parameter to force
-        /// update ephemeral OS disk for a virtual machine scale set VM</param>
         public VirtualMachineScaleSetVMReimageParameters(bool? tempDisk = default(bool?), string exactVersion = default(string), OSProfileProvisioningData osProfile = default(OSProfileProvisioningData), bool? forceUpdateOSDiskForEphemeral = default(bool?))
             : base(tempDisk, exactVersion, osProfile)
         {
@@ -55,8 +41,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets parameter to force update ephemeral OS disk for a
-        /// virtual machine scale set VM
         /// </summary>
         [JsonProperty(PropertyName = "forceUpdateOSDiskForEphemeral")]
         public bool? ForceUpdateOSDiskForEphemeral { get; set; }

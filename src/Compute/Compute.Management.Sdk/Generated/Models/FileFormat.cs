@@ -16,15 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class FileFormat
     {
-        /// <summary>
-        /// A VHD file is a disk image file in the Virtual Hard Disk file
-        /// format.
-        /// </summary>
         public const string VHD = "VHD";
-        /// <summary>
-        /// A VHDX file is a disk image file in the Virtual Hard Disk v2 file
-        /// format.
-        /// </summary>
         public const string VHDX = "VHDX";
     }
 }

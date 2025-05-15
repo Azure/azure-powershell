@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the disk image base class.
-    /// </summary>
     public partial class SharedGalleryDiskImage
     {
         /// <summary>
@@ -29,11 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharedGalleryDiskImage class.
         /// </summary>
-        /// <param name="diskSizeGB">This property indicates the size of the
-        /// VHD to be created.</param>
-        /// <param name="hostCaching">The host caching of the disk. Valid
-        /// values are 'None', 'ReadOnly', and 'ReadWrite'. Possible values
-        /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
+        /// <param name="hostCaching">Possible values include: 'None',
+        /// 'ReadOnly', 'ReadWrite'</param>
         public SharedGalleryDiskImage(int? diskSizeGB = default(int?), string hostCaching = default(string))
         {
             DiskSizeGB = diskSizeGB;
@@ -47,15 +41,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets this property indicates the size of the VHD to be created.
         /// </summary>
         [JsonProperty(PropertyName = "diskSizeGB")]
         public int? DiskSizeGB { get; private set; }
 
         /// <summary>
-        /// Gets or sets the host caching of the disk. Valid values are 'None',
-        /// 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
-        /// 'ReadOnly', 'ReadWrite'
+        /// Gets or sets possible values include: 'None', 'ReadOnly',
+        /// 'ReadWrite'
         /// </summary>
         [JsonProperty(PropertyName = "hostCaching")]
         public string HostCaching { get; set; }

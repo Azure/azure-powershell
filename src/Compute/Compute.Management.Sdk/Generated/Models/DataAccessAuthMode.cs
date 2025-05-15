@@ -16,16 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class DataAccessAuthMode
     {
-        /// <summary>
-        /// When export/upload URL is used, the system checks if the user has
-        /// an identity in Azure Active Directory and has necessary permissions
-        /// to export/upload the data. Please refer to aka.ms/DisksAzureADAuth.
-        /// </summary>
         public const string AzureActiveDirectory = "AzureActiveDirectory";
-        /// <summary>
-        /// No additional authentication would be performed when accessing
-        /// export/upload URL.
-        /// </summary>
         public const string None = "None";
     }
 }

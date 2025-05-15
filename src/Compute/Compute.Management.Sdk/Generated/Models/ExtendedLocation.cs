@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The complex type of the extended location.
-    /// </summary>
     public partial class ExtendedLocation
     {
         /// <summary>
@@ -29,9 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ExtendedLocation class.
         /// </summary>
-        /// <param name="name">The name of the extended location.</param>
-        /// <param name="type">The type of the extended location. Possible
-        /// values include: 'EdgeZone'</param>
+        /// <param name="type">Possible values include: 'EdgeZone'</param>
         public ExtendedLocation(string name = default(string), string type = default(string))
         {
             Name = name;
@@ -45,14 +40,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the extended location.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the extended location. Possible values
-        /// include: 'EdgeZone'
+        /// Gets or sets possible values include: 'EdgeZone'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

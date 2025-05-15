@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the security posture to be used in the scale set. Minimum
-    /// api-version: 2023-03-01
-    /// </summary>
     public partial class SecurityPostureReference
     {
         /// <summary>
@@ -33,13 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SecurityPostureReference class.
         /// </summary>
-        /// <param name="id">The security posture reference id in the form of
-        /// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest</param>
-        /// <param name="excludeExtensions">The list of virtual machine
-        /// extension names to exclude when applying the security
-        /// posture.</param>
-        /// <param name="isOverridable">Whether the security posture can be
-        /// overridden by the user.</param>
         public SecurityPostureReference(string id, IList<string> excludeExtensions = default(IList<string>), bool? isOverridable = default(bool?))
         {
             Id = id;
@@ -54,22 +43,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the security posture reference id in the form of
-        /// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of virtual machine extension names to exclude
-        /// when applying the security posture.
         /// </summary>
         [JsonProperty(PropertyName = "excludeExtensions")]
         public IList<string> ExcludeExtensions { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the security posture can be overridden by the
-        /// user.
         /// </summary>
         [JsonProperty(PropertyName = "isOverridable")]
         public bool? IsOverridable { get; set; }

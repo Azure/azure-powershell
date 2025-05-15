@@ -23,17 +23,11 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ICloudServiceRolesOperations
     {
-        /// <summary>
-        /// Gets a role from a cloud service.
-        /// </summary>
         /// <param name='roleName'>
-        /// Name of the role.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,16 +45,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudServiceRole>> GetWithHttpMessagesAsync(string roleName, string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all roles in a cloud service. Use nextLink property
-        /// in the response to get the next page of roles. Do this till
-        /// nextLink is null to fetch all the roles.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,11 +65,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<CloudServiceRole>>> ListWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all roles in a cloud service. Use nextLink property
-        /// in the response to get the next page of roles. Do this till
-        /// nextLink is null to fetch all the roles.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

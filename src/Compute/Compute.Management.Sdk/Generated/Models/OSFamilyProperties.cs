@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// OS family properties.
-    /// </summary>
     public partial class OSFamilyProperties
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSFamilyProperties class.
         /// </summary>
-        /// <param name="name">The OS family name.</param>
-        /// <param name="label">The OS family label.</param>
-        /// <param name="versions">List of OS versions belonging to this
-        /// family.</param>
         public OSFamilyProperties(string name = default(string), string label = default(string), IList<OSVersionPropertiesBase> versions = default(IList<OSVersionPropertiesBase>))
         {
             Name = name;
@@ -49,19 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the OS family name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the OS family label.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; private set; }
 
         /// <summary>
-        /// Gets list of OS versions belonging to this family.
         /// </summary>
         [JsonProperty(PropertyName = "versions")]
         public IList<OSVersionPropertiesBase> Versions { get; private set; }

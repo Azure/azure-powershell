@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of an Access Control Rule Identity.
-    /// </summary>
     public partial class AccessControlRulesIdentity
     {
         /// <summary>
@@ -30,14 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AccessControlRulesIdentity class.
         /// </summary>
-        /// <param name="name">The name of the identity.</param>
-        /// <param name="userName">The username corresponding to this
-        /// identity.</param>
-        /// <param name="groupName">The groupName corresponding to this
-        /// identity.</param>
-        /// <param name="exePath">The path to the executable.</param>
-        /// <param name="processName">The process name of the
-        /// executable.</param>
         public AccessControlRulesIdentity(string name, string userName = default(string), string groupName = default(string), string exePath = default(string), string processName = default(string))
         {
             Name = name;
@@ -54,31 +43,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the identity.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the username corresponding to this identity.
         /// </summary>
         [JsonProperty(PropertyName = "userName")]
         public string UserName { get; set; }
 
         /// <summary>
-        /// Gets or sets the groupName corresponding to this identity.
         /// </summary>
         [JsonProperty(PropertyName = "groupName")]
         public string GroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the path to the executable.
         /// </summary>
         [JsonProperty(PropertyName = "exePath")]
         public string ExePath { get; set; }
 
         /// <summary>
-        /// Gets or sets the process name of the executable.
         /// </summary>
         [JsonProperty(PropertyName = "processName")]
         public string ProcessName { get; set; }

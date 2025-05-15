@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains information about the soft deletion policy of the gallery.
-    /// </summary>
     public partial class SoftDeletePolicy
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SoftDeletePolicy class.
         /// </summary>
-        /// <param name="isSoftDeleteEnabled">Enables soft-deletion for
-        /// resources in this gallery, allowing them to be recovered within
-        /// retention time.</param>
         public SoftDeletePolicy(bool? isSoftDeleteEnabled = default(bool?))
         {
             IsSoftDeleteEnabled = isSoftDeleteEnabled;
@@ -44,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets enables soft-deletion for resources in this gallery,
-        /// allowing them to be recovered within retention time.
         /// </summary>
         [JsonProperty(PropertyName = "isSoftDeleteEnabled")]
         public bool? IsSoftDeleteEnabled { get; set; }

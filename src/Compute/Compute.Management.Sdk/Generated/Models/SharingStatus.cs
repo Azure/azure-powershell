@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Sharing status of current gallery.
-    /// </summary>
     public partial class SharingStatus
     {
         /// <summary>
@@ -31,11 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharingStatus class.
         /// </summary>
-        /// <param name="aggregatedState">Aggregated sharing state of current
-        /// gallery. Possible values include: 'Succeeded', 'InProgress',
-        /// 'Failed', 'Unknown'</param>
-        /// <param name="summary">Summary of all regional sharing
-        /// status.</param>
+        /// <param name="aggregatedState">Possible values include: 'Succeeded',
+        /// 'InProgress', 'Failed', 'Unknown'</param>
         public SharingStatus(string aggregatedState = default(string), IList<RegionalSharingStatus> summary = default(IList<RegionalSharingStatus>))
         {
             AggregatedState = aggregatedState;
@@ -49,14 +43,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets aggregated sharing state of current gallery. Possible
-        /// values include: 'Succeeded', 'InProgress', 'Failed', 'Unknown'
+        /// Gets possible values include: 'Succeeded', 'InProgress', 'Failed',
+        /// 'Unknown'
         /// </summary>
         [JsonProperty(PropertyName = "aggregatedState")]
-        public string AggregatedState { get; set; }
+        public string AggregatedState { get; private set; }
 
         /// <summary>
-        /// Gets or sets summary of all regional sharing status.
         /// </summary>
         [JsonProperty(PropertyName = "summary")]
         public IList<RegionalSharingStatus> Summary { get; set; }

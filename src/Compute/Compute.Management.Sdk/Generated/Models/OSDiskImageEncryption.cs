@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains encryption settings for an OS disk image.
-    /// </summary>
     public partial class OSDiskImageEncryption : DiskImageEncryption
     {
         /// <summary>
@@ -29,10 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSDiskImageEncryption class.
         /// </summary>
-        /// <param name="diskEncryptionSetId">A relative URI containing the
-        /// resource ID of the disk encryption set.</param>
-        /// <param name="securityProfile">This property specifies the security
-        /// profile of an OS disk image.</param>
         public OSDiskImageEncryption(string diskEncryptionSetId = default(string), OSDiskImageSecurityProfile securityProfile = default(OSDiskImageSecurityProfile))
             : base(diskEncryptionSetId)
         {
@@ -46,8 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property specifies the security profile of an OS
-        /// disk image.
         /// </summary>
         [JsonProperty(PropertyName = "securityProfile")]
         public OSDiskImageSecurityProfile SecurityProfile { get; set; }

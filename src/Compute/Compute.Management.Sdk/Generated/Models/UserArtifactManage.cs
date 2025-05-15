@@ -27,16 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UserArtifactManage class.
         /// </summary>
-        /// <param name="install">Required. The path and arguments to install
-        /// the gallery application. This is limited to 4096
-        /// characters.</param>
-        /// <param name="remove">Required. The path and arguments to remove the
-        /// gallery application. This is limited to 4096 characters.</param>
-        /// <param name="update">Optional. The path and arguments to update the
-        /// gallery application. If not present, then update operation will
-        /// invoke remove command on the previous version and install command
-        /// on the current version of the gallery application. This is limited
-        /// to 4096 characters.</param>
         public UserArtifactManage(string install, string remove, string update = default(string))
         {
             Install = install;
@@ -51,25 +41,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets required. The path and arguments to install the
-        /// gallery application. This is limited to 4096 characters.
         /// </summary>
         [JsonProperty(PropertyName = "install")]
         public string Install { get; set; }
 
         /// <summary>
-        /// Gets or sets required. The path and arguments to remove the gallery
-        /// application. This is limited to 4096 characters.
         /// </summary>
         [JsonProperty(PropertyName = "remove")]
         public string Remove { get; set; }
 
         /// <summary>
-        /// Gets or sets optional. The path and arguments to update the gallery
-        /// application. If not present, then update operation will invoke
-        /// remove command on the previous version and install command on the
-        /// current version of the gallery application. This is limited to 4096
-        /// characters.
         /// </summary>
         [JsonProperty(PropertyName = "update")]
         public string Update { get; set; }

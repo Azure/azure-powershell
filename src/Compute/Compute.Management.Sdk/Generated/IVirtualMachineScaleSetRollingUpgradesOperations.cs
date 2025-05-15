@@ -23,14 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IVirtualMachineScaleSetRollingUpgradesOperations
     {
-        /// <summary>
-        /// Cancels the current virtual machine scale set rolling upgrade.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,18 +39,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> CancelWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts a rolling upgrade to move all virtual machine scale set
-        /// instances to the latest available Platform Image OS version.
-        /// Instances which are already running the latest available OS version
-        /// are not affected.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders>> StartExtensionUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,18 +56,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> StartOSUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts a rolling upgrade to move all extensions for all virtual
-        /// machine scale set instances to the latest available extension
-        /// version. Instances which are already running the latest extension
-        /// versions are not affected.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders>> StartOSUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -94,16 +73,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> StartExtensionUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the status of the latest virtual machine scale set rolling
-        /// upgrade.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesCancelHeaders>> CancelWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -121,14 +94,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<RollingUpgradeStatusInfo>> GetLatestWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Cancels the current virtual machine scale set rolling upgrade.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,18 +110,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginCancelWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts a rolling upgrade to move all virtual machine scale set
-        /// instances to the latest available Platform Image OS version.
-        /// Instances which are already running the latest available OS version
-        /// are not affected.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders>> BeginStartExtensionUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -167,18 +127,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginStartOSUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts a rolling upgrade to move all extensions for all virtual
-        /// machine scale set instances to the latest available extension
-        /// version. Instances which are already running the latest extension
-        /// versions are not affected.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders>> BeginStartOSUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -192,6 +144,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginStartExtensionUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetRollingUpgradesCancelHeaders>> BeginCancelWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

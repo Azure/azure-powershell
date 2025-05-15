@@ -17,12 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery Application Version that you
-    /// want to create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryApplicationVersion : Resource
+    public partial class GalleryApplicationVersion : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryApplicationVersion class.

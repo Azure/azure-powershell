@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the required information to reference a compute gallery
-    /// application version
-    /// </summary>
     public partial class VMGalleryApplication
     {
         /// <summary>
@@ -31,22 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VMGalleryApplication class.
         /// </summary>
-        /// <param name="packageReferenceId">Specifies the
-        /// GalleryApplicationVersion resource id on the form of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}</param>
-        /// <param name="tags">Optional, Specifies a passthrough value for more
-        /// generic context.</param>
-        /// <param name="order">Optional, Specifies the order in which the
-        /// packages have to be installed</param>
-        /// <param name="configurationReference">Optional, Specifies the uri to
-        /// an azure blob that will replace the default configuration for the
-        /// package if provided</param>
-        /// <param name="treatFailureAsDeploymentFailure">Optional, If true,
-        /// any failure for any operation in the VmApplication will fail the
-        /// deployment</param>
-        /// <param name="enableAutomaticUpgrade">If set to true, when a new
-        /// Gallery Application version is available in PIR/SIG, it will be
-        /// automatically updated for the VM/VMSS</param>
         public VMGalleryApplication(string packageReferenceId, string tags = default(string), int? order = default(int?), string configurationReference = default(string), bool? treatFailureAsDeploymentFailure = default(bool?), bool? enableAutomaticUpgrade = default(bool?))
         {
             Tags = tags;
@@ -64,45 +44,31 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets optional, Specifies a passthrough value for more
-        /// generic context.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public string Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets optional, Specifies the order in which the packages
-        /// have to be installed
         /// </summary>
         [JsonProperty(PropertyName = "order")]
         public int? Order { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the GalleryApplicationVersion resource id on
-        /// the form of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
         /// </summary>
         [JsonProperty(PropertyName = "packageReferenceId")]
         public string PackageReferenceId { get; set; }
 
         /// <summary>
-        /// Gets or sets optional, Specifies the uri to an azure blob that will
-        /// replace the default configuration for the package if provided
         /// </summary>
         [JsonProperty(PropertyName = "configurationReference")]
         public string ConfigurationReference { get; set; }
 
         /// <summary>
-        /// Gets or sets optional, If true, any failure for any operation in
-        /// the VmApplication will fail the deployment
         /// </summary>
         [JsonProperty(PropertyName = "treatFailureAsDeploymentFailure")]
         public bool? TreatFailureAsDeploymentFailure { get; set; }
 
         /// <summary>
-        /// Gets or sets if set to true, when a new Gallery Application version
-        /// is available in PIR/SIG, it will be automatically updated for the
-        /// VM/VMSS
         /// </summary>
         [JsonProperty(PropertyName = "enableAutomaticUpgrade")]
         public bool? EnableAutomaticUpgrade { get; set; }

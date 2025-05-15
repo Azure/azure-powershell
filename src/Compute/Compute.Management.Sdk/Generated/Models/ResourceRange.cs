@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the resource range.
-    /// </summary>
     public partial class ResourceRange
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceRange class.
         /// </summary>
-        /// <param name="min">The minimum number of the resource.</param>
-        /// <param name="max">The maximum number of the resource.</param>
         public ResourceRange(int? min = default(int?), int? max = default(int?))
         {
             Min = min;
@@ -44,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the minimum number of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "min")]
         public int? Min { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum number of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "max")]
         public int? Max { get; set; }

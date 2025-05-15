@@ -21,32 +21,20 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class UsageOperationsExtensions
     {
-            /// <summary>
-            /// Gets, for the specified location, the current compute resource usage
-            /// information as well as the limits for compute resources under the
-            /// subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which resource usage is queried.
             /// </param>
             public static IPage<Usage> List(this IUsageOperations operations, string location)
             {
                 return operations.ListAsync(location).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets, for the specified location, the current compute resource usage
-            /// information as well as the limits for compute resources under the
-            /// subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location for which resource usage is queried.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -59,11 +47,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets, for the specified location, the current compute resource usage
-            /// information as well as the limits for compute resources under the
-            /// subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -75,11 +58,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets, for the specified location, the current compute resource usage
-            /// information as well as the limits for compute resources under the
-            /// subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

@@ -23,153 +23,13 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IVirtualMachineScaleSetVMExtensionsOperations
     {
-        /// <summary>
-        /// The operation to create or update the VMSS VM extension.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Virtual Machine Extension
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to update the VMSS VM extension.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
-        /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Update Virtual Machine Extension
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete the VMSS VM extension.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to get the VMSS VM extension.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
         /// </param>
         /// <param name='expand'>
-        /// The expand expression to apply on the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to get all extensions of an instance in Virtual
-        /// Machine Scaleset.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
-        /// </param>
-        /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
-        /// </param>
-        /// <param name='expand'>
-        /// The expand expression to apply on the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -187,24 +47,15 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<VirtualMachineScaleSetVMExtensionsListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to create or update the VMSS VM extension.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
         /// </param>
         /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
         /// </param>
-        /// <param name='extensionParameters'>
-        /// Parameters supplied to the Create Virtual Machine Extension
-        /// operation.
+        /// <param name='expand'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,25 +72,16 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to update the VMSS VM extension.
-        /// </summary>
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> GetWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
         /// </param>
         /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
         /// </param>
         /// <param name='extensionParameters'>
-        /// Parameters supplied to the Update Virtual Machine Extension
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -256,21 +98,40 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// The operation to delete the VMSS VM extension.
-        /// </summary>
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension,VirtualMachineScaleSetVMExtensionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='vmScaleSetName'>
-        /// The name of the VM scale set.
         /// </param>
         /// <param name='instanceId'>
-        /// The instance ID of the virtual machine.
         /// </param>
         /// <param name='vmExtensionName'>
-        /// The name of the virtual machine extension.
+        /// </param>
+        /// <param name='extensionParameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension,VirtualMachineScaleSetVMExtensionsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// </param>
+        /// <param name='instanceId'>
+        /// </param>
+        /// <param name='vmExtensionName'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -284,6 +145,79 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetVMExtensionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// </param>
+        /// <param name='instanceId'>
+        /// </param>
+        /// <param name='vmExtensionName'>
+        /// </param>
+        /// <param name='extensionParameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension,VirtualMachineScaleSetVMExtensionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtension extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// </param>
+        /// <param name='instanceId'>
+        /// </param>
+        /// <param name='vmExtensionName'>
+        /// </param>
+        /// <param name='extensionParameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<VirtualMachineScaleSetVMExtension,VirtualMachineScaleSetVMExtensionsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, VirtualMachineScaleSetVMExtensionUpdate extensionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// </param>
+        /// <param name='instanceId'>
+        /// </param>
+        /// <param name='vmExtensionName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetVMExtensionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, string vmExtensionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

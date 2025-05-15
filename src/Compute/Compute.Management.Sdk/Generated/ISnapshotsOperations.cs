@@ -23,21 +23,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ISnapshotsOperations
     {
-        /// <summary>
-        /// Creates or updates a snapshot.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='snapshot'>
-        /// Snapshot object supplied in the body of the Put disk operation.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -53,97 +38,8 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Snapshot snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates (patches) a snapshot.
-        /// </summary>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='snapshot'>
-        /// Snapshot object supplied in the body of the Patch snapshot
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<Snapshot>> UpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets information about a snapshot.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<Snapshot>> GetWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a snapshot.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists snapshots under a resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -161,40 +57,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists snapshots under a subscription.
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<Snapshot>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Grants access to a snapshot.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='grantAccessData'>
-        /// Access data object supplied in the body of the get snapshot access
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -211,46 +76,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AccessUri>> GrantAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Revokes access to a snapshot.
-        /// </summary>
+        Task<AzureOperationResponse<Snapshot>> GetWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> RevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Creates or updates a snapshot.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
         /// </param>
         /// <param name='snapshot'>
-        /// Snapshot object supplied in the body of the Put disk operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -267,22 +98,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Snapshot snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates (patches) a snapshot.
-        /// </summary>
+        Task<AzureOperationResponse<Snapshot,SnapshotsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Snapshot snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
         /// </param>
         /// <param name='snapshot'>
-        /// Snapshot object supplied in the body of the Patch snapshot
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -299,18 +120,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Snapshot>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a snapshot.
-        /// </summary>
+        Task<AzureOperationResponse<Snapshot,SnapshotsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -324,22 +137,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Grants access to a snapshot.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<SnapshotsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
         /// </param>
         /// <param name='grantAccessData'>
-        /// Access data object supplied in the body of the get snapshot access
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -356,18 +159,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AccessUri>> BeginGrantAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Revokes access to a snapshot.
-        /// </summary>
+        Task<AzureOperationResponse<AccessUri,SnapshotsGrantAccessHeaders>> GrantAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='snapshotName'>
-        /// The name of the snapshot that is being created. The name can't be
-        /// changed after the snapshot is created. Supported characters for the
-        /// name are a-z, A-Z, 0-9, _ and -. The max name length is 80
-        /// characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -381,12 +176,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginRevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists snapshots under a resource group.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        Task<AzureOperationHeaderResponse<SnapshotsRevokeAccessHeaders>> RevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='snapshotName'>
+        /// </param>
+        /// <param name='snapshot'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -403,10 +198,85 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Snapshot>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists snapshots under a subscription.
-        /// </summary>
+        Task<AzureOperationResponse<Snapshot,SnapshotsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Snapshot snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='snapshotName'>
+        /// </param>
+        /// <param name='snapshot'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<Snapshot,SnapshotsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='snapshotName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<SnapshotsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='snapshotName'>
+        /// </param>
+        /// <param name='grantAccessData'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<AccessUri,SnapshotsGrantAccessHeaders>> BeginGrantAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='snapshotName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<SnapshotsRevokeAccessHeaders>> BeginRevokeAccessWithHttpMessagesAsync(string resourceGroupName, string snapshotName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -426,5 +296,24 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Snapshot>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<Snapshot>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

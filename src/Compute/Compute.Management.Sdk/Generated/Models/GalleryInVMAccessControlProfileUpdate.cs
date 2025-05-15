@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery inVMAccessControlProfile that
-    /// you want to update.
-    /// </summary>
     public partial class GalleryInVMAccessControlProfileUpdate : UpdateResourceDefinition
     {
         /// <summary>
@@ -34,10 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryInVMAccessControlProfileUpdate class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
         public GalleryInVMAccessControlProfileUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryInVMAccessControlProfileProperties properties = default(GalleryInVMAccessControlProfileProperties))
             : base(id, name, type, tags)
         {

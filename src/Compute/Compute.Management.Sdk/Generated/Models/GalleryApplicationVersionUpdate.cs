@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery Application Version that you
-    /// want to update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class GalleryApplicationVersionUpdate : UpdateResourceDefinition
     {
@@ -37,10 +33,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryApplicationVersionUpdate
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>

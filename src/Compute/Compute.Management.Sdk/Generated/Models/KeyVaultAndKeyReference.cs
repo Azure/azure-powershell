@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Key Vault Key Url and vault id of KeK, KeK is optional and when
-    /// provided is used to unwrap the encryptionKey
-    /// </summary>
     public partial class KeyVaultAndKeyReference
     {
         /// <summary>
@@ -31,10 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the KeyVaultAndKeyReference class.
         /// </summary>
-        /// <param name="sourceVault">Resource id of the KeyVault containing
-        /// the key or secret</param>
-        /// <param name="keyUrl">Url pointing to a key or secret in
-        /// KeyVault</param>
         public KeyVaultAndKeyReference(SourceVault sourceVault, string keyUrl)
         {
             SourceVault = sourceVault;
@@ -48,14 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource id of the KeyVault containing the key or
-        /// secret
         /// </summary>
         [JsonProperty(PropertyName = "sourceVault")]
         public SourceVault SourceVault { get; set; }
 
         /// <summary>
-        /// Gets or sets url pointing to a key or secret in KeyVault
         /// </summary>
         [JsonProperty(PropertyName = "keyUrl")]
         public string KeyUrl { get; set; }

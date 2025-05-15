@@ -21,240 +21,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class DiskEncryptionSetsOperationsExtensions
     {
-            /// <summary>
-            /// Creates or updates a disk encryption set
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Put disk encryption
-            /// set operation.
-            /// </param>
-            public static DiskEncryptionSet CreateOrUpdate(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSet diskEncryptionSet)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a disk encryption set
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Put disk encryption
-            /// set operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskEncryptionSet> CreateOrUpdateAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSet diskEncryptionSet, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Patch disk
-            /// encryption set operation.
-            /// </param>
-            public static DiskEncryptionSet Update(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSetUpdate diskEncryptionSet)
-            {
-                return operations.UpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Patch disk
-            /// encryption set operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskEncryptionSet> UpdateAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSetUpdate diskEncryptionSet, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            public static DiskEncryptionSet Get(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
-            {
-                return operations.GetAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiskEncryptionSet> GetAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            public static void Delete(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
-            {
-                operations.DeleteAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a disk encryption set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disk encryption sets under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<DiskEncryptionSet> ListByResourceGroup(this IDiskEncryptionSetsOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disk encryption sets under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DiskEncryptionSet>> ListByResourceGroupAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all the disk encryption sets under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -263,9 +29,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disk encryption sets under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -280,40 +43,178 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all resources that are encrypted with this disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// </param>
+            public static IPage<DiskEncryptionSet> ListByResourceGroup(this IDiskEncryptionSetsOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DiskEncryptionSet>> ListByResourceGroupAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
+            /// </param>
+            public static DiskEncryptionSet Get(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
+            {
+                return operations.GetAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskEncryptionSet> GetAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='diskEncryptionSet'>
+            /// </param>
+            public static DiskEncryptionSet CreateOrUpdate(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSet diskEncryptionSet)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='diskEncryptionSet'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskEncryptionSet> CreateOrUpdateAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSet diskEncryptionSet, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='diskEncryptionSet'>
+            /// </param>
+            public static DiskEncryptionSet Update(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSetUpdate diskEncryptionSet)
+            {
+                return operations.UpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='diskEncryptionSet'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskEncryptionSet> UpdateAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSetUpdate diskEncryptionSet, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            public static DiskEncryptionSetsDeleteHeaders Delete(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
+            {
+                return operations.DeleteAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DiskEncryptionSetsDeleteHeaders> DeleteAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskEncryptionSetName'>
             /// </param>
             public static IPage<string> ListAssociatedResources(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
             {
                 return operations.ListAssociatedResourcesAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all resources that are encrypted with this disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -326,48 +227,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Creates or updates a disk encryption set
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Put disk encryption
-            /// set operation.
             /// </param>
             public static DiskEncryptionSet BeginCreateOrUpdate(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSet diskEncryptionSet)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Creates or updates a disk encryption set
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Put disk encryption
-            /// set operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -380,48 +261,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Updates (patches) a disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Patch disk
-            /// encryption set operation.
             /// </param>
             public static DiskEncryptionSet BeginUpdate(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, DiskEncryptionSetUpdate diskEncryptionSet)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, diskEncryptionSetName, diskEncryptionSet).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Updates (patches) a disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='diskEncryptionSet'>
-            /// disk encryption set object supplied in the body of the Patch disk
-            /// encryption set operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -434,86 +295,36 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes a disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
-            public static void BeginDelete(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
+            public static DiskEncryptionSetsDeleteHeaders BeginDelete(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, diskEncryptionSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskEncryptionSetName'>
-            /// The name of the disk encryption set that is being created. The name can't
-            /// be changed after the disk encryption set is created. Supported characters
-            /// for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80
-            /// characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskEncryptionSetsDeleteHeaders> BeginDeleteAsync(this IDiskEncryptionSetsOperations operations, string resourceGroupName, string diskEncryptionSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disk encryption sets under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<DiskEncryptionSet> ListByResourceGroupNext(this IDiskEncryptionSetsOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disk encryption sets under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<DiskEncryptionSet>> ListByResourceGroupNextAsync(this IDiskEncryptionSetsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskEncryptionSetName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
-            /// <summary>
-            /// Lists all the disk encryption sets under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -525,9 +336,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disk encryption sets under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -545,9 +353,34 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all resources that are encrypted with this disk encryption set.
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<DiskEncryptionSet> ListByResourceGroupNext(this IDiskEncryptionSetsOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<DiskEncryptionSet>> ListByResourceGroupNextAsync(this IDiskEncryptionSetsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -559,9 +392,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAssociatedResourcesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all resources that are encrypted with this disk encryption set.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

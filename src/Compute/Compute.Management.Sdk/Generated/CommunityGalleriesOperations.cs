@@ -50,14 +50,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// Get a community gallery by gallery public name.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='publicGalleryName'>
-        /// The public name of the community gallery.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -86,9 +81,23 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (publicGalleryName == null)
             {
@@ -102,9 +111,9 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("publicGalleryName", publicGalleryName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }

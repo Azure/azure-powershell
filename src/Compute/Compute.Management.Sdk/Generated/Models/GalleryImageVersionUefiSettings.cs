@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Contains UEFI settings for the image version.
-    /// </summary>
     public partial class GalleryImageVersionUefiSettings
     {
         /// <summary>
@@ -33,9 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryImageVersionUefiSettings
         /// class.
         /// </summary>
-        /// <param name="signatureTemplateNames">The name of the template(s)
-        /// that contains default UEFI key signatures that will be added to the
-        /// image.</param>
         public GalleryImageVersionUefiSettings(IList<string> signatureTemplateNames = default(IList<string>), UefiKeySignatures additionalSignatures = default(UefiKeySignatures))
         {
             SignatureTemplateNames = signatureTemplateNames;
@@ -49,8 +43,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the template(s) that contains default UEFI
-        /// key signatures that will be added to the image.
         /// </summary>
         [JsonProperty(PropertyName = "signatureTemplateNames")]
         public IList<string> SignatureTemplateNames { get; set; }

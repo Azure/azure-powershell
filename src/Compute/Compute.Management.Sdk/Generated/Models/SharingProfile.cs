@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Profile for gallery sharing to subscription or tenant
-    /// </summary>
     public partial class SharingProfile
     {
         /// <summary>
@@ -31,13 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharingProfile class.
         /// </summary>
-        /// <param name="permissions">This property allows you to specify the
-        /// permission of sharing gallery. Possible values are: **Private,**
-        /// **Groups,** **Community.**. Possible values include: 'Private',
+        /// <param name="permissions">Possible values include: 'Private',
         /// 'Groups', 'Community'</param>
-        /// <param name="groups">A list of sharing profile groups.</param>
-        /// <param name="communityGalleryInfo">Information of community gallery
-        /// if current gallery is shared to community.</param>
         public SharingProfile(string permissions = default(string), IList<SharingProfileGroup> groups = default(IList<SharingProfileGroup>), CommunityGalleryInfo communityGalleryInfo = default(CommunityGalleryInfo))
         {
             Permissions = permissions;
@@ -52,23 +44,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the permission of
-        /// sharing gallery. Possible values are: **Private,** **Groups,**
-        /// **Community.**. Possible values include: 'Private', 'Groups',
+        /// Gets or sets possible values include: 'Private', 'Groups',
         /// 'Community'
         /// </summary>
         [JsonProperty(PropertyName = "permissions")]
         public string Permissions { get; set; }
 
         /// <summary>
-        /// Gets a list of sharing profile groups.
         /// </summary>
         [JsonProperty(PropertyName = "groups")]
         public IList<SharingProfileGroup> Groups { get; private set; }
 
         /// <summary>
-        /// Gets or sets information of community gallery if current gallery is
-        /// shared to community.
         /// </summary>
         [JsonProperty(PropertyName = "communityGalleryInfo")]
         public CommunityGalleryInfo CommunityGalleryInfo { get; set; }

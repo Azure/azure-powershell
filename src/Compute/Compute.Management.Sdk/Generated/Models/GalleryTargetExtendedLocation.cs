@@ -28,14 +28,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryTargetExtendedLocation
         /// class.
         /// </summary>
-        /// <param name="name">The name of the region.</param>
-        /// <param name="extendedLocationReplicaCount">The number of replicas
-        /// of the Image Version to be created per extended location. This
-        /// property is updatable.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'StandardSSD_LRS', 'Premium_LRS'</param>
+        /// <param name="storageAccountType">Possible values include:
+        /// 'Standard_LRS', 'Standard_ZRS', 'StandardSSD_LRS',
+        /// 'Premium_LRS'</param>
         public GalleryTargetExtendedLocation(string name = default(string), GalleryExtendedLocation extendedLocation = default(GalleryExtendedLocation), int? extendedLocationReplicaCount = default(int?), string storageAccountType = default(string), EncryptionImages encryption = default(EncryptionImages))
         {
             Name = name;
@@ -52,7 +47,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the region.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -63,16 +57,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public GalleryExtendedLocation ExtendedLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of replicas of the Image Version to be
-        /// created per extended location. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocationReplicaCount")]
         public int? ExtendedLocationReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the storage account type to be used to store
-        /// the image. This property is not updatable. Possible values include:
-        /// 'Standard_LRS', 'Standard_ZRS', 'StandardSSD_LRS', 'Premium_LRS'
+        /// Gets or sets possible values include: 'Standard_LRS',
+        /// 'Standard_ZRS', 'StandardSSD_LRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
         public string StorageAccountType { get; set; }

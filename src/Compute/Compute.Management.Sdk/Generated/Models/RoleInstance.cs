@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the cloud service role instance.
-    /// </summary>
     public partial class RoleInstance
     {
         /// <summary>
@@ -31,11 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RoleInstance class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource Name.</param>
-        /// <param name="type">Resource Type.</param>
-        /// <param name="location">Resource Location.</param>
-        /// <param name="tags">Resource tags.</param>
         public RoleInstance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), InstanceSku sku = default(InstanceSku), RoleInstanceProperties properties = default(RoleInstanceProperties))
         {
             Id = id;
@@ -54,31 +46,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets resource Name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource Type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets resource Location.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
 
         /// <summary>
-        /// Gets resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; private set; }

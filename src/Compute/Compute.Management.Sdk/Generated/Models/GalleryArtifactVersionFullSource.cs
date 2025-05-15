@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The source of the gallery artifact version.
-    /// </summary>
     public partial class GalleryArtifactVersionFullSource : GalleryArtifactVersionSource
     {
         /// <summary>
@@ -31,14 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryArtifactVersionFullSource
         /// class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version
-        /// source.</param>
-        /// <param name="communityGalleryImageId">The resource Id of the source
-        /// Community Gallery Image.  Only required when using Community
-        /// Gallery Image as a source.</param>
-        /// <param name="virtualMachineId">The resource Id of the source
-        /// virtual machine.  Only required when capturing a virtual machine to
-        /// source this Gallery Image Version.</param>
         public GalleryArtifactVersionFullSource(string id = default(string), string communityGalleryImageId = default(string), string virtualMachineId = default(string))
             : base(id)
         {
@@ -53,16 +42,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the resource Id of the source Community Gallery Image.
-        /// Only required when using Community Gallery Image as a source.
         /// </summary>
         [JsonProperty(PropertyName = "communityGalleryImageId")]
         public string CommunityGalleryImageId { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource Id of the source virtual machine.  Only
-        /// required when capturing a virtual machine to source this Gallery
-        /// Image Version.
         /// </summary>
         [JsonProperty(PropertyName = "virtualMachineId")]
         public string VirtualMachineId { get; set; }

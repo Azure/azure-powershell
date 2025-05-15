@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,243 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class DedicatedHostsOperationsExtensions
     {
-            /// <summary>
-            /// Create or update a dedicated host .
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host .
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host.
-            /// </param>
-            public static DedicatedHost CreateOrUpdate(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHost parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update a dedicated host .
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host .
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DedicatedHost> CreateOrUpdateAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHost parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update a dedicated host .
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host .
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Dedicated Host operation.
-            /// </param>
-            public static DedicatedHost Update(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHostUpdate parameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update a dedicated host .
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host .
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Dedicated Host operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DedicatedHost> UpdateAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHostUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Delete a dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            public static void Delete(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
-            {
-                operations.DeleteAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Retrieves information about a dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' will
-            /// retrieve the list of instance views of the dedicated host. 'UserData' is
-            /// not supported for dedicated host. Possible values include: 'instanceView',
-            /// 'userData'
-            /// </param>
-            public static DedicatedHost Get(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, InstanceViewTypes? expand = default(InstanceViewTypes?))
-            {
-                return operations.GetAsync(resourceGroupName, hostGroupName, hostName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a dedicated host.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation. 'InstanceView' will
-            /// retrieve the list of instance views of the dedicated host. 'UserData' is
-            /// not supported for dedicated host. Possible values include: 'instanceView',
-            /// 'userData'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DedicatedHost> GetAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all of the dedicated hosts in the specified dedicated host group. Use
-            /// the nextLink property in the response to get the next page of dedicated
-            /// hosts.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             public static IPage<DedicatedHost> ListByHostGroup(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName)
             {
                 return operations.ListByHostGroupAsync(resourceGroupName, hostGroupName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all of the dedicated hosts in the specified dedicated host group. Use
-            /// the nextLink property in the response to get the next page of dedicated
-            /// hosts.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -272,103 +51,212 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Restart the dedicated host. The operation will complete successfully once
-            /// the dedicated host has restarted and is running. To determine the health of
-            /// VMs deployed on the dedicated host after the restart check the Resource
-            /// Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
-            public static void Restart(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            /// <param name='expand'>
+            /// Possible values include: 'instanceView', 'userData', 'resiliencyView'
+            /// </param>
+            public static DedicatedHost Get(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, InstanceViewTypes? expand = default(InstanceViewTypes?))
             {
-                operations.RestartAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, hostGroupName, hostName, expand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Restart the dedicated host. The operation will complete successfully once
-            /// the dedicated host has restarted and is running. To determine the health of
-            /// VMs deployed on the dedicated host after the restart check the Resource
-            /// Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
+            /// </param>
+            /// <param name='expand'>
+            /// Possible values include: 'instanceView', 'userData', 'resiliencyView'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RestartAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DedicatedHost> GetAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, InstanceViewTypes? expand = default(InstanceViewTypes?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RestartWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
-            /// <summary>
-            /// Redeploy the dedicated host. The operation will complete successfully once
-            /// the dedicated host has migrated to a new node and is running. To determine
-            /// the health of VMs deployed on the dedicated host after the redeploy check
-            /// the Resource Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static DedicatedHost CreateOrUpdate(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHost parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHost> CreateOrUpdateAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHost parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static DedicatedHost Update(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHostUpdate parameters)
+            {
+                return operations.UpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHost> UpdateAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHostUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            public static DedicatedHostsDeleteHeaders Delete(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            {
+                return operations.DeleteAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHostsDeleteHeaders> DeleteAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            public static IPage<string> ListAvailableSizes(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            {
+                return operations.ListAvailableSizesAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<string>> ListAvailableSizesAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
             /// </param>
             public static DedicatedHostsRedeployHeaders Redeploy(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
             {
                 return operations.RedeployAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Redeploy the dedicated host. The operation will complete successfully once
-            /// the dedicated host has migrated to a new node and is running. To determine
-            /// the health of VMs deployed on the dedicated host after the redeploy check
-            /// the Resource Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -381,96 +269,66 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all available dedicated host sizes to which the specified dedicated
-            /// host can be resized. NOTE: The dedicated host sizes provided can be used to
-            /// only scale up the existing dedicated host.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
-            public static IEnumerable<string> ListAvailableSizes(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            public static DedicatedHostsRestartHeaders Restart(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
             {
-                return operations.ListAvailableSizesAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+                return operations.RestartAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all available dedicated host sizes to which the specified dedicated
-            /// host can be resized. NOTE: The dedicated host sizes provided can be used to
-            /// only scale up the existing dedicated host.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<string>> ListAvailableSizesAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DedicatedHostsRestartHeaders> RestartAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAvailableSizesWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RestartWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
-            /// <summary>
-            /// Create or update a dedicated host .
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host.
             /// </param>
             public static DedicatedHost BeginCreateOrUpdate(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHost parameters)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Create or update a dedicated host .
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Dedicated Host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -483,46 +341,32 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update a dedicated host .
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Update Dedicated Host operation.
             /// </param>
             public static DedicatedHost BeginUpdate(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, DedicatedHostUpdate parameters)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, hostGroupName, hostName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update a dedicated host .
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host .
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Update Dedicated Host operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -535,146 +379,62 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Delete a dedicated host.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
-            public static void BeginDelete(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            public static DedicatedHostsDeleteHeaders BeginDelete(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Delete a dedicated host.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DedicatedHostsDeleteHeaders> BeginDeleteAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Restart the dedicated host. The operation will complete successfully once
-            /// the dedicated host has restarted and is running. To determine the health of
-            /// VMs deployed on the dedicated host after the restart check the Resource
-            /// Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            public static void BeginRestart(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
-            {
-                operations.BeginRestartAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Restart the dedicated host. The operation will complete successfully once
-            /// the dedicated host has restarted and is running. To determine the health of
-            /// VMs deployed on the dedicated host after the restart check the Resource
-            /// Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginRestartAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Redeploy the dedicated host. The operation will complete successfully once
-            /// the dedicated host has migrated to a new node and is running. To determine
-            /// the health of VMs deployed on the dedicated host after the redeploy check
-            /// the Resource Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
-            /// </param>
-            /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
             public static DedicatedHostsRedeployHeaders BeginRedeploy(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
             {
                 return operations.BeginRedeployAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Redeploy the dedicated host. The operation will complete successfully once
-            /// the dedicated host has migrated to a new node and is running. To determine
-            /// the health of VMs deployed on the dedicated host after the redeploy check
-            /// the Resource Health Center in the Azure Portal. Please refer to
-            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
-            /// for more details.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='hostGroupName'>
-            /// The name of the dedicated host group.
             /// </param>
             /// <param name='hostName'>
-            /// The name of the dedicated host.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -687,11 +447,40 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all of the dedicated hosts in the specified dedicated host group. Use
-            /// the nextLink property in the response to get the next page of dedicated
-            /// hosts.
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            public static DedicatedHostsRestartHeaders BeginRestart(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            {
+                return operations.BeginRestartAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// </param>
+            /// <param name='hostName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHostsRestartHeaders> BeginRestartAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -703,11 +492,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListByHostGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all of the dedicated hosts in the specified dedicated host group. Use
-            /// the nextLink property in the response to get the next page of dedicated
-            /// hosts.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -720,6 +504,34 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<DedicatedHost>> ListByHostGroupNextAsync(this IDedicatedHostsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByHostGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<string> ListAvailableSizesNext(this IDedicatedHostsOperations operations, string nextPageLink)
+            {
+                return operations.ListAvailableSizesNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<string>> ListAvailableSizesNextAsync(this IDedicatedHostsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAvailableSizesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

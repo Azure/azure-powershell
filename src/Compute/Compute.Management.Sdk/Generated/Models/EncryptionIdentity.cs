@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the Managed Identity used by ADE to get access token for
-    /// keyvault operations.
-    /// </summary>
     public partial class EncryptionIdentity
     {
         /// <summary>
@@ -30,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EncryptionIdentity class.
         /// </summary>
-        /// <param name="userAssignedIdentityResourceId">Specifies ARM Resource
-        /// ID of one of the user identities associated with the VM.</param>
         public EncryptionIdentity(string userAssignedIdentityResourceId = default(string))
         {
             UserAssignedIdentityResourceId = userAssignedIdentityResourceId;
@@ -44,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies ARM Resource ID of one of the user
-        /// identities associated with the VM.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentityResourceId")]
         public string UserAssignedIdentityResourceId { get; set; }

@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Identity for the virtual machine.
-    /// </summary>
     public partial class GalleryIdentity
     {
         /// <summary>
@@ -31,22 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryIdentity class.
         /// </summary>
-        /// <param name="principalId">The principal id of the gallery identity.
-        /// This property will only be provided for a system assigned
-        /// identity.</param>
-        /// <param name="tenantId">The AAD tenant id of the gallery identity.
-        /// This property will only be provided for a system assigned
-        /// identity.</param>
-        /// <param name="type">The type of identity used for the gallery. The
-        /// type 'SystemAssigned, UserAssigned' includes both an implicitly
-        /// created identity and a set of user assigned identities. The type
-        /// 'None' will remove all identities from the gallery. Possible values
-        /// include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
-        /// UserAssigned', 'None'</param>
-        /// <param name="userAssignedIdentities">The list of user identities
-        /// associated with the gallery. The user identity dictionary key
-        /// references will be ARM resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
+        /// <param name="type">Possible values include: 'SystemAssigned',
+        /// 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'</param>
         public GalleryIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, UserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, UserAssignedIdentitiesValue>))
         {
             PrincipalId = principalId;
@@ -62,35 +45,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the principal id of the gallery identity. This property will
-        /// only be provided for a system assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the AAD tenant id of the gallery identity. This property will
-        /// only be provided for a system assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "tenantId")]
         public string TenantId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the type of identity used for the gallery. The type
-        /// 'SystemAssigned, UserAssigned' includes both an implicitly created
-        /// identity and a set of user assigned identities. The type 'None'
-        /// will remove all identities from the gallery. Possible values
-        /// include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
-        /// UserAssigned', 'None'
+        /// Gets or sets possible values include: 'SystemAssigned',
+        /// 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public ResourceIdentityType? Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of user identities associated with the
-        /// gallery. The user identity dictionary key references will be ARM
-        /// resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentities")]
         public IDictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }

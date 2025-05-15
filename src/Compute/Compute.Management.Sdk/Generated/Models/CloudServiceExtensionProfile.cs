@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a cloud service extension profile.
-    /// </summary>
     public partial class CloudServiceExtensionProfile
     {
         /// <summary>
@@ -33,8 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CloudServiceExtensionProfile
         /// class.
         /// </summary>
-        /// <param name="extensions">List of extensions for the cloud
-        /// service.</param>
         public CloudServiceExtensionProfile(IList<Extension> extensions = default(IList<Extension>))
         {
             Extensions = extensions;
@@ -47,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of extensions for the cloud service.
         /// </summary>
         [JsonProperty(PropertyName = "extensions")]
         public IList<Extension> Extensions { get; set; }

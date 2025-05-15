@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a cloud service IP Configuration
-    /// </summary>
     public partial class LoadBalancerFrontendIpConfigurationProperties
     {
         /// <summary>
@@ -31,12 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// LoadBalancerFrontendIpConfigurationProperties class.
         /// </summary>
-        /// <param name="publicIPAddress">The reference to the public ip
-        /// address resource.</param>
-        /// <param name="subnet">The reference to the virtual network subnet
-        /// resource.</param>
-        /// <param name="privateIPAddress">The virtual network private IP
-        /// address of the IP configuration.</param>
         public LoadBalancerFrontendIpConfigurationProperties(SubResource publicIPAddress = default(SubResource), SubResource subnet = default(SubResource), string privateIPAddress = default(string))
         {
             PublicIPAddress = publicIPAddress;
@@ -51,20 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the reference to the public ip address resource.
         /// </summary>
         [JsonProperty(PropertyName = "publicIPAddress")]
         public SubResource PublicIPAddress { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the virtual network subnet resource.
         /// </summary>
         [JsonProperty(PropertyName = "subnet")]
         public SubResource Subnet { get; set; }
 
         /// <summary>
-        /// Gets or sets the virtual network private IP address of the IP
-        /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "privateIPAddress")]
         public string PrivateIPAddress { get; set; }

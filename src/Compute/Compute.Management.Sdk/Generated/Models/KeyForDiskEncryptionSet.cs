@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Key Vault Key Url to be used for server side encryption of Managed
-    /// Disks and Snapshots
-    /// </summary>
     public partial class KeyForDiskEncryptionSet
     {
         /// <summary>
@@ -31,13 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the KeyForDiskEncryptionSet class.
         /// </summary>
-        /// <param name="keyUrl">Fully versioned Key Url pointing to a key in
-        /// KeyVault. Version segment of the Url is required regardless of
-        /// rotationToLatestKeyVersionEnabled value.</param>
-        /// <param name="sourceVault">Resource id of the KeyVault containing
-        /// the key or secret. This property is optional and cannot be used if
-        /// the KeyVault subscription is not the same as the Disk Encryption
-        /// Set subscription.</param>
         public KeyForDiskEncryptionSet(string keyUrl, SourceVault sourceVault = default(SourceVault))
         {
             SourceVault = sourceVault;
@@ -51,18 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource id of the KeyVault containing the key or
-        /// secret. This property is optional and cannot be used if the
-        /// KeyVault subscription is not the same as the Disk Encryption Set
-        /// subscription.
         /// </summary>
         [JsonProperty(PropertyName = "sourceVault")]
         public SourceVault SourceVault { get; set; }
 
         /// <summary>
-        /// Gets or sets fully versioned Key Url pointing to a key in KeyVault.
-        /// Version segment of the Url is required regardless of
-        /// rotationToLatestKeyVersionEnabled value.
         /// </summary>
         [JsonProperty(PropertyName = "keyUrl")]
         public string KeyUrl { get; set; }

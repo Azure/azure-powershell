@@ -50,15 +50,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// Gets properties of a guest operating system version that can be specified
-        /// in the XML service configuration (.cscfg) for a cloud service.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS version pertains to.
         /// </param>
         /// <param name='osVersionName'>
-        /// Name of the OS version.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -94,6 +88,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -245,14 +246,7 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all guest operating system versions available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud service.
-        /// Use nextLink property in the response to get the next page of OS versions.
-        /// Do this till nextLink is null to fetch all the OS versions.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS versions pertain to.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -284,6 +278,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -414,7 +415,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OSVersion>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OSVersion>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -433,15 +434,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets properties of a guest operating system family that can be specified in
-        /// the XML service configuration (.cscfg) for a cloud service.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS family pertains to.
         /// </param>
         /// <param name='osFamilyName'>
-        /// Name of the OS family.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -477,6 +472,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -628,14 +630,7 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all guest operating system families available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud service.
-        /// Use nextLink property in the response to get the next page of OS Families.
-        /// Do this till nextLink is null to fetch all the OS Families.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS families pertain to.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -667,6 +662,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -797,7 +799,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OSFamily>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OSFamily>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -816,12 +818,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all guest operating system versions available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud service.
-        /// Use nextLink property in the response to get the next page of OS versions.
-        /// Do this till nextLink is null to fetch all the OS versions.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -973,7 +969,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OSVersion>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OSVersion>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -992,12 +988,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all guest operating system families available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud service.
-        /// Use nextLink property in the response to get the next page of OS Families.
-        /// Do this till nextLink is null to fetch all the OS Families.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -1149,7 +1139,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OSFamily>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<OSFamily>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The source for the disk image.
-    /// </summary>
     public partial class GalleryDiskImageSource : GalleryArtifactVersionSource
     {
         /// <summary>
@@ -29,13 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryDiskImageSource class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version
-        /// source.</param>
-        /// <param name="uri">The uri of the gallery artifact version source.
-        /// Currently used to specify vhd/blob source.</param>
-        /// <param name="storageAccountId">The Storage Account Id that contains
-        /// the vhd blob being used as a source for this artifact
-        /// version.</param>
         public GalleryDiskImageSource(string id = default(string), string uri = default(string), string storageAccountId = default(string))
             : base(id)
         {
@@ -50,15 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the uri of the gallery artifact version source.
-        /// Currently used to specify vhd/blob source.
         /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
         /// <summary>
-        /// Gets or sets the Storage Account Id that contains the vhd blob
-        /// being used as a source for this artifact version.
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountId")]
         public string StorageAccountId { get; set; }

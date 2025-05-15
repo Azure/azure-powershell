@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the safety profile of the Gallery Artifact Version.
-    /// </summary>
     public partial class GalleryArtifactSafetyProfileBase
     {
         /// <summary>
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryArtifactSafetyProfileBase
         /// class.
         /// </summary>
-        /// <param name="allowDeletionOfReplicatedLocations">Indicates whether
-        /// or not removing this Gallery Image Version from replicated regions
-        /// is allowed.</param>
         public GalleryArtifactSafetyProfileBase(bool? allowDeletionOfReplicatedLocations = default(bool?))
         {
             AllowDeletionOfReplicatedLocations = allowDeletionOfReplicatedLocations;
@@ -46,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets indicates whether or not removing this Gallery Image
-        /// Version from replicated regions is allowed.
         /// </summary>
         [JsonProperty(PropertyName = "allowDeletionOfReplicatedLocations")]
         public bool? AllowDeletionOfReplicatedLocations { get; set; }

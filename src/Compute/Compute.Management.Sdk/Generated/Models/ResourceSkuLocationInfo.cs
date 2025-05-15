@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an available Compute SKU Location Information.
-    /// </summary>
     public partial class ResourceSkuLocationInfo
     {
         /// <summary>
@@ -31,15 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuLocationInfo class.
         /// </summary>
-        /// <param name="location">Location of the SKU</param>
-        /// <param name="zones">List of availability zones where the SKU is
-        /// supported.</param>
-        /// <param name="zoneDetails">Details of capabilities available to a
-        /// SKU in specific zones.</param>
-        /// <param name="extendedLocations">The names of extended
-        /// locations.</param>
-        /// <param name="type">The type of the extended location. Possible
-        /// values include: 'EdgeZone'</param>
+        /// <param name="type">Possible values include: 'EdgeZone'</param>
         public ResourceSkuLocationInfo(string location = default(string), IList<string> zones = default(IList<string>), IList<ResourceSkuZoneDetails> zoneDetails = default(IList<ResourceSkuZoneDetails>), IList<string> extendedLocations = default(IList<string>), string type = default(string))
         {
             Location = location;
@@ -56,32 +45,27 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets location of the SKU
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
 
         /// <summary>
-        /// Gets list of availability zones where the SKU is supported.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; private set; }
 
         /// <summary>
-        /// Gets details of capabilities available to a SKU in specific zones.
         /// </summary>
         [JsonProperty(PropertyName = "zoneDetails")]
         public IList<ResourceSkuZoneDetails> ZoneDetails { get; private set; }
 
         /// <summary>
-        /// Gets the names of extended locations.
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocations")]
         public IList<string> ExtendedLocations { get; private set; }
 
         /// <summary>
-        /// Gets the type of the extended location. Possible values include:
-        /// 'EdgeZone'
+        /// Gets possible values include: 'EdgeZone'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }

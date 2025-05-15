@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The List VmImages in EdgeZone operation response.
-    /// </summary>
     public partial class VmImagesInEdgeZoneListResult
     {
         /// <summary>
@@ -33,10 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VmImagesInEdgeZoneListResult
         /// class.
         /// </summary>
-        /// <param name="value">The list of VMImages in EdgeZone</param>
-        /// <param name="nextLink">The URI to fetch the next page of VMImages
-        /// in EdgeZone. Call ListNext() with this URI to fetch the next page
-        /// of VmImages.</param>
         public VmImagesInEdgeZoneListResult(IList<VirtualMachineImageResource> value = default(IList<VirtualMachineImageResource>), string nextLink = default(string))
         {
             Value = value;
@@ -50,15 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of VMImages in EdgeZone
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<VirtualMachineImageResource> Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the URI to fetch the next page of VMImages in
-        /// EdgeZone. Call ListNext() with this URI to fetch the next page of
-        /// VmImages.
         /// </summary>
         [JsonProperty(PropertyName = "nextLink")]
         public string NextLink { get; set; }

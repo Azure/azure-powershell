@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the executed Validation.
-    /// </summary>
     public partial class ExecutedValidation
     {
         /// <summary>
@@ -29,15 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ExecutedValidation class.
         /// </summary>
-        /// <param name="type">This property specifies the type of image
-        /// version validation.</param>
-        /// <param name="status">This property specifies the status of the
-        /// validationProfile of the image version. Possible values include:
-        /// 'Unknown', 'Failed', 'Succeeded'</param>
-        /// <param name="version">This property specifies the valid version of
-        /// the validation.</param>
-        /// <param name="executionTime">This property specifies the starting
-        /// timestamp.</param>
+        /// <param name="status">Possible values include: 'Unknown', 'Failed',
+        /// 'Succeeded'</param>
         public ExecutedValidation(string type = default(string), string status = default(string), string version = default(string), System.DateTime? executionTime = default(System.DateTime?))
         {
             Type = type;
@@ -53,29 +43,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property specifies the type of image version
-        /// validation.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets this property specifies the status of the
-        /// validationProfile of the image version. Possible values include:
-        /// 'Unknown', 'Failed', 'Succeeded'
+        /// Gets or sets possible values include: 'Unknown', 'Failed',
+        /// 'Succeeded'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets this property specifies the valid version of the
-        /// validation.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
 
         /// <summary>
-        /// Gets or sets this property specifies the starting timestamp.
         /// </summary>
         [JsonProperty(PropertyName = "executionTime")]
         public System.DateTime? ExecutionTime { get; set; }

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The definition of a parameter that can be passed to a custom action of
-    /// a Gallery Application Version.
-    /// </summary>
     public partial class GalleryApplicationCustomActionParameter
     {
         /// <summary>
@@ -33,25 +29,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryApplicationCustomActionParameter class.
         /// </summary>
-        /// <param name="name">The name of the custom action.  Must be unique
-        /// within the Gallery Application Version.</param>
-        /// <param name="required">Indicates whether this parameter must be
-        /// passed when running the custom action.</param>
-        /// <param name="type">Specifies the type of the custom action
-        /// parameter. Possible values are: String, ConfigurationDataBlob or
-        /// LogOutputBlob. Possible values include: 'String',
+        /// <param name="type">Possible values include: 'String',
         /// 'ConfigurationDataBlob', 'LogOutputBlob'</param>
-        /// <param name="defaultValue">The default value of the parameter.
-        /// Only applies to string types</param>
-        /// <param name="description">A description to help users understand
-        /// what this parameter means</param>
-        public GalleryApplicationCustomActionParameter(string name, bool? required = default(bool?), GalleryApplicationCustomActionParameterType? type = default(GalleryApplicationCustomActionParameterType?), string defaultValue = default(string), string description = default(string))
+        public GalleryApplicationCustomActionParameter(string name, bool? required = default(bool?), GalleryApplicationCustomActionParameterType? type = default(GalleryApplicationCustomActionParameterType?), string defaultValue = default(string))
         {
             Name = name;
             Required = required;
             Type = type;
             DefaultValue = defaultValue;
-            Description = description;
             CustomInit();
         }
 
@@ -61,41 +46,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the custom action.  Must be unique within
-        /// the Gallery Application Version.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates whether this parameter must be passed when
-        /// running the custom action.
         /// </summary>
         [JsonProperty(PropertyName = "required")]
         public bool? Required { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the type of the custom action parameter.
-        /// Possible values are: String, ConfigurationDataBlob or
-        /// LogOutputBlob. Possible values include: 'String',
+        /// Gets or sets possible values include: 'String',
         /// 'ConfigurationDataBlob', 'LogOutputBlob'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public GalleryApplicationCustomActionParameterType? Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the default value of the parameter.  Only applies to
-        /// string types
         /// </summary>
         [JsonProperty(PropertyName = "defaultValue")]
         public string DefaultValue { get; set; }
-
-        /// <summary>
-        /// Gets or sets a description to help users understand what this
-        /// parameter means
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
 
         /// <summary>
         /// Validate the object.

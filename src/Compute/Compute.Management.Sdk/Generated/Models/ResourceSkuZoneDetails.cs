@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes The zonal capabilities of a SKU.
-    /// </summary>
     public partial class ResourceSkuZoneDetails
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuZoneDetails class.
         /// </summary>
-        /// <param name="name">The set of zones that the SKU is available in
-        /// with the specified capabilities.</param>
-        /// <param name="capabilities">A list of capabilities that are
-        /// available for the SKU in the specified list of zones.</param>
         public ResourceSkuZoneDetails(IList<string> name = default(IList<string>), IList<ResourceSkuCapabilities> capabilities = default(IList<ResourceSkuCapabilities>))
         {
             Name = name;
@@ -48,15 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the set of zones that the SKU is available in with the
-        /// specified capabilities.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public IList<string> Name { get; private set; }
 
         /// <summary>
-        /// Gets a list of capabilities that are available for the SKU in the
-        /// specified list of zones.
         /// </summary>
         [JsonProperty(PropertyName = "capabilities")]
         public IList<ResourceSkuCapabilities> Capabilities { get; private set; }

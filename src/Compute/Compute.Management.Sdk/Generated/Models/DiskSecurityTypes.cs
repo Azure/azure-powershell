@@ -16,29 +16,10 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class DiskSecurityTypes
     {
-        /// <summary>
-        /// Trusted Launch provides security features such as secure boot and
-        /// virtual Trusted Platform Module (vTPM)
-        /// </summary>
         public const string TrustedLaunch = "TrustedLaunch";
-        /// <summary>
-        /// Indicates Confidential VM disk with only VM guest state encrypted
-        /// </summary>
         public const string ConfidentialVMVMGuestStateOnlyEncryptedWithPlatformKey = "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey";
-        /// <summary>
-        /// Indicates Confidential VM disk with both OS disk and VM guest state
-        /// encrypted with a platform managed key
-        /// </summary>
         public const string ConfidentialVMDiskEncryptedWithPlatformKey = "ConfidentialVM_DiskEncryptedWithPlatformKey";
-        /// <summary>
-        /// Indicates Confidential VM disk with both OS disk and VM guest state
-        /// encrypted with a customer managed key
-        /// </summary>
         public const string ConfidentialVMDiskEncryptedWithCustomerKey = "ConfidentialVM_DiskEncryptedWithCustomerKey";
-        /// <summary>
-        /// Indicates Confidential VM disk with a ephemeral vTPM. vTPM state is
-        /// not persisted across VM reboots.
-        /// </summary>
         public const string ConfidentialVMNonPersistedTPM = "ConfidentialVM_NonPersistedTPM";
     }
 }

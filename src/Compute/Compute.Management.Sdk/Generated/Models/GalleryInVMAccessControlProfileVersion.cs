@@ -17,12 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery inVMAccessControlProfile
-    /// version that you want to create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryInVMAccessControlProfileVersion : Resource
+    public partial class GalleryInVMAccessControlProfileVersion : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -38,26 +34,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// GalleryInVMAccessControlProfileVersion class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="mode">This property allows you to specify whether the
-        /// access control rules are in Audit mode, in Enforce mode or
-        /// Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
-        /// Possible values include: 'Audit', 'Enforce', 'Disabled'</param>
-        /// <param name="defaultAccess">This property allows you to specify if
-        /// the requests will be allowed to access the host endpoints. Possible
-        /// values are: 'Allow', 'Deny'. Possible values include: 'Allow',
+        /// <param name="mode">Possible values include: 'Audit', 'Enforce',
+        /// 'Disabled'</param>
+        /// <param name="defaultAccess">Possible values include: 'Allow',
         /// 'Deny'</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="targetLocations">The target regions where the Resource
-        /// Profile version is going to be replicated to. This property is
-        /// updatable.</param>
-        /// <param name="excludeFromLatest">If set to true, Virtual Machines
-        /// deployed from the latest version of the Resource Profile won't use
-        /// this Profile version.</param>
-        /// <param name="publishedDate">The timestamp for when the Resource
-        /// Profile Version is published.</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
@@ -81,23 +65,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target regions where the Resource Profile version
-        /// is going to be replicated to. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.targetLocations")]
         public IList<TargetRegion> TargetLocations { get; set; }
 
         /// <summary>
-        /// Gets or sets if set to true, Virtual Machines deployed from the
-        /// latest version of the Resource Profile won't use this Profile
-        /// version.
         /// </summary>
         [JsonProperty(PropertyName = "properties.excludeFromLatest")]
         public bool? ExcludeFromLatest { get; set; }
 
         /// <summary>
-        /// Gets the timestamp for when the Resource Profile Version is
-        /// published.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publishedDate")]
         public System.DateTime? PublishedDate { get; private set; }
@@ -115,18 +92,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ReplicationStatus ReplicationStatus { get; private set; }
 
         /// <summary>
-        /// Gets or sets this property allows you to specify whether the access
-        /// control rules are in Audit mode, in Enforce mode or Disabled.
-        /// Possible values are: 'Audit', 'Enforce' or 'Disabled'. Possible
-        /// values include: 'Audit', 'Enforce', 'Disabled'
+        /// Gets or sets possible values include: 'Audit', 'Enforce',
+        /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.mode")]
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets this property allows you to specify if the requests
-        /// will be allowed to access the host endpoints. Possible values are:
-        /// 'Allow', 'Deny'. Possible values include: 'Allow', 'Deny'
+        /// Gets or sets possible values include: 'Allow', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "properties.defaultAccess")]
         public string DefaultAccess { get; set; }

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes metadata for retrieving price info.
-    /// </summary>
     public partial class ResourceSkuCosts
     {
         /// <summary>
@@ -29,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuCosts class.
         /// </summary>
-        /// <param name="meterID">Used for querying price from
-        /// commerce.</param>
-        /// <param name="quantity">The multiplier is needed to extend the base
-        /// metered cost.</param>
-        /// <param name="extendedUnit">An invariant to show the extended
-        /// unit.</param>
         public ResourceSkuCosts(string meterID = default(string), long? quantity = default(long?), string extendedUnit = default(string))
         {
             MeterID = meterID;
@@ -49,19 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets used for querying price from commerce.
         /// </summary>
         [JsonProperty(PropertyName = "meterID")]
         public string MeterID { get; private set; }
 
         /// <summary>
-        /// Gets the multiplier is needed to extend the base metered cost.
         /// </summary>
         [JsonProperty(PropertyName = "quantity")]
         public long? Quantity { get; private set; }
 
         /// <summary>
-        /// Gets an invariant to show the extended unit.
         /// </summary>
         [JsonProperty(PropertyName = "extendedUnit")]
         public string ExtendedUnit { get; private set; }

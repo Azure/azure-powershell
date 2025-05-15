@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The managed identity for the disk encryption set. It should be given
-    /// permission on the key vault before it can be used to encrypt disks.
-    /// </summary>
     public partial class EncryptionSetIdentity
     {
         /// <summary>
@@ -32,25 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EncryptionSetIdentity class.
         /// </summary>
-        /// <param name="type">The type of Managed Identity used by the
-        /// DiskEncryptionSet. Only SystemAssigned is supported for new
-        /// creations. Disk Encryption Sets can be updated with Identity type
-        /// None during migration of subscription to a new Azure Active
-        /// Directory tenant; it will cause the encrypted resources to lose
-        /// access to the keys. Possible values include: 'SystemAssigned',
+        /// <param name="type">Possible values include: 'SystemAssigned',
         /// 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'</param>
-        /// <param name="principalId">The object id of the Managed Identity
-        /// Resource. This will be sent to the RP from ARM via the
-        /// x-ms-identity-principal-id header in the PUT request if the
-        /// resource has a systemAssigned(implicit) identity</param>
-        /// <param name="tenantId">The tenant id of the Managed Identity
-        /// Resource. This will be sent to the RP from ARM via the
-        /// x-ms-client-tenant-id header in the PUT request if the resource has
-        /// a systemAssigned(implicit) identity</param>
-        /// <param name="userAssignedIdentities">The list of user identities
-        /// associated with the disk encryption set. The user identity
-        /// dictionary key references will be ARM resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
         public EncryptionSetIdentity(string type = default(string), string principalId = default(string), string tenantId = default(string), IDictionary<string, UserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, UserAssignedIdentitiesValue>))
         {
             Type = type;
@@ -66,39 +45,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the type of Managed Identity used by the
-        /// DiskEncryptionSet. Only SystemAssigned is supported for new
-        /// creations. Disk Encryption Sets can be updated with Identity type
-        /// None during migration of subscription to a new Azure Active
-        /// Directory tenant; it will cause the encrypted resources to lose
-        /// access to the keys. Possible values include: 'SystemAssigned',
+        /// Gets or sets possible values include: 'SystemAssigned',
         /// 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets the object id of the Managed Identity Resource. This will be
-        /// sent to the RP from ARM via the x-ms-identity-principal-id header
-        /// in the PUT request if the resource has a systemAssigned(implicit)
-        /// identity
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
         public string PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the tenant id of the Managed Identity Resource. This will be
-        /// sent to the RP from ARM via the x-ms-client-tenant-id header in the
-        /// PUT request if the resource has a systemAssigned(implicit) identity
         /// </summary>
         [JsonProperty(PropertyName = "tenantId")]
         public string TenantId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the list of user identities associated with the disk
-        /// encryption set. The user identity dictionary key references will be
-        /// ARM resource ids in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentities")]
         public IDictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }

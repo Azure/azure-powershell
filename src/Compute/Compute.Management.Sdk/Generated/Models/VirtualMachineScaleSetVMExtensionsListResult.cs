@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The List VMSS VM Extension operation response
-    /// </summary>
     public partial class VirtualMachineScaleSetVMExtensionsListResult
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetVMExtensionsListResult class.
         /// </summary>
-        /// <param name="value">The list of VMSS VM extensions</param>
         public VirtualMachineScaleSetVMExtensionsListResult(IList<VirtualMachineScaleSetVMExtension> value = default(IList<VirtualMachineScaleSetVMExtension>))
         {
             Value = value;
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of VMSS VM extensions
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<VirtualMachineScaleSetVMExtension> Value { get; set; }

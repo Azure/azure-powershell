@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains the IP tag associated with the public IP address.
-    /// </summary>
     public partial class VirtualMachineScaleSetIpTag
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineScaleSetIpTag
         /// class.
         /// </summary>
-        /// <param name="ipTagType">IP tag type. Example:
-        /// FirstPartyUsage.</param>
-        /// <param name="tag">IP tag associated with the public IP. Example:
-        /// SQL, Storage etc.</param>
         public VirtualMachineScaleSetIpTag(string ipTagType = default(string), string tag = default(string))
         {
             IpTagType = ipTagType;
@@ -48,14 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets IP tag type. Example: FirstPartyUsage.
         /// </summary>
         [JsonProperty(PropertyName = "ipTagType")]
         public string IpTagType { get; set; }
 
         /// <summary>
-        /// Gets or sets IP tag associated with the public IP. Example: SQL,
-        /// Storage etc.
         /// </summary>
         [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }

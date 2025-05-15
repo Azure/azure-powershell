@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of an Access Control Rule Role.
-    /// </summary>
     public partial class AccessControlRulesRole
     {
         /// <summary>
@@ -32,9 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AccessControlRulesRole class.
         /// </summary>
-        /// <param name="name">The name of the role.</param>
-        /// <param name="privileges">A list of privileges needed by this
-        /// role.</param>
         public AccessControlRulesRole(string name, IList<string> privileges)
         {
             Name = name;
@@ -48,13 +42,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the role.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of privileges needed by this role.
         /// </summary>
         [JsonProperty(PropertyName = "privileges")]
         public IList<string> Privileges { get; set; }

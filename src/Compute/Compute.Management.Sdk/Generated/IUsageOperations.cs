@@ -23,13 +23,7 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IUsageOperations
     {
-        /// <summary>
-        /// Gets, for the specified location, the current compute resource
-        /// usage information as well as the limits for compute resources under
-        /// the subscription.
-        /// </summary>
         /// <param name='location'>
-        /// The location for which resource usage is queried.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -47,11 +41,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<Usage>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets, for the specified location, the current compute resource
-        /// usage information as well as the limits for compute resources under
-        /// the subscription.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

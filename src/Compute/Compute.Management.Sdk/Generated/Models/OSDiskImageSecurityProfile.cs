@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains security profile for an OS disk image.
-    /// </summary>
     public partial class OSDiskImageSecurityProfile
     {
         /// <summary>
@@ -29,12 +26,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSDiskImageSecurityProfile class.
         /// </summary>
-        /// <param name="confidentialVMEncryptionType">confidential VM
-        /// encryption types. Possible values include:
+        /// <param name="confidentialVMEncryptionType">Possible values include:
         /// 'EncryptedVMGuestStateOnlyWithPmk', 'EncryptedWithPmk',
         /// 'EncryptedWithCmk', 'NonPersistedTPM'</param>
-        /// <param name="secureVMDiskEncryptionSetId">secure VM disk encryption
-        /// set id</param>
         public OSDiskImageSecurityProfile(string confidentialVMEncryptionType = default(string), string secureVMDiskEncryptionSetId = default(string))
         {
             ConfidentialVMEncryptionType = confidentialVMEncryptionType;
@@ -48,15 +42,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets confidential VM encryption types. Possible values
-        /// include: 'EncryptedVMGuestStateOnlyWithPmk', 'EncryptedWithPmk',
+        /// Gets or sets possible values include:
+        /// 'EncryptedVMGuestStateOnlyWithPmk', 'EncryptedWithPmk',
         /// 'EncryptedWithCmk', 'NonPersistedTPM'
         /// </summary>
         [JsonProperty(PropertyName = "confidentialVMEncryptionType")]
         public string ConfidentialVMEncryptionType { get; set; }
 
         /// <summary>
-        /// Gets or sets secure VM disk encryption set id
         /// </summary>
         [JsonProperty(PropertyName = "secureVMDiskEncryptionSetId")]
         public string SecureVMDiskEncryptionSetId { get; set; }

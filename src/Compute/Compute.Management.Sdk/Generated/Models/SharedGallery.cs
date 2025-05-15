@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the Shared Gallery that you want to create
-    /// or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class SharedGallery : PirSharedGalleryResource
     {
@@ -35,10 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharedGallery class.
         /// </summary>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
-        /// <param name="uniqueId">The unique id of this shared
-        /// gallery.</param>
         public SharedGallery(string name = default(string), string location = default(string), string uniqueId = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, uniqueId)
         {

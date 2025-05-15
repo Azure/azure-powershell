@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// This is the validations profile of a Gallery Image Version.
-    /// </summary>
     public partial class ValidationsProfile
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ValidationsProfile class.
         /// </summary>
-        /// <param name="validationEtag">The published time of the image
-        /// version</param>
-        /// <param name="platformAttributes">This specifies the pub, offer, sku
-        /// and version of the image version metadata</param>
         public ValidationsProfile(string validationEtag = default(string), IList<ExecutedValidation> executedValidations = default(IList<ExecutedValidation>), IList<PlatformAttribute> platformAttributes = default(IList<PlatformAttribute>))
         {
             ValidationEtag = validationEtag;
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the published time of the image version
         /// </summary>
         [JsonProperty(PropertyName = "validationEtag")]
         public string ValidationEtag { get; set; }
@@ -60,8 +52,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public IList<ExecutedValidation> ExecutedValidations { get; set; }
 
         /// <summary>
-        /// Gets or sets this specifies the pub, offer, sku and version of the
-        /// image version metadata
         /// </summary>
         [JsonProperty(PropertyName = "platformAttributes")]
         public IList<PlatformAttribute> PlatformAttributes { get; set; }

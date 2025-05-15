@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Protected settings for the extension, referenced using KeyVault which
-    /// are encrypted before sent to the role instance.
-    /// </summary>
     public partial class CloudServiceVaultAndSecretReference
     {
         /// <summary>
@@ -32,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// CloudServiceVaultAndSecretReference class.
         /// </summary>
-        /// <param name="sourceVault">The ARM Resource ID of the Key
-        /// Vault</param>
-        /// <param name="secretUrl">Secret URL which contains the protected
-        /// settings of the extension</param>
         public CloudServiceVaultAndSecretReference(SubResource sourceVault = default(SubResource), string secretUrl = default(string))
         {
             SourceVault = sourceVault;
@@ -49,14 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ARM Resource ID of the Key Vault
         /// </summary>
         [JsonProperty(PropertyName = "sourceVault")]
         public SubResource SourceVault { get; set; }
 
         /// <summary>
-        /// Gets or sets secret URL which contains the protected settings of
-        /// the extension
         /// </summary>
         [JsonProperty(PropertyName = "secretUrl")]
         public string SecretUrl { get; set; }

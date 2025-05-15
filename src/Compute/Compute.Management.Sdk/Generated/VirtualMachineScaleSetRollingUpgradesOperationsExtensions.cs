@@ -21,153 +21,114 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class VirtualMachineScaleSetRollingUpgradesOperationsExtensions
     {
-            /// <summary>
-            /// Cancels the current virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void Cancel(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders StartExtensionUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.CancelAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.StartExtensionUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Cancels the current virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task CancelAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders> StartExtensionUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.CancelWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.StartExtensionUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all virtual machine scale set instances to
-            /// the latest available Platform Image OS version. Instances which are already
-            /// running the latest available OS version are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void StartOSUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders StartOSUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.StartOSUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.StartOSUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all virtual machine scale set instances to
-            /// the latest available Platform Image OS version. Instances which are already
-            /// running the latest available OS version are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StartOSUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders> StartOSUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.StartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all extensions for all virtual machine
-            /// scale set instances to the latest available extension version. Instances
-            /// which are already running the latest extension versions are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void StartExtensionUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesCancelHeaders Cancel(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.StartExtensionUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.CancelAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all extensions for all virtual machine
-            /// scale set instances to the latest available extension version. Instances
-            /// which are already running the latest extension versions are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StartExtensionUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesCancelHeaders> CancelAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StartExtensionUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.CancelWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Gets the status of the latest virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             public static RollingUpgradeStatusInfo GetLatest(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
                 return operations.GetLatestAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the status of the latest virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -180,123 +141,94 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Cancels the current virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void BeginCancel(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders BeginStartExtensionUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.BeginCancelAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.BeginStartExtensionUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Cancels the current virtual machine scale set rolling upgrade.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginCancelAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesStartExtensionUpgradeHeaders> BeginStartExtensionUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginCancelWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginStartExtensionUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all virtual machine scale set instances to
-            /// the latest available Platform Image OS version. Instances which are already
-            /// running the latest available OS version are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void BeginStartOSUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders BeginStartOSUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.BeginStartOSUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.BeginStartOSUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all virtual machine scale set instances to
-            /// the latest available Platform Image OS version. Instances which are already
-            /// running the latest available OS version are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginStartOSUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesStartOSUpgradeHeaders> BeginStartOSUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginStartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginStartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all extensions for all virtual machine
-            /// scale set instances to the latest available extension version. Instances
-            /// which are already running the latest extension versions are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
-            public static void BeginStartExtensionUpgrade(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
+            public static VirtualMachineScaleSetRollingUpgradesCancelHeaders BeginCancel(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName)
             {
-                operations.BeginStartExtensionUpgradeAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                return operations.BeginCancelAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts a rolling upgrade to move all extensions for all virtual machine
-            /// scale set instances to the latest available extension version. Instances
-            /// which are already running the latest extension versions are not affected.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginStartExtensionUpgradeAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetRollingUpgradesCancelHeaders> BeginCancelAsync(this IVirtualMachineScaleSetRollingUpgradesOperations operations, string resourceGroupName, string vmScaleSetName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginStartExtensionUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginCancelWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
     }

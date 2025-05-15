@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the role profile for the cloud service.
-    /// </summary>
     public partial class CloudServiceRoleProfile
     {
         /// <summary>
@@ -31,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CloudServiceRoleProfile class.
         /// </summary>
-        /// <param name="roles">List of roles for the cloud service.</param>
         public CloudServiceRoleProfile(IList<CloudServiceRoleProfileProperties> roles = default(IList<CloudServiceRoleProfileProperties>))
         {
             Roles = roles;
@@ -44,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of roles for the cloud service.
         /// </summary>
         [JsonProperty(PropertyName = "roles")]
         public IList<CloudServiceRoleProfileProperties> Roles { get; set; }

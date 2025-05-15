@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Data used for requesting a SAS.
-    /// </summary>
     public partial class GrantAccessData
     {
         /// <summary>
@@ -32,13 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="access">Possible values include: 'None', 'Read',
         /// 'Write'</param>
-        /// <param name="durationInSeconds">Time duration in seconds until the
-        /// SAS access expires.</param>
-        /// <param name="getSecureVMGuestStateSAS">Set this flag to true to get
-        /// additional SAS for VM guest state</param>
-        /// <param name="fileFormat">Used to specify the file format when
-        /// making request for SAS on a VHDX file format snapshot. Possible
-        /// values include: 'VHD', 'VHDX'</param>
+        /// <param name="fileFormat">Possible values include: 'VHD',
+        /// 'VHDX'</param>
         public GrantAccessData(string access, int durationInSeconds, bool? getSecureVMGuestStateSAS = default(bool?), string fileFormat = default(string))
         {
             Access = access;
@@ -60,22 +52,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Access { get; set; }
 
         /// <summary>
-        /// Gets or sets time duration in seconds until the SAS access expires.
         /// </summary>
         [JsonProperty(PropertyName = "durationInSeconds")]
         public int DurationInSeconds { get; set; }
 
         /// <summary>
-        /// Gets or sets set this flag to true to get additional SAS for VM
-        /// guest state
         /// </summary>
         [JsonProperty(PropertyName = "getSecureVMGuestStateSAS")]
         public bool? GetSecureVMGuestStateSAS { get; set; }
 
         /// <summary>
-        /// Gets or sets used to specify the file format when making request
-        /// for SAS on a VHDX file format snapshot. Possible values include:
-        /// 'VHD', 'VHDX'
+        /// Gets or sets possible values include: 'VHD', 'VHDX'
         /// </summary>
         [JsonProperty(PropertyName = "fileFormat")]
         public string FileFormat { get; set; }

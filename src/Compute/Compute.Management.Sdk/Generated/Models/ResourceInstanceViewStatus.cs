@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Instance view status.
-    /// </summary>
     public partial class ResourceInstanceViewStatus
     {
         /// <summary>
@@ -29,14 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceInstanceViewStatus class.
         /// </summary>
-        /// <param name="code">The status code.</param>
-        /// <param name="displayStatus">The short localizable label for the
-        /// status.</param>
-        /// <param name="message">The detailed status message, including for
-        /// alerts and error messages.</param>
-        /// <param name="time">The time of the status.</param>
-        /// <param name="level">The level code. Possible values include:
-        /// 'Info', 'Warning', 'Error'</param>
+        /// <param name="level">Possible values include: 'Info', 'Warning',
+        /// 'Error'</param>
         public ResourceInstanceViewStatus(string code = default(string), string displayStatus = default(string), string message = default(string), System.DateTime? time = default(System.DateTime?), StatusLevelTypes? level = default(StatusLevelTypes?))
         {
             Code = code;
@@ -53,33 +44,27 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the status code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; private set; }
 
         /// <summary>
-        /// Gets the short localizable label for the status.
         /// </summary>
         [JsonProperty(PropertyName = "displayStatus")]
         public string DisplayStatus { get; private set; }
 
         /// <summary>
-        /// Gets the detailed status message, including for alerts and error
-        /// messages.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; private set; }
 
         /// <summary>
-        /// Gets the time of the status.
         /// </summary>
         [JsonProperty(PropertyName = "time")]
         public System.DateTime? Time { get; private set; }
 
         /// <summary>
-        /// Gets or sets the level code. Possible values include: 'Info',
-        /// 'Warning', 'Error'
+        /// Gets or sets possible values include: 'Info', 'Warning', 'Error'
         /// </summary>
         [JsonProperty(PropertyName = "level")]
         public StatusLevelTypes? Level { get; set; }

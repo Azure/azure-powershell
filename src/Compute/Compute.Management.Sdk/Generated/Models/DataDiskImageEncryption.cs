@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains encryption settings for a data disk image.
-    /// </summary>
     public partial class DataDiskImageEncryption : DiskImageEncryption
     {
         /// <summary>
@@ -29,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DataDiskImageEncryption class.
         /// </summary>
-        /// <param name="lun">This property specifies the logical unit number
-        /// of the data disk. This value is used to identify data disks within
-        /// the Virtual Machine and therefore must be unique for each data disk
-        /// attached to the Virtual Machine.</param>
-        /// <param name="diskEncryptionSetId">A relative URI containing the
-        /// resource ID of the disk encryption set.</param>
         public DataDiskImageEncryption(int lun, string diskEncryptionSetId = default(string))
             : base(diskEncryptionSetId)
         {
@@ -48,10 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property specifies the logical unit number of the
-        /// data disk. This value is used to identify data disks within the
-        /// Virtual Machine and therefore must be unique for each data disk
-        /// attached to the Virtual Machine.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int Lun { get; set; }

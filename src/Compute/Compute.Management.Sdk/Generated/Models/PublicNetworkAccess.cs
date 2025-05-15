@@ -16,19 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class PublicNetworkAccess
     {
-        /// <summary>
-        /// You can generate a SAS URI to access the underlying data of the
-        /// disk publicly on the internet when NetworkAccessPolicy is set to
-        /// AllowAll. You can access the data via the SAS URI only from your
-        /// trusted Azure VNET when NetworkAccessPolicy is set to AllowPrivate.
-        /// </summary>
         public const string Enabled = "Enabled";
-        /// <summary>
-        /// You cannot access the underlying data of the disk publicly on the
-        /// internet even when NetworkAccessPolicy is set to AllowAll. You can
-        /// access the data via the SAS URI only from your trusted Azure VNET
-        /// when NetworkAccessPolicy is set to AllowPrivate.
-        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

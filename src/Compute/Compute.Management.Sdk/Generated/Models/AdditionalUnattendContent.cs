@@ -13,12 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies additional XML formatted information that can be included in
-    /// the Unattend.xml file, which is used by Windows Setup. Contents are
-    /// defined by setting name, component name, and the pass in which the
-    /// content is applied.
-    /// </summary>
     public partial class AdditionalUnattendContent
     {
         /// <summary>
@@ -32,20 +26,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AdditionalUnattendContent class.
         /// </summary>
-        /// <param name="passName">The pass name. Currently, the only allowable
-        /// value is OobeSystem. Possible values include: 'OobeSystem'</param>
-        /// <param name="componentName">The component name. Currently, the only
-        /// allowable value is Microsoft-Windows-Shell-Setup. Possible values
-        /// include: 'Microsoft-Windows-Shell-Setup'</param>
-        /// <param name="settingName">Specifies the name of the setting to
-        /// which the content applies. Possible values are: FirstLogonCommands
-        /// and AutoLogon. Possible values include: 'AutoLogon',
+        /// <param name="passName">Possible values include:
+        /// 'OobeSystem'</param>
+        /// <param name="componentName">Possible values include:
+        /// 'Microsoft-Windows-Shell-Setup'</param>
+        /// <param name="settingName">Possible values include: 'AutoLogon',
         /// 'FirstLogonCommands'</param>
-        /// <param name="content">Specifies the XML formatted content that is
-        /// added to the unattend.xml file for the specified path and
-        /// component. The XML must be less than 4KB and must include the root
-        /// element for the setting or feature that is being inserted.</param>
-        public AdditionalUnattendContent(PassNames? passName = default(PassNames?), ComponentNames? componentName = default(ComponentNames?), SettingNames? settingName = default(SettingNames?), string content = default(string))
+        public AdditionalUnattendContent(UnnamedEnumydzq6g passName = default(UnnamedEnumydzq6g), UnnamedEnum71esha componentName = default(UnnamedEnum71esha), SettingNames? settingName = default(SettingNames?), string content = default(string))
         {
             PassName = passName;
             ComponentName = componentName;
@@ -60,33 +47,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the pass name. Currently, the only allowable value is
-        /// OobeSystem. Possible values include: 'OobeSystem'
+        /// Gets or sets possible values include: 'OobeSystem'
         /// </summary>
         [JsonProperty(PropertyName = "passName")]
-        public PassNames? PassName { get; set; }
+        public UnnamedEnumydzq6g PassName { get; set; }
 
         /// <summary>
-        /// Gets or sets the component name. Currently, the only allowable
-        /// value is Microsoft-Windows-Shell-Setup. Possible values include:
+        /// Gets or sets possible values include:
         /// 'Microsoft-Windows-Shell-Setup'
         /// </summary>
         [JsonProperty(PropertyName = "componentName")]
-        public ComponentNames? ComponentName { get; set; }
+        public UnnamedEnum71esha ComponentName { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the name of the setting to which the content
-        /// applies. Possible values are: FirstLogonCommands and AutoLogon.
-        /// Possible values include: 'AutoLogon', 'FirstLogonCommands'
+        /// Gets or sets possible values include: 'AutoLogon',
+        /// 'FirstLogonCommands'
         /// </summary>
         [JsonProperty(PropertyName = "settingName")]
         public SettingNames? SettingName { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the XML formatted content that is added to
-        /// the unattend.xml file for the specified path and component. The XML
-        /// must be less than 4KB and must include the root element for the
-        /// setting or feature that is being inserted.
         /// </summary>
         [JsonProperty(PropertyName = "content")]
         public string Content { get; set; }

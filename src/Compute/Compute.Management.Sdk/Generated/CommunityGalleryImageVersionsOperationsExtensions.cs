@@ -21,98 +21,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CommunityGalleryImageVersionsOperationsExtensions
     {
-            /// <summary>
-            /// Get a community gallery image version.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
-            /// </param>
-            /// <param name='galleryImageVersionName'>
-            /// The name of the community gallery image version. Needs to follow semantic
-            /// version name pattern: The allowed characters are digit and period. Digits
-            /// must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
-            /// </param>
-            public static CommunityGalleryImageVersion Get(this ICommunityGalleryImageVersionsOperations operations, string location, string publicGalleryName, string galleryImageName, string galleryImageVersionName)
-            {
-                return operations.GetAsync(location, publicGalleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get a community gallery image version.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
-            /// </param>
-            /// <param name='galleryImageVersionName'>
-            /// The name of the community gallery image version. Needs to follow semantic
-            /// version name pattern: The allowed characters are digit and period. Digits
-            /// must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CommunityGalleryImageVersion> GetAsync(this ICommunityGalleryImageVersionsOperations operations, string location, string publicGalleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, publicGalleryName, galleryImageName, galleryImageVersionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List community gallery image versions inside an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
             /// </param>
             public static IPage<CommunityGalleryImageVersion> List(this ICommunityGalleryImageVersionsOperations operations, string location, string publicGalleryName, string galleryImageName)
             {
                 return operations.ListAsync(location, publicGalleryName, galleryImageName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List community gallery image versions inside an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -125,9 +55,44 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List community gallery image versions inside an image.
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// </param>
+            /// <param name='galleryImageVersionName'>
+            /// </param>
+            public static CommunityGalleryImageVersion Get(this ICommunityGalleryImageVersionsOperations operations, string location, string publicGalleryName, string galleryImageName, string galleryImageVersionName)
+            {
+                return operations.GetAsync(location, publicGalleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// </param>
+            /// <param name='galleryImageVersionName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CommunityGalleryImageVersion> GetAsync(this ICommunityGalleryImageVersionsOperations operations, string location, string publicGalleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(location, publicGalleryName, galleryImageName, galleryImageVersionName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -139,9 +104,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List community gallery image versions inside an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

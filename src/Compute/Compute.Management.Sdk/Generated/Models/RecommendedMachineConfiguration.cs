@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The properties describe the recommended machine configuration for this
-    /// Image Definition. These properties are updatable.
-    /// </summary>
     public partial class RecommendedMachineConfiguration
     {
         /// <summary>

@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// A private link resource
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PrivateLinkResource
     {
@@ -34,14 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
-        /// <param name="groupId">The private link resource group id.</param>
-        /// <param name="requiredMembers">The private link resource required
-        /// member names.</param>
-        /// <param name="requiredZoneNames">The private link resource DNS zone
-        /// name.</param>
-        /// <param name="id">private link resource Id</param>
-        /// <param name="name">private link resource name</param>
-        /// <param name="type">private link resource type</param>
         public PrivateLinkResource(string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>), string id = default(string), string name = default(string), string type = default(string))
         {
             GroupId = groupId;
@@ -59,37 +48,31 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the private link resource group id.
         /// </summary>
         [JsonProperty(PropertyName = "properties.groupId")]
         public string GroupId { get; private set; }
 
         /// <summary>
-        /// Gets the private link resource required member names.
         /// </summary>
         [JsonProperty(PropertyName = "properties.requiredMembers")]
         public IList<string> RequiredMembers { get; private set; }
 
         /// <summary>
-        /// Gets or sets the private link resource DNS zone name.
         /// </summary>
         [JsonProperty(PropertyName = "properties.requiredZoneNames")]
         public IList<string> RequiredZoneNames { get; set; }
 
         /// <summary>
-        /// Gets private link resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets private link resource name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets private link resource type
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }

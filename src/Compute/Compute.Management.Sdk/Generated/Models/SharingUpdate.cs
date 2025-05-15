@@ -11,16 +11,12 @@
 namespace Microsoft.Azure.Management.Compute.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery sharing profile update.
-    /// </summary>
-    public partial class SharingUpdate : IResource
+    public partial class SharingUpdate
     {
         /// <summary>
         /// Initializes a new instance of the SharingUpdate class.
@@ -33,11 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharingUpdate class.
         /// </summary>
-        /// <param name="operationType">This property allows you to specify the
-        /// operation type of gallery sharing update. Possible values are:
-        /// **Add,** **Remove,** **Reset.**. Possible values include: 'Add',
+        /// <param name="operationType">Possible values include: 'Add',
         /// 'Remove', 'Reset', 'EnableCommunity'</param>
-        /// <param name="groups">A list of sharing profile groups.</param>
         public SharingUpdate(string operationType, IList<SharingProfileGroup> groups = default(IList<SharingProfileGroup>))
         {
             OperationType = operationType;
@@ -51,16 +44,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the operation type
-        /// of gallery sharing update. Possible values are: **Add,**
-        /// **Remove,** **Reset.**. Possible values include: 'Add', 'Remove',
-        /// 'Reset', 'EnableCommunity'
+        /// Gets or sets possible values include: 'Add', 'Remove', 'Reset',
+        /// 'EnableCommunity'
         /// </summary>
         [JsonProperty(PropertyName = "operationType")]
         public string OperationType { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of sharing profile groups.
         /// </summary>
         [JsonProperty(PropertyName = "groups")]
         public IList<SharingProfileGroup> Groups { get; set; }

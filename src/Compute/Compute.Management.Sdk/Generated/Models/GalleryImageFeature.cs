@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// A feature for gallery image.
-    /// </summary>
     public partial class GalleryImageFeature
     {
         /// <summary>
@@ -29,10 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryImageFeature class.
         /// </summary>
-        /// <param name="name">The name of the gallery image feature.</param>
-        /// <param name="value">The value of the gallery image feature.</param>
-        /// <param name="startsAtVersion">The minimum gallery image version
-        /// which supports this feature.</param>
         public GalleryImageFeature(string name = default(string), string value = default(string), string startsAtVersion = default(string))
         {
             Name = name;
@@ -47,20 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the gallery image feature.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the gallery image feature.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum gallery image version which supports this
-        /// feature.
         /// </summary>
         [JsonProperty(PropertyName = "startsAtVersion")]
         public string StartsAtVersion { get; set; }

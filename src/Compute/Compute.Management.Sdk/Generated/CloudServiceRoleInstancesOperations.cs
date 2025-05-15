@@ -51,17 +51,11 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// Deletes a role instance from a cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,22 +70,14 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Gets a role instance from a cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='expand'>
-        /// The expand expression to apply to the operation. 'UserData' is not
-        /// supported for cloud services. Possible values include: 'instanceView',
-        /// 'userData'
+        /// Possible values include: 'instanceView', 'userData'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -131,6 +117,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -289,18 +282,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Retrieves information about the run-time state of a role instance in a
-        /// cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -340,6 +326,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -493,21 +486,12 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets the list of all role instances in a cloud service. Use nextLink
-        /// property in the response to get the next page of role instances. Do this
-        /// till nextLink is null to fetch all the role instances.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='expand'>
-        /// The expand expression to apply to the operation. 'UserData' is not
-        /// supported for cloud services. Possible values include: 'instanceView',
-        /// 'userData'
+        /// Possible values include: 'instanceView', 'userData'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -543,6 +527,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -680,7 +671,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<RoleInstance>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RoleInstance>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -699,18 +690,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-        /// instance in the cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -725,18 +709,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// The Reimage Role Instance asynchronous operation reinstalls the operating
-        /// system on instances of web roles or worker roles.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -751,20 +728,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-        /// system on instances of web roles or worker roles and initializes the
-        /// storage resources that are used by them. If you do not want to initialize
-        /// storage resources, you can use Reimage Role Instance.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -779,17 +747,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Gets a remote desktop file for a role instance in a cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -829,6 +791,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -969,17 +938,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Deletes a role instance from a cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1016,6 +979,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1151,18 +1121,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-        /// instance in the cloud service.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1199,6 +1162,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1334,18 +1304,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// The Reimage Role Instance asynchronous operation reinstalls the operating
-        /// system on instances of web roles or worker roles.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1382,6 +1345,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1517,20 +1487,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-        /// system on instances of web roles or worker roles and initializes the
-        /// storage resources that are used by them. If you do not want to initialize
-        /// storage resources, you can use Reimage Role Instance.
-        /// </summary>
         /// <param name='roleInstanceName'>
-        /// Name of the role instance.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1567,6 +1528,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1702,11 +1670,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets the list of all role instances in a cloud service. Use nextLink
-        /// property in the response to get the next page of role instances. Do this
-        /// till nextLink is null to fetch all the role instances.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -1858,7 +1821,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<RoleInstance>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RoleInstance>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

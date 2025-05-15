@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The role instance SKU.
-    /// </summary>
     public partial class InstanceSku
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the InstanceSku class.
         /// </summary>
-        /// <param name="name">The sku name.</param>
-        /// <param name="tier">The tier of the cloud service role
-        /// instance.</param>
         public InstanceSku(string name = default(string), string tier = default(string))
         {
             Name = name;
@@ -45,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the sku name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the tier of the cloud service role instance.
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; private set; }

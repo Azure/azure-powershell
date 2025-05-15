@@ -21,224 +21,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class ImagesOperationsExtensions
     {
-            /// <summary>
-            /// Create or update an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Image operation.
-            /// </param>
-            public static Image CreateOrUpdate(this IImagesOperations operations, string resourceGroupName, string imageName, Image parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Image operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Image> CreateOrUpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, Image parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Image operation.
-            /// </param>
-            public static Image Update(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Update Image operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Image> UpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes an Image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            public static void Delete(this IImagesOperations operations, string resourceGroupName, string imageName)
-            {
-                operations.DeleteAsync(resourceGroupName, imageName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes an Image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static Image Get(this IImagesOperations operations, string resourceGroupName, string imageName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, imageName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets an image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='imageName'>
-            /// The name of the image.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Image> GetAsync(this IImagesOperations operations, string resourceGroupName, string imageName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, imageName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets the list of images under a resource group. Use nextLink property in
-            /// the response to get the next page of Images. Do this till nextLink is null
-            /// to fetch all the Images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<Image> ListByResourceGroup(this IImagesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the list of images under a resource group. Use nextLink property in
-            /// the response to get the next page of Images. Do this till nextLink is null
-            /// to fetch all the Images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Image>> ListByResourceGroupAsync(this IImagesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets the list of Images in the subscription. Use nextLink property in the
-            /// response to get the next page of Images. Do this till nextLink is null to
-            /// fetch all the Images.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -247,11 +29,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of Images in the subscription. Use nextLink property in the
-            /// response to get the next page of Images. Do this till nextLink is null to
-            /// fetch all the Images.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -266,40 +43,186 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Create or update an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// </param>
+            public static IPage<Image> ListByResourceGroup(this IImagesOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Image>> ListByResourceGroupAsync(this IImagesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
+            /// </param>
+            /// <param name='expand'>
+            /// </param>
+            public static Image Get(this IImagesOperations operations, string resourceGroupName, string imageName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, imageName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='expand'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Image> GetAsync(this IImagesOperations operations, string resourceGroupName, string imageName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, imageName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Image operation.
+            /// </param>
+            public static Image CreateOrUpdate(this IImagesOperations operations, string resourceGroupName, string imageName, Image parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Image> CreateOrUpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, Image parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static Image Update(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters)
+            {
+                return operations.UpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Image> UpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            public static ImagesDeleteHeaders Delete(this IImagesOperations operations, string resourceGroupName, string imageName)
+            {
+                return operations.DeleteAsync(resourceGroupName, imageName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ImagesDeleteHeaders> DeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='imageName'>
+            /// </param>
+            /// <param name='parameters'>
             /// </param>
             public static Image BeginCreateOrUpdate(this IImagesOperations operations, string resourceGroupName, string imageName, Image parameters)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Create or update an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Create Image operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -312,40 +235,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Update Image operation.
             /// </param>
             public static Image BeginUpdate(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, imageName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update an image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the Update Image operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -358,86 +269,36 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes an Image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
             /// </param>
-            public static void BeginDelete(this IImagesOperations operations, string resourceGroupName, string imageName)
+            public static ImagesDeleteHeaders BeginDelete(this IImagesOperations operations, string resourceGroupName, string imageName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, imageName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, imageName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes an Image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='imageName'>
-            /// The name of the image.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ImagesDeleteHeaders> BeginDeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the list of images under a resource group. Use nextLink property in
-            /// the response to get the next page of Images. Do this till nextLink is null
-            /// to fetch all the Images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Image> ListByResourceGroupNext(this IImagesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the list of images under a resource group. Use nextLink property in
-            /// the response to get the next page of Images. Do this till nextLink is null
-            /// to fetch all the Images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Image>> ListByResourceGroupNextAsync(this IImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
-            /// <summary>
-            /// Gets the list of Images in the subscription. Use nextLink property in the
-            /// response to get the next page of Images. Do this till nextLink is null to
-            /// fetch all the Images.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -449,11 +310,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of Images in the subscription. Use nextLink property in the
-            /// response to get the next page of Images. Do this till nextLink is null to
-            /// fetch all the Images.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -466,6 +322,34 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<Image>> ListNextAsync(this IImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Image> ListByResourceGroupNext(this IImagesOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Image>> ListByResourceGroupNextAsync(this IImagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

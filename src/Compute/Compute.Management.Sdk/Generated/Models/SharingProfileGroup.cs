@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Group of the gallery sharing profile
-    /// </summary>
     public partial class SharingProfileGroup
     {
         /// <summary>
@@ -31,12 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharingProfileGroup class.
         /// </summary>
-        /// <param name="type">This property allows you to specify the type of
-        /// sharing group. Possible values are: **Subscriptions,**
-        /// **AADTenants.**. Possible values include: 'Subscriptions',
+        /// <param name="type">Possible values include: 'Subscriptions',
         /// 'AADTenants'</param>
-        /// <param name="ids">A list of subscription/tenant ids the gallery is
-        /// aimed to be shared to.</param>
         public SharingProfileGroup(string type = default(string), IList<string> ids = default(IList<string>))
         {
             Type = type;
@@ -50,17 +43,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the type of
-        /// sharing group. Possible values are: **Subscriptions,**
-        /// **AADTenants.**. Possible values include: 'Subscriptions',
-        /// 'AADTenants'
+        /// Gets or sets possible values include: 'Subscriptions', 'AADTenants'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of subscription/tenant ids the gallery is aimed
-        /// to be shared to.
         /// </summary>
         [JsonProperty(PropertyName = "ids")]
         public IList<string> Ids { get; set; }

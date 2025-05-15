@@ -50,18 +50,11 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// Create or update a cloud service. Please note some properties can be set
-        /// only during cloud service creation.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='parameters'>
-        /// The cloud service object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,17 +69,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Update a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='tags'>
-        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -101,14 +88,9 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Deletes a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -123,14 +105,9 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Display information about a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -166,6 +143,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -317,14 +301,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets the status of a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -360,6 +339,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -511,12 +497,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all cloud services in the subscription, regardless of the
-        /// associated resource group. Use nextLink property in the response to get the
-        /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-        /// Cloud Services.
-        /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -543,6 +523,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -671,7 +658,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<CloudService>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CloudService>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -690,13 +677,7 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all cloud services under a resource group. Use nextLink
-        /// property in the response to get the next page of Cloud Services. Do this
-        /// till nextLink is null to fetch all the Cloud Services.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -728,6 +709,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -858,7 +846,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<CloudService>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CloudService>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -877,14 +865,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Starts the cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -899,15 +882,9 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Power off the cloud service. Note that resources are still attached and you
-        /// are getting charged for the resources.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -922,18 +899,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Restarts one or more role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -948,19 +918,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Reimage asynchronous operation reinstalls the operating system on instances
-        /// of web roles or worker roles.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -975,21 +937,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Rebuild Role Instances reinstalls the operating system on instances of web
-        /// roles or worker roles and initializes the storage resources that are used
-        /// by them. If you do not want to initialize storage resources, you can use
-        /// Reimage Role Instances.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1004,18 +956,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Deletes role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1030,18 +975,11 @@ namespace Microsoft.Azure.Management.Compute
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Create or update a cloud service. Please note some properties can be set
-        /// only during cloud service creation.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='parameters'>
-        /// The cloud service object.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1077,6 +1015,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             if (parameters != null)
             {
@@ -1257,17 +1202,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Update a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='tags'>
-        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1303,6 +1242,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             CloudServiceUpdate parameters = default(CloudServiceUpdate);
@@ -1467,14 +1413,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Deletes a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1507,6 +1448,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1640,14 +1588,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Starts the cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1680,6 +1623,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1813,15 +1763,9 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Power off the cloud service. Note that resources are still attached and you
-        /// are getting charged for the resources.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1854,6 +1798,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             string apiVersion = "2022-09-04";
             // Tracing
@@ -1987,18 +1938,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Restarts one or more role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2031,6 +1975,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             if (roleInstancesProperty == null)
             {
@@ -2181,19 +2132,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Reimage asynchronous operation reinstalls the operating system on instances
-        /// of web roles or worker roles.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2226,6 +2169,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             if (roleInstancesProperty == null)
             {
@@ -2376,21 +2326,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Rebuild Role Instances reinstalls the operating system on instances of web
-        /// roles or worker roles and initializes the storage resources that are used
-        /// by them. If you do not want to initialize storage resources, you can use
-        /// Reimage Role Instances.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2423,6 +2363,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             if (roleInstancesProperty == null)
             {
@@ -2573,18 +2520,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Deletes role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will signify all
-        /// role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2617,6 +2557,13 @@ namespace Microsoft.Azure.Management.Compute
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
             }
             if (roleInstancesProperty == null)
             {
@@ -2767,12 +2714,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all cloud services in the subscription, regardless of the
-        /// associated resource group. Use nextLink property in the response to get the
-        /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-        /// Cloud Services.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -2924,7 +2865,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<CloudService>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CloudService>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2943,11 +2884,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Gets a list of all cloud services under a resource group. Use nextLink
-        /// property in the response to get the next page of Cloud Services. Do this
-        /// till nextLink is null to fetch all the Cloud Services.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -3099,7 +3035,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<CloudService>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<CloudService>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a single certificate reference in a Key Vault, and where the
-    /// certificate should reside on the role instance.
-    /// </summary>
     public partial class CloudServiceVaultCertificate
     {
         /// <summary>
@@ -32,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CloudServiceVaultCertificate
         /// class.
         /// </summary>
-        /// <param name="certificateUrl">This is the URL of a certificate that
-        /// has been uploaded to Key Vault as a secret.</param>
         public CloudServiceVaultCertificate(string certificateUrl = default(string))
         {
             CertificateUrl = certificateUrl;
@@ -46,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this is the URL of a certificate that has been
-        /// uploaded to Key Vault as a secret.
         /// </summary>
         [JsonProperty(PropertyName = "certificateUrl")]
         public string CertificateUrl { get; set; }

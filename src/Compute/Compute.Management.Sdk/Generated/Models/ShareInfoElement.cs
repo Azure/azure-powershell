@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ShareInfoElement class.
         /// </summary>
-        /// <param name="vmUri">A relative URI containing the ID of the VM that
-        /// has the disk attached.</param>
         public ShareInfoElement(string vmUri = default(string))
         {
             VmUri = vmUri;
@@ -40,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets a relative URI containing the ID of the VM that has the disk
-        /// attached.
         /// </summary>
         [JsonProperty(PropertyName = "vmUri")]
         public string VmUri { get; private set; }

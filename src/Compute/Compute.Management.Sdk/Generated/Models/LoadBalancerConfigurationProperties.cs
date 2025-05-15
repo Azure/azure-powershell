@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of the load balancer configuration.
-    /// </summary>
     public partial class LoadBalancerConfigurationProperties
     {
         /// <summary>
@@ -34,10 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// LoadBalancerConfigurationProperties class.
         /// </summary>
-        /// <param name="frontendIpConfigurations">Specifies the frontend IP to
-        /// be used for the load balancer. Only IPv4 frontend IP address is
-        /// supported. Each load balancer configuration must have exactly one
-        /// frontend IP configuration.</param>
         public LoadBalancerConfigurationProperties(IList<LoadBalancerFrontendIpConfiguration> frontendIpConfigurations)
         {
             FrontendIpConfigurations = frontendIpConfigurations;
@@ -50,10 +43,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the frontend IP to be used for the load
-        /// balancer. Only IPv4 frontend IP address is supported. Each load
-        /// balancer configuration must have exactly one frontend IP
-        /// configuration.
         /// </summary>
         [JsonProperty(PropertyName = "frontendIpConfigurations")]
         public IList<LoadBalancerFrontendIpConfiguration> FrontendIpConfigurations { get; set; }

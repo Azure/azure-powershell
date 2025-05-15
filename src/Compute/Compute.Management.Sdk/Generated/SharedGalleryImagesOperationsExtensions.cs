@@ -21,42 +21,30 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class SharedGalleryImagesOperationsExtensions
     {
-            /// <summary>
-            /// List shared gallery images by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='sharedTo'>
-            /// The query parameter to decide what shared galleries to fetch when doing
-            /// listing operations. Possible values include: 'tenant'
+            /// Possible values include: 'tenant'
             /// </param>
             public static IPage<SharedGalleryImage> List(this ISharedGalleryImagesOperations operations, string location, string galleryUniqueName, string sharedTo = default(string))
             {
                 return operations.ListAsync(location, galleryUniqueName, sharedTo).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List shared gallery images by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='sharedTo'>
-            /// The query parameter to decide what shared galleries to fetch when doing
-            /// listing operations. Possible values include: 'tenant'
+            /// Possible values include: 'tenant'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -69,42 +57,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Get a shared gallery image by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             public static SharedGalleryImage Get(this ISharedGalleryImagesOperations operations, string location, string galleryUniqueName, string galleryImageName)
             {
                 return operations.GetAsync(location, galleryUniqueName, galleryImageName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Get a shared gallery image by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -117,9 +91,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List shared gallery images by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -131,9 +102,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List shared gallery images by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

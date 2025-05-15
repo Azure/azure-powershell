@@ -21,40 +21,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CloudServiceRolesOperationsExtensions
     {
-            /// <summary>
-            /// Gets a role from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleName'>
-            /// Name of the role.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static CloudServiceRole Get(this ICloudServiceRolesOperations operations, string roleName, string resourceGroupName, string cloudServiceName)
             {
                 return operations.GetAsync(roleName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a role from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleName'>
-            /// Name of the role.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -67,38 +55,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all roles in a cloud service. Use nextLink property in the
-            /// response to get the next page of roles. Do this till nextLink is null to
-            /// fetch all the roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static IPage<CloudServiceRole> List(this ICloudServiceRolesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 return operations.ListAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all roles in a cloud service. Use nextLink property in the
-            /// response to get the next page of roles. Do this till nextLink is null to
-            /// fetch all the roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -111,11 +85,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all roles in a cloud service. Use nextLink property in the
-            /// response to get the next page of roles. Do this till nextLink is null to
-            /// fetch all the roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -127,11 +96,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all roles in a cloud service. Use nextLink property in the
-            /// response to get the next page of roles. Do this till nextLink is null to
-            /// fetch all the roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

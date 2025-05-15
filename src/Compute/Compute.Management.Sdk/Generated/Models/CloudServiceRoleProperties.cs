@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The cloud service role properties.
-    /// </summary>
     public partial class CloudServiceRoleProperties
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CloudServiceRoleProperties class.
         /// </summary>
-        /// <param name="uniqueId">Specifies the ID which uniquely identifies a
-        /// cloud service role.</param>
         public CloudServiceRoleProperties(string uniqueId = default(string))
         {
             UniqueId = uniqueId;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the ID which uniquely identifies a cloud service
-        /// role.
         /// </summary>
         [JsonProperty(PropertyName = "uniqueId")]
         public string UniqueId { get; private set; }

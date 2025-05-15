@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// This is the storage profile of a Gallery Image Version.
-    /// </summary>
     public partial class GalleryImageVersionStorageProfile
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryImageVersionStorageProfile
         /// class.
         /// </summary>
-        /// <param name="dataDiskImages">A list of data disk images.</param>
         public GalleryImageVersionStorageProfile(GalleryArtifactVersionFullSource source = default(GalleryArtifactVersionFullSource), GalleryOSDiskImage osDiskImage = default(GalleryOSDiskImage), IList<GalleryDataDiskImage> dataDiskImages = default(IList<GalleryDataDiskImage>))
         {
             Source = source;
@@ -58,7 +54,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public GalleryOSDiskImage OsDiskImage { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of data disk images.
         /// </summary>
         [JsonProperty(PropertyName = "dataDiskImages")]
         public IList<GalleryDataDiskImage> DataDiskImages { get; set; }

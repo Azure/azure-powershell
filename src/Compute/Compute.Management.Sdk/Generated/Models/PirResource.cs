@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The Resource model definition.
-    /// </summary>
     public partial class PirResource
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PirResource class.
         /// </summary>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
         public PirResource(string name = default(string), string location = default(string))
         {
             Name = name;
@@ -44,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource location
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }

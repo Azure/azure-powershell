@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Indicates the error details if the background copy of a resource
-    /// created via the CopyStart operation fails.
-    /// </summary>
     public partial class CopyCompletionError
     {
         /// <summary>
@@ -31,9 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CopyCompletionError class.
         /// </summary>
-        /// <param name="errorMessage">Indicates the error message if the
-        /// background copy of a resource created via the CopyStart operation
-        /// fails.</param>
         public CopyCompletionError(string errorMessage)
         {
             ErrorMessage = errorMessage;
@@ -53,15 +46,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets indicates the error message if the background copy of
-        /// a resource created via the CopyStart operation fails.
         /// </summary>
         [JsonProperty(PropertyName = "errorMessage")]
         public string ErrorMessage { get; set; }
 
         /// <summary>
-        /// Indicates the error code if the background copy of a resource
-        /// created via the CopyStart operation fails.
         /// </summary>
         [JsonProperty(PropertyName = "errorCode")]
         public static string ErrorCode { get; private set; }

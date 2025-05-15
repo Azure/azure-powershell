@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the role properties.
-    /// </summary>
     public partial class CloudServiceRoleProfileProperties
     {
         /// <summary>
@@ -31,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the CloudServiceRoleProfileProperties
         /// class.
         /// </summary>
-        /// <param name="name">Resource name.</param>
         public CloudServiceRoleProfileProperties(string name = default(string), CloudServiceRoleSku sku = default(CloudServiceRoleSku))
         {
             Name = name;
@@ -45,7 +41,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

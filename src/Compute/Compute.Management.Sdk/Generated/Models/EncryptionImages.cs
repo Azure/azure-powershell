@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Optional. Allows users to provide customer managed keys for encrypting
-    /// the OS and data disks in the gallery artifact.
-    /// </summary>
     public partial class EncryptionImages
     {
         /// <summary>
@@ -32,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EncryptionImages class.
         /// </summary>
-        /// <param name="dataDiskImages">A list of encryption specifications
-        /// for data disk images.</param>
         public EncryptionImages(OSDiskImageEncryption osDiskImage = default(OSDiskImageEncryption), IList<DataDiskImageEncryption> dataDiskImages = default(IList<DataDiskImageEncryption>))
         {
             OsDiskImage = osDiskImage;
@@ -52,8 +46,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public OSDiskImageEncryption OsDiskImage { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of encryption specifications for data disk
-        /// images.
         /// </summary>
         [JsonProperty(PropertyName = "dataDiskImages")]
         public IList<DataDiskImageEncryption> DataDiskImages { get; set; }

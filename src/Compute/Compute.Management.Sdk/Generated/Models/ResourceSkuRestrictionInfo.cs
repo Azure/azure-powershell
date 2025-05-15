@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes an available Compute SKU Restriction Information.
-    /// </summary>
     public partial class ResourceSkuRestrictionInfo
     {
         /// <summary>
@@ -31,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuRestrictionInfo class.
         /// </summary>
-        /// <param name="locations">Locations where the SKU is
-        /// restricted</param>
-        /// <param name="zones">List of availability zones where the SKU is
-        /// restricted.</param>
         public ResourceSkuRestrictionInfo(IList<string> locations = default(IList<string>), IList<string> zones = default(IList<string>))
         {
             Locations = locations;
@@ -48,13 +41,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets locations where the SKU is restricted
         /// </summary>
         [JsonProperty(PropertyName = "locations")]
         public IList<string> Locations { get; private set; }
 
         /// <summary>
-        /// Gets list of availability zones where the SKU is restricted.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; private set; }

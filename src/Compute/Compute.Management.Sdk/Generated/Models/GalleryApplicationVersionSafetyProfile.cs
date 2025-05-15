@@ -12,9 +12,6 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// The safety profile of the Gallery Application Version.
-    /// </summary>
     public partial class GalleryApplicationVersionSafetyProfile : GalleryArtifactSafetyProfileBase
     {
         /// <summary>
@@ -30,9 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryApplicationVersionSafetyProfile class.
         /// </summary>
-        /// <param name="allowDeletionOfReplicatedLocations">Indicates whether
-        /// or not removing this Gallery Image Version from replicated regions
-        /// is allowed.</param>
         public GalleryApplicationVersionSafetyProfile(bool? allowDeletionOfReplicatedLocations = default(bool?))
             : base(allowDeletionOfReplicatedLocations)
         {

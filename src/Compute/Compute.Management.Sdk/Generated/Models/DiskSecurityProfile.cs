@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Contains the security related information for the resource.
-    /// </summary>
     public partial class DiskSecurityProfile
     {
         /// <summary>
@@ -35,9 +32,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'ConfidentialVM_DiskEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithCustomerKey',
         /// 'ConfidentialVM_NonPersistedTPM'</param>
-        /// <param name="secureVMDiskEncryptionSetId">ResourceId of the disk
-        /// encryption set associated to Confidential VM supported disk
-        /// encrypted with customer managed key</param>
         public DiskSecurityProfile(string securityType = default(string), string secureVMDiskEncryptionSetId = default(string))
         {
             SecurityType = securityType;
@@ -61,8 +55,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string SecurityType { get; set; }
 
         /// <summary>
-        /// Gets or sets resourceId of the disk encryption set associated to
-        /// Confidential VM supported disk encrypted with customer managed key
         /// </summary>
         [JsonProperty(PropertyName = "secureVMDiskEncryptionSetId")]
         public string SecureVMDiskEncryptionSetId { get; set; }

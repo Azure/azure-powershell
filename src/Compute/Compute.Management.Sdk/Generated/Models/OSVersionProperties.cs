@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// OS version properties.
-    /// </summary>
     public partial class OSVersionProperties
     {
         /// <summary>
@@ -29,15 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSVersionProperties class.
         /// </summary>
-        /// <param name="family">The family of this OS version.</param>
-        /// <param name="familyLabel">The family label of this OS
-        /// version.</param>
-        /// <param name="version">The OS version.</param>
-        /// <param name="label">The OS version label.</param>
-        /// <param name="isDefault">Specifies whether this is the default OS
-        /// version for its family.</param>
-        /// <param name="isActive">Specifies whether this OS version is
-        /// active.</param>
         public OSVersionProperties(string family = default(string), string familyLabel = default(string), string version = default(string), string label = default(string), bool? isDefault = default(bool?), bool? isActive = default(bool?))
         {
             Family = family;
@@ -55,38 +43,31 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the family of this OS version.
         /// </summary>
         [JsonProperty(PropertyName = "family")]
         public string Family { get; private set; }
 
         /// <summary>
-        /// Gets the family label of this OS version.
         /// </summary>
         [JsonProperty(PropertyName = "familyLabel")]
         public string FamilyLabel { get; private set; }
 
         /// <summary>
-        /// Gets the OS version.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }
 
         /// <summary>
-        /// Gets the OS version label.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; private set; }
 
         /// <summary>
-        /// Gets specifies whether this is the default OS version for its
-        /// family.
         /// </summary>
         [JsonProperty(PropertyName = "isDefault")]
         public bool? IsDefault { get; private set; }
 
         /// <summary>
-        /// Gets specifies whether this OS version is active.
         /// </summary>
         [JsonProperty(PropertyName = "isActive")]
         public bool? IsActive { get; private set; }

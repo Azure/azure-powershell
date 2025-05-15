@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the cloud service.
-    /// </summary>
     public partial class CloudService : IResource
     {
         /// <summary>
@@ -33,15 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CloudService class.
         /// </summary>
-        /// <param name="location">Resource location.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="tags">Resource tags.</param>
-        /// <param name="zones">List of logical availability zone of the
-        /// resource. List should contain only 1 zone where cloud service
-        /// should be provisioned. This field is optional.</param>
-        public CloudService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CloudServiceProperties properties = default(CloudServiceProperties), SystemData systemData = default(SystemData), IList<string> zones = default(IList<string>))
+        public CloudService(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CloudServiceProperties properties = default(CloudServiceProperties), SystemDataModel systemData = default(SystemDataModel), IList<string> zones = default(IList<string>))
         {
             Id = id;
             Name = name;
@@ -60,31 +49,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource Id.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets resource name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets resource location.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
@@ -97,12 +81,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData { get; set; }
+        public SystemDataModel SystemData { get; set; }
 
         /// <summary>
-        /// Gets or sets list of logical availability zone of the resource.
-        /// List should contain only 1 zone where cloud service should be
-        /// provisioned. This field is optional.
         /// </summary>
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }

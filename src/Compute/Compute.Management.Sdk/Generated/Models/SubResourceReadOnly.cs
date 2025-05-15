@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SubResourceReadOnly class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
         public SubResourceReadOnly(string id = default(string))
         {
             Id = id;
@@ -39,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

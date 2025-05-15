@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Configuration view of an OS version.
-    /// </summary>
     public partial class OSVersionPropertiesBase
     {
         /// <summary>
@@ -29,12 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSVersionPropertiesBase class.
         /// </summary>
-        /// <param name="version">The OS version.</param>
-        /// <param name="label">The OS version label.</param>
-        /// <param name="isDefault">Specifies whether this is the default OS
-        /// version for its family.</param>
-        /// <param name="isActive">Specifies whether this OS version is
-        /// active.</param>
         public OSVersionPropertiesBase(string version = default(string), string label = default(string), bool? isDefault = default(bool?), bool? isActive = default(bool?))
         {
             Version = version;
@@ -50,26 +41,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the OS version.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; private set; }
 
         /// <summary>
-        /// Gets the OS version label.
         /// </summary>
         [JsonProperty(PropertyName = "label")]
         public string Label { get; private set; }
 
         /// <summary>
-        /// Gets specifies whether this is the default OS version for its
-        /// family.
         /// </summary>
         [JsonProperty(PropertyName = "isDefault")]
         public bool? IsDefault { get; private set; }
 
         /// <summary>
-        /// Gets specifies whether this OS version is active.
         /// </summary>
         [JsonProperty(PropertyName = "isActive")]
         public bool? IsActive { get; private set; }

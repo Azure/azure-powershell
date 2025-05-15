@@ -21,34 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CommunityGalleriesOperationsExtensions
     {
-            /// <summary>
-            /// Get a community gallery by gallery public name.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             public static CommunityGallery Get(this ICommunityGalleriesOperations operations, string location, string publicGalleryName)
             {
                 return operations.GetAsync(location, publicGalleryName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Get a community gallery by gallery public name.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

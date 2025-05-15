@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the disallowed configuration for a virtual machine image.
-    /// </summary>
     public partial class DisallowedConfiguration
     {
         /// <summary>
@@ -29,8 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DisallowedConfiguration class.
         /// </summary>
-        /// <param name="vmDiskType">VM disk types which are disallowed.
-        /// Possible values include: 'None', 'Unmanaged'</param>
+        /// <param name="vmDiskType">Possible values include: 'None',
+        /// 'Unmanaged'</param>
         public DisallowedConfiguration(string vmDiskType = default(string))
         {
             VmDiskType = vmDiskType;
@@ -43,8 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets VM disk types which are disallowed. Possible values
-        /// include: 'None', 'Unmanaged'
+        /// Gets or sets possible values include: 'None', 'Unmanaged'
         /// </summary>
         [JsonProperty(PropertyName = "vmDiskType")]
         public string VmDiskType { get; set; }

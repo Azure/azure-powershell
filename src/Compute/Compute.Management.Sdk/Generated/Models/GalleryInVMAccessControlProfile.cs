@@ -15,11 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery inVMAccessControlProfile that
-    /// you want to create or update.
-    /// </summary>
-    public partial class GalleryInVMAccessControlProfile : Resource
+    public partial class GalleryInVMAccessControlProfile : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryInVMAccessControlProfile

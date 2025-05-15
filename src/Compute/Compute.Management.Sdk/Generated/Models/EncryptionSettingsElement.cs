@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Encryption settings for one disk volume.
-    /// </summary>
     public partial class EncryptionSettingsElement
     {
         /// <summary>
@@ -29,11 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the EncryptionSettingsElement class.
         /// </summary>
-        /// <param name="diskEncryptionKey">Key Vault Secret Url and vault id
-        /// of the disk encryption key</param>
-        /// <param name="keyEncryptionKey">Key Vault Key Url and vault id of
-        /// the key encryption key. KeyEncryptionKey is optional and when
-        /// provided is used to unwrap the disk encryption key.</param>
         public EncryptionSettingsElement(KeyVaultAndSecretReference diskEncryptionKey = default(KeyVaultAndSecretReference), KeyVaultAndKeyReference keyEncryptionKey = default(KeyVaultAndKeyReference))
         {
             DiskEncryptionKey = diskEncryptionKey;
@@ -47,16 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets key Vault Secret Url and vault id of the disk
-        /// encryption key
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionKey")]
         public KeyVaultAndSecretReference DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Gets or sets key Vault Key Url and vault id of the key encryption
-        /// key. KeyEncryptionKey is optional and when provided is used to
-        /// unwrap the disk encryption key.
         /// </summary>
         [JsonProperty(PropertyName = "keyEncryptionKey")]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }

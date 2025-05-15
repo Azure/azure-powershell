@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes scaling information of a SKU.
-    /// </summary>
     public partial class ResourceSkuRestrictions
     {
         /// <summary>
@@ -31,15 +28,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuRestrictions class.
         /// </summary>
-        /// <param name="type">The type of restrictions. Possible values
-        /// include: 'Location', 'Zone'</param>
-        /// <param name="values">The value of restrictions. If the restriction
-        /// type is set to location. This would be different locations where
-        /// the SKU is restricted.</param>
-        /// <param name="restrictionInfo">The information about the restriction
-        /// where the SKU cannot be used.</param>
-        /// <param name="reasonCode">The reason for restriction. Possible
-        /// values include: 'QuotaId', 'NotAvailableForSubscription'</param>
+        /// <param name="type">Possible values include: 'Location',
+        /// 'Zone'</param>
+        /// <param name="reasonCode">Possible values include: 'QuotaId',
+        /// 'NotAvailableForSubscription'</param>
         public ResourceSkuRestrictions(ResourceSkuRestrictionsType? type = default(ResourceSkuRestrictionsType?), IList<string> values = default(IList<string>), ResourceSkuRestrictionInfo restrictionInfo = default(ResourceSkuRestrictionInfo), ResourceSkuRestrictionsReasonCode? reasonCode = default(ResourceSkuRestrictionsReasonCode?))
         {
             Type = type;
@@ -55,30 +47,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the type of restrictions. Possible values include: 'Location',
-        /// 'Zone'
+        /// Gets possible values include: 'Location', 'Zone'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public ResourceSkuRestrictionsType? Type { get; private set; }
 
         /// <summary>
-        /// Gets the value of restrictions. If the restriction type is set to
-        /// location. This would be different locations where the SKU is
-        /// restricted.
         /// </summary>
         [JsonProperty(PropertyName = "values")]
         public IList<string> Values { get; private set; }
 
         /// <summary>
-        /// Gets the information about the restriction where the SKU cannot be
-        /// used.
         /// </summary>
         [JsonProperty(PropertyName = "restrictionInfo")]
         public ResourceSkuRestrictionInfo RestrictionInfo { get; private set; }
 
         /// <summary>
-        /// Gets the reason for restriction. Possible values include:
-        /// 'QuotaId', 'NotAvailableForSubscription'
+        /// Gets possible values include: 'QuotaId',
+        /// 'NotAvailableForSubscription'
         /// </summary>
         [JsonProperty(PropertyName = "reasonCode")]
         public ResourceSkuRestrictionsReasonCode? ReasonCode { get; private set; }

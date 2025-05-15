@@ -23,16 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ICloudServiceOperatingSystemsOperations
     {
-        /// <summary>
-        /// Gets properties of a guest operating system version that can be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS version pertains to.
         /// </param>
         /// <param name='osVersionName'>
-        /// Name of the OS version.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,15 +43,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<OSVersion>> GetOSVersionWithHttpMessagesAsync(string location, string osVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all guest operating system versions available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service. Use nextLink property in the response to get the next page
-        /// of OS versions. Do this till nextLink is null to fetch all the OS
-        /// versions.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS versions pertain to.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -76,16 +61,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<OSVersion>>> ListOSVersionsWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets properties of a guest operating system family that can be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS family pertains to.
         /// </param>
         /// <param name='osFamilyName'>
-        /// Name of the OS family.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -103,15 +81,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<OSFamily>> GetOSFamilyWithHttpMessagesAsync(string location, string osFamilyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all guest operating system families available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service. Use nextLink property in the response to get the next page
-        /// of OS Families. Do this till nextLink is null to fetch all the OS
-        /// Families.
-        /// </summary>
         /// <param name='location'>
-        /// Name of the location that the OS families pertain to.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -129,13 +99,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<OSFamily>>> ListOSFamiliesWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all guest operating system versions available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service. Use nextLink property in the response to get the next page
-        /// of OS versions. Do this till nextLink is null to fetch all the OS
-        /// versions.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -155,13 +118,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<OSVersion>>> ListOSVersionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all guest operating system families available to be
-        /// specified in the XML service configuration (.cscfg) for a cloud
-        /// service. Use nextLink property in the response to get the next page
-        /// of OS Families. Do this till nextLink is null to fetch all the OS
-        /// Families.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

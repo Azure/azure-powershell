@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The vault id is an Azure Resource Manager Resource id in the form
-    /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
-    /// </summary>
     public partial class SourceVault
     {
         /// <summary>
@@ -30,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SourceVault class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
         public SourceVault(string id = default(string))
         {
             Id = id;
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

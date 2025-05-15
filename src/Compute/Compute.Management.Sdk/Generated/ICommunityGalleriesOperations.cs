@@ -23,14 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ICommunityGalleriesOperations
     {
-        /// <summary>
-        /// Get a community gallery by gallery public name.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='publicGalleryName'>
-        /// The public name of the community gallery.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

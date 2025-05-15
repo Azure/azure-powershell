@@ -23,22 +23,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IDiskAccessesOperations
     {
-        /// <summary>
-        /// Creates or updates a disk access resource
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
-        /// </param>
-        /// <param name='diskAccess'>
-        /// disk access object supplied in the body of the Put disk access
-        /// operation.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -54,96 +38,8 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskAccess>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, DiskAccess diskAccess, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates (patches) a disk access resource.
-        /// </summary>
+        Task<AzureOperationResponse<IPage<DiskAccess>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<DiskAccess>> UpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets information about a disk access resource.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<DiskAccess>> GetWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a disk access resource.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all the disk access resources under a resource group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -161,36 +57,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<DiskAccess>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all the disk access resources under a subscription.
-        /// </summary>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<DiskAccess>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the private link resources possible under disk access resource
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -207,27 +76,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkResourceListResult>> GetPrivateLinkResourcesWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Approve or reject a private endpoint connection under disk access
-        /// resource, this can't be used to create a new private endpoint
-        /// connection.
-        /// </summary>
+        Task<AzureOperationResponse<DiskAccess>> GetWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
-        /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put
-        /// private endpoint connection operation.
+        /// <param name='diskAccess'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -244,22 +98,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets information about a private endpoint connection under a disk
-        /// access resource.
-        /// </summary>
+        Task<AzureOperationResponse<DiskAccess,DiskAccessesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, DiskAccess diskAccess, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
+        /// <param name='tags'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -276,21 +120,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> GetAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a private endpoint connection under a disk access resource.
-        /// </summary>
+        Task<AzureOperationResponse<DiskAccess,DiskAccessesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
-        /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -304,19 +137,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List information about private endpoint connections under a disk
-        /// access resource
-        /// </summary>
+        Task<AzureOperationHeaderResponse<DiskAccessesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -334,21 +158,96 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<PrivateEndpointConnection>>> ListPrivateEndpointConnectionsWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Creates or updates a disk access resource
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateEndpointConnection>> GetAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='diskAccessName'>
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// </param>
+        /// <param name='privateLinkServiceConnectionState'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateEndpointConnection,DiskAccessesUpdateAPrivateEndpointConnectionHeaders>> UpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='diskAccessName'>
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<DiskAccessesDeleteAPrivateEndpointConnectionHeaders>> DeleteAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='diskAccessName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<PrivateLinkResourceListResult>> GetPrivateLinkResourcesWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='diskAccessName'>
         /// </param>
         /// <param name='diskAccess'>
-        /// disk access object supplied in the body of the Put disk access
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -365,21 +264,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskAccess>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, DiskAccess diskAccess, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Updates (patches) a disk access resource.
-        /// </summary>
+        Task<AzureOperationResponse<DiskAccess,DiskAccessesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, DiskAccess diskAccess, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='tags'>
-        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -396,18 +286,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskAccess>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a disk access resource.
-        /// </summary>
+        Task<AzureOperationResponse<DiskAccess,DiskAccessesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -421,27 +303,14 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Approve or reject a private endpoint connection under disk access
-        /// resource, this can't be used to create a new private endpoint
-        /// connection.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<DiskAccessesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
         /// </param>
-        /// <param name='privateEndpointConnection'>
-        /// private endpoint connection object supplied in the body of the Put
-        /// private endpoint connection operation.
+        /// <param name='privateLinkServiceConnectionState'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -458,21 +327,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateEndpointConnection>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnection, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a private endpoint connection under a disk access resource.
-        /// </summary>
+        Task<AzureOperationResponse<PrivateEndpointConnection,DiskAccessesUpdateAPrivateEndpointConnectionHeaders>> BeginUpdateAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, PrivateLinkServiceConnectionState privateLinkServiceConnectionState, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='diskAccessName'>
-        /// The name of the disk access resource that is being created. The
-        /// name can't be changed after the disk encryption set is created.
-        /// Supported characters for the name are a-z, A-Z, 0-9, _ and -. The
-        /// maximum name length is 80 characters.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -486,32 +346,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all the disk access resources under a resource group.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<DiskAccess>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists all the disk access resources under a subscription.
-        /// </summary>
+        Task<AzureOperationHeaderResponse<DiskAccessesDeleteAPrivateEndpointConnectionHeaders>> BeginDeleteAPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string diskAccessName, string privateEndpointConnectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -531,10 +366,25 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<DiskAccess>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List information about private endpoint connections under a disk
-        /// access resource
-        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<DiskAccess>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

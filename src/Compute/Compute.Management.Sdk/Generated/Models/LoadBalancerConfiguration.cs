@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the load balancer configuration.
-    /// </summary>
     public partial class LoadBalancerConfiguration
     {
         /// <summary>
@@ -30,10 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the LoadBalancerConfiguration class.
         /// </summary>
-        /// <param name="name">The name of the Load balancer</param>
-        /// <param name="properties">Properties of the load balancer
-        /// configuration.</param>
-        /// <param name="id">Resource Id</param>
         public LoadBalancerConfiguration(string name, LoadBalancerConfigurationProperties properties, string id = default(string))
         {
             Id = id;
@@ -48,19 +41,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Load balancer
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets properties of the load balancer configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public LoadBalancerConfigurationProperties Properties { get; set; }

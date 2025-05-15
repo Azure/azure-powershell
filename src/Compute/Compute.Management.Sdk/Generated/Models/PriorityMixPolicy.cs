@@ -14,13 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the target splits for Spot and Regular priority VMs within a
-    /// scale set with flexible orchestration mode. With this property the
-    /// customer is able to specify the base number of regular priority VMs
-    /// created as the VMSS flex instance scales out and the split between Spot
-    /// and Regular priority VMs after this base target has been reached.
-    /// </summary>
     public partial class PriorityMixPolicy
     {
         /// <summary>
@@ -34,12 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PriorityMixPolicy class.
         /// </summary>
-        /// <param name="baseRegularPriorityCount">The base number of regular
-        /// priority VMs that will be created in this scale set as it scales
-        /// out.</param>
-        /// <param name="regularPriorityPercentageAboveBase">The percentage of
-        /// VM instances, after the base regular priority count has been
-        /// reached, that are expected to use regular priority.</param>
         public PriorityMixPolicy(int? baseRegularPriorityCount = default(int?), int? regularPriorityPercentageAboveBase = default(int?))
         {
             BaseRegularPriorityCount = baseRegularPriorityCount;
@@ -53,16 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the base number of regular priority VMs that will be
-        /// created in this scale set as it scales out.
         /// </summary>
         [JsonProperty(PropertyName = "baseRegularPriorityCount")]
         public int? BaseRegularPriorityCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the percentage of VM instances, after the base regular
-        /// priority count has been reached, that are expected to use regular
-        /// priority.
         /// </summary>
         [JsonProperty(PropertyName = "regularPriorityPercentageAboveBase")]
         public int? RegularPriorityPercentageAboveBase { get; set; }
@@ -75,22 +57,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (BaseRegularPriorityCount != null)
-            {
-                if (BaseRegularPriorityCount < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "BaseRegularPriorityCount", 0);
-                }
-            }
             if (RegularPriorityPercentageAboveBase != null)
             {
                 if (RegularPriorityPercentageAboveBase > 100)
                 {
                     throw new ValidationException(ValidationRules.InclusiveMaximum, "RegularPriorityPercentageAboveBase", 100);
-                }
-                if (RegularPriorityPercentageAboveBase < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "RegularPriorityPercentageAboveBase", 0);
                 }
             }
         }

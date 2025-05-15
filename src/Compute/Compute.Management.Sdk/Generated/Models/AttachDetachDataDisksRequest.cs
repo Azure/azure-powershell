@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the input for attaching and detaching a list of managed data
-    /// disks.
-    /// </summary>
     public partial class AttachDetachDataDisksRequest
     {
         /// <summary>
@@ -35,10 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AttachDetachDataDisksRequest
         /// class.
         /// </summary>
-        /// <param name="dataDisksToAttach">The list of managed data disks to
-        /// be attached.</param>
-        /// <param name="dataDisksToDetach">The list of managed data disks to
-        /// be detached.</param>
         public AttachDetachDataDisksRequest(IList<DataDisksToAttach> dataDisksToAttach = default(IList<DataDisksToAttach>), IList<DataDisksToDetach> dataDisksToDetach = default(IList<DataDisksToDetach>))
         {
             DataDisksToAttach = dataDisksToAttach;
@@ -52,13 +44,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the list of managed data disks to be attached.
         /// </summary>
         [JsonProperty(PropertyName = "dataDisksToAttach")]
         public IList<DataDisksToAttach> DataDisksToAttach { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of managed data disks to be detached.
         /// </summary>
         [JsonProperty(PropertyName = "dataDisksToDetach")]
         public IList<DataDisksToDetach> DataDisksToDetach { get; set; }

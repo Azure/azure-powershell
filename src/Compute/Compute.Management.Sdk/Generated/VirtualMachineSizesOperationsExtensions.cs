@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,37 +21,55 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class VirtualMachineSizesOperationsExtensions
     {
-            /// <summary>
-            /// This API is deprecated. Use [Resources
-            /// Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
             /// </param>
-            public static IEnumerable<VirtualMachineSize> List(this IVirtualMachineSizesOperations operations, string location)
+            public static IPage<VirtualMachineSize> List(this IVirtualMachineSizesOperations operations, string location)
             {
                 return operations.ListAsync(location).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// This API is deprecated. Use [Resources
-            /// Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<VirtualMachineSize>> ListAsync(this IVirtualMachineSizesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<VirtualMachineSize>> ListAsync(this IVirtualMachineSizesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<VirtualMachineSize> ListNext(this IVirtualMachineSizesOperations operations, string nextPageLink)
+            {
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<VirtualMachineSize>> ListNextAsync(this IVirtualMachineSizesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

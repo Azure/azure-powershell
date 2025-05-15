@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Encryption at rest settings for disk or snapshot
-    /// </summary>
     public partial class Encryption
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the Encryption class.
         /// </summary>
-        /// <param name="diskEncryptionSetId">ResourceId of the disk encryption
-        /// set to use for enabling encryption at rest.</param>
         /// <param name="type">Possible values include:
         /// 'EncryptionAtRestWithPlatformKey',
         /// 'EncryptionAtRestWithCustomerKey',
@@ -48,8 +43,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resourceId of the disk encryption set to use for
-        /// enabling encryption at rest.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; set; }

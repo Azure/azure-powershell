@@ -23,141 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IGalleryInVMAccessControlProfilesOperations
     {
-        /// <summary>
-        /// Create or update a gallery inVMAccessControlProfile.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile is to be created.
-        /// </param>
-        /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be created or
-        /// updated. The allowed characters are alphabets and numbers with
-        /// dots, dashes, and periods allowed in the middle. The maximum length
-        /// is 80 characters.
-        /// </param>
-        /// <param name='galleryInVMAccessControlProfile'>
-        /// Parameters supplied to the create or update gallery
-        /// inVMAccessControlProfile operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a gallery inVMAccessControlProfile.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile is to be updated.
-        /// </param>
-        /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be updated. The
-        /// allowed characters are alphabets and numbers with dots, dashes, and
-        /// periods allowed in the middle. The maximum length is 80 characters.
-        /// </param>
-        /// <param name='galleryInVMAccessControlProfile'>
-        /// Parameters supplied to the update gallery inVMAccessControlProfile
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Retrieves information about a gallery inVMAccessControlProfile.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery from which the
-        /// InVMAccessControlProfiles are to be retrieved.
-        /// </param>
-        /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be retrieved.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Delete a gallery inVMAccessControlProfile.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// he name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile resides.
-        /// </param>
-        /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be deleted.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationHeaderResponse<GalleryInVMAccessControlProfilesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List gallery inVMAccessControlProfiles in a gallery.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery from which the
-        /// InVMAccessControlProfiles are to be listed.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -175,25 +43,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<GalleryInVMAccessControlProfile>>> ListByGalleryWithHttpMessagesAsync(string resourceGroupName, string galleryName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Create or update a gallery inVMAccessControlProfile.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile is to be created.
         /// </param>
         /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be created or
-        /// updated. The allowed characters are alphabets and numbers with
-        /// dots, dashes, and periods allowed in the middle. The maximum length
-        /// is 80 characters.
-        /// </param>
-        /// <param name='galleryInVMAccessControlProfile'>
-        /// Parameters supplied to the create or update gallery
-        /// inVMAccessControlProfile operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -210,25 +64,14 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a gallery inVMAccessControlProfile.
-        /// </summary>
+        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> GetWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile is to be updated.
         /// </param>
         /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be updated. The
-        /// allowed characters are alphabets and numbers with dots, dashes, and
-        /// periods allowed in the middle. The maximum length is 80 characters.
         /// </param>
         /// <param name='galleryInVMAccessControlProfile'>
-        /// Parameters supplied to the update gallery inVMAccessControlProfile
-        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -245,19 +88,103 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GalleryInVMAccessControlProfile>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Delete a gallery inVMAccessControlProfile.
-        /// </summary>
+        Task<AzureOperationResponse<GalleryInVMAccessControlProfile,GalleryInVMAccessControlProfilesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// he name of the Shared Image Gallery in which the
-        /// InVMAccessControlProfile resides.
         /// </param>
         /// <param name='inVMAccessControlProfileName'>
-        /// The name of the gallery inVMAccessControlProfile to be deleted.
+        /// </param>
+        /// <param name='galleryInVMAccessControlProfile'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryInVMAccessControlProfile,GalleryInVMAccessControlProfilesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='galleryName'>
+        /// </param>
+        /// <param name='inVMAccessControlProfileName'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<GalleryInVMAccessControlProfilesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='galleryName'>
+        /// </param>
+        /// <param name='inVMAccessControlProfileName'>
+        /// </param>
+        /// <param name='galleryInVMAccessControlProfile'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryInVMAccessControlProfile,GalleryInVMAccessControlProfilesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='galleryName'>
+        /// </param>
+        /// <param name='inVMAccessControlProfileName'>
+        /// </param>
+        /// <param name='galleryInVMAccessControlProfile'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<GalleryInVMAccessControlProfile,GalleryInVMAccessControlProfilesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <param name='resourceGroupName'>
+        /// </param>
+        /// <param name='galleryName'>
+        /// </param>
+        /// <param name='inVMAccessControlProfileName'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -272,9 +199,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationHeaderResponse<GalleryInVMAccessControlProfilesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string inVMAccessControlProfileName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List gallery inVMAccessControlProfiles in a gallery.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

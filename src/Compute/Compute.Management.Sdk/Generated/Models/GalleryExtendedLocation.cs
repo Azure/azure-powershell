@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The name of the extended location.
-    /// </summary>
     public partial class GalleryExtendedLocation
     {
         /// <summary>

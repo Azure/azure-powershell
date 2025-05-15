@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Compute
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -24,60 +23,10 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class VirtualMachineExtensionImagesOperationsExtensions
     {
-            /// <summary>
-            /// Gets a virtual machine extension image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// </param>
-            /// <param name='type'>
-            /// </param>
-            /// <param name='version'>
-            /// </param>
-            public static VirtualMachineExtensionImage Get(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string version)
-            {
-                return operations.GetAsync(location, publisherName, type, version).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a virtual machine extension image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// </param>
-            /// <param name='type'>
-            /// </param>
-            /// <param name='version'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineExtensionImage> GetAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string version, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, publisherName, type, version, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine extension image types.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// </param>
@@ -86,14 +35,10 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListTypesAsync(location, publisherName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of virtual machine extension image types.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// </param>
@@ -108,49 +53,85 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of virtual machine extension image versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// </param>
             /// <param name='type'>
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
+            /// <param name='filter'>
             /// </param>
-            public static IList<VirtualMachineExtensionImage> ListVersions(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, ODataQuery<VirtualMachineExtensionImage> odataQuery = default(ODataQuery<VirtualMachineExtensionImage>))
+            /// <param name='top'>
+            /// </param>
+            /// <param name='orderby'>
+            /// </param>
+            public static IList<VirtualMachineExtensionImage> ListVersions(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string))
             {
-                return operations.ListVersionsAsync(location, publisherName, type, odataQuery).GetAwaiter().GetResult();
+                return operations.ListVersionsAsync(location, publisherName, type, filter, top, orderby).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of virtual machine extension image versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The name of a supported Azure region.
             /// </param>
             /// <param name='publisherName'>
             /// </param>
             /// <param name='type'>
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
+            /// <param name='filter'>
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='orderby'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IList<VirtualMachineExtensionImage>> ListVersionsAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, ODataQuery<VirtualMachineExtensionImage> odataQuery = default(ODataQuery<VirtualMachineExtensionImage>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IList<VirtualMachineExtensionImage>> ListVersionsAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string filter = default(string), int? top = default(int?), string orderby = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListVersionsWithHttpMessagesAsync(location, publisherName, type, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListVersionsWithHttpMessagesAsync(location, publisherName, type, filter, top, orderby, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publisherName'>
+            /// </param>
+            /// <param name='type'>
+            /// </param>
+            /// <param name='version'>
+            /// </param>
+            public static VirtualMachineExtensionImage Get(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string version)
+            {
+                return operations.GetAsync(location, publisherName, type, version).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publisherName'>
+            /// </param>
+            /// <param name='type'>
+            /// </param>
+            /// <param name='version'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineExtensionImage> GetAsync(this IVirtualMachineExtensionImagesOperations operations, string location, string publisherName, string type, string version, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(location, publisherName, type, version, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

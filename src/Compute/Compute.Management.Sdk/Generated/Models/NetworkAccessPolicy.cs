@@ -16,18 +16,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class NetworkAccessPolicy
     {
-        /// <summary>
-        /// The disk can be exported or uploaded to from any network.
-        /// </summary>
         public const string AllowAll = "AllowAll";
-        /// <summary>
-        /// The disk can be exported or uploaded to using a DiskAccess
-        /// resource's private endpoints.
-        /// </summary>
         public const string AllowPrivate = "AllowPrivate";
-        /// <summary>
-        /// The disk cannot be exported.
-        /// </summary>
         public const string DenyAll = "DenyAll";
     }
 }

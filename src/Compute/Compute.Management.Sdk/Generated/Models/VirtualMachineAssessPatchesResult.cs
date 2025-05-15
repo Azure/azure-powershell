@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of an AssessPatches result.
-    /// </summary>
     public partial class VirtualMachineAssessPatchesResult
     {
         /// <summary>
@@ -33,30 +30,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the VirtualMachineAssessPatchesResult
         /// class.
         /// </summary>
-        /// <param name="status">The overall success or failure status of the
-        /// operation. It remains "InProgress" until the operation completes.
-        /// At that point it will become "Unknown", "Failed", "Succeeded", or
-        /// "CompletedWithWarnings.". Possible values include: 'Unknown',
+        /// <param name="status">Possible values include: 'Unknown',
         /// 'InProgress', 'Failed', 'Succeeded',
         /// 'CompletedWithWarnings'</param>
-        /// <param name="assessmentActivityId">The activity ID of the operation
-        /// that produced this result. It is used to correlate across CRP and
-        /// extension logs.</param>
-        /// <param name="rebootPending">The overall reboot status of the VM. It
-        /// will be true when partially installed patches require a reboot to
-        /// complete installation but the reboot has not yet occurred.</param>
-        /// <param name="criticalAndSecurityPatchCount">The number of critical
-        /// or security patches that have been detected as available and not
-        /// yet installed.</param>
-        /// <param name="otherPatchCount">The number of all available patches
-        /// excluding critical and security.</param>
-        /// <param name="startDateTime">The UTC timestamp when the operation
-        /// began.</param>
-        /// <param name="availablePatches">The list of patches that have been
-        /// detected as available for installation.</param>
-        /// <param name="error">The errors that were encountered during
-        /// execution of the operation. The details array contains the list of
-        /// them.</param>
         public VirtualMachineAssessPatchesResult(string status = default(string), string assessmentActivityId = default(string), bool? rebootPending = default(bool?), int? criticalAndSecurityPatchCount = default(int?), int? otherPatchCount = default(int?), System.DateTime? startDateTime = default(System.DateTime?), IList<VirtualMachineSoftwarePatchProperties> availablePatches = default(IList<VirtualMachineSoftwarePatchProperties>), ApiError error = default(ApiError))
         {
             Status = status;
@@ -76,60 +52,43 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the overall success or failure status of the operation. It
-        /// remains "InProgress" until the operation completes. At that point
-        /// it will become "Unknown", "Failed", "Succeeded", or
-        /// "CompletedWithWarnings.". Possible values include: 'Unknown',
-        /// 'InProgress', 'Failed', 'Succeeded', 'CompletedWithWarnings'
+        /// Gets possible values include: 'Unknown', 'InProgress', 'Failed',
+        /// 'Succeeded', 'CompletedWithWarnings'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; private set; }
 
         /// <summary>
-        /// Gets the activity ID of the operation that produced this result. It
-        /// is used to correlate across CRP and extension logs.
         /// </summary>
         [JsonProperty(PropertyName = "assessmentActivityId")]
         public string AssessmentActivityId { get; private set; }
 
         /// <summary>
-        /// Gets the overall reboot status of the VM. It will be true when
-        /// partially installed patches require a reboot to complete
-        /// installation but the reboot has not yet occurred.
         /// </summary>
         [JsonProperty(PropertyName = "rebootPending")]
         public bool? RebootPending { get; private set; }
 
         /// <summary>
-        /// Gets the number of critical or security patches that have been
-        /// detected as available and not yet installed.
         /// </summary>
         [JsonProperty(PropertyName = "criticalAndSecurityPatchCount")]
         public int? CriticalAndSecurityPatchCount { get; private set; }
 
         /// <summary>
-        /// Gets the number of all available patches excluding critical and
-        /// security.
         /// </summary>
         [JsonProperty(PropertyName = "otherPatchCount")]
         public int? OtherPatchCount { get; private set; }
 
         /// <summary>
-        /// Gets the UTC timestamp when the operation began.
         /// </summary>
         [JsonProperty(PropertyName = "startDateTime")]
         public System.DateTime? StartDateTime { get; private set; }
 
         /// <summary>
-        /// Gets the list of patches that have been detected as available for
-        /// installation.
         /// </summary>
         [JsonProperty(PropertyName = "availablePatches")]
         public IList<VirtualMachineSoftwarePatchProperties> AvailablePatches { get; private set; }
 
         /// <summary>
-        /// Gets the errors that were encountered during execution of the
-        /// operation. The details array contains the list of them.
         /// </summary>
         [JsonProperty(PropertyName = "error")]
         public ApiError Error { get; private set; }

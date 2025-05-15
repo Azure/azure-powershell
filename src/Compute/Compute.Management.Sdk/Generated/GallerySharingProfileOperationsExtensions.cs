@@ -21,40 +21,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class GallerySharingProfileOperationsExtensions
     {
-            /// <summary>
-            /// Update sharing profile of a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='sharingUpdate'>
-            /// Parameters supplied to the update gallery sharing profile.
             /// </param>
             public static SharingUpdate Update(this IGallerySharingProfileOperations operations, string resourceGroupName, string galleryName, SharingUpdate sharingUpdate)
             {
                 return operations.UpdateAsync(resourceGroupName, galleryName, sharingUpdate).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update sharing profile of a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='sharingUpdate'>
-            /// Parameters supplied to the update gallery sharing profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -67,40 +55,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update sharing profile of a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='sharingUpdate'>
-            /// Parameters supplied to the update gallery sharing profile.
             /// </param>
             public static SharingUpdate BeginUpdate(this IGallerySharingProfileOperations operations, string resourceGroupName, string galleryName, SharingUpdate sharingUpdate)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, galleryName, sharingUpdate).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update sharing profile of a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery.
             /// </param>
             /// <param name='sharingUpdate'>
-            /// Parameters supplied to the update gallery sharing profile.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

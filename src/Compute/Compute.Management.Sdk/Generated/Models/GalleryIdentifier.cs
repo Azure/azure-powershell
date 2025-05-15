@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the gallery unique name.
-    /// </summary>
     public partial class GalleryIdentifier
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryIdentifier class.
         /// </summary>
-        /// <param name="uniqueName">The unique name of the Shared Image
-        /// Gallery. This name is generated automatically by Azure.</param>
         public GalleryIdentifier(string uniqueName = default(string))
         {
             UniqueName = uniqueName;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the unique name of the Shared Image Gallery. This name is
-        /// generated automatically by Azure.
         /// </summary>
         [JsonProperty(PropertyName = "uniqueName")]
         public string UniqueName { get; private set; }

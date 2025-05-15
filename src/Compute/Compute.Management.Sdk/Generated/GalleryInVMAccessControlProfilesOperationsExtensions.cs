@@ -21,252 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class GalleryInVMAccessControlProfilesOperationsExtensions
     {
-            /// <summary>
-            /// Create or update a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be created.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be created or updated.
-            /// The allowed characters are alphabets and numbers with dots, dashes, and
-            /// periods allowed in the middle. The maximum length is 80 characters.
-            /// </param>
-            /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the create or update gallery
-            /// inVMAccessControlProfile operation.
-            /// </param>
-            public static GalleryInVMAccessControlProfile CreateOrUpdate(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be created.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be created or updated.
-            /// The allowed characters are alphabets and numbers with dots, dashes, and
-            /// periods allowed in the middle. The maximum length is 80 characters.
-            /// </param>
-            /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the create or update gallery
-            /// inVMAccessControlProfile operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryInVMAccessControlProfile> CreateOrUpdateAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be updated.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be updated. The allowed
-            /// characters are alphabets and numbers with dots, dashes, and periods allowed
-            /// in the middle. The maximum length is 80 characters.
-            /// </param>
-            /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the update gallery inVMAccessControlProfile
-            /// operation.
-            /// </param>
-            public static GalleryInVMAccessControlProfile Update(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile)
-            {
-                return operations.UpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be updated.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be updated. The allowed
-            /// characters are alphabets and numbers with dots, dashes, and periods allowed
-            /// in the middle. The maximum length is 80 characters.
-            /// </param>
-            /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the update gallery inVMAccessControlProfile
-            /// operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryInVMAccessControlProfile> UpdateAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Retrieves information about a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery from which the
-            /// InVMAccessControlProfiles are to be retrieved.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be retrieved.
-            /// </param>
-            public static GalleryInVMAccessControlProfile Get(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
-            {
-                return operations.GetAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery from which the
-            /// InVMAccessControlProfiles are to be retrieved.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be retrieved.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryInVMAccessControlProfile> GetAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Delete a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// he name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be deleted.
-            /// </param>
-            public static GalleryInVMAccessControlProfilesDeleteHeaders Delete(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
-            {
-                return operations.DeleteAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a gallery inVMAccessControlProfile.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// he name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// resides.
-            /// </param>
-            /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be deleted.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GalleryInVMAccessControlProfilesDeleteHeaders> DeleteAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
-            }
-
-            /// <summary>
-            /// List gallery inVMAccessControlProfiles in a gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery from which the
-            /// InVMAccessControlProfiles are to be listed.
             /// </param>
             public static IPage<GalleryInVMAccessControlProfile> ListByGallery(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName)
             {
                 return operations.ListByGalleryAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List gallery inVMAccessControlProfiles in a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery from which the
-            /// InVMAccessControlProfiles are to be listed.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -279,54 +51,176 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Create or update a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be created.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be created or updated.
-            /// The allowed characters are alphabets and numbers with dots, dashes, and
-            /// periods allowed in the middle. The maximum length is 80 characters.
+            /// </param>
+            public static GalleryInVMAccessControlProfile Get(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
+            {
+                return operations.GetAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryInVMAccessControlProfile> GetAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
             /// </param>
             /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the create or update gallery
-            /// inVMAccessControlProfile operation.
+            /// </param>
+            public static GalleryInVMAccessControlProfile CreateOrUpdate(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='galleryInVMAccessControlProfile'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryInVMAccessControlProfile> CreateOrUpdateAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='galleryInVMAccessControlProfile'>
+            /// </param>
+            public static GalleryInVMAccessControlProfile Update(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile)
+            {
+                return operations.UpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='galleryInVMAccessControlProfile'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryInVMAccessControlProfile> UpdateAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            public static GalleryInVMAccessControlProfilesDeleteHeaders Delete(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
+            {
+                return operations.DeleteAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GalleryInVMAccessControlProfilesDeleteHeaders> DeleteAsync(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='galleryName'>
+            /// </param>
+            /// <param name='inVMAccessControlProfileName'>
+            /// </param>
+            /// <param name='galleryInVMAccessControlProfile'>
             /// </param>
             public static GalleryInVMAccessControlProfile BeginCreateOrUpdate(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfile galleryInVMAccessControlProfile)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Create or update a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be created.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be created or updated.
-            /// The allowed characters are alphabets and numbers with dots, dashes, and
-            /// periods allowed in the middle. The maximum length is 80 characters.
             /// </param>
             /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the create or update gallery
-            /// inVMAccessControlProfile operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -339,54 +233,32 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be updated.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be updated. The allowed
-            /// characters are alphabets and numbers with dots, dashes, and periods allowed
-            /// in the middle. The maximum length is 80 characters.
             /// </param>
             /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the update gallery inVMAccessControlProfile
-            /// operation.
             /// </param>
             public static GalleryInVMAccessControlProfile BeginUpdate(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName, GalleryInVMAccessControlProfileUpdate galleryInVMAccessControlProfile)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, galleryName, inVMAccessControlProfileName, galleryInVMAccessControlProfile).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// The name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// is to be updated.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be updated. The allowed
-            /// characters are alphabets and numbers with dots, dashes, and periods allowed
-            /// in the middle. The maximum length is 80 characters.
             /// </param>
             /// <param name='galleryInVMAccessControlProfile'>
-            /// Parameters supplied to the update gallery inVMAccessControlProfile
-            /// operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -399,42 +271,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Delete a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// he name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// resides.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be deleted.
             /// </param>
             public static GalleryInVMAccessControlProfilesDeleteHeaders BeginDelete(this IGalleryInVMAccessControlProfilesOperations operations, string resourceGroupName, string galleryName, string inVMAccessControlProfileName)
             {
                 return operations.BeginDeleteAsync(resourceGroupName, galleryName, inVMAccessControlProfileName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Delete a gallery inVMAccessControlProfile.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='galleryName'>
-            /// he name of the Shared Image Gallery in which the InVMAccessControlProfile
-            /// resides.
             /// </param>
             /// <param name='inVMAccessControlProfileName'>
-            /// The name of the gallery inVMAccessControlProfile to be deleted.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -447,9 +305,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List gallery inVMAccessControlProfiles in a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -461,9 +316,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListByGalleryNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List gallery inVMAccessControlProfiles in a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

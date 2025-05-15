@@ -21,271 +21,32 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class VirtualMachineScaleSetVMRunCommandsOperationsExtensions
     {
-            /// <summary>
-            /// The operation to create or update the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='runCommand'>
-            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
-            /// </param>
-            public static VirtualMachineRunCommand CreateOrUpdate(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to create or update the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='runCommand'>
-            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineRunCommand> CreateOrUpdateAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to update the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='runCommand'>
-            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
-            /// </param>
-            public static VirtualMachineRunCommand Update(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand)
-            {
-                return operations.UpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to update the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='runCommand'>
-            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineRunCommand> UpdateAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to delete the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            public static void Delete(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName)
-            {
-                operations.DeleteAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to delete the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// The operation to get the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            public static VirtualMachineRunCommand Get(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// The operation to get the VMSS VM run command.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VirtualMachineRunCommand> GetAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// The operation to get all run commands of an instance in Virtual Machine
-            /// Scaleset.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
-            /// </param>
-            /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
-            /// </param>
-            /// <param name='expand'>
-            /// The expand expression to apply on the operation.
             /// </param>
             public static IPage<VirtualMachineRunCommand> List(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string expand = default(string))
             {
                 return operations.ListAsync(resourceGroupName, vmScaleSetName, instanceId, expand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The operation to get all run commands of an instance in Virtual Machine
-            /// Scaleset.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply on the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -298,52 +59,200 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// The operation to create or update the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
+            /// </param>
+            /// <param name='expand'>
+            /// </param>
+            public static VirtualMachineRunCommand Get(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, expand).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='expand'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommand> GetAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
             /// </param>
             /// <param name='runCommand'>
-            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
+            /// </param>
+            public static VirtualMachineRunCommand CreateOrUpdate(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='runCommand'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommand> CreateOrUpdateAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='runCommand'>
+            /// </param>
+            public static VirtualMachineRunCommand Update(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand)
+            {
+                return operations.UpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='runCommand'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineRunCommand> UpdateAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            public static VirtualMachineScaleSetVMRunCommandsDeleteHeaders Delete(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName)
+            {
+                return operations.DeleteAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<VirtualMachineScaleSetVMRunCommandsDeleteHeaders> DeleteAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='vmScaleSetName'>
+            /// </param>
+            /// <param name='instanceId'>
+            /// </param>
+            /// <param name='runCommandName'>
+            /// </param>
+            /// <param name='runCommand'>
             /// </param>
             public static VirtualMachineRunCommand BeginCreateOrUpdate(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommand runCommand)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The operation to create or update the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
             /// <param name='runCommand'>
-            /// Parameters supplied to the Create Virtual Machine RunCommand operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -356,52 +265,36 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// The operation to update the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
             /// <param name='runCommand'>
-            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
             /// </param>
             public static VirtualMachineRunCommand BeginUpdate(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, VirtualMachineRunCommandUpdate runCommand)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, runCommand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The operation to update the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
             /// <param name='runCommand'>
-            /// Parameters supplied to the Update Virtual Machine RunCommand operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -414,59 +307,44 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// The operation to delete the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
-            public static void BeginDelete(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName)
+            public static VirtualMachineScaleSetVMRunCommandsDeleteHeaders BeginDelete(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The operation to delete the VMSS VM run command.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='vmScaleSetName'>
-            /// The name of the VM scale set.
             /// </param>
             /// <param name='instanceId'>
-            /// The instance ID of the virtual machine.
             /// </param>
             /// <param name='runCommandName'>
-            /// The name of the virtual machine run command.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSetVMRunCommandsDeleteHeaders> BeginDeleteAsync(this IVirtualMachineScaleSetVMRunCommandsOperations operations, string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId, runCommandName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// The operation to get all run commands of an instance in Virtual Machine
-            /// Scaleset.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -478,10 +356,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The operation to get all run commands of an instance in Virtual Machine
-            /// Scaleset.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Disk Restore Point details.
-    /// </summary>
     public partial class DiskRestorePointAttributes : SubResourceReadOnly
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskRestorePointAttributes class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="sourceDiskRestorePoint">Resource Id of the source disk
-        /// restore point.</param>
         public DiskRestorePointAttributes(string id = default(string), RestorePointEncryption encryption = default(RestorePointEncryption), ApiEntityReference sourceDiskRestorePoint = default(ApiEntityReference))
             : base(id)
         {
@@ -51,7 +45,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public RestorePointEncryption Encryption { get; set; }
 
         /// <summary>
-        /// Gets or sets resource Id of the source disk restore point.
         /// </summary>
         [JsonProperty(PropertyName = "sourceDiskRestorePoint")]
         public ApiEntityReference SourceDiskRestorePoint { get; set; }

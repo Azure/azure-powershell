@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The gallery artifact version source.
-    /// </summary>
     public partial class GalleryArtifactVersionSource
     {
         /// <summary>
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryArtifactVersionSource
         /// class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version
-        /// source.</param>
         public GalleryArtifactVersionSource(string id = default(string))
         {
             Id = id;
@@ -45,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the id of the gallery artifact version source.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

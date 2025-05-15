@@ -21,80 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CommunityGalleryImagesOperationsExtensions
     {
-            /// <summary>
-            /// Get a community gallery image.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
-            /// </param>
-            public static CommunityGalleryImage Get(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, string galleryImageName)
-            {
-                return operations.GetAsync(location, publicGalleryName, galleryImageName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get a community gallery image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
-            /// </param>
-            /// <param name='galleryImageName'>
-            /// The name of the community gallery image definition.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CommunityGalleryImage> GetAsync(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, publicGalleryName, galleryImageName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             public static IPage<CommunityGalleryImage> List(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName)
             {
                 return operations.ListAsync(location, publicGalleryName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='publicGalleryName'>
-            /// The public name of the community gallery.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -107,9 +51,40 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// </param>
+            public static CommunityGalleryImage Get(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, string galleryImageName)
+            {
+                return operations.GetAsync(location, publicGalleryName, galleryImageName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// </param>
+            /// <param name='publicGalleryName'>
+            /// </param>
+            /// <param name='galleryImageName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CommunityGalleryImage> GetAsync(this ICommunityGalleryImagesOperations operations, string location, string publicGalleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(location, publicGalleryName, galleryImageName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -121,9 +96,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List community gallery images inside a gallery.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

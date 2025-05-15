@@ -23,17 +23,11 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface IGallerySharingProfileOperations
     {
-        /// <summary>
-        /// Update sharing profile of a gallery.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='sharingUpdate'>
-        /// Parameters supplied to the update gallery sharing profile.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,18 +44,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SharingUpdate>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, SharingUpdate sharingUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update sharing profile of a gallery.
-        /// </summary>
+        Task<AzureOperationResponse<SharingUpdate,GallerySharingProfileUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, SharingUpdate sharingUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Shared Image Gallery.
         /// </param>
         /// <param name='sharingUpdate'>
-        /// Parameters supplied to the update gallery sharing profile.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,6 +66,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SharingUpdate>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, SharingUpdate sharingUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SharingUpdate,GallerySharingProfileUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string galleryName, SharingUpdate sharingUpdate, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

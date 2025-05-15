@@ -21,36 +21,24 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CloudServiceOperatingSystemsOperationsExtensions
     {
-            /// <summary>
-            /// Gets properties of a guest operating system version that can be specified
-            /// in the XML service configuration (.cscfg) for a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS version pertains to.
             /// </param>
             /// <param name='osVersionName'>
-            /// Name of the OS version.
             /// </param>
             public static OSVersion GetOSVersion(this ICloudServiceOperatingSystemsOperations operations, string location, string osVersionName)
             {
                 return operations.GetOSVersionAsync(location, osVersionName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets properties of a guest operating system version that can be specified
-            /// in the XML service configuration (.cscfg) for a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS version pertains to.
             /// </param>
             /// <param name='osVersionName'>
-            /// Name of the OS version.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -63,34 +51,20 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system versions available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS versions.
-            /// Do this till nextLink is null to fetch all the OS versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS versions pertain to.
             /// </param>
             public static IPage<OSVersion> ListOSVersions(this ICloudServiceOperatingSystemsOperations operations, string location)
             {
                 return operations.ListOSVersionsAsync(location).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system versions available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS versions.
-            /// Do this till nextLink is null to fetch all the OS versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS versions pertain to.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -103,36 +77,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets properties of a guest operating system family that can be specified in
-            /// the XML service configuration (.cscfg) for a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS family pertains to.
             /// </param>
             /// <param name='osFamilyName'>
-            /// Name of the OS family.
             /// </param>
             public static OSFamily GetOSFamily(this ICloudServiceOperatingSystemsOperations operations, string location, string osFamilyName)
             {
                 return operations.GetOSFamilyAsync(location, osFamilyName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets properties of a guest operating system family that can be specified in
-            /// the XML service configuration (.cscfg) for a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS family pertains to.
             /// </param>
             /// <param name='osFamilyName'>
-            /// Name of the OS family.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -145,34 +107,20 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system families available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS Families.
-            /// Do this till nextLink is null to fetch all the OS Families.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS families pertain to.
             /// </param>
             public static IPage<OSFamily> ListOSFamilies(this ICloudServiceOperatingSystemsOperations operations, string location)
             {
                 return operations.ListOSFamiliesAsync(location).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system families available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS Families.
-            /// Do this till nextLink is null to fetch all the OS Families.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Name of the location that the OS families pertain to.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -185,12 +133,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system versions available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS versions.
-            /// Do this till nextLink is null to fetch all the OS versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -202,12 +144,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListOSVersionsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system versions available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS versions.
-            /// Do this till nextLink is null to fetch all the OS versions.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -225,12 +161,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system families available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS Families.
-            /// Do this till nextLink is null to fetch all the OS Families.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -242,12 +172,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListOSFamiliesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all guest operating system families available to be
-            /// specified in the XML service configuration (.cscfg) for a cloud service.
-            /// Use nextLink property in the response to get the next page of OS Families.
-            /// Do this till nextLink is null to fetch all the OS Families.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

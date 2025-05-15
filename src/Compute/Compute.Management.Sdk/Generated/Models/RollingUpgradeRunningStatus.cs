@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Information about the current running state of the overall upgrade.
-    /// </summary>
     public partial class RollingUpgradeRunningStatus
     {
         /// <summary>
@@ -31,14 +28,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RollingUpgradeRunningStatus
         /// class.
         /// </summary>
-        /// <param name="code">Code indicating the current status of the
-        /// upgrade. Possible values include: 'RollingForward', 'Cancelled',
-        /// 'Completed', 'Faulted'</param>
-        /// <param name="startTime">Start time of the upgrade.</param>
-        /// <param name="lastAction">The last action performed on the rolling
-        /// upgrade. Possible values include: 'Start', 'Cancel'</param>
-        /// <param name="lastActionTime">Last action time of the
-        /// upgrade.</param>
+        /// <param name="code">Possible values include: 'RollingForward',
+        /// 'Cancelled', 'Completed', 'Faulted'</param>
+        /// <param name="lastAction">Possible values include: 'Start',
+        /// 'Cancel'</param>
         public RollingUpgradeRunningStatus(RollingUpgradeStatusCode? code = default(RollingUpgradeStatusCode?), System.DateTime? startTime = default(System.DateTime?), RollingUpgradeActionType? lastAction = default(RollingUpgradeActionType?), System.DateTime? lastActionTime = default(System.DateTime?))
         {
             Code = code;
@@ -54,28 +47,24 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets code indicating the current status of the upgrade. Possible
-        /// values include: 'RollingForward', 'Cancelled', 'Completed',
-        /// 'Faulted'
+        /// Gets possible values include: 'RollingForward', 'Cancelled',
+        /// 'Completed', 'Faulted'
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public RollingUpgradeStatusCode? Code { get; private set; }
 
         /// <summary>
-        /// Gets start time of the upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime { get; private set; }
 
         /// <summary>
-        /// Gets the last action performed on the rolling upgrade. Possible
-        /// values include: 'Start', 'Cancel'
+        /// Gets possible values include: 'Start', 'Cancel'
         /// </summary>
         [JsonProperty(PropertyName = "lastAction")]
         public RollingUpgradeActionType? LastAction { get; private set; }
 
         /// <summary>
-        /// Gets last action time of the upgrade.
         /// </summary>
         [JsonProperty(PropertyName = "lastActionTime")]
         public System.DateTime? LastActionTime { get; private set; }

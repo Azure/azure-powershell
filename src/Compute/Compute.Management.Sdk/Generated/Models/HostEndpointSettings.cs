@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies particular host endpoint settings.
-    /// </summary>
     public partial class HostEndpointSettings
     {
         /// <summary>
@@ -29,16 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the HostEndpointSettings class.
         /// </summary>
-        /// <param name="mode">Specifies the execution mode. In Audit mode, the
-        /// system acts as if it is enforcing the access control policy,
-        /// including emitting access denial entries in the logs but it does
-        /// not actually deny any requests to host endpoints. In Enforce mode,
-        /// the system will enforce the access control and it is the
-        /// recommended mode of operation. Possible values include: 'Audit',
-        /// 'Enforce', 'Disabled'</param>
-        /// <param name="inVMAccessControlProfileReferenceId">Specifies the
-        /// InVMAccessControlProfileVersion resource id in the format of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}</param>
+        /// <param name="mode">Possible values include: 'Audit', 'Enforce',
+        /// 'Disabled'</param>
         public HostEndpointSettings(string mode = default(string), string inVMAccessControlProfileReferenceId = default(string))
         {
             Mode = mode;
@@ -52,21 +41,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the execution mode. In Audit mode, the
-        /// system acts as if it is enforcing the access control policy,
-        /// including emitting access denial entries in the logs but it does
-        /// not actually deny any requests to host endpoints. In Enforce mode,
-        /// the system will enforce the access control and it is the
-        /// recommended mode of operation. Possible values include: 'Audit',
-        /// 'Enforce', 'Disabled'
+        /// Gets or sets possible values include: 'Audit', 'Enforce',
+        /// 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "mode")]
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the InVMAccessControlProfileVersion resource
-        /// id in the format of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}
         /// </summary>
         [JsonProperty(PropertyName = "inVMAccessControlProfileReferenceId")]
         public string InVMAccessControlProfileReferenceId { get; set; }

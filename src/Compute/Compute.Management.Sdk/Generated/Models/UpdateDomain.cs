@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Defines an update domain for the cloud service.
-    /// </summary>
     public partial class UpdateDomain
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UpdateDomain class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource Name</param>
         public UpdateDomain(string id = default(string), string name = default(string))
         {
             Id = id;
@@ -44,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource Id
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
 
         /// <summary>
-        /// Gets resource Name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }

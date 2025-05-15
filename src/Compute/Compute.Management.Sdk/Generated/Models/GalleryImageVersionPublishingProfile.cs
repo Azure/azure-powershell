@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The publishing profile of a gallery image Version.
-    /// </summary>
     public partial class GalleryImageVersionPublishingProfile : GalleryArtifactPublishingProfileBase
     {
         /// <summary>
@@ -32,31 +29,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryImageVersionPublishingProfile class.
         /// </summary>
-        /// <param name="targetRegions">The target regions where the Image
-        /// Version is going to be replicated to. This property is
-        /// updatable.</param>
-        /// <param name="replicaCount">The number of replicas of the Image
-        /// Version to be created per region. This property would take effect
-        /// for a region when regionalReplicaCount is not specified. This
-        /// property is updatable.</param>
-        /// <param name="excludeFromLatest">If set to true, Virtual Machines
-        /// deployed from the latest version of the Image Definition won't use
-        /// this Image Version.</param>
-        /// <param name="publishedDate">The timestamp for when the gallery
-        /// image version is published.</param>
-        /// <param name="endOfLifeDate">The end of life date of the gallery
-        /// image version. This property can be used for decommissioning
-        /// purposes. This property is updatable.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'Premium_LRS', 'PremiumV2_LRS'</param>
-        /// <param name="replicationMode">Optional parameter which specifies
-        /// the mode to be used for replication. This property is not
-        /// updatable. Possible values include: 'Full', 'Shallow'</param>
-        /// <param name="targetExtendedLocations">The target extended locations
-        /// where the Image Version is going to be replicated to. This property
-        /// is updatable.</param>
+        /// <param name="storageAccountType">Possible values include:
+        /// 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS',
+        /// 'PremiumV2_LRS'</param>
+        /// <param name="replicationMode">Possible values include: 'Full',
+        /// 'Shallow'</param>
         public GalleryImageVersionPublishingProfile(IList<TargetRegion> targetRegions = default(IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), string storageAccountType = default(string), string replicationMode = default(string), IList<GalleryTargetExtendedLocation> targetExtendedLocations = default(IList<GalleryTargetExtendedLocation>))
             : base(targetRegions, replicaCount, excludeFromLatest, publishedDate, endOfLifeDate, storageAccountType, replicationMode, targetExtendedLocations)
         {

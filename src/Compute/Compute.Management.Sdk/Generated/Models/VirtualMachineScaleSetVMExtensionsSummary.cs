@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Extensions summary for virtual machines of a virtual machine scale set.
-    /// </summary>
     public partial class VirtualMachineScaleSetVMExtensionsSummary
     {
         /// <summary>
@@ -33,8 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetVMExtensionsSummary class.
         /// </summary>
-        /// <param name="name">The extension name.</param>
-        /// <param name="statusesSummary">The extensions information.</param>
         public VirtualMachineScaleSetVMExtensionsSummary(string name = default(string), IList<VirtualMachineStatusCodeCount> statusesSummary = default(IList<VirtualMachineStatusCodeCount>))
         {
             Name = name;
@@ -48,13 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the extension name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the extensions information.
         /// </summary>
         [JsonProperty(PropertyName = "statusesSummary")]
         public IList<VirtualMachineStatusCodeCount> StatusesSummary { get; private set; }

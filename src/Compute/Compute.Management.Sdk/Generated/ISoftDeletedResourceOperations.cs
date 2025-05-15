@@ -23,24 +23,13 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ISoftDeletedResourceOperations
     {
-        /// <summary>
-        /// List soft-deleted resources of an artifact in the gallery, such as
-        /// soft-deleted gallery image version of an image.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
         /// </param>
         /// <param name='galleryName'>
-        /// The name of the Gallery in which the soft-deleted resources
-        /// resides.
         /// </param>
         /// <param name='artifactType'>
-        /// The type of the artifact to be listed, such as gallery image
-        /// version.
         /// </param>
         /// <param name='artifactName'>
-        /// The artifact name to be listed. If artifact type is Images, then
-        /// the artifact name should be the gallery image name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -58,10 +47,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<GallerySoftDeletedResource>>> ListByArtifactNameWithHttpMessagesAsync(string resourceGroupName, string galleryName, string artifactType, string artifactName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List soft-deleted resources of an artifact in the gallery, such as
-        /// soft-deleted gallery image version of an image.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

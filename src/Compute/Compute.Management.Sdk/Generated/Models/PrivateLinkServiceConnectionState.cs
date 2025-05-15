@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// A collection of information about the state of the connection between
-    /// service consumer and provider.
-    /// </summary>
     public partial class PrivateLinkServiceConnectionState
     {
         /// <summary>
@@ -32,17 +28,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the PrivateLinkServiceConnectionState
         /// class.
         /// </summary>
-        /// <param name="status">Indicates whether the connection has been
-        /// Approved/Rejected/Removed by the owner of the service. Possible
-        /// values include: 'Pending', 'Approved', 'Rejected'</param>
-        /// <param name="description">The reason for approval/rejection of the
-        /// connection.</param>
-        /// <param name="actionsRequired">A message indicating if changes on
-        /// the service provider require any updates on the consumer.</param>
-        public PrivateLinkServiceConnectionState(string status = default(string), string description = default(string), string actionsRequired = default(string))
+        /// <param name="status">Possible values include: 'Pending',
+        /// 'Approved', 'Rejected'</param>
+        public PrivateLinkServiceConnectionState(string status = default(string), string actionsRequired = default(string))
         {
             Status = status;
-            Description = description;
             ActionsRequired = actionsRequired;
             CustomInit();
         }
@@ -53,22 +43,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets indicates whether the connection has been
-        /// Approved/Rejected/Removed by the owner of the service. Possible
-        /// values include: 'Pending', 'Approved', 'Rejected'
+        /// Gets or sets possible values include: 'Pending', 'Approved',
+        /// 'Rejected'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets the reason for approval/rejection of the connection.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets a message indicating if changes on the service
-        /// provider require any updates on the consumer.
         /// </summary>
         [JsonProperty(PropertyName = "actionsRequired")]
         public string ActionsRequired { get; set; }

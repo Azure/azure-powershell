@@ -16,10 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// A custom action that can be performed with a Gallery Application
-    /// Version.
-    /// </summary>
     public partial class GalleryApplicationCustomAction
     {
         /// <summary>
@@ -35,19 +31,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryApplicationCustomAction
         /// class.
         /// </summary>
-        /// <param name="name">The name of the custom action.  Must be unique
-        /// within the Gallery Application Version.</param>
-        /// <param name="script">The script to run when executing this custom
-        /// action.</param>
-        /// <param name="description">Description to help the users understand
-        /// what this custom action does.</param>
-        /// <param name="parameters">The parameters that this custom action
-        /// uses</param>
-        public GalleryApplicationCustomAction(string name, string script, string description = default(string), IList<GalleryApplicationCustomActionParameter> parameters = default(IList<GalleryApplicationCustomActionParameter>))
+        public GalleryApplicationCustomAction(string name, string script, IList<GalleryApplicationCustomActionParameter> parameters = default(IList<GalleryApplicationCustomActionParameter>))
         {
             Name = name;
             Script = script;
-            Description = description;
             Parameters = parameters;
             CustomInit();
         }
@@ -58,27 +45,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the custom action.  Must be unique within
-        /// the Gallery Application Version.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the script to run when executing this custom action.
         /// </summary>
         [JsonProperty(PropertyName = "script")]
         public string Script { get; set; }
 
         /// <summary>
-        /// Gets or sets description to help the users understand what this
-        /// custom action does.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the parameters that this custom action uses
         /// </summary>
         [JsonProperty(PropertyName = "parameters")]
         public IList<GalleryApplicationCustomActionParameter> Parameters { get; set; }

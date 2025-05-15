@@ -23,42 +23,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CloudServicesOperationsExtensions
     {
-            /// <summary>
-            /// Create or update a cloud service. Please note some properties can be set
-            /// only during cloud service creation.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='parameters'>
-            /// The cloud service object.
             /// </param>
             public static CloudService CreateOrUpdate(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, CloudService parameters = default(CloudService))
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, cloudServiceName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Create or update a cloud service. Please note some properties can be set
-            /// only during cloud service creation.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='parameters'>
-            /// The cloud service object.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -71,40 +57,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             public static CloudService Update(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
                 return operations.UpdateAsync(resourceGroupName, cloudServiceName, tags).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -117,34 +91,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Delete(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.DeleteAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -154,34 +118,24 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Display information about a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static CloudService Get(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 return operations.GetAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Display information about a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -194,34 +148,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets the status of a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static CloudServiceInstanceView GetInstanceView(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 return operations.GetInstanceViewAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the status of a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -234,12 +178,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services in the subscription, regardless of the
-            /// associated resource group. Use nextLink property in the response to get the
-            /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-            /// Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -248,12 +186,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAllAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services in the subscription, regardless of the
-            /// associated resource group. Use nextLink property in the response to get the
-            /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-            /// Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -268,32 +200,20 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services under a resource group. Use nextLink
-            /// property in the response to get the next page of Cloud Services. Do this
-            /// till nextLink is null to fetch all the Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             public static IPage<CloudService> List(this ICloudServicesOperations operations, string resourceGroupName)
             {
                 return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services under a resource group. Use nextLink
-            /// property in the response to get the next page of Cloud Services. Do this
-            /// till nextLink is null to fetch all the Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -306,34 +226,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Starts the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Start(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.StartAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -343,36 +253,24 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.StartWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Power off the cloud service. Note that resources are still attached and you
-            /// are getting charged for the resources.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void PowerOff(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.PowerOffAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Power off the cloud service. Note that resources are still attached and you
-            /// are getting charged for the resources.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -382,42 +280,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.PowerOffWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Restarts one or more role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void Restart(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.RestartAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Restarts one or more role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -427,44 +311,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.RestartWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Reimage asynchronous operation reinstalls the operating system on instances
-            /// of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void Reimage(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.ReimageAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Reimage asynchronous operation reinstalls the operating system on instances
-            /// of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -474,48 +342,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.ReimageWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Rebuild Role Instances reinstalls the operating system on instances of web
-            /// roles or worker roles and initializes the storage resources that are used
-            /// by them. If you do not want to initialize storage resources, you can use
-            /// Reimage Role Instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void Rebuild(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.RebuildAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Rebuild Role Instances reinstalls the operating system on instances of web
-            /// roles or worker roles and initializes the storage resources that are used
-            /// by them. If you do not want to initialize storage resources, you can use
-            /// Reimage Role Instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -525,42 +373,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.RebuildWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Deletes role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void DeleteInstances(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.DeleteInstancesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -570,42 +404,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Create or update a cloud service. Please note some properties can be set
-            /// only during cloud service creation.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='parameters'>
-            /// The cloud service object.
             /// </param>
             public static CloudService BeginCreateOrUpdate(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, CloudService parameters = default(CloudService))
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, cloudServiceName, parameters).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Create or update a cloud service. Please note some properties can be set
-            /// only during cloud service creation.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='parameters'>
-            /// The cloud service object.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -618,40 +438,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Update a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             public static CloudService BeginUpdate(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
             {
                 return operations.BeginUpdateAsync(resourceGroupName, cloudServiceName, tags).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Update a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='tags'>
-            /// Resource tags
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -664,34 +472,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginDelete(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginDeleteAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -701,34 +499,24 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Starts the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginStart(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginStartAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Starts the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -738,36 +526,24 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Power off the cloud service. Note that resources are still attached and you
-            /// are getting charged for the resources.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginPowerOff(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginPowerOffAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Power off the cloud service. Note that resources are still attached and you
-            /// are getting charged for the resources.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -777,42 +553,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Restarts one or more role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void BeginRestart(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.BeginRestartAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Restarts one or more role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -822,44 +584,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Reimage asynchronous operation reinstalls the operating system on instances
-            /// of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void BeginReimage(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.BeginReimageAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Reimage asynchronous operation reinstalls the operating system on instances
-            /// of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -869,48 +615,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Rebuild Role Instances reinstalls the operating system on instances of web
-            /// roles or worker roles and initializes the storage resources that are used
-            /// by them. If you do not want to initialize storage resources, you can use
-            /// Reimage Role Instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void BeginRebuild(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.BeginRebuildAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Rebuild Role Instances reinstalls the operating system on instances of web
-            /// roles or worker roles and initializes the storage resources that are used
-            /// by them. If you do not want to initialize storage resources, you can use
-            /// Reimage Role Instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -920,42 +646,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginRebuildWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Deletes role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             public static void BeginDeleteInstances(this ICloudServicesOperations operations, string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty)
             {
                 operations.BeginDeleteInstancesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes role instances in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='roleInstancesProperty'>
-            /// List of cloud service role instance names. Value of '*' will signify all
-            /// role instances of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -965,12 +677,6 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginDeleteInstancesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstancesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services in the subscription, regardless of the
-            /// associated resource group. Use nextLink property in the response to get the
-            /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-            /// Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -982,12 +688,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services in the subscription, regardless of the
-            /// associated resource group. Use nextLink property in the response to get the
-            /// next page of Cloud Services. Do this till nextLink is null to fetch all the
-            /// Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -1005,11 +705,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services under a resource group. Use nextLink
-            /// property in the response to get the next page of Cloud Services. Do this
-            /// till nextLink is null to fetch all the Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -1021,11 +716,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all cloud services under a resource group. Use nextLink
-            /// property in the response to get the next page of Cloud Services. Do this
-            /// till nextLink is null to fetch all the Cloud Services.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

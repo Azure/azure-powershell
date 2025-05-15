@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the cloud service role sku.
-    /// </summary>
     public partial class CloudServiceRoleSku
     {
         /// <summary>
@@ -29,15 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CloudServiceRoleSku class.
         /// </summary>
-        /// <param name="name">The sku name. NOTE: If the new SKU is not
-        /// supported on the hardware the cloud service is currently on, you
-        /// need to delete and recreate the cloud service or move back to the
-        /// old sku.</param>
-        /// <param name="tier">Specifies the tier of the cloud service.
-        /// Possible Values are &lt;br /&gt;&lt;br /&gt; **Standard** &lt;br
-        /// /&gt;&lt;br /&gt; **Basic**</param>
-        /// <param name="capacity">Specifies the number of role instances in
-        /// the cloud service.</param>
         public CloudServiceRoleSku(string name = default(string), string tier = default(string), long? capacity = default(long?))
         {
             Name = name;
@@ -52,24 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sku name. NOTE: If the new SKU is not supported on
-        /// the hardware the cloud service is currently on, you need to delete
-        /// and recreate the cloud service or move back to the old sku.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the tier of the cloud service. Possible
-        /// Values are &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; **Standard**
-        /// &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; **Basic**
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the number of role instances in the cloud
-        /// service.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public long? Capacity { get; set; }

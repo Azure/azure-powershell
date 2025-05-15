@@ -16,21 +16,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     /// </summary>
     public static class DiskEncryptionSetType
     {
-        /// <summary>
-        /// Resource using diskEncryptionSet would be encrypted at rest with
-        /// Customer managed key that can be changed and revoked by a customer.
-        /// </summary>
         public const string EncryptionAtRestWithCustomerKey = "EncryptionAtRestWithCustomerKey";
-        /// <summary>
-        /// Resource using diskEncryptionSet would be encrypted at rest with
-        /// two layers of encryption. One of the keys is Customer managed and
-        /// the other key is Platform managed.
-        /// </summary>
         public const string EncryptionAtRestWithPlatformAndCustomerKeys = "EncryptionAtRestWithPlatformAndCustomerKeys";
-        /// <summary>
-        /// Confidential VM supported disk and VM guest state would be
-        /// encrypted with customer managed key.
-        /// </summary>
         public const string ConfidentialVmEncryptedWithCustomerKey = "ConfidentialVmEncryptedWithCustomerKey";
     }
 }

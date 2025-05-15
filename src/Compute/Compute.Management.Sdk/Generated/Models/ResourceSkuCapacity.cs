@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes scaling information of a SKU.
-    /// </summary>
     public partial class ResourceSkuCapacity
     {
         /// <summary>
@@ -29,11 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuCapacity class.
         /// </summary>
-        /// <param name="minimum">The minimum capacity.</param>
-        /// <param name="maximum">The maximum capacity that can be set.</param>
-        /// <param name="defaultProperty">The default capacity.</param>
-        /// <param name="scaleType">The scale type applicable to the sku.
-        /// Possible values include: 'Automatic', 'Manual', 'None'</param>
+        /// <param name="scaleType">Possible values include: 'Automatic',
+        /// 'Manual', 'None'</param>
         public ResourceSkuCapacity(long? minimum = default(long?), long? maximum = default(long?), long? defaultProperty = default(long?), ResourceSkuCapacityScaleType? scaleType = default(ResourceSkuCapacityScaleType?))
         {
             Minimum = minimum;
@@ -49,26 +43,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the minimum capacity.
         /// </summary>
         [JsonProperty(PropertyName = "minimum")]
         public long? Minimum { get; private set; }
 
         /// <summary>
-        /// Gets the maximum capacity that can be set.
         /// </summary>
         [JsonProperty(PropertyName = "maximum")]
         public long? Maximum { get; private set; }
 
         /// <summary>
-        /// Gets the default capacity.
         /// </summary>
         [JsonProperty(PropertyName = "default")]
         public long? DefaultProperty { get; private set; }
 
         /// <summary>
-        /// Gets the scale type applicable to the sku. Possible values include:
-        /// 'Automatic', 'Manual', 'None'
+        /// Gets possible values include: 'Automatic', 'Manual', 'None'
         /// </summary>
         [JsonProperty(PropertyName = "scaleType")]
         public ResourceSkuCapacityScaleType? ScaleType { get; private set; }

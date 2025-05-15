@@ -21,44 +21,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CloudServicesUpdateDomainOperationsExtensions
     {
-            /// <summary>
-            /// Updates the role instances in the specified update domain.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             public static void WalkUpdateDomain(this ICloudServicesUpdateDomainOperations operations, string resourceGroupName, string cloudServiceName, int updateDomain)
             {
                 operations.WalkUpdateDomainAsync(resourceGroupName, cloudServiceName, updateDomain).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Updates the role instances in the specified update domain.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -68,48 +52,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.WalkUpdateDomainWithHttpMessagesAsync(resourceGroupName, cloudServiceName, updateDomain, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets the specified update domain of a cloud service. Use nextLink property
-            /// in the response to get the next page of update domains. Do this till
-            /// nextLink is null to fetch all the update domains.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             public static UpdateDomain GetUpdateDomain(this ICloudServicesUpdateDomainOperations operations, string resourceGroupName, string cloudServiceName, int updateDomain)
             {
                 return operations.GetUpdateDomainAsync(resourceGroupName, cloudServiceName, updateDomain).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the specified update domain of a cloud service. Use nextLink property
-            /// in the response to get the next page of update domains. Do this till
-            /// nextLink is null to fetch all the update domains.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -122,34 +86,24 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets a list of all update domains in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static IPage<UpdateDomain> ListUpdateDomains(this ICloudServicesUpdateDomainOperations operations, string resourceGroupName, string cloudServiceName)
             {
                 return operations.ListUpdateDomainsAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all update domains in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -162,44 +116,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Updates the role instances in the specified update domain.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             public static void BeginWalkUpdateDomain(this ICloudServicesUpdateDomainOperations operations, string resourceGroupName, string cloudServiceName, int updateDomain)
             {
                 operations.BeginWalkUpdateDomainAsync(resourceGroupName, cloudServiceName, updateDomain).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Updates the role instances in the specified update domain.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='updateDomain'>
-            /// Specifies an integer value that identifies the update domain. Update
-            /// domains are identified with a zero-based index: the first update domain has
-            /// an ID of 0, the second has an ID of 1, and so on.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -209,9 +147,6 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginWalkUpdateDomainWithHttpMessagesAsync(resourceGroupName, cloudServiceName, updateDomain, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets a list of all update domains in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -223,9 +158,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListUpdateDomainsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a list of all update domains in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

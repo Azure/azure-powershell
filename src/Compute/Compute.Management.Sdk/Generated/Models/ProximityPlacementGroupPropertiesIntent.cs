@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies the user intent of the proximity placement group.
-    /// </summary>
     public partial class ProximityPlacementGroupPropertiesIntent
     {
         /// <summary>
@@ -33,8 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// ProximityPlacementGroupPropertiesIntent class.
         /// </summary>
-        /// <param name="vmSizes">Specifies possible sizes of virtual machines
-        /// that can be created in the proximity placement group.</param>
         public ProximityPlacementGroupPropertiesIntent(IList<string> vmSizes = default(IList<string>))
         {
             VmSizes = vmSizes;
@@ -47,8 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies possible sizes of virtual machines that can
-        /// be created in the proximity placement group.
         /// </summary>
         [JsonProperty(PropertyName = "vmSizes")]
         public IList<string> VmSizes { get; set; }

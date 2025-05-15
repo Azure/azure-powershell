@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Properties of the disk for which update is pending.
-    /// </summary>
     public partial class PropertyUpdatesInProgress
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PropertyUpdatesInProgress class.
         /// </summary>
-        /// <param name="targetTier">The target performance tier of the disk if
-        /// a tier change operation is in progress.</param>
         public PropertyUpdatesInProgress(string targetTier = default(string))
         {
             TargetTier = targetTier;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the target performance tier of the disk if a tier
-        /// change operation is in progress.
         /// </summary>
         [JsonProperty(PropertyName = "targetTier")]
         public string TargetTier { get; set; }

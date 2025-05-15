@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The API entity reference.
-    /// </summary>
     public partial class ApiEntityReference
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ApiEntityReference class.
         /// </summary>
-        /// <param name="id">The ARM resource id in the form of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...</param>
         public ApiEntityReference(string id = default(string))
         {
             Id = id;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ARM resource id in the form of
-        /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

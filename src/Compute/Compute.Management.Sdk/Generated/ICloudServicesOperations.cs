@@ -23,18 +23,11 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ICloudServicesOperations
     {
-        /// <summary>
-        /// Create or update a cloud service. Please note some properties can
-        /// be set only during cloud service creation.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='parameters'>
-        /// The cloud service object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,17 +45,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudService>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, CloudService parameters = default(CloudService), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='tags'>
-        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -80,14 +67,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudService>> UpdateWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -102,14 +84,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Display information about a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -127,14 +104,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudService>> GetWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets the status of a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -152,12 +124,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudServiceInstanceView>> GetInstanceViewWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all cloud services in the subscription, regardless
-        /// of the associated resource group. Use nextLink property in the
-        /// response to get the next page of Cloud Services. Do this till
-        /// nextLink is null to fetch all the Cloud Services.
-        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -174,14 +140,7 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<CloudService>>> ListAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all cloud services under a resource group. Use
-        /// nextLink property in the response to get the next page of Cloud
-        /// Services. Do this till nextLink is null to fetch all the Cloud
-        /// Services.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -199,14 +158,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<CloudService>>> ListWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts the cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,15 +175,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Power off the cloud service. Note that resources are still attached
-        /// and you are getting charged for the resources.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -244,18 +192,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> PowerOffWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Restarts one or more role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -270,19 +211,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Reimage asynchronous operation reinstalls the operating system on
-        /// instances of web roles or worker roles.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -297,21 +230,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Rebuild Role Instances reinstalls the operating system on instances
-        /// of web roles or worker roles and initializes the storage resources
-        /// that are used by them. If you do not want to initialize storage
-        /// resources, you can use Reimage Role Instances.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -326,18 +249,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> RebuildWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -352,18 +268,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> DeleteInstancesWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Create or update a cloud service. Please note some properties can
-        /// be set only during cloud service creation.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='parameters'>
-        /// The cloud service object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -381,17 +290,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudService>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, CloudService parameters = default(CloudService), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Update a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='tags'>
-        /// Resource tags
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -409,14 +312,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<CloudService>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -431,14 +329,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Starts the cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -453,15 +346,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginStartWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Power off the cloud service. Note that resources are still attached
-        /// and you are getting charged for the resources.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -476,18 +363,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginPowerOffWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Restarts one or more role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -502,19 +382,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Reimage asynchronous operation reinstalls the operating system on
-        /// instances of web roles or worker roles.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -529,21 +401,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginReimageWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Rebuild Role Instances reinstalls the operating system on instances
-        /// of web roles or worker roles and initializes the storage resources
-        /// that are used by them. If you do not want to initialize storage
-        /// resources, you can use Reimage Role Instances.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -558,18 +420,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginRebuildWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes role instances in a cloud service.
-        /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group.
         /// </param>
         /// <param name='cloudServiceName'>
-        /// Name of the cloud service.
         /// </param>
         /// <param name='roleInstancesProperty'>
-        /// List of cloud service role instance names. Value of '*' will
-        /// signify all role instances of the cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -584,12 +439,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteInstancesWithHttpMessagesAsync(string resourceGroupName, string cloudServiceName, IList<string> roleInstancesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all cloud services in the subscription, regardless
-        /// of the associated resource group. Use nextLink property in the
-        /// response to get the next page of Cloud Services. Do this till
-        /// nextLink is null to fetch all the Cloud Services.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -609,12 +458,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<CloudService>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all cloud services under a resource group. Use
-        /// nextLink property in the response to get the next page of Cloud
-        /// Services. Do this till nextLink is null to fetch all the Cloud
-        /// Services.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

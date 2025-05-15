@@ -14,9 +14,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The source image from which the Image Version is going to be created.
-    /// </summary>
     public partial class UserArtifactSource
     {
         /// <summary>
@@ -30,11 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UserArtifactSource class.
         /// </summary>
-        /// <param name="mediaLink">Required. The mediaLink of the artifact,
-        /// must be a readable storage page blob.</param>
-        /// <param name="defaultConfigurationLink">Optional. The
-        /// defaultConfigurationLink of the artifact, must be a readable
-        /// storage page blob.</param>
         public UserArtifactSource(string mediaLink, string defaultConfigurationLink = default(string))
         {
             MediaLink = mediaLink;
@@ -48,15 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets required. The mediaLink of the artifact, must be a
-        /// readable storage page blob.
         /// </summary>
         [JsonProperty(PropertyName = "mediaLink")]
         public string MediaLink { get; set; }
 
         /// <summary>
-        /// Gets or sets optional. The defaultConfigurationLink of the
-        /// artifact, must be a readable storage page blob.
         /// </summary>
         [JsonProperty(PropertyName = "defaultConfigurationLink")]
         public string DefaultConfigurationLink { get; set; }

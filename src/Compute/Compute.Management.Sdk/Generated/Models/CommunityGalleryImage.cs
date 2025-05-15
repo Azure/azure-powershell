@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery image definition that you want
-    /// to create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class CommunityGalleryImage : PirCommunityGalleryResource
     {
@@ -35,41 +31,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CommunityGalleryImage class.
         /// </summary>
-        /// <param name="osType">This property allows you to specify the type
-        /// of the OS that is included in the disk when creating a VM from a
-        /// managed image. Possible values are: **Windows,** **Linux.**.
-        /// Possible values include: 'Windows', 'Linux'</param>
-        /// <param name="osState">This property allows the user to specify
-        /// whether the virtual machines created under this image are
-        /// 'Generalized' or 'Specialized'. Possible values include:
-        /// 'Generalized', 'Specialized'</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="uniqueId">The unique id of this community
-        /// gallery.</param>
-        /// <param name="endOfLifeDate">The end of life date of the gallery
-        /// image definition. This property can be used for decommissioning
-        /// purposes. This property is updatable.</param>
-        /// <param name="hyperVGeneration">The hypervisor generation of the
-        /// Virtual Machine. Applicable to OS disks only. Possible values
-        /// include: 'V1', 'V2'</param>
-        /// <param name="features">A list of gallery image features.</param>
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        /// <param name="osState">Possible values include: 'Generalized',
+        /// 'Specialized'</param>
+        /// <param name="hyperVGeneration">Possible values include: 'V1',
+        /// 'V2'</param>
         /// <param name="architecture">Possible values include: 'x64',
         /// 'Arm64'</param>
-        /// <param name="privacyStatementUri">Privacy statement URI for the
-        /// current community gallery image.</param>
-        /// <param name="eula">The end-user license agreement for the current
-        /// community gallery image.</param>
-        /// <param name="disclaimer">The disclaimer for a community gallery
-        /// resource.</param>
-        public CommunityGalleryImage(OperatingSystemTypes osType, OperatingSystemStateTypes osState, CommunityGalleryImageIdentifier identifier, string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
+        public CommunityGalleryImage(OperatingSystemTypes osType, OperatingSystemStateTypes osState, CommunityGalleryImageIdentifier communityGalleryImageIdentifier, string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), string hyperVGeneration = default(string), IList<GalleryImageFeature> features = default(IList<GalleryImageFeature>), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), string architecture = default(string), string privacyStatementUri = default(string), string eula = default(string), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>))
             : base(name, location, type, uniqueId)
         {
             OsType = osType;
             OsState = osState;
             EndOfLifeDate = endOfLifeDate;
-            Identifier = identifier;
+            CommunityGalleryImageIdentifier = communityGalleryImageIdentifier;
             Recommended = recommended;
             Disallowed = disallowed;
             HyperVGeneration = hyperVGeneration;
@@ -89,27 +65,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the type of the OS
-        /// that is included in the disk when creating a VM from a managed
-        /// image. Possible values are: **Windows,** **Linux.**. Possible
-        /// values include: 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osType")]
         public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets this property allows the user to specify whether the
-        /// virtual machines created under this image are 'Generalized' or
-        /// 'Specialized'. Possible values include: 'Generalized',
-        /// 'Specialized'
+        /// Gets or sets possible values include: 'Generalized', 'Specialized'
         /// </summary>
         [JsonProperty(PropertyName = "properties.osState")]
         public OperatingSystemStateTypes OsState { get; set; }
 
         /// <summary>
-        /// Gets or sets the end of life date of the gallery image definition.
-        /// This property can be used for decommissioning purposes. This
-        /// property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.endOfLifeDate")]
         public System.DateTime? EndOfLifeDate { get; set; }
@@ -117,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties.identifier")]
-        public CommunityGalleryImageIdentifier Identifier { get; set; }
+        public CommunityGalleryImageIdentifier CommunityGalleryImageIdentifier { get; set; }
 
         /// <summary>
         /// </summary>
@@ -130,14 +97,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public Disallowed Disallowed { get; set; }
 
         /// <summary>
-        /// Gets or sets the hypervisor generation of the Virtual Machine.
-        /// Applicable to OS disks only. Possible values include: 'V1', 'V2'
+        /// Gets or sets possible values include: 'V1', 'V2'
         /// </summary>
         [JsonProperty(PropertyName = "properties.hyperVGeneration")]
         public string HyperVGeneration { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of gallery image features.
         /// </summary>
         [JsonProperty(PropertyName = "properties.features")]
         public IList<GalleryImageFeature> Features { get; set; }
@@ -154,21 +119,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Architecture { get; set; }
 
         /// <summary>
-        /// Gets or sets privacy statement URI for the current community
-        /// gallery image.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privacyStatementUri")]
         public string PrivacyStatementUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the end-user license agreement for the current
-        /// community gallery image.
         /// </summary>
         [JsonProperty(PropertyName = "properties.eula")]
         public string Eula { get; set; }
 
         /// <summary>
-        /// Gets or sets the disclaimer for a community gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disclaimer")]
         public string Disclaimer { get; set; }
@@ -186,9 +146,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Identifier == null)
+            if (CommunityGalleryImageIdentifier == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Identifier");
+                throw new ValidationException(ValidationRules.CannotBeNull, "CommunityGalleryImageIdentifier");
             }
         }
     }

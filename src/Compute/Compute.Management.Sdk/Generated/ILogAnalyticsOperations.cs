@@ -23,16 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ILogAnalyticsOperations
     {
-        /// <summary>
-        /// Export logs that show Api requests made by this subscription in the
-        /// given time window to show throttling activities.
-        /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getRequestRateByInterval
-        /// Api.
-        /// </param>
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='parameters'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,16 +42,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Export logs that show total throttled Api requests for this
-        /// subscription in the given time window.
-        /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-        /// </param>
+        Task<AzureOperationResponse<LogAnalyticsOperationResult,LogAnalyticsExportRequestRateByIntervalHeaders>> ExportRequestRateByIntervalWithHttpMessagesAsync(string location, RequestRateByIntervalInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='parameters'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,17 +62,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResult>> ExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Export logs that show Api requests made by this subscription in the
-        /// given time window to show throttling activities.
-        /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getRequestRateByInterval
-        /// Api.
-        /// </param>
+        Task<AzureOperationResponse<LogAnalyticsOperationResult,LogAnalyticsExportThrottledRequestsHeaders>> ExportThrottledRequestsWithHttpMessagesAsync(string location, ThrottledRequestsInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='parameters'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -102,16 +82,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(RequestRateByIntervalInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Export logs that show total throttled Api requests for this
-        /// subscription in the given time window.
-        /// </summary>
-        /// <param name='parameters'>
-        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-        /// </param>
+        Task<AzureOperationResponse<LogAnalyticsOperationResult,LogAnalyticsExportRequestRateByIntervalHeaders>> BeginExportRequestRateByIntervalWithHttpMessagesAsync(string location, RequestRateByIntervalInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='location'>
-        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='parameters'>
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -128,6 +102,6 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LogAnalyticsOperationResult>> BeginExportThrottledRequestsWithHttpMessagesAsync(ThrottledRequestsInput parameters, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LogAnalyticsOperationResult,LogAnalyticsExportThrottledRequestsHeaders>> BeginExportThrottledRequestsWithHttpMessagesAsync(string location, ThrottledRequestsInput parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

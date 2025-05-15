@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a virtual machine scale set network profile.
-    /// </summary>
     public partial class VirtualMachineScaleSetNetworkProfile
     {
         /// <summary>
@@ -33,17 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// VirtualMachineScaleSetNetworkProfile class.
         /// </summary>
-        /// <param name="healthProbe">A reference to a load balancer probe used
-        /// to determine the health of an instance in the virtual machine scale
-        /// set. The reference will be in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.</param>
-        /// <param name="networkInterfaceConfigurations">The list of network
-        /// configurations.</param>
-        /// <param name="networkApiVersion">Specifies the Microsoft.Network API
-        /// version used when creating networking resources in the Network
-        /// Interface Configurations for Virtual Machine Scale Set with
-        /// orchestration mode 'Flexible'. For support of all network
-        /// properties, use '2022-11-01'. Possible values include:
+        /// <param name="networkApiVersion">Possible values include:
         /// '2020-11-01', '2022-11-01'</param>
         public VirtualMachineScaleSetNetworkProfile(ApiEntityReference healthProbe = default(ApiEntityReference), IList<VirtualMachineScaleSetNetworkConfiguration> networkInterfaceConfigurations = default(IList<VirtualMachineScaleSetNetworkConfiguration>), string networkApiVersion = default(string))
         {
@@ -59,26 +46,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a reference to a load balancer probe used to determine
-        /// the health of an instance in the virtual machine scale set. The
-        /// reference will be in the form:
-        /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
         /// </summary>
         [JsonProperty(PropertyName = "healthProbe")]
         public ApiEntityReference HealthProbe { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of network configurations.
         /// </summary>
         [JsonProperty(PropertyName = "networkInterfaceConfigurations")]
         public IList<VirtualMachineScaleSetNetworkConfiguration> NetworkInterfaceConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the Microsoft.Network API version used when
-        /// creating networking resources in the Network Interface
-        /// Configurations for Virtual Machine Scale Set with orchestration
-        /// mode 'Flexible'. For support of all network properties, use
-        /// '2022-11-01'. Possible values include: '2020-11-01', '2022-11-01'
+        /// Gets or sets possible values include: '2020-11-01', '2022-11-01'
         /// </summary>
         [JsonProperty(PropertyName = "networkApiVersion")]
         public string NetworkApiVersion { get; set; }

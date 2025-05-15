@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Used for updating a disk access resource.
-    /// </summary>
     public partial class DiskAccessUpdate
     {
         /// <summary>
@@ -31,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskAccessUpdate class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
         public DiskAccessUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Tags = tags;
@@ -44,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource tags
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }

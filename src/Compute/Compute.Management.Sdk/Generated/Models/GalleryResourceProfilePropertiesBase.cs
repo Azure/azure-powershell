@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of a gallery ResourceProfile.
-    /// </summary>
     public partial class GalleryResourceProfilePropertiesBase
     {
         /// <summary>

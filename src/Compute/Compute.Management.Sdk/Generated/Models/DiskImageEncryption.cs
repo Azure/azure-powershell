@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// This is the disk image encryption base class.
-    /// </summary>
     public partial class DiskImageEncryption
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskImageEncryption class.
         /// </summary>
-        /// <param name="diskEncryptionSetId">A relative URI containing the
-        /// resource ID of the disk encryption set.</param>
         public DiskImageEncryption(string diskEncryptionSetId = default(string))
         {
             DiskEncryptionSetId = diskEncryptionSetId;
@@ -43,8 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a relative URI containing the resource ID of the disk
-        /// encryption set.
         /// </summary>
         [JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId { get; set; }

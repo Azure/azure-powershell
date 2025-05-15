@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The properties of an Access Control Rule Privilege.
-    /// </summary>
     public partial class AccessControlRulesPrivilege
     {
         /// <summary>
@@ -34,11 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AccessControlRulesPrivilege
         /// class.
         /// </summary>
-        /// <param name="name">The name of the privilege.</param>
-        /// <param name="path">The HTTP path corresponding to the
-        /// privilege.</param>
-        /// <param name="queryParameters">The query parameters to match in the
-        /// path.</param>
         public AccessControlRulesPrivilege(string name, string path, IDictionary<string, string> queryParameters = default(IDictionary<string, string>))
         {
             Name = name;
@@ -53,19 +45,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the privilege.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the HTTP path corresponding to the privilege.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or sets the query parameters to match in the path.
         /// </summary>
         [JsonProperty(PropertyName = "queryParameters")]
         public IDictionary<string, string> QueryParameters { get; set; }

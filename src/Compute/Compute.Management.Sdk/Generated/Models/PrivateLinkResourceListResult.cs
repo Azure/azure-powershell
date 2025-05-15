@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// A list of private link resources
-    /// </summary>
     public partial class PrivateLinkResourceListResult
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the PrivateLinkResourceListResult
         /// class.
         /// </summary>
-        /// <param name="value">Array of private link resources</param>
         public PrivateLinkResourceListResult(IList<PrivateLinkResource> value = default(IList<PrivateLinkResource>))
         {
             Value = value;
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of private link resources
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<PrivateLinkResource> Value { get; set; }

@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// This is the Access Control Rules specification for an
-    /// inVMAccessControlProfile version.
-    /// </summary>
     public partial class AccessControlRules
     {
         /// <summary>
@@ -32,10 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the AccessControlRules class.
         /// </summary>
-        /// <param name="privileges">A list of privileges.</param>
-        /// <param name="roles">A list of roles.</param>
-        /// <param name="identities">A list of identities.</param>
-        /// <param name="roleAssignments">A list of role assignments.</param>
         public AccessControlRules(IList<AccessControlRulesPrivilege> privileges = default(IList<AccessControlRulesPrivilege>), IList<AccessControlRulesRole> roles = default(IList<AccessControlRulesRole>), IList<AccessControlRulesIdentity> identities = default(IList<AccessControlRulesIdentity>), IList<AccessControlRulesRoleAssignment> roleAssignments = default(IList<AccessControlRulesRoleAssignment>))
         {
             Privileges = privileges;
@@ -51,25 +43,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of privileges.
         /// </summary>
         [JsonProperty(PropertyName = "privileges")]
         public IList<AccessControlRulesPrivilege> Privileges { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of roles.
         /// </summary>
         [JsonProperty(PropertyName = "roles")]
         public IList<AccessControlRulesRole> Roles { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of identities.
         /// </summary>
         [JsonProperty(PropertyName = "identities")]
         public IList<AccessControlRulesIdentity> Identities { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of role assignments.
         /// </summary>
         [JsonProperty(PropertyName = "roleAssignments")]
         public IList<AccessControlRulesRoleAssignment> RoleAssignments { get; set; }

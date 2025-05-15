@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes The SKU capabilities object.
-    /// </summary>
     public partial class ResourceSkuCapabilities
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ResourceSkuCapabilities class.
         /// </summary>
-        /// <param name="name">An invariant to describe the feature.</param>
-        /// <param name="value">An invariant if the feature is measured by
-        /// quantity.</param>
         public ResourceSkuCapabilities(string name = default(string), string value = default(string))
         {
             Name = name;
@@ -45,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets an invariant to describe the feature.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets an invariant if the feature is measured by quantity.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; private set; }

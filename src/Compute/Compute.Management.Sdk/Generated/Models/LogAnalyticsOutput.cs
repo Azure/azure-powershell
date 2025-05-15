@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// LogAnalytics output properties
-    /// </summary>
     public partial class LogAnalyticsOutput
     {
         /// <summary>
@@ -29,8 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the LogAnalyticsOutput class.
         /// </summary>
-        /// <param name="output">Output file Uri path to blob
-        /// container.</param>
         public LogAnalyticsOutput(string output = default(string))
         {
             Output = output;
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets output file Uri path to blob container.
         /// </summary>
         [JsonProperty(PropertyName = "output")]
         public string Output { get; private set; }

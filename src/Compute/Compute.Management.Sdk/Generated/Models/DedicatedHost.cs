@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the Dedicated host.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DedicatedHost : Resource
+    public partial class DedicatedHost : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the DedicatedHost class.
@@ -35,37 +32,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the DedicatedHost class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="sku">SKU of the dedicated host for Hardware Generation
-        /// and VM family. Only name is required to be set. List
-        /// Microsoft.Compute SKUs for a list of possible values.</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="platformFaultDomain">Fault domain of the dedicated
-        /// host within a dedicated host group.</param>
-        /// <param name="autoReplaceOnFailure">Specifies whether the dedicated
-        /// host should be replaced automatically in case of a failure. The
-        /// value is defaulted to 'true' when not provided.</param>
-        /// <param name="hostId">A unique id generated and assigned to the
-        /// dedicated host by the platform. Does not change throughout the
-        /// lifetime of the host.</param>
-        /// <param name="virtualMachines">A list of references to all virtual
-        /// machines in the Dedicated Host.</param>
-        /// <param name="licenseType">Specifies the software license type that
-        /// will be applied to the VMs deployed on the dedicated host. Possible
-        /// values are: **None,** **Windows_Server_Hybrid,**
-        /// **Windows_Server_Perpetual.** The default value is: **None.**.
-        /// Possible values include: 'None', 'Windows_Server_Hybrid',
-        /// 'Windows_Server_Perpetual'</param>
-        /// <param name="provisioningTime">The date when the host was first
-        /// provisioned.</param>
-        /// <param name="provisioningState">The provisioning state, which only
-        /// appears in the response.</param>
-        /// <param name="instanceView">The dedicated host instance
-        /// view.</param>
-        /// <param name="timeCreated">Specifies the time at which the Dedicated
-        /// Host resource was created. Minimum api-version: 2021-11-01.</param>
+        /// <param name="licenseType">Possible values include: 'None',
+        /// 'Windows_Server_Hybrid', 'Windows_Server_Perpetual'</param>
         public DedicatedHost(string location, Sku sku, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformFaultDomain = default(int?), bool? autoReplaceOnFailure = default(bool?), string hostId = default(string), IList<SubResourceReadOnly> virtualMachines = default(IList<SubResourceReadOnly>), DedicatedHostLicenseTypes? licenseType = default(DedicatedHostLicenseTypes?), System.DateTime? provisioningTime = default(System.DateTime?), string provisioningState = default(string), DedicatedHostInstanceView instanceView = default(DedicatedHostInstanceView), System.DateTime? timeCreated = default(System.DateTime?))
             : base(location, id, name, type, tags)
         {
@@ -88,74 +60,53 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets fault domain of the dedicated host within a dedicated
-        /// host group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.platformFaultDomain")]
         public int? PlatformFaultDomain { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether the dedicated host should be
-        /// replaced automatically in case of a failure. The value is defaulted
-        /// to 'true' when not provided.
         /// </summary>
         [JsonProperty(PropertyName = "properties.autoReplaceOnFailure")]
         public bool? AutoReplaceOnFailure { get; set; }
 
         /// <summary>
-        /// Gets a unique id generated and assigned to the dedicated host by
-        /// the platform. Does not change throughout the lifetime of the host.
         /// </summary>
         [JsonProperty(PropertyName = "properties.hostId")]
         public string HostId { get; private set; }
 
         /// <summary>
-        /// Gets a list of references to all virtual machines in the Dedicated
-        /// Host.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
         public IList<SubResourceReadOnly> VirtualMachines { get; private set; }
 
         /// <summary>
-        /// Gets or sets specifies the software license type that will be
-        /// applied to the VMs deployed on the dedicated host. Possible values
-        /// are: **None,** **Windows_Server_Hybrid,**
-        /// **Windows_Server_Perpetual.** The default value is: **None.**.
-        /// Possible values include: 'None', 'Windows_Server_Hybrid',
-        /// 'Windows_Server_Perpetual'
+        /// Gets or sets possible values include: 'None',
+        /// 'Windows_Server_Hybrid', 'Windows_Server_Perpetual'
         /// </summary>
         [JsonProperty(PropertyName = "properties.licenseType")]
         public DedicatedHostLicenseTypes? LicenseType { get; set; }
 
         /// <summary>
-        /// Gets the date when the host was first provisioned.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningTime")]
         public System.DateTime? ProvisioningTime { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state, which only appears in the response.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets the dedicated host instance view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
         public DedicatedHostInstanceView InstanceView { get; private set; }
 
         /// <summary>
-        /// Gets specifies the time at which the Dedicated Host resource was
-        /// created. Minimum api-version: 2021-11-01.
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }
 
         /// <summary>
-        /// Gets or sets SKU of the dedicated host for Hardware Generation and
-        /// VM family. Only name is required to be set. List Microsoft.Compute
-        /// SKUs for a list of possible values.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
@@ -172,13 +123,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             if (Sku == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Sku");
-            }
-            if (PlatformFaultDomain != null)
-            {
-                if (PlatformFaultDomain < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "PlatformFaultDomain", 0);
-                }
             }
         }
     }

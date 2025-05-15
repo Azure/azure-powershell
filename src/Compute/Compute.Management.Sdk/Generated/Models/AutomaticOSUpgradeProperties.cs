@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes automatic OS upgrade properties on the image.
-    /// </summary>
     public partial class AutomaticOSUpgradeProperties
     {
         /// <summary>
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the AutomaticOSUpgradeProperties
         /// class.
         /// </summary>
-        /// <param name="automaticOSUpgradeSupported">Specifies whether
-        /// automatic OS upgrade is supported on the image.</param>
         public AutomaticOSUpgradeProperties(bool automaticOSUpgradeSupported)
         {
             AutomaticOSUpgradeSupported = automaticOSUpgradeSupported;
@@ -45,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies whether automatic OS upgrade is supported on
-        /// the image.
         /// </summary>
         [JsonProperty(PropertyName = "automaticOSUpgradeSupported")]
         public bool AutomaticOSUpgradeSupported { get; set; }

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Management.Compute
     using System.Net;
     using System.Net.Http;
 
+    /// <summary>
+    /// Compute Client
+    /// </summary>
     public partial class ComputeManagementClient : ServiceClient<ComputeManagementClient>, IComputeManagementClient, IAzureClient
     {
         /// <summary>
@@ -44,11 +47,13 @@ namespace Microsoft.Azure.Management.Compute
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public string ApiVersion { get; private set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -74,104 +79,9 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Gets the IUsageOperations.
-        /// </summary>
-        public virtual IUsageOperations Usage { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineSizesOperations.
-        /// </summary>
-        public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetExtensionsOperations VirtualMachineScaleSetExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetRollingUpgradesOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMsOperations.
-        /// </summary>
-        public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineExtensionsOperations.
-        /// </summary>
-        public virtual IVirtualMachineExtensionsOperations VirtualMachineExtensions { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachinesOperations.
-        /// </summary>
-        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineImagesOperations.
-        /// </summary>
-        public virtual IVirtualMachineImagesOperations VirtualMachineImages { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineImagesEdgeZoneOperations.
-        /// </summary>
-        public virtual IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineExtensionImagesOperations.
-        /// </summary>
-        public virtual IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; private set; }
-
-        /// <summary>
         /// Gets the IAvailabilitySetsOperations.
         /// </summary>
         public virtual IAvailabilitySetsOperations AvailabilitySets { get; private set; }
-
-        /// <summary>
-        /// Gets the IProximityPlacementGroupsOperations.
-        /// </summary>
-        public virtual IProximityPlacementGroupsOperations ProximityPlacementGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostGroupsOperations.
-        /// </summary>
-        public virtual IDedicatedHostGroupsOperations DedicatedHostGroups { get; private set; }
-
-        /// <summary>
-        /// Gets the IDedicatedHostsOperations.
-        /// </summary>
-        public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
-
-        /// <summary>
-        /// Gets the ISshPublicKeysOperations.
-        /// </summary>
-        public virtual ISshPublicKeysOperations SshPublicKeys { get; private set; }
-
-        /// <summary>
-        /// Gets the IImagesOperations.
-        /// </summary>
-        public virtual IImagesOperations Images { get; private set; }
-
-        /// <summary>
-        /// Gets the IRestorePointCollectionsOperations.
-        /// </summary>
-        public virtual IRestorePointCollectionsOperations RestorePointCollections { get; private set; }
-
-        /// <summary>
-        /// Gets the IRestorePointsOperations.
-        /// </summary>
-        public virtual IRestorePointsOperations RestorePoints { get; private set; }
 
         /// <summary>
         /// Gets the ICapacityReservationGroupsOperations.
@@ -179,9 +89,24 @@ namespace Microsoft.Azure.Management.Compute
         public virtual ICapacityReservationGroupsOperations CapacityReservationGroups { get; private set; }
 
         /// <summary>
-        /// Gets the ICapacityReservationsOperations.
+        /// Gets the IDedicatedHostGroupsOperations.
         /// </summary>
-        public virtual ICapacityReservationsOperations CapacityReservations { get; private set; }
+        public virtual IDedicatedHostGroupsOperations DedicatedHostGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IImagesOperations.
+        /// </summary>
+        public virtual IImagesOperations Images { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineImagesEdgeZoneOperations.
+        /// </summary>
+        public virtual IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZone { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineImagesOperations.
+        /// </summary>
+        public virtual IVirtualMachineImagesOperations VirtualMachineImages { get; private set; }
 
         /// <summary>
         /// Gets the ILogAnalyticsOperations.
@@ -189,9 +114,84 @@ namespace Microsoft.Azure.Management.Compute
         public virtual ILogAnalyticsOperations LogAnalytics { get; private set; }
 
         /// <summary>
+        /// Gets the IVirtualMachineExtensionImagesOperations.
+        /// </summary>
+        public virtual IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImages { get; private set; }
+
+        /// <summary>
         /// Gets the IVirtualMachineRunCommandsOperations.
         /// </summary>
         public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
+
+        /// <summary>
+        /// Gets the IUsageOperations.
+        /// </summary>
+        public virtual IUsageOperations Usage { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetsOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetsOperations VirtualMachineScaleSets { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachinesOperations.
+        /// </summary>
+        public virtual IVirtualMachinesOperations VirtualMachines { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineSizesOperations.
+        /// </summary>
+        public virtual IVirtualMachineSizesOperations VirtualMachineSizes { get; private set; }
+
+        /// <summary>
+        /// Gets the IProximityPlacementGroupsOperations.
+        /// </summary>
+        public virtual IProximityPlacementGroupsOperations ProximityPlacementGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorePointCollectionsOperations.
+        /// </summary>
+        public virtual IRestorePointCollectionsOperations RestorePointCollections { get; private set; }
+
+        /// <summary>
+        /// Gets the ISshPublicKeysOperations.
+        /// </summary>
+        public virtual ISshPublicKeysOperations SshPublicKeys { get; private set; }
+
+        /// <summary>
+        /// Gets the ICapacityReservationsOperations.
+        /// </summary>
+        public virtual ICapacityReservationsOperations CapacityReservations { get; private set; }
+
+        /// <summary>
+        /// Gets the IDedicatedHostsOperations.
+        /// </summary>
+        public virtual IDedicatedHostsOperations DedicatedHosts { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        public virtual IRestorePointsOperations RestorePoints { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetRollingUpgradesOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgrades { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetExtensionsOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetExtensionsOperations VirtualMachineScaleSetExtensions { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMsOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMExtensionsOperations.
+        /// </summary>
+        public virtual IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
@@ -199,134 +199,9 @@ namespace Microsoft.Azure.Management.Compute
         public virtual IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; private set; }
 
         /// <summary>
-        /// Gets the IDisksOperations.
+        /// Gets the IVirtualMachineExtensionsOperations.
         /// </summary>
-        public virtual IDisksOperations Disks { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskAccessesOperations.
-        /// </summary>
-        public virtual IDiskAccessesOperations DiskAccesses { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskEncryptionSetsOperations.
-        /// </summary>
-        public virtual IDiskEncryptionSetsOperations DiskEncryptionSets { get; private set; }
-
-        /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        public virtual IDiskRestorePointOperations DiskRestorePoint { get; private set; }
-
-        /// <summary>
-        /// Gets the ISnapshotsOperations.
-        /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
-
-        /// <summary>
-        /// Gets the IResourceSkusOperations.
-        /// </summary>
-        public virtual IResourceSkusOperations ResourceSkus { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleriesOperations.
-        /// </summary>
-        public virtual IGalleriesOperations Galleries { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryImagesOperations.
-        /// </summary>
-        public virtual IGalleryImagesOperations GalleryImages { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryImageVersionsOperations.
-        /// </summary>
-        public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryApplicationsOperations.
-        /// </summary>
-        public virtual IGalleryApplicationsOperations GalleryApplications { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryApplicationVersionsOperations.
-        /// </summary>
-        public virtual IGalleryApplicationVersionsOperations GalleryApplicationVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the ISoftDeletedResourceOperations.
-        /// </summary>
-        public virtual ISoftDeletedResourceOperations SoftDeletedResource { get; private set; }
-
-        /// <summary>
-        /// Gets the IGallerySharingProfileOperations.
-        /// </summary>
-        public virtual IGallerySharingProfileOperations GallerySharingProfile { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryInVMAccessControlProfilesOperations.
-        /// </summary>
-        public virtual IGalleryInVMAccessControlProfilesOperations GalleryInVMAccessControlProfiles { get; private set; }
-
-        /// <summary>
-        /// Gets the IGalleryInVMAccessControlProfileVersionsOperations.
-        /// </summary>
-        public virtual IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the ISharedGalleriesOperations.
-        /// </summary>
-        public virtual ISharedGalleriesOperations SharedGalleries { get; private set; }
-
-        /// <summary>
-        /// Gets the ISharedGalleryImagesOperations.
-        /// </summary>
-        public virtual ISharedGalleryImagesOperations SharedGalleryImages { get; private set; }
-
-        /// <summary>
-        /// Gets the ISharedGalleryImageVersionsOperations.
-        /// </summary>
-        public virtual ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the ICommunityGalleriesOperations.
-        /// </summary>
-        public virtual ICommunityGalleriesOperations CommunityGalleries { get; private set; }
-
-        /// <summary>
-        /// Gets the ICommunityGalleryImagesOperations.
-        /// </summary>
-        public virtual ICommunityGalleryImagesOperations CommunityGalleryImages { get; private set; }
-
-        /// <summary>
-        /// Gets the ICommunityGalleryImageVersionsOperations.
-        /// </summary>
-        public virtual ICommunityGalleryImageVersionsOperations CommunityGalleryImageVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServiceRoleInstancesOperations.
-        /// </summary>
-        public virtual ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServiceRolesOperations.
-        /// </summary>
-        public virtual ICloudServiceRolesOperations CloudServiceRoles { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServicesOperations.
-        /// </summary>
-        public virtual ICloudServicesOperations CloudServices { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServicesUpdateDomainOperations.
-        /// </summary>
-        public virtual ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; private set; }
-
-        /// <summary>
-        /// Gets the ICloudServiceOperatingSystemsOperations.
-        /// </summary>
-        public virtual ICloudServiceOperatingSystemsOperations CloudServiceOperatingSystems { get; private set; }
+        public virtual IVirtualMachineExtensionsOperations VirtualMachineExtensions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -570,58 +445,33 @@ namespace Microsoft.Azure.Management.Compute
         private void Initialize()
         {
             Operations = new Operations(this);
-            Usage = new UsageOperations(this);
-            VirtualMachineSizes = new VirtualMachineSizesOperations(this);
-            VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
-            VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
-            VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
-            VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
-            VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
-            VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
-            VirtualMachines = new VirtualMachinesOperations(this);
-            VirtualMachineImages = new VirtualMachineImagesOperations(this);
-            VirtualMachineImagesEdgeZone = new VirtualMachineImagesEdgeZoneOperations(this);
-            VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             AvailabilitySets = new AvailabilitySetsOperations(this);
-            ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
-            DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
-            DedicatedHosts = new DedicatedHostsOperations(this);
-            SshPublicKeys = new SshPublicKeysOperations(this);
-            Images = new ImagesOperations(this);
-            RestorePointCollections = new RestorePointCollectionsOperations(this);
-            RestorePoints = new RestorePointsOperations(this);
             CapacityReservationGroups = new CapacityReservationGroupsOperations(this);
-            CapacityReservations = new CapacityReservationsOperations(this);
+            DedicatedHostGroups = new DedicatedHostGroupsOperations(this);
+            Images = new ImagesOperations(this);
+            VirtualMachineImagesEdgeZone = new VirtualMachineImagesEdgeZoneOperations(this);
+            VirtualMachineImages = new VirtualMachineImagesOperations(this);
             LogAnalytics = new LogAnalyticsOperations(this);
+            VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
+            Usage = new UsageOperations(this);
+            VirtualMachineScaleSets = new VirtualMachineScaleSetsOperations(this);
+            VirtualMachines = new VirtualMachinesOperations(this);
+            VirtualMachineSizes = new VirtualMachineSizesOperations(this);
+            ProximityPlacementGroups = new ProximityPlacementGroupsOperations(this);
+            RestorePointCollections = new RestorePointCollectionsOperations(this);
+            SshPublicKeys = new SshPublicKeysOperations(this);
+            CapacityReservations = new CapacityReservationsOperations(this);
+            DedicatedHosts = new DedicatedHostsOperations(this);
+            RestorePoints = new RestorePointsOperations(this);
+            VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
+            VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
+            VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
+            VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
-            Disks = new DisksOperations(this);
-            DiskAccesses = new DiskAccessesOperations(this);
-            DiskEncryptionSets = new DiskEncryptionSetsOperations(this);
-            DiskRestorePoint = new DiskRestorePointOperations(this);
-            Snapshots = new SnapshotsOperations(this);
-            ResourceSkus = new ResourceSkusOperations(this);
-            Galleries = new GalleriesOperations(this);
-            GalleryImages = new GalleryImagesOperations(this);
-            GalleryImageVersions = new GalleryImageVersionsOperations(this);
-            GalleryApplications = new GalleryApplicationsOperations(this);
-            GalleryApplicationVersions = new GalleryApplicationVersionsOperations(this);
-            SoftDeletedResource = new SoftDeletedResourceOperations(this);
-            GallerySharingProfile = new GallerySharingProfileOperations(this);
-            GalleryInVMAccessControlProfiles = new GalleryInVMAccessControlProfilesOperations(this);
-            GalleryInVMAccessControlProfileVersions = new GalleryInVMAccessControlProfileVersionsOperations(this);
-            SharedGalleries = new SharedGalleriesOperations(this);
-            SharedGalleryImages = new SharedGalleryImagesOperations(this);
-            SharedGalleryImageVersions = new SharedGalleryImageVersionsOperations(this);
-            CommunityGalleries = new CommunityGalleriesOperations(this);
-            CommunityGalleryImages = new CommunityGalleryImagesOperations(this);
-            CommunityGalleryImageVersions = new CommunityGalleryImageVersionsOperations(this);
-            CloudServiceRoleInstances = new CloudServiceRoleInstancesOperations(this);
-            CloudServiceRoles = new CloudServiceRolesOperations(this);
-            CloudServices = new CloudServicesOperations(this);
-            CloudServicesUpdateDomain = new CloudServicesUpdateDomainOperations(this);
-            CloudServiceOperatingSystems = new CloudServiceOperatingSystemsOperations(this);
+            VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2024-11-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

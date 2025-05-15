@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery image version that you want to
-    /// update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class GalleryImageVersionUpdate : UpdateResourceDefinition
     {
@@ -35,15 +31,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryImageVersionUpdate class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        /// <param name="restore">Indicates if this is a soft-delete resource
-        /// restoration request.</param>
         public GalleryImageVersionUpdate(GalleryImageVersionStorageProfile storageProfile, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ReplicationStatus replicationStatus = default(ReplicationStatus), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), ValidationsProfile validationsProfile = default(ValidationsProfile))
             : base(id, name, type, tags)
         {
@@ -96,8 +86,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public ImageVersionSecurityProfile SecurityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets indicates if this is a soft-delete resource
-        /// restoration request.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restore")]
         public bool? Restore { get; set; }

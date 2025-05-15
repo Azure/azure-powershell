@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The source image used for creating the disk.
-    /// </summary>
     public partial class ImageDiskReference
     {
         /// <summary>
@@ -29,16 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImageDiskReference class.
         /// </summary>
-        /// <param name="id">A relative uri containing either a Platform Image
-        /// Repository, user image, or Azure Compute Gallery image
-        /// reference.</param>
-        /// <param name="sharedGalleryImageId">A relative uri containing a
-        /// direct shared Azure Compute Gallery image reference.</param>
-        /// <param name="communityGalleryImageId">A relative uri containing a
-        /// community Azure Compute Gallery image reference.</param>
-        /// <param name="lun">If the disk is created from an image's data disk,
-        /// this is an index that indicates which of the data disks in the
-        /// image to use. For OS disks, this field is null.</param>
         public ImageDiskReference(string id = default(string), string sharedGalleryImageId = default(string), string communityGalleryImageId = default(string), int? lun = default(int?))
         {
             Id = id;
@@ -54,30 +41,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a relative uri containing either a Platform Image
-        /// Repository, user image, or Azure Compute Gallery image reference.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets a relative uri containing a direct shared Azure
-        /// Compute Gallery image reference.
         /// </summary>
         [JsonProperty(PropertyName = "sharedGalleryImageId")]
         public string SharedGalleryImageId { get; set; }
 
         /// <summary>
-        /// Gets or sets a relative uri containing a community Azure Compute
-        /// Gallery image reference.
         /// </summary>
         [JsonProperty(PropertyName = "communityGalleryImageId")]
         public string CommunityGalleryImageId { get; set; }
 
         /// <summary>
-        /// Gets or sets if the disk is created from an image's data disk, this
-        /// is an index that indicates which of the data disks in the image to
-        /// use. For OS disks, this field is null.
         /// </summary>
         [JsonProperty(PropertyName = "lun")]
         public int? Lun { get; set; }

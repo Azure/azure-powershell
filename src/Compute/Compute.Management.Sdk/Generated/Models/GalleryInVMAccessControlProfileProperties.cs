@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the properties of a gallery inVMAccessControlProfile.
-    /// </summary>
     public partial class GalleryInVMAccessControlProfileProperties : GalleryResourceProfilePropertiesBase
     {
         /// <summary>
@@ -31,24 +28,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// GalleryInVMAccessControlProfileProperties class.
         /// </summary>
-        /// <param name="osType">This property allows you to specify the OS
-        /// type of the VMs/VMSS for which this profile can be used against.
-        /// Possible values are: 'Windows' or 'Linux'. Possible values include:
-        /// 'Windows', 'Linux'</param>
-        /// <param name="applicableHostEndpoint">This property allows you to
-        /// specify the Endpoint type for which this profile is defining the
-        /// access control for. Possible values are: 'WireServer' or 'IMDS'.
-        /// Possible values include: 'WireServer', 'IMDS'</param>
+        /// <param name="osType">Possible values include: 'Windows',
+        /// 'Linux'</param>
+        /// <param name="applicableHostEndpoint">Possible values include:
+        /// 'WireServer', 'IMDS'</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        /// <param name="description">The description of this gallery
-        /// inVMAccessControlProfile resources. This property is
-        /// updatable.</param>
-        public GalleryInVMAccessControlProfileProperties(OperatingSystemTypes osType, EndpointTypes applicableHostEndpoint, string provisioningState = default(string), string description = default(string))
+        public GalleryInVMAccessControlProfileProperties(OperatingSystemTypes osType, EndpointTypes applicableHostEndpoint, string provisioningState = default(string))
             : base(provisioningState)
         {
-            Description = description;
             OsType = osType;
             ApplicableHostEndpoint = applicableHostEndpoint;
             CustomInit();
@@ -60,26 +49,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the description of this gallery
-        /// inVMAccessControlProfile resources. This property is updatable.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets this property allows you to specify the OS type of the
-        /// VMs/VMSS for which this profile can be used against. Possible
-        /// values are: 'Windows' or 'Linux'. Possible values include:
-        /// 'Windows', 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public OperatingSystemTypes OsType { get; set; }
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the Endpoint type
-        /// for which this profile is defining the access control for. Possible
-        /// values are: 'WireServer' or 'IMDS'. Possible values include:
-        /// 'WireServer', 'IMDS'
+        /// Gets or sets possible values include: 'WireServer', 'IMDS'
         /// </summary>
         [JsonProperty(PropertyName = "applicableHostEndpoint")]
         public EndpointTypes ApplicableHostEndpoint { get; set; }

@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The security profile of a gallery image version
-    /// </summary>
     public partial class ImageVersionSecurityProfile
     {
         /// <summary>

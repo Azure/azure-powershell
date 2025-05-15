@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the Community Gallery that you want to
-    /// create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class CommunityGallery : PirCommunityGalleryResource
     {
@@ -35,13 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CommunityGallery class.
         /// </summary>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="uniqueId">The unique id of this community
-        /// gallery.</param>
-        /// <param name="disclaimer">The disclaimer for a community gallery
-        /// resource.</param>
         public CommunityGallery(string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string), string disclaimer = default(string), IDictionary<string, string> artifactTags = default(IDictionary<string, string>), CommunityGalleryMetadata communityMetadata = default(CommunityGalleryMetadata))
             : base(name, location, type, uniqueId)
         {
@@ -57,7 +46,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the disclaimer for a community gallery resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.disclaimer")]
         public string Disclaimer { get; set; }

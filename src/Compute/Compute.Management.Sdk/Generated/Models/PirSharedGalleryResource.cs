@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Base information about the shared gallery resource in pir.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PirSharedGalleryResource : PirResource
     {
@@ -32,10 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PirSharedGalleryResource class.
         /// </summary>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
-        /// <param name="uniqueId">The unique id of this shared
-        /// gallery.</param>
         public PirSharedGalleryResource(string name = default(string), string location = default(string), string uniqueId = default(string))
             : base(name, location)
         {
@@ -49,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the unique id of this shared gallery.
         /// </summary>
         [JsonProperty(PropertyName = "identifier.uniqueId")]
         public string UniqueId { get; set; }

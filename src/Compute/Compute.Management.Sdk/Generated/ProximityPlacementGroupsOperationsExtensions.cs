@@ -23,186 +23,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class ProximityPlacementGroupsOperationsExtensions
     {
-            /// <summary>
-            /// Create or update a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Proximity Placement Group operation.
-            /// </param>
-            public static ProximityPlacementGroup CreateOrUpdate(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, ProximityPlacementGroup parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, proximityPlacementGroupName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Proximity Placement Group operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ProximityPlacementGroup> CreateOrUpdateAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, ProximityPlacementGroup parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Update a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags
-            /// </param>
-            public static ProximityPlacementGroup Update(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.UpdateAsync(resourceGroupName, proximityPlacementGroupName, tags).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Update a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ProximityPlacementGroup> UpdateAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Delete a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            public static void Delete(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName)
-            {
-                operations.DeleteAsync(resourceGroupName, proximityPlacementGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a proximity placement group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Retrieves information about a proximity placement group .
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='includeColocationStatus'>
-            /// includeColocationStatus=true enables fetching the colocation status of all
-            /// the resources in the proximity placement group.
-            /// </param>
-            public static ProximityPlacementGroup Get(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about a proximity placement group .
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='proximityPlacementGroupName'>
-            /// The name of the proximity placement group.
-            /// </param>
-            /// <param name='includeColocationStatus'>
-            /// includeColocationStatus=true enables fetching the colocation status of all
-            /// the resources in the proximity placement group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ProximityPlacementGroup> GetAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all proximity placement groups in a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -211,9 +31,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListBySubscriptionAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -228,28 +45,20 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a resource group.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             public static IPage<ProximityPlacementGroup> ListByResourceGroup(this IProximityPlacementGroupsOperations operations, string resourceGroupName)
             {
                 return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a resource group.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -262,9 +71,135 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a subscription.
-            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='includeColocationStatus'>
+            /// </param>
+            public static ProximityPlacementGroup Get(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string))
+            {
+                return operations.GetAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='includeColocationStatus'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ProximityPlacementGroup> GetAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, string includeColocationStatus = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, includeColocationStatus, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static ProximityPlacementGroup CreateOrUpdate(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, ProximityPlacementGroup parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, proximityPlacementGroupName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ProximityPlacementGroup> CreateOrUpdateAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, ProximityPlacementGroup parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='tags'>
+            /// </param>
+            public static ProximityPlacementGroup Update(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            {
+                return operations.UpdateAsync(resourceGroupName, proximityPlacementGroupName, tags).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='tags'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ProximityPlacementGroup> UpdateAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, tags, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            public static void Delete(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName)
+            {
+                operations.DeleteAsync(resourceGroupName, proximityPlacementGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='proximityPlacementGroupName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IProximityPlacementGroupsOperations operations, string resourceGroupName, string proximityPlacementGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, proximityPlacementGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -276,9 +211,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -296,9 +228,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a resource group.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -310,9 +239,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all proximity placement groups in a resource group.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

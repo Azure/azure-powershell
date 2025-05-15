@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes a cloud service Extension.
-    /// </summary>
     public partial class Extension
     {
         /// <summary>
@@ -29,7 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the Extension class.
         /// </summary>
-        /// <param name="name">The name of the extension.</param>
         public Extension(string name = default(string), CloudServiceExtensionProperties properties = default(CloudServiceExtensionProperties))
         {
             Name = name;
@@ -43,7 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the extension.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

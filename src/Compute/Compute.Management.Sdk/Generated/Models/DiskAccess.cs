@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// disk access resource.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskAccess : Resource
+    public partial class DiskAccess : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the DiskAccess class.
@@ -39,16 +36,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="privateEndpointConnections">A readonly collection of
-        /// private endpoint connections created on the disk. Currently only
-        /// one endpoint connection is supported.</param>
-        /// <param name="provisioningState">The disk access resource
-        /// provisioning state.</param>
-        /// <param name="timeCreated">The time when the disk access was
-        /// created.</param>
-        /// <param name="extendedLocation">The extended location where the disk
-        /// access will be created. Extended location cannot be
-        /// changed.</param>
         public DiskAccess(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), string provisioningState = default(string), System.DateTime? timeCreated = default(System.DateTime?), ExtendedLocation extendedLocation = default(ExtendedLocation))
             : base(location, id, name, type, tags)
         {
@@ -65,27 +52,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets a readonly collection of private endpoint connections created
-        /// on the disk. Currently only one endpoint connection is supported.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpointConnections")]
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
         /// <summary>
-        /// Gets the disk access resource provisioning state.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets the time when the disk access was created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.timeCreated")]
         public System.DateTime? TimeCreated { get; private set; }
 
         /// <summary>
-        /// Gets or sets the extended location where the disk access will be
-        /// created. Extended location cannot be changed.
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation { get; set; }

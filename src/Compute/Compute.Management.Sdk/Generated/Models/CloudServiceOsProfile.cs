@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the OS profile for the cloud service.
-    /// </summary>
     public partial class CloudServiceOsProfile
     {
         /// <summary>
@@ -31,8 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CloudServiceOsProfile class.
         /// </summary>
-        /// <param name="secrets">Specifies set of certificates that should be
-        /// installed onto the role instances.</param>
         public CloudServiceOsProfile(IList<CloudServiceVaultSecretGroup> secrets = default(IList<CloudServiceVaultSecretGroup>))
         {
             Secrets = secrets;
@@ -45,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies set of certificates that should be installed
-        /// onto the role instances.
         /// </summary>
         [JsonProperty(PropertyName = "secrets")]
         public IList<CloudServiceVaultSecretGroup> Secrets { get; set; }

@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Instance view statuses.
-    /// </summary>
     public partial class InstanceViewStatusesSummary
     {
         /// <summary>
@@ -33,7 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the InstanceViewStatusesSummary
         /// class.
         /// </summary>
-        /// <param name="statusesSummary">The summary.</param>
         public InstanceViewStatusesSummary(IList<StatusCodeCount> statusesSummary = default(IList<StatusCodeCount>))
         {
             StatusesSummary = statusesSummary;
@@ -46,7 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the summary.
         /// </summary>
         [JsonProperty(PropertyName = "statusesSummary")]
         public IList<StatusCodeCount> StatusesSummary { get; private set; }

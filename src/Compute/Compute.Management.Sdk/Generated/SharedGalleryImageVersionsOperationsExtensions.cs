@@ -21,50 +21,34 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class SharedGalleryImageVersionsOperationsExtensions
     {
-            /// <summary>
-            /// List shared gallery image versions by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             /// <param name='sharedTo'>
-            /// The query parameter to decide what shared galleries to fetch when doing
-            /// listing operations. Possible values include: 'tenant'
+            /// Possible values include: 'tenant'
             /// </param>
             public static IPage<SharedGalleryImageVersion> List(this ISharedGalleryImageVersionsOperations operations, string location, string galleryUniqueName, string galleryImageName, string sharedTo = default(string))
             {
                 return operations.ListAsync(location, galleryUniqueName, galleryImageName, sharedTo).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List shared gallery image versions by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             /// <param name='sharedTo'>
-            /// The query parameter to decide what shared galleries to fetch when doing
-            /// listing operations. Possible values include: 'tenant'
+            /// Possible values include: 'tenant'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -77,54 +61,32 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Get a shared gallery image version by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             /// <param name='galleryImageVersionName'>
-            /// The name of the gallery image version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
             /// </param>
             public static SharedGalleryImageVersion Get(this ISharedGalleryImageVersionsOperations operations, string location, string galleryUniqueName, string galleryImageName, string galleryImageVersionName)
             {
                 return operations.GetAsync(location, galleryUniqueName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Get a shared gallery image version by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// Resource location.
             /// </param>
             /// <param name='galleryUniqueName'>
-            /// The unique name of the Shared Gallery.
             /// </param>
             /// <param name='galleryImageName'>
-            /// The name of the Shared Gallery Image Definition from which the Image
-            /// Versions are to be listed.
             /// </param>
             /// <param name='galleryImageVersionName'>
-            /// The name of the gallery image version to be created. Needs to follow
-            /// semantic version name pattern: The allowed characters are digit and period.
-            /// Digits must be within the range of a 32-bit integer. Format:
-            /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -137,9 +99,6 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// List shared gallery image versions by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -151,9 +110,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// List shared gallery image versions by subscription id or tenant id.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

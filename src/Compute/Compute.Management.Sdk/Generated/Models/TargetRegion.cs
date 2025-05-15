@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the target region information.
-    /// </summary>
     public partial class TargetRegion
     {
         /// <summary>
@@ -32,18 +29,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the TargetRegion class.
         /// </summary>
-        /// <param name="name">The name of the region.</param>
-        /// <param name="regionalReplicaCount">The number of replicas of the
-        /// Image Version to be created per region. This property is
-        /// updatable.</param>
-        /// <param name="storageAccountType">Specifies the storage account type
-        /// to be used to store the image. This property is not updatable.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS',
-        /// 'Premium_LRS', 'PremiumV2_LRS'</param>
-        /// <param name="excludeFromLatest">Contains the flag setting to hide
-        /// an image when users specify version='latest'</param>
-        /// <param name="additionalReplicaSets">List of storage sku with
-        /// replica count to create direct drive replicas.</param>
+        /// <param name="storageAccountType">Possible values include:
+        /// 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS',
+        /// 'PremiumV2_LRS'</param>
         public TargetRegion(string name, int? regionalReplicaCount = default(int?), string storageAccountType = default(string), EncryptionImages encryption = default(EncryptionImages), bool? excludeFromLatest = default(bool?), IList<AdditionalReplicaSet> additionalReplicaSets = default(IList<AdditionalReplicaSet>))
         {
             Name = name;
@@ -61,22 +49,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the region.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of replicas of the Image Version to be
-        /// created per region. This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "regionalReplicaCount")]
         public int? RegionalReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the storage account type to be used to store
-        /// the image. This property is not updatable. Possible values include:
-        /// 'Standard_LRS', 'Standard_ZRS', 'Premium_LRS', 'PremiumV2_LRS'
+        /// Gets or sets possible values include: 'Standard_LRS',
+        /// 'Standard_ZRS', 'Premium_LRS', 'PremiumV2_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
         public string StorageAccountType { get; set; }
@@ -87,15 +71,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public EncryptionImages Encryption { get; set; }
 
         /// <summary>
-        /// Gets or sets contains the flag setting to hide an image when users
-        /// specify version='latest'
         /// </summary>
         [JsonProperty(PropertyName = "excludeFromLatest")]
         public bool? ExcludeFromLatest { get; set; }
 
         /// <summary>
-        /// Gets or sets list of storage sku with replica count to create
-        /// direct drive replicas.
         /// </summary>
         [JsonProperty(PropertyName = "additionalReplicaSets")]
         public IList<AdditionalReplicaSet> AdditionalReplicaSets { get; set; }

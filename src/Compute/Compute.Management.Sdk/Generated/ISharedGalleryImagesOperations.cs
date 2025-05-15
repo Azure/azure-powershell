@@ -23,18 +23,12 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ISharedGalleryImagesOperations
     {
-        /// <summary>
-        /// List shared gallery images by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='sharedTo'>
-        /// The query parameter to decide what shared galleries to fetch when
-        /// doing listing operations. Possible values include: 'tenant'
+        /// Possible values include: 'tenant'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,18 +46,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<SharedGalleryImage>>> ListWithHttpMessagesAsync(string location, string galleryUniqueName, string sharedTo = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a shared gallery image by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the Shared Gallery Image Definition from which the
-        /// Image Versions are to be listed.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -81,9 +68,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SharedGalleryImage>> GetWithHttpMessagesAsync(string location, string galleryUniqueName, string galleryImageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List shared gallery images by subscription id or tenant id.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

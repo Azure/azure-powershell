@@ -21,228 +21,6 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class DisksOperationsExtensions
     {
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
-            /// </param>
-            public static Disk CreateOrUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, Disk disk)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Disk> CreateOrUpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, Disk disk, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
-            /// </param>
-            public static Disk Update(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk)
-            {
-                return operations.UpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Disk> UpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            public static Disk Get(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.GetAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Disk> GetAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            public static void Delete(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                operations.DeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<Disk> ListByResourceGroup(this IDisksOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Disk>> ListByResourceGroupAsync(this IDisksOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -251,9 +29,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -268,44 +43,182 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// </param>
+            public static IPage<Disk> ListByResourceGroup(this IDisksOperations operations, string resourceGroupName)
+            {
+                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Disk>> ListByResourceGroupAsync(this IDisksOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
+            /// </param>
+            public static Disk Get(this IDisksOperations operations, string resourceGroupName, string diskName)
+            {
+                return operations.GetAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Disk> GetAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='disk'>
+            /// </param>
+            public static Disk CreateOrUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, Disk disk)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='disk'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Disk> CreateOrUpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, Disk disk, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='disk'>
+            /// </param>
+            public static Disk Update(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk)
+            {
+                return operations.UpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='disk'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Disk> UpdateAsync(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, diskName, disk, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            public static DisksDeleteHeaders Delete(this IDisksOperations operations, string resourceGroupName, string diskName)
+            {
+                return operations.DeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DisksDeleteHeaders> DeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// </param>
+            /// <param name='diskName'>
             /// </param>
             /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
             /// </param>
             public static AccessUri GrantAccess(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessData grantAccessData)
             {
                 return operations.GrantAccessAsync(resourceGroupName, diskName, grantAccessData).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -318,85 +231,58 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
-            public static void RevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
+            public static DisksRevokeAccessHeaders RevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
             {
-                operations.RevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+                return operations.RevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DisksRevokeAccessHeaders> RevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
             /// </param>
             public static Disk BeginCreateOrUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, Disk disk)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -409,44 +295,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
             /// </param>
             public static Disk BeginUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdate disk)
             {
                 return operations.BeginUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -459,85 +329,58 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
-            public static void BeginDelete(this IDisksOperations operations, string resourceGroupName, string diskName)
+            public static DisksDeleteHeaders BeginDelete(this IDisksOperations operations, string resourceGroupName, string diskName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DisksDeleteHeaders> BeginDeleteAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
             /// </param>
             public static AccessUri BeginGrantAccess(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessData grantAccessData)
             {
                 return operations.BeginGrantAccessAsync(resourceGroupName, diskName, grantAccessData).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -550,84 +393,36 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
-            public static void BeginRevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
+            public static DisksRevokeAccessHeaders BeginRevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
             {
-                operations.BeginRevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+                return operations.BeginRevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='diskName'>
-            /// The name of the managed disk that is being created. The name can't be
-            /// changed after the disk is created. Supported characters for the name are
-            /// a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DisksRevokeAccessHeaders> BeginRevokeAccessAsync(this IDisksOperations operations, string resourceGroupName, string diskName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<Disk> ListByResourceGroupNext(this IDisksOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Disk>> ListByResourceGroupNextAsync(this IDisksOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName, null, cancellationToken).ConfigureAwait(false))
                 {
-                    return _result.Body;
+                    return _result.Headers;
                 }
             }
 
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -639,9 +434,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -654,6 +446,34 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<IPage<Disk>> ListNextAsync(this IDisksOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Disk> ListByResourceGroupNext(this IDisksOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Disk>> ListByResourceGroupNextAsync(this IDisksOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

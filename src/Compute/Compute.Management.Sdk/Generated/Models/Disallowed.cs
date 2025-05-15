@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the disallowed disk types.
-    /// </summary>
     public partial class Disallowed
     {
         /// <summary>
@@ -31,7 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the Disallowed class.
         /// </summary>
-        /// <param name="diskTypes">A list of disk types.</param>
         public Disallowed(IList<string> diskTypes = default(IList<string>))
         {
             DiskTypes = diskTypes;
@@ -44,7 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets a list of disk types.
         /// </summary>
         [JsonProperty(PropertyName = "diskTypes")]
         public IList<string> DiskTypes { get; set; }

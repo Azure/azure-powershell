@@ -50,18 +50,12 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public ComputeManagementClient Client { get; private set; }
 
-        /// <summary>
-        /// List shared gallery images by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='sharedTo'>
-        /// The query parameter to decide what shared galleries to fetch when doing
-        /// listing operations. Possible values include: 'tenant'
+        /// Possible values include: 'tenant'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -90,9 +84,23 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (galleryUniqueName == null)
             {
@@ -106,8 +114,8 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("galleryUniqueName", galleryUniqueName);
                 tracingParameters.Add("sharedTo", sharedTo);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -234,7 +242,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<SharedGalleryImage>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedGalleryImage>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -253,18 +261,11 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// Get a shared gallery image by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the Shared Gallery Image Definition from which the Image
-        /// Versions are to be listed.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -293,9 +294,23 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (galleryUniqueName == null)
             {
@@ -313,8 +328,8 @@ namespace Microsoft.Azure.Management.Compute
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("galleryUniqueName", galleryUniqueName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -457,9 +472,6 @@ namespace Microsoft.Azure.Management.Compute
             return _result;
         }
 
-        /// <summary>
-        /// List shared gallery images by subscription id or tenant id.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
@@ -611,7 +623,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<SharedGalleryImage>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedGalleryImage>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

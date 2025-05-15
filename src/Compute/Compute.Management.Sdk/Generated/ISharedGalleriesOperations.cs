@@ -23,15 +23,10 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ISharedGalleriesOperations
     {
-        /// <summary>
-        /// List shared galleries by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='sharedTo'>
-        /// The query parameter to decide what shared galleries to fetch when
-        /// doing listing operations. Possible values include: 'tenant'
+        /// Possible values include: 'tenant'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,14 +44,9 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<SharedGallery>>> ListWithHttpMessagesAsync(string location, string sharedTo = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a shared gallery by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -74,9 +64,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SharedGallery>> GetWithHttpMessagesAsync(string location, string galleryUniqueName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List shared galleries by subscription id or tenant id.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

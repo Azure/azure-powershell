@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// This is the safety profile of the Gallery Image Version.
-    /// </summary>
     public partial class GalleryImageVersionSafetyProfile : GalleryArtifactSafetyProfileBase
     {
         /// <summary>
@@ -33,16 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryImageVersionSafetyProfile
         /// class.
         /// </summary>
-        /// <param name="allowDeletionOfReplicatedLocations">Indicates whether
-        /// or not removing this Gallery Image Version from replicated regions
-        /// is allowed.</param>
-        /// <param name="reportedForPolicyViolation">Indicates whether this
-        /// image has been reported as violating Microsoft's policies.</param>
-        /// <param name="policyViolations">A list of Policy Violations that
-        /// have been reported for this Gallery Image Version.</param>
-        /// <param name="blockDeletionBeforeEndOfLife">Indicates whether or not
-        /// the deletion is blocked for this Gallery Image Version if its End
-        /// Of Life has not expired.</param>
         public GalleryImageVersionSafetyProfile(bool? allowDeletionOfReplicatedLocations = default(bool?), bool? reportedForPolicyViolation = default(bool?), IList<PolicyViolation> policyViolations = default(IList<PolicyViolation>), bool? blockDeletionBeforeEndOfLife = default(bool?))
             : base(allowDeletionOfReplicatedLocations)
         {
@@ -58,22 +45,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets indicates whether this image has been reported as violating
-        /// Microsoft's policies.
         /// </summary>
         [JsonProperty(PropertyName = "reportedForPolicyViolation")]
         public bool? ReportedForPolicyViolation { get; private set; }
 
         /// <summary>
-        /// Gets a list of Policy Violations that have been reported for this
-        /// Gallery Image Version.
         /// </summary>
         [JsonProperty(PropertyName = "policyViolations")]
         public IList<PolicyViolation> PolicyViolations { get; private set; }
 
         /// <summary>
-        /// Gets or sets indicates whether or not the deletion is blocked for
-        /// this Gallery Image Version if its End Of Life has not expired.
         /// </summary>
         [JsonProperty(PropertyName = "blockDeletionBeforeEndOfLife")]
         public bool? BlockDeletionBeforeEndOfLife { get; set; }

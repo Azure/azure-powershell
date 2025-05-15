@@ -23,22 +23,14 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public partial interface ISharedGalleryImageVersionsOperations
     {
-        /// <summary>
-        /// List shared gallery image versions by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the Shared Gallery Image Definition from which the
-        /// Image Versions are to be listed.
         /// </param>
         /// <param name='sharedTo'>
-        /// The query parameter to decide what shared galleries to fetch when
-        /// doing listing operations. Possible values include: 'tenant'
+        /// Possible values include: 'tenant'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -56,25 +48,13 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<SharedGalleryImageVersion>>> ListWithHttpMessagesAsync(string location, string galleryUniqueName, string galleryImageName, string sharedTo = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get a shared gallery image version by subscription id or tenant id.
-        /// </summary>
         /// <param name='location'>
-        /// Resource location.
         /// </param>
         /// <param name='galleryUniqueName'>
-        /// The unique name of the Shared Gallery.
         /// </param>
         /// <param name='galleryImageName'>
-        /// The name of the Shared Gallery Image Definition from which the
-        /// Image Versions are to be listed.
         /// </param>
         /// <param name='galleryImageVersionName'>
-        /// The name of the gallery image version to be created. Needs to
-        /// follow semantic version name pattern: The allowed characters are
-        /// digit and period. Digits must be within the range of a 32-bit
-        /// integer. Format:
-        /// &lt;MajorVersion&gt;.&lt;MinorVersion&gt;.&lt;Patch&gt;
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -92,9 +72,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<SharedGalleryImageVersion>> GetWithHttpMessagesAsync(string location, string galleryUniqueName, string galleryImageName, string galleryImageVersionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// List shared gallery image versions by subscription id or tenant id.
-        /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

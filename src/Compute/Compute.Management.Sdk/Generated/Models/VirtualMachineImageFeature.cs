@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies additional capabilities supported by the image
-    /// </summary>
     public partial class VirtualMachineImageFeature
     {
         /// <summary>
@@ -29,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the VirtualMachineImageFeature class.
         /// </summary>
-        /// <param name="name">The name of the feature.</param>
-        /// <param name="value">The corresponding value for the
-        /// feature.</param>
         public VirtualMachineImageFeature(string name = default(string), string value = default(string))
         {
             Name = name;
@@ -45,13 +39,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the name of the feature.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the corresponding value for the feature.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies a list of role instances from the cloud service.
-    /// </summary>
     public partial class RoleInstances
     {
         /// <summary>
@@ -32,9 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RoleInstances class.
         /// </summary>
-        /// <param name="roleInstancesProperty">List of cloud service role
-        /// instance names. Value of '*' will signify all role instances of the
-        /// cloud service.</param>
         public RoleInstances(IList<string> roleInstancesProperty)
         {
             RoleInstancesProperty = roleInstancesProperty;
@@ -47,8 +41,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of cloud service role instance names. Value of
-        /// '*' will signify all role instances of the cloud service.
         /// </summary>
         [JsonProperty(PropertyName = "roleInstances")]
         public IList<string> RoleInstancesProperty { get; set; }

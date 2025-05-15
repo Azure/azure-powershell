@@ -22,40 +22,28 @@ namespace Microsoft.Azure.Management.Compute
     /// </summary>
     public static partial class CloudServiceRoleInstancesOperationsExtensions
     {
-            /// <summary>
-            /// Deletes a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Delete(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.DeleteAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -65,50 +53,34 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.DeleteWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply to the operation. 'UserData' is not
-            /// supported for cloud services. Possible values include: 'instanceView',
-            /// 'userData'
+            /// Possible values include: 'instanceView', 'userData'
             /// </param>
             public static RoleInstance Get(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName, InstanceViewTypes? expand = default(InstanceViewTypes?))
             {
                 return operations.GetAsync(roleInstanceName, resourceGroupName, cloudServiceName, expand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply to the operation. 'UserData' is not
-            /// supported for cloud services. Possible values include: 'instanceView',
-            /// 'userData'
+            /// Possible values include: 'instanceView', 'userData'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -121,42 +93,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Retrieves information about the run-time state of a role instance in a
-            /// cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static RoleInstanceInstanceView GetInstanceView(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 return operations.GetInstanceViewAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Retrieves information about the run-time state of a role instance in a
-            /// cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -169,48 +127,30 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// Gets the list of all role instances in a cloud service. Use nextLink
-            /// property in the response to get the next page of role instances. Do this
-            /// till nextLink is null to fetch all the role instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply to the operation. 'UserData' is not
-            /// supported for cloud services. Possible values include: 'instanceView',
-            /// 'userData'
+            /// Possible values include: 'instanceView', 'userData'
             /// </param>
             public static IPage<RoleInstance> List(this ICloudServiceRoleInstancesOperations operations, string resourceGroupName, string cloudServiceName, InstanceViewTypes? expand = default(InstanceViewTypes?))
             {
                 return operations.ListAsync(resourceGroupName, cloudServiceName, expand).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of all role instances in a cloud service. Use nextLink
-            /// property in the response to get the next page of role instances. Do this
-            /// till nextLink is null to fetch all the role instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='expand'>
-            /// The expand expression to apply to the operation. 'UserData' is not
-            /// supported for cloud services. Possible values include: 'instanceView',
-            /// 'userData'
+            /// Possible values include: 'instanceView', 'userData'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -223,42 +163,28 @@ namespace Microsoft.Azure.Management.Compute
                 }
             }
 
-            /// <summary>
-            /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-            /// instance in the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Restart(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.RestartAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-            /// instance in the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -268,42 +194,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.RestartWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// The Reimage Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Reimage(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.ReimageAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Reimage Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -313,46 +225,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.ReimageWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles and initializes the
-            /// storage resources that are used by them. If you do not want to initialize
-            /// storage resources, you can use Reimage Role Instance.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void Rebuild(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.RebuildAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles and initializes the
-            /// storage resources that are used by them. If you do not want to initialize
-            /// storage resources, you can use Reimage Role Instance.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -362,40 +256,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.RebuildWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets a remote desktop file for a role instance in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static Stream GetRemoteDesktopFile(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 return operations.GetRemoteDesktopFileAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets a remote desktop file for a role instance in a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -407,40 +289,28 @@ namespace Microsoft.Azure.Management.Compute
                 return _result.Body;
             }
 
-            /// <summary>
-            /// Deletes a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginDelete(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginDeleteAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Deletes a role instance from a cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -450,42 +320,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginDeleteWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-            /// instance in the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginRestart(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginRestartAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Reboot Role Instance asynchronous operation requests a reboot of a role
-            /// instance in the cloud service.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -495,42 +351,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginRestartWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// The Reimage Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginReimage(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginReimageAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Reimage Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -540,46 +382,28 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginReimageWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles and initializes the
-            /// storage resources that are used by them. If you do not want to initialize
-            /// storage resources, you can use Reimage Role Instance.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             public static void BeginRebuild(this ICloudServiceRoleInstancesOperations operations, string roleInstanceName, string resourceGroupName, string cloudServiceName)
             {
                 operations.BeginRebuildAsync(roleInstanceName, resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// The Rebuild Role Instance asynchronous operation reinstalls the operating
-            /// system on instances of web roles or worker roles and initializes the
-            /// storage resources that are used by them. If you do not want to initialize
-            /// storage resources, you can use Reimage Role Instance.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='roleInstanceName'>
-            /// Name of the role instance.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// Name of the resource group.
             /// </param>
             /// <param name='cloudServiceName'>
-            /// Name of the cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -589,11 +413,6 @@ namespace Microsoft.Azure.Management.Compute
                 (await operations.BeginRebuildWithHttpMessagesAsync(roleInstanceName, resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
-            /// <summary>
-            /// Gets the list of all role instances in a cloud service. Use nextLink
-            /// property in the response to get the next page of role instances. Do this
-            /// till nextLink is null to fetch all the role instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -605,11 +424,6 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
-            /// <summary>
-            /// Gets the list of all role instances in a cloud service. Use nextLink
-            /// property in the response to get the next page of role instances. Do this
-            /// till nextLink is null to fetch all the role instances.
-            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

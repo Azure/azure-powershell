@@ -17,12 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the gallery Application Definition that you
-    /// want to create or update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GalleryApplication : Resource
+    public partial class GalleryApplication : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the GalleryApplication class.
@@ -36,32 +32,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryApplication class.
         /// </summary>
         /// <param name="location">Resource location</param>
-        /// <param name="supportedOSType">This property allows you to specify
-        /// the supported type of the OS that application is built for.
-        /// Possible values are: **Windows,** **Linux.**. Possible values
-        /// include: 'Windows', 'Linux'</param>
+        /// <param name="supportedOSType">Possible values include: 'Windows',
+        /// 'Linux'</param>
         /// <param name="id">Resource Id</param>
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="description">The description of this gallery
-        /// Application Definition resource. This property is
-        /// updatable.</param>
-        /// <param name="eula">The Eula agreement for the gallery Application
-        /// Definition.</param>
-        /// <param name="privacyStatementUri">The privacy statement
-        /// uri.</param>
-        /// <param name="releaseNoteUri">The release note uri.</param>
-        /// <param name="endOfLifeDate">The end of life date of the gallery
-        /// Application Definition. This property can be used for
-        /// decommissioning purposes. This property is updatable.</param>
-        /// <param name="customActions">A list of custom actions that can be
-        /// performed with all of the Gallery Application Versions within this
-        /// Gallery Application.</param>
-        public GalleryApplication(string location, OperatingSystemTypes supportedOSType, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), IList<GalleryApplicationCustomAction> customActions = default(IList<GalleryApplicationCustomAction>))
+        public GalleryApplication(string location, OperatingSystemTypes supportedOSType, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), System.DateTime? endOfLifeDate = default(System.DateTime?), IList<GalleryApplicationCustomAction> customActions = default(IList<GalleryApplicationCustomAction>))
             : base(location, id, name, type, tags)
         {
-            Description = description;
             Eula = eula;
             PrivacyStatementUri = privacyStatementUri;
             ReleaseNoteUri = releaseNoteUri;
@@ -77,52 +56,32 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the description of this gallery Application Definition
-        /// resource. This property is updatable.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Eula agreement for the gallery Application
-        /// Definition.
         /// </summary>
         [JsonProperty(PropertyName = "properties.eula")]
         public string Eula { get; set; }
 
         /// <summary>
-        /// Gets or sets the privacy statement uri.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privacyStatementUri")]
         public string PrivacyStatementUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the release note uri.
         /// </summary>
         [JsonProperty(PropertyName = "properties.releaseNoteUri")]
         public string ReleaseNoteUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the end of life date of the gallery Application
-        /// Definition. This property can be used for decommissioning purposes.
-        /// This property is updatable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.endOfLifeDate")]
         public System.DateTime? EndOfLifeDate { get; set; }
 
         /// <summary>
-        /// Gets or sets this property allows you to specify the supported type
-        /// of the OS that application is built for. Possible values are:
-        /// **Windows,** **Linux.**. Possible values include: 'Windows',
-        /// 'Linux'
+        /// Gets or sets possible values include: 'Windows', 'Linux'
         /// </summary>
         [JsonProperty(PropertyName = "properties.supportedOSType")]
         public OperatingSystemTypes SupportedOSType { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of custom actions that can be performed with
-        /// all of the Gallery Application Versions within this Gallery
-        /// Application.
         /// </summary>
         [JsonProperty(PropertyName = "properties.customActions")]
         public IList<GalleryApplicationCustomAction> CustomActions { get; set; }

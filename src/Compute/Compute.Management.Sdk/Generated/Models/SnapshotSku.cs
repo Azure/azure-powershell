@@ -13,12 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The snapshots sku name. Can be Standard_LRS, Premium_LRS, or
-    /// Standard_ZRS. This is an optional parameter for incremental snapshot
-    /// and the default behavior is the SKU will be set to the same sku as the
-    /// previous snapshot
-    /// </summary>
     public partial class SnapshotSku
     {
         /// <summary>
@@ -32,9 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SnapshotSku class.
         /// </summary>
-        /// <param name="name">The sku name. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'</param>
-        /// <param name="tier">The sku tier.</param>
+        /// <param name="name">Possible values include: 'Standard_LRS',
+        /// 'Premium_LRS', 'Standard_ZRS'</param>
         public SnapshotSku(string name = default(string), string tier = default(string))
         {
             Name = name;
@@ -48,14 +41,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sku name. Possible values include: 'Standard_LRS',
+        /// Gets or sets possible values include: 'Standard_LRS',
         /// 'Premium_LRS', 'Standard_ZRS'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the sku tier.
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; private set; }

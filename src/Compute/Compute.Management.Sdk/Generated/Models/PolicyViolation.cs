@@ -13,9 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// A policy violation reported against a gallery artifact.
-    /// </summary>
     public partial class PolicyViolation
     {
         /// <summary>
@@ -29,11 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the PolicyViolation class.
         /// </summary>
-        /// <param name="category">Describes the nature of the policy
-        /// violation. Possible values include: 'Other', 'ImageFlaggedUnsafe',
-        /// 'CopyrightValidation', 'IpTheft'</param>
-        /// <param name="details">Describes specific details about why this
-        /// policy violation was reported.</param>
+        /// <param name="category">Possible values include: 'Other',
+        /// 'ImageFlaggedUnsafe', 'CopyrightValidation', 'IpTheft'</param>
         public PolicyViolation(string category = default(string), string details = default(string))
         {
             Category = category;
@@ -47,16 +41,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets describes the nature of the policy violation. Possible
-        /// values include: 'Other', 'ImageFlaggedUnsafe',
-        /// 'CopyrightValidation', 'IpTheft'
+        /// Gets or sets possible values include: 'Other',
+        /// 'ImageFlaggedUnsafe', 'CopyrightValidation', 'IpTheft'
         /// </summary>
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
 
         /// <summary>
-        /// Gets or sets describes specific details about why this policy
-        /// violation was reported.
         /// </summary>
         [JsonProperty(PropertyName = "details")]
         public string Details { get; set; }

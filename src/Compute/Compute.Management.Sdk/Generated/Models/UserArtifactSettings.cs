@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Additional settings for the VM app that contains the target package and
-    /// config file name when it is deployed to target VM or VM scale set.
-    /// </summary>
     public partial class UserArtifactSettings
     {
         /// <summary>
@@ -30,17 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the UserArtifactSettings class.
         /// </summary>
-        /// <param name="packageFileName">Optional. The name to assign the
-        /// downloaded package file on the VM. This is limited to 4096
-        /// characters. If not specified, the package file will be named the
-        /// same as the Gallery Application name.</param>
-        /// <param name="configFileName">Optional. The name to assign the
-        /// downloaded config file on the VM. This is limited to 4096
-        /// characters. If not specified, the config file will be named the
-        /// Gallery Application name appended with "_config".</param>
-        /// <param name="scriptBehaviorAfterReboot">Optional. The action to be
-        /// taken with regards to install/update/remove of the gallery
-        /// application in the event of a reboot. Possible values include:
+        /// <param name="scriptBehaviorAfterReboot">Possible values include:
         /// 'None', 'Rerun'</param>
         public UserArtifactSettings(string packageFileName = default(string), string configFileName = default(string), string scriptBehaviorAfterReboot = default(string))
         {
@@ -56,27 +42,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets optional. The name to assign the downloaded package
-        /// file on the VM. This is limited to 4096 characters. If not
-        /// specified, the package file will be named the same as the Gallery
-        /// Application name.
         /// </summary>
         [JsonProperty(PropertyName = "packageFileName")]
         public string PackageFileName { get; set; }
 
         /// <summary>
-        /// Gets or sets optional. The name to assign the downloaded config
-        /// file on the VM. This is limited to 4096 characters. If not
-        /// specified, the config file will be named the Gallery Application
-        /// name appended with "_config".
         /// </summary>
         [JsonProperty(PropertyName = "configFileName")]
         public string ConfigFileName { get; set; }
 
         /// <summary>
-        /// Gets or sets optional. The action to be taken with regards to
-        /// install/update/remove of the gallery application in the event of a
-        /// reboot. Possible values include: 'None', 'Rerun'
+        /// Gets or sets possible values include: 'None', 'Rerun'
         /// </summary>
         [JsonProperty(PropertyName = "scriptBehaviorAfterReboot")]
         public string ScriptBehaviorAfterReboot { get; set; }

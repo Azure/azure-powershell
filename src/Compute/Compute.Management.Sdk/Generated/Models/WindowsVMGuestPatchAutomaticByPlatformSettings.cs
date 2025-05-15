@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies additional settings to be applied when patch mode
-    /// AutomaticByPlatform is selected in Windows patch settings.
-    /// </summary>
     public partial class WindowsVMGuestPatchAutomaticByPlatformSettings
     {
         /// <summary>
@@ -32,11 +28,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the
         /// WindowsVMGuestPatchAutomaticByPlatformSettings class.
         /// </summary>
-        /// <param name="rebootSetting">Specifies the reboot setting for all
-        /// AutomaticByPlatform patch installation operations. Possible values
-        /// include: 'Unknown', 'IfRequired', 'Never', 'Always'</param>
-        /// <param name="bypassPlatformSafetyChecksOnUserSchedule">Enables
-        /// customer to schedule patching without accidental upgrades</param>
+        /// <param name="rebootSetting">Possible values include: 'Unknown',
+        /// 'IfRequired', 'Never', 'Always'</param>
         public WindowsVMGuestPatchAutomaticByPlatformSettings(string rebootSetting = default(string), bool? bypassPlatformSafetyChecksOnUserSchedule = default(bool?))
         {
             RebootSetting = rebootSetting;
@@ -50,16 +43,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets specifies the reboot setting for all
-        /// AutomaticByPlatform patch installation operations. Possible values
-        /// include: 'Unknown', 'IfRequired', 'Never', 'Always'
+        /// Gets or sets possible values include: 'Unknown', 'IfRequired',
+        /// 'Never', 'Always'
         /// </summary>
         [JsonProperty(PropertyName = "rebootSetting")]
         public string RebootSetting { get; set; }
 
         /// <summary>
-        /// Gets or sets enables customer to schedule patching without
-        /// accidental upgrades
         /// </summary>
         [JsonProperty(PropertyName = "bypassPlatformSafetyChecksOnUserSchedule")]
         public bool? BypassPlatformSafetyChecksOnUserSchedule { get; set; }

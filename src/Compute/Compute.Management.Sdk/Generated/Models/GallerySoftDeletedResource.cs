@@ -17,11 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The details information of soft-deleted resource.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GallerySoftDeletedResource : Resource
+    public partial class GallerySoftDeletedResource : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the GallerySoftDeletedResource class.
@@ -39,12 +36,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="name">Resource name</param>
         /// <param name="type">Resource type</param>
         /// <param name="tags">Resource tags</param>
-        /// <param name="resourceArmId">arm id of the soft-deleted
-        /// resource</param>
-        /// <param name="softDeletedArtifactType">artifact type of the
-        /// soft-deleted resource. Possible values include: 'Images'</param>
-        /// <param name="softDeletedTime">The timestamp for when the resource
-        /// is soft-deleted. In dateTime offset format.</param>
+        /// <param name="softDeletedArtifactType">Possible values include:
+        /// 'Images'</param>
         public GallerySoftDeletedResource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string))
             : base(location, id, name, type, tags)
         {
@@ -60,21 +53,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets arm id of the soft-deleted resource
         /// </summary>
         [JsonProperty(PropertyName = "properties.resourceArmId")]
         public string ResourceArmId { get; set; }
 
         /// <summary>
-        /// Gets or sets artifact type of the soft-deleted resource. Possible
-        /// values include: 'Images'
+        /// Gets or sets possible values include: 'Images'
         /// </summary>
         [JsonProperty(PropertyName = "properties.softDeletedArtifactType")]
         public string SoftDeletedArtifactType { get; set; }
 
         /// <summary>
-        /// Gets or sets the timestamp for when the resource is soft-deleted.
-        /// In dateTime offset format.
         /// </summary>
         [JsonProperty(PropertyName = "properties.softDeletedTime")]
         public string SoftDeletedTime { get; set; }

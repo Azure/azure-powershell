@@ -17,10 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Specifies information about the Shared Image Gallery that you want to
-    /// update.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class GalleryUpdate : UpdateResourceDefinition
     {
@@ -35,21 +31,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryUpdate class.
         /// </summary>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="description">The description of this Shared Image
-        /// Gallery resource. This property is updatable.</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
         /// 'Migrating'</param>
-        /// <param name="identity">The identity of the gallery, if
-        /// configured.</param>
-        public GalleryUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), GalleryIdentifier identifier = default(GalleryIdentifier), string provisioningState = default(string), SharingProfile sharingProfile = default(SharingProfile), SoftDeletePolicy softDeletePolicy = default(SoftDeletePolicy), SharingStatus sharingStatus = default(SharingStatus), GalleryIdentity identity = default(GalleryIdentity))
+        public GalleryUpdate(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), GalleryIdentifier identifier = default(GalleryIdentifier), string provisioningState = default(string), SharingProfile sharingProfile = default(SharingProfile), SoftDeletePolicy softDeletePolicy = default(SoftDeletePolicy), SharingStatus sharingStatus = default(SharingStatus), GalleryIdentity identity = default(GalleryIdentity))
             : base(id, name, type, tags)
         {
-            Description = description;
             Identifier = identifier;
             ProvisioningState = provisioningState;
             SharingProfile = sharingProfile;
@@ -63,13 +50,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets the description of this Shared Image Gallery resource.
-        /// This property is updatable.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.description")]
-        public string Description { get; set; }
 
         /// <summary>
         /// </summary>
@@ -99,7 +79,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public SharingStatus SharingStatus { get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity of the gallery, if configured.
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public GalleryIdentity Identity { get; set; }

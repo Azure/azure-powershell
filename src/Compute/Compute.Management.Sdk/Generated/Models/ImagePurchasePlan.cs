@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the gallery image definition purchase plan. This is used by
-    /// marketplace images.
-    /// </summary>
     public partial class ImagePurchasePlan
     {
         /// <summary>
@@ -30,9 +26,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the ImagePurchasePlan class.
         /// </summary>
-        /// <param name="name">The plan ID.</param>
-        /// <param name="publisher">The publisher ID.</param>
-        /// <param name="product">The product ID.</param>
         public ImagePurchasePlan(string name = default(string), string publisher = default(string), string product = default(string))
         {
             Name = name;
@@ -47,19 +40,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the plan ID.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the publisher ID.
         /// </summary>
         [JsonProperty(PropertyName = "publisher")]
         public string Publisher { get; set; }
 
         /// <summary>
-        /// Gets or sets the product ID.
         /// </summary>
         [JsonProperty(PropertyName = "product")]
         public string Product { get; set; }

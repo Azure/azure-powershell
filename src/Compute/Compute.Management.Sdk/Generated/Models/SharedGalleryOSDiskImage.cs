@@ -12,9 +12,6 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// This is the OS disk image.
-    /// </summary>
     public partial class SharedGalleryOSDiskImage : SharedGalleryDiskImage
     {
         /// <summary>
@@ -28,11 +25,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the SharedGalleryOSDiskImage class.
         /// </summary>
-        /// <param name="diskSizeGB">This property indicates the size of the
-        /// VHD to be created.</param>
-        /// <param name="hostCaching">The host caching of the disk. Valid
-        /// values are 'None', 'ReadOnly', and 'ReadWrite'. Possible values
-        /// include: 'None', 'ReadOnly', 'ReadWrite'</param>
+        /// <param name="hostCaching">Possible values include: 'None',
+        /// 'ReadOnly', 'ReadWrite'</param>
         public SharedGalleryOSDiskImage(int? diskSizeGB = default(int?), string hostCaching = default(string))
             : base(diskSizeGB, hostCaching)
         {

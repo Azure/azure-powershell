@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Describes the network profile for the role instance.
-    /// </summary>
     public partial class RoleInstanceNetworkProfile
     {
         /// <summary>
@@ -31,9 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RoleInstanceNetworkProfile class.
         /// </summary>
-        /// <param name="networkInterfaces">Specifies the list of resource Ids
-        /// for the network interfaces associated with the role
-        /// instance.</param>
         public RoleInstanceNetworkProfile(IList<SubResource> networkInterfaces = default(IList<SubResource>))
         {
             NetworkInterfaces = networkInterfaces;
@@ -46,8 +40,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets specifies the list of resource Ids for the network interfaces
-        /// associated with the role instance.
         /// </summary>
         [JsonProperty(PropertyName = "networkInterfaces")]
         public IList<SubResource> NetworkInterfaces { get; private set; }

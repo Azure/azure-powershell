@@ -15,10 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// Base information about the community gallery resource in azure compute
-    /// gallery.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PirCommunityGalleryResource
     {
@@ -35,11 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the PirCommunityGalleryResource
         /// class.
         /// </summary>
-        /// <param name="name">Resource name</param>
-        /// <param name="location">Resource location</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="uniqueId">The unique id of this community
-        /// gallery.</param>
         public PirCommunityGalleryResource(string name = default(string), string location = default(string), string type = default(string), string uniqueId = default(string))
         {
             Name = name;
@@ -55,25 +46,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets resource name
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets resource location
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
 
         /// <summary>
-        /// Gets resource type
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets the unique id of this community gallery.
         /// </summary>
         [JsonProperty(PropertyName = "identifier.uniqueId")]
         public string UniqueId { get; set; }

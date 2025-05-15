@@ -13,10 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    /// <summary>
-    /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS,
-    /// UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
-    /// </summary>
     public partial class DiskSku
     {
         /// <summary>
@@ -30,10 +26,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the DiskSku class.
         /// </summary>
-        /// <param name="name">The sku name. Possible values include:
-        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS',
-        /// 'Premium_ZRS', 'StandardSSD_ZRS', 'PremiumV2_LRS'</param>
-        /// <param name="tier">The sku tier.</param>
+        /// <param name="name">Possible values include: 'Standard_LRS',
+        /// 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS', 'Premium_ZRS',
+        /// 'StandardSSD_ZRS', 'PremiumV2_LRS'</param>
         public DiskSku(string name = default(string), string tier = default(string))
         {
             Name = name;
@@ -47,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sku name. Possible values include: 'Standard_LRS',
+        /// Gets or sets possible values include: 'Standard_LRS',
         /// 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS', 'Premium_ZRS',
         /// 'StandardSSD_ZRS', 'PremiumV2_LRS'
         /// </summary>
@@ -55,7 +50,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the sku tier.
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; private set; }

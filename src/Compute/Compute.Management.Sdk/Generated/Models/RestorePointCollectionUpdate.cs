@@ -17,9 +17,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Update Restore Point collection parameters.
-    /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class RestorePointCollectionUpdate : UpdateResource
     {
@@ -36,13 +33,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RestorePointCollectionUpdate
         /// class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        /// <param name="provisioningState">The provisioning state of the
-        /// restore point collection.</param>
-        /// <param name="restorePointCollectionId">The unique id of the restore
-        /// point collection.</param>
-        /// <param name="restorePoints">A list containing all restore points
-        /// created under this restore point collection.</param>
         public RestorePointCollectionUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), IList<RestorePoint> restorePoints = default(IList<RestorePoint>))
             : base(tags)
         {
@@ -64,20 +54,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         public RestorePointCollectionSourceProperties Source { get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets the unique id of the restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePointCollectionId")]
         public string RestorePointCollectionId { get; private set; }
 
         /// <summary>
-        /// Gets a list containing all restore points created under this
-        /// restore point collection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.restorePoints")]
         public IList<RestorePoint> RestorePoints { get; private set; }

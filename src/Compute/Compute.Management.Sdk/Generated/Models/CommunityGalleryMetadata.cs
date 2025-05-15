@@ -16,9 +16,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The metadata of community gallery.
-    /// </summary>
     public partial class CommunityGalleryMetadata
     {
         /// <summary>
@@ -32,17 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the CommunityGalleryMetadata class.
         /// </summary>
-        /// <param name="publisherContact">The publisher email id of this
-        /// community gallery.</param>
-        /// <param name="publicNames">A list of public names the gallery
-        /// has.</param>
-        /// <param name="publisherUri">The publisher URI of this community
-        /// gallery.</param>
-        /// <param name="eula">The end-user license agreement for this
-        /// community gallery.</param>
-        /// <param name="privacyStatementUri">The link for the privacy
-        /// statement of this community gallery from the gallery
-        /// publisher.</param>
         public CommunityGalleryMetadata(string publisherContact, IList<string> publicNames, string publisherUri = default(string), string eula = default(string), string privacyStatementUri = default(string))
         {
             PublisherUri = publisherUri;
@@ -59,33 +45,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the publisher URI of this community gallery.
         /// </summary>
         [JsonProperty(PropertyName = "publisherUri")]
         public string PublisherUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the publisher email id of this community gallery.
         /// </summary>
         [JsonProperty(PropertyName = "publisherContact")]
         public string PublisherContact { get; set; }
 
         /// <summary>
-        /// Gets or sets the end-user license agreement for this community
-        /// gallery.
         /// </summary>
         [JsonProperty(PropertyName = "eula")]
         public string Eula { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of public names the gallery has.
         /// </summary>
         [JsonProperty(PropertyName = "publicNames")]
         public IList<string> PublicNames { get; set; }
 
         /// <summary>
-        /// Gets or sets the link for the privacy statement of this community
-        /// gallery from the gallery publisher.
         /// </summary>
         [JsonProperty(PropertyName = "privacyStatementUri")]
         public string PrivacyStatementUri { get; set; }

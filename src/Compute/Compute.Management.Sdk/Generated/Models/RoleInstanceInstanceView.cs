@@ -15,9 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// The instance view of the role instance.
-    /// </summary>
     public partial class RoleInstanceInstanceView
     {
         /// <summary>
@@ -31,13 +28,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the RoleInstanceInstanceView class.
         /// </summary>
-        /// <param name="platformUpdateDomain">The Update Domain.</param>
-        /// <param name="platformFaultDomain">The Fault Domain.</param>
-        /// <param name="privateId">Specifies a unique identifier generated
-        /// internally for the cloud service associated with this role
-        /// instance. &lt;br /&gt;&lt;br /&gt; NOTE: If you are using Azure
-        /// Diagnostics extension, this property can be used as 'DeploymentId'
-        /// for querying details.</param>
         public RoleInstanceInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string privateId = default(string), IList<ResourceInstanceViewStatus> statuses = default(IList<ResourceInstanceViewStatus>))
         {
             PlatformUpdateDomain = platformUpdateDomain;
@@ -53,23 +43,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the Update Domain.
         /// </summary>
         [JsonProperty(PropertyName = "platformUpdateDomain")]
         public int? PlatformUpdateDomain { get; private set; }
 
         /// <summary>
-        /// Gets the Fault Domain.
         /// </summary>
         [JsonProperty(PropertyName = "platformFaultDomain")]
         public int? PlatformFaultDomain { get; private set; }
 
         /// <summary>
-        /// Gets specifies a unique identifier generated internally for the
-        /// cloud service associated with this role instance. &amp;lt;br
-        /// /&amp;gt;&amp;lt;br /&amp;gt; NOTE: If you are using Azure
-        /// Diagnostics extension, this property can be used as 'DeploymentId'
-        /// for querying details.
         /// </summary>
         [JsonProperty(PropertyName = "privateId")]
         public string PrivateId { get; private set; }
