@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

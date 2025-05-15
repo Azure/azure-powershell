@@ -6,11 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
 {
 
-    /// <summary>Defines Hardware level encryption (Only for disk)</summary>
+    /// <summary>Hardware encryption support for a given sku for a given region.</summary>
     public partial struct HardwareEncryption :
         System.IEquatable<HardwareEncryption>
     {
-        /// <summary>Hardware-based encryption is enabled.</summary>
+        /// <summary>Hardware-based encryption is disabled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.HardwareEncryption Disabled = @"Disabled";
 
         /// <summary>Hardware-based encryption is enabled.</summary>

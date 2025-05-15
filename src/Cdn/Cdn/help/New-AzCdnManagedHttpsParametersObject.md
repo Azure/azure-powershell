@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmanagedhttpsparametersobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for CdnManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <CertificateType>
- -CertificateSource <CertificateSource> -ProtocolType <ProtocolType> [-MinimumTlsVersion <MinimumTlsVersion>]
- [<CommonParameters>]
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <String>
+ -CertificateSourceParameterTypeName <String> -ProtocolType <String> -CertificateSource <String>
+ [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 Defines the source of the SSL certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +57,21 @@ Accept wildcard characters: False
 Type of certificate used.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateSourceParameterTypeName
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +86,7 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +101,7 @@ Accept wildcard characters: False
 Defines the TLS extension protocol that is used for secure delivery.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters
 
 ## NOTES
 

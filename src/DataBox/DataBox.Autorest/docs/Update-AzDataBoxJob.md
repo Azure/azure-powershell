@@ -63,7 +63,7 @@ CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resou
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
@@ -133,7 +133,7 @@ Contact details for notification and shipping.
 To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -286,7 +286,7 @@ Key encryption key for the job.
 To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -408,7 +408,7 @@ Shipping address where customer wishes to receive the device.
 To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -439,7 +439,7 @@ Shipping address of the customer.
 To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -564,7 +564,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobResource
 
 ## NOTES
 

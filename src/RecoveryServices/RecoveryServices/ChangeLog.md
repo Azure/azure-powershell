@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 7.7.1
+* Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
+* Updated Azure Backup SDK version to support protecting TVM with standard policy.
+
 ## Version 7.7.0
 * Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
 * Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.

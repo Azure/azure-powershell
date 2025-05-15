@@ -14,23 +14,7 @@ API to set properties of the connected cluster resource
 
 ### SetExpanded (Default)
 ```
-Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String>
- -EnableSystemAssignedIdentity <Boolean?> -Location <String> [-SubscriptionId <String>]
- [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
- [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
- [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
- [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
- [-Infrastructure <String>] [-Kind <String>] [-OidcIssuerProfileEnabled]
- [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
- [-PrivateLinkState <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Set
-```
-Set-AzConnectedKubernetes -EnableSystemAssignedIdentity <Boolean?> -InputObject <IConnectedCluster>
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac]
  [-AadProfileTenantId <String>] [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>]
  [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
@@ -44,12 +28,26 @@ Set-AzConnectedKubernetes -EnableSystemAssignedIdentity <Boolean?> -InputObject 
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Set
+```
+Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-SubscriptionId <String>]
+ [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
+ [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
+ [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
+ [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
+ [-Infrastructure <String>] [-Kind <String>] [-OidcIssuerProfileEnabled]
+ [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### SetDisableGateway
 ```
-Set-AzConnectedKubernetes -DisableGateway -EnableSystemAssignedIdentity <Boolean?>
- -InputObject <IConnectedCluster> [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>]
- [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>] [-AcceptEULA]
- [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
+Set-AzConnectedKubernetes -DisableGateway -InputObject <IConnectedCluster> [-SubscriptionId <String>]
+ [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
+ [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
  [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
  [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
@@ -62,11 +60,11 @@ Set-AzConnectedKubernetes -DisableGateway -EnableSystemAssignedIdentity <Boolean
 
 ### SetEnableGateway
 ```
-Set-AzConnectedKubernetes -EnableSystemAssignedIdentity <Boolean?> -GatewayResourceId <String>
- -InputObject <IConnectedCluster> [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>]
- [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>] [-AcceptEULA]
- [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
- [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
+Set-AzConnectedKubernetes -GatewayResourceId <String> -InputObject <IConnectedCluster>
+ [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac]
+ [-AadProfileTenantId <String>] [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>]
+ [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
+ [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
  [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
@@ -78,11 +76,11 @@ Set-AzConnectedKubernetes -EnableSystemAssignedIdentity <Boolean?> -GatewayResou
 
 ### SetExpandedDisableGateway
 ```
-Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -DisableGateway
- -EnableSystemAssignedIdentity <Boolean?> -Location <String> [-SubscriptionId <String>]
- [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
- [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
- [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -DisableGateway -Location <String>
+ [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac]
+ [-AadProfileTenantId <String>] [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>]
+ [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
+ [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
  [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
@@ -94,12 +92,11 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Dis
 
 ### SetExpandedEnableGateway
 ```
-Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String>
- -EnableSystemAssignedIdentity <Boolean?> -GatewayResourceId <String> -Location <String>
- [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac]
- [-AadProfileTenantId <String>] [-AcceptEULA] [-ArcAgentProfileAgentAutoUpgrade <String>]
- [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
- [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -GatewayResourceId <String>
+ -Location <String> [-SubscriptionId <String>] [-AadProfileAdminGroupObjectID <String[]>]
+ [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>] [-AcceptEULA]
+ [-ArcAgentProfileAgentAutoUpgrade <String>] [-ArcAgentProfileAgentError <IAgentError[]>]
+ [-ArcAgentProfileDesiredAgentVersion <String>] [-ArcAgentProfileSystemComponent <ISystemComponent[]>]
  [-ArcAgentryConfiguration <IArcAgentryConfigurations[]>] [-AzureHybridBenefit <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
  [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
@@ -493,21 +490,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

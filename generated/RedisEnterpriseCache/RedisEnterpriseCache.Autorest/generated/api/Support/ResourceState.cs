@@ -28,6 +28,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Enabling = @"Enabling";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Moving = @"Moving";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Running = @"Running";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Scaling = @"Scaling";

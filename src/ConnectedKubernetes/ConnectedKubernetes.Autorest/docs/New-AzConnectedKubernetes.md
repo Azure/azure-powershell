@@ -19,14 +19,13 @@ New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-AadProfileAdminGroupObjectID <String[]>] [-AadProfileEnableAzureRbac] [-AadProfileTenantId <String>]
  [-AcceptEULA] [-ArcAgentProfileAgentError <IAgentError[]>] [-ArcAgentProfileDesiredAgentVersion <String>]
  [-ArcAgentProfileSystemComponent <ISystemComponent[]>] [-AzureHybridBenefit <String>]
- [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
- [-EnableSystemAssignedIdentity] [-GatewayEnabled] [-Infrastructure <String>] [-Kind <String>]
- [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
- [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
- [-PrivateLinkState <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>] [-GatewayEnabled]
+ [-Infrastructure <String>] [-Kind <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
+ [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <String>] [-ProvisioningState <String>]
+ [-Tag <Hashtable>] [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-GatewayResourceId <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -407,21 +406,6 @@ The Kubernetes distribution version on this connected cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
