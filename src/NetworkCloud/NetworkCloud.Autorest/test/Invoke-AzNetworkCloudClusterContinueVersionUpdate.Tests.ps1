@@ -19,12 +19,16 @@ Describe 'Invoke-AzNetworkCloudClusterContinueVersionUpdate' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Continue' -skip {
-        Invoke-AzNetworkCloudClusterContinueVersionUpdate `
-            -ResourceGroupName $global:config.AzNetworkCloudCluster.clusterRg `
-            -ClusterName $global:config.AzNetworkCloudCluster.clusterName `
-            -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId `
-            -MachineGroupTargetingMode "AlphaByRack" | Should -Not -Throw
+    It 'Continue' {
+        $expectedErrorMessage = "cluster $($global:config.AzNetworkCloudCluster.continueUpdateVersionClusterName) does not have suitable conditions to continue to update"
+        { 
+            Invoke-AzNetworkCloudClusterContinueVersionUpdate `
+                -ResourceGroupName $global:config.AzNetworkCloudCluster.continueUpdateVersionClusterRg `
+                -ClusterName $global:config.AzNetworkCloudCluster.continueUpdateVersionClusterName `
+                -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId `
+                -MachineGroupTargetingMode "AlphaByRack" 
+        } | Should -Throw
+        $Error[0].Exception.Message | Should -Match $expectedErrorMessage
     }
 
     It 'ContinueViaIdentityExpanded' -skip {
