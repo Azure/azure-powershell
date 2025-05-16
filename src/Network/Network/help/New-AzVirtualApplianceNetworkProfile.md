@@ -15,7 +15,8 @@ Define a Network Profile for virtual appliance.
 ```
 New-AzVirtualApplianceNetworkProfile
  -NetworkInterfaceConfiguration <PSVirtualApplianceNetworkInterfaceConfiguration[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

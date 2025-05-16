@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
 * Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
 * Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.

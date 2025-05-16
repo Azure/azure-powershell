@@ -14,20 +14,68 @@ Gets VpnServerConfigurationPolicyGroup that can be attached to P2SVpnGateway.
 
 ### ByVpnServerConfigurationName (Default)
 ```
-Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName <String> -ServerConfigurationName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHubName <String> [-VpnServerConfiguration <PSVpnServerConfiguration>]
+ [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
+ [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationObject
 ```
-Get-AzVpnServerConfigurationPolicyGroup [-Name <String>] -ServerConfigurationObject <PSVpnServerConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHubName <String> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnServerConfigurationResourceId
 ```
-Get-AzVpnServerConfigurationPolicyGroup [-Name <String>] -ServerConfigurationResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHub <PSVirtualHub> [-VpnServerConfiguration <PSVpnServerConfiguration>]
+ [-VpnClientAddressPool <String[]>] [-CustomDnsServer <String[]>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag]
+ [-EnableRoutingPreferenceInternetFlag] [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualHubObjectByVpnServerConfigurationResourceId
+```
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHub <PSVirtualHub> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVirtualHubResourceIdByVpnServerConfigurationObject
+```
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHubId <String> [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnClientAddressPool <String[]>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVirtualHubResourceIdByVpnServerConfigurationResourceId
+```
+New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
+ -VirtualHubId <String> -VpnServerConfigurationId <String> [-VpnClientAddressPool <String[]>]
+ [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
+ [-DisableInternetSecurityFlag] [-EnableRoutingPreferenceInternetFlag]
+ [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,3 +222,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzRoutingConfiguration]()

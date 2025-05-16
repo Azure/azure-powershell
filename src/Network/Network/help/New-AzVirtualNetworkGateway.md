@@ -17,7 +17,7 @@ Creates a Virtual Network Gateway
 New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>]
  [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
- [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
+ [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature] [-EnableAdvancedConnectivityFeature]
  [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
  [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
@@ -29,8 +29,9 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob] [-AdminState <String>]
- [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>] [-ResiliencyModel <String>]
+ [-ResiliencyModel <String>] [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,7 +240,6 @@ Property to indicate if the Express Route Gateway serves traffic when there are 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -340,6 +340,21 @@ Accept wildcard characters: False
 
 ### -EnableActiveActiveFeature
 Flag to enable Active Active feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdvancedConnectivityFeature
+Flag to enable Advanced Connectivity feature on virtual network gateway
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -647,7 +662,6 @@ Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named

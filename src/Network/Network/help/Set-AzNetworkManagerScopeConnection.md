@@ -14,7 +14,8 @@ Update a network manager scope connection.
 
 ```
 Set-AzNetworkManagerScopeConnection -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
