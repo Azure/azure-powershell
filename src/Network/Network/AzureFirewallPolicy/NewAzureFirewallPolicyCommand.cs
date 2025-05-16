@@ -140,6 +140,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Type of Managed Identity. Set to 'None' to remove the identity.")]
+        [ValidateSet(
+            nameof(MNM.ResourceIdentityType.SystemAssigned),
+            nameof(MNM.ResourceIdentityType.UserAssigned),
+            nameof(MNM.ResourceIdentityType.SystemAssignedUserAssigned),
+            nameof(MNM.ResourceIdentityType.None),
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
         )]
         public string[] PrivateRange { get; set; }
@@ -200,6 +211,7 @@ namespace Microsoft.Azure.Commands.Network
                 firewallPolicy.Snat = this.Snat;
             }
 
+           
             if (this.UserAssignedIdentityId != null)
             {
                 var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
@@ -214,11 +226,11 @@ namespace Microsoft.Azure.Commands.Network
                     UserAssignedIdentities = userAssignedIdentities
                 };
             }
-            else if (this.Identity != null)
+            else if (this.Identity != null && this.IdentityType != "None")
             {
                 firewallPolicy.Identity = this.Identity;
             }
-
+   
             if (this.TransportSecurityKeyVaultSecretId != null)
             {
                 if (this.TransportSecurityName == null)

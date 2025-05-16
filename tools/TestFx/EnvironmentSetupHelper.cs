@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 var watch = Stopwatch.StartNew();
                 output = powershell.Invoke();
                 watch.Stop();
-                ;
+
                 if (watch.ElapsedMilliseconds < 5000)
                 {
                     Console.WriteLine($"INFO : Test {testName} completed in {watch.ElapsedMilliseconds}ms");

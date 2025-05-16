@@ -1645,6 +1645,7 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
         Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
         Assert-Null $getAzureFirewallPolicy.ExplicitProxy.EnablePacFile
+        Assert-Null $getAzureFirewallPolicy.Identity
 
     }
     finally {
@@ -1679,11 +1680,11 @@ function Test-AzureFirewallPolicyMultipleIdentities {
         $eproxyIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceRG -Name $eproxyIdentityName
 
         #Enable Explicit Proxy - Single MSI
-        $userAssignedIdentity = @($eproxyIdentity.Id, $tlsIdentity.Id)
+        $userAssignedIdentity = @($eproxyIdentity.Id)
         $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -EnablePacFile  -PacFilePort 122 -PacFile $pacFileURL 
 
         # Create AzureFirewallPolicy (with Explicit Proxy Settings)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier Premium -TransportSecurityName $secretName -TransportSecurityKeyVaultSecretId $keyvaultSecretID  -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId $userAssignedIdentity
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier Premium -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId $userAssignedIdentity
 
         #Get Azure FirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -1697,7 +1698,12 @@ function Test-AzureFirewallPolicyMultipleIdentities {
         Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
         Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
         Assert-AreEqual $pacFileURL $getAzureFirewallPolicy.ExplicitProxy.PacFile
-        Assert-AreEqual 2 $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Count
+        Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.UserAssignedIdentities.Count
+
+        $userAssignedIdentity = @($eproxyIdentity.Id, $tlsIdentity.Id)
+
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier Premium -TransportSecurityName $secretName -TransportSecurityKeyVaultSecretId $keyvaultSecretID  -UserAssignedIdentityId $userAssignedIdentity
+
 
         #Get Azure FirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
