@@ -44,7 +44,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
-  
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
