@@ -22,7 +22,7 @@
 
 ## Version 7.16.2
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
-	- `New-AzNatGateway`
+	  - `New-AzNatGateway`
     - `Set-AzNatGateway`
 * Added property 'DefaultPublicNatGateway' to VirtualNetwork.
 * Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
@@ -69,6 +69,9 @@
     - `New-AzNetworkManagerConnectivityConfiguration`
     - `Set-AzNetworkManagerConnectivityConfiguration`
     - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.16.2
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 
 ## Version 7.16.1
 * Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
