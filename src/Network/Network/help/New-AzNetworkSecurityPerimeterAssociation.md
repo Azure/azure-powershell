@@ -15,10 +15,9 @@ create a NSP resource association.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessMode <String>] [-AssociationId <String>]
- [-Location <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessMode <String>]
+ [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -39,8 +38,7 @@ New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <Str
 ```
 New-AzNetworkSecurityPerimeterAssociation -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-AccessMode <String>]
- [-AssociationId <String>] [-Location <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,9 +61,8 @@ New-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <Str
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
- [-AccessMode <String>] [-AssociationId <String>] [-Location <String>] [-PrivateLinkResourceId <String>]
- [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AccessMode <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,21 +109,6 @@ Run the command as a job
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociationId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
-Aliases: Id
 
 Required: False
 Position: Named
@@ -190,21 +172,6 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -343,21 +310,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

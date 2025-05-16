@@ -14,9 +14,9 @@ create a Network Security Perimeter.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -28,9 +28,8 @@ New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String>
 
 ### CreateViaIdentityExpanded
 ```
-New-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
- [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> -Location <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -150,14 +149,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -203,21 +202,6 @@ Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonStri
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityPerimeterId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: Id
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

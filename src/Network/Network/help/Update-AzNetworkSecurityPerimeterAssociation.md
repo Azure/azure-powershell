@@ -15,17 +15,16 @@ Updates an association
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkSecurityPerimeterAssociation -ResourceGroupName <String> -Name <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Location <String>]
- [-AccessMode <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessMode <String>]
+ [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
- [-Tag <Hashtable>] [-Location <String>] [-AccessMode <String>] [-PrivateLinkResourceId <String>]
- [-ProfileId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AccessMode <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,21 +119,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -240,21 +224,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

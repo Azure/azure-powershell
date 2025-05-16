@@ -15,20 +15,20 @@ Updates an access rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -ResourceGroupName <String> -Name <String>
- -SecurityPerimeterName <String> -ProfileName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-Location <String>] [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>]
- [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>]
- [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecurityPerimeterName <String> -ProfileName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-EmailAddress <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
- [-Location <String>] [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>]
- [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>]
- [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
+ [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>] [-EmailAddress <String[]>]
+ [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,21 +171,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the access rule.
 
@@ -318,21 +303,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

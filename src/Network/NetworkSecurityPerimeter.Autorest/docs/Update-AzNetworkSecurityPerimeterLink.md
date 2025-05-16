@@ -16,16 +16,16 @@ Updates a NSP Link
 ```
 Update-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>]
- [-LocalInboundProfile <String[]>] [-Location <String>] [-RemoteInboundProfile <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
- [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>] [-Location <String>]
- [-RemoteInboundProfile <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
+ [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Link.
 
@@ -242,21 +227,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
