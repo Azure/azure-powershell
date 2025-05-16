@@ -15,31 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferConnecti
 }
 
 Describe 'Update-AzDataTransferConnection' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateTagsForExistingConnection' {
+        {
+            # Update tags for an existing connection
+            Update-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName -Tag @{Environment="Production"; Department="IT"} -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the tags are updated
+            $updatedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $updatedConnection | Should -Not -BeNullOrEmpty
+            $updatedConnection.Tags.Environment | Should -Be "Production"
+            $updatedConnection.Tags.Department | Should -Be "IT"
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonString1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateTagsForNonExistentConnection' {
+        {
+            # Attempt to update tags for a non-existent connection
+            Update-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name "NonExistentConnection" -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
+        } | Should -Throw
     }
 
     It 'UpdateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonFilePath1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

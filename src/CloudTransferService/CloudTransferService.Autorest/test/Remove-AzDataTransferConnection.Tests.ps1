@@ -15,16 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferConnecti
 }
 
 Describe 'Remove-AzDataTransferConnection' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:connectionToRemove -Confirm:$false | Should -BeNullOrEmpty
+
+            # Ensure the connection is deleted
+            $deletedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:connectionToRemove -ErrorAction SilentlyContinue
+            $deletedConnection | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
-    It 'Delete1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete and return result' {
+        {
+            $result = Remove-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:connectionToRemove -PassThru -Confirm:$false
+            $result | Should -Be $true
 
-    It 'DeleteViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Ensure the connection is deleted
+            $deletedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:connectionToRemove -ErrorAction SilentlyContinue
+            $deletedConnection | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

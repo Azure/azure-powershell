@@ -15,23 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzDataTransferFlow'))
 }
 
 Describe 'Disable-AzDataTransferFlow' {
-    It 'Disable' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Disable' {
+        {
+            # Disable the flow
+            Disable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToDisable -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is disabled
+            $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToDisable
+            $disabledFlow.Status | Should -Be "Disabled"
+        } | Should -Not -Throw
     }
 
-    It 'Disable1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Disable when already disabled' {
+        {
+            # Ensure the flow is already disabled
+            Disable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToDisable -Confirm:$false | Should -BeNullOrEmpty
 
-    It 'DisableViaIdentityConnection1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Attempt to disable the flow again
+            Disable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToDisable -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is still disabled
+            $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToDisable
+            $disabledFlow.Status | Should -Be "Disabled"
+        } | Should -Not -Throw
     }
 
     It 'DisableViaIdentityConnection' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DisableViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

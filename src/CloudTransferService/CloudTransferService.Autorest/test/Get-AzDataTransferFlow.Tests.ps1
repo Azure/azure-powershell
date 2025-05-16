@@ -15,35 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferFlow'))
 }
 
 Describe 'Get-AzDataTransferFlow' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $flows = Get-AzDataTransferFlow -ConnectionName $env:ConnectionName -ResourceGroupName $env:ResourceGroupName
+            $flows.Count | Should -BeGreaterThan 0
+            $flows | ForEach-Object {
+                $_.Connection | Should -Be $env:ConnectionName
+                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+            }
+        } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $flow = Get-AzDataTransferFlow -ResourceGroupName "rpaas-rg" -ConnectionName faikh-approved-connection-ps
-            $flow.count | Should -BeGreaterThan 0
-
+            $flow = Get-AzDataTransferFlow -ConnectionName $env:ConnectionName -ResourceGroupName $env:ResourceGroupName -Name $env:FlowName
+            $flow | Should -Not -BeNullOrEmpty
+            $flow.Name | Should -Be $env:FlowName
+            $flow.Connection | Should -Be $env:ConnectionName
+            $flow.ResourceGroupName | Should -Be $env:ResourceGroupName
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityConnection1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'GetViaIdentityConnection' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

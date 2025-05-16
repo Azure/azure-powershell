@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataTransferLinkPend
 }
 
 Describe 'Invoke-AzDataTransferLinkPendingConnection' {
-    It 'LinkExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LinkPendingConnection' {
+        {
+            # Link the pending connection
+            Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -PendingConnectionId $env:PendingConnectionId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is linked
+            $linkedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $linkedConnection.Status | Should -Be "Linked"
+        } | Should -Not -Throw
     }
 
-    It 'LinkViaJsonString1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LinkPendingConnection when already linked' {
+        {
+            # Ensure the connection is already linked
+            Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -PendingConnectionId $env:PendingConnectionId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Attempt to link the connection again
+            Invoke-AzDataTransferLinkPendingConnection -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -PendingConnectionId $env:PendingConnectionId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the connection is still linked
+            $linkedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $linkedConnection.Status | Should -Be "Linked"
+        } | Should -Not -Throw
     }
 
     It 'LinkViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'LinkViaJsonFilePath1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -35,27 +48,11 @@ Describe 'Invoke-AzDataTransferLinkPendingConnection' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'LinkExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Link1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Link' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'LinkViaIdentityExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'LinkViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'LinkViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

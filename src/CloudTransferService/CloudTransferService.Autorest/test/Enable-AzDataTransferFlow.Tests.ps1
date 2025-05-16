@@ -15,23 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzDataTransferFlow'))
 }
 
 Describe 'Enable-AzDataTransferFlow' {
-    It 'Enable' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Enable' {
+        {
+            # Enable the flow
+            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is enabled
+            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
+            $enabledFlow.Status | Should -Be "Enabled"
+        } | Should -Not -Throw
     }
 
-    It 'Enable1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Enable when already enabled' {
+        {
+            # Ensure the flow is already enabled
+            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
 
-    It 'EnableViaIdentityConnection1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Attempt to enable the flow again
+            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+
+            # Verify the flow is still enabled
+            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
+            $enabledFlow.Status | Should -Be "Enabled"
+        } | Should -Not -Throw
     }
 
     It 'EnableViaIdentityConnection' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'EnableViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

@@ -15,23 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferFlow'))
 }
 
 Describe 'Remove-AzDataTransferFlow' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $flowToRemove -Confirm:$false | Should -BeNullOrEmpty
+
+            # Ensure the flow is deleted
+            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:flowToRemove -ErrorAction SilentlyContinue
+            $deletedFlow | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
-    It 'Delete1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete and return result' {
+        {
+            $result = Remove-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:flowToRemove -PassThru -Confirm:$false
+            $result | Should -Be $true
 
-    It 'DeleteViaIdentityConnection1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Ensure the flow is deleted
+            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $flowToRemove -ErrorAction SilentlyContinue
+            $deletedFlow | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityConnection' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
