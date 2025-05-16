@@ -18,7 +18,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
     It 'CreateExpanded' {
         { 
         
-        New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location $env.location
+        New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
         
         } | Should -Not -Throw
     }
@@ -29,7 +29,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
                 id= '/subscriptions/' + $env.SubscriptionId
             }
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -Subscription @($sub1) -Direction 'Inbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -Subscription @($sub1) -Direction 'Inbound'
 
         } | Should -Not -Throw
     }
@@ -38,7 +38,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
         {
             $emails = @("test123@microsoft.com", "test321@microsoft.com")
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -EmailAddress $emails -Direction 'Outbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -EmailAddress $emails -Direction 'Outbound'
 
         } | Should -Not -Throw
     }
@@ -47,7 +47,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
         {
             $phones = @("+919898989898", "+919898989898")
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -PhoneNumber $phones -Direction 'Outbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -PhoneNumber $phones -Direction 'Outbound'
 
         } | Should -Not -Throw
     }
@@ -56,7 +56,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
         {
             $servicetags = @("MicrosoftPublicIPSpace", "MicrosoftPrivateIPSpace")
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ServiceTag $servicetags -Direction 'Inbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ServiceTag $servicetags -Direction 'Inbound'
 
         } | Should -Not -Throw
     }
