@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
@@ -97,11 +98,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName, () =>
                     {
                         base.ExecuteCmdlet();
+                        string vmResourceGroupParsed = ARMStorageService.ParseResourceGroupFromId(ResourceId);
 
                         ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                         string vaultName = resourceIdentifier.ResourceName;
                         string vaultResourceGroupName = resourceIdentifier.ResourceGroupName;
-                        string vmResourceGroupName = Container != null ? Container.Name : ResourceId.Split('/')[4];
+                        string vmResourceGroupName = Container != null ? vaultResourceGroupName : vmResourceGroupParsed;
 
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
