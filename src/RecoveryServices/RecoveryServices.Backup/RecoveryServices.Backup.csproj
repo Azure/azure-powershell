@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>	  
+	<ProjectReference Include="..\..\Compute\Compute\Compute.csproj" />	  
 	<ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
 	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
 	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
