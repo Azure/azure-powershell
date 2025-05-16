@@ -134,19 +134,6 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
 
         # Body paramters
-
-        [Parameter(HelpMessage = "Resource tags.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-        [System.Collections.Hashtable]
-        # Resource tags.
-        ${Tag},
-
-        [Parameter(HelpMessage = "Location of the resource")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # The Location of the resource
-        ${Location},
         
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -202,7 +189,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber', 'ServiceTag', 'AsJob'
+            $bodyParams = 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber', 'ServiceTag', 'AsJob'
 
             $bodyParamsMap = @{}
 
