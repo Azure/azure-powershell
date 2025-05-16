@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink
 schema: 2.0.0
@@ -15,15 +15,13 @@ Gets properties of a DNS resolver policy virtual network link.
 ### List (Default)
 ```
 Get-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -37,7 +35,7 @@ Gets properties of a DNS resolver policy virtual network link.
 
 ## EXAMPLES
 
-### Example 1: List all DNS Resolver Policy Links under the dns resolver policy
+### Example 1: List all DNS Resolver Policy Links under the dns resolver policy 
 ```powershell
 Get-AzDnsResolverPolicyVirtualNetworkLink -ResourceGroupName exampleResourceGroup -DnsResolverPolicyName exampleDnsResolverPolicy
 ```
@@ -96,7 +94,7 @@ The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -143,7 +141,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -159,7 +157,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -194,8 +192,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 
 ## RELATED LINKS
+

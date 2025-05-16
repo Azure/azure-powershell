@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverdomainlist
 schema: 2.0.0
@@ -24,16 +24,16 @@ Get-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-Subscri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzDnsResolverDomainList -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List
+```
+Get-AzDnsResolverDomainList -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Gets properties of a DNS resolver domain list.
 
 ## EXAMPLES
 
-### Example 1: List all DNS Resolver Domain Lists under the subscription
+### Example 1: List all DNS Resolver Domain Lists under the subscription 
 ```powershell
 Get-AzDnsResolverDomainList -SubscriptionId 0e5a46b1-de0b-4ec3-a5d7-dda908b4e076
 ```
@@ -64,7 +64,7 @@ westus2  dnsresolverdomainlisttestresolver9892 Microsoft.Network/dnsResolverDoma
 
 This command gets all DNS Resolver Domain Lists under the subscription.
 
-### Example 2: List all DNS Resolver Domain Lists under the resource group
+### Example 2: List all DNS Resolver Domain Lists under the resource group 
 ```powershell
 Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg
 ```
@@ -79,7 +79,7 @@ westus2  psdnsresolverdomainlistname35m3jf0n Microsoft.Network/dnsResolverDomain
 
 This command gets all DNS Resolver Domain Lists under the resource group.
 
-### Example 3: Get single DNS Resolver by name
+### Example 3: Get single DNS Resolver by name 
 ```powershell
 Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name psdnsresolverdomainlistname33nmy1fz
 ```
@@ -163,7 +163,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -179,7 +179,7 @@ If not specified, returns up to 100 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -198,8 +198,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverDomainList
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
 
 ## NOTES
 
 ## RELATED LINKS
+

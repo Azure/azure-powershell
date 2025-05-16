@@ -1,6 +1,6 @@
 {
   "resourceType": "dnsResolverDomainLists",
-  "apiVersion": "2023-07-01-preview",
+  "apiVersion": "2025-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver"
   },
@@ -29,6 +29,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.dnsResolverDomainListName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzDnsResolverBulkDnsResolverDomainList",
+      "description": "Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DnsResolverDomainListName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.",
+          "parameters": [
+            {
+              "name": "-DnsResolverDomainListName",
               "value": "[Path.dnsResolverDomainListName]"
             },
             {

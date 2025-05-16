@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
@@ -14,10 +14,10 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ```
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -DomainName <String> -TargetDnsServer <ITargetDnsServer[]> [-ForwardingRuleState <ForwardingRuleState>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> -DomainName <String> -TargetDnsServer <ITargetDnsServer[]>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,7 +216,7 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ITargetDnsServer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -265,8 +265,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IForwardingRule
 
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicyvirtualnetworklink
 schema: 2.0.0
@@ -16,15 +16,13 @@ Updates a DNS resolver policy virtual network link.
 ```
 Update-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +32,7 @@ Updates a DNS resolver policy virtual network link.
 
 ### Example 1: Update an existing DNS Resolver Policy Link by name
 ```powershell
-Update-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz -Tag @{"key0" = "value0"}
+Update-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz -Tag @{"key0" = "value0"} 
 ```
 
 ```output
@@ -48,7 +46,7 @@ This command updates an existing DNS Resolver Policy Links by name ( adding tag 
 ### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
 $dnsResolverPolicyLinkObject = Get-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz
-Update-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject  -Tag @{}
+Update-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject  -Tag @{} 
 ```
 
 ```output
@@ -257,8 +255,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 
 ## RELATED LINKS
+

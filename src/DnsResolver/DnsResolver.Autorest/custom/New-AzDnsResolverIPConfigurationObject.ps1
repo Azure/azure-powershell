@@ -20,12 +20,12 @@ Create a in-memory object for IPConfiguration
 Create a in-memory object for IPConfiguration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,7 +41,7 @@ function New-AzDnsResolverIPConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration]::New()
 
         $Object.PrivateIPAddress = $PrivateIPAddress
         $Object.PrivateIPAllocationMethod = $PrivateIPAllocationMethod

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 schema: 2.0.0
@@ -14,8 +14,7 @@ Create a in-memory object for IPConfiguration
 
 ```
 New-AzDnsResolverIPConfigurationObject [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>]
- [<CommonParameters>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,8 +89,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IPConfiguration
 
 ## NOTES
 
 ## RELATED LINKS
+
