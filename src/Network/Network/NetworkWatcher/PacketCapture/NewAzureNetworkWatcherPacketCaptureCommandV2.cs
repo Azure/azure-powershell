@@ -140,6 +140,26 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSPacketCaptureFilter[] Filter { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.")]
+        [ValidateNotNullOrEmpty]
+        public bool? ContinuousCapture { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "This path is valid if 'ContinuousCapture' is provided and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap).")]
+        [ValidateNotNullOrEmpty]
+        public string LocalPath { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Filters for packet capture session.")]
+        [ValidateNotNull]
+        public PSPacketCaptureSettings CaptureSettings { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -212,6 +232,11 @@ namespace Microsoft.Azure.Commands.Network
             packetCaptureProperties.StorageLocation.FilePath = this.LocalFilePath;
             packetCaptureProperties.StorageLocation.StorageId = this.StorageAccountId;
             packetCaptureProperties.StorageLocation.StoragePath = this.StoragePath;
+            
+            //Change for ring buffer
+            packetCaptureProperties.StorageLocation.LocalPath = null;
+            packetCaptureProperties.ContinuousCapture = this.ContinuousCapture;
+            packetCaptureProperties.CaptureSettings = new MNM.PacketCaptureSettings();
 
             packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVM;
 
