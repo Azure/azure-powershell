@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.3.1
 - Enhanced `Restore-AzMySqlFlexibleServer` functionality with GeoRestore support
 
 ## Version 1.3.0
