@@ -14,7 +14,7 @@ Gets the load balancer rule health information.
 
 ```
 Get-AzLoadBalancerRuleHealth -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
