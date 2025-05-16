@@ -8,10 +8,11 @@ schema: 2.0.0
 # Restore-AzPostgreSqlFlexibleServer
 
 ## SYNOPSIS
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server using Geo-restore
 
 ## SYNTAX
 
+### PointInTimeRestore (Default)
 ```
 Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -SourceServerName <String>
  [-SubscriptionId <String>] -RestorePointInTime <DateTime> [-Zone <String>] [-Subnet <String>]
@@ -19,8 +20,16 @@ Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -S
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GeoRestore
+```
+Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -SourceServerName <String>
+ [-SubscriptionId <String>] -RestorePointInTime <DateTime> [-UseGeoRestore] [-Sku <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Restore a server from an existing backup
+Restore a PostgreSQL flexible server using Geo-restore
 
 ## EXAMPLES
 
@@ -87,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the server.
+The name of the server to restore.
 
 ```yaml
 Type: System.String
@@ -125,7 +134,7 @@ The suffix of dns zone has to be same as that of fully qualified domain of the s
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: PointInTimeRestore
 Aliases:
 
 Required: False
@@ -136,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
+The name of the resource group that contains the resource.
 
 ```yaml
 Type: System.String
@@ -165,8 +174,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Sku
+The name of the sku, typically, tier + family + cores, e.g., B_Gen4_1, GP_Gen5_8.
+
+```yaml
+Type: System.String
+Parameter Sets: GeoRestore
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceServerName
-The name of the source server.
+The name of the source server to restore from.
 
 ```yaml
 Type: System.String
@@ -187,7 +211,7 @@ After delegation, this subnet cannot be used for any other type of Azure resourc
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: PointInTimeRestore
 Aliases:
 
 Required: False
@@ -212,12 +236,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Application-specific metadata in the form of key-value pairs.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GeoRestore
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseGeoRestore
+Use Geo mode to restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GeoRestore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Zone
 Availability zone into which to provision the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: PointInTimeRestore
 Aliases:
 
 Required: False
