@@ -48,5 +48,29 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NatGatewayWithSubnet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestNatGatewayWithPIPsAndSourceVnet()
+        {
+            TestRunner.RunTestScript("Test-NatGatewayWithPIPsAndSourceVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestNatGatewayWithPrefixesAndSourceVnet()
+        {
+            TestRunner.RunTestScript("Test-NatGatewayWithPrefixesAndSourceVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestVirtualNetworkSubnetConfigWithNatGateway()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkSubnetConfigWithNatGateway");
+        }
     }
 }

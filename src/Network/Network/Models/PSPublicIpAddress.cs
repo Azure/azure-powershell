@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SkuText
         {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return Sku != null ? JsonConvert.SerializeObject(Sku.Name, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }) : null; }
         }
 
         [JsonIgnore]
