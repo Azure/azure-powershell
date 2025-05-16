@@ -11,9 +11,7 @@ schema: 2.0.0
 Get secure access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
 
 > [!NOTE]
-> For security purposes, the default output type has been changed from a plain text `String` to `SecureString`.
-> Please refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq)
-> for how to convert from `SecureString` to plain text.
+> For security purposes, the default output type has been changed from a plain text `String` to `SecureString`. For more information, see [Protect secrets in Azure PowerShell](https://go.microsoft.com/fwlink/?linkid=2258844).
 
 ## SYNTAX
 

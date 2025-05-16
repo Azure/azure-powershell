@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 * Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
     - `Add-AzLoadBalancerRuleConfig`
@@ -63,6 +62,9 @@
     - `New-AzNetworkManagerConnectivityConfiguration`
     - `Set-AzNetworkManagerConnectivityConfiguration`
     - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.16.2
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 
 ## Version 7.16.1
 * Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
