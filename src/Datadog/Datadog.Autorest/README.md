@@ -36,12 +36,6 @@ input-file:
 title: Datadog
 module-version: 0.1.0
 subject-prefix: Datadog
-nested-object-to-string: true
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlet.
@@ -62,23 +56,11 @@ directive:
 
   # Remove variant
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
       subject: MarketplaceAgreement
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: Monitor
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$
-      subject: SingleSignOnConfiguration
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$
-      subject: TagRule
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -122,5 +104,6 @@ directive:
       parameter-name: Name
   # For memory object that generate cmdlet.
   - model-cmdlet:
-    - FilteringTag
+      - model-name: FilteringTag
+        cmdlet-name: New-AzDatadogFilteringTagObject
 ```

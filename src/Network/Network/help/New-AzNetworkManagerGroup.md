@@ -15,7 +15,8 @@ Creates a network manager group.
 ```
 New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-Description <String>] [-MemberType <String>] [-IfMatch <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

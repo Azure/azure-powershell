@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.BotServiceIdentity"
         /// />.
         /// </summary>
@@ -67,6 +75,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -75,13 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("ChannelName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName = (Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName?) content.GetValueForProperty("ChannelName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName = (string) content.GetValueForProperty("ChannelName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectionName"))
             {
@@ -112,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -120,13 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            }
             if (content.Contains("ChannelName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName = (Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName?) content.GetValueForProperty("ChannelName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName = (string) content.GetValueForProperty("ChannelName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ChannelName, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectionName"))
             {
@@ -180,6 +188,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(BotServiceIdentityTypeConverter))]
     public partial interface IBotServiceIdentity

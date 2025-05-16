@@ -16,7 +16,7 @@ Creates a network interface IP configuration.
 ### SetByResource (Default)
 ```
 New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
- [-Primary] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-Primary] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>] [-PrivateIpAddressPrefixLength <UInt16>]
  [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
@@ -25,10 +25,11 @@ New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>
 
 ### SetByResourceId
 ```
-New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
+New-AzNetworkInterfaceIpConfig -Name <String> [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-PrivateIpAddressPrefixLength <UInt16>]
  [-Primary] [-SubnetId <String>] [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
- [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -264,6 +265,21 @@ Specifies the static IP address of the network interface IP configuration.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddressPrefixLength
+Specifies the static IP address prefix length of the network interface IP configuration.
+
+```yaml
+Type: Type: System.UInt16
 Parameter Sets: (All)
 Aliases:
 

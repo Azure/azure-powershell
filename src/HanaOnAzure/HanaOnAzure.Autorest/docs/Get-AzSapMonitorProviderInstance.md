@@ -30,6 +30,12 @@ Get-AzSapMonitorProviderInstance -InputObject <IHanaOnAzureIdentity> [-DefaultPr
  [<CommonParameters>]
 ```
 
+### GetViaIdentitySapMonitor
+```
+Get-AzSapMonitorProviderInstance -Name <String> -SapMonitorInputObject <IHanaOnAzureIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets properties of a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 
@@ -109,7 +115,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity
@@ -128,7 +133,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySapMonitor
 Aliases: ProviderInstanceName
 
 Required: True
@@ -150,6 +155,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapMonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IHanaOnAzureIdentity
+Parameter Sets: GetViaIdentitySapMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -193,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
+### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.IProviderInstance
 
 ## NOTES
 

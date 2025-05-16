@@ -886,4 +886,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidSoftDeleteFeatureStateException" xml:space="preserve">
     <value>Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.</value>
   </data>
+  <data name="BothTokenProvided" xml:space="preserve">
+    <value>Both Token and SecureToken parameters cannot be provided together</value>
+  </data>
+  <data name="TokenParameterDepricate" xml:space="preserve">
+    <value>The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead</value>
+  </data>
 </root>

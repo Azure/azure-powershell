@@ -17,7 +17,7 @@ Creating volume group will create all the volumes specified in request body impl
 ```
 New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -AccountName <String>
  -PoolName <String> [-Name <String>] [-GroupDescription <String>] [-ApplicationType <String>]
- -ApplicationIdentifier <String> -ProximityPlacementGroup <String> -NodeMemory <Int32>
+ -ApplicationIdentifier <String> [-ProximityPlacementGroup <String>] -NodeMemory <Int32>
  [-CapacityOverhead <Int32>] [-StartingHostId <Int32>] [-HostCount <Int32>] [-SystemRole <String>]
  [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>] [-DataSize <Int64>] [-DataPerformance <Int32>]
  [-LogSize <Int64>] [-LogPerformance <Int32>] [-SharedSize <Int64>] [-SharedPerformance <Int32>]
@@ -25,14 +25,15 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-LogBackupPerformance <Int32>] [-HannaSystemReplication] [-DisasterRecoveryDestination]
  [-BackupProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescription <String>]
- [-ApplicationType <String>] -ApplicationIdentifier <String> -ProximityPlacementGroup <String>
+ [-ApplicationType <String>] -ApplicationIdentifier <String> [-ProximityPlacementGroup <String>]
  -NodeMemory <Int32> [-CapacityOverhead <Int32>] [-StartingHostId <Int32>] [-HostCount <Int32>]
  [-SystemRole <String>] [-Prefix <String>] [-Vnet <String>] [-SubnetId <String>] [-DataSize <Int64>]
  [-DataPerformance <Int32>] [-LogSize <Int64>] [-LogPerformance <Int32>] [-SharedSize <Int64>]
@@ -41,8 +42,10 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-DisasterRecoveryDestination] [-BackupProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
- [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
+ [-Zone <String[]>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +59,13 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccoun
 ```
 
 This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using the proximityPlacementGroup "MyPPGResourceId", the vnet "MyAnfVnet", and NodeMemory of 100
+
+### Example 2
+```powershell
+New-AzNetAppFilesVolumeGroup -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolumeGroupName" -Location "westus2"  -GroupDescription "MyAnfVolumeGroup Description" -ApplicationIdentifier "OR1" -Zone 1 -Vnet "MyAnfVnet" -SystemRole "PRIMARY" -NodeMemory 100
+```
+
+This command creates the new "PRIMARY" ANF VolumeGroup "MyAnfVolumeGroup" within the Account "MyAnfAccount" using Zone 1, the vnet "MyAnfVnet", and NodeMemory of 100
 
 ## PARAMETERS
 
@@ -243,6 +253,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionKeySource
+Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'. To create a volume using customer-managed keys use 'Microsoft.KeyVault' note then you must set -NetworkFeature to Standard.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExportPolicy
 A hashtable array which represents the export policy, which should be common to all volumes.
 
@@ -312,6 +337,21 @@ Currently at max 3 nodes can be configured.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPrivateEndpointResourceId
+The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -417,6 +457,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkFeature
+Basic network, or Standard features available to the volume (Basic, Standard).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeMemory
 SAP node memory (GiB), Memory on SAP compute host
 
@@ -473,7 +528,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -595,6 +650,21 @@ Default virtual network, for all volume groups
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of Availability Zones
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

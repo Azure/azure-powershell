@@ -1,25 +1,26 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdncustomdomaintlssettingparametersobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 
 ## SYNOPSIS
-Create an in-memory object for AFDDomainHttpsParameters.
+Create an in-memory object for AfdDomainHttpsParameters.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <AfdCertificateType>
- [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
+ [-CipherSuiteSetType <String>] [-CustomizedCipherSuiteSet <IAfdDomainHttpsCustomizedCipherSuiteSet>]
+ [-MinimumTlsVersion <String>] [-Secret <IResourceReference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AFDDomainHttpsParameters.
+Create an in-memory object for AfdDomainHttpsParameters.
 
 ## EXAMPLES
 
@@ -44,7 +45,7 @@ Create an in-memory object for AFDDomainHttpsParameters
 Defines the source of the SSL certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,11 +56,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinimumTlsVersion
-TLS protocol version that will be used for Https.
+### -CipherSuiteSetType
+cipher suite set type that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,13 +71,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -CustomizedCipherSuiteSet
+Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -89,10 +105,9 @@ Accept wildcard characters: False
 Resource reference to the secret.
 ie.
 subs/rg/profile/secret.
-To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters
 
 ## NOTES
 

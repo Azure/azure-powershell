@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="hubs">List of hubItems
         /// </param>
 
+        /// <param name="connectivityCapabilities">Collection of additional settings to enhance specific topology behaviors of
+        /// the connectivity configuration resource.
+        /// </param>
+
         /// <param name="appliesToGroups">Groups for configuration
         /// </param>
 
@@ -60,9 +64,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="region">Deployment region.
         /// </param>
-        public ActiveConnectivityConfiguration(string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string), string id = default(string), System.Collections.Generic.IList<ConfigurationGroup> configurationGroups = default(System.Collections.Generic.IList<ConfigurationGroup>), System.DateTime? commitTime = default(System.DateTime?), string region = default(string))
+        public ActiveConnectivityConfiguration(string connectivityTopology = default(string), string isGlobal = default(string), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), ConnectivityConfigurationPropertiesConnectivityCapabilities connectivityCapabilities = default(ConnectivityConfigurationPropertiesConnectivityCapabilities), System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups = default(System.Collections.Generic.IList<ConnectivityGroupItem>), string deleteExistingPeering = default(string), string resourceGuid = default(string), string id = default(string), System.Collections.Generic.IList<ConfigurationGroup> configurationGroups = default(System.Collections.Generic.IList<ConfigurationGroup>), System.DateTime? commitTime = default(System.DateTime?), string region = default(string))
 
-        : base(id, configurationGroups, connectivityTopology, isGlobal, provisioningState, description, hubs, appliesToGroups, deleteExistingPeering, resourceGuid)
+        : base(id, configurationGroups, connectivityTopology, isGlobal, provisioningState, description, hubs, connectivityCapabilities, appliesToGroups, deleteExistingPeering, resourceGuid)
         {
             this.CommitTime = commitTime;
             this.Region = region;
@@ -86,5 +90,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "region")]
         public string Region {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+        }
     }
 }

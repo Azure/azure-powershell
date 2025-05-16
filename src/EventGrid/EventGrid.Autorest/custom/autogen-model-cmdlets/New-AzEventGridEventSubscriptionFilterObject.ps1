@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.EventSubscriptionFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgrideventsubscriptionfilterobject
 #>
 function New-AzEventGridEventSubscriptionFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.EventSubscriptionFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

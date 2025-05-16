@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

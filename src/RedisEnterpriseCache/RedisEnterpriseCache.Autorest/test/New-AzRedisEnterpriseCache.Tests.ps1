@@ -18,8 +18,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
             Location = $env.Location
             SubscriptionId = $env.SubscriptionId
-            Sku = "Enterprise_E10"
-            Capacity = 4
+            Sku = "Balanced_B10"
             MinimumTlsVersion = "1.2"
             #Zone = @("1", "2", "3")
             ClientProtocol = "Encrypted"
@@ -31,7 +30,6 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
-        $cache.SkuCapacity | Should -Be $splat.Capacity
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $cache.ProvisioningState | Should -Be "Succeeded"
         $cache.ResourceState | Should -Be "Running"
@@ -53,7 +51,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
             Location = $env.Location
             SubscriptionId = $env.SubscriptionId
-            Sku = "EnterpriseFlash_F300"
+            Sku = "Balanced_B10"
             NoDatabase = $true
         }
         $cache = New-AzRedisEnterpriseCache @splat
@@ -61,7 +59,6 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
-        $cache.SkuCapacity | Should -Be 3
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $cache.ProvisioningState | Should -Be "Succeeded"
         $cache.ResourceState | Should -Be "Running"
@@ -74,7 +71,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
             Location = $env.Location
             SubscriptionId = $env.SubscriptionId
-            Sku = "EnterpriseFlash_F300"
+            Sku = "Balanced_B10"
             NoDatabase = $true
         }
         Write-Host $splat.Name
@@ -83,7 +80,6 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
-        $cache.SkuCapacity | Should -Be 3
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $cache.ProvisioningState | Should -Be "Succeeded"
         $cache.ResourceState | Should -Be "Running"
@@ -97,7 +93,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             ResourceGroupName = $env.ResourceGroupName
             Location = $env.Location
             SubscriptionId = $env.SubscriptionId
-            Sku = "EnterpriseFlash_F300"
+            Sku = "Balanced_B10"
             ClientProtocol = "Encrypted"
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
@@ -110,7 +106,6 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Location = $cache.Location.ToLower() -replace '\s', ''
         $cache.Location | Should -Be $splat.Location
         $cache.SkuName | Should -Be $splat.Sku
-        $cache.SkuCapacity | Should -Be 3
         $cache.Type | Should -Be "Microsoft.Cache/redisEnterprise"
         $cache.ProvisioningState | Should -Be "Succeeded"
         $cache.ResourceState | Should -Be "Running"

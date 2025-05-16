@@ -26,7 +26,7 @@ New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resource
  [-SelfCheckTimeoutSecond <Int32>] [-SelfTracingIntervalSecond <Int32>] [-SelfTracingMode <String>]
  [-SubscriberQueueLimitLength <Int64>] [-SubscriberQueueLimitStrategy <String>]
  [-TraceCacheSizeMegabyte <Int32>] [-TraceMode <String>] [-TraceSpanChannelCapacity <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,14 +34,14 @@ New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -Resource
 ```
 New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzIoTOperationsServiceBroker -InstanceName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -528,21 +528,6 @@ cert-manager private key rotationPolicy.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

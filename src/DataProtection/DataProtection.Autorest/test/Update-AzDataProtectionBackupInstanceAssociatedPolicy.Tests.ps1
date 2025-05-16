@@ -27,12 +27,20 @@ Describe 'Update-AzDataProtectionBackupInstanceAssociatedPolicy' {
 
         $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -SubscriptionId $subscriptionId -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityARMId
 
-        Start-Sleep -Seconds 40
+        Start-Sleep -Seconds 60
 
         $instance = Get-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId | Where-Object { $_.Name -match $backupInstanceName }
 
         $instance.Property.IdentityDetail.UseSystemAssignedIdentity | Should be $false
         $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl -eq $userAssignedIdentityARMId | Should be $true
+        
+        $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IdentityDetails]::new()
+        $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $true
+
+        Start-Sleep -Seconds 20
+        $validateForModifyBackup = Test-AzDataProtectionBackupInstanceUpdate -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -BackupInstance $instance.Property
+
+        $validateForModifyBackup.ObjectType | Should be "OperationJobExtendedInfo"
 
         $updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -SubscriptionId $subscriptionId -UseSystemAssignedIdentity $true
 

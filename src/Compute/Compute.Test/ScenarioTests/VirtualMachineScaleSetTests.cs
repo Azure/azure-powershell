@@ -433,9 +433,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResiliencyPolicyVMSS()
+        public void TestVirtualMachineScaleSetSkuProfilePrioritized()
         {
-            TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSkuProfilePrioritized");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResilientVMCreateDelete()
+        {
+            TestRunner.RunTestScript("Test-ResilientVMCreateDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRebalancingPolicyVMSS()
+        {
+            TestRunner.RunTestScript("Test-AutomaticZoneRebalancingPolicy");
         }
 
         [Fact]
