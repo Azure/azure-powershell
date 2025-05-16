@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.0.0
 * Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
     - `Add-AzLoadBalancerRuleConfig`
