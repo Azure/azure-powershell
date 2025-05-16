@@ -130,13 +130,24 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
-        public string UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of Managed Identity. Set to 'None' to remove the identity.")]
+        [ValidateSet(
+            nameof(MNM.ResourceIdentityType.SystemAssigned),
+            nameof(MNM.ResourceIdentityType.UserAssigned),
+            nameof(MNM.ResourceIdentityType.SystemAssignedUserAssigned),
+            nameof(MNM.ResourceIdentityType.None),
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -200,22 +211,26 @@ namespace Microsoft.Azure.Commands.Network
                 firewallPolicy.Snat = this.Snat;
             }
 
+           
             if (this.UserAssignedIdentityId != null)
             {
+                var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+                foreach (var identityId in this.UserAssignedIdentityId)
+                {
+                    userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                }
+
                 firewallPolicy.Identity = new PSManagedServiceIdentity
                 {
                     Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
+                    UserAssignedIdentities = userAssignedIdentities
                 };
             }
-            else if (this.Identity != null)
+            else if (this.Identity != null && this.IdentityType != "None")
             {
                 firewallPolicy.Identity = this.Identity;
             }
-
+   
             if (this.TransportSecurityKeyVaultSecretId != null)
             {
                 if (this.TransportSecurityName == null)
