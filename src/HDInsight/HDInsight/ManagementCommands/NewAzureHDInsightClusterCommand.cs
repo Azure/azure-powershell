@@ -80,9 +80,14 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 4,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets list of Entra users for gateway access.")]
+        public List<EntraUserInfo> RestAuthEntraUsers { get; set; }
 
         [Parameter(
             Position = 5,
@@ -424,7 +429,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             // Add cluster username/password to gateway config.
-            ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations);
+            ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations, RestAuthEntraUsers);
 
             // Construct OS Profile
             OsProfile osProfile = ClusterCreateHelper.CreateOsProfile(SshCredential, SshPublicKey);

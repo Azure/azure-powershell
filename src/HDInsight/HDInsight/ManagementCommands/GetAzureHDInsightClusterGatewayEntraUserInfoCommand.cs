@@ -1,4 +1,4 @@
-﻿    // ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,23 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.HDInsight;
+using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterAutoscaleConfiguration", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(AzureHDInsightAutoscale))]
-    public class GetAzureHDInsightClusterAutoscaleConfigurationCommand : HDInsightCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterGatewayEntraUserInfo"), OutputType(typeof(EntraUserInfo))]
+    public class GetAzureHDInsightClusterGatewayEntraUserInfoCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
-        private const string GetByInputObjectParameterSet = "GetByInputObjectParameterSet";
+        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
 
         [Parameter(
             Position = 0,
@@ -57,42 +60,37 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ResourceId { get; set; }
 
         [Parameter(
-            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = GetByInputObjectParameterSet,
+            ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = "Gets or sets the input object.")]
         [ValidateNotNull]
-        public AzureHDInsightCluster InputObject { get; set; }
+        public AzureHDInsightCluster InputObject;
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            AzureHDInsightAutoscale autoscaleConfiguration = null;
+            List<EntraUserInfo> restAuthEntraUsers = new List<EntraUserInfo>();
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                this.ClusterName = resourceIdentifier.ResourceName;
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            }
+
             if (this.IsParameterBound(c => c.InputObject))
             {
-                autoscaleConfiguration = InputObject?.ComputeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals("workernode"))?.AutoscaleConfiguration;
+                this.ClusterName = this.InputObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroup;
             }
-            else
+
+            if (this.ResourceGroupName == null)
             {
-                if (this.IsParameterBound(c => c.ResourceId))
-                {
-                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                    this.ClusterName = resourceIdentifier.ResourceName;
-                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                }
-
-                if (ClusterName != null && ResourceGroupName == null)
-                {
-                    ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
-                }
-                var cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
-                var autoscale = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), cluster.Properties.ComputeProfile)?.AutoscaleConfiguration;
-                autoscaleConfiguration = autoscale != null ? new AzureHDInsightAutoscale(autoscale) : null;
+                this.ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-
-            WriteObject(autoscaleConfiguration);
+            restAuthEntraUsers = HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, ClusterName).RestAuthEntraUsers.ToList();
+            WriteObject(restAuthEntraUsers);
         }
     }
 }

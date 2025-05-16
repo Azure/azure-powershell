@@ -27,6 +27,20 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithWasbAndMSI()
+        {
+            TestRunner.RunTestScript("Test-CreateClusterWithWasbAndMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateEntraClusterAndUpdateEntraUserInfo()
+        {
+            TestRunner.RunTestScript("Test-CreateEntraClusterAndUpdateEntraUserInfo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()
         {
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");

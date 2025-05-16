@@ -87,6 +87,7 @@ CmdletsToExport = 'Add-AzHDInsightClusterIdentity', 'Add-AzHDInsightComponentVer
                'Get-AzHDInsightAzureMonitorAgent', 'Get-AzHDInsightCluster', 
                'Update-AzHDInsightCluster', 
                'Get-AzHDInsightClusterAutoscaleConfiguration', 
+               'Get-AzHDInsightClusterGatewayEntraUserInfo',
                'Get-AzHDInsightHost', 'Get-AzHDInsightJob', 
                'Get-AzHDInsightJobOutput', 'Get-AzHDInsightMonitoring', 
                'Get-AzHDInsightPersistedScriptAction', 'Get-AzHDInsightProperty', 
@@ -94,6 +95,7 @@ CmdletsToExport = 'Add-AzHDInsightClusterIdentity', 'Add-AzHDInsightComponentVer
                'New-AzHDInsightCluster', 
                'New-AzHDInsightClusterAutoscaleConfiguration', 
                'New-AzHDInsightClusterAutoscaleScheduleCondition', 
+               'New-AzHDInsightClusterGatewayEntraUserInfo',
                'New-AzHDInsightClusterConfig', 'New-AzHDInsightHiveJobDefinition', 
                'New-AzHDInsightIPConfiguration', 
                'New-AzHDInsightMapReduceJobDefinition', 
@@ -109,6 +111,7 @@ CmdletsToExport = 'Add-AzHDInsightClusterIdentity', 'Add-AzHDInsightComponentVer
                'Set-AzHDInsightClusterDiskEncryptionKey', 
                'Set-AzHDInsightClusterSize', 'Set-AzHDInsightDefaultStorage', 
                'Set-AzHDInsightGatewayCredential', 
+               'Set-AzHDInsightGatewaySettings', 
                'Set-AzHDInsightPersistedScriptAction', 'Start-AzHDInsightJob', 
                'Stop-AzHDInsightJob', 'Submit-AzHDInsightScriptAction', 
                'Use-AzHDInsightCluster', 'Wait-AzHDInsightJob'
