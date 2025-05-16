@@ -53,34 +53,60 @@ Patch Tags for a Network Security Perimeter.
 
 ## EXAMPLES
 
-### Example 1: Updates a NetworkSecurityPerimeter
+### Example 1: Update NetworkSecurityPerimeter
 ```powershell
-
-Update-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
-
+Update-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Tag @{'Owner'='user-test-1'}
 ```
 
 ```output
-Location Name
--------- ----
-         nsp3
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1
+Location                     : eastus2euap
+Name                         : nsp-test-1
+PerimeterGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                                 " Owner": "user-test-1"
+                               }
+Type                         : Microsoft.Network/networkSecurityPerimeters
 ```
 
-Updates a NetworkSecurityPerimeter
+Update NetworkSecurityPerimeter
 
-### Example 2: Updates a NetworkSecurityPerimeter by identity (using pipe)
+### Example 2: Update NetworkSecurityPerimeter by Identity (using pipe)
 ```powershell
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Update-AzNetworkSecurityPerimeter -InputObject $GETObj
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+ Update-AzNetworkSecurityPerimeter -InputObject $GETObj -Tag @{'Owner'='user-test-2'}
 ```
 
 ```output
-Location Name
--------- ----
-         nsp3
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1
+Location                     : eastus2euap
+Name                         : nsp-test-1
+PerimeterGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                                 " Owner": "user-test-2"
+                               }
+Type                         : Microsoft.Network/networkSecurityPerimeters
 ```
 
-Updates a NetworkSecurityPerimeter by identity (using pipe)
+Update NetworkSecurityPerimeter by Identity (using pipe)
 
 ## PARAMETERS
 

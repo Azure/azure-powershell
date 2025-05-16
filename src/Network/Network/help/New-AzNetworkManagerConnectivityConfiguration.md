@@ -16,8 +16,9 @@ Creates a network manager connectivity configuration.
 New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> -AppliesToGroup <PSNetworkManagerConnectivityGroupItem[]>
  -ConnectivityTopology <String> [-Description <String>] [-Hub <PSNetworkManagerHub[]>] [-DeleteExistingPeering]
- [-IsGlobal] [-ConnectivityCapability <PSNetworkManagerConnectivityCapabilities>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IsGlobal] [-ConnectivityCapability <PSNetworkManagerConnectivityCapabilities>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,6 +212,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConnectivityCapability
+Specifies topology-specific settings to refine connectivity for the network manager configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityCapabilities
+Parameter Sets: (All)
+Aliases: ConnectivityCapabilities
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ConnectivityTopology
 Connectivity Topology.
 
@@ -307,21 +323,6 @@ IsGlobal Flag.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ConnectivityCapability
-Specifies topology-specific settings to refine connectivity for the network manager configuration.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityCapabilities
 Parameter Sets: (All)
 Aliases:
 

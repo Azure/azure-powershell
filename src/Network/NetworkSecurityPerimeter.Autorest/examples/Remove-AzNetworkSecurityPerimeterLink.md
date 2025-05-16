@@ -1,23 +1,14 @@
-### Example 1: Remove network security perimeter link
+### Example 1: Remove NetworkSecurityPerimeter Link
 ```powershell
-Remove-AzNetworkSecurityPerimeterLink -Name t-linkD3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp8
+Remove-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
-```output
+Remove NetworkSecurityPerimeter Link
 
-```
-
-Remove network security perimeter link
-
-### Example 2: Remove network security perimeter link via identity
-
+### Example 2: Remove NetworkSecurityPerimeter Link via Identity
 ```powershell
-$linkObj = Get-AzNetworkSecurityPerimeterLink -Name t-linkD4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp10
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 Remove-AzNetworkSecurityPerimeterLink -InputObject $linkObj
 ```
 
-```output
-
-```
-
-Remove network security perimeter link via identity
+Remove NetworkSecurityPerimeter Link via Identity

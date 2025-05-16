@@ -16,15 +16,14 @@ Updates a NSP Logging Configuration
 ```
 Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
- [-EnabledLogCategory <String[]>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledLogCategory <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,18 +31,28 @@ Updates a NSP Logging Configuration
 
 ## EXAMPLES
 
-### Example 1: Update network security perimeter logging configuration
+### Example 1: Update NetworkSecurityPerimeter LoggingConfiguration
 ```powershell
-Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
+Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 ```
 
 ```output
-EnabledLogCategory           Name
-------------------           ----
-{NspPublicOutboundPerimeterRulesAllowed} instance
+EnabledLogCategory           : {NspPublicOutboundPerimeterRulesAllowed}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/loggingConfigurations/instance
+Name                         : instance
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/loggingConfigurations
+Version                      : 2
 ```
 
-Create network security perimeter logging configuration
+Update NetworkSecurityPerimeter LoggingConfiguration
 
 ## PARAMETERS
 
@@ -105,21 +114,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -195,21 +189,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

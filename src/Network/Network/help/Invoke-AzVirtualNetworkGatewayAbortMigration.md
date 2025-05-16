@@ -12,9 +12,25 @@ Trigger abort migration for virtual network gateway.
 
 ## SYNTAX
 
+### ByName (Default)
 ```
-Invoke-AzVirtualNetworkGatewayAbortMigration -VirtualNetworkGateway <PSVirtualNetworkGateway> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Invoke-AzVirtualNetworkGatewayAbortMigration -Name <String> -ResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Invoke-AzVirtualNetworkGatewayAbortMigration -InputObject <PSVirtualNetworkGateway> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Invoke-AzVirtualNetworkGatewayAbortMigration -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +97,7 @@ The virtual network gateway name.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ResourceName, VirtualNetworkGatewayName, GatewayName
+Aliases:
 
 Required: True
 Position: Named

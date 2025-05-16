@@ -37,20 +37,20 @@ Deletes an NSP LinkReference resource.
 
 ## EXAMPLES
 
-### Example 1: Removes a network security perimeter link reference
+### Example 1: Remove NetworkSecurityPerimeter LinkReference
 ```powershell
-Remove-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
+Remove-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
-Removes a network security perimeter link reference
+Remove NetworkSecurityPerimeter LinkReference
 
-### Example 2: Removes a network security perimeter link reference via identity
+### Example 2: Remove NetworkSecurityPerimeter LinkReference via Identity
 ```powershell
- $linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11 -Name Ref-from-t-linkD4-902f9e36-84c2-43d6-983d-677f70568a30
- Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
+$linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
 ```
 
-Removes a network security perimeter link reference via identity
+Remove NetworkSecurityPerimeter LinkReference via Identity
 
 ## PARAMETERS
 

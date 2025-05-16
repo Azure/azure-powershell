@@ -15,9 +15,10 @@ Creates a peering between two virtual networks.
 
 ```
 Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork> -RemoteVirtualNetworkId <String>
- [-PeerCompleteVnets] [-LocalSubnetName] [-RemoteSubnetName] [-EnableOnlyIPv6Peering]
- [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PeerCompleteVnets <Boolean>] [-LocalSubnetNames <String[]>] [-RemoteSubnetNames <String[]>]
+ [-EnableOnlyIPv6Peering <Boolean>] [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic]
+ [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +150,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableOnlyIPv6Peering
+Specifies whether this is a IPv6 only peering
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalSubnetNames
+List of local subnets to be peered
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the virtual network peering.
 
@@ -158,6 +189,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerCompleteVnets
+Specifies whether this is a Vnet peering or subnet peering
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteSubnetNames
+List of remote subnets to be peered
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -206,66 +267,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -LocalSubnetName
-Specifies the list of local subnets to be peered.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RemoteSubnetName
-Specifies the list of remote subnets to be peered.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeerCompleteVnets
-Specifies whether this is a Vnet peering or subnet peering
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableOnlyIPv6Peering
-Specifies whether this is a IPv6 only peering
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

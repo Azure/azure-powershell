@@ -15,16 +15,15 @@ Updates a NSP Link
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkSecurityPerimeterLink -ResourceGroupName <String> -Name <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Location <String>]
- [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
- [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>]
+ [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
- [-Location <String>] [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
+Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
+ [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
  [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -140,21 +139,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Link.
 
@@ -242,21 +226,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
