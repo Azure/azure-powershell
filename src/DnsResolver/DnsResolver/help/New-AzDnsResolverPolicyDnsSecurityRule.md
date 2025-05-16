@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule
 schema: 2.0.0
@@ -14,11 +14,10 @@ Creates or updates a DNS security rule for a DNS resolver policy.
 
 ```
 New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32>
- [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ -ResourceGroupName <String> -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-ActionType <ActionType>]
  [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +25,10 @@ Creates or updates a DNS security rule for a DNS resolver policy.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS security rule
+### Example 1: Create a DNS security rule 
 ```powershell
 New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";}
+
 ```
 
 ```output
@@ -39,7 +39,7 @@ westus2  sampleSecurityRule       Microsoft.Network/dnsSecurityRules       "0000
 
 This cmdlet creates a DNS security rule.
 
-### Example 2: Create a DNS security rule with tag
+### Example 2: Create a DNS security rule with tag 
 ```powershell
 New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";} -Tag @{"key0" = "value0"}
 ```
@@ -53,21 +53,6 @@ westus2  sampleSecurityRule       Microsoft.Network/dnsSecurityRules       "0000
 This cmdlet creates a DNS security rule with tag.
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.BlockResponseCode
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -120,7 +105,7 @@ DNS resolver policy domains lists that the DNS security rule applies to.
 To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.ISubResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -339,8 +324,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsSecurityRule
 
 ## NOTES
 
 ## RELATED LINKS
+

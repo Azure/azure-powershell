@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicy
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates or updates a DNS resolver policy.
 ## SYNTAX
 
 ```
-New-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Creates or updates a DNS resolver policy.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS resolver policy
+### Example 1: Create a DNS resolver policy 
 ```powershell
 New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell-test-rg -Location westus2
 ```
@@ -245,8 +245,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicy
 
 ## NOTES
 
 ## RELATED LINKS
+

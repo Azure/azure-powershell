@@ -1,64 +1,89 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetvirtualnetworklink
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/invoke-azdnsresolverbulkdnsresolverdomainlist
 schema: 2.0.0
 ---
 
-# Update-AzDnsForwardingRulesetVirtualNetworkLink
+# Invoke-AzDnsResolverBulkDnsResolverDomainList
 
 ## SYNOPSIS
-Updates a virtual network link to a DNS forwarding ruleset.
+Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### BulkExpanded (Default)
 ```
-Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-Metadata <Hashtable>]
+Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
+ -Action <Action> -StorageUrl <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Bulk
 ```
-Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzDnsResolverBulkDnsResolverDomainList -DnsResolverDomainListName <String> -ResourceGroupName <String>
+ -Parameter <IDnsResolverDomainListBulk> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### BulkViaIdentity
+```
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity>
+ -Parameter <IDnsResolverDomainListBulk> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BulkViaIdentityExpanded
+```
+Invoke-AzDnsResolverBulkDnsResolverDomainList -InputObject <IDnsResolverIdentity> -Action <Action>
+ -StorageUrl <String> [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates a virtual network link to a DNS forwarding ruleset.
+Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link.
 
 ## EXAMPLES
 
-### Example 1: Update virtual network link by name (adding metadata)
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName sampleDnsForwardingRuleset -Name sampleVnetLink -Metadata @{"value0" = "value1"}
+{{ Add code here }}
 ```
 
 ```output
-Name         Type                                             Etag
-----         ----                                             ----
-sampleVnetLink Microsoft.Network/dnsForwardingRuleset/virtualNetworkLinks "02001eab-0000-0800-0000-60e792500000"
+{{ Add output here }}
 ```
 
-This command updates virtual network link by name (adding metadata)
+{{ Add description here }}
 
-### Example 2: Update virtual network link via identity (adding metadata)
+### Example 2: {{ Add title here }}
 ```powershell
-$inputObject = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName pstestdnsresolvername -Name samplevnetLink1 -ResourceGroupName powershell-test-rg
-Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject $inputObject -Metadata @{"value0" = "value1"}
+{{ Add code here }}
 ```
 
 ```output
-Name         Type                                             Etag
-----         ----                                             ----
-sampleVnetLink Microsoft.Network/dnsForwardingRuleset/virtualNetworkLinks "02001eab-0000-0800-0000-60e792500000"
+{{ Add output here }}
 ```
 
-This command updates virtual network link via identity (adding metadata)
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -Action
+The action to take in the request, Upload or Download.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.Action
+Parameter Sets: BulkExpanded, BulkViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -91,12 +116,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsForwardingRulesetName
-The name of the DNS forwarding ruleset.
+### -DnsResolverDomainListName
+The name of the DNS resolver domain list.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Bulk, BulkExpanded
 Aliases:
 
 Required: True
@@ -123,27 +148,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -IfNoneMatch
+Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
+Other values will be ignored.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Metadata
-Metadata attached to the virtual network link.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,18 +164,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the virtual network link.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: VirtualNetworkLinkName
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: BulkViaIdentity, BulkViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -184,13 +195,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Describes a DNS resolver domain list for bulk UPLOAD or DOWNLOAD operations.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk
+Parameter Sets: Bulk, BulkViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Bulk, BulkExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageUrl
+The storage account blob file URL to be used in the bulk upload or download request of DNS resolver domain list.
+
+```yaml
+Type: System.String
+Parameter Sets: BulkExpanded, BulkViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -206,7 +248,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Bulk, BulkExpanded
 Aliases:
 
 Required: False
@@ -252,11 +294,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainListBulk
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverDomainList
 
 ## NOTES
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicyvirtualnetworklink
 schema: 2.0.0
@@ -14,9 +14,9 @@ Creates or updates a DNS resolver policy virtual network link.
 
 ```
 New-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- -Location <String> -VirtualNetworkId <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -Location <String> -VirtualNetworkId <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Creates or updates a DNS resolver policy virtual network link.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS resolver policy link
+### Example 1: Create a DNS resolver policy link 
 ```powershell
 New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-08b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2
 ```
@@ -37,7 +37,7 @@ westus2  sampleResolverPolicyLink Microsoft.Network/dnsResolverPolicyLinks "0000
 
 This cmdlet creates a DNS resolver policy link.
 
-### Example 2: Create a DNS resolver policy link with tag
+### Example 2: Create a DNS resolver policy link with tag 
 ```powershell
 New-AzDnsResolverPolicyVirtualNetworkLink  -Name sampleResolverPolicyLink -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2 -Tag @{"key0" = "value0"}
 ```
@@ -276,8 +276,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20250501.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 
 ## RELATED LINKS
+

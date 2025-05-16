@@ -1,5 +1,5 @@
 ---
-external help file: Az.DnsResolver-help.xml
+external help file:
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverdomainlist
 schema: 2.0.0
@@ -16,15 +16,14 @@ WARNING: This operation cannot be undone.
 ### Delete (Default)
 ```
 Remove-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +42,7 @@ This command removes a DNS Resolver Domain List by name.
 ### Example 2: Remove a DNS Resolver Domain List by identity
 ```powershell
 $dnsResolverDomainListObject = Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-Remove-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject
+Remove-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject 
 ```
 
 This command removes a DNS Resolver Domain List by identity.
@@ -236,3 +235,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
