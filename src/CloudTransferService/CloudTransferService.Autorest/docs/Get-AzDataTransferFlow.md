@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/get-azdatatransferflow
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflow
 schema: 2.0.0
 ---
 
@@ -26,25 +26,12 @@ Get-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupNam
 
 ### GetViaIdentity
 ```
-Get-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityConnection
 ```
-Get-AzDataTransferFlow -ConnectionInputObject <IAzzDataTransferIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityConnection1
-```
-Get-AzDataTransferFlow -Connection1InputObject <IAzzDataTransferIdentity> -Name <String>
+Get-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -77,26 +64,11 @@ Gets flow resource.
 
 ## PARAMETERS
 
-### -Connection1InputObject
-Identity Parameter
-
-```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: GetViaIdentityConnection1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ConnectionInputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
+Type: PrivateADT.Models.IDataTransferIdentity
 Parameter Sets: GetViaIdentityConnection
 Aliases:
 
@@ -142,8 +114,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -158,7 +130,7 @@ The name for the flow that is to be onboarded.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityConnection, GetViaIdentityConnection1
+Parameter Sets: Get, GetViaIdentityConnection
 Aliases: FlowName
 
 Required: True
@@ -205,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

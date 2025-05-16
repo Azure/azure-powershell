@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/new-azdatatransferflow
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferflow
 schema: 2.0.0
 ---
 
@@ -17,35 +17,14 @@ create the flow resource.
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
  [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity]
- [-FlowPropertyConnectionId <String>] [-FlowPropertyConnectionLocation <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
- [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity]
- [-FlowPropertyConnectionId <String>] [-FlowPropertyConnectionLocation <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
+ [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -55,21 +34,7 @@ New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupNam
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath1
-```
-New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonString
-```
-New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString1
 ```
 New-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -140,7 +105,7 @@ The URI to the customer managed key for this flow
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -155,7 +120,7 @@ Transfer Storage Blobs or Tables
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -186,7 +151,7 @@ The destination endpoints of the stream
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -201,7 +166,7 @@ The destination endpoint ports of the stream
 
 ```yaml
 Type: System.Int64[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -216,67 +181,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionId
-Id of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionLocation
-Location of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionName
-Name of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionSubscriptionName
-Name of the subscription with the connection
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -291,7 +196,7 @@ The flow type for this flow
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +211,7 @@ Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -321,25 +226,10 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonString1
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultUri
-AME, PME, or TORUS only! AKV Chain Containing SAS Token
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -351,7 +241,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -366,7 +256,7 @@ Billing tier for this messaging flow
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -411,7 +301,7 @@ The passphrase used for SRT streams
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -426,7 +316,7 @@ A user defined name of the 3rd Party Artifact that is being procured.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -444,7 +334,7 @@ Product maps to the OfferID specified for the artifact at the time of Data Marke
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -459,7 +349,7 @@ A publisher provided promotion code as provisioned in Data Market for the said p
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -476,7 +366,7 @@ NewRelic
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -491,22 +381,7 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this flow
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -537,7 +412,7 @@ Connection ID associated with this schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -552,7 +427,7 @@ Content of the schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -567,7 +442,7 @@ The direction of the schema.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -582,7 +457,7 @@ ID associated with this schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -597,7 +472,7 @@ Name of the schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -612,7 +487,7 @@ Status of the schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -627,7 +502,7 @@ The Schema Type
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -642,7 +517,7 @@ Uri containing SAS token for the zipped schema
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -657,7 +532,7 @@ Service Bus Queue ID
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -672,7 +547,7 @@ A source IP address or CIDR range
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -687,7 +562,7 @@ Status of the current flow
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -702,7 +577,7 @@ Storage Account ID
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -717,7 +592,7 @@ Storage Account
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -732,7 +607,7 @@ Storage Container Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -747,7 +622,7 @@ The flow stream identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -762,7 +637,7 @@ The latency of the stream in milliseconds
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -777,7 +652,7 @@ The protocol of the stream
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -808,7 +683,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -824,7 +699,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

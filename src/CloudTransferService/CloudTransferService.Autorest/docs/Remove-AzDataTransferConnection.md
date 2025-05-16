@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/remove-azdatatransferconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferconnection
 schema: 2.0.0
 ---
 
@@ -18,21 +18,9 @@ Remove-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-Sub
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Delete1
-```
-Remove-AzDataTransferConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
-Remove-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity1
-```
-Remove-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzDataTransferConnection -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -100,8 +88,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -116,7 +104,7 @@ The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases: ConnectionName
 
 Required: True
@@ -162,7 +150,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -178,7 +166,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -224,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

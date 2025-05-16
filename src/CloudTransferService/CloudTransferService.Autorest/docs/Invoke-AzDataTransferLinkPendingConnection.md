@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/invoke-azdatatransferlinkpendingconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/invoke-azdatatransferlinkpendingconnection
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Links the connection to its pending connection.
 
 ### LinkExpanded (Default)
 ```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String> -Id <String>
- [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
+ -PendingConnectionId <String> [-SubscriptionId <String>] [-StatusReason <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Link
@@ -26,42 +26,15 @@ Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGro
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Link1
-```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- -Connection <IResourceBody> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LinkExpanded1
-```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String> -Id <String>
- [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### LinkViaIdentity
 ```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### LinkViaIdentity1
-```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
+Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -Connection <IResourceBody>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### LinkViaIdentityExpanded
 ```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IAzzDataTransferIdentity> -Id <String>
- [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### LinkViaIdentityExpanded1
-```
-Invoke-AzDataTransferLinkPendingConnection -InputObject <IAzzDataTransferIdentity> -Id <String>
+Invoke-AzDataTransferLinkPendingConnection -InputObject <IDataTransferIdentity> -PendingConnectionId <String>
  [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -73,21 +46,7 @@ Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGro
  [-WhatIf] [<CommonParameters>]
 ```
 
-### LinkViaJsonFilePath1
-```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### LinkViaJsonString
-```
-Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### LinkViaJsonString1
 ```
 Invoke-AzDataTransferLinkPendingConnection -ConnectionName <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -143,7 +102,7 @@ The resource to reference.
 
 ```yaml
 Type: PrivateADT.Models.IResourceBody
-Parameter Sets: Link, Link1, LinkViaIdentity, LinkViaIdentity1
+Parameter Sets: Link, LinkViaIdentity
 Aliases:
 
 Required: True
@@ -158,7 +117,7 @@ The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Link, Link1, LinkExpanded, LinkExpanded1, LinkViaJsonFilePath, LinkViaJsonFilePath1, LinkViaJsonString, LinkViaJsonString1
+Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
 Aliases:
 
 Required: True
@@ -184,27 +143,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: LinkExpanded, LinkExpanded1, LinkViaIdentityExpanded, LinkViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: LinkViaIdentity, LinkViaIdentity1, LinkViaIdentityExpanded, LinkViaIdentityExpanded1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: LinkViaIdentity, LinkViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -219,7 +163,7 @@ Path of Json file supplied to the Link operation
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkViaJsonFilePath, LinkViaJsonFilePath1
+Parameter Sets: LinkViaJsonFilePath
 Aliases:
 
 Required: True
@@ -234,7 +178,7 @@ Json string supplied to the Link operation
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkViaJsonString, LinkViaJsonString1
+Parameter Sets: LinkViaJsonString
 Aliases:
 
 Required: True
@@ -259,13 +203,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PendingConnectionId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Link, Link1, LinkExpanded, LinkExpanded1, LinkViaJsonFilePath, LinkViaJsonFilePath1, LinkViaJsonString, LinkViaJsonString1
+Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
 Aliases:
 
 Required: True
@@ -280,7 +239,7 @@ Reason for resource operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: LinkExpanded, LinkExpanded1, LinkViaIdentityExpanded, LinkViaIdentityExpanded1
+Parameter Sets: LinkExpanded, LinkViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -296,7 +255,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Link, Link1, LinkExpanded, LinkExpanded1, LinkViaJsonFilePath, LinkViaJsonFilePath1, LinkViaJsonString, LinkViaJsonString1
+Parameter Sets: Link, LinkExpanded, LinkViaJsonFilePath, LinkViaJsonString
 Aliases:
 
 Required: False
@@ -342,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ### PrivateADT.Models.IResourceBody
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/remove-azdatatransferflow
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferflow
 schema: 2.0.0
 ---
 
@@ -19,34 +19,15 @@ Remove-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroup
  [<CommonParameters>]
 ```
 
-### Delete1
-```
-Remove-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
-Remove-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity1
-```
-Remove-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityConnection
 ```
-Remove-AzDataTransferFlow -ConnectionInputObject <IAzzDataTransferIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityConnection1
-```
-Remove-AzDataTransferFlow -Connection1InputObject <IAzzDataTransferIdentity> -Name <String>
+Remove-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,26 +75,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Connection1InputObject
-Identity Parameter
-
-```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: DeleteViaIdentityConnection1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ConnectionInputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
+Type: PrivateADT.Models.IDataTransferIdentity
 Parameter Sets: DeleteViaIdentityConnection
 Aliases:
 
@@ -129,7 +95,7 @@ The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -159,8 +125,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -175,7 +141,7 @@ The name for the flow that is to be onboarded.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1, DeleteViaIdentityConnection, DeleteViaIdentityConnection1
+Parameter Sets: Delete, DeleteViaIdentityConnection
 Aliases: FlowName
 
 Required: True
@@ -221,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -237,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -283,7 +249,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

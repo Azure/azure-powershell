@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/approve-azdatatransferconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/approve-azdatatransferconnection
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Approves the specified connection in a pipeline.
 
 ### ApproveExpanded (Default)
 ```
-Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Id <String>
+Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -ConnectionId <String>
  [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,35 +26,17 @@ Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <Stri
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ApproveExpanded1
-```
-Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Id <String>
- [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ApproveViaIdentity
 ```
-Approve-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApproveViaIdentity1
-```
-Approve-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
+Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -Connection <IResourceBody>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApproveViaIdentityExpanded
 ```
-Approve-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Id <String> [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApproveViaIdentityExpanded1
-```
-Approve-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Id <String> [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Approve-AzDataTransferConnection -InputObject <IDataTransferIdentity> -ConnectionId <String>
+ [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ApproveViaJsonFilePath
@@ -64,21 +46,7 @@ Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <Stri
  [<CommonParameters>]
 ```
 
-### ApproveViaJsonFilePath1
-```
-Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ApproveViaJsonString
-```
-Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApproveViaJsonString1
 ```
 Approve-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -134,13 +102,28 @@ The resource to reference.
 
 ```yaml
 Type: PrivateADT.Models.IResourceBody
-Parameter Sets: Approve, ApproveViaIdentity, ApproveViaIdentity1
+Parameter Sets: Approve, ApproveViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ConnectionId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ApproveExpanded, ApproveViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,27 +143,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ApproveExpanded, ApproveExpanded1, ApproveViaIdentityExpanded, ApproveViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: ApproveViaIdentity, ApproveViaIdentity1, ApproveViaIdentityExpanded, ApproveViaIdentityExpanded1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: ApproveViaIdentity, ApproveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -195,7 +163,7 @@ Path of Json file supplied to the Approve operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ApproveViaJsonFilePath, ApproveViaJsonFilePath1
+Parameter Sets: ApproveViaJsonFilePath
 Aliases:
 
 Required: True
@@ -210,7 +178,7 @@ Json string supplied to the Approve operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ApproveViaJsonString, ApproveViaJsonString1
+Parameter Sets: ApproveViaJsonString
 Aliases:
 
 Required: True
@@ -240,7 +208,7 @@ The name for the pipeline that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Approve, ApproveExpanded, ApproveExpanded1, ApproveViaJsonFilePath, ApproveViaJsonFilePath1, ApproveViaJsonString, ApproveViaJsonString1
+Parameter Sets: Approve, ApproveExpanded, ApproveViaJsonFilePath, ApproveViaJsonString
 Aliases:
 
 Required: True
@@ -256,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Approve, ApproveExpanded, ApproveExpanded1, ApproveViaJsonFilePath, ApproveViaJsonFilePath1, ApproveViaJsonString, ApproveViaJsonString1
+Parameter Sets: Approve, ApproveExpanded, ApproveViaJsonFilePath, ApproveViaJsonString
 Aliases:
 
 Required: True
@@ -271,7 +239,7 @@ Reason for resource operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApproveExpanded, ApproveExpanded1, ApproveViaIdentityExpanded, ApproveViaIdentityExpanded1
+Parameter Sets: ApproveExpanded, ApproveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,7 +255,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Approve, ApproveExpanded, ApproveExpanded1, ApproveViaJsonFilePath, ApproveViaJsonFilePath1, ApproveViaJsonString, ApproveViaJsonString1
+Parameter Sets: Approve, ApproveExpanded, ApproveViaJsonFilePath, ApproveViaJsonString
 Aliases:
 
 Required: False
@@ -333,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ### PrivateADT.Models.IResourceBody
 

@@ -2,7 +2,7 @@
   "resourceType": "pipelines",
   "apiVersion": "2024-09-27",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.azzdatatransfer"
+    "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/pipelines/{pipelineName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.azzdatatransfer/get-azdatatransferpipeline"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpipeline"
         },
         "parameterSets": [
           {

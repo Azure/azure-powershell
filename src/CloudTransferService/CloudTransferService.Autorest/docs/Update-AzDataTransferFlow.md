@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/update-azdatatransferflow
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/update-azdatatransferflow
 schema: 2.0.0
 ---
 
@@ -16,49 +16,39 @@ update the flow resource.
 ```
 Update-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CustomerManagedKeyVaultUri <String>] [-DataType <String>]
- [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowPropertyConnectionId <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>] [-MessagingOptionBillingTier <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
- [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityConnectionExpanded
-```
-Update-AzDataTransferFlow -ConnectionInputObject <IAzzDataTransferIdentity> -Name <String>
- [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-DestinationEndpoint <String[]>]
- [-DestinationEndpointPort <Int64[]>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-FlowPropertyConnectionId <String>] [-FlowPropertyConnectionName <String>]
- [-FlowPropertyConnectionSubscriptionName <String>] [-FlowType <String>] [-KeyVaultUri <String>]
- [-MessagingOptionBillingTier <String>] [-Passphrase <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-Policy <String[]>]
- [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
- [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
- [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>] [-Status <String>] [-StorageAccountId <String>]
+ [-PlanVersion <String>] [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>]
+ [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>]
+ [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>]
  [-StorageAccountName <String>] [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>]
  [-StreamProtocol <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityConnectionExpanded
+```
+Update-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
+ [-CustomerManagedKeyVaultUri <String>] [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-FlowType <String>] [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+ [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-CustomerManagedKeyVaultUri <String>]
- [-DataType <String>] [-DestinationEndpoint <String[]>] [-DestinationEndpointPort <Int64[]>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FlowPropertyConnectionId <String>]
- [-FlowPropertyConnectionName <String>] [-FlowPropertyConnectionSubscriptionName <String>]
- [-FlowType <String>] [-KeyVaultUri <String>] [-MessagingOptionBillingTier <String>] [-Passphrase <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Policy <String[]>] [-SchemaConnectionId <String>] [-SchemaContent <String>]
- [-SchemaDirection <String>] [-SchemaId <String>] [-SchemaName <String>] [-SchemaStatus <String>]
- [-SchemaType <String>] [-SchemaUri <String>] [-ServiceBusQueueId <String>] [-SourceAddressList <String[]>]
- [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
+Update-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-CustomerManagedKeyVaultUri <String>]
+ [-DataType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-FlowType <String>]
+ [-MessagingOptionBillingTier <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SchemaConnectionId <String>] [-SchemaContent <String>] [-SchemaDirection <String>] [-SchemaId <String>]
+ [-SchemaName <String>] [-SchemaStatus <String>] [-SchemaType <String>] [-SchemaUri <String>]
+ [-ServiceBusQueueId <String>] [-Status <String>] [-StorageAccountId <String>] [-StorageAccountName <String>]
  [-StorageContainerName <String>] [-StreamId <String>] [-StreamLatency <Int64>] [-StreamProtocol <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -112,7 +102,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
+Type: PrivateADT.Models.IDataTransferIdentity
 Parameter Sets: UpdateViaIdentityConnectionExpanded
 Aliases:
 
@@ -184,86 +174,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationEndpoint
-The destination endpoints of the stream
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationEndpointPort
-The destination endpoint ports of the stream
-
-```yaml
-Type: System.Int64[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableSystemAssignedIdentity
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionId
-Id of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionName
-Name of the connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlowPropertyConnectionSubscriptionName
-Name of the subscription with the connection
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -293,7 +208,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
+Type: PrivateADT.Models.IDataTransferIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -301,21 +216,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -KeyVaultUri
-AME, PME, or TORUS only! AKV Chain Containing SAS Token
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -354,21 +254,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Passphrase
-The passphrase used for SRT streams
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -449,21 +334,6 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this flow
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -615,21 +485,6 @@ Service Bus Queue ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceAddressList
-A source IP address or CIDR range
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -828,7 +683,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

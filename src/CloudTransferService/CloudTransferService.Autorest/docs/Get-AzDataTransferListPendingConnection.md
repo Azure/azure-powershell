@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/get-azdatatransferlistpendingconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferlistpendingconnection
 schema: 2.0.0
 ---
 
@@ -12,13 +12,6 @@ Lists all pending connections for a connection.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzDataTransferListPendingConnection -ConnectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### List1
 ```
 Get-AzDataTransferListPendingConnection -ConnectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/new-azdatatransferconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/new-azdatatransferconnection
 schema: 2.0.0
 ---
 
@@ -16,20 +16,9 @@ create the connection resource.
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-Justification <String>]
- [-Pin <String>] [-PipelineName <String>] [-Policy <String[]>] [-PrimaryContact <String>]
- [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
- [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Direction <String>] [-FlowType <String[]>] [-Justification <String>]
- [-Pin <String>] [-PipelineName <String>] [-Policy <String[]>] [-PrimaryContact <String>]
- [-RemoteSubscriptionId <String>] [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>]
- [-SecondaryContact <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Pin <String>] [-PipelineName <String>] [-PrimaryContact <String>] [-RemoteSubscriptionId <String>]
+ [-RequirementId <String>] [-Schema <ISchema[]>] [-SchemaUri <String[]>] [-SecondaryContact <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -39,21 +28,7 @@ New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonFil
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath1
-```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaJsonString
-```
-New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString1
 ```
 New-AzDataTransferConnection -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -125,7 +100,7 @@ Direction of data movement
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -140,7 +115,7 @@ The flow types being requested for this connection
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -155,7 +130,7 @@ Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath1
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -170,7 +145,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonString1
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -185,7 +160,7 @@ Justification for the connection request
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +175,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -245,7 +220,7 @@ PIN to link requests together
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -260,22 +235,7 @@ Pipeline to use to transfer data
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Policy
-The policies for this connection
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -290,7 +250,7 @@ The primary contact for this connection request
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -305,7 +265,7 @@ Subscription ID to link cloud subscriptions together
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -320,7 +280,7 @@ Requirement ID of the connection
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -351,7 +311,7 @@ The schemas for this connection
 
 ```yaml
 Type: PrivateADT.Models.ISchema[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -366,7 +326,7 @@ The schema URIs for this connection
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -381,7 +341,7 @@ The secondary contacts for this connection request
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -412,7 +372,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

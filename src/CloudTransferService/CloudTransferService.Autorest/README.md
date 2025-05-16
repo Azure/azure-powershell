@@ -1,6 +1,6 @@
 <!-- region Generated -->
-# Az.AzzDataTransfer
-This directory contains the PowerShell module for the AzzDataTransfer service.
+# Az.DataTransfer
+This directory contains the PowerShell module for the DataTransfer service.
 
 ---
 ## Info
@@ -20,7 +20,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.AzzDataTransfer`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.DataTransfer`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -127,6 +127,23 @@ directive:
     where: $.definitions.flowProperties.properties.connection
     transform: $['x-ms-client-name'] = 'FlowPropertiesConnection'
 
+  # Rename approve/reject ConnectionId param
+  - where:
+      verb: Invoke
+      subject: ^RejectPipelineConnection$
+      parameter-name: Id
+    set:
+      parameter-name: ConnectionId
+
+  - where:
+      verb: Approve
+      subject: ^PipelineConnection$
+      parameter-name: Id
+    set:
+      parameter-name: ConnectionId
+  
+
+  # Rename approve/reject Connection cmdlets
   - where:
       verb: Invoke
       subject: ^RejectPipelineConnection$
@@ -140,6 +157,21 @@ directive:
     set:
       subject: Connection
 
+  # Rename Link cmdltes
+  - where:
+      verb: Invoke
+      subject: ^LinkConnection$
+      parameter-name: Id
+    set:
+      parameter-name: PendingConnectionId
+
+  - where:
+      verb: Invoke
+      subject: ^LinkFlow$
+      parameter-name: Id
+    set:
+      parameter-name: PendingFlowId
+
   - where:
       verb: Invoke
       subject: ^LinkConnection$
@@ -151,4 +183,35 @@ directive:
       subject: ^LinkFlow$
     set:
       subject: LinkPendingFlow
+
+  # Hide unneeded params
+  - where:
+      verb: New
+      subject: ^Connection$
+      parameter-name: Policy
+    hide: true
+
+  - where:
+      verb: New|Update
+      subject: ^Flow$
+      parameter-name: Policy
+    hide: true
+
+  - where:
+      verb: New|Update
+      subject: ^Flow$
+      parameter-name: KeyVaultUri
+    hide: true
+
+  - where:
+      verb: New|Update
+      subject: ^Flow$
+      parameter-name: ^FlowProperty*
+    hide: true
+
+  - where:
+      verb: Update
+      subject: ^Flow$
+      parameter-name: DestinationEndpoint|DestinationEndpointPort|Passphrase|SourceAddressList
+    hide: true
 ```

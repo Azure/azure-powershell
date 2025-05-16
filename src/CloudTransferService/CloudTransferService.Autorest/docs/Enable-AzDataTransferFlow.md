@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/enable-azdatatransferflow
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/enable-azdatatransferflow
 schema: 2.0.0
 ---
 
@@ -19,34 +19,15 @@ Enable-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroup
  [<CommonParameters>]
 ```
 
-### Enable1
-```
-Enable-AzDataTransferFlow -ConnectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### EnableViaIdentity
 ```
-Enable-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnableViaIdentity1
-```
-Enable-AzDataTransferFlow -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzDataTransferFlow -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityConnection
 ```
-Enable-AzDataTransferFlow -ConnectionInputObject <IAzzDataTransferIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnableViaIdentityConnection1
-```
-Enable-AzDataTransferFlow -Connection1InputObject <IAzzDataTransferIdentity> -Name <String>
+Enable-AzDataTransferFlow -ConnectionInputObject <IDataTransferIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,26 +75,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Connection1InputObject
-Identity Parameter
-
-```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: EnableViaIdentityConnection1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ConnectionInputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
+Type: PrivateADT.Models.IDataTransferIdentity
 Parameter Sets: EnableViaIdentityConnection
 Aliases:
 
@@ -129,7 +95,7 @@ The name for the connection that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, Enable1
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -159,8 +125,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: EnableViaIdentity, EnableViaIdentity1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: EnableViaIdentity
 Aliases:
 
 Required: True
@@ -175,7 +141,7 @@ The name for the flow that is to be onboarded.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, Enable1, EnableViaIdentityConnection, EnableViaIdentityConnection1
+Parameter Sets: Enable, EnableViaIdentityConnection
 Aliases: FlowName
 
 Required: True
@@ -206,7 +172,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, Enable1
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -222,7 +188,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, Enable1
+Parameter Sets: Enable
 Aliases:
 
 Required: False
@@ -268,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

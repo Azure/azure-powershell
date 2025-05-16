@@ -2,7 +2,7 @@
   "resourceType": "connections",
   "apiVersion": "2024-09-27",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.azzdatatransfer"
+    "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.azzdatatransfer/get-azdatatransferconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferconnection"
         },
         "parameterSets": [
           {
@@ -49,16 +49,9 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Private.AzureDataTransfer/connections/{connectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.azzdatatransfer/remove-azdatatransferconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferconnection"
         },
         "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          },
           {
             "parameters": [
               "-Name <String>",
@@ -69,23 +62,6 @@
         ]
       },
       "examples": [
-        {
-          "description": "Deletes the connection resource.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.connectionName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        },
         {
           "description": "Deletes the connection resource.",
           "parameters": [

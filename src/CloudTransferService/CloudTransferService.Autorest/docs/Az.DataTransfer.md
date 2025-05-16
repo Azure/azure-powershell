@@ -1,16 +1,16 @@
 ---
-Module Name: Az.AzzDataTransfer
-Module Guid: 6b997b79-480e-4c53-9bdc-2cfd21f3106b
-Download Help Link: https://learn.microsoft.com/powershell/module/az.azzdatatransfer
+Module Name: Az.DataTransfer
+Module Guid: 2be167a4-866b-4d9c-a17f-05bed23fa3f9
+Download Help Link: https://learn.microsoft.com/powershell/module/az.datatransfer
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.AzzDataTransfer Module
+# Az.DataTransfer Module
 ## Description
-Microsoft Azure PowerShell: AzzDataTransfer cmdlets
+Microsoft Azure PowerShell: DataTransfer cmdlets
 
-## Az.AzzDataTransfer Cmdlets
+## Az.DataTransfer Cmdlets
 ### [Approve-AzDataTransferConnection](Approve-AzDataTransferConnection.md)
 Approves the specified connection in a pipeline.
 

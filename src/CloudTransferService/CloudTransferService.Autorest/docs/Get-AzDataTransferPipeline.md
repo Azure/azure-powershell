@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/get-azdatatransferpipeline
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferpipeline
 schema: 2.0.0
 ---
 
@@ -25,13 +25,7 @@ Get-AzDataTransferPipeline -Name <String> -ResourceGroupName <String> [-Subscrip
 
 ### GetViaIdentity
 ```
-Get-AzDataTransferPipeline -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzDataTransferPipeline -InputObject <IAzzDataTransferIdentity> [-DefaultProfile <PSObject>]
+Get-AzDataTransferPipeline -InputObject <IDataTransferIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -90,8 +84,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -153,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ## OUTPUTS
 

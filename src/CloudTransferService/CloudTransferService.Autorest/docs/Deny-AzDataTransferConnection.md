@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.AzzDataTransfer
-online version: https://learn.microsoft.com/powershell/module/az.azzdatatransfer/deny-azdatatransferconnection
+Module Name: Az.DataTransfer
+online version: https://learn.microsoft.com/powershell/module/az.datatransfer/deny-azdatatransferconnection
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Rejects the specified connection in a pipeline.
 
 ### RejectExpanded (Default)
 ```
-Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Id <String>
+Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -ConnectionId <String>
  [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,42 +26,17 @@ Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
-### Reject1
-```
-Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Connection <IResourceBody>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RejectExpanded1
-```
-Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -Id <String>
- [-SubscriptionId <String>] [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RejectViaIdentity
 ```
-Deny-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RejectViaIdentity1
-```
-Deny-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Connection <IResourceBody>
+Deny-AzDataTransferConnection -InputObject <IDataTransferIdentity> -Connection <IResourceBody>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RejectViaIdentityExpanded
 ```
-Deny-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Id <String> [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RejectViaIdentityExpanded1
-```
-Deny-AzDataTransferConnection -InputObject <IAzzDataTransferIdentity> -Id <String> [-StatusReason <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Deny-AzDataTransferConnection -InputObject <IDataTransferIdentity> -ConnectionId <String>
+ [-StatusReason <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RejectViaJsonFilePath
@@ -71,21 +46,7 @@ Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
-### RejectViaJsonFilePath1
-```
-Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### RejectViaJsonString
-```
-Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RejectViaJsonString1
 ```
 Deny-AzDataTransferConnection -PipelineName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -141,13 +102,28 @@ The resource to reference.
 
 ```yaml
 Type: PrivateADT.Models.IResourceBody
-Parameter Sets: Reject, Reject1, RejectViaIdentity, RejectViaIdentity1
+Parameter Sets: Reject, RejectViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ConnectionId
+ID of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: RejectExpanded, RejectViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,27 +143,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: RejectExpanded, RejectExpanded1, RejectViaIdentityExpanded, RejectViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
-Type: PrivateADT.Models.IAzzDataTransferIdentity
-Parameter Sets: RejectViaIdentity, RejectViaIdentity1, RejectViaIdentityExpanded, RejectViaIdentityExpanded1
+Type: PrivateADT.Models.IDataTransferIdentity
+Parameter Sets: RejectViaIdentity, RejectViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -202,7 +163,7 @@ Path of Json file supplied to the Reject operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RejectViaJsonFilePath, RejectViaJsonFilePath1
+Parameter Sets: RejectViaJsonFilePath
 Aliases:
 
 Required: True
@@ -217,7 +178,7 @@ Json string supplied to the Reject operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RejectViaJsonString, RejectViaJsonString1
+Parameter Sets: RejectViaJsonString
 Aliases:
 
 Required: True
@@ -247,7 +208,7 @@ The name for the pipeline that is to be requested.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reject, Reject1, RejectExpanded, RejectExpanded1, RejectViaJsonFilePath, RejectViaJsonFilePath1, RejectViaJsonString, RejectViaJsonString1
+Parameter Sets: Reject, RejectExpanded, RejectViaJsonFilePath, RejectViaJsonString
 Aliases:
 
 Required: True
@@ -263,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reject, Reject1, RejectExpanded, RejectExpanded1, RejectViaJsonFilePath, RejectViaJsonFilePath1, RejectViaJsonString, RejectViaJsonString1
+Parameter Sets: Reject, RejectExpanded, RejectViaJsonFilePath, RejectViaJsonString
 Aliases:
 
 Required: True
@@ -278,7 +239,7 @@ Reason for resource operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: RejectExpanded, RejectExpanded1, RejectViaIdentityExpanded, RejectViaIdentityExpanded1
+Parameter Sets: RejectExpanded, RejectViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -294,7 +255,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reject, Reject1, RejectExpanded, RejectExpanded1, RejectViaJsonFilePath, RejectViaJsonFilePath1, RejectViaJsonString, RejectViaJsonString1
+Parameter Sets: Reject, RejectExpanded, RejectViaJsonFilePath, RejectViaJsonString
 Aliases:
 
 Required: False
@@ -340,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PrivateADT.Models.IAzzDataTransferIdentity
+### PrivateADT.Models.IDataTransferIdentity
 
 ### PrivateADT.Models.IResourceBody
 
