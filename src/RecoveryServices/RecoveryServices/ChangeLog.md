@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added fix for resume protection with AzureFileshare.
+* Added fix for Get backup item for MSSQL soft deleted items.
 
 ## Version 7.7.1
 * Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
