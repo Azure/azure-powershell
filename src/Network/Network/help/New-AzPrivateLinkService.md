@@ -17,8 +17,8 @@ New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <S
  -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]>
  [-LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>] [-Visibility <String[]>]
  [-AutoApproval <String[]>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DestinationIPAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DestinationIPAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

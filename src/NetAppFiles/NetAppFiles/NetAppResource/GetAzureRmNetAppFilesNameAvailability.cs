@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
     "Get",
     ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesNameAvailability",
     DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSRegionInfo))]
-    [Alias("Get-AnfQuotaAvailability")]
+    [Alias("Get-AnfNameAvailability")]
     public class GetAzureRmNetAppFilesNameAvailability : AzureNetAppFilesCmdletBase
     {
         [Parameter(

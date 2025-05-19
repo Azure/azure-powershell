@@ -19,6 +19,60 @@
 --->
 
 ## Upcoming Release
+* Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
+	- `New-AzNatGateway`
+	- `Set-AzNatGateway`
+* Added property 'DefaultPublicNatGateway' to VirtualNetwork.
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
+* Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
+* Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
+    - `Add-AzLoadBalancerRuleConfig`
+    - `New-AzLoadBalancerRuleConfig`
+    - `Set-AzLoadBalancerRuleConfig`
+* Added cmdlet for migration of basic IP based deployment to Standard IP based VMSS deployments for VirtualNetworkGateways
+    - `New-AzVirtualNetworkGatewayMigrationParameter`
+    - `Invoke-AzVirtualNetworkGatewayPrepareMigration`
+    - `Invoke-AzVirtualNetworkGatewayExecuteMigration`
+    - `Invoke-AzVirtualNetworkGatewayCommitMigration`
+    - `Invoke-AzVirtualNetworkGatewayAbortMigration`
+* Added cmdlets for CRUD operations of NetworkSecurityPerimeter service
+    - Cmdlets for NetworkSecurityPerimeter crud operations
+    - Cmdlets for NetworkSecurityPerimeter profile crud operations
+    - Cmdlets for NetworkSecurityPerimeter association crud operations
+    - Cmdlets for NetworkSecurityPerimeter access rule crud operations
+    - Cmdlets for NetworkSecurityPerimeter link crud operations
+    - Cmdlets for NetworkSecurityPerimeter link reference operations
+    - Cmdlets for NetworkSecurityPerimeter logging configuration crud operations
+    - Cmdlet to get NetworkSecurityPerimeter associable resource types
+* Updated cmdlet to add the property of `PartnerManagedResource`, and updated corresponding cmdlets.
+    - `Get-AzNetworkVirtualAppliance`
+* Added cmdlet to retrieve boot diagnostic logs for a given NetworkVirtualAppliance VM instance:
+    - `Get-AzNetworkVirtualApplianceBootDiagnostics`
+* Added etag property to Azure Virtual Network Manager -> IpamPool, VerifierWorkspace data models
+* Onboarded ExpressRoute cmdlets to manage Microsoft Peering Advertised prefix validation:
+    - `Get-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Add-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Set-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    - `Remove-AzExpressRouteCircuitMicrosoftPeeringPrefixConfig`
+    
+* Updated cmdlets to support Advanced Connectivity feature for Azure VPN gateway.
+    - `New-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGatewayConnection`
+
+* Deleted NetworkWatcher cmdlets for "Classic" Connection Monitor
+    - `Start-AzNetworkWatcherConnectionMonitor`
+    - `Get-AzNetworkWatcherConnectionMonitorReport`
+* Updated cmdlets to support topology-specific connectivity capabilities:
+    - `New-AzNetworkManagerConnectivityConfiguration`
+    - `Set-AzNetworkManagerConnectivityConfiguration`
+    - `Get-AzNetworkManagerConnectivityConfiguration`
+
+## Version 7.16.2
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
+
+## Version 7.16.1
+* Onboarded `Microsoft.DocumentDB/mongoClusters` to private link cmdlets
 
 ## Version 7.16.0
 * Updated Add-AzNetworkInterfaceIpConfig and New-AzNetworkInterfaceIpConfig cmdlets to add new parameter PrivateIpAddressPrefixLength.

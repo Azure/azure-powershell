@@ -17,7 +17,8 @@ Create a connection monitor V2 object.
 New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcher <PSNetworkWatcher> -Name <String>
  [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByName
@@ -25,7 +26,8 @@ New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcher <PSNetworkWatcher> -
 New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName <String> -ResourceGroupName <String>
  -Name <String> [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -33,7 +35,8 @@ New-AzNetworkWatcherConnectionMonitorObject -NetworkWatcherName <String> -Resour
 New-AzNetworkWatcherConnectionMonitorObject -Location <String> -Name <String>
  [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
  [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

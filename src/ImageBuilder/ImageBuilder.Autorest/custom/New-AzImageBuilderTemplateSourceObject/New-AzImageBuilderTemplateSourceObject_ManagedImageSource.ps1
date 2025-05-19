@@ -21,35 +21,29 @@ Create an in-memory object for ImageTemplateSource.
 Create an in-memory object for ImageTemplateSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject_ManagedImageSource {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="ARM resource id of the managed image in customer subscription.")]
         [string]
         $ImageId,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Specifies the type of source image you want to start with.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Describes an image source that is a managed image in customer subscription. This image must reside in the same subscription and region as the Image Builder template.")]
         [Switch]
         $ManagedImageSource
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ImageId')) {
             $Object.ImageId = $ImageId
-        }
-        if ($ManagedImageSource.IsPresent) {
-            $Object.Type = "ManagedImage"
         }
         return $Object
     }

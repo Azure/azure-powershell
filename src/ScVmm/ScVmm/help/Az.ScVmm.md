@@ -1,14 +1,14 @@
 ---
 Module Name: Az.ScVmm
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
+Download Help Link: https://learn.microsoft.com/powershell/module/az.ScVmm
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.ScVmm Module
 ## Description
-{{ Fill in the Description }}
+Azure PowerShell cmdlets for managing Arc for SCVMM resources
 
 ## Az.ScVmm Cmdlets
 ### [Add-AzScVmmVMDisk](Add-AzScVmmVMDisk.md)
@@ -42,7 +42,7 @@ The operation to Get a virtual machine virtual disk.
 The operation to get the extension on a virtual machine.
 
 ### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
-Implements GuestAgent GET method.
+Implements Azure Arc agent GET method.
 
 ### [Get-AzScVmmVMNic](Get-AzScVmmVMNic.md)
 The operation to Get a virtual machine network interface.
@@ -82,10 +82,10 @@ Please note some properties can be set only during virtual machine creation.
 create a checkpoint in virtual machine.
 
 ### [New-AzScVmmVMExtension](New-AzScVmmVMExtension.md)
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
-Enables Guest Management on the Virtual Machine.
+Installs Azure Arc agent on the Virtual Machine.
 
 ### [New-AzScVmmVMTemplate](New-AzScVmmVMTemplate.md)
 Onboards the ScVmm VM Template as an Azure VM Template resource.

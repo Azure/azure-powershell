@@ -19,11 +19,23 @@ The details on the file(s) available for download will be available in the polli
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzCostManagementDetailReport -Scope <String> [-BillingPeriod <String>] [-InvoiceId <String>]
- [-Metric <CostDetailsMetricType>] [-TimePeriodEnd <String>] [-TimePeriodStart <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metric <String>] [-TimePeriodEnd <String>] [-TimePeriodStart <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCostManagementDetailReport -Scope <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzCostManagementDetailReport -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +83,7 @@ If a timePeriod, invoiceId or billingPeriod parameter is not provided in the req
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -105,10 +117,40 @@ If a timePeriod, invoiceId or billingPeriod parameter is not provided in the req
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,8 +162,8 @@ The type of the detailed report.
 By default ActualCost is provided
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.CostDetailsMetricType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -169,7 +211,7 @@ example format 2020-03-15
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +227,7 @@ example format 2020-03-15
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -233,8 +275,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostDetailsOperationResults
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/rest/api/costmanagement/](https://docs.microsoft.com/en-us/rest/api/costmanagement/)

@@ -1,14 +1,14 @@
 ---
 Module Name: Az.LambdaTest
 Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Download Help Link: https://learn.microsoft.com/powershell/module/az.lambdatest
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.LambdaTest Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: LambdaTest cmdlets
 
 ## Az.LambdaTest Cmdlets
 ### [Get-AzLambdaTestOrganization](Get-AzLambdaTestOrganization.md)

@@ -44,6 +44,11 @@ subject-prefix: $(service-name)
 nested-object-to-string: true
 identity-correction-for-post: true
 
+# Pin to an old version to workaround a regression issue of generator. link to the issue - blabla
+use-extension:
+  "@autorest/powershell": "4.0.734"
+ 
+
 directive:
   - from: swagger-document
     where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    

@@ -14,7 +14,8 @@ Allows users to easily download the Vpn Profile package that was generated using
 
 ```
 Get-AzVpnClientConfiguration [-Name <String>] -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -25,7 +25,7 @@ New-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServerKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,26 +37,40 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
+RESOURCEGROUPINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserverkey
 #>
 function New-AzFluidRelayServerKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServerKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityResourceGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
     # The Fluid Relay server resource name.
     ${FluidRelayServerName},
 
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
     # The resource group containing the resource.
     ${ResourceGroup},
 
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -67,15 +81,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.KeyName])]
+    [Parameter(ParameterSetName='RegenerateViaIdentityResourceGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${ResourceGroupInputObject},
+
+    [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaIdentityResourceGroupExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.PSArgumentCompleterAttribute("key1", "key2")]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.KeyName]
+    [System.String]
     # The key to regenerate.
     ${KeyName},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -133,6 +166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -154,10 +196,11 @@ begin {
         $mapping = @{
             RegenerateExpanded = 'Az.FluidRelay.private\New-AzFluidRelayServerKey_RegenerateExpanded';
             RegenerateViaIdentityExpanded = 'Az.FluidRelay.private\New-AzFluidRelayServerKey_RegenerateViaIdentityExpanded';
+            RegenerateViaIdentityResourceGroupExpanded = 'Az.FluidRelay.private\New-AzFluidRelayServerKey_RegenerateViaIdentityResourceGroupExpanded';
+            RegenerateViaJsonFilePath = 'Az.FluidRelay.private\New-AzFluidRelayServerKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.FluidRelay.private\New-AzFluidRelayServerKey_RegenerateViaJsonString';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -171,6 +214,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

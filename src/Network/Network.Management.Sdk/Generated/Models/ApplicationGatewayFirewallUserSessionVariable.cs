@@ -16,5 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string ClientAddr = "ClientAddr";
         public const string GeoLocation = "GeoLocation";
         public const string None = "None";
+        public const string ClientAddrXFFHeader = "ClientAddrXFFHeader";
+        public const string GeoLocationXFFHeader = "GeoLocationXFFHeader";
     }
 }

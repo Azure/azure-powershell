@@ -42,7 +42,11 @@ function get_all_standard_vm_sizes
 
     $st = Write-Verbose "Getting all VM sizes in location '${location}' - Start";
 
-    $vmsizes = Get-AzVMSize -Location $location | where { $_.Name -like 'Standard_A*' -and $_.NumberOfCores -le 4 } | select -ExpandProperty Name;
+    $vmsizes = Get-AzComputeResourceSku -Location $location | Where-Object {
+        $_.Name -like 'Standard_A*' -and
+        ([int]($_.Capabilities | Where-Object { $_.Name -eq "vCPUs" }).Value) -le 4
+    } | Select-Object -ExpandProperty Name
+
 
     $st = Write-Verbose "Getting all VM sizes in location [${location}] - End";
 

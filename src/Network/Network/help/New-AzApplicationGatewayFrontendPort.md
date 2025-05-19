@@ -99,5 +99,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewayFrontendPort](./Remove-AzApplicationGatewayFrontendPort.md)
 
 [Set-AzApplicationGatewayFrontendPort](./Set-AzApplicationGatewayFrontendPort.md)
-
-

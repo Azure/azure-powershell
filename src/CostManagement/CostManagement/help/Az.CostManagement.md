@@ -45,10 +45,10 @@ You may obtain the latest eTag by performing a get operation.
 Create operation does not require eTag.
 
 ### [New-AzCostManagementQueryComparisonExpressionObject](New-AzCostManagementQueryComparisonExpressionObject.md)
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 
 ### [New-AzCostManagementQueryFilterObject](New-AzCostManagementQueryFilterObject.md)
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 
 ### [Remove-AzCostManagementExport](Remove-AzCostManagementExport.md)
 The operation to delete a export.

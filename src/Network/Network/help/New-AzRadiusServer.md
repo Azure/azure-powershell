@@ -14,7 +14,8 @@ Creates an external radius server configuration
 
 ```
 New-AzRadiusServer -RadiusServerAddress <String> -RadiusServerSecret <SecureString>
- [-RadiusServerScore <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RadiusServerScore <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

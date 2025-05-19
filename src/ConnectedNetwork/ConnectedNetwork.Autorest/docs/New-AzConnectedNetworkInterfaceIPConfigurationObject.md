@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceipconfigurationobject
 schema: 2.0.0
 ---
 
 # New-AzConnectedNetworkInterfaceIPConfigurationObject
 
 ## SYNOPSIS
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 
 ## SYNTAX
 
 ```
 New-AzConnectedNetworkInterfaceIPConfigurationObject [-DnsServer <String[]>] [-Gateway <String>]
- [-IPAddress <String>] [-IPAllocationMethod <IPAllocationMethod>] [-IPVersion <IPVersion>] [-Subnet <String>]
+ [-IPAddress <String>] [-IPAllocationMethod <String>] [-IPVersion <String>] [-Subnet <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for NetworkInterfaceIPConfiguration
+Create an in-memory object for NetworkInterfaceIPConfiguration.
 
 ## EXAMPLES
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 IP address allocation method.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPAllocationMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 IP address version.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration
 
 ## NOTES
 
