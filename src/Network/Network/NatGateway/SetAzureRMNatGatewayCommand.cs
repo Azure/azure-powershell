@@ -69,8 +69,23 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "An array of public IPv6 addresses associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpAddressV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of public IPv6 prefixes associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpPrefixV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The id of the source virtual network using this nat gateway resource.")]
+        public PSResourceId SourceVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -124,8 +139,14 @@ namespace Microsoft.Azure.Commands.Network
             // PublicIpAddresses
             List<PSResourceId> vPublicIpAddresses = null;
 
+            // PublicIpAddressesV6
+            List<PSResourceId> vPublicIpAddressesV6 = null;
+
             // PublicIpPrefixes
             List<PSResourceId> vPublicIpPrefixes = null;
+
+            // PublicIpPrefixesV6
+            List<PSResourceId> vPublicIpPrefixesV6 = null;
 
             if (this.IdleTimeoutInMinutes > 0)
             {
@@ -138,10 +159,27 @@ namespace Microsoft.Azure.Commands.Network
                 this.InputObject.PublicIpAddresses = vPublicIpAddresses;
             }
 
+            if (this.PublicIpAddressV6 != null)
+            {
+                vPublicIpAddressesV6 = this.PublicIpAddressV6?.ToList();
+                this.InputObject.PublicIpAddressesV6 = vPublicIpAddressesV6;
+            }
+
             if (this.PublicIpPrefix != null)
             {
                 vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
                 this.InputObject.PublicIpPrefixes = vPublicIpPrefixes;
+            }
+
+            if (this.PublicIpPrefixV6 != null)
+            {
+                vPublicIpPrefixesV6 = this.PublicIpPrefixV6?.ToList();
+                this.InputObject.PublicIpPrefixesV6 = vPublicIpPrefixesV6;
+            }
+
+            if (this.SourceVirtualNetwork != null)
+            {
+                this.InputObject.SourceVirtualNetwork = this.SourceVirtualNetwork;
             }
 
             // Map to the sdk object

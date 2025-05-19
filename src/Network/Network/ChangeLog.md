@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
+	- `New-AzNatGateway`
+	- `Set-AzNatGateway`
+* Added property 'DefaultPublicNatGateway' to VirtualNetwork.
+* Onboarded `Microsoft.FluidRelay/fluidRelayServers` to private link cmdlets
 * Added cmdlet `Get-AzLoadBalancerRuleHealth` for Load Balancer Rule Health.
 * Added property "EnableConnectionTracking" to Load Balancing Rule, as well as support for it for the following cmdlets:
     - `Add-AzLoadBalancerRuleConfig`
