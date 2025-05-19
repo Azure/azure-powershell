@@ -20,7 +20,7 @@ function GenerateDefinitionFile {
     ConvertTo-Json $definition -Compress -Depth 3 | Out-File -FilePath $File -Encoding utf8 -NoNewline -Force
 }
 
-Invoke-LiveTestScenario -Name "Operate synapse data flow" -Description "Test creating and removing a synapse data flow" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Operate synapse data flow" -Description "Test creating and removing a synapse data flow" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 

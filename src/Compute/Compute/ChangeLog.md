@@ -21,6 +21,13 @@
 -->
 ## Upcoming Release
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
+
+## Version 10.0.0
+* Added new properties `Architecture`, `HyperVGeneration`, and `ImageDeprecationStatus` to be returned in `Get-AzVMImage` ListVMImage parameter set.
+* Deprecated `Get-AzVMSize` 'List Virtual Machine Size' parameter set. 
+* Added new parameters `EnableAutomaticZoneRebalance`, `AutomaticZoneRebalanceStrategy` and `AutomaticZoneRebalanceBehavior` to `New-AzVmssConfig` and `Update-AzVmss` cmdlets for VMSS Automatic Zone Rebalancing. 
+
+## Version 9.3.0
 * Added new cmdlets `Add-AzVmssSkuProfileVMSize` and `Remove-AzVmssSkuProfileVMSize` to add and remove VM sizes to and from the VMSS SkuProfile.
 * Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, and `AlignRegionalDisksToVMZone` to cmdlets `New-AzVM` and `New-AzVmConfig`
 * Added new parameter `AlignRegionalDisksToVMZone` to cmdlet `Update-AzVM`.

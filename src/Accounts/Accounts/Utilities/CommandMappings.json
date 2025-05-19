@@ -101,6 +101,7 @@
       "Start-AzAksCluster": {},
       "Start-AzAksManagedClusterCommand": {},
       "Stop-AzAksCluster": {},
+      "Update-AzAksMaintenanceConfiguration": {},
       "Get-AzAksClusterUpgradeProfile": {}
     },
     "Az.AksArc": {
@@ -785,7 +786,8 @@
       "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation": {},
       "New-AzBillingBenefitsReservationOrderAlias": {},
       "New-AzBillingBenefitsSavingsPlanOrderAlias": {},
-      "Update-AzBillingBenefitsSavingsPlan": {}
+      "Update-AzBillingBenefitsSavingsPlan": {},
+      "Update-AzBillingBenefitsSavingsPlanOrderAlias": {}
     },
     "Az.Blueprint": {
       "Export-AzBlueprintWithArtifact": {},
@@ -812,6 +814,15 @@
       "Publish-AzBotServiceApp": {},
       "Remove-AzBotService": {},
       "Update-AzBotService": {}
+    },
+    "Az.Carbon": {
+      "Get-AzCarbonEmissionDataAvailableDateRange": {},
+      "Get-AzCarbonEmissionReport": {},
+      "New-AzCarbonItemDetailsQueryFilterObject": {},
+      "New-AzCarbonMonthlySummaryReportQueryFilterObject": {},
+      "New-AzCarbonOverallSummaryReportQueryFilterObject": {},
+      "New-AzCarbonTopItemsMonthlySummaryReportQueryFilterObject": {},
+      "New-AzCarbonTopItemsSummaryReportQueryFilterObject": {}
     },
     "Az.Cdn": {
       "Clear-AzCdnEndpointContent": {},
@@ -844,6 +855,9 @@
       "Get-AzFrontDoorCdnSecret": {},
       "Get-AzFrontDoorCdnSecurityPolicy": {},
       "Import-AzCdnEndpointContent": {},
+      "Invoke-AzCdnAbortProfileToAFDMigration": {},
+      "Invoke-AzCdnCommitProfileToAFDMigration": {},
+      "Move-AzCdnProfileToAFD": {},
       "New-AzCdnCustomDomain": {},
       "New-AzCdnDeliveryRuleCacheExpirationActionObject": {},
       "New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject": {},
@@ -868,6 +882,7 @@
       "New-AzCdnHealthProbeParametersObject": {},
       "New-AzCdnLoadParametersObject": {},
       "New-AzCdnManagedHttpsParametersObject": {},
+      "New-AzCdnMigrationEndpointMappingObject": {},
       "New-AzCdnOrigin": {},
       "New-AzCdnOriginGroup": {},
       "New-AzCdnOriginGroupOverrideActionObject": {},
@@ -953,6 +968,7 @@
       "Test-AzCdnEndpointCustomDomain": {},
       "Test-AzCdnNameAvailability": {},
       "Test-AzCdnProbe": {},
+      "Test-AzCdnProfileMigrationCompatibility": {},
       "Test-AzFrontDoorCdnEndpointCustomDomain": {},
       "Test-AzFrontDoorCdnEndpointNameAvailability": {},
       "Test-AzFrontDoorCdnProfileHostNameAvailability": {},
@@ -970,6 +986,7 @@
       "Update-AzFrontDoorCdnProfileSku": {},
       "Update-AzFrontDoorCdnRoute": {},
       "Update-AzFrontDoorCdnRule": {},
+      "Update-AzFrontDoorCdnSecret": {},
       "Update-AzFrontDoorCdnSecurityPolicy": {}
     },
     "Az.ChangeAnalysis": {
@@ -1031,12 +1048,6 @@
       "Switch-AzCloudService": {},
       "Update-AzCloudService": {}
     },
-    "Az.CodeSigning": {
-      "Get-AzCodeSigningCustomerEku": {},
-      "Get-AzCodeSigningRootCert": {},
-      "Get-AzCodeSigningCertChain": {},
-      "Invoke-AzCodeSigningCIPolicySigning": {}
-    },
     "Az.CognitiveServices": {
       "Add-AzCognitiveServicesAccountNetworkRule": {},
       "Get-AzCognitiveServicesAccount": {},
@@ -1089,6 +1100,7 @@
     "Az.Communication": {
       "Get-AzCommunicationService": {},
       "Get-AzCommunicationServiceKey": {},
+      "Get-AzCommunicationServiceSmtpUsername": {},
       "Get-AzEmailService": {},
       "Get-AzEmailServicedataEmailSendResult": {},
       "Get-AzEmailServiceDomain": {},
@@ -1096,10 +1108,12 @@
       "Invoke-AzEmailServiceInitiateDomainVerification": {},
       "New-AzCommunicationService": {},
       "New-AzCommunicationServiceKey": {},
+      "New-AzCommunicationServiceSmtpUsername": {},
       "New-AzEmailService": {},
       "New-AzEmailServiceDomain": {},
       "New-AzEmailServiceSenderUsername": {},
       "Remove-AzCommunicationService": {},
+      "Remove-AzCommunicationServiceSmtpUsername": {},
       "Remove-AzEmailService": {},
       "Remove-AzEmailServiceDomain": {},
       "Remove-AzEmailServiceSenderUsername": {},
@@ -1108,6 +1122,7 @@
       "Stop-AzEmailServiceDomainVerification": {},
       "Test-AzCommunicationServiceNameAvailability": {},
       "Update-AzCommunicationService": {},
+      "Update-AzCommunicationServiceSmtpUsername": {},
       "Update-AzEmailService": {},
       "Update-AzEmailServiceDomain": {},
       "Update-AzEmailServiceSenderUsername": {}
@@ -1127,6 +1142,8 @@
       "Add-AzVmssGalleryApplication": {},
       "Add-AzVMSshPublicKey": {},
       "Add-AzVmssNetworkInterfaceConfiguration": {},
+      "Add-AzVmssSkuProfileVMSize": {},
+      "Remove-AzVmssSkuProfileVMSize": {},
       "Add-AzVmssRunCommand": {},
       "Add-AzVmssSecret": {},
       "Add-AzVmssSshPublicKey": {},
@@ -1480,7 +1497,11 @@
       "Start-AzConnectedNetworkVendorFunctionRoleInstance": {},
       "Stop-AzConnectedNetworkVendorFunctionRoleInstance": {},
       "Update-AzConnectedNetworkDeviceTag": {},
-      "Update-AzConnectedNetworkFunctionTag": {}
+      "Update-AzConnectedNetworkFunctionTag": {},
+      "Update-AzConnectedNetworkVendor": {},
+      "Update-AzConnectedNetworkVendorFunction": {},
+      "Update-AzConnectedNetworkVendorSku": {},
+      "Update-AzConnectedNetworkVendorSkuPreview": {}
     },
     "Az.ConnectedVMware": {
       "Get-AzConnectedVMwareCluster": {},
@@ -1820,7 +1841,8 @@
       "New-AzCustomProviderAssociation": {},
       "Remove-AzCustomProvider": {},
       "Remove-AzCustomProviderAssociation": {},
-      "Update-AzCustomProvider": {}
+      "Update-AzCustomProvider": {},
+      "Update-AzCustomProviderAssociation": {}
     },
     "Az.Dashboard": {
       "Get-AzGrafana": {},
@@ -1922,7 +1944,9 @@
       "Remove-AzDatadogMonitor": {},
       "Set-AzDatadogMonitorDefaultKey": {},
       "Update-AzDatadogMonitor": {},
-      "Update-AzDatadogMonitorSetPasswordLink": {}
+      "Update-AzDatadogMonitorSetPasswordLink": {},
+      "Update-AzDatadogSingleSignOnConfiguration": {},
+      "Update-AzDatadogTagRule": {}
     },
     "Az.DataFactory": {
       "Add-AzDataFactoryV2DataFlowDebugSessionPackage": {},
@@ -2289,6 +2313,7 @@
       "Sync-AzDataProtectionBackupInstance": {},
       "Test-AzDataProtectionBackupInstanceReadiness": {},
       "Test-AzDataProtectionBackupInstanceRestore": {},
+      "Test-AzDataProtectionBackupInstanceUpdate": {},
       "Undo-AzDataProtectionBackupInstanceDeletion": {},
       "Unlock-AzDataProtectionResourceGuardOperation": {},
       "Update-AzDataProtectionBackupInstance": {},
@@ -2719,7 +2744,9 @@
       "New-AzDynatraceMonitorTagRule": {},
       "Remove-AzDynatraceMonitor": {},
       "Remove-AzDynatraceMonitorTagRule": {},
-      "Update-AzDynatraceMonitor": {}
+      "Update-AzDynatraceMonitor": {},
+      "Update-AzDynatraceMonitorSSOConfig": {},
+      "Update-AzDynatraceMonitorTagRule": {}
     },
     "Az.EdgeOrder": {
       "Get-AzEdgeOrder": {},
@@ -2780,6 +2807,8 @@
       "Update-AzElasticDetachTrafficFilter": {},
       "Update-AzElasticExternalUser": {},
       "Update-AzElasticMonitor": {},
+      "Update-AzElasticOpenAi": {},
+      "Update-AzElasticTagRule": {},
       "Update-AzElasticVMCollection": {}
     },
     "Az.ElasticSan": {
@@ -3015,6 +3044,7 @@
       "New-AzEventHubIPRuleConfig": {},
       "New-AzEventHubKey": {},
       "New-AzEventHubKeyVaultPropertiesObject": {},
+      "New-AzEventHubLocationsNameObject": {},
       "New-AzEventHubNamespace": {},
       "New-AzEventHubSchemaGroup": {},
       "New-AzEventHubThrottlingPolicyConfig": {},
@@ -3037,6 +3067,7 @@
       "Set-AzEventHubGeoDRConfigurationFailOver": {},
       "Set-AzEventHubNamespace": {},
       "Set-AzEventHubNetworkRuleSet": {},
+      "Start-AzEventHubNamespaceFailOver": {},
       "Test-AzEventHubName": {},
       "Get-AzEventHubNamespaceV2": {},
       "New-AzEventHubNamespaceV2": {},
@@ -3170,7 +3201,8 @@
       "Get-AzGuestConfigurationAssignment": {},
       "Get-AzGuestConfigurationAssignmentReport": {},
       "New-AzGuestConfigurationAssignment": {},
-      "Remove-AzGuestConfigurationAssignment": {}
+      "Remove-AzGuestConfigurationAssignment": {},
+      "Update-AzGuestConfigurationAssignment": {}
     },
     "Az.HanaOnAzure": {
       "Get-AzSapMonitor": {},
@@ -3179,7 +3211,8 @@
       "New-AzSapMonitorProviderInstance": {},
       "Remove-AzSapMonitor": {},
       "Remove-AzSapMonitorProviderInstance": {},
-      "Update-AzSapMonitor": {}
+      "Update-AzSapMonitor": {},
+      "Update-AzSapMonitorProviderInstance": {}
     },
     "Az.HDInsight": {
       "Add-AzHDInsightClusterIdentity": {},
@@ -3344,8 +3377,7 @@
       "Remove-AzImageBuilderTemplate": {},
       "Remove-AzImageBuilderTrigger": {},
       "Start-AzImageBuilderTemplate": {},
-      "Stop-AzImageBuilderTemplate": {},
-      "Update-AzImageBuilderTemplate": {}
+      "Stop-AzImageBuilderTemplate": {}
     },
     "Az.ImportExport": {
       "Get-AzImportExport": {},
@@ -3768,6 +3800,12 @@
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
     },
+    "Az.LambdaTest": {
+      "Get-AzLambdaTestOrganization": {},
+      "New-AzLambdaTestOrganization": {},
+      "Remove-AzLambdaTestOrganization": {},
+      "Update-AzLambdaTestOrganization": {}
+    },
     "Az.LoadTesting": {
       "Get-AzLoad": {},
       "New-AzLoad": {},
@@ -4179,19 +4217,6 @@
       "Remove-AzMdpPool": {},
       "Update-AzMdpPool": {}
     },
-    "Az.Media": {
-      "Get-AzMediaService": {},
-      "Get-AzMediaServiceKey": {},
-      "Get-AzMediaServiceNameAvailability": {},
-      "New-AzMediaService": {},
-      "New-AzMediaServiceStorageConfig": {},
-      "Remove-AzMediaService": {},
-      "Set-AzMediaService": {},
-      "Set-AzMediaServiceKey": {},
-      "Sync-AzMediaServiceStorageKey": {},
-      "Get-AzMediaServiceKeys": {},
-      "Sync-AzMediaServiceStorageKeys": {}
-    },
     "Az.Migrate": {
       "Get-AzMigrateDiscoveredServer": {},
       "Get-AzMigrateJob": {},
@@ -4576,6 +4601,10 @@
       "Get-AzNetAppFilesFilePathAvailability": {},
       "Get-AzNetAppFilesQuotaAvailability": {},
       "Get-AzNetAppFilesNameAvailability": {},
+      "Get-AzNetAppFilesAccountKeyVaultStatus": {},
+      "Invoke-AzNetAppFilesAccountChangeKeyVault": {},
+      "Convert-AzNetAppFilesAccountToCmk": {},
+      "Get-AzNetAppFilesUsage": {},
       "Approve-AnfReplication": {},
       "Get-AnfAccount": {},
       "Get-AnfBackup": {},
@@ -4653,7 +4682,11 @@
       "Start-AnfAuthorizeExternalReplication": {},
       "Get-AnfFilePathAvailability": {},
       "Get-AnfQuotaAvailability": {},
-      "Get-AnfNameAvailability": {}
+      "Get-AnfNameAvailability": {},
+      "Get-AnfAccountKeyVaultStatus": {},
+      "Invoke-AnfAccountChangeKeyVault": {},
+      "Convert-AnfFilesAccountToCmk": {},
+      "Get-AnfUsage": {}
     },
     "Az.Network": {
       "Add-AzApplicationGatewayAuthenticationCertificate": {},
@@ -4844,6 +4877,7 @@
       "Get-AzNetworkServiceTag": {},
       "Get-AzNetworkUsage": {},
       "Get-AzNetworkVirtualAppliance": {},
+      "Get-AzNetworkVirtualApplianceBootDiagnostics": {},
       "Get-AzNetworkVirtualApplianceConnection": {},
       "Get-AzNetworkVirtualApplianceSku": {},
       "Get-AzNetworkWatcher": {},
@@ -5826,7 +5860,8 @@
       "Remove-AzOrbitalSpacecraft": {},
       "Remove-AzOrbitalSpacecraftContact": {},
       "Update-AzOrbitalContactProfile": {},
-      "Update-AzOrbitalSpacecraft": {}
+      "Update-AzOrbitalSpacecraft": {},
+      "Update-AzOrbitalSpacecraftContact": {}
     },
     "Az.PaloAltoNetworks": {
       "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack": {},
@@ -5904,6 +5939,10 @@
       "Test-AzPeeringRegisteredPrefix": {},
       "Test-AzPeeringServiceProviderAvailability": {},
       "Update-AzPeering": {},
+      "Update-AzPeeringAsn": {},
+      "Update-AzPeeringConnectionMonitorTest": {},
+      "Update-AzPeeringRegisteredAsn": {},
+      "Update-AzPeeringRegisteredPrefix": {},
       "Update-AzPeeringService": {}
     },
     "Az.Pinecone": {
@@ -6431,6 +6470,7 @@
       "Get-AzRedisEnterpriseCacheDatabase": {},
       "Get-AzRedisEnterpriseCacheKey": {},
       "Get-AzRedisEnterpriseCacheOperationStatus": {},
+      "Get-AzRedisEnterpriseCacheSku": {},
       "Import-AzRedisEnterpriseCache": {},
       "Invoke-AzRedisEnterpriseCacheDatabaseFlush": {},
       "Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup": {},
@@ -7296,6 +7336,7 @@
       "New-AzSpringCloudContentCertificateObject": {},
       "New-AzSpringCloudGitPatternRepositoryObject": {},
       "New-AzSpringCloudKeyVaultCertificateObject": {},
+      "New-AzSpringCloudRegistry": {},
       "New-AzSpringCloudTestKey": {},
       "Remove-AzSpringCloud": {},
       "Remove-AzSpringCloudApp": {},
@@ -7320,7 +7361,12 @@
       "Update-AzSpringCloudAppBinding": {},
       "Update-AzSpringCloudAppCustomDomain": {},
       "Update-AzSpringCloudAppDeployment": {},
+      "Update-AzSpringCloudBuildpackBinding": {},
+      "Update-AzSpringCloudBuildServiceAgentPool": {},
+      "Update-AzSpringCloudBuildServiceBuilder": {},
+      "Update-AzSpringCloudCertificate": {},
       "Update-AzSpringCloudConfigServer": {},
+      "Update-AzSpringCloudConfigurationService": {},
       "Update-AzSpringCloudMonitoringSetting": {}
     },
     "Az.Sql": {
@@ -7853,6 +7899,7 @@
       "New-AzStorageContext": {},
       "New-AzStorageDirectory": {},
       "New-AzStorageEncryptionScope": {},
+      "New-AzStorageFileHardLink": {},
       "New-AzStorageFileSASToken": {},
       "New-AzStorageLocalUserPermissionScope": {},
       "New-AzStorageLocalUserSshPassword": {},
@@ -7937,7 +7984,6 @@
       "Update-AzStorageEncryptionScope": {},
       "Update-AzStorageFileServiceProperty": {},
       "Update-AzStorageServiceProperty": {},
-      "New-AzStorageFileHardLink": {},
       "Get-AzStorageAccountMigration": {},
       "Get-AzStorageFileServiceUsage": {},
       "Start-AzStorageAccountMigration": {},

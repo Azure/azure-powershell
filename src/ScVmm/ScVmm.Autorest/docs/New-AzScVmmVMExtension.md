@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMExtension
 
 ## SYNOPSIS
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzScVmmVMExtension -ExtensionName <String> -ResourceGroupName <String> -vmNa
 ```
 
 ## DESCRIPTION
-The operation to create the extension on a virtual machine where Guest Management is enabled.
+The operation to create the extension on a virtual machine where Azure Arc agent is installed.
 
 ## EXAMPLES
 

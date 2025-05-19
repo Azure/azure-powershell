@@ -15,19 +15,22 @@ Retrieves the effective routes of a virtual hub resource
 ### ByVirtualHubName (Default)
 ```
 Get-AzVHubEffectiveRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzVHubEffectiveRoute -VirtualHubObject <PSVirtualHub> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzVHubEffectiveRoute -VirtualHubResourceId <String> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

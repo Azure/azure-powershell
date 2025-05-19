@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkinterfaceobject
 schema: 2.0.0
 ---
 
 # New-AzConnectedNetworkInterfaceObject
 
 ## SYNOPSIS
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 
 ## SYNTAX
 
 ```
 New-AzConnectedNetworkInterfaceObject [-IPConfiguration <INetworkInterfaceIPConfiguration[]>]
- [-MacAddress <String>] [-Name <String>] [-VMSwitchType <VMSwitchType>] [<CommonParameters>]
+ [-MacAddress <String>] [-Name <String>] [-VMSwitchType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for NetworkInterface
+Create an in-memory object for NetworkInterface.
 
 ## EXAMPLES
 
@@ -39,10 +39,9 @@ Create a in-memory object for NetworkInterface
 
 ### -IPConfiguration
 A list of IP configurations of the network interface.
-To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterfaceIPConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterfaceIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 The type of the VM switch.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 
 ## NOTES
 

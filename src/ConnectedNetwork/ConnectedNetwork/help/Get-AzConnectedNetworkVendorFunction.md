@@ -24,6 +24,19 @@ Get-AzConnectedNetworkVendorFunction -LocationName <String> -ServiceKey <String>
  -VendorName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityVendor
+```
+Get-AzConnectedNetworkVendorFunction -ServiceKey <String> -VendorInputObject <IConnectedNetworkIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzConnectedNetworkVendorFunction -ServiceKey <String> -VendorName <String>
+ -LocationInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzConnectedNetworkVendorFunction -InputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
@@ -126,11 +139,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -160,7 +187,7 @@ The GUID for the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityVendor, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -185,12 +212,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: GetViaIdentityVendor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -209,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 
 ## NOTES
 

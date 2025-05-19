@@ -15,7 +15,8 @@ Deletes an Azure IpGroup.
 ### IpGroupNameParameterSet (Default)
 ```
 Remove-AzIpGroup -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IpGroupInputObjectParameterSet
