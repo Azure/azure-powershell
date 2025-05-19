@@ -30,7 +30,7 @@ foreach ($subModule in $subModuleGroup) {
     try {
         Write-Host "Testing sub module: $subModule"
         $subModulePath = Join-Path $RepoRoot 'artifacts' 'Debug' "Az.$ModuleName" $subModuleName
-        Push-Location $subModulePath
+        Set-Location $subModulePath
         # remove the integrated Az Accounts so that the installed latest one could be used for test
         $integratedAzAccounts = Join-Path $subModulePath 'generated' 'modules' 'Az.Accounts'
         If (Test-Path $integratedAzAccounts){
@@ -56,7 +56,6 @@ foreach ($subModule in $subModuleGroup) {
         $endTime = Get-Date
         $result.DurationSeconds = ($endTime - $startTime).TotalSeconds
         $results += $result
-        Pop-Location
     }
 }
 

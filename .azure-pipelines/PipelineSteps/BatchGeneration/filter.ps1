@@ -32,9 +32,10 @@ if ($env:RUN_TEST_ON_ALL_MODULES -eq "True") {
     }
 }
 else {
-    Write-Host "Run test on changed modules"
+    Write-Host "Run test on generated folder changed modules"
+    # Only generated filder change should trigger the test 
     for ($i = 0; $i -lt $ChangedFiles.Count; $i++) {
-        if ($ChangedFiles[$i] -match '^(src|generated)/([^/]+)/([^/]+\.autorest)/') {
+        if ($ChangedFiles[$i] -match '^generated/([^/]+)/([^/]+\.autorest)/') {
             $moduleName = $Matches[2]
             $subModuleName = $Matches[3]
             $subModule = "$moduleName/$subModuleName"
