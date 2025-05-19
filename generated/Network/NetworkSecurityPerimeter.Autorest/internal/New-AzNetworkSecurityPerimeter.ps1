@@ -20,13 +20,7 @@ create a Network Security Perimeter.
 .Description
 create a Network Security Perimeter.
 .Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp1 -Location eastus2euap
-
-.Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp2 -Location eastus2euap
-
+New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
@@ -54,9 +48,8 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter

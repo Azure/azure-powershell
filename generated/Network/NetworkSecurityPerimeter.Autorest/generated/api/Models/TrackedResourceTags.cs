@@ -8,26 +8,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
     /// <summary>Resource tags.</summary>
-    public partial class ResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTagsInternal
+    public partial class TrackedResourceTags :
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ITrackedResourceTags,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ITrackedResourceTagsInternal
     {
 
-        /// <summary>Creates an new <see cref="ResourceTags" /> instance.</summary>
-        public ResourceTags()
+        /// <summary>Creates an new <see cref="TrackedResourceTags" /> instance.</summary>
+        public TrackedResourceTags()
         {
 
         }
     }
     /// Resource tags.
-    public partial interface IResourceTags :
+    public partial interface ITrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IAssociativeArray<string>
     {
 
     }
     /// Resource tags.
-    internal partial interface IResourceTagsInternal
+    internal partial interface ITrackedResourceTagsInternal
 
     {
 
