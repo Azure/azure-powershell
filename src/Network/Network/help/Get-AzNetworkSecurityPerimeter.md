@@ -41,66 +41,92 @@ Gets the specified network security perimeter by the name.
 
 ## EXAMPLES
 
-### Example 1: List NetworkSecurityPerimeter
+### Example 1: List NetworkSecurityPerimeters in ResourceGroup
 ```powershell
-Get-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1
+Get-AzNetworkSecurityPerimeter -ResourceGroupName rg-test-1
 ```
 
 ```output
-Location    Name
---------    ----
-eastus2euap nsp4
-eastus2euap nsp3
-eastus2euap nsp1
-eastus2euap nsp6
-eastus2euap nsp5
+Location    Name        ResourceGroupName
+--------    ----        -----------------
+eastus2euap nsp-test-1  rg-test-1
+eastus2euap nsp-test-2  rg-test-1
+eastus2euap nsp-test-3  rg-test-1
 ```
 
-List NetworkSecurityPerimeter
+List NetworkSecurityPerimeters in ResourceGroup
 
-### Example 2: List NetworkSecurityPerimeter in a subscription
+### Example 2: List NetworkSecurityPerimeters in Subscription
 ```powershell
 Get-AzNetworkSecurityPerimeter
 ```
 
 ```output
-Location    Name
---------    ----
-eastus2euap nsp4
-eastus2euap nsp3
-eastus2euap nsp1
-eastus2euap nsp6
-eastus2euap nsp5
+Location    Name        ResourceGroupName
+--------    ----        -----------------
+eastus2euap nsp-test-1  rg-test-1
+eastus2euap nsp-test-2  rg-test-1
+eastus2euap nsp-test-3  rg-test-1
+eastus2euap nsp-test-4  rg-test-2
+eastus2euap nsp-test-5  rg-test-2
 ```
 
-List NetworkSecurityPerimeter in a subscription
+List NetworkSecurityPerimeters in Subscription
 
-### Example 3: Gets a NetworkSecurityPerimeter by Name
+### Example 3: Get NetworkSecurityPerimeter by Name
 ```powershell
-Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
+Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 ```
 
 ```output
-Location    Name
---------    ----
-eastus2euap nsp3
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1
+Location                     : eastus2euap
+Name                         : nsp-test-1
+PerimeterGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                                 " Owner": "user-test-1"
+                               }
+Type                         : Microsoft.Network/networkSecurityPerimeters
 ```
 
-Gets a NetworkSecurityPerimeter by Name
+Get NetworkSecurityPerimeter by Name
 
-### Example 4: Gets a NetworkSecurityPerimeter by identity (using pipe)
+### Example 4: Get NetworkSecurityPerimeter by Identity (using pipe)
 ```powershell
-$GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Get-AzNetworkSecurityPerimeter -InputObject $GETObj
+$GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+Get-AzNetworkSecurityPerimeter -InputObject $GETObj
 ```
 
 ```output
-Location    Name
---------    ----
-eastus2euap nsp3
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1
+Location                     : eastus2euap
+Name                         : nsp-test-1
+PerimeterGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                                 " Owner": "user-test-1"
+                               }
+Type                         : Microsoft.Network/networkSecurityPerimeters
 ```
 
-Gets a NetworkSecurityPerimeter by identity (using pipe)
+Get NetworkSecurityPerimeter by Identity (using pipe)
 
 ## PARAMETERS
 

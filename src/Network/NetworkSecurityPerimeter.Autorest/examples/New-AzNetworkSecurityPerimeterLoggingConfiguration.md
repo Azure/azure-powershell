@@ -1,7 +1,6 @@
 ### Example 1: Create NetworkSecurityPerimeter LoggingConfiguration
 ```powershell
-New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 
- -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 ```
 
 ```output
