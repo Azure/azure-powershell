@@ -85,4 +85,9 @@ Describe 'Approve-AzDataTransferConnection' {
     It 'ApproveViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    AfterAll {
+        # Clean up the connection
+        Remove-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Name $connectionToApprove -Confirm:$false | Should -Not -Throw
+    }
 }

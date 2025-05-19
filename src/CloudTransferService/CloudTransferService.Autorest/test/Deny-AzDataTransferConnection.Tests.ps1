@@ -36,7 +36,7 @@ Describe 'Deny-AzDataTransferConnection' {
     It 'Deny' {
         {
             # Deny the connection
-            $deniedConnection = Deny-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $connectionToDenyId -StatusReason "Rejected for testing" -Confirm:$false | Should -Not -Throw
+            $deniedConnection = Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $connectionToDenyId -StatusReason "Rejected for testing" -Confirm:$false | Should -Not -Throw
 
             # Verify the connection is denied
             $deniedConnection.Status | Should -Be "Rejected"
@@ -46,10 +46,10 @@ Describe 'Deny-AzDataTransferConnection' {
     It 'Deny when already denied' {
         {
             # Ensure the connection is already denied
-            Deny-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionRejectedId -StatusReason "Rejected for testing" -Confirm:$false | Should -Throw
+            Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionRejectedId -StatusReason "Rejected for testing" -Confirm:$false | Should -Throw
 
             # Verify the connection is still denied
-            $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionRejected
+            $deniedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionRejected
             $deniedConnection.Status | Should -Be "Rejected"
         } | Should -Not -Throw
     }
@@ -57,10 +57,10 @@ Describe 'Deny-AzDataTransferConnection' {
     It 'Deny when already approved' {
         {
             # Attempt to deny the approved connection
-            Deny-AzDataTransferConnection -PipelineName $env:PipelineName -ResourceGroupName $env:ResourceGroupName -ConnectionId $env:ConnectionApprovedId -StatusReason "Rejecting for testing" -Confirm:$false | Should -Throw
+            Deny-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -ConnectionId $env.ConnectionApprovedId -StatusReason "Rejecting for testing" -Confirm:$false | Should -Throw
 
             # Verify the connection is now denied
-            $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionApproved
+            $approvedConnection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionApproved
             $deniedConnection.Status | Should -Be "Approved"
         } | Should -Not -Throw
     }
@@ -83,5 +83,10 @@ Describe 'Deny-AzDataTransferConnection' {
 
     It 'RejectViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    AfterAll {
+        # Clean up the connection
+        Remove-AzDataTransferConnection -PipelineName $env.PipelineName -ResourceGroupName $env.ResourceGroupName -Name $connectionToDeny -Confirm:$false | Should -Not -Throw
     }
 }

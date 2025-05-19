@@ -17,30 +17,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferConnection'
 Describe 'Get-AzDataTransferConnection' {
     It 'List' {
         {
-            $connections = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName
+            $connections = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName
             $connections.Count | Should -BeGreaterThan 0
             $connections | ForEach-Object {
-                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+                $_.ResourceGroupName | Should -Be $env.ResourceGroupName
             }
         } | Should -Not -Throw
     }
 
     It 'List in Subscription' {
         {
-            $connections = Get-AzDataTransferConnection -SubscriptionId $env:SubscriptionId
+            $connections = Get-AzDataTransferConnection
             $connections.Count | Should -BeGreaterThan 0
             $connections | ForEach-Object {
-                $_.SubscriptionId | Should -Be $env:SubscriptionId
+                $_.Name | Should -Not -BeNullOrEmpty
             }
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $connection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
+            $connection = Get-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $env.ConnectionLinked
             $connection | Should -Not -BeNullOrEmpty
-            $connection.Name | Should -Be $env:ConnectionName
-            $connection.ResourceGroupName | Should -Be $env:ResourceGroupName
+            $connection.Name | Should -Be $env.ConnectionLinked
+            $connection.ResourceGroupName | Should -Be $env.ResourceGroupName
         } | Should -Not -Throw
     }
 

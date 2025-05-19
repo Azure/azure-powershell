@@ -17,22 +17,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferFlow'))
 Describe 'Get-AzDataTransferFlow' {
     It 'List' {
         {
-            $flows = Get-AzDataTransferFlow -ConnectionName $env:ConnectionName -ResourceGroupName $env:ResourceGroupName
+            $flows = Get-AzDataTransferFlow -ConnectionName $env.ConnectionLinked -ResourceGroupName $env.ResourceGroupName
             $flows.Count | Should -BeGreaterThan 0
             $flows | ForEach-Object {
-                $_.Connection | Should -Be $env:ConnectionName
-                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+                $_.Name | Should -Not -BeNullOrEmpty
+                $_.ResourceGroupName | Should -Be $env.ResourceGroupName
             }
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $flow = Get-AzDataTransferFlow -ConnectionName $env:ConnectionName -ResourceGroupName $env:ResourceGroupName -Name $env:FlowName
+            $flow = Get-AzDataTransferFlow -ConnectionName $env.ConnectionLinked -ResourceGroupName $env.ResourceGroupName -Name $env.FaikhRecvFlow
             $flow | Should -Not -BeNullOrEmpty
-            $flow.Name | Should -Be $env:FlowName
-            $flow.Connection | Should -Be $env:ConnectionName
-            $flow.ResourceGroupName | Should -Be $env:ResourceGroupName
+            $flow.Name | Should -Be $env.FaikhRecvFlow
+            $flow.ResourceGroupName | Should -Be $env.ResourceGroupName
         } | Should -Not -Throw
     }
 

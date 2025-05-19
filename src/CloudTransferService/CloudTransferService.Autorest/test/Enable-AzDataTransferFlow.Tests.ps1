@@ -15,27 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzDataTransferFlow'))
 }
 
 Describe 'Enable-AzDataTransferFlow' {
+    $flowToEnable = "test-flow-to-enable-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
     It 'Enable' {
         {
             # Enable the flow
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -Confirm:$false
 
             # Verify the flow is enabled
-            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }
 
     It 'Enable when already enabled' {
         {
-            # Ensure the flow is already enabled
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
-
             # Attempt to enable the flow again
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhEnabledFlow -Confirm:$false
 
             # Verify the flow is still enabled
-            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }
