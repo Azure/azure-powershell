@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.17.0
 * Added properties 'PublicIpAddressesV6', 'PublicIpPrefixesV6', and 'SourceVirtualNetwork' to NatGateway, as well as support for it for the following cmdlets:
 	- `New-AzNatGateway`
 	- `Set-AzNatGateway`

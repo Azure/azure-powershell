@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '14.0.0'
+ModuleVersion = '15.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -170,7 +170,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.0'; },
             @{ModuleName = 'Az.Marketplace'; RequiredVersion = '0.5.2'; }, 
             @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '2.2.0'; }, 
             @{ModuleName = 'Az.Mdp'; RequiredVersion = '0.1.1'; }, 
-            @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.7.1'; }, 
+            @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.8.0'; }, 
             @{ModuleName = 'Az.MixedReality'; RequiredVersion = '0.3.0'; }, 
             @{ModuleName = 'Az.MobileNetwork'; RequiredVersion = '0.4.2'; }, 
             @{ModuleName = 'Az.Monitor'; RequiredVersion = '6.0.2'; }, 
@@ -178,7 +178,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.0.0'; },
             @{ModuleName = 'Az.MySql'; RequiredVersion = '1.3.0'; }, 
             @{ModuleName = 'Az.NeonPostgres'; RequiredVersion = '0.1.1'; }, 
             @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '0.23.0'; }, 
-            @{ModuleName = 'Az.Network'; RequiredVersion = '7.16.2'; }, 
+            @{ModuleName = 'Az.Network'; RequiredVersion = '7.17.0'; }, 
             @{ModuleName = 'Az.NetworkAnalytics'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.NetworkFunction'; RequiredVersion = '0.1.5'; }, 
