@@ -293,7 +293,6 @@ Update-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpste
 ### `Clear-AzCdnEndpointContent`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -315,7 +314,6 @@ Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -Resourc
 ### `Clear-AzFrontDoorCdnEndpointContent`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -337,7 +335,6 @@ Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String>
 ### `Get-AzCdnEdgeNode`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'IPAddressGroup' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IIPAddressGroup]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -357,7 +354,6 @@ Get-AzCdnEdgeNode
 ### `Get-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -377,7 +373,6 @@ Get-AzCdnEndpoint -ProfileName <String> -ResourceGroupName <String> [-Subscripti
 ### `Get-AzCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -399,7 +394,6 @@ Get-AzCdnOriginGroup -EndpointName <String> -ProfileName <String> -ResourceGroup
 ### `Get-AzFrontDoorCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -419,7 +413,6 @@ Get-AzFrontDoorCdnEndpoint -ProfileName <String> -ResourceGroupName <String> [-S
 ### `Get-AzFrontDoorCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -439,7 +432,6 @@ Get-AzFrontDoorCdnOriginGroup -ProfileName <String> -ResourceGroupName <String> 
 ### `Get-AzFrontDoorCdnRoute`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -461,7 +453,6 @@ Get-AzFrontDoorCdnRoute -EndpointName <String> -ProfileName <String> -ResourceGr
 ### `Get-AzFrontDoorCdnRule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -483,7 +474,6 @@ Get-AzFrontDoorCdnRule -ProfileName <String> -ResourceGroupName <String> -SetNam
 ### `Import-AzCdnEndpointContent`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'ContentPath, Domain' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -505,7 +495,6 @@ Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -Resour
 ### `New-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -559,7 +548,6 @@ New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType
 ### `New-AzCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -612,7 +600,6 @@ New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGro
 ### `New-AzFrontDoorCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -637,7 +624,6 @@ New-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Resourc
 ### `New-AzFrontDoorCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -663,7 +649,6 @@ New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -R
 ### `New-AzFrontDoorCdnRoute`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -696,7 +681,6 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <Stri
 ### `New-AzFrontDoorCdnRule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -728,7 +712,6 @@ New-AzFrontDoorCdnRule -Name <String> -ProfileName <String> -ResourceGroupName <
 ### `Remove-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -750,7 +733,6 @@ Remove-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
 ### `Remove-AzCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -772,7 +754,6 @@ Remove-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <Stri
 ### `Remove-AzFrontDoorCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -794,7 +775,6 @@ Remove-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Reso
 ### `Remove-AzFrontDoorCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -816,7 +796,6 @@ Remove-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 ### `Remove-AzFrontDoorCdnRoute`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -838,7 +817,6 @@ Remove-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
 ### `Remove-AzFrontDoorCdnRule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -860,7 +838,6 @@ Remove-AzFrontDoorCdnRule -Name <String> -ProfileName <String> -ResourceGroupNam
 ### `Start-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -880,7 +857,6 @@ Start-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Str
 ### `Stop-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -900,7 +876,6 @@ Stop-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <Stri
 ### `Update-AzCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -932,7 +907,6 @@ Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
 ### `Update-AzCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -958,7 +932,6 @@ Update-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <Stri
 ### `Update-AzFrontDoorCdnEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Origin' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeepCreatedOriginGroup' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -980,7 +953,6 @@ Update-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Reso
 ### `Update-AzFrontDoorCdnOriginGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'HttpErrorRange' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResponseBasedOriginErrorDetectionParameters' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -1006,7 +978,6 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 ### `Update-AzFrontDoorCdnRoute`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'PatternsToMatch, CompressionSettingContentTypesToCompress' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute' has changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
@@ -1040,7 +1011,6 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
 ### `Update-AzFrontDoorCdnRule`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
   - Change description : The type of property 'Condition' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition]'. 
   - This change will take effect on '5/19/2025'- The change is expected to take effect from Az version : '14.0.0'
   - The change is expected to take effect from version : '5.0.0'
