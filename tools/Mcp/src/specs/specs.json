@@ -11,6 +11,18 @@
                 }
             ],
             "callbackName": "generateByAutorest"
+        },
+        {
+            "name": "rename-cmdlet",
+            "description": "rename autorest generated powershell cmdlet by providing autorest directive to README.md",
+            "parameters": [
+                {
+                    "name": "directive",
+                    "description": "autorest directive to rename cmdlet. Should perform something like 'where subject' and 'set subject'. Look for example in README.md",
+                    "type": "string"
+                }
+            ],
+            "callbackName": "writeDirective"
         }
     ]
 }

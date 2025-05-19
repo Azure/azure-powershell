@@ -16,12 +16,14 @@ export class CodegenServer {
             capabilities: {
                 resources: {},
                 tools: {},
+                prompts: {}
             },
         });
     }
 
     init(): void {
         this.initTools();
+        this.initPrompts();
     }
 
     public static getInstance(): CodegenServer {
@@ -40,7 +42,7 @@ export class CodegenServer {
         const toolSchemas = specs.tools as toolSchema[];
         for (const schema of toolSchemas) {
             const parameter = this.createToolParameterfromSchema(schema.parameters);
-            const callBack = toolServices<typeof parameter>(schema.callbackName);
+            const callBack = toolServices<{ [k: string]: z.ZodTypeAny }>(schema.callbackName);
             this._mcp.tool(
                 schema.name,
                 schema.description,
@@ -48,6 +50,26 @@ export class CodegenServer {
                 (parameter) => callBack(parameter)
             );
         }
+    }
+
+    initPrompts() {
+        this._mcp.prompt(
+            "create-greeting", 
+            "Generate a customized greeting message", 
+            { name: z.string().describe("Name of the person to greet"), style: z.string().describe("The style of greeting, such a formal, excited, or casual. If not specified casual will be used")}, 
+            ({ name, style = "casual" }: { name: string, style?: string }) => {
+            return {
+                messages: [
+                    {
+                        role: "user",
+                        content: {
+                            type: "text",
+                            text: `Please generate a greeting in ${style} style to ${name}.`,
+                        },
+                    },
+                ],
+            };
+        });
     }
 
     createToolParameterfromSchema(schemas: toolParameterSchema[]){

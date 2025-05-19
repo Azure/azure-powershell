@@ -68,11 +68,13 @@ async function main() {
     server.init();
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.log(`Codegen MCP Server running on stdio at ${new Date()}`);
-    const yaml = utils.getYamlContentFromReadMe("D:/workspace/azure-powershell/tools/Mcp/test/README.md") as yamlContent;
-    for (const directive of yaml.directive) {
-        console.log(directive);
-    }
+    const time = `Codegen MCP Server running on stdio at ${new Date()}`;
+    console.log(time);
+    
+    // const yaml = utils.getYamlContentFromReadMe("C:/workspace/azure-powershell/tools/Mcp/test/README.md") as yamlContent;
+    // for (const directive of yaml.directive) {
+    //     console.log(directive);
+    // }
 }
 
 main().catch((error) => {

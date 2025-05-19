@@ -15,10 +15,25 @@ export const generateByAutorest = <Args extends ZodRawShape>(args: Args): CallTo
     };
 };
 
+export const writeDirective = <Args extends ZodRawShape>(args: Args): CallToolResult => {
+    //const directive = z.string().parse(args);
+    const directive = Object.values(args)[0];
+    return {
+        content: [
+            {
+                type: "text",
+                text: `${directive}`
+            }
+        ]
+    };
+}
+
 export const toolServices = <Args extends ZodRawShape>(name: string) => {
     switch (name) {
         case "generateByAutorest":
             return generateByAutorest<Args>;
+        case "writeDirective":
+            return writeDirective<Args>;
         default:
             throw new Error(`Tool ${name} not found`);
     }
