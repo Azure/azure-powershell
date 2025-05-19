@@ -1,15 +1,15 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.HDInsight/clusters/spark51?api-version=2025-01-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1Y2hlbi1wcy10ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL3NwYXJrNTE/YXBpLXZlcnNpb249MjAyNS0wMS0xNS1wcmV2aWV3",
-      "RequestMethod": "GET",
+      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.HDInsight/clusters/yk1c24entra/getGatewaySettings?api-version=2025-01-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1a3VuZGVtbzEvcHJvdmlkZXJzL01pY3Jvc29mdC5IREluc2lnaHQvY2x1c3RlcnMveWsxYzI0ZW50cmEvZ2V0R2F0ZXdheVNldHRpbmdzP2FwaS12ZXJzaW9uPTIwMjUtMDEtMTUtcHJldmlldw==",
+      "RequestMethod": "POST",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "658d97a7-ef23-436c-afdb-faedd94499b7"
+          "82d41256-299e-4439-8aa9-8dfa9c97bc5d"
         ],
         "User-Agent": [
           "FxVersion/8.0.1625.21506",
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c58202f9-3727-4be3-aae0-a0c14ea27ab6"
+          "68afc8c2-6df4-4297-873a-ede47759cdd6"
         ],
         "x-ms-correlation-request-id": [
-          "c58202f9-3727-4be3-aae0-a0c14ea27ab6"
+          "68afc8c2-6df4-4297-873a-ede47759cdd6"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20250519T092817Z:c58202f9-3727-4be3-aae0-a0c14ea27ab6"
+          "JAPANWEST:20250519T092802Z:68afc8c2-6df4-4297-873a-ede47759cdd6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1D4D6C7CE34649C49A742EEB31092AC1 Ref B: TYO201100116029 Ref C: 2025-05-19T09:28:17Z"
+          "Ref A: 15A480C6C3AA4F509A0D670ED83C2436 Ref B: TYO201151004062 Ref C: 2025-05-19T09:28:02Z"
         ],
         "Date": [
-          "Mon, 19 May 2025 09:28:16 GMT"
+          "Mon, 19 May 2025 09:28:02 GMT"
         ],
         "Content-Length": [
           "88"

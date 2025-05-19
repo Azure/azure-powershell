@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.HDInsight/clusters/h1-spark?api-version=2024-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1Y2hlbi1wcy10ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2gxLXNwYXJrP2FwaS12ZXJzaW9uPTIwMjQtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.HDInsight/clusters/ykc20wasb?api-version=2025-01-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1a3VuZGVtbzEvcHJvdmlkZXJzL01pY3Jvc29mdC5IREluc2lnaHQvY2x1c3RlcnMveWtjMjB3YXNiP2FwaS12ZXJzaW9uPTIwMjUtMDEtMTUtcHJldmlldw==",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "22b073bc-504a-42da-ad8f-5b6b6ac5fc92"
+          "5d6bb7c3-0769-4ba0-a84a-3872f5ddf531"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.1625.21506",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.3.1"
@@ -21,10 +21,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "421"
+          "430"
         ]
       },
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/yuchen-ps-test/providers/microsoft.managedidentity/userassignedidentities/hdi-msi\": {},\r\n      \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-devrp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdiwasbmsi\": {}\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi\": {},\r\n      \"/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi-east-asia\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -32,20 +32,26 @@
         "Pragma": [
           "no-cache"
         ],
-        "WWW-Authenticate": [
-          "Bearer authorization_uri=\"https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47\", error=\"invalid_token\", error_description=\"The access token is invalid.\""
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "c6fc9501-9125-4dda-8230-c6a7a22eac07"
+          "66d720a0-c8ec-4e7a-a451-6f98c1bfcc07"
+        ],
+        "x-ms-hdi-served-by": [
+          "eastasia"
         ],
         "x-ms-correlation-request-id": [
-          "c6fc9501-9125-4dda-8230-c6a7a22eac07"
+          "5f094fa2-ce64-424c-ab7c-5731b7cdf776"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=9cd85b81-c262-44da-bc33-96c3b8c182d3/japaneast/62e4f910-b4c9-4e6d-bc77-e217ac132376"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "JAPANWEST:20250513T015128Z:c6fc9501-9125-4dda-8230-c6a7a22eac07"
+          "JAPANEAST:20250519T093524Z:5f094fa2-ce64-424c-ab7c-5731b7cdf776"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,13 +63,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BDB9A6FF889D4BD6B2327422FCA53120 Ref B: TYO01EDGE2708 Ref C: 2025-05-13T01:51:28Z"
+          "Ref A: F9389D6405594F65B7668356A265E055 Ref B: TYO201151001042 Ref C: 2025-05-19T09:35:21Z"
         ],
         "Date": [
-          "Tue, 13 May 2025 01:51:28 GMT"
+          "Mon, 19 May 2025 09:35:24 GMT"
         ],
         "Content-Length": [
-          "88"
+          "152"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -72,8 +78,8 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidAuthenticationToken\",\r\n    \"message\": \"The access token is invalid.\"\r\n  }\r\n}",
-      "StatusCode": 401
+      "ResponseBody": "{\r\n  \"code\": \"Conflict\",\r\n  \"message\": \"Exception of type 'Microsoft.ClusterServices.RDFEProvider.ResourceTypes.Models.RdfeResourceHandlerException' was thrown.\"\r\n}",
+      "StatusCode": 409
     }
   ],
   "Names": {},

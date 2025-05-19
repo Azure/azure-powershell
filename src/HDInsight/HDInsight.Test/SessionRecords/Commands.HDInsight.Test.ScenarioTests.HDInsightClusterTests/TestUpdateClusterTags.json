@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-devrp/providers/Microsoft.HDInsight/clusters/yuchen-hadoop-002?api-version=2024-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL3l1Y2hlbi1kZXZycC9wcm92aWRlcnMvTWljcm9zb2Z0LkhESW5zaWdodC9jbHVzdGVycy95dWNoZW4taGFkb29wLTAwMj9hcGktdmVyc2lvbj0yMDI0LTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test1721/providers/Microsoft.HDInsight/clusters/az16040?api-version=2025-01-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTY0YzEwYmItOGE2Yy00M2JjLTgzZDMtNmIzMThjNmM3MzA1L3Jlc291cmNlR3JvdXBzL2dyb3VwLXBzLXRlc3QxNzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuSERJbnNpZ2h0L2NsdXN0ZXJzL2F6MTYwNDA/YXBpLXZlcnNpb249MjAyNS0wMS0xNS1wcmV2aWV3",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "2307b3b5-6fa8-4ec0-b804-d16212b02f01"
+          "2efa4323-c0a3-44a3-a0a4-53b736aff4bd"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.1625.21506",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Management.HDInsight.HDInsightManagementClient/6.3.1"
@@ -39,13 +39,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "7fba5c58-9add-4c1c-b710-f44450505a60"
+          "f09df639-eb8b-4297-80e5-8d8c1f7e8664"
         ],
         "x-ms-correlation-request-id": [
-          "7fba5c58-9add-4c1c-b710-f44450505a60"
+          "f09df639-eb8b-4297-80e5-8d8c1f7e8664"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20250513T015127Z:7fba5c58-9add-4c1c-b710-f44450505a60"
+          "JAPANWEST:20250519T092805Z:f09df639-eb8b-4297-80e5-8d8c1f7e8664"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D87045193D7547BC834F5F864440C563 Ref B: TYO01EDGE0920 Ref C: 2025-05-13T01:51:27Z"
+          "Ref A: C75FDC189D594F9C90C639A7CD48D156 Ref B: TYO201151005031 Ref C: 2025-05-19T09:28:05Z"
         ],
         "Date": [
-          "Tue, 13 May 2025 01:51:27 GMT"
+          "Mon, 19 May 2025 09:28:05 GMT"
         ],
         "Content-Length": [
           "88"

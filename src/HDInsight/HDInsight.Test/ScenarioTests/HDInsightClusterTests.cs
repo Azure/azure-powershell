@@ -34,9 +34,17 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateEntraClusterAndUpdateEntraUserInfo()
+        public void TestCreateEntraCluster()
         {
-            TestRunner.RunTestScript("Test-CreateEntraClusterAndUpdateEntraUserInfo");
+            TestRunner.RunTestScript("Test-CreateEntraCluster");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateAndGetEntraUserInfo()
+        {
+            TestRunner.RunTestScript("Test-UpdateAndGetEntraUserInfo");
         }
 
         [Fact]
