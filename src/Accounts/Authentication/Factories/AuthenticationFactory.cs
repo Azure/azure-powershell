@@ -482,16 +482,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
-        /// Remove a user from token cache.
-        /// </summary>
-        /// <param name="account"></param>
-        /// <param name="environment"></param>
-        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
-        {
-            RemoveUser(account, environment: null);
-        }
-
-        /// <summary>
         /// Remove any stored credentials for the given user and the Azure environment used.
         /// </summary>
         /// <param name="account">The account to remove credentials for</param>
