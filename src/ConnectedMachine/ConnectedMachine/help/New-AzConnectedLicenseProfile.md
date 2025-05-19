@@ -1,5 +1,5 @@
 ---
-external help file: Az.ConnectedMachine-help.xml
+external help file:
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedlicenseprofile
 schema: 2.0.0
@@ -14,32 +14,24 @@ The operation to create a license profile.
 
 ### CreateExpanded (Default)
 ```
-New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-EsuProfileAssignedLicense <String>] [-ProductProfileProductFeature <IProductFeature[]>]
- [-ProductProfileProductType <String>] [-ProductProfileSubscriptionStatus <String>]
- [-SoftwareAssuranceCustomer] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-EsuProfileAssignedLicense <String>]
+ [-ProductProfileProductFeature <IProductFeature[]>] [-ProductProfileProductType <String>]
+ [-ProductProfileSubscriptionStatus <String>] [-SoftwareAssuranceCustomer] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Parameter <ILicenseProfile> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> -Parameter <ILicenseProfile>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> -Parameter <ILicenseProfile>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -47,14 +39,21 @@ New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> 
 New-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> -Location <String>
  [-EsuProfileAssignedLicense <String>] [-ProductProfileProductFeature <IProductFeature[]>]
  [-ProductProfileProductType <String>] [-ProductProfileSubscriptionStatus <String>]
- [-SoftwareAssuranceCustomer] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftwareAssuranceCustomer] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### CreateViaJsonFilePath
 ```
-New-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> -Parameter <ILicenseProfile>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -173,7 +172,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -233,7 +232,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -324,7 +323,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -354,7 +353,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -426,3 +425,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

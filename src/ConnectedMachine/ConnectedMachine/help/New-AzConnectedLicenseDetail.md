@@ -1,5 +1,5 @@
 ---
-external help file: Az.ConnectedMachine-help.xml
+external help file:
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicensedetail
 schema: 2.0.0
@@ -14,8 +14,7 @@ Create an in-memory object for LicenseDetails.
 
 ```
 New-AzConnectedLicenseDetail [-Edition <String>] [-Processor <Int32>] [-State <String>] [-Target <String>]
- [-Type <String>] [-VolumeLicenseDetail <IVolumeLicenseDetails[]>]
- [<CommonParameters>]
+ [-Type <String>] [-VolumeLicenseDetail <IVolumeLicenseDetails[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,3 +145,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

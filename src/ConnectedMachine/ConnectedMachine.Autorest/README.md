@@ -38,13 +38,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: a9980ec5181a161dd26c5277f7651722b60503ea
+commit: db38eb1dfb8955668de4e7d56593da7d697886c9
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/privateLinkScopes.json
- 
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-11-10-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-11-10-preview/privateLinkScopes.json
+
 module-version: 0.1.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
@@ -212,6 +212,40 @@ directive:
         }
       }
 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/addExtensions"].post.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "machineName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-_\\.]{1,54}$",
+            "minLength": 1,
+            "maxLength": 54,
+            "description": "The name of the hybrid machine."
+          },
+          {
+            "name": "extensionList",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetupExtensionRequest"
+            },
+            "description": "Parameters supplied to the Setup Extensions operation."
+          }
+        ]
+
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
@@ -332,6 +366,10 @@ directive:
   - where:
       subject: Extension
       variant: Upgrade
+    remove: true
+  - where:
+      verb: Invoke
+      subject: SetupExtension
     remove: true
 
   # we will release gateway and setting commands in a seperate module

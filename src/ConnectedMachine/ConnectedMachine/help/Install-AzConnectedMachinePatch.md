@@ -1,5 +1,5 @@
 ---
-external help file: Az.ConnectedMachine-help.xml
+external help file:
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/install-azconnectedmachinepatch
 schema: 2.0.0
@@ -14,34 +14,27 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ### InstallExpanded (Default)
 ```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -MaximumDuration <String> -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <String>
+ -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InstallViaJsonString
-```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InstallViaJsonFilePath
-```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Install
 ```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String>
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### InstallViaIdentity
+```
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
  -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
@@ -51,15 +44,22 @@ Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -Maximu
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
- [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### InstallViaIdentity
+### InstallViaJsonFilePath
 ```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### InstallViaJsonString
+```
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +122,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: InstallViaIdentityExpanded, InstallViaIdentity
+Parameter Sets: InstallViaIdentity, InstallViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -245,7 +245,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
+Parameter Sets: Install, InstallExpanded, InstallViaJsonFilePath, InstallViaJsonString
 Aliases:
 
 Required: True
@@ -290,7 +290,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
+Parameter Sets: Install, InstallExpanded, InstallViaJsonFilePath, InstallViaJsonString
 Aliases:
 
 Required: True
@@ -305,7 +305,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
+Parameter Sets: Install, InstallExpanded, InstallViaJsonFilePath, InstallViaJsonString
 Aliases:
 
 Required: False
@@ -437,3 +437,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

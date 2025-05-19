@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionmetadata
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionmetadatav2
 schema: 2.0.0
 ---
 
-# Get-AzConnectedExtensionMetadata
+# Get-AzConnectedExtensionMetadataV2
 
 ## SYNOPSIS
 Gets an Extension Metadata based on location, publisher, extensionType and version
@@ -14,14 +14,14 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 
 ### List (Default)
 ```
-Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedExtensionMetadataV2 -ExtensionType <String> -Location <String> -Publisher <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- -Version <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedExtensionMetadataV2 -ExtensionType <String> -Location <String> -Publisher <String>
+ -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,32 +29,27 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 
 ## EXAMPLES
 
-### Example 1: Get a list of machine extension metadata
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute'
+{{ Add code here }}
 ```
 
 ```output
-Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifi
-                                                                                              edBy
----- ------------------- ------------------- ----------------------- ------------------------ --------------------
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a list of machine extension metadata
+{{ Add description here }}
 
-### Example 2: Get a specific machine extension metadata
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute' -Version '1.10.10'
+{{ Add code here }}
 ```
 
 ```output
-Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifi
-                                                                                              edBy
----- ------------------- ------------------- ----------------------- ------------------------ --------------------
-
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a specific machine extension metadata
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -90,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the Extension being received.
+The name of Azure region.
 
 ```yaml
 Type: System.String
@@ -119,21 +114,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Version
 The version of the Extension being received.
 
@@ -156,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueV2
 
 ## NOTES
 
