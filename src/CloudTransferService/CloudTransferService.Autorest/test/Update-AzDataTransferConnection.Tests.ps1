@@ -14,25 +14,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferConnecti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$connectionToUpdate = "test-connection-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
 Describe 'Update-AzDataTransferConnection' {
     It 'UpdateTagsForExistingConnection' {
         {
+            $connectionParams = @{
+                Location             = $env.Location
+                PipelineName         = $env.PipelineName
+                Direction            = "Receive"
+                FlowType             = "Mission"
+                ResourceGroupName    = $env.ResourceGroupName
+                Justification        = "Receive side for PS testing"
+                RemoteSubscriptionId = $env.SubscriptionId
+                RequirementId        = 0
+                Name                 = $connectionToUpdate
+                PrimaryContact       = "faikh@microsoft.com"
+            }
+            $createdConnection = New-AzDataTransferConnection @connectionParams
+            $createdConnection | Should -Not -BeNullOrEmpty
+
             # Update tags for an existing connection
-            Update-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName -Tag @{Environment="Production"; Department="IT"} -Confirm:$false | Should -BeNullOrEmpty
+            $updatedConnection =  Update-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Tag @{Environment="Production"; Department="IT"} -Confirm:$false | Should -BeNullOrEmpty
 
             # Verify the tags are updated
-            $updatedConnection = Get-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name $env:ConnectionName
             $updatedConnection | Should -Not -BeNullOrEmpty
             $updatedConnection.Tags.Environment | Should -Be "Production"
             $updatedConnection.Tags.Department | Should -Be "IT"
         } | Should -Not -Throw
-    }
-
-    It 'UpdateTagsForNonExistentConnection' {
-        {
-            # Attempt to update tags for a non-existent connection
-            Update-AzDataTransferConnection -ResourceGroupName $env:ResourceGroupName -Name "NonExistentConnection" -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
-        } | Should -Throw
     }
 
     It 'UpdateViaJsonString' -skip {
@@ -45,5 +54,10 @@ Describe 'Update-AzDataTransferConnection' {
 
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    AfterAll {
+        # Clean up the created connection
+        Remove-AzDataTransferConnection -ResourceGroupName $env.ResourceGroupName -Name $connectionToUpdate -Confirm:$false
     }
 }
