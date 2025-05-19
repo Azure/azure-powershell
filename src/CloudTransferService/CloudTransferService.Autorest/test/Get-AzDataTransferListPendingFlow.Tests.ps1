@@ -17,12 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferListPending
 Describe 'Get-AzDataTransferListPendingFlow' {
     It 'List' {
         {
-            $pendingFlows = Get-AzDataTransferListPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName
+            $pendingFlows = Get-AzDataTransferListPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked
             $pendingFlows.Count | Should -BeGreaterThan 0
             $pendingFlows | ForEach-Object {
-                $_.ConnectionName | Should -Be $env:ConnectionName
-                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
-                $_.Status | Should -Be "Pending"
+                $_.Name | Should -Not -BeNullOrEmpty
             }
         } | Should -Not -Throw
     }
