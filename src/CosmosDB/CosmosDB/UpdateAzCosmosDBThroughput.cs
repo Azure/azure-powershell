@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ThroughputBucketsHelpMessage)]
         [ValidateNotNull]
-        public ThroughputBucketResource[] ThroughputBuckets { get; set; }
+        public PSThroughputBucket[] ThroughputBuckets { get; set; }
 
         public override void ExecuteCmdlet()
         {

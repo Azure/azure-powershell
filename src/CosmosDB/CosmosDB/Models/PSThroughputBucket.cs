@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.CosmosDB.Models;
+
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     public class PSThroughputBucket
@@ -23,6 +25,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
             Id = id;
             MaxThroughputPercentage = maxThroughputPercentage;
+        }
+
+        public PSThroughputBucket(ThroughputBucketResource throughputBucketResource)
+        {
+            if (throughputBucketResource == null)
+                return;
+            Id = throughputBucketResource.Id;
+            MaxThroughputPercentage = throughputBucketResource.MaxThroughputPercentage;
         }
     }
 }

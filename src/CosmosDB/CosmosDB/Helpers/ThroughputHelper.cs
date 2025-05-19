@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         private static int? Throughput;
         private static int? AutoscaleMaxThroughput;
 
-        public static ThroughputSettingsUpdateParameters CreateThroughputSettingsObject(int? throughput = null, int? autoscaleMaxThroughput = null, ThroughputBucketResource[] throughputBuckets = null)
+        public static ThroughputSettingsUpdateParameters CreateThroughputSettingsObject(int? throughput = null, int? autoscaleMaxThroughput = null, PSThroughputBucket[] throughputBuckets = null)
         {
             Throughput = throughput;
             AutoscaleMaxThroughput = autoscaleMaxThroughput;
@@ -34,7 +37,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
                 throughputSettingsUpdateParameters.Resource = new ThroughputSettingsResource
                 {
                     Throughput = throughput.Value,
-                    ThroughputBuckets = throughputBuckets
+                    ThroughputBuckets = throughputBuckets != null && throughputBuckets.Length > 0
+                        ? new List<ThroughputBucketResource>(throughputBuckets.Select(t => new ThroughputBucketResource
+                        {
+                            Id = t.Id,
+                            MaxThroughputPercentage = t.MaxThroughputPercentage
+                        }))
+                        : null
                 };
             }
             else if (autoscaleMaxThroughput != null)
@@ -42,7 +51,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
                 throughputSettingsUpdateParameters.Resource = new ThroughputSettingsResource
                 {
                     AutoscaleSettings = new AutoscaleSettingsResource { MaxThroughput = autoscaleMaxThroughput.Value },
-                    ThroughputBuckets = throughputBuckets
+                    ThroughputBuckets = throughputBuckets != null && throughputBuckets.Length > 0
+                        ? new List<ThroughputBucketResource>(throughputBuckets.Select(t => new ThroughputBucketResource
+                        {
+                            Id = t.Id,
+                            MaxThroughputPercentage = t.MaxThroughputPercentage
+                        }))
+                        : null
                 };
             }
 
