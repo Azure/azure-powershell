@@ -17,21 +17,49 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataTransferFlow'))
 Describe 'Remove-AzDataTransferFlow' {
     It 'Delete' {
         {
-            Remove-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $flowToRemove -Confirm:$false | Should -BeNullOrEmpty
+            $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $flowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $flowToDelete
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+            $createdFlow =  New-AzDataTransferFlow @flowParams
+            $createdFlow | Should -Not -BeNullOrEmpty
+
+            Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -Confirm:$false | Should -BeNullOrEmpty
 
             # Ensure the flow is deleted
-            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:flowToRemove -ErrorAction SilentlyContinue
+            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -ErrorAction SilentlyContinue
             $deletedFlow | Should -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'Delete and return result' {
         {
-            $result = Remove-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:flowToRemove -PassThru -Confirm:$false
+            $flowToDelete = "test-flow-to-delete-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+            $flowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $flowToDelete
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+            $createdFlow =  New-AzDataTransferFlow @flowParams
+            $createdFlow | Should -Not -BeNullOrEmpty
+
+            $result = Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -PassThru -Confirm:$false
             $result | Should -Be $true
 
             # Ensure the flow is deleted
-            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $flowToRemove -ErrorAction SilentlyContinue
+            $deletedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToDelete -ErrorAction SilentlyContinue
             $deletedFlow | Should -BeNullOrEmpty
         } | Should -Not -Throw
     }
