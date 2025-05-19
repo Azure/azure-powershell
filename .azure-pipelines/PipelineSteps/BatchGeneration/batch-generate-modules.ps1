@@ -1,7 +1,7 @@
 param (
     [string]$MatrixKey,
     [string]$RepoRoot,
-    [string]$CommitTitle
+    [string]$AutorestVersion
 )
 
 $generationTargetsOutputFile = Join-Path $RepoRoot "artifacts" "generationTargets.json"
@@ -81,6 +81,7 @@ foreach ($moduleName in $sortedModuleNames) {
         }
     }
 
+    # If the module is changed in either src or generated folder, add a change log entry
     Set-Location $RepoRoot
     $srcFolderModuleRelativePath = ".\src\$moduleName"
     $generatedFolderModuleRelativePath = ".\generated\$moduleName"
@@ -90,20 +91,18 @@ foreach ($moduleName in $sortedModuleNames) {
     if ($diff) {
         Write-Host "Changes detected in $moduleName, adding change log"
         $moduleResult.Changed = "Yes"
-        $changeLogPath = Join-Path $RepoRoot "src" $moduleName $moduleName "ChangeLog.md"
-        $changeLogContent = Get-Content $changeLogPath
-        $newChangeLogEntry = "* Autorest Upgration: $CommitTitle"
-        
-        $index = $changeLogContent.IndexOf("## Upcoming Release")
-        if ($index -ge 0) {
-            $newChangeLogContent = $changeLogContent[0..$index] + $newChangeLogEntry + $changeLogContent[($index + 1)..($changeLogContent.Count - 1)]
-            Set-Content $changelogPath -Value $newChangeLogContent
-            $moduleResult.Changed = "Yes, Change Log Updated"
-            Write-Host "New change log entry added to $changeLogPath"
-        } else {
-            $moduleResult.Changed = "Yes, Change Log Not Updated"
-            Write-Host "Can not find '## Upcoming Release'"
+        $changeLogPath = Join-Path $RepoRoot "src" $moduleName $moduleName "AutorestUpgradeLog.md"
+        if (-not (Test-Path $changeLogPath)) {
+            New-Item -Path $changeLogPath -ItemType File -Force | Out-Null
+            Add-Content -Path $changeLogPath -Value "## Autorest upgrade log"
         }
+        $changeLogContent = Get-Content -Path $changeLogPath
+        $date = Get-Date -Format "dd/MM/yy"
+        $newChangeLogEntry = "* Autorest version: $AutorestVersion - $date"
+        $changeLogContent.Insert(1, $newChangeLogEntry)
+        Set-Content $changelogPath -Value $changeLogContent
+        $moduleResult.Changed = "Yes, Autorest Change Log Updated"
+        Write-Host "New change log entry added to $changeLogPath"
     }
 
     $moduleEndTime = Get-Date

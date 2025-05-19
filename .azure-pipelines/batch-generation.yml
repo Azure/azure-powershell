@@ -1,8 +1,8 @@
 parameters:
-- name: CommitTitle
-  displayName: 'Title of the commit that trigger batch generation'
+- name: AutorestVersion
+  displayName: 'Version of Autorest that trigger batch generation'
   type: string
-  default: 'Default commit title'
+  default: 'Default version'
 
 variables:
   IntermediateStepTimeoutInMinutes: 30
@@ -47,7 +47,7 @@ stages:
           targetType: inline
           pwsh: true
           script: |
-            $date = Get-Date -Format "yy-MM-dd"
+            $date = Get-Date -Format "dd/mm/yy"
             $generationBranch = "batch-generation/branch-$date-$(Build.BuildId)"
             $token = "$(GitHubToken)"
 
@@ -108,7 +108,7 @@ stages:
             git checkout "$(GenerationBranch)"
 
             $batchGenerateModulesPath = Join-Path "$(Build.SourcesDirectory)" '.azure-pipelines' 'PipelineSteps' 'BatchGeneration' 'batch-generate-modules.ps1'
-            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -CommitTitle "${{ parameters.CommitTitle }}"
+            & $batchGenerateModulesPath -MatrixKey "$(MatrixKey)" -RepoRoot "$(Build.SourcesDirectory)" -AutorestVersion "${{ parameters.AutorestVersion }}"
           workingDirectory: $(Build.SourcesDirectory)
 
       - task: PublishPipelineArtifact@1
@@ -171,7 +171,7 @@ stages:
             }
             
             git add .
-            git commit -m "Autorest Upgration - ${{ parameters.CommitTitle }}"
+            git commit -m "Autorest Upgrade - ${{ parameters.AutorestVersion }}"
             git push origin "$(GenerationBranch)"
 
       - task: PowerShell@2
