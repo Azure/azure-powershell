@@ -1,0 +1,281 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ComputeManagementClient",
+    "description": "The Compute Management Client.",
+    "version": "1.0"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {},
+  "definitions": {
+    "ApiErrorBase": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The error code."
+        },
+        "target": {
+          "type": "string",
+          "description": "The target of the particular error."
+        },
+        "message": {
+          "type": "string",
+          "description": "The error message."
+        }
+      },
+      "description": "Api error base."
+    },
+    "InnerError": {
+      "type": "object",
+      "properties": {
+        "exceptiontype": {
+          "type": "string",
+          "description": "The exception type."
+        },
+        "errordetail": {
+          "type": "string",
+          "description": "The internal error message or exception dump."
+        }
+      },
+      "description": "Inner error details."
+    },
+    "CloudError": {
+      "type": "object",
+      "x-ms-external": true,
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ApiError"
+        }
+      },
+      "description": "An error response from the Compute service."
+    },
+    "ApiError": {
+      "type": "object",
+      "properties": {
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiErrorBase"
+          },
+          "x-ms-identifiers": [
+            "message",
+            "target"
+          ],
+          "description": "The Api error details"
+        },
+        "innererror": {
+          "$ref": "#/definitions/InnerError",
+          "description": "The Api inner error"
+        },
+        "code": {
+          "type": "string",
+          "description": "The error code."
+        },
+        "target": {
+          "type": "string",
+          "description": "The target of the particular error."
+        },
+        "message": {
+          "type": "string",
+          "description": "The error message."
+        }
+      },
+      "description": "Api error."
+    },
+    "Resource": {
+      "type": "object",
+      "description": "The Resource model definition.",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "x-ms-azure-resource": true
+    },
+    "SubResource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource Id"
+        }
+      }
+    },
+    "SubResourceReadOnly": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        }
+      }
+    },
+    "ResourceWithOptionalLocation": {
+      "type": "object",
+      "description": "The Resource model definition with location property as optional.",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Resource location"
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource Id"
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags"
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "ExtendedLocationType": {
+      "type": "string",
+      "description": "The type of extendedLocation.",
+      "enum": [
+        "EdgeZone"
+      ],
+      "x-ms-enum": {
+        "name": "ExtendedLocationTypes",
+        "modelAsString": true
+      }
+    },
+    "ExtendedLocation": {
+      "type": "object",
+      "description": "The complex type of the extended location.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the extended location."
+        },
+        "type": {
+          "$ref": "#/definitions/ExtendedLocationType",
+          "description": "The type of the extended location."
+        }
+      }
+    },
+    "UserAssignedIdentities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "x-ms-client-name": "userAssignedIdentitiesValue",
+        "properties": {
+          "principalId": {
+            "readOnly": true,
+            "type": "string",
+            "description": "The principal id of user assigned identity."
+          },
+          "clientId": {
+            "readOnly": true,
+            "type": "string",
+            "description": "The client id of user assigned identity."
+          }
+        }
+      },
+      "description": "The list of user identities associated with the Virtual Machine. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+    },
+    "SystemData": {
+      "description": "The system meta data relating to this resource.",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "description": "Specifies the time in UTC at which the Cloud Service (extended support) resource was created. <br />Minimum api-version: 2022-04-04.",
+          "type": "string",
+          "readOnly": true
+        },
+        "lastModifiedAt": {
+          "format": "date-time",
+          "description": "Specifies the time in UTC at which the Cloud Service (extended support) resource was last modified. <br />Minimum api-version: 2022-04-04.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "Client Api Version."
+    }
+  }
+}
