@@ -75,6 +75,7 @@
 
 ## Version 8.2.0
 * Renamed parameter `-VmId` to `-SourceId` and added `-VmId` as an alias to `New-AzRestorePointCollection` cmdlet.
+* Fixed a bug in `Invoke-AzVMPatchAssessment` to show AvailablePatches correctly.
 
 ## Version 8.1.0
 * Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.
