@@ -38,20 +38,20 @@ Deletes an NSP Logging configuration.
 
 ## EXAMPLES
 
-### Example 1: Remove the Network security perimeter logging configuration
+### Example 1: Remove NetworkSecurityPerimeter LoggingConfiguration
 ```powershell
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
 
-Get the Network security perimeter logging configuration
+Remove NetworkSecurityPerimeter LoggingConfiguration
 
-### Example 2: Remove a network security perimeter logging configuration via identity
+### Example 2: Remove NetworkSecurityPerimeter LoggingConfiguration via Identity
 ```powershell
-$configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11
- Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
+$configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
 ```
 
-Remove a network security perimeter logging configuration via identity
+Remove NetworkSecurityPerimeter LoggingConfiguration via Identity
 
 ## PARAMETERS
 

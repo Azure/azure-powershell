@@ -16,16 +16,16 @@ Updates a NSP Link
 ```
 Update-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>]
- [-LocalInboundProfile <String[]>] [-Location <String>] [-RemoteInboundProfile <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
- [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>] [-Location <String>]
- [-RemoteInboundProfile <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
+ [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,34 +33,70 @@ Updates a NSP Link
 
 ## EXAMPLES
 
-### Example 1: Update network security perimeter link
+### Example 1: Update NetworkSecurityPerimeter Link
 ```powershell
-Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
+Update-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 ```
 
 ```output
-Etag Name
----- ----
-     t-link2
+AutoApprovedRemotePerimeterResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                        /Microsoft.Network/networkSecurityPerimeters/test-nsp-2
+Description                           : Auto Approved.
+Id                                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                        /Microsoft.Network/networkSecurityPerimeters/test-nsp-1/links/link-test-1
+LocalInboundProfile                   : {*}
+LocalOutboundProfile                  : {*}
+Name                                  : link-test-1
+ProvisioningState                     : Succeeded
+RemoteInboundProfile                  : {*}
+RemoteOutboundProfile                 : {*}
+RemotePerimeterGuid                   : 0000000-b1c5-4473-86d7-7755db0c6970
+RemotePerimeterLocation               : eastuseuap
+ResourceGroupName                     : rg-test-1
+Status                                : Approved
+SystemDataCreatedAt                   :
+SystemDataCreatedBy                   :
+SystemDataCreatedByType               :
+SystemDataLastModifiedAt              :
+SystemDataLastModifiedBy              :
+SystemDataLastModifiedByType          :
+Type                                  : Microsoft.Network/networkSecurityPerimeters/links
 ```
 
-Update network security perimeter link
+Update NetworkSecurityPerimeter Link
 
-### Example 2: Update network security perimeter link via identity
+### Example 2: Update NetworkSecurityPerimeter Link via Identity
 ```powershell
-$getLinkObj = Get-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4
-
-Update-AzNetworkSecurityPerimeterLink -InputObject $getLinkObj -LocalInboundProfile @('*')
-
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Update-AzNetworkSecurityPerimeterLink -InputObject $linkObj -LocalInboundProfile @('profile-test-2')
 ```
 
 ```output
-Etag Name
----- ----
-     t-link2
+AutoApprovedRemotePerimeterResourceId : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                        /Microsoft.Network/networkSecurityPerimeters/test-nsp-2
+Description                           : Auto Approved.
+Id                                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                        /Microsoft.Network/networkSecurityPerimeters/test-nsp-1/links/link-test-1
+LocalInboundProfile                   : {profile-test-2}
+LocalOutboundProfile                  : {*}
+Name                                  : link-test-1
+ProvisioningState                     : Succeeded
+RemoteInboundProfile                  : {*}
+RemoteOutboundProfile                 : {*}
+RemotePerimeterGuid                   : 0000000-b1c5-4473-86d7-7755db0c6970
+RemotePerimeterLocation               : eastuseuap
+ResourceGroupName                     : rg-test-1
+Status                                : Approved
+SystemDataCreatedAt                   :
+SystemDataCreatedBy                   :
+SystemDataCreatedByType               :
+SystemDataLastModifiedAt              :
+SystemDataLastModifiedBy              :
+SystemDataLastModifiedByType          :
+Type                                  : Microsoft.Network/networkSecurityPerimeters/links
 ```
 
-Update network security perimeter link via identity
+Update NetworkSecurityPerimeter Link via Identity
 
 ## PARAMETERS
 
@@ -130,21 +166,6 @@ Local inbound profiles
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -242,21 +263,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -52,18 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>Resource ID.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource ID.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("Id")]
-        public string AccessRuleId { get => _parametersBody.Id ?? null; set => _parametersBody.Id = value; }
-
         /// <summary>Inbound address prefixes (IPv4/IPv6)</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Inbound address prefixes (IPv4/IPv6)")]
@@ -109,14 +97,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Inbound", "Outbound")]
         public string Direction { get => _parametersBody.Direction ?? null; set => _parametersBody.Direction = value; }
 
-        /// <summary>Outbound rules email address format.</summary>
+        /// <summary>
+        /// Outbound rules in email address format. This access rule type is currently unavailable for use.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules email address format.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules in email address format. This access rule type is currently unavailable for use.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Outbound rules email address format.",
+        Description = @"Outbound rules in email address format. This access rule type is currently unavailable for use.",
         SerializedName = @"emailAddresses",
         PossibleTypes = new [] { typeof(string) })]
         public string[] EmailAddress { get => _parametersBody.EmailAddress?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.EmailAddress = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -124,14 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
-        /// <summary>Outbound rules fully qualified domain name format.</summary>
+        /// <summary>Outbound rules in fully qualified domain name format.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules fully qualified domain name format.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules in fully qualified domain name format.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Outbound rules fully qualified domain name format.",
+        Description = @"Outbound rules in fully qualified domain name format.",
         SerializedName = @"fullyQualifiedDomainNames",
         PossibleTypes = new [] { typeof(string) })]
         public string[] FullyQualifiedDomainName { get => _parametersBody.FullyQualifiedDomainName?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.FullyQualifiedDomainName = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -159,17 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Resource location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource location.",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -178,14 +157,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>Outbound rules phone number format.</summary>
+        /// <summary>
+        /// Outbound rules in phone number format. This access rule type is currently unavailable for use.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules phone number format.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Outbound rules in phone number format. This access rule type is currently unavailable for use.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Outbound rules phone number format.",
+        Description = @"Outbound rules in phone number format. This access rule type is currently unavailable for use.",
         SerializedName = @"phoneNumbers",
         PossibleTypes = new [] { typeof(string) })]
         public string[] PhoneNumber { get => _parametersBody.PhoneNumber?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.PhoneNumber = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -211,14 +192,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Inbound rules service tag names.</summary>
+        /// <summary>
+        /// Inbound rules of type service tag. This access rule type is currently unavailable for use.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Inbound rules service tag names.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Inbound rules of type service tag. This access rule type is currently unavailable for use.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Inbound rules service tag names.",
+        Description = @"Inbound rules of type service tag. This access rule type is currently unavailable for use.",
         SerializedName = @"serviceTags",
         PossibleTypes = new [] { typeof(string) })]
         public string[] ServiceTag { get => _parametersBody.ServiceTag?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ServiceTag = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -234,18 +217,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
         SerializedName = @"subscriptions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId) })]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[] Subscription { get => _parametersBody.Subscription?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Subscription = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId>(value) : null); }
-
-        /// <summary>Resource tags.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource tags.",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
