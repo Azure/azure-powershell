@@ -13,7 +13,7 @@
 ```powershell
 $authHeader = @{
     'Content-Type'  = 'application/json'
-    'Authorization' = 'Bearer ' + (Get-AccessToken)
+    'Authorization' = 'Bearer ' + (Get-AccessToken).Token
 }
 $response = Invoke-RestMethod -Method Get -Headers $authHeader -Uri $uri
 ```
