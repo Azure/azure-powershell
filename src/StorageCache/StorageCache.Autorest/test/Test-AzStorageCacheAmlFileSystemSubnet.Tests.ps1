@@ -19,7 +19,11 @@ Describe 'Test-AzStorageCacheAmlFileSystemSubnet' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CheckViaIdentityExpanded' -skip {
+    It 'CheckViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CheckViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

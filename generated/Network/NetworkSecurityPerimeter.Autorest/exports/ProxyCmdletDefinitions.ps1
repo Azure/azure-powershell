@@ -20,18 +20,12 @@ Gets the specified NSP access rule by name.
 .Description
 Gets the specified NSP access rule by name.
 .Example
-
- Get-AzNetworkSecurityPerimeterAccessRule -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAccessRule -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -321,7 +315,7 @@ These resources can be associated with a network security perimeter
 Gets the list of resources that are onboarded with NSP.
 These resources can be associated with a network security perimeter
 .Example
- Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResource
@@ -498,18 +492,12 @@ Gets the specified NSP association by name.
 .Description
 Gets the specified NSP association by name.
 .Example
-
- Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -766,9 +754,9 @@ Gets the specified NSP linkReference resource.
 .Description
 Gets the specified NSP linkReference resource.
 .Example
-Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
+Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -Name Ref-from-link-test-1-000000-29bb-4bc4-9297-676b337e6c74
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -1025,9 +1013,9 @@ Gets the specified NSP link resource.
 .Description
 Gets the specified NSP link resource.
 .Example
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2
+Get-AzNetworkSecurityPerimeterLink -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2 -Name t-link1
+Get-AzNetworkSecurityPerimeterLink -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -Name link-test-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -1284,7 +1272,7 @@ Gets the NSP logging configuration.
 .Description
 Gets the NSP logging configuration.
 .Example
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -1533,18 +1521,12 @@ Gets the specified NSP profile.
 .Description
 Gets the specified NSP profile.
 .Example
-
- Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -1801,22 +1783,14 @@ Gets the specified network security perimeter by the name.
 .Description
 Gets the specified network security perimeter by the name.
 .Example
-
- Get-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1
-
+Get-AzNetworkSecurityPerimeter -ResourceGroupName rg-test-1
 .Example
-
- Get-AzNetworkSecurityPerimeter
-
+Get-AzNetworkSecurityPerimeter
 .Example
-
- Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
-
+Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Get-AzNetworkSecurityPerimeter -InputObject $GETObj
-
+$GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+Get-AzNetworkSecurityPerimeter -InputObject $GETObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -2047,14 +2021,9 @@ create a network access rule.
 .Description
 create a network access rule.
 .Example
-
- New-AzNetworkSecurityPerimeterAccessRule -Name accessRule1 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound'
 .Example
-
-$emails = @("test123@microsoft.com", "test321@microsoft.com")
-New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
-
+New-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-2 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EmailAddress @("test123@microsoft.com", "test321@microsoft.com") -Direction 'Outbound'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -2096,16 +2065,12 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INspAccessRule>: The NSP access rule resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AddressPrefix <List<String>>]: Inbound address prefixes (IPv4/IPv6)
   [Direction <String>]: Direction that specifies whether the access rules is inbound/outbound.
-  [EmailAddress <List<String>>]: Outbound rules email address format.
-  [FullyQualifiedDomainName <List<String>>]: Outbound rules fully qualified domain name format.
-  [PhoneNumber <List<String>>]: Outbound rules phone number format.
-  [ServiceTag <List<String>>]: Inbound rules service tag names.
+  [EmailAddress <List<String>>]: Outbound rules in email address format. This access rule type is currently unavailable for use.
+  [FullyQualifiedDomainName <List<String>>]: Outbound rules in fully qualified domain name format.
+  [PhoneNumber <List<String>>]: Outbound rules in phone number format. This access rule type is currently unavailable for use.
+  [ServiceTag <List<String>>]: Inbound rules of type service tag. This access rule type is currently unavailable for use.
   [Subscription <List<ISubscriptionId>>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 
@@ -2220,16 +2185,6 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Alias('Id')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${AccessRuleId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String[]]
@@ -2253,7 +2208,8 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String[]]
-    # Outbound rules email address format.
+    # Outbound rules in email address format.
+    # This access rule type is currently unavailable for use.
     ${EmailAddress},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2263,17 +2219,8 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String[]]
-    # Outbound rules fully qualified domain name format.
+    # Outbound rules in fully qualified domain name format.
     ${FullyQualifiedDomainName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -2282,7 +2229,8 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String[]]
-    # Outbound rules phone number format.
+    # Outbound rules in phone number format.
+    # This access rule type is currently unavailable for use.
     ${PhoneNumber},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2292,7 +2240,8 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String[]]
-    # Inbound rules service tag names.
+    # Inbound rules of type service tag.
+    # This access rule type is currently unavailable for use.
     ${ServiceTag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2304,16 +2253,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]]
     # List of subscription ids
     ${Subscription},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -2487,11 +2426,9 @@ create a NSP resource association.
 .Description
 create a NSP resource association.
 .Example
-
- $profileId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp3/profiles/profile2'
- $privateLinkResourceId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.KeyVault/vaults/rp4'
- New-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 -Location eastus2euap -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
-
+$profileId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1'
+$privateLinkResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Sql/servers/sql-server-test-1'
+New-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -SecurityPerimeterName nsp-test-1 -ResourceGroupName rg-test-1 -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -2533,10 +2470,6 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INspAssociation>: The NSP resource association resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [AccessMode <String>]: Access mode on the association.
   [PrivateLinkResourceId <String>]: Resource ID.
   [ProfileId <String>]: Resource ID.
@@ -2621,23 +2554,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Alias('Id')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${AssociationId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String]
     # Resource ID.
@@ -2650,15 +2566,6 @@ param(
     [System.String]
     # Resource ID.
     ${ProfileId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -2842,11 +2749,8 @@ create NSP link resource.
 .Description
 create NSP link resource.
 .Example
-$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
-New-AzNetworkSecurityPerimeterLink -Name exlink3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
-.Example
-$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
-New-AzNetworkSecurityPerimeterLink -Name exlink4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
+$remotePerimeterId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/test-nsp-2"
+New-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName test-nsp-1 -AutoApprovedRemotePerimeterResourceId $remotePerimeterId  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -3171,7 +3075,7 @@ create NSP logging configuration.
 .Description
 create NSP logging configuration.
 .Example
-New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -3476,13 +3380,7 @@ create a network profile.
 .Description
 create a network profile.
 .Example
-
- New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
-.Example
-
- New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+New-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -3522,12 +3420,6 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
   [ProfileName <String>]: The name of the NSP profile.
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-PARAMETER <INspProfile>: The network security perimeter profile resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterprofile
 #>
@@ -3596,32 +3488,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile]
     # The network security perimeter profile resource
     ${Parameter},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Alias('Id')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${ProfileId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -3793,13 +3659,7 @@ create a Network Security Perimeter.
 .Description
 create a Network Security Perimeter.
 .Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp1 -Location eastus2euap
-
-.Example
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp2 -Location eastus2euap
-
+New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
@@ -3827,9 +3687,8 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
-  [Id <String>]: Resource ID.
-  [Location <String>]: Resource location.
-  [Tag <IResourceTags>]: Resource tags.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter
@@ -3880,25 +3739,17 @@ param(
     # The Network Security Perimeter resource
     ${Parameter},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String]
-    # Resource location.
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Alias('Id')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${SecurityPerimeterId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4071,14 +3922,10 @@ Deletes an NSP access rule.
 .Description
 Deletes an NSP access rule.
 .Example
-
- Remove-AzNetworkSecurityPerimeterAccessRule -Name ar5 -ProfileName profile4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+Remove-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar6 -ProfileName profile4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
-
+$accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name access-rule-test-1 -ProfileName profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -4354,14 +4201,10 @@ Deletes an NSP association resource.
 .Description
 Deletes an NSP association resource.
 .Example
-
- Remove-AzNetworkSecurityPerimeterAssociation -Name association4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+Remove-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name association5 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj
-
+$associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -4619,10 +4462,10 @@ Deletes an NSP LinkReference resource.
 .Description
 Deletes an NSP LinkReference resource.
 .Example
-Remove-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
+Remove-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- $linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11 -Name Ref-from-t-linkD4-902f9e36-84c2-43d6-983d-677f70568a30
- Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
+$linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -Name Ref-from-link-test-1-00000000-78f8-4f1b-8f30-ffe0eaa74495 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -4880,9 +4723,9 @@ Deletes an NSP Link resource.
 .Description
 Deletes an NSP Link resource.
 .Example
-Remove-AzNetworkSecurityPerimeterLink -Name t-linkD3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp8
+Remove-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-$linkObj = Get-AzNetworkSecurityPerimeterLink -Name t-linkD4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp10
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 Remove-AzNetworkSecurityPerimeterLink -InputObject $linkObj
 
 .Inputs
@@ -5141,10 +4984,10 @@ Deletes an NSP Logging configuration.
 .Description
 Deletes an NSP Logging configuration.
 .Example
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
- $configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11
- Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
+$configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -5395,14 +5238,10 @@ Deletes an NSP profile.
 .Description
 Deletes an NSP profile.
 .Example
-
- Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+Remove-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
-
+$profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -5648,14 +5487,10 @@ Deletes a network security perimeter.
 .Description
 Deletes a network security perimeter.
 .Example
-
- Remove-AzNetworkSecurityPerimeter -Name nsp5 -ResourceGroupName ResourceGroup-1
-
+Remove-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
 .Example
-
- $nspObj = Get-AzNetworkSecurityPerimeter -Name nsp6 -ResourceGroupName ResourceGroup-1 
- Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
-
+$nspObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 
+Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -5890,12 +5725,10 @@ Patch Tags for a Network Security Perimeter.
 .Description
 Patch Tags for a Network Security Perimeter.
 .Example
-
-Update-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
-
+Update-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Tag @{'Owner'='user-test-1'}
 .Example
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- Update-AzNetworkSecurityPerimeter -InputObject $GETObj
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+ Update-AzNetworkSecurityPerimeter -InputObject $GETObj -Tag @{'Owner'='user-test-2'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -6153,14 +5986,10 @@ Updates an access rule.
 .Description
 Updates an access rule.
 .Example
-
- Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
-
+Update-AzNetworkSecurityPerimeterAccessRule -Name access-rule-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -ProfileName profile-test-1  -AddressPrefix @('10.10.0.0/24')
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1
- Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
-
+$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name access-rule-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -ProfileName profile-test-1
+Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -6234,19 +6063,6 @@ param(
     # Identity parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Location of the resource
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -6454,14 +6270,10 @@ Updates an association
 .Description
 Updates an association.
 .Example
-
- Update-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 -AccessMode Enforced
-
+Update-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -SecurityPerimeterName nsp-test-1 -ResourceGroupName rg-test-1 -AccessMode Enforced
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1
- Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode Learning
-
+$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -SecurityPerimeterName nsp-test-1 -ResourceGroupName rg-test-1
+Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode Learning
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -6526,19 +6338,6 @@ param(
     # Identity parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Location of the resource
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -6722,12 +6521,10 @@ Updates a NSP Link
 .Description
 Updates a NSP Link
 .Example
-Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
+Update-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 .Example
-$getLinkObj = Get-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4
-
-Update-AzNetworkSecurityPerimeterLink -InputObject $getLinkObj -LocalInboundProfile @('*')
-
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Update-AzNetworkSecurityPerimeterLink -InputObject $linkObj -LocalInboundProfile @('profile-test-2')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -6792,19 +6589,6 @@ param(
     # Identity parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Location of the resource
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -6988,7 +6772,7 @@ Updates a NSP Logging Configuration
 .Description
 Updates a NSP Logging Configuration
 .Example
-Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
+Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -7053,19 +6837,6 @@ param(
     # Identity parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Location of the resource
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]

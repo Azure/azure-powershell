@@ -22,7 +22,7 @@ These resources can be associated with a network security perimeter
 Gets the list of resources that are onboarded with NSP.
 These resources can be associated with a network security perimeter
 .Example
- Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResource

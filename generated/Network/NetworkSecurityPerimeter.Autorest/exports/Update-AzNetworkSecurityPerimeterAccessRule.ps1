@@ -20,14 +20,10 @@ Updates an access rule.
 .Description
 Updates an access rule.
 .Example
-
- Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
-
+Update-AzNetworkSecurityPerimeterAccessRule -Name access-rule-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -ProfileName profile-test-1  -AddressPrefix @('10.10.0.0/24')
 .Example
-
- $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1
- Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
-
+$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name access-rule-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -ProfileName profile-test-1
+Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -101,19 +97,6 @@ param(
     # Identity parameter.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-    [System.String]
-    # Location of the resource
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]

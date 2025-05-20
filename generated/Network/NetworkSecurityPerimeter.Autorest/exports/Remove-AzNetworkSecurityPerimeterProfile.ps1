@@ -20,14 +20,10 @@ Deletes an NSP profile.
 .Description
 Deletes an NSP profile.
 .Example
-
- Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+Remove-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 .Example
-
- $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
-
+$profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
+Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity

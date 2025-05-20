@@ -17,8 +17,8 @@ Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Nam
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]
- [-IngestionPolicyIngestionType <IngestionType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IngestionPolicyIngestionType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +114,7 @@ Emission policies.
 To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IEmissionPoliciesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Ingestion Sources.
 To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.IIngestionSourcesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The ingestion type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.ICollectorPolicy
 
 ## NOTES
 

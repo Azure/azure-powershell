@@ -130,20 +130,6 @@ function Update-AzNetworkSecurityPerimeterAssociation {
 
         # Body paramters
 
-        [Parameter(HelpMessage = "Resource tags.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
-        [System.Collections.Hashtable]
-        # Resource tags.
-        ${Tag},
-
-        [Parameter(HelpMessage = "Location of the resource")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # The Location of the resource
-        ${Location},
-
-
         [Parameter(HelpMessage = "Access Mode")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
@@ -170,7 +156,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AccessMode', 'PrivateLinkResourceId', 'ProfileId', 'AsJob'
+            $bodyParams = 'AccessMode', 'PrivateLinkResourceId', 'ProfileId', 'AsJob'
 
             $bodyParamsMap = @{}
 

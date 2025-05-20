@@ -1,18 +1,29 @@
-### Example 1: Creates a NetworkSecurityPerimeterAccessAssociation
+### Example 1: Create NetworkSecurityPerimeter Association
 ```powershell
-
- $profileId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp3/profiles/profile2'
- $privateLinkResourceId = '/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.KeyVault/vaults/rp4'
- New-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 -Location eastus2euap -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
-
+$profileId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1'
+$privateLinkResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers/Microsoft.Sql/servers/sql-server-test-1'
+New-AzNetworkSecurityPerimeterAssociation -Name association-test-1 -SecurityPerimeterName nsp-test-1 -ResourceGroupName rg-test-1 -AccessMode Learning -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
 ```
 
 ```output
-
-Location Name
--------- ----
-         association1
-
-
+AccessMode                   : Learning
+HasProvisioningIssue         : no
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/resourceAssociations/association-test-1
+Name                         : association-test-1
+PrivateLinkResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-2/providers
+                                /Microsoft.Sql/servers/sql-server-test-1
+ProfileId                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers
+                                /Microsoft.Network/networkSecurityPerimeters/nsp-test-1/profiles/profile-test-1
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg-test-1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Network/networkSecurityPerimeters/resourceAssociations
 ```
-Creates a NetworkSecurityPerimeterAccessAssociation
+
+Create NetworkSecurityPerimeter Association
