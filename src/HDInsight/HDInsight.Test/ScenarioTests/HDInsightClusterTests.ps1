@@ -24,22 +24,22 @@ function Test-CreateClusterWithWasbAndMSI{
 		$storageAccountKey=Get-AzStorageAccountKey -ResourceGroupName "yukundemo1" -Name "yk01wasb666666666666"
 		$storageAccountKey=$storageAccountKey[0].Value
 		$clusterParams = @{
-			ClusterType					  = $params.clusterType
-			ClusterSizeInNodes			  = $params.clusterSizeInNodes
-			ResourceGroupName			  = $params.resourceGroupName
-			ClusterName					  = $params.clusterName
-			HttpCredential				  = $params.httpCredential
-			SshCredential				  = $params.sshCredential
-			Location					  = $params.location
-			MinSupportedTlsVersion        = $params.minSupportedTlsVersion
-			VirtualNetworkId			  = $params.virtualNetworkId
-			SubnetName					  = "default"
-			Version						  = "5.1"
-			StorageAccountType			  = "AzureStorage"
-			StorageContainer			  = $params.clusterName
-			StorageAccountKey			  = $storageAccountKey
-			StorageAccountResourceId	  = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Storage/storageAccounts/yk01wasb666666666666"
-			StorageAccountManagedIdentity = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi"
+			ClusterType						= $params.clusterType
+			ClusterSizeInNodes				= $params.clusterSizeInNodes
+			ResourceGroupName				= $params.resourceGroupName
+			ClusterName						= $params.clusterName
+			HttpCredential					= $params.httpCredential
+			SshCredential					= $params.sshCredential
+			Location						= $params.location
+			MinSupportedTlsVersion			= $params.minSupportedTlsVersion
+			VirtualNetworkId				= $params.virtualNetworkId
+			SubnetName						= "default"
+			Version							= "5.1"
+			StorageAccountType				= "AzureStorage"
+			StorageContainer				= $params.clusterName
+			StorageAccountKey				= $storageAccountKey
+			StorageAccountResourceId		= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Storage/storageAccounts/yk01wasb666666666666"
+			StorageAccountManagedIdentity	= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi"
         }
 		# test create cluster
 		$cluster = New-AzHDInsightCluster @clusterParams
@@ -67,20 +67,20 @@ function Test-CreateEntraCluster{
 		 $user1 = New-AzHDInsightClusterGatewayEntraUserInfo -ObjectId "9cd85b81-c262-44da-bc33-96c3b8c182d3" -DisplayName "Yukun Li (Beyondsoft)"  -Upn "v-yukunli@microsoft"
 		
 		 $clusterParams = @{
-			ClusterType					  = $params.clusterType
-			ClusterSizeInNodes			  = $params.clusterSizeInNodes
-			ResourceGroupName			  = $params.resourceGroupName
-			ClusterName					  = $params.clusterName
-			SshCredential				  = $params.sshCredential
-			Location					  = $params.location
-			MinSupportedTlsVersion        = $params.minSupportedTlsVersion
-			VirtualNetworkId			  = $params.virtualNetworkId
-			SubnetName					  = "default"
-			Version						  = "5.1"
-			StorageContainer			  = $params.clusterName
-			StorageAccountKey			  = $params.storageAccountKey
-			StorageAccountResourceId	  = $params.storageAccountResourceId
-			RestAuthEntraUsers			  = $user1
+			ClusterType						= $params.clusterType
+			ClusterSizeInNodes				= $params.clusterSizeInNodes
+			ResourceGroupName				= $params.resourceGroupName
+			ClusterName						= $params.clusterName
+			SshCredential					= $params.sshCredential
+			Location						= $params.location
+			MinSupportedTlsVersion			= $params.minSupportedTlsVersion
+			VirtualNetworkId				= $params.virtualNetworkId
+			SubnetName						= "default"
+			Version							= "5.1"
+			StorageContainer				= $params.clusterName
+			StorageAccountKey				= $params.storageAccountKey
+			StorageAccountResourceId		= $params.storageAccountResourceId
+			RestAuthEntraUsers				= $user1
         }
 		$resultCluster = New-AzHDInsightCluster @clusterParams
 		Assert-NotNull $resultCluster
