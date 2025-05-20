@@ -18,7 +18,7 @@ Describe 'Disable-AzDataTransferFlow' {
     It 'Disable' {
         {
             # Disable the flow
-            $disabledFlow = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhSendFlow -Confirm:$false
+            $disabledFlow = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.SendFlow -Confirm:$false
 
             # Verify the flow is disabled
             $disabledFlow.Status | Should -Be "Disabled"
@@ -28,7 +28,7 @@ Describe 'Disable-AzDataTransferFlow' {
     It 'Disable when already disabled' {
         {
             # Attempt to disable the flow again
-            $disabledFlow = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhDisabledFlow -Confirm:$false
+            $disabledFlow = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.DisabledFlow -Confirm:$false
 
             # Verify the flow is still disabled
             $disabledFlow.Status | Should -Be "Disabled"
@@ -38,7 +38,7 @@ Describe 'Disable-AzDataTransferFlow' {
     It 'Disable AsJob' {
         {
             # Disable the flow as a background job
-            $job = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhSendFlow -AsJob -Confirm:$false
+            $job = Disable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.SendFlow -AsJob -Confirm:$false
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
@@ -48,7 +48,7 @@ Describe 'Disable-AzDataTransferFlow' {
             $job | Wait-Job | Out-Null
     
             # Verify the flow is disabled after the job completes
-            $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.FaikhSendFlow
+            $disabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $env.SendFlow
             $disabledFlow.Status | Should -Be "Disabled"
         } | Should -Not -Throw
     }

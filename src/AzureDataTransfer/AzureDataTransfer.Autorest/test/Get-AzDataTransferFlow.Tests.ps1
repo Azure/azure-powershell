@@ -28,9 +28,9 @@ Describe 'Get-AzDataTransferFlow' {
 
     It 'Get' {
         {
-            $flow = Get-AzDataTransferFlow -ConnectionName $env.ConnectionLinked -ResourceGroupName $env.ResourceGroupName -Name $env.FaikhRecvFlow
+            $flow = Get-AzDataTransferFlow -ConnectionName $env.ConnectionLinked -ResourceGroupName $env.ResourceGroupName -Name $env.RecvFlow
             $flow | Should -Not -BeNullOrEmpty
-            $flow.Name | Should -Be $env.FaikhRecvFlow
+            $flow.Name | Should -Be $env.RecvFlow
             $flow.ResourceGroupName | Should -Be $env.ResourceGroupName
         } | Should -Not -Throw
     }

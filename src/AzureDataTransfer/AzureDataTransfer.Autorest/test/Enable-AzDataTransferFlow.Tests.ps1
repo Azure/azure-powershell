@@ -18,7 +18,7 @@ Describe 'Enable-AzDataTransferFlow' {
     It 'Enable' {
         {
             # Enable the flow
-            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -Confirm:$false
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.RecvFlow -Confirm:$false
 
             # Verify the flow is enabled
             $enabledFlow.Status | Should -Be "Enabled"
@@ -28,7 +28,7 @@ Describe 'Enable-AzDataTransferFlow' {
     It 'Enable when already enabled' {
         {
             # Attempt to enable the flow again
-            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhEnabledFlow -Confirm:$false
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.EnabledFlow -Confirm:$false
 
             # Verify the flow is still enabled
             $enabledFlow.Status | Should -Be "Enabled"
@@ -38,7 +38,7 @@ Describe 'Enable-AzDataTransferFlow' {
     It 'Enable AsJob' {
         {
             # Enable the flow as a background job
-            $job = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -AsJob -Confirm:$false
+            $job = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.RecvFlow -AsJob -Confirm:$false
     
             # Verify the job is created
             $job | Should -Not -BeNullOrEmpty
@@ -48,7 +48,7 @@ Describe 'Enable-AzDataTransferFlow' {
             $job | Wait-Job | Out-Null
     
             # Verify the flow is enabled after the job completes
-            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow
+            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.RecvFlow
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }
