@@ -130,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("TargetWorkerNodeCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount = (int) content.GetValueForProperty("TargetWorkerNodeCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount = (int?) content.GetValueForProperty("TargetWorkerNodeCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("TargetWorkerNodeCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount = (int) content.GetValueForProperty("TargetWorkerNodeCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount = (int?) content.GetValueForProperty("TargetWorkerNodeCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeDataInternal)this).TargetWorkerNodeCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

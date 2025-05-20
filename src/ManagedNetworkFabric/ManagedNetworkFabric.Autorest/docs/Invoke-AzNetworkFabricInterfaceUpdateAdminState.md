@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzNetworkFabricInterfaceUpdateAdminState
 
 ## SYNOPSIS
-Update the admin state of the Network Interface.
+update the admin state of the Network Interface.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -Net
 ```
 
 ## DESCRIPTION
-Update the admin state of the Network Interface.
+update the admin state of the Network Interface.
 
 ## EXAMPLES
 

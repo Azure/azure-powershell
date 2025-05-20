@@ -49,40 +49,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for EndpointUri</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.EndpointUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).EndpointUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).EndpointUri = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.EndpointUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).EndpointUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).EndpointUri = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentity Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.QuantumWorkspaceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.WorkspaceResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Usable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.Usable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).Usable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).Usable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspaceInternal.Usable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).Usable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IWorkspaceResourcePropertiesInternal)Property).Usable = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inherited)]
@@ -120,27 +138,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quantum.PropertyOrigin.Inherited)]

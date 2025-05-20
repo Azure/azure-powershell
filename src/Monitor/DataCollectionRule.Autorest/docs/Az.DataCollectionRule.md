@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataCollectionRule
-Module Guid: cdb86053-4116-4141-b74b-b90f88b83813
+Module Guid: 5a0cc330-5223-4074-b16b-ae7811004ccb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datacollectionrule
 Help Version: 1.0.0.0
 Locale: en-US

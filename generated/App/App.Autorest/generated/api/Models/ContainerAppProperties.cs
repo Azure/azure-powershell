@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplate Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal.Template { get => (this._template = this._template ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Template()); set { {_template = value;} } }
 
         /// <summary>Internal Acessors for TemplateScale</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScale Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppPropertiesInternal.TemplateScale { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITemplateInternal)Template).Scale = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OutboundIPAddress" /> property.</summary>
         private System.Collections.Generic.List<string> _outboundIPAddress;

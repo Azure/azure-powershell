@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         public string Configuration { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Configuration = value ?? null; }
 
         /// <summary>Internal Acessors for Topic</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITopic Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal.Topic { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Topic; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Topic = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ITopic Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal.Topic { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Topic; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventBaseInternal)__eventBase).Topic = value ?? null /* model class */; }
 
         /// <summary>The name of the event.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inherited)]

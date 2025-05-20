@@ -166,13 +166,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngress Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.Ingress { get => (this._ingress = this._ingress ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Ingress()); set { {_ingress = value;} } }
 
         /// <summary>Internal Acessors for IngressCorsPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICorsPolicy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressCorsPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).CorsPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).CorsPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICorsPolicy Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressCorsPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).CorsPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).CorsPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IngressFqdn</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).Fqdn = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).Fqdn = value ?? null; }
 
         /// <summary>Internal Acessors for IngressStickySession</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressStickySessions Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressStickySession { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).StickySession; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).StickySession = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressStickySessions Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.IngressStickySession { get => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).StickySession; set => ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIngressInternal)Ingress).StickySession = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Service</summary>
         Microsoft.Azure.PowerShell.Cmdlets.App.Models.IService Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfigurationInternal.Service { get => (this._service = this._service ?? new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Service()); set { {_service = value;} } }

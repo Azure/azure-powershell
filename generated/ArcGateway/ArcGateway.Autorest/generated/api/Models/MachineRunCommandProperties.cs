@@ -65,41 +65,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
 
         /// <summary>Script end time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; }
 
         /// <summary>Script error stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error = value ?? null; }
+        public string InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; }
 
         /// <summary>Communicate script configuration errors or execution messages.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage = value ?? null; }
+        public string InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; }
 
         /// <summary>Script execution status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState = value ?? null; }
+        public string InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; }
 
         /// <summary>Exit code returned from script execution.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode = value ?? default(int); }
+        public int? InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; }
 
         /// <summary>Script output stream.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output = value ?? null; }
+        public string InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; }
 
         /// <summary>Script start time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; }
 
         /// <summary>The status information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; }
 
         /// <summary>Internal Acessors for ErrorBlobManagedIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.ErrorBlobManagedIdentity { get => (this._errorBlobManagedIdentity = this._errorBlobManagedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.RunCommandManagedIdentity()); set { {_errorBlobManagedIdentity = value;} } }
 
         /// <summary>Internal Acessors for InstanceView</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceView Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceView { get => (this._instanceView = this._instanceView ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.MachineRunCommandInstanceView()); set { {_instanceView = value;} } }
+
+        /// <summary>Internal Acessors for InstanceViewEndTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).EndTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewError</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Error = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewExecutionMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExecutionState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewExecutionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExecutionState = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewExitCode</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).ExitCode = value ?? default(int); }
+
+        /// <summary>Internal Acessors for InstanceViewOutput</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewOutput { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Output = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceViewStartTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).StartTime = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for InstanceViewStatuses</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IExtensionsResourceStatus> Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.InstanceViewStatuses { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandInstanceViewInternal)InstanceView).Statuses = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for OutputBlobManagedIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.OutputBlobManagedIdentity { get => (this._outputBlobManagedIdentity = this._outputBlobManagedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.RunCommandManagedIdentity()); set { {_outputBlobManagedIdentity = value;} } }
@@ -111,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSource Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.Source { get => (this._source = this._source ?? new Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.MachineRunCommandScriptSource()); set { {_source = value;} } }
 
         /// <summary>Internal Acessors for SourceScriptUriManagedIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandPropertiesInternal.SourceScriptUriManagedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IMachineRunCommandScriptSourceInternal)Source).ScriptUriManagedIdentity = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="OutputBlobManagedIdentity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IRunCommandManagedIdentity _outputBlobManagedIdentity;

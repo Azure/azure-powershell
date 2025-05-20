@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public string IngressAclId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).IngressAclId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).IngressAclId = value ?? null; }
 
         /// <summary>Internal Acessors for FabricAsn</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal.FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).FabricAsn = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal.FabricAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).FabricAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)__l3OptionAProperties).FabricAsn = value ?? default(long); }
 
         /// <summary>MTU to use for option A peering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]

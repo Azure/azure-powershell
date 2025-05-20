@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVMTemplate
 
 ## SYNOPSIS
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 
 ## EXAMPLES
 

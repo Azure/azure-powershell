@@ -151,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
             }
             if (content.Contains("Enabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled = (bool) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("Description"))
             {
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models
             }
             if (content.Contains("Enabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled = (bool) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled = (bool?) content.GetValueForProperty("Enabled",((Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskUpdateParametersInternal)this).Enabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("Description"))
             {

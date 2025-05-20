@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.WebhookReceiver
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupwebhookreceiverobject
 #>
 function New-AzActionGroupWebhookReceiverObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.WebhookReceiver')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

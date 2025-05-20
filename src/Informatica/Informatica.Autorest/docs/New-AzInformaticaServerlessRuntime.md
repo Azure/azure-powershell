@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzInformaticaServerlessRuntime
 
 ## SYNOPSIS
-Create a InformaticaServerlessRuntimeResource
+create a InformaticaServerlessRuntimeResource
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzInformaticaServerlessRuntime -Name <String> -OrganizationName <String> -Re
 ```
 
 ## DESCRIPTION
-Create a InformaticaServerlessRuntimeResource
+create a InformaticaServerlessRuntimeResource
 
 ## EXAMPLES
 

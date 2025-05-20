@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CommunicationServiceSmtpUsername
-Module Guid: 2313d71b-b10d-4987-b984-4170380a5731
+Module Guid: ab029fd6-b8bd-49eb-9c86-e8bb27017d5a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.communicationservicesmtpusername
 Help Version: 1.0.0.0
 Locale: en-US

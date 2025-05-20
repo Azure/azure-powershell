@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth
 https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappscaleruleauthobject
 #>
 function New-AzContainerAppScaleRuleAuthObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.App.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

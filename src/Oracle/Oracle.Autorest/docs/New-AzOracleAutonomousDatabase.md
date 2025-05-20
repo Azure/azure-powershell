@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzOracleAutonomousDatabase
 
 ## SYNOPSIS
-Create a AutonomousDatabase
+create a AutonomousDatabase
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-Create a AutonomousDatabase
+create a AutonomousDatabase
 
 ## EXAMPLES
 

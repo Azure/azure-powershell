@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareHost
 
 ## SYNOPSIS
-Create host.
+create host.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-Create host.
+create host.
 
 ## EXAMPLES
 

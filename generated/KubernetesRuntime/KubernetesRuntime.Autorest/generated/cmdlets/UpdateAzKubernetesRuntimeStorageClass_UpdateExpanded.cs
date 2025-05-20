@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a StorageClassResource</summary>
+    /// <summary>update a StorageClassResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKubernetesRuntimeStorageClass_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Models.IStorageClassResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"Update a StorageClassResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Description(@"update a StorageClassResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesRuntime.HttpPath(Path = "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}", ApiVersion = "2024-03-01")]
     public partial class UpdateAzKubernetesRuntimeStorageClass_UpdateExpanded : global::System.Management.Automation.PSCmdlet,

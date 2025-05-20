@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+    /// update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSphereProduct_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProduct))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

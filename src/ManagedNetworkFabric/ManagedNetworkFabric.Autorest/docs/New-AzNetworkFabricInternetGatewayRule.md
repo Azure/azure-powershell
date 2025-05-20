@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricInternetGatewayRule
 
 ## SYNOPSIS
-Create an Internet Gateway rule resource.
+create an Internet Gateway rule resource.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzNetworkFabricInternetGatewayRule -Name <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Create an Internet Gateway rule resource.
+create an Internet Gateway rule resource.
 
 ## EXAMPLES
 

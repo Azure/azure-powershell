@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Informatica.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Informatica.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a InformaticaOrganizationResource</summary>
+    /// <summary>update a InformaticaOrganizationResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzInformaticaOrganization_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Informatica.Models.IInformaticaOrganizationResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"Update a InformaticaOrganizationResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Description(@"update a InformaticaOrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}", ApiVersion = "2024-05-08")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Informatica.NotSuggestDefaultParameterSet]

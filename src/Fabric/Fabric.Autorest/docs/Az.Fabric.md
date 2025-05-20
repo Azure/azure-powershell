@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Fabric
-Module Guid: 57d31237-140c-4af8-886b-ced0ac7f5acf
+Module Guid: 67d6cdbb-a3ea-4cc5-b966-ae51b5204aab
 Download Help Link: https://learn.microsoft.com/powershell/module/az.fabric
 Help Version: 1.0.0.0
 Locale: en-US
@@ -18,7 +18,7 @@ Get a FabricCapacity
 List eligible SKUs for Microsoft Fabric resource provider
 
 ### [New-AzFabricCapacity](New-AzFabricCapacity.md)
-Create a FabricCapacity
+create a FabricCapacity
 
 ### [Remove-AzFabricCapacity](Remove-AzFabricCapacity.md)
 Delete a FabricCapacity
@@ -33,5 +33,5 @@ Suspend operation of the specified Fabric capacity instance.
 Implements local CheckNameAvailability operations
 
 ### [Update-AzFabricCapacity](Update-AzFabricCapacity.md)
-Update a FabricCapacity
+update a FabricCapacity
 

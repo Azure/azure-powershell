@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-Create a StandbyContainerGroupPoolResource
+create a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 

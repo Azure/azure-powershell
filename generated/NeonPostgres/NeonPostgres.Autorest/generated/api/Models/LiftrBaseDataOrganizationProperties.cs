@@ -66,13 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.MarketplaceDetail { get => (this._marketplaceDetail = this._marketplaceDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseMarketplaceDetails()); set { {_marketplaceDetail = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceDetailOfferDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.MarketplaceDetailOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.MarketplaceDetailOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PartnerOrganizationProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationProperties Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.PartnerOrganizationProperty { get => (this._partnerOrganizationProperty = this._partnerOrganizationProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.LiftrBaseDataPartnerOrganizationProperties()); set { {_partnerOrganizationProperty = value;} } }
 
         /// <summary>Internal Acessors for PartnerOrganizationPropertySingleSignOnProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.PartnerOrganizationPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesInternal)PartnerOrganizationProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesInternal)PartnerOrganizationProperty).SingleSignOnProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.PartnerOrganizationPropertySingleSignOnProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesInternal)PartnerOrganizationProperty).SingleSignOnProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataPartnerOrganizationPropertiesInternal)PartnerOrganizationProperty).SingleSignOnProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseDataOrganizationPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 
         /// <summary>Offer Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string OfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailOfferId = value ; }
+        public string OfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailOfferId = value ?? null; }
 
         /// <summary>Plan Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string OfferDetailPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPlanId = value ; }
+        public string OfferDetailPlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPlanId = value ?? null; }
 
         /// <summary>Plan Name for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
 
         /// <summary>Publisher Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
-        public string OfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPublisherId = value ; }
+        public string OfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models.ILiftrBaseMarketplaceDetailsInternal)MarketplaceDetail).OfferDetailPublisherId = value ?? null; }
 
         /// <summary>Term Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Origin(Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.PropertyOrigin.Inlined)]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string MarketplaceDetailSubscriptionStatus { get; set; }
         /// <summary>Offer Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string OfferDetailOfferId { get; set; }
         /// <summary>Plan Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Models
         string OfferDetailPlanName { get; set; }
         /// <summary>Publisher Id for the marketplace offer</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NeonPostgres.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

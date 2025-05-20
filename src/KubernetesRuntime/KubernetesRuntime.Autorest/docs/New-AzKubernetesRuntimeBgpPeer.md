@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKubernetesRuntimeBgpPeer
 
 ## SYNOPSIS
-Create a BgpPeer
+create a BgpPeer
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzKubernetesRuntimeBgpPeer -ArcConnectedClusterId <String> -Name <String> -J
 ```
 
 ## DESCRIPTION
-Create a BgpPeer
+create a BgpPeer
 
 ## EXAMPLES
 

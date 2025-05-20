@@ -27,10 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchema Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyPropertiesInternal.Policy { get => (this._policy = this._policy ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicySchema()); set { {_policy = value;} } }
 
         /// <summary>Internal Acessors for PolicyDestination</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyPropertiesInternal.PolicyDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Destination = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyPropertiesInternal.PolicyDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Destination; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Destination = value ?? null; }
 
         /// <summary>Internal Acessors for PolicyType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyPropertiesInternal.PolicyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicyPropertiesInternal.PolicyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchemaInternal)Policy).Type = value ; }
 
         /// <summary>Backing field for <see cref="Policy" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobInventoryPolicySchema _policy;

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImage __galleryDiskImage = new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.GalleryDiskImage();
 
         /// <summary>Internal Acessors for SizeInMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal.SizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)__galleryDiskImage).SizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)__galleryDiskImage).SizeInMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal.SizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)__galleryDiskImage).SizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryDiskImageInternal)__galleryDiskImage).SizeInMb = value ?? default(long); }
 
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Inherited)]

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal.Smb { get => (this._smb = this._smb ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbSetting()); set { {_smb = value;} } }
 
         /// <summary>Internal Acessors for SmbMultichannel</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)Smb).Multichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)Smb).Multichannel = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)Smb).Multichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSettingInternal)Smb).Multichannel = value ?? null /* model class */; }
 
         /// <summary>Indicates whether multichannel is enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]

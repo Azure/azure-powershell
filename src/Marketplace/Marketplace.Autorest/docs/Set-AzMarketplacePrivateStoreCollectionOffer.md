@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMarketplacePrivateStoreCollectionOffer
 
 ## SYNOPSIS
-Update or add an offer to a specific collection of the private store.
+update or add an offer to a specific collection of the private store.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Set-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <St
 ```
 
 ## DESCRIPTION
-Update or add an offer to a specific collection of the private store.
+update or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 

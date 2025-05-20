@@ -121,13 +121,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string CustomDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainName = value ?? null; }
+        public string CustomDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainName; }
 
         /// <summary>
         /// Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public bool? CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName = value ?? default(bool); }
+        public bool? CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName; }
 
         /// <summary>
         /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false
@@ -303,14 +303,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         public bool? IsSkuConversionBlocked { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).IsSkuConversionBlocked; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? KeyCreationTimeKey1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey1; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey1 = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? KeyCreationTimeKey1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey1; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? KeyCreationTimeKey2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey2; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey2 = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? KeyCreationTimeKey2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey2; }
 
         /// <summary>The key expiration period in days.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? KeyPolicyKeyExpirationPeriodInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicyKeyExpirationPeriodInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicyKeyExpirationPeriodInDay = value ?? default(int); }
+        public int? KeyPolicyKeyExpirationPeriodInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicyKeyExpirationPeriodInDay; }
 
         /// <summary>Backing field for <see cref="Kind" /> property.</summary>
         private string _kind;
@@ -335,273 +335,318 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for AccessTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AccessTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccessTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccessTier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AccessTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccessTier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccessTier = value ?? null; }
 
         /// <summary>Internal Acessors for AccountMigrationInProgress</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AccountMigrationInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AccountMigrationInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress = value ?? default(bool); }
 
         /// <summary>
         /// Internal Acessors for AzureFileIdentityBasedAuthenticationActiveDirectoryProperty
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IActiveDirectoryProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AzureFileIdentityBasedAuthenticationActiveDirectoryProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationActiveDirectoryProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzureFilesIdentityBasedAuthentication</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AzureFilesIdentityBasedAuthentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFilesIdentityBasedAuthentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFilesIdentityBasedAuthentication = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AzureFilesIdentityBasedAuthentication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFilesIdentityBasedAuthentication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFilesIdentityBasedAuthentication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for BlobRestoreStatusFailureReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusFailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusFailureReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusFailureReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusFailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusFailureReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusFailureReason = value ?? null; }
 
         /// <summary>Internal Acessors for BlobRestoreStatusParameter</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusParameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusParameter = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreParameters Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusParameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusParameter = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for BlobRestoreStatusRestoreId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusRestoreId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusRestoreId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusRestoreId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.BlobRestoreStatusRestoreId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusRestoreId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusRestoreId = value ?? null; }
 
         /// <summary>Internal Acessors for CreationTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CreationTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CreationTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for CustomDomain</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CustomDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomain = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ICustomDomain Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CustomDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomain = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for CustomDomainName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CustomDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainName = value ?? null; }
+
+        /// <summary>Internal Acessors for CustomDomainUseSubDomainName</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).Encryption = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
 
         /// <summary>Internal Acessors for FailoverInProgress</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.FailoverInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.FailoverInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress = value ?? default(bool); }
 
         /// <summary>Internal Acessors for GeoReplicationStat</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStat { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStat { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStat = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for GeoReplicationStatCanFailover</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatCanFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanFailover = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatCanFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanFailover = value ?? default(bool); }
 
         /// <summary>Internal Acessors for GeoReplicationStatCanPlannedFailover</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatCanPlannedFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanPlannedFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanPlannedFailover = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatCanPlannedFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanPlannedFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatCanPlannedFailover = value ?? default(bool); }
 
         /// <summary>Internal Acessors for GeoReplicationStatLastSyncTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatLastSyncTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatLastSyncTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatLastSyncTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatLastSyncTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatLastSyncTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatLastSyncTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for GeoReplicationStatPostFailoverRedundancy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatPostFailoverRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostFailoverRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostFailoverRedundancy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatPostFailoverRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostFailoverRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostFailoverRedundancy = value ?? null; }
 
         /// <summary>Internal Acessors for GeoReplicationStatPostPlannedFailoverRedundancy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatPostPlannedFailoverRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostPlannedFailoverRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostPlannedFailoverRedundancy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatPostPlannedFailoverRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostPlannedFailoverRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatPostPlannedFailoverRedundancy = value ?? null; }
 
         /// <summary>Internal Acessors for GeoReplicationStatStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.GeoReplicationStatStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).GeoReplicationStatStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for ImmutableStorageWithVersioning</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ImmutableStorageWithVersioning { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioning; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioning = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutableStorageAccount Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ImmutableStorageWithVersioning { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioning; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioning = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImmutableStorageWithVersioningImmutabilityPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountImmutabilityPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ImmutableStorageWithVersioningImmutabilityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountImmutabilityPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ImmutableStorageWithVersioningImmutabilityPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ImmutableStorageWithVersioningImmutabilityPolicy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IsSkuConversionBlocked</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IsSkuConversionBlocked { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).IsSkuConversionBlocked; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).IsSkuConversionBlocked = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.IsSkuConversionBlocked { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).IsSkuConversionBlocked; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).IsSkuConversionBlocked = value ?? default(bool); }
 
         /// <summary>Internal Acessors for KeyCreationTime</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyCreationTime Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTime = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyCreationTime Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyCreationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTime = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for KeyCreationTimeKey1</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyCreationTimeKey1 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey1; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey1 = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for KeyCreationTimeKey2</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyCreationTimeKey2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey2; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyCreationTimeKey2 = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for KeyPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IKeyPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicy = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for KeyPolicyKeyExpirationPeriodInDay</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.KeyPolicyKeyExpirationPeriodInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicyKeyExpirationPeriodInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).KeyPolicyKeyExpirationPeriodInDay = value ?? default(int); }
 
         /// <summary>Internal Acessors for Kind</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Kind { get => this._kind; set { {_kind = value;} } }
 
         /// <summary>Internal Acessors for LastGeoFailoverTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.LastGeoFailoverTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).LastGeoFailoverTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).LastGeoFailoverTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.LastGeoFailoverTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).LastGeoFailoverTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).LastGeoFailoverTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for NetworkRuleSet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkRuleSet Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSet = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for NetworkRuleSetBypass</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSetBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetBypass = value ?? null; }
+
+        /// <summary>Internal Acessors for NetworkRuleSetDefaultAction</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSetDefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetDefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetDefaultAction = value ?? null; }
+
+        /// <summary>Internal Acessors for NetworkRuleSetIPRule</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSetIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetIPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetIPRule = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for NetworkRuleSetResourceAccessRule</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSetResourceAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetResourceAccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetResourceAccessRule = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for NetworkRuleSetVirtualNetworkRule</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.NetworkRuleSetVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetVirtualNetworkRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetVirtualNetworkRule = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ParameterBlobRange</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterBlobRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterBlobRange = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ParameterTimeToRestore</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterTimeToRestore; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterTimeToRestore = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for PrimaryEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrimaryEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointBlob = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointDf = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointFile = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointInternetEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointInternetEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointInternetEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointInternetEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointInternetEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointInternetEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointInternetEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrimaryEndpointMicrosoftEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointMicrosoftEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointMicrosoftEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointMicrosoftEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointMicrosoftEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointMicrosoftEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointMicrosoftEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrimaryEndpointQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointQueue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointQueue = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointTable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointTable = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointWeb = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsInternetEndpointsBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsBlob = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsInternetEndpointsDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsDf = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsInternetEndpointsFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsFile = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsInternetEndpointsWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsInternetEndpointsWeb = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsBlob = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsDf = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsFile = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsQueue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsQueue = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsTable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsTable = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryEndpointsMicrosoftEndpointsWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryEndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryEndpointsMicrosoftEndpointsWeb = value ?? null; }
 
         /// <summary>Internal Acessors for PrimaryLocation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryLocation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrimaryLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrimaryLocation = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrivateEndpointConnection = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for PropertiesBlobRestoreStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PropertiesBlobRestoreStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PropertiesBlobRestoreStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PropertiesBlobRestoreStatusStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PropertiesBlobRestoreStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.PropertiesBlobRestoreStatusStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for RoutingPreference</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.RoutingPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).RoutingPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).RoutingPreference = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRoutingPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.RoutingPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).RoutingPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).RoutingPreference = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SasPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SasPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicy = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SasPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicy = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SasPolicyExpirationAction</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicyExpirationAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicyExpirationAction = value ?? null; }
+
+        /// <summary>Internal Acessors for SasPolicySasExpirationPeriod</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SasPolicySasExpirationPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicySasExpirationPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicySasExpirationPeriod = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecondaryEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointBlob = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointDf = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointFile = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointInternetEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointInternetEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointInternetEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointInternetEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointInternetEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointInternetEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointInternetEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecondaryEndpointMicrosoftEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointMicrosoftEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointMicrosoftEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointMicrosoftEndpoint = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointMicrosoftEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointMicrosoftEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointMicrosoftEndpoint = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecondaryEndpointQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointQueue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointQueue = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointTable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointTable = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointWeb = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsInternetEndpointsBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsBlob = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsInternetEndpointsDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsDf = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsInternetEndpointsFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsFile = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsInternetEndpointsWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsInternetEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsInternetEndpointsWeb = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsBlob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsBlob = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsDf = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsDf; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsDf = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsFile = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsFile = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsQueue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsQueue = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsTable = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsTable = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryEndpointsMicrosoftEndpointsWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsWeb = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryEndpointsMicrosoftEndpointsWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsWeb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryEndpointsMicrosoftEndpointsWeb = value ?? null; }
 
         /// <summary>Internal Acessors for SecondaryLocation</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryLocation = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SecondaryLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SecondaryLocation = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for SkuConversionStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSkuConversionStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatus = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSkuConversionStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatus = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SkuConversionStatusEndTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusEndTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusEndTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusEndTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusEndTime = value ?? null; }
 
         /// <summary>Internal Acessors for SkuConversionStatusSkuConversionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusSkuConversionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusSkuConversionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusSkuConversionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusSkuConversionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusSkuConversionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusSkuConversionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for SkuConversionStatusStartTime</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusStartTime = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuConversionStatusStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StorageAccountSkuConversionStatusStartTime = value ?? null; }
+
+        /// <summary>Internal Acessors for SkuName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SkuTier</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Internal Acessors for StatusOfPrimary</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.StatusOfPrimary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfPrimary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfPrimary = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.StatusOfPrimary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfPrimary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfPrimary = value ?? null; }
 
         /// <summary>Internal Acessors for StatusOfSecondary</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.StatusOfSecondary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfSecondary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfSecondary = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.StatusOfSecondary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfSecondary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).StatusOfSecondary = value ?? null; }
 
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
@@ -618,31 +663,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// (For example, "Logging, Metrics"), or None to bypass none of those traffics.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string NetworkRuleSetBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetBypass; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetBypass = value ?? null; }
+        public string NetworkRuleSetBypass { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetBypass; }
 
         /// <summary>Specifies the default action of allow or deny when no other rules match.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string NetworkRuleSetDefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetDefaultAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetDefaultAction = value ?? null; }
+        public string NetworkRuleSetDefaultAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetDefaultAction; }
 
         /// <summary>Sets the IP ACL rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetIPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetIPRule = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IIPRule> NetworkRuleSetIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetIPRule; }
 
         /// <summary>Sets the resource access rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> NetworkRuleSetResourceAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetResourceAccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetResourceAccessRule = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceAccessRule> NetworkRuleSetResourceAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetResourceAccessRule; }
 
         /// <summary>Sets the virtual network rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetVirtualNetworkRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetVirtualNetworkRule = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IVirtualNetworkRule> NetworkRuleSetVirtualNetworkRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).NetworkRuleSetVirtualNetworkRule; }
 
         /// <summary>Blob ranges to restore.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterBlobRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterBlobRange = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobRestoreRange> ParameterBlobRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterBlobRange; }
 
         /// <summary>Restore blob to the specified time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterTimeToRestore; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterTimeToRestore = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? ParameterTimeToRestore { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).ParameterTimeToRestore; }
 
         /// <summary>Gets the blob endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -768,11 +813,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// do not adhere to the sas policy expiration period.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicyExpirationAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicyExpirationAction = value ?? null; }
+        public string SasPolicyExpirationAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicyExpirationAction; }
 
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SasPolicySasExpirationPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicySasExpirationPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicySasExpirationPeriod = value ?? null; }
+        public string SasPolicySasExpirationPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).SasPolicySasExpirationPeriod; }
 
         /// <summary>Gets the blob endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -874,7 +919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name = value ?? null; }
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInternal)Sku).Name; }
 
         /// <summary>The SKU tier. This is based on the SKU name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]

@@ -36,13 +36,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettings Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.ProtocolSetting { get => (this._protocolSetting = this._protocolSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProtocolSettings()); set { {_protocolSetting = value;} } }
 
         /// <summary>Internal Acessors for ProtocolSettingSmb</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.ProtocolSettingSmb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).Smb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).Smb = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbSetting Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.ProtocolSettingSmb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).Smb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).Smb = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ShareDeleteRetentionPolicy</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDeleteRetentionPolicy Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.ShareDeleteRetentionPolicy { get => (this._shareDeleteRetentionPolicy = this._shareDeleteRetentionPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DeleteRetentionPolicy()); set { {_shareDeleteRetentionPolicy = value;} } }
 
         /// <summary>Internal Acessors for SmbMultichannel</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).SmbMultichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).SmbMultichannel = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMultichannel Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceProperties1Internal.SmbMultichannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).SmbMultichannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProtocolSettingsInternal)ProtocolSetting).SmbMultichannel = value ?? null /* model class */; }
 
         /// <summary>Indicates whether multichannel is enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]

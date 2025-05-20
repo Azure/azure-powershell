@@ -52,13 +52,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacity Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacity { get => (this._cloudCapacity = this._cloudCapacity ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.CloudCapacity()); set { {_cloudCapacity = value;} } }
 
         /// <summary>Internal Acessors for CloudCapacityCpuCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityCpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).CpuCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityCpuCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).CpuCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).CpuCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CloudCapacityMemoryMb</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).MemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).MemoryMb = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).MemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).MemoryMb = value ?? default(long); }
 
         /// <summary>Internal Acessors for CloudCapacityVMCount</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityVMCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).VMCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).VMCount = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudCapacityVMCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).VMCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudCapacityInternal)CloudCapacity).VMCount = value ?? default(long); }
 
         /// <summary>Internal Acessors for CloudName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ICloudPropertiesInternal.CloudName { get => this._cloudName; set { {_cloudName = value;} } }
