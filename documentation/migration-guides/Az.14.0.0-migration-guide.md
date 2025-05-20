@@ -15,12 +15,13 @@ $authHeader = @{
     'Content-Type'  = 'application/json'
     'Authorization' = 'Bearer ' + (Get-AccessToken)
 }
-$respone = Invoke-RestMethod -Method Get -Headers $authHeader -Uri $uri"	"$secureToken = (Get-AzAccessToken).Token
+$response = Invoke-RestMethod -Method Get -Headers $authHeader -Uri $uri
 ```
 
 #### After
 ```powershell
-$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($Securetoken)
+$secureToken = (Get-AzAccessToken).Token
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureToken)
 try {
      $plaintextToken = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
 } 
@@ -31,7 +32,7 @@ $authHeader = @{
     'Content-Type'  = 'application/json'
     'Authorization' = 'Bearer ' + $plaintextToken
 }
-$respone = Invoke-RestMethod -Method Get -Headers $authHeader -Uri $uri
+$response = Invoke-RestMethod -Method Get -Headers $authHeader -Uri $uri
 ```
 
 
