@@ -4,7 +4,7 @@ param (
 )
 
 # Check number of generation targets
-$generationTargetsFile = Join-Path $PipelineWorkspace "prepare" "generationTargets.json"
+$generationTargetsFile = Join-Path $PipelineWorkspace "_current" "prepare" "generationTargets.json"
 $generationTargets = Get-Content -Raw -Path $generationTargetsFile | ConvertFrom-Json
 $totalGenerationModules = 0
 foreach ($outerKey in $generationTargets.PSObject.Properties.Name) {
@@ -20,7 +20,7 @@ $targetPatterns = @{
     Test = "testWindowsTargets.json"
 }
 foreach ($pattern in $targetPatterns.GetEnumerator()) {
-    $targetFilePath = Join-Path $PipelineWorkspace "filter" $pattern.Value
+    $targetFilePath = Join-Path $PipelineWorkspace "_current" "filter" $pattern.Value
     $targetJson = Get-Content -Raw -Path $targetFilePath | ConvertFrom-Json
     $total = ($targetJson.PSObject.Properties.Value | ForEach-Object {
         $_.Count
