@@ -26,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightAutoscaleTests\" />
+	<Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
   </ItemGroup>
 
 </Project>

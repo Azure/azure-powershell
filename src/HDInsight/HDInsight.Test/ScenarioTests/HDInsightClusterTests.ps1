@@ -25,19 +25,19 @@ function Test-CreateClusterWithWasbAndMSI{
 		$storageAccountKey=$storageAccountKey[0].Value
 		$clusterParams = @{
 			ClusterType					  = $params.clusterType
-            ClusterSizeInNodes			  = $params.clusterSizeInNodes
-            ResourceGroupName			  = $params.resourceGroupName
-            ClusterName					  = $params.clusterName
+			ClusterSizeInNodes			  = $params.clusterSizeInNodes
+			ResourceGroupName			  = $params.resourceGroupName
+			ClusterName					  = $params.clusterName
 			HttpCredential				  = $params.httpCredential
 			SshCredential				  = $params.sshCredential
-            Location					  = $params.location
-            MinSupportedTlsVersion        = $params.minSupportedTlsVersion
+			Location					  = $params.location
+			MinSupportedTlsVersion        = $params.minSupportedTlsVersion
 			VirtualNetworkId			  = $params.virtualNetworkId
 			SubnetName					  = "default"
-            Version						  = "5.1"
-            StorageAccountType			  = "AzureStorage"
+			Version						  = "5.1"
+			StorageAccountType			  = "AzureStorage"
 			StorageContainer			  = $params.clusterName
-			StorageAccountKey             = $storageAccountKey
+			StorageAccountKey			  = $storageAccountKey
 			StorageAccountResourceId	  = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Storage/storageAccounts/yk01wasb666666666666"
 			StorageAccountManagedIdentity = "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yk-test-msi"
         }
@@ -68,17 +68,17 @@ function Test-CreateEntraCluster{
 		
 		 $clusterParams = @{
 			ClusterType					  = $params.clusterType
-            ClusterSizeInNodes			  = $params.clusterSizeInNodes
-            ResourceGroupName			  = $params.resourceGroupName
-            ClusterName					  = $params.clusterName
+			ClusterSizeInNodes			  = $params.clusterSizeInNodes
+			ResourceGroupName			  = $params.resourceGroupName
+			ClusterName					  = $params.clusterName
 			SshCredential				  = $params.sshCredential
-            Location					  = $params.location
-            MinSupportedTlsVersion        = $params.minSupportedTlsVersion
+			Location					  = $params.location
+			MinSupportedTlsVersion        = $params.minSupportedTlsVersion
 			VirtualNetworkId			  = $params.virtualNetworkId
 			SubnetName					  = "default"
-            Version						  = "5.1"
+			Version						  = "5.1"
 			StorageContainer			  = $params.clusterName
-			StorageAccountKey             = $params.storageAccountKey
+			StorageAccountKey			  = $params.storageAccountKey
 			StorageAccountResourceId	  = $params.storageAccountResourceId
 			RestAuthEntraUsers			  = $user1
         }
@@ -147,7 +147,7 @@ function Test-ClusterRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential  -VirtualNetworkId $params.virtualNetworkId -SubnetName "default" `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion 
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version "5.1"
 
 		Assert-NotNull $cluster
 		
@@ -407,7 +407,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
-		$vnetId= "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn"
+		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yukundemo1/providers/Microsoft.Network/virtualNetworks/yk01networkeastasia"
 		$subnetName="default"
 
 		# create cluster
@@ -416,7 +416,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 4.0 `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 5.1 `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled -PublicIpTagType FirstPartyUsage -PublicIpTag HDInsight
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound

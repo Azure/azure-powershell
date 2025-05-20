@@ -78,7 +78,7 @@ function Test-AzureMonitorAgentRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
+		$location = "East Asia"
 		# prepare parameter for creating parameter
 		# $params= Prepare-ClusterCreateParameter -location $location
 
