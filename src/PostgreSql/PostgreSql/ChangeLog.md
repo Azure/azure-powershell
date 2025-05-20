@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 * Added support for Geo-restore in `Restore-AzPostgreSqlFlexibleServer` cmdlets.
-    - Automatically determines the paired region for the source server during geo-restore.
+    - Automatically determined the paired region for the source server during geo-restore.
     - Enhanced validation for private access and DNS zone configurations during restore operations.
 
 ## Version 1.2.0
