@@ -5142,6 +5142,7 @@
       "New-AzP2sVpnGateway": {},
       "New-AzPacketCaptureFilterConfig": {},
       "New-AzPacketCaptureScopeConfig": {},
+      "New-AzPacketCaptureSettingsConfig": {},
       "New-AzPrivateDnsZoneConfig": {},
       "New-AzPrivateDnsZoneGroup": {},
       "New-AzPrivateEndpoint": {},

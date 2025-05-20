@@ -20,7 +20,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettings"), OutputType(typeof(PSPacketCaptureFilter))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PacketCaptureSettingsConfig"), OutputType(typeof(PSPacketCaptureSettings))]
     public class NewPacketCaptureSettingsCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -54,10 +54,12 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.PacketCapture
                 throw new ArgumentException("Parameters cannot be all empty or zero to create new packet capture settings.");
             }
 
-            var packetCaptureSettings = new PSPacketCaptureSettings();
-            packetCaptureSettings.FileCount = this.FileCount;
-            packetCaptureSettings.FileSizeInBytes = this.FileSizeInBytes;
-            packetCaptureSettings.SessionTimeLimitInSeconds = this.SessionTimeLimitInSeconds;
+            var packetCaptureSettings = new PSPacketCaptureSettings
+            {
+                FileCount = this.FileCount,
+                FileSizeInBytes = this.FileSizeInBytes,
+                SessionTimeLimitInSeconds = this.SessionTimeLimitInSeconds
+            };
 
             WriteObject(packetCaptureSettings);
         }
