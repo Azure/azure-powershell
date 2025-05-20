@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for NetworkFunctionUserConfiguration
+Create an in-memory object for NetworkFunctionUserConfiguration.
 .Description
-Create a in-memory object for NetworkFunctionUserConfiguration
+Create an in-memory object for NetworkFunctionUserConfiguration.
 .Example
 $ipconf1 = New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
 $ip1 = New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
@@ -28,35 +28,34 @@ $customData = "I2Nsb3VkLWNvbmZpZwp3cml0ZV9maWxlczoKLSBwYXRoOiAvdmFyL2xpYi9jbG91Z
 $userconf = New-AzConnectedNetworkFunctionUserConfigurationObject -NetworkInterface $ip1,$ip2 -OSProfileCustomData $customData -RoleName "hpehss"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
-  [IPConfiguration <INetworkInterfaceIPConfiguration[]>]: A list of IP configurations of the network interface.
-    [DnsServer <String[]>]: The list of DNS servers IP addresses.
+  [IPConfiguration <List<INetworkInterfaceIPConfiguration>>]: A list of IP configurations of the network interface.
+    [DnsServer <List<String>>]: The list of DNS servers IP addresses.
     [Gateway <String>]: The value of the gateway.
     [IPAddress <String>]: The value of the IP address.
-    [IPAllocationMethod <IPAllocationMethod?>]: IP address allocation method.
-    [IPVersion <IPVersion?>]: IP address version.
+    [IPAllocationMethod <String>]: IP address allocation method.
+    [IPVersion <String>]: IP address version.
     [Subnet <String>]: The value of the subnet.
   [MacAddress <String>]: The MAC address of the network interface.
   [Name <String>]: The name of the network interface.
-  [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
+  [VMSwitchType <String>]: The type of the VM switch.
 .Link
-https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
+https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkfunctionuserconfigurationobject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
     # The network interface configuration.
-    # To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
     ${NetworkInterface},
 
     [Parameter()]
@@ -75,7 +74,7 @@ param(
     #  customData is passed to the VM to be saved as a file.
     # For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
     # 
-    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileCustomData},
 
     [Parameter()]
@@ -98,6 +97,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -126,6 +128,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

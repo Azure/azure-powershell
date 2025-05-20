@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int OsDiskSize { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2.")]
-        public string VmSize { get; set; } = "Standard_D2_v2";
+        [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is dynamically selected by the AKS resource provider based on quota and capacity.")]
+        public string VmSize { get; set; } = "";
 
         [Parameter(Mandatory = false, HelpMessage = "VNet SubnetID specifies the VNet's subnet identifier.")]
         public string VnetSubnetID { get; set; }

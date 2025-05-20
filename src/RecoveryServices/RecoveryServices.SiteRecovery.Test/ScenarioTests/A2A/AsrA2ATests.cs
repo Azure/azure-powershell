@@ -288,5 +288,15 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-ClusterCommitFailoverJob");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AReprotectTest()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2ASingleVMReprotect");
+        }
     }
 }

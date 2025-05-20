@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceReplicaSetObject
+online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-azaddomainservicereplicasetobject
 schema: 2.0.0
 ---
 
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet
 
 ## NOTES
 

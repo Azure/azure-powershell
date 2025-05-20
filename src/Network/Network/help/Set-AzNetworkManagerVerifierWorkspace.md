@@ -12,14 +12,30 @@ To update network manager verifier workspace.
 
 ## SYNTAX
 
+### ByInputObject (Default)
 ```
 Set-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### ByNameParameters
+```
+Set-AzNetworkManagerVerifierWorkspace -Name <String> -ResourceGroupName <String> -NetworkManagerName <String>
+ [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzNetworkManagerVerifierWorkspace -ResourceId <String> [-Description <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 **Set-AzNetworkManagerVerifierWorkspace** cmdlet enables the details of a network manager verifier workspace to be updated
+
 ## EXAMPLES
 
 ### Example 1
@@ -42,6 +58,7 @@ Name               : AmeWorkspace
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -52,10 +69,10 @@ SystemDataText     : {
                        "LastModifiedAt": "2024-10-15T17:48:28.0902461Z"
                      }
 Id                 : /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/AmeWorkspace
-
 ```
 
 Changed the description of the Verifier Workspace 'AmeWorkspace' to "Updated description"
+
 ### Example 2
 ```powershell
 $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testVerifierWorkspace5"
@@ -82,6 +99,7 @@ Name               : testVerifierWorkspace5
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+Etag               : "\"00000000-0000-0000-0000-000000000000\""
 SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText     : {
                        "CreatedBy": "test@email.com",
@@ -102,7 +120,7 @@ Added the tag of of name 'testTag' and value 'test' to the Verifier Workspace 't
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +135,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -128,12 +146,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The Verifier Workspace
 
 ```yaml
-Type: PSVerifierWorkspace
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspace
+Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
@@ -143,11 +176,71 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -NetworkManagerName
+The network manager name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The network manager verifier workspace id.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: VerifierWorkspaceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -163,7 +256,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -188,6 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerVerifierWorkspace](./Get-AzNetworkManagerVerifierWorkspace.md)
 
 [New-AzNetworkManagerVerifierWorkspace](./New-AzNetworkManagerVerifierWorkspace.md)

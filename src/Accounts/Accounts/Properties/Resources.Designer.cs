@@ -1087,6 +1087,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting July 01, 2025, MFA will be gradually enforced for Azure public cloud. The authentication with username and password in the command line is not supported with MFA. Consider using one of the compatible authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        /// </summary>
+        internal static string RopcDeprecationPublicCloud {
+            get {
+                return ResourceManager.GetString("RopcDeprecationPublicCloud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using authentication with username and password in the command line is strongly discouraged. Consider using one of the recommended authentication methods. For more details, see https://go.microsoft.com/fwlink/?linkid=2276314.
+        /// </summary>
+        internal static string RopcDeprecationSovereignClouds {
+            get {
+                return ResourceManager.GetString("RopcDeprecationSovereignClouds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Run Connect-AzAccount to login..
         /// </summary>
         internal static string RunLoginCmdlet {
@@ -1479,15 +1497,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971..
-        /// </summary>
-        internal static string UsernamePasswordDeprecateWarningMessage {
-            get {
-                return ResourceManager.GetString("UsernamePasswordDeprecateWarningMessage", resourceCulture);
             }
         }
         

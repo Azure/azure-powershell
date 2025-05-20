@@ -38,7 +38,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -66,7 +67,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -95,7 +97,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IdentityByIdentityObject
@@ -123,7 +126,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

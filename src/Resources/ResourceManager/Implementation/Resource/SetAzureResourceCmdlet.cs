@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Newtonsoft.Json.Linq;
     using SdkExtensions;
     using SdkModels;
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [GenericBreakingChangeWithVersion("The API version for the resource type will be updated to use the default version instead of the latest.", "14.0.0", "8.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
@@ -111,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = this.DetermineApiVersion(resourceId);
                     var resourceBody = this.GetResourceBody();
 
                     var operationResult = this.ShouldUsePatchSemantics()
@@ -236,9 +234,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private async Task<JObject> GetResource()
         {
             var resourceId = this.GetResourceId();
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = DetermineApiVersion(resourceId);
 
             return await this
                 .GetResourcesClient()

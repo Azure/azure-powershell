@@ -36,7 +36,7 @@ This command gets an application gateway named ApplicationGateway01 and then add
 ### Example 2: Add an SSL certificate using KeyVault Secret (version-less secretId) to an application gateway.
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
 $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
 $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
@@ -47,7 +47,7 @@ Note: As version-less secretId is provided here, Application Gateway will sync t
 ### Example 3: Add an SSL certificate using KeyVault Secret (versioned secretId) to an application gateway.
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
 $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
 $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
@@ -169,5 +169,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewaySslCertificate](./Remove-AzApplicationGatewaySslCertificate.md)
 
 [Set-AzApplicationGatewaySslCertificate](./Set-AzApplicationGatewaySslCertificate.md)
-
-

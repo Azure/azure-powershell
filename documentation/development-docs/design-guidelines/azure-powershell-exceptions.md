@@ -37,7 +37,7 @@ throw new AzPSArgumentException(
     nameof(EnableNodeAutoScaling),
     desensitizedMessage: Resources.AksNodePoolAutoScalingParametersMustAppearTogether);
 ``````
-  
+
 - An code example for from *AzPSCloudException*
 
 The source code is [KubeCmdletBase.cs](https://github.com/Azure/azure-powershell/blob/77b1e37e11179e59333edd825b2459435cab8726/src/Aks/Aks/Commands/KubeCmdletBase.cs).

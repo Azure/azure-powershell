@@ -15,7 +15,8 @@ Updates a network manager security user configuration.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerSecurityUserConfiguration -InputObject <PSNetworkManagerSecurityUserConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
@@ -28,7 +29,8 @@ Set-AzNetworkManagerSecurityUserConfiguration -Name <String> -ResourceGroupName 
 ### ByResourceId
 ```
 Set-AzNetworkManagerSecurityUserConfiguration -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

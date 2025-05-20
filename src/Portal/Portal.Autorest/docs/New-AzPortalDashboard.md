@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPortalDashboard
 
 ## SYNOPSIS
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## SYNTAX
 
@@ -31,8 +31,20 @@ New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath 
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a Dashboard.
+create a Dashboard.
 
 ## EXAMPLES
 
@@ -83,12 +95,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lens
-The dashboard lenses.
-To construct, see NOTES section for LENS properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Lens
+The dashboard lenses.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardLens[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -146,10 +187,9 @@ Accept wildcard characters: False
 
 ### -Resource
 The shared dashboard resource definition.
-To construct, see NOTES section for RESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 Parameter Sets: Create
 Aliases:
 
@@ -243,11 +283,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## NOTES
 

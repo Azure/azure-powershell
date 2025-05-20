@@ -21,33 +21,35 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 Create an in-memory object for DeliveryRuleRequestHeaderAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerequestheaderactionobject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Action to perform.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Append", "Overwrite", "Delete")]
+        [string]
         $ParameterHeaderAction,
         [Parameter(Mandatory, HelpMessage="Name of the header to modify.")]
         [string]
         $ParameterHeaderName,
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        [alias('Name')]
+        $ParameterTypeName,
         [Parameter(HelpMessage="Value for the specified action.")]
         [string]
-        $ParameterValue,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
-        $Name
+        $ParameterValue
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterHeaderAction')) {
             $Object.ParameterHeaderAction = $ParameterHeaderAction
@@ -55,11 +57,11 @@ function New-AzFrontDoorCdnRuleRequestHeaderActionObject {
         if ($PSBoundParameters.ContainsKey('ParameterHeaderName')) {
             $Object.ParameterHeaderName = $ParameterHeaderName
         }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
+        }
         if ($PSBoundParameters.ContainsKey('ParameterValue')) {
             $Object.ParameterValue = $ParameterValue
-        }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
         }
         return $Object
     }

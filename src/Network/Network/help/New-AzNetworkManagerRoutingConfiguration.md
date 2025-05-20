@@ -15,7 +15,8 @@ Creates a routing configuration.
 ```
 New-AzNetworkManagerRoutingConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

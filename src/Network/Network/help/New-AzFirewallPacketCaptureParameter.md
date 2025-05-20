@@ -15,8 +15,8 @@ Create a Packet Capture Parameter for Azure Firewall
 ```
 New-AzFirewallPacketCaptureParameter -DurationInSeconds <UInt32> -NumberOfPacketsToCapture <UInt32>
  -SasUrl <String> -FileName <String> [-Protocol <String>] [-Flag <String[]>]
- -Filter <PSAzureFirewallPacketCaptureRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Filter <PSAzureFirewallPacketCaptureRule[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

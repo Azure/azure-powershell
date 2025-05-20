@@ -72,6 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the association.",
         SerializedName = @"associationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -80,6 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -88,6 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource provider.",
         SerializedName = @"resourceProviderName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

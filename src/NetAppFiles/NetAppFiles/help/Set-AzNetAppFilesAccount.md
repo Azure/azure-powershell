@@ -14,9 +14,9 @@ Updates an Azure NetApp Files (ANF) account with the new data set. Useful for de
 
 ### ByFieldsParameterSet (Default)
 ```
-Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
+ [-NfsV4IdDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceActiveDirectory
@@ -62,7 +62,7 @@ This command performs an update on the given account. The absence of the active 
 A hashtable array which represents the active directories
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]
+Type: PSNetAppFilesActiveDirectory[]
 Parameter Sets: SetByResourceActiveDirectory
 Aliases:
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -118,11 +118,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NfsV4IdDomain
+Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -137,7 +152,7 @@ Accept wildcard characters: False
 The resource id of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -152,7 +167,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -167,7 +182,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -183,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
