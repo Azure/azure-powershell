@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Management.CosmosDB
 
 
         /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get;}
+
+
+        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
@@ -256,6 +262,31 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the IServiceOperations
         /// </summary>
         IServiceOperations Service { get; }
+
+        /// <summary>
+        /// Gets the IFleetOperations
+        /// </summary>
+        IFleetOperations Fleet { get; }
+
+        /// <summary>
+        /// Gets the IFleetAnalyticsOperations
+        /// </summary>
+        IFleetAnalyticsOperations FleetAnalytics { get; }
+
+        /// <summary>
+        /// Gets the IFleetspaceOperations
+        /// </summary>
+        IFleetspaceOperations Fleetspace { get; }
+
+        /// <summary>
+        /// Gets the IFleetspaceAccountOperations
+        /// </summary>
+        IFleetspaceAccountOperations FleetspaceAccount { get; }
+
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        IMongoMiResourcesOperations MongoMiResources { get; }
 
     }
 }

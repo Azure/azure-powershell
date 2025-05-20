@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DynatraceObservability.private.dll'
   FormatsToProcess = './Az.DynatraceObservability.format.ps1xml'
-  FunctionsToExport = 'Get-AzDynatraceMonitor', 'Get-AzDynatraceMonitorAppService', 'Get-AzDynatraceMonitoredResource', 'Get-AzDynatraceMonitorHost', 'Get-AzDynatraceMonitorLinkableEnv', 'Get-AzDynatraceMonitorSSOConfig', 'Get-AzDynatraceMonitorSSODetail', 'Get-AzDynatraceMonitorTagRule', 'Get-AzDynatraceMonitorVMHostPayload', 'New-AzDynatraceMonitor', 'New-AzDynatraceMonitorFilteringTagObject', 'New-AzDynatraceMonitorSSOConfig', 'New-AzDynatraceMonitorTagRule', 'Remove-AzDynatraceMonitor', 'Remove-AzDynatraceMonitorTagRule', 'Update-AzDynatraceMonitor', 'Update-AzDynatraceMonitorTagRule', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDynatraceMonitor', 'Get-AzDynatraceMonitorAppService', 'Get-AzDynatraceMonitoredResource', 'Get-AzDynatraceMonitorHost', 'Get-AzDynatraceMonitorLinkableEnv', 'Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail', 'Get-AzDynatraceMonitorMetricStatus', 'Get-AzDynatraceMonitorSSOConfig', 'Get-AzDynatraceMonitorSSODetail', 'Get-AzDynatraceMonitorTagRule', 'Get-AzDynatraceMonitorVMHostPayload', 'New-AzDynatraceMonitor', 'New-AzDynatraceMonitorFilteringTagObject', 'New-AzDynatraceMonitorSSOConfig', 'New-AzDynatraceMonitorTagRule', 'Remove-AzDynatraceMonitor', 'Remove-AzDynatraceMonitorTagRule', 'Update-AzDynatraceMonitor', 'Update-AzDynatraceMonitorSSOConfig', 'Update-AzDynatraceMonitorTagRule'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DynatraceObservability'

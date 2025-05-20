@@ -25,7 +25,7 @@ Check if a quota is available
 
 ### Example 1
 ```powershell
-$quotaAvailability = Get-AzNetAppFilesQuotaAvailability -ResourceGroupName "MyRG" -Location "westus" -Type "Microsoft.NetApp/netAppAccounts" -Name "quotaName" 
+$quotaAvailability = Get-AzNetAppFilesQuotaAvailability -ResourceGroupName "MyRG" -Location "westus" -Type "Microsoft.NetApp/netAppAccounts" -Name "quotaName"
 ```
 
 Check if a quota `quotaName` is available
@@ -36,7 +36,7 @@ Check if a quota `quotaName` is available
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Name of the resource to verify
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The resource group of the ANF resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Resource type used for verification
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Logical availability zone
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -38,7 +38,8 @@ Checks that the resource name is valid and is not already in use.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -151,10 +152,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.INameAvailability
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.INameAvailability
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

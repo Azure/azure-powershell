@@ -19,7 +19,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-Retention
  [[-SchedulePolicy] <SchedulePolicyBase>] [-MoveToArchiveTier <Boolean>] [-TieringMode <TieringMode>]
  [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-BackupSnapshotResourceGroup <String>]
  [-BackupSnapshotResourceGroupSuffix <String>] [-SnapshotConsistencyType <SnapshotConsistencyType>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -224,6 +224,21 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotContainsAdvancedFil
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotcontainsadvancedfilterobject
 #>
 function New-AzEventGridStringNotContainsAdvancedFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotContainsAdvancedFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

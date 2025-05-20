@@ -36,7 +36,7 @@ Gets the SAP Application Server Instance corresponding to the Virtual Instance f
 
 ## EXAMPLES
 
-### Example 1: Get an overview of The App Server Instance(s) 
+### Example 1: Get an overview of The App Server Instance(s)
 ```powershell
 Get-AzWorkloadsSapApplicationInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
@@ -157,6 +157,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -179,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapApplicationServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapApplicationServerInstance
 
 ## NOTES
 
@@ -188,4 +189,3 @@ ALIASES
 Get-AzVISApplicationInstance
 
 ## RELATED LINKS
-

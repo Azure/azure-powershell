@@ -114,5 +114,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-MongoDBDatabaseMergeCmdlet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoMIRoleCmdlets()
+        {
+            TestRunner.RunTestScript("Test-MongoMIRoleCmdlets");
+        }
     }
 }

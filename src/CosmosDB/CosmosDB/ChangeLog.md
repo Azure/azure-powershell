@@ -19,7 +19,15 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.18.0
+* Added support for creating containers with Vector Embedding Policy.
+* GAd Per Partition Automatic Failover GA
+* GAd Per Region Per Partition Autoscale GA
+
+## Version 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.
+* Added support for Cosmos DB Gremlin, Cassandra and MongoMI role definition and role assignment related cmdlets.
 
 ## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption

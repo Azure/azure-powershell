@@ -639,19 +639,20 @@ function Test-UpdateElasticPoolWithPreferredEnclaveType
 	.SYNOPSIS
 	Tests moving a database out of a Hyperscale elastic pool
 #>
-function Test-MoveDatabaseOutHyperscaleElasticPool
+function Test-MoveDatabaseOutHyperscaleElasticPool($location = "uksouth")
 {
 	# Setup
-	$location = "East US 2 EUAP"
-	$rg = "pstest"
-	$server = "canarysvr1"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
 		# Create Hyperscale elastic pool 
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
-				-ElasticPoolName $poolName -VCore 4 -Edition Hyperscale -ComputeGeneration Gen5 -HighAvailabilityReplicaCount 2
+		$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+				-ElasticPoolName $poolName -VCore 4  -Edition "Hyperscale" -ComputeGeneration "Gen5" -HighAvailabilityReplicaCount 2 -AsJob
+		$job | Wait-Job
+		$ep1 = $job.Output
 
 		Assert-NotNull $ep1
 		Assert-AreEqual Hyperscale $ep1.Edition
@@ -660,14 +661,14 @@ function Test-MoveDatabaseOutHyperscaleElasticPool
 
 		# Create database inside pool
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -ElasticPoolName $poolName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -ElasticPoolName $poolName
 
 		Assert-NotNull $db
 		Assert-AreEqual Hyperscale $db.Edition
 		Assert-AreEqual 2 $db.HighAvailabilityReplicaCount
 
 		#Move database out of elastic pool
-		$db = Set-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -Edition "Hyperscale" -Vcore 4 -ComputeGeneration "Gen5"
+		$db = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition "Hyperscale" -Vcore 4 -ComputeGeneration "Gen5"
 		Assert-NotNull $db
 		Assert-AreEqual Hyperscale $db.Edition
 		Assert-AreEqual 4 $db.Capacity
@@ -675,8 +676,8 @@ function Test-MoveDatabaseOutHyperscaleElasticPool
 	}
 	finally
 	{
-		Remove-AzSqlDatabase -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
-		Remove-AzSqlElasticPool -ElasticPoolName $poolName -ResourceGroupName $rg -ServerName $server
+		Remove-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Remove-AzSqlElasticPool -ElasticPoolName $poolName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 	}
 }
 

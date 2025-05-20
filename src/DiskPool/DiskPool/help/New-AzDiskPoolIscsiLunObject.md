@@ -1,7 +1,7 @@
 ---
 external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
-online version: https://learn.microsoft.com/powershell/module/Az.DiskPool/new-AzDiskPoolIscsiLunObject
+online version: https://learn.microsoft.com/powershell/module/Az.DiskPool/new-azdiskpooliscsilunobject
 schema: 2.0.0
 ---
 
@@ -68,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IscsiLun
 
 ## NOTES
 

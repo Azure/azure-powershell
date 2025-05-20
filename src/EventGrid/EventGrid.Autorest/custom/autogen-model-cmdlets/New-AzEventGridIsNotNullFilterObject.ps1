@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IsNotNullFilter
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridisnotnullfilterobject
 #>
 function New-AzEventGridIsNotNullFilterObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IsNotNullFilter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

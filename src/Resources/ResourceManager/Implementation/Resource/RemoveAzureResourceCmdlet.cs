@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = DetermineApiVersion(resourceId);
 
                     var operationResult = this.GetResourcesClient()
                         .DeleteResource(

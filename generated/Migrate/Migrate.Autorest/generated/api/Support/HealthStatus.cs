@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct HealthStatus :
         System.IEquatable<HealthStatus>
     {
+        /// <summary>Critical Status.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthStatus Critical = @"Critical";
 
+        /// <summary>Healthy Status.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthStatus Normal = @"Normal";
 
+        /// <summary>Warning Status.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthStatus Warning = @"Warning";
 
         /// <summary>the value for an instance of the <see cref="HealthStatus" /> Enum.</summary>

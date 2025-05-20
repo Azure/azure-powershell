@@ -23,18 +23,13 @@ Change directory (tenant) of `ReservationOrder` and all `Reservation` under it t
 Move-AzReservationDirectory -ReservationOrderId "7c31a9e8-8490-4002-88cd-3a16b71362a9" -DestinationTenantId "f65fbe9a-14b0-44c6-8c0d-2ef2c4543040"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IChangeDirectoryRequest>: Request body for change directory of a reservation.
-  [DestinationTenantId <String>]: Tenant id GUID that reservation order is to be transferred to
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -45,31 +40,22 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 #>
 function Move-AzReservationDirectory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryResponse])]
 [CmdletBinding(DefaultParameterSetName='ChangeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Change', Mandatory)]
     [Parameter(ParameterSetName='ChangeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ChangeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ChangeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${ReservationOrderId},
 
-    [Parameter(ParameterSetName='ChangeViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ChangeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Change', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ChangeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest]
-    # Request body for change directory of a reservation.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
 
     [Parameter(ParameterSetName='ChangeExpanded')]
     [Parameter(ParameterSetName='ChangeViaIdentityExpanded')]
@@ -77,6 +63,18 @@ param(
     [System.String]
     # Tenant id GUID that reservation order is to be transferred to
     ${DestinationTenantId},
+
+    [Parameter(ParameterSetName='ChangeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Change operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ChangeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Change operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -134,6 +132,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -153,10 +160,10 @@ begin {
         }
 
         $mapping = @{
-            Change = 'Az.Reservations.private\Move-AzReservationDirectory_Change';
             ChangeExpanded = 'Az.Reservations.private\Move-AzReservationDirectory_ChangeExpanded';
-            ChangeViaIdentity = 'Az.Reservations.private\Move-AzReservationDirectory_ChangeViaIdentity';
             ChangeViaIdentityExpanded = 'Az.Reservations.private\Move-AzReservationDirectory_ChangeViaIdentityExpanded';
+            ChangeViaJsonFilePath = 'Az.Reservations.private\Move-AzReservationDirectory_ChangeViaJsonFilePath';
+            ChangeViaJsonString = 'Az.Reservations.private\Move-AzReservationDirectory_ChangeViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -165,6 +172,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

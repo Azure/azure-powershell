@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVers
 https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterpoolakspatchversionupgradeobject
 #>
 function New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -55,10 +55,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// virtual machines chosen for removal have to be force deleted when a
         /// virtual machine scale set is being scaled-in.(Feature in
         /// Preview)</param>
-        public ScaleInPolicy(IList<string> rules = default(IList<string>), bool? forceDeletion = default(bool?))
+        /// <param name="prioritizeUnhealthyVMs">This property allows you to
+        /// prioritize the deletion of unhealthy and inactive VMs when a
+        /// virtual machine scale set is being scaled-in.(Feature in
+        /// Preview)</param>
+        public ScaleInPolicy(IList<string> rules = default(IList<string>), bool? forceDeletion = default(bool?), bool? prioritizeUnhealthyVMs = default(bool?))
         {
             Rules = rules;
             ForceDeletion = forceDeletion;
+            PrioritizeUnhealthyVMs = prioritizeUnhealthyVMs;
             CustomInit();
         }
 
@@ -100,6 +105,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "forceDeletion")]
         public bool? ForceDeletion { get; set; }
+
+        /// <summary>
+        /// Gets or sets this property allows you to prioritize the deletion of
+        /// unhealthy and inactive VMs when a virtual machine scale set is
+        /// being scaled-in.(Feature in Preview)
+        /// </summary>
+        [JsonProperty(PropertyName = "prioritizeUnhealthyVMs")]
+        public bool? PrioritizeUnhealthyVMs { get; set; }
 
     }
 }

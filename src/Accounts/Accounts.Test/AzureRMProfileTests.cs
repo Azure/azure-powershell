@@ -41,7 +41,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -176,6 +175,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         [Fact]
@@ -1300,7 +1300,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact(Skip = "It's a limitation of mocked command in test framework, which uses ICommandRuntime instead of ICommandRuntime2. Connect-AzAccount uses WriteInformation() while WriteInformation only is defined in ICommandRuntime2.")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void CanRenewTokenLogin()
+        public async Task CanRenewTokenLogin()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> { DefaultSubscription.ToString() };
@@ -1358,7 +1358,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var rmCred = rmClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(rmCred);
             var message = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
-            rmCred.ProcessHttpRequestAsync(message, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+            await rmCred.ProcessHttpRequestAsync(message, CancellationToken.None);
             Assert.NotNull(message.Headers.Authorization);
             Assert.NotNull(message.Headers.Authorization.Parameter);
             Assert.Contains(accessToken2, message.Headers.Authorization.Parameter);
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var graphCred = graphClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(graphCred);
             var graphMessage = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
-            graphCred.ProcessHttpRequestAsync(graphMessage, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+            await graphCred.ProcessHttpRequestAsync(graphMessage, CancellationToken.None);
             Assert.NotNull(graphMessage.Headers.Authorization);
             Assert.NotNull(graphMessage.Headers.Authorization.Parameter);
             Assert.Contains(graphToken2, graphMessage.Headers.Authorization.Parameter);

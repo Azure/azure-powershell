@@ -27,38 +27,21 @@ The change need to be committed after this.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationParameters
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
-
 MIGRATIONPARAMETER <IMigrationParameters>: Request body for Migrate operation.
   ProfileName <String>: Name of the new profile that need to be created.
   [ClassicResourceReferenceId <String>]: Resource ID.
-  [MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]: Waf mapping for the migrated profile
+  [MigrationWebApplicationFirewallMapping <List<IMigrationWebApplicationFirewallMapping>>]: Waf mapping for the migrated profile
     [MigratedFromId <String>]: Resource ID.
     [MigratedToId <String>]: Resource ID.
-  [SkuName <SkuName?>]: Name of the pricing tier.
+  [SkuName <String>]: Name of the pricing tier.
 
 MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>: Waf mapping for the migrated profile
   [MigratedFromId <String>]: Resource ID.
@@ -67,70 +50,65 @@ MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[
 https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofile
 #>
 function Move-AzCdnProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult])]
 [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Migrate', Mandatory)]
-    [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Migrate')]
-    [Parameter(ParameterSetName='MigrateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters]
     # Request body for Migrate operation.
-    # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
     ${MigrationParameter},
 
     [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Name of the new profile that need to be created.
     ${ProfileName},
 
     [Parameter(ParameterSetName='MigrateExpanded')]
-    [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Resource ID.
     ${ClassicResourceReferenceId},
 
     [Parameter(ParameterSetName='MigrateExpanded')]
-    [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]]
     # Waf mapping for the migrated profile
-    # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
     ${MigrationWebApplicationFirewallMapping},
 
     [Parameter(ParameterSetName='MigrateExpanded')]
-    [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+    [System.String]
     # Name of the pricing tier.
     ${SkuName},
+
+    [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Migrate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Migrate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -200,16 +178,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Migrate = 'Az.Cdn.private\Move-AzCdnProfile_Migrate';
             MigrateExpanded = 'Az.Cdn.private\Move-AzCdnProfile_MigrateExpanded';
-            MigrateViaIdentity = 'Az.Cdn.private\Move-AzCdnProfile_MigrateViaIdentity';
-            MigrateViaIdentityExpanded = 'Az.Cdn.private\Move-AzCdnProfile_MigrateViaIdentityExpanded';
+            MigrateViaJsonFilePath = 'Az.Cdn.private\Move-AzCdnProfile_MigrateViaJsonFilePath';
+            MigrateViaJsonString = 'Az.Cdn.private\Move-AzCdnProfile_MigrateViaJsonString';
         }
-        if (('Migrate', 'MigrateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Migrate', 'MigrateExpanded', 'MigrateViaJsonFilePath', 'MigrateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -218,6 +197,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

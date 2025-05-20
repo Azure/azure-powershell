@@ -17,6 +17,7 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
@@ -339,7 +340,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+                WriteWarning(IsSigningInToPublicCloud() ? Resources.RopcDeprecationPublicCloud : Resources.RopcDeprecationSovereignClouds);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
@@ -369,15 +370,6 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         subscriptionName = subscriptionFromConfig;
                     }
-                }
-            }
-
-            if (ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
-            {
-                bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
-                if (!suppressWarningOrError)
-                {
-                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
                 }
             }
 
@@ -526,8 +518,7 @@ namespace Microsoft.Azure.Commands.Profile
                     return;
                 }
 
-                IHttpOperationsFactory httpClientFactory = null;
-                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory httpClientFactory);
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                 {
@@ -605,6 +596,15 @@ namespace Microsoft.Azure.Commands.Profile
 
                 WriteAnnouncementsPeriodically();
             }
+        }
+
+        private bool IsSigningInToPublicCloud()
+        {
+            if (_environment == null)
+            {
+                return true; // Default to public cloud if no environment is specified
+            }
+            return _environment.ActiveDirectoryAuthority.Equals(AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud].ActiveDirectoryAuthority, StringComparison.OrdinalIgnoreCase);
         }
 
         private void WriteAnnouncementsPeriodically()
@@ -869,6 +869,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
                 AzureSession.Instance.RegisterComponent<IOutputSanitizer>(nameof(IOutputSanitizer), () => new OutputSanitizer());
+                AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif
