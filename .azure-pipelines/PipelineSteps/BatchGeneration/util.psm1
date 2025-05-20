@@ -66,7 +66,7 @@ function Write-Matrix {
         [string]$RepoRoot
     )
 
-    Write-Host "Module groups: $($GroupedModules.Count)"
+    Write-Host "$VariableName module groups: $($GroupedModules.Count)"
     $GroupedModules | ForEach-Object { $_ -join ', ' } | ForEach-Object { Write-Host $_ }
 
     $targets = @{}

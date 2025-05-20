@@ -14,8 +14,8 @@ variables:
   MaxParallelBuildJobs: 15
   MaxParallelAnalyzeJobs: 5
   MaxParallelTestWindowsJobs: 5
-  MaxParallelTestLinuxJobs: 4
-  MaxParallelTestMacJobs: 2
+  MaxParallelTestLinuxJobs: 5
+  MaxParallelTestMacJobs: 5
   WindowsAgentPoolName: pool-windows-2019
   LinuxAgentPoolName: pool-ubuntu-2004
   MacOSAgentPoolName: 'Azure Pipelines'
@@ -437,6 +437,8 @@ stages:
 
       - download: current
         patterns: |
+          prepare/generationTargets.json
+          filter/**
           **/AnalyseReport-*.json
           **/GenerationReport-*.json
           **/BuildReport-*.json

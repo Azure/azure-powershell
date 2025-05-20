@@ -3,6 +3,33 @@ param (
     [string]$PipelineWorkspace
 )
 
+# Check number of generation targets
+$generationTargetsFile = Join-Path $PipelineWorkspace "prepare" "generationTargets.json"
+$generationTargets = Get-Content -Raw -Path $generationTargetsFile | ConvertFrom-Json
+$totalGenerationModules = 0
+foreach ($outerKey in $generationTargets.PSObject.Properties.Name) {
+    $innerKeys = $generationTargets.$outerKey.PSObject.Properties.Name.Count
+    $totalGenerationModules += $innerKeys
+}
+Write-Output "Total regeneration target modules: $totalGenerationModules"
+
+# Check number of other targets
+$targetPatterns = @{
+    Analyse = "analyzeTargets.json"
+    Build = "buildTargets.json"
+    Test = "testWindowsTargets.json"
+}
+foreach ($pattern in $targetPatterns.GetEnumerator()) {
+    $targetFilePath = Join-Path $PipelineWorkspace "filter" $pattern.Value
+    $targetJson = Get-Content -Raw -Path $targetFilePath | ConvertFrom-Json
+    $total = ($targetJson.PSObject.Properties.Value | ForEach-Object {
+        $_.Count
+    }) | Measure-Object -Sum | Select-Object -ExpandProperty Sum
+
+    Write-Output "Total $($pattern.Key) targets : $total"
+}
+
+# Check all steps reports
 $reportFilePattern = @{
     Generation = "GenerationReport-*.json"
     Build = "BuildReport-*.json"
