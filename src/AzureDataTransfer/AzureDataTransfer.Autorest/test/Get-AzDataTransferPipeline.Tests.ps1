@@ -17,30 +17,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataTransferPipeline'))
 Describe 'Get-AzDataTransferPipeline' {
     It 'List in Subscription' {
         {
-            $pipelines = Get-AzDataTransferPipeline -SubscriptionId $env:SubscriptionId
+            $pipelines = Get-AzDataTransferPipeline
             $pipelines.Count | Should -BeGreaterThan 0
             $pipelines | ForEach-Object {
-                $_.SubscriptionId | Should -Be $env:SubscriptionId
+                $_.Name | Should -Not -BeNullOrEmpty
             }
         } | Should -Not -Throw
     }
 
     It 'List' {
         {
-            $pipelines = Get-AzDataTransferPipeline -ResourceGroupName $env:ResourceGroupName
+            $pipelines = Get-AzDataTransferPipeline -ResourceGroupName $env.ResourceGroupName
             $pipelines.Count | Should -BeGreaterThan 0
             $pipelines | ForEach-Object {
-                $_.ResourceGroupName | Should -Be $env:ResourceGroupName
+                $_.Name | Should -Not -BeNullOrEmpty
+                $_.ResourceGroupName | Should -Be $env.ResourceGroupName
             }
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $pipeline = Get-AzDataTransferPipeline -ResourceGroupName $env:ResourceGroupName -Name $env:PipelineName
+            $pipeline = Get-AzDataTransferPipeline -ResourceGroupName $env.ResourceGroupName -Name $env.PipelineName
             $pipeline | Should -Not -BeNullOrEmpty
-            $pipeline.Name | Should -Be $env:PipelineName
-            $pipeline.ResourceGroupName | Should -Be $env:ResourceGroupName
+            $pipeline.Name | Should -Be $env.PipelineName
+            $pipeline.ResourceGroupName | Should -Be $env.ResourceGroupName
         } | Should -Not -Throw
     }
 

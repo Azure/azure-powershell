@@ -18,24 +18,37 @@ Describe 'Enable-AzDataTransferFlow' {
     It 'Enable' {
         {
             # Enable the flow
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -Confirm:$false
 
             # Verify the flow is enabled
-            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }
 
     It 'Enable when already enabled' {
         {
-            # Ensure the flow is already enabled
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
-
             # Attempt to enable the flow again
-            Enable-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable -Confirm:$false | Should -BeNullOrEmpty
+            $enabledFlow = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhEnabledFlow -Confirm:$false
 
             # Verify the flow is still enabled
-            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowToEnable
+            $enabledFlow.Status | Should -Be "Enabled"
+        } | Should -Not -Throw
+    }
+
+    It 'Enable AsJob' {
+        {
+            # Enable the flow as a background job
+            $job = Enable-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the flow is enabled after the job completes
+            $enabledFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $env.FaikhRecvFlow
             $enabledFlow.Status | Should -Be "Enabled"
         } | Should -Not -Throw
     }

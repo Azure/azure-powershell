@@ -14,29 +14,105 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDataTransferLinkPend
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$testRecvFlowName = "test-receive-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$testSendFlowName = "test-send-flow-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
+Write-Host "Flow names: $testRecvFlowName, $testSendFlowName"
+
+$testRecvFlowAsJobName = "test-receive-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+$testSendFlowAsJobName = "test-send-flow-asjob-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+
+Write-Host "Flow names for AsJob: $testRecvFlowAsJobName, $testSendFlowAsJobName"
+
 Describe 'Invoke-AzDataTransferLinkPendingFlow' {
+    $recvFlowParams = @{
+        ResourceGroupName     = $env.ResourceGroupName
+        ConnectionName        = $env.ConnectionLinked
+        Name                  = $testRecvFlowName
+        Location              = $env.Location
+        FlowType              = "Mission"
+        DataType              = "Blob"
+        StorageAccountName    = $env.StorageAccountName
+        StorageContainerName  = $env.StorageContainerName
+     }
+     
+    $testRecvFlow = New-AzDataTransferFlow @recvFlowParams
+    
+    $sendFlowParams = @{
+        ResourceGroupName     = $env.ResourceGroupName
+        ConnectionName        = $env.ConnectionLinkedSend
+        Name                  = $testSendFlowName
+        Location              = $env.Location
+        FlowType              = "Mission"
+        DataType              = "Blob"
+        StorageAccountName    = $env.StorageAccountName
+        StorageContainerName  = $env.StorageContainerName
+    }
+    
+    $testSendFlow = New-AzDataTransferFlow @sendFlowParams
     It 'LinkPendingFlow' {
         {
             # Link the pending flow
-            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -FlowName $testRecvFlowName -PendingFlowId $testSendFlow.Id -StatusReason "Linking for testing" -Confirm:$false
 
             # Verify the flow is linked
-            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName
-            $linkedFlow.Status | Should -Be "Linked"
+            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowName
+            $linkedFlow.LinkStatus | Should -Be "Linked"
         } | Should -Not -Throw
     }
 
     It 'LinkPendingFlow when already linked' {
         {
-            # Ensure the flow is already linked
-            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+            # Link the pending flow
+            { Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -FlowName $testRecvFlowName -PendingFlowId $testSendFlow.Id -StatusReason "Linking for testing" -Confirm:$false } | Should -Throw -ErrorId "AlreadyLinked"
 
-            # Attempt to link the flow again
-            Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -FlowName $env:FlowName -PendingFlowId $env:PendingFlowId -StatusReason "Linking approved" -Confirm:$false | Should -BeNullOrEmpty
+            # Verify the flow is linked
+            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowName
+            $linkedFlow.LinkStatus | Should -Be "Linked"
+        } | Should -Not -Throw
+    }
 
-            # Verify the flow is still linked
-            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName
-            $linkedFlow.Status | Should -Be "Linked"
+    It 'LinkPendingFlow AsJob' {
+        {
+            $recvFlowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $testRecvFlowAsJobName
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+             }
+             
+            $testRecvFlowAsJob = New-AzDataTransferFlow @recvFlowParams
+            
+            $sendFlowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinkedSend
+                Name                  = $testSendFlowAsJobName
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+            
+            $testSendFlowAsJob = New-AzDataTransferFlow @sendFlowParams
+
+            # Link the pending flow as a background job
+            $job = Invoke-AzDataTransferLinkPendingFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -FlowName $testRecvFlowAsJobName -PendingFlowId $testSendFlowAsJob.Id -StatusReason "Linking for testing as a job" -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the flow is linked after the job completes
+            $linkedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowAsJobName
+            $linkedFlow.LinkStatus | Should -Be "Linked"
         } | Should -Not -Throw
     }
 
@@ -62,5 +138,13 @@ Describe 'Invoke-AzDataTransferLinkPendingFlow' {
 
     It 'LinkViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    AfterAll {
+        # Clean up the flows
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowName
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $testSendFlowName
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $testRecvFlowAsJobName
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinkedSend -Name $testSendFlowAsJobName
     }
 }

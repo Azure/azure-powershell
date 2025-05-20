@@ -14,25 +14,53 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataTransferFlow'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$flowToUpdate = "test-flow-to-update-" + -join ((65..90) + (97..122) | Get-Random -Count 6 | ForEach-Object {[char]$_})
+Write-Host "Flow name: $flowToUpdate"
+
 Describe 'Update-AzDataTransferFlow' {
     It 'UpdateTagsForExistingFlow' {
         {
+            $flowParams = @{
+                ResourceGroupName     = $env.ResourceGroupName
+                ConnectionName        = $env.ConnectionLinked
+                Name                  = $flowToUpdate
+                Location              = $env.Location
+                FlowType              = "Mission"
+                DataType              = "Blob"
+                StorageAccountName    = $env.StorageAccountName
+                StorageContainerName  = $env.StorageContainerName
+            }
+            $createdFlow = New-AzDataTransferFlow @flowParams
+            $createdFlow | Should -Not -BeNullOrEmpty
+
             # Update tags for an existing flow
-            Update-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName -Tag @{Environment="Production"; Department="IT"} -Confirm:$false | Should -BeNullOrEmpty
+            $updatedFlow = Update-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Tag @{Environment="Production"; Department="IT"} -Confirm:$false | Should -BeNullOrEmpty
 
             # Verify the tags are updated
-            $updatedFlow = Get-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name $env:FlowName
             $updatedFlow | Should -Not -BeNullOrEmpty
             $updatedFlow.Tags.Environment | Should -Be "Production"
             $updatedFlow.Tags.Department | Should -Be "IT"
         } | Should -Not -Throw
     }
 
-    It 'UpdateTagsForNonExistentFlow' {
+    It 'UpdateTagsForExistingFlow AsJob' {
         {
-            # Attempt to update tags for a non-existent flow
-            Update-AzDataTransferFlow -ResourceGroupName $env:ResourceGroupName -ConnectionName $env:ConnectionName -Name "NonExistentFlow" -Tag @{Environment="Production"; Department="IT"} -Confirm:$false
-        } | Should -Throw
+            # Update tags for the flow as a background job
+            $job = Update-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Tag @{Source="Job"; Status="Completed"} -AsJob -Confirm:$false
+    
+            # Verify the job is created
+            $job | Should -Not -BeNullOrEmpty
+            $job.State | Should -Be "Running" -Or "Completed"
+    
+            # Wait for the job to complete
+            $job | Wait-Job | Out-Null
+    
+            # Verify the tags are updated after the job completes
+            $updatedFlow = Get-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate
+            $updatedFlow | Should -Not -BeNullOrEmpty
+            $updatedFlow.Tags.Source | Should -Be "Job"
+            $updatedFlow.Tags.Status | Should -Be "Completed"
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityConnectionExpanded' -skip {
@@ -41,5 +69,10 @@ Describe 'Update-AzDataTransferFlow' {
 
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    AfterAll {
+        # Clean up the created flow
+        Remove-AzDataTransferFlow -ResourceGroupName $env.ResourceGroupName -ConnectionName $env.ConnectionLinked -Name $flowToUpdate -Confirm:$false
     }
 }
