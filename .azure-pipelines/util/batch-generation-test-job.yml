@@ -25,7 +25,6 @@ jobs:
     maxParallel: ${{ parameters.maxParallel }}
 
   steps:
-  #TODO(Bernard) check if can skip checkout step after move this to template
   - checkout: self
     fetchDepth: 1
     fetchTags: false

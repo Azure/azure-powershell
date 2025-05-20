@@ -56,10 +56,6 @@ foreach ($moduleName in $sortedModuleNames) {
                 Remove-Item -Path $generateLog -Recurse -Force
             }
             New-Item -ItemType File -Force -Path $generateLog
-            # TODO(Bernard) Remove exception for EmailService.Autorest after test
-            if ($subModuleName -eq "EmailService.Autorest") {
-                throw "Something went wrong"
-            }
             if (-not (Update-GeneratedSubModule -ModuleRootName $moduleName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog -IsInvokedByPipeline $true)) {
                 Write-Warning "Failed to regenerate module: $moduleName, sub module: $subModuleName"
                 Write-Warning "log can be found at $generateLog"
