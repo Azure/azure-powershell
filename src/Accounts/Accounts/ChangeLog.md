@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that context is not cleared when WAM is enabled.
 
 ## Version 5.0.0
 * Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
