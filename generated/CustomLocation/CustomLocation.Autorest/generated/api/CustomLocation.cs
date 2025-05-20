@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
     public partial class CustomLocation
     {
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">Custom Locations name.</param>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             }
         }
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a Custom Location.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             }
         }
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a Custom Location.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             }
         }
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">Custom Locations name.</param>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             }
         }
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">Custom Locations name.</param>
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
             }
         }
 
-        /// <summary>Update a Custom Location in the specified Subscription and Resource Group</summary>
+        /// <summary>update a Custom Location in the specified Subscription and Resource Group</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="resourceName">Custom Locations name.</param>
@@ -337,16 +337,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -359,7 +360,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -487,16 +491,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -509,7 +514,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -758,17 +766,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -781,7 +790,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3443,7 +3455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3497,7 +3509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a Resource Sync Rule.</param>
@@ -3561,7 +3573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create or update a Resource Sync Rule.</param>
@@ -3623,7 +3635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3676,7 +3688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3727,7 +3739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
+        /// update a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3795,16 +3807,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3817,7 +3830,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3945,16 +3961,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3967,7 +3984,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5000,7 +5020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -5055,7 +5075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -5120,7 +5140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -5183,7 +5203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -5237,7 +5257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -5289,7 +5309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+        /// update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
         /// Custom Location name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -5356,16 +5376,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5378,7 +5399,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5506,16 +5530,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5528,7 +5553,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener

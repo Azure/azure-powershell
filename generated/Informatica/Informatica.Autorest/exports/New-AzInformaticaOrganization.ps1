@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a InformaticaOrganizationResource
+create a InformaticaOrganizationResource
 .Description
-Create a InformaticaOrganizationResource
+create a InformaticaOrganizationResource
 .Example
 New-AzInformaticaOrganization -Name "NewInformaticaTestResource" -ResourceGroupName "InformaticaTestRg" -Location "westus2" -SubscriptionId "ce37d538-dfa3-49c3-b3cd-149b4b7db48a"  -CompanyDetailCompanyName "Test" -CompanyDetailCountry "India" -CompanyDetailDomain "" -CompanyDetailNumberOfEmployee 0  -BusinessPhoneNumber ""  -MarketplaceDetailMarketplaceSubscriptionId "c948d31a-c011-4b16-ce29-688c1565fc06" -OfferDetailOfferId "prod-idmc_as_azure_native_isv_service" -OfferDetailPlanId "prod-private_priview_plan_cdi_free" -OfferDetailPlanName "Pay as you go" -OfferDetailPublisherId "informatica" -OfferDetailTermId "zwuaefo5ywwo" -OfferDetailTermUnit "P1Y" -UserDetailEmailAddress "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com" -UserDetailFirstName "Test" -UserDetailLastName "Test" -UserDetailPhoneNumber "9876543210" -UserDetailUpn "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com"
 
@@ -284,6 +284,15 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Informatica.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
@@ -307,8 +316,6 @@ begin {
             CreateViaJsonString = 'Az.Informatica.private\New-AzInformaticaOrganization_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Informatica.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -322,6 +329,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

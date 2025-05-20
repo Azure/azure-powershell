@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSecurityConnector
 
 ## SYNOPSIS
-Create a security connector.
+create a security connector.
 If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ## SYNTAX
@@ -21,7 +21,7 @@ New-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-Create a security connector.
+create a security connector.
 If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ## EXAMPLES

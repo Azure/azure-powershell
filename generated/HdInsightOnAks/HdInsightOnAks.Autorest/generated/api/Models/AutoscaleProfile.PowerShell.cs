@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("ScheduleBasedConfigDefaultCount"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount = (int) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount = (int?) content.GetValueForProperty("ScheduleBasedConfigDefaultCount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).ScheduleBasedConfigDefaultCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ScheduleBasedConfigSchedule"))
             {
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("LoadBasedConfigMinNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode = (int) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode = (int?) content.GetValueForProperty("LoadBasedConfigMinNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMinNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigMaxNode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode = (int) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode = (int?) content.GetValueForProperty("LoadBasedConfigMaxNode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)this).LoadBasedConfigMaxNode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LoadBasedConfigPollInterval"))
             {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareVM
 
 ## SYNOPSIS
-The operation to Create a virtual machine instance.
+The operation to create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ## SYNTAX
@@ -41,7 +41,7 @@ New-AzConnectedVMwareVM -MachineId <String> -JsonString <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The operation to Create a virtual machine instance.
+The operation to create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ## EXAMPLES

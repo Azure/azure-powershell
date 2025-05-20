@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to Update a virtual machine instance.</summary>
+    /// <summary>The operation to update a virtual machine instance.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedVMwareVM_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to Update a virtual machine instance.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to update a virtual machine instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default", ApiVersion = "2023-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.NotSuggestDefaultParameterSet]

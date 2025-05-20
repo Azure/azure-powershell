@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int?) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SecondaryEndpointMicrosoftEndpoint"))
             {
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("ParameterTimeToRestore"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime?) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ParameterBlobRange"))
             {
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("KeyPolicyKeyExpirationPeriodInDay"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay = (int?) content.GetValueForProperty("KeyPolicyKeyExpirationPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).KeyPolicyKeyExpirationPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SecondaryEndpointMicrosoftEndpoint"))
             {
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (content.Contains("ParameterTimeToRestore"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore = (global::System.DateTime?) content.GetValueForProperty("ParameterTimeToRestore",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)this).ParameterTimeToRestore, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("ParameterBlobRange"))
             {

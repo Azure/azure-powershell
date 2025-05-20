@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Oracle
-Module Guid: 50196261-2b3a-4dac-808d-3a2a25b147cd
+Module Guid: 22368ace-77e3-4c02-9dff-4a2640989d11
 Download Help Link: https://learn.microsoft.com/powershell/module/az.oracle
 Help Version: 1.0.0.0
 Locale: en-US
@@ -60,16 +60,16 @@ VM actions on DbNode of VM Cluster by the provided filter
 Perform switchover action on Autonomous Database
 
 ### [New-AzOracleAutonomousDatabase](New-AzOracleAutonomousDatabase.md)
-Create a AutonomousDatabase
+create a AutonomousDatabase
 
 ### [New-AzOracleAutonomousDatabaseBackup](New-AzOracleAutonomousDatabaseBackup.md)
-Create a AutonomousDatabaseBackup
+create a AutonomousDatabaseBackup
 
 ### [New-AzOracleCloudExadataInfrastructure](New-AzOracleCloudExadataInfrastructure.md)
-Create a CloudExadataInfrastructure
+create a CloudExadataInfrastructure
 
 ### [New-AzOracleCloudVMCluster](New-AzOracleCloudVMCluster.md)
-Create a CloudVmCluster
+create a CloudVmCluster
 
 ### [New-AzOracleCustomerContactObject](New-AzOracleCustomerContactObject.md)
 Create an in-memory object for CustomerContact.
@@ -96,11 +96,11 @@ Remove VMs from the VM Cluster
 Restores an Autonomous Database based on the provided request parameters.
 
 ### [Update-AzOracleAutonomousDatabase](Update-AzOracleAutonomousDatabase.md)
-Update a AutonomousDatabase
+update a AutonomousDatabase
 
 ### [Update-AzOracleCloudExadataInfrastructure](Update-AzOracleCloudExadataInfrastructure.md)
-Update a CloudExadataInfrastructure
+update a CloudExadataInfrastructure
 
 ### [Update-AzOracleCloudVMCluster](Update-AzOracleCloudVMCluster.md)
-Update a CloudVmCluster
+update a CloudVmCluster
 

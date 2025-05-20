@@ -156,11 +156,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("HistoryServerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu = (float) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu = (float?) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("HistoryServerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory = (long) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory = (long?) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TaskManagerCpu"))
             {
@@ -281,11 +281,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             if (content.Contains("HistoryServerCpu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu = (float) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu = (float?) content.GetValueForProperty("HistoryServerCpu",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerCpu, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("HistoryServerMemory"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory = (long) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory = (long?) content.GetValueForProperty("HistoryServerMemory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal)this).HistoryServerMemory, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TaskManagerCpu"))
             {

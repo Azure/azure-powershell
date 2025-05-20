@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareVNet
 
 ## SYNOPSIS
-Create virtual network.
+create virtual network.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-Create virtual network.
+create virtual network.
 
 ## EXAMPLES
 

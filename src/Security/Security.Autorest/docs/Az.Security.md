@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Security
-Module Guid: 6f1c0dfd-dfcd-4e5b-b77c-a64a9d355ebf
+Module Guid: 2c73f5fd-41ac-4527-b71a-cd20e4f8e085
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
 Help Version: 1.0.0.0
 Locale: en-US
@@ -75,14 +75,14 @@ Create an in-memory object for AwsOrganizationalDataMember.
 Create an in-memory object for AzureDevOpsScopeEnvironment.
 
 ### [New-AzSecurityConnector](New-AzSecurityConnector.md)
-Create a security connector.
+create a security connector.
 If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ### [New-AzSecurityConnectorActionableRemediationObject](New-AzSecurityConnectorActionableRemediationObject.md)
 Create an in-memory object for ActionableRemediation.
 
 ### [New-AzSecurityConnectorDevOpsConfiguration](New-AzSecurityConnectorDevOpsConfiguration.md)
-Create a DevOps Configuration.
+create a DevOps Configuration.
 
 ### [New-AzSecurityCspmMonitorAwsOfferingObject](New-AzSecurityCspmMonitorAwsOfferingObject.md)
 Create an in-memory object for CspmMonitorAwsOffering.
@@ -148,17 +148,17 @@ Deletes a security connector.
 Deletes a DevOps Connector.
 
 ### [Update-AzSecurityConnector](Update-AzSecurityConnector.md)
-Update a security connector
+update a security connector
 
 ### [Update-AzSecurityConnectorAzureDevOpsOrg](Update-AzSecurityConnectorAzureDevOpsOrg.md)
-Update monitored Azure DevOps organization details.
+update monitored Azure DevOps organization details.
 
 ### [Update-AzSecurityConnectorAzureDevOpsProject](Update-AzSecurityConnectorAzureDevOpsProject.md)
-Update a monitored Azure DevOps project resource.
+update a monitored Azure DevOps project resource.
 
 ### [Update-AzSecurityConnectorAzureDevOpsRepo](Update-AzSecurityConnectorAzureDevOpsRepo.md)
-Update a monitored Azure DevOps repository resource.
+update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
-Update a DevOps Configuration.
+update a DevOps Configuration.
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ArizeAI
-Module Guid: 8e19ea48-c00f-4a59-bc20-7fddf752a041
+Module Guid: fe76e2e7-3b2f-4717-98c0-1c5d8e97a4a1
 Download Help Link: https://learn.microsoft.com/powershell/module/az.arizeai
 Help Version: 1.0.0.0
 Locale: en-US

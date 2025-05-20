@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
-Update a StandbyContainerGroupPoolResource
+update a StandbyContainerGroupPoolResource
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-Update a StandbyContainerGroupPoolResource
+update a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 

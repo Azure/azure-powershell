@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a LocalRulestackResource</summary>
+    /// <summary>update a LocalRulestackResource</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPaloAltoNetworksLocalRulestack_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"Update a LocalRulestackResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Description(@"update a LocalRulestackResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Generated]
     public partial class UpdateAzPaloAltoNetworksLocalRulestack_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener,
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
         public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>

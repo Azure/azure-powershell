@@ -17,10 +17,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRuleProperties Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableResourceSyncRuleInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ResourceSyncRuleProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableResourceSyncRuleInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableResourceSyncRuleInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Selector</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesSelector Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableResourceSyncRuleInternal.Selector { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).Selector; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).Selector = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesSelector Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableResourceSyncRuleInternal.Selector { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).Selector; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRulePropertiesInternal)Property).Selector = value ?? null /* model class */; }
 
         /// <summary>Priority represents a priority of the Resource Sync Rule</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]

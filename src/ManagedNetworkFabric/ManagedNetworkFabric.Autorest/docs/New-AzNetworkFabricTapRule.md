@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricTapRule
 
 ## SYNOPSIS
-Create Network Tap Rule resource.
+create Network Tap Rule resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzNetworkFabricTapRule -Name <String> -ResourceGroupName <String> -JsonStrin
 ```
 
 ## DESCRIPTION
-Create Network Tap Rule resource.
+create Network Tap Rule resource.
 
 ## EXAMPLES
 

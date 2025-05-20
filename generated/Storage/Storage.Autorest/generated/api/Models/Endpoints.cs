@@ -72,37 +72,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpoint { get => (this._internetEndpoint = this._internetEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpoints()); set { {_internetEndpoint = value;} } }
 
         /// <summary>Internal Acessors for InternetEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Blob = value ?? null; }
 
         /// <summary>Internal Acessors for InternetEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Df = value ?? null; }
 
         /// <summary>Internal Acessors for InternetEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).File = value ?? null; }
 
         /// <summary>Internal Acessors for InternetEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.InternetEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpointsInternal)InternetEndpoint).Web = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpoint { get => (this._microsoftEndpoint = this._microsoftEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpoints()); set { {_microsoftEndpoint = value;} } }
 
         /// <summary>Internal Acessors for MicrosoftEndpointBlob</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Blob = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpointDf</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointDf { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Df = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpointFile</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).File = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpointQueue</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Queue = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpointTable</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Table = value ?? null; }
 
         /// <summary>Internal Acessors for MicrosoftEndpointWeb</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.MicrosoftEndpointWeb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpointsInternal)MicrosoftEndpoint).Web = value ?? null; }
 
         /// <summary>Internal Acessors for Queue</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal.Queue { get => this._queue; set { {_queue = value;} } }

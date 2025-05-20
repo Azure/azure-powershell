@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinator Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.Coordinator { get => (this._coordinator = this._coordinator ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoCoordinator()); set { {_coordinator = value;} } }
 
         /// <summary>Internal Acessors for CoordinatorDebug</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.CoordinatorDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinatorInternal)Coordinator).Debug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinatorInternal)Coordinator).Debug = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.CoordinatorDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinatorInternal)Coordinator).Debug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinatorInternal)Coordinator).Debug = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for UserPluginsSpec</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugins Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.UserPluginsSpec { get => (this._userPluginsSpec = this._userPluginsSpec ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserPlugins()); set { {_userPluginsSpec = value;} } }
@@ -66,13 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetry Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.UserTelemetrySpec { get => (this._userTelemetrySpec = this._userTelemetrySpec ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserTelemetry()); set { {_userTelemetrySpec = value;} } }
 
         /// <summary>Internal Acessors for UserTelemetrySpecStorage</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoTelemetryConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.UserTelemetrySpecStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetryInternal)UserTelemetrySpec).Storage; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetryInternal)UserTelemetrySpec).Storage = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoTelemetryConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.UserTelemetrySpecStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetryInternal)UserTelemetrySpec).Storage; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetryInternal)UserTelemetrySpec).Storage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Worker</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorker Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.Worker { get => (this._worker = this._worker ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoWorker()); set { {_worker = value;} } }
 
         /// <summary>Internal Acessors for WorkerDebug</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.WorkerDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorkerInternal)Worker).Debug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorkerInternal)Worker).Debug = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal.WorkerDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorkerInternal)Worker).Debug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorkerInternal)Worker).Debug = value ?? null /* model class */; }
 
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.

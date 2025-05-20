@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+    /// <summary>update a managed HSM Pool in the specified subscription.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKeyVaultManagedHsm_Update", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"Update a managed HSM Pool in the specified subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"update a managed HSM Pool in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2023-02-01")]
     public partial class UpdateAzKeyVaultManagedHsm_Update : global::System.Management.Automation.PSCmdlet,

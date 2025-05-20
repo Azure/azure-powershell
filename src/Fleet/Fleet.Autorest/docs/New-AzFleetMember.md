@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFleetMember
 
 ## SYNOPSIS
-Create a FleetMember
+create a FleetMember
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-Create a FleetMember
+create a FleetMember
 
 ## EXAMPLES
 

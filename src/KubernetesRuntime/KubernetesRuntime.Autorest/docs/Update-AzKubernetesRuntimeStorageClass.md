@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzKubernetesRuntimeStorageClass
 
 ## SYNOPSIS
-Update a StorageClassResource
+update a StorageClassResource
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <St
 ```
 
 ## DESCRIPTION
-Update a StorageClassResource
+update a StorageClassResource
 
 ## EXAMPLES
 

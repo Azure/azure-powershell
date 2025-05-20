@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Fleet
-Module Guid: 8d7b53b3-f39f-4f40-a64f-cb07e29ede3a
+Module Guid: c4b98b11-b73a-4f3b-a828-0af503fd34ff
 Download Help Link: https://learn.microsoft.com/powershell/module/az.fleet
 Help Version: 1.0.0.0
 Locale: en-US
@@ -27,22 +27,22 @@ Get a UpdateRun
 Get a FleetUpdateStrategy
 
 ### [New-AzFleet](New-AzFleet.md)
-Create a Fleet.
+create a Fleet.
 
 ### [New-AzFleetMember](New-AzFleetMember.md)
-Create a FleetMember
+create a FleetMember
 
 ### [New-AzFleetUpdateGroupObject](New-AzFleetUpdateGroupObject.md)
 Create an in-memory object for UpdateGroup.
 
 ### [New-AzFleetUpdateRun](New-AzFleetUpdateRun.md)
-Create a UpdateRun
+create a UpdateRun
 
 ### [New-AzFleetUpdateStageObject](New-AzFleetUpdateStageObject.md)
 Create an in-memory object for UpdateStage.
 
 ### [New-AzFleetUpdateStrategy](New-AzFleetUpdateStrategy.md)
-Create a FleetUpdateStrategy
+create a FleetUpdateStrategy
 
 ### [Remove-AzFleet](Remove-AzFleet.md)
 Delete a Fleet
@@ -63,14 +63,14 @@ Starts an UpdateRun.
 Stops an UpdateRun.
 
 ### [Update-AzFleet](Update-AzFleet.md)
-Update a Fleet.
+update a Fleet.
 
 ### [Update-AzFleetMember](Update-AzFleetMember.md)
-Update a FleetMember
+update a FleetMember
 
 ### [Update-AzFleetUpdateRun](Update-AzFleetUpdateRun.md)
-Update a UpdateRun
+update a UpdateRun
 
 ### [Update-AzFleetUpdateStrategy](Update-AzFleetUpdateStrategy.md)
-Update a FleetUpdateStrategy
+update a FleetUpdateStrategy
 

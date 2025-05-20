@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomLocation
 
 ## SYNOPSIS
-Create a Custom Location in the specified Subscription and Resource Group
+create a Custom Location in the specified Subscription and Resource Group
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzCustomLocation -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Create a Custom Location in the specified Subscription and Resource Group
+create a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

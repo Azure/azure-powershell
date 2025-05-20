@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DefenderForStorage
-Module Guid: 51b17cfa-b6cf-4bf1-afd7-a55f8cb67a6b
+Module Guid: 74fecfa1-ea03-42c1-a10a-6c7b39a42ccf
 Download Help Link: https://learn.microsoft.com/powershell/module/az.defenderforstorage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,5 +15,5 @@ Microsoft Azure PowerShell: DefenderForStorage cmdlets
 Gets the Defender for Storage settings for the specified storage account.
 
 ### [Update-AzSecurityDefenderForStorage](Update-AzSecurityDefenderForStorage.md)
-Update the Defender for Storage settings on a specified storage account.
+update the Defender for Storage settings on a specified storage account.
 

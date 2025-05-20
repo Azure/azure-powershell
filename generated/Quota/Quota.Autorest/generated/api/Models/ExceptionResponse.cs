@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponseInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceErrorInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IServiceError Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceError()); set { {_error = value;} } }

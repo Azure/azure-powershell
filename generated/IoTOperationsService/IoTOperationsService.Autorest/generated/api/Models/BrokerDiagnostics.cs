@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models
         Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITraces Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerDiagnosticsInternal.Trace { get => (this._trace = this._trace ?? new Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.Traces()); set { {_trace = value;} } }
 
         /// <summary>Internal Acessors for TraceSelfTracing</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISelfTracing Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerDiagnosticsInternal.TraceSelfTracing { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITracesInternal)Trace).SelfTracing; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITracesInternal)Trace).SelfTracing = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISelfTracing Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.IBrokerDiagnosticsInternal.TraceSelfTracing { get => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITracesInternal)Trace).SelfTracing; set => ((Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ITracesInternal)Trace).SelfTracing = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="SelfCheck" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.IoTOperationsService.Models.ISelfCheck _selfCheck;

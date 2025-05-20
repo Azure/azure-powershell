@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKubernetesRuntimeLoadBalancer
 
 ## SYNOPSIS
-Create a LoadBalancer
+create a LoadBalancer
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzKubernetesRuntimeLoadBalancer -ArcConnectedClusterId <String> -Name <Strin
 ```
 
 ## DESCRIPTION
-Create a LoadBalancer
+create a LoadBalancer
 
 ## EXAMPLES
 

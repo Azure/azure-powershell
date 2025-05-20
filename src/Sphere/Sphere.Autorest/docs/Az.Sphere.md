@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Sphere
-Module Guid: 4855dcb5-d1a4-45e3-b4b2-49d37925ed0b
+Module Guid: e245b4d6-4423-472d-ab1d-20ef3ea424af
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sphere
 Help Version: 1.0.0.0
 Locale: en-US
@@ -63,14 +63,14 @@ Counts devices in product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ### [New-AzSphereCatalog](New-AzSphereCatalog.md)
-Create a Catalog
+create a Catalog
 
 ### [New-AzSphereDeployment](New-AzSphereDeployment.md)
-Create a Deployment.
+create a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ### [New-AzSphereDevice](New-AzSphereDevice.md)
-Create a Device.
+create a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 
 ### [New-AzSphereDeviceCapabilityImage](New-AzSphereDeviceCapabilityImage.md)
@@ -78,14 +78,14 @@ Generates the capability image for the device.
 Use '.unassigned' or '.default' for the device group and product names to generate the image for a device that does not belong to a specific device group and product.
 
 ### [New-AzSphereDeviceGroup](New-AzSphereDeviceGroup.md)
-Create a DeviceGroup.
+create a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ### [New-AzSphereImage](New-AzSphereImage.md)
-Create a Image
+create a Image
 
 ### [New-AzSphereProduct](New-AzSphereProduct.md)
-Create a Product.
+create a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ### [New-AzSphereProductDefaultDeviceGroup](New-AzSphereProductDefaultDeviceGroup.md)
@@ -104,17 +104,17 @@ Delete a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name'
 
 ### [Update-AzSphereCatalog](Update-AzSphereCatalog.md)
-Update a Catalog
+update a Catalog
 
 ### [Update-AzSphereDevice](Update-AzSphereDevice.md)
-Update a Device.
+update a Device.
 Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.
 
 ### [Update-AzSphereDeviceGroup](Update-AzSphereDeviceGroup.md)
-Update a DeviceGroup.
+update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 
 ### [Update-AzSphereProduct](Update-AzSphereProduct.md)
-Update a Product.
+update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 

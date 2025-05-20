@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzInformaticaOrganization
 
 ## SYNOPSIS
-Update a InformaticaOrganizationResource
+update a InformaticaOrganizationResource
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzInformaticaOrganization -Name <String> -ResourceGroupName <String> -Jso
 ```
 
 ## DESCRIPTION
-Update a InformaticaOrganizationResource
+update a InformaticaOrganizationResource
 
 ## EXAMPLES
 

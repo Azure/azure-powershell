@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     using System;
 
     /// <summary>
-    /// Update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations
+    /// update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations
     /// to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed
     /// in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
     /// Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzQuota_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the request.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the request.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2023-02-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.NotSuggestDefaultParameterSet]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedVMwareVCenter
 
 ## SYNOPSIS
-Create vCenter.
+create vCenter.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Create vCenter.
+create vCenter.
 
 ## EXAMPLES
 

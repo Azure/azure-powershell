@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     using System;
 
     /// <summary>
-    /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+    /// update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
     /// only.
     /// </summary>
     /// <remarks>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzSphereDevice_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Description(@"update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}", ApiVersion = "2024-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Sphere.NotSuggestDefaultParameterSet]

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a monitored Azure DevOps project resource.</summary>
+    /// <summary>update a monitored Azure DevOps project resource.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}/projects/{projectName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSecurityConnectorAzureDevOpsProject_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsProject))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Update a monitored Azure DevOps project resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"update a monitored Azure DevOps project resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}/projects/{projectName}", ApiVersion = "2023-09-01-preview")]
     public partial class UpdateAzSecurityConnectorAzureDevOpsProject_UpdateExpanded : global::System.Management.Automation.PSCmdlet,

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzOracleCloudVMCluster
 
 ## SYNOPSIS
-Update a CloudVmCluster
+update a CloudVmCluster
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -JsonSt
 ```
 
 ## DESCRIPTION
-Update a CloudVmCluster
+update a CloudVmCluster
 
 ## EXAMPLES
 

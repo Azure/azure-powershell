@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFabricDevice
 
 ## SYNOPSIS
-Update certain properties of the Network Device resource.
+update certain properties of the Network Device resource.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Update certain properties of the Network Device resource.
+update certain properties of the Network Device resource.
 
 ## EXAMPLES
 

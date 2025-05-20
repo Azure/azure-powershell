@@ -50,13 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.Detail { get => (this._detail = this._detail ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMigrationProperties()); set { {_detail = value;} } }
 
         /// <summary>Internal Acessors for DetailMigrationFailedDetailedReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedDetailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedDetailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason = value ?? null; }
 
         /// <summary>Internal Acessors for DetailMigrationFailedReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason = value ?? null; }
 
         /// <summary>Internal Acessors for DetailMigrationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.Id { get => this._id; set { {_id = value;} } }

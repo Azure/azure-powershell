@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKubernetesRuntimeStorageClass
 
 ## SYNOPSIS
-Create a StorageClassResource
+create a StorageClassResource
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <Strin
 ```
 
 ## DESCRIPTION
-Create a StorageClassResource
+create a StorageClassResource
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSphereDevice
 
 ## SYNOPSIS
-Update a Device.
+update a Device.
 Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.
 
 ## SYNTAX
@@ -61,7 +61,7 @@ Update-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -
 ```
 
 ## DESCRIPTION
-Update a Device.
+update a Device.
 Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.
 
 ## EXAMPLES

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnectorAzureDevOpsRepo
 
 ## SYNOPSIS
-Update a monitored Azure DevOps repository resource.
+update a monitored Azure DevOps repository resource.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzSecurityConnectorAzureDevOpsRepo -InputObject <ISecurityIdentity>
 ```
 
 ## DESCRIPTION
-Update a monitored Azure DevOps repository resource.
+update a monitored Azure DevOps repository resource.
 
 ## EXAMPLES
 
